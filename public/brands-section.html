@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العلامات التجارية - التعاونية</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="brands-header">
+        <div class="header-content">
+            <a href="project-details.html" class="back-button">
+                <i class="fas fa-arrow-right"></i>
+                <span>العودة للمشروع</span>
+            </a>
+            <h1 class="page-title">العلامات التجارية</h1>
+            <p class="page-subtitle">
+                تعرف على علاماتنا التجارية المتميزة التي تقدم حلولاً مبتكرة في مختلف المجالات التعاونية والتنموية
+            </p>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <!-- Section Title -->
+        <div class="section-title-container">
+            <div class="section-icon">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h2 class="section-title">علاماتنا التجارية المميزة</h2>
+            <p class="section-description">
+                مجموعة متنوعة من العلامات التجارية الرائدة في مجال التعاون والتنمية المستدامة
+            </p>
+        </div>
+
+        <div class="brands-grid">
+            <div class="brand-card">
+                <div class="brand-header">
+                    <div class="brand-logo-container">
+                        <img src="images/brand-logo-1.svg" alt="علامة ليبل الوطنية" class="brand-logo">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">علامة ليبل الوطنية</h3>
+                        <p class="brand-category"><i class="fas fa-tag"></i> خدمات التدريب والتطوير</p>
+                    </div>
+                </div>
+                <p class="brand-description">
+                    علامة تجارية متخصصة في تقديم حلول التدريب المهني والتطوير الوظيفي المتكاملة للشباب والمؤسسات في جميع القطاعات
+                </p>
+                <button class="brand-btn" onclick="viewBrandDetails(1)">
+                    <span>عرض تفاصيل العلامة</span>
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-header">
+                    <div class="brand-logo-container">
+                        <img src="images/brand-logo-2.svg" alt="علامة جمعيات التعاون" class="brand-logo">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">علامة جمعيات التعاون</h3>
+                        <p class="brand-category"><i class="fas fa-handshake"></i> الشراكات المجتمعية</p>
+                    </div>
+                </div>
+                <p class="brand-description">
+                    تربط الجمعيات التعاونية بالمجتمع من خلال برامج تنموية شاملة تركز على التمكين الاقتصادي والاجتماعي المستدام
+                </p>
+                <button class="brand-btn" onclick="viewBrandDetails(2)">
+                    <span>عرض تفاصيل العلامة</span>
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <div class="brand-card">
+                <div class="brand-header">
+                    <div class="brand-logo-container">
+                        <img src="images/brand-logo-3.svg" alt="علامة قطاع الأعمال" class="brand-logo">
+                    </div>
+                    <div class="brand-info">
+                        <h3 class="brand-name">علامة قطاع الأعمال</h3>
+                        <p class="brand-category"><i class="fas fa-briefcase"></i> الاستثمار والتطوير</p>
+                    </div>
+                </div>
+                <p class="brand-description">
+                    منصة متكاملة لدعم المشاريع التعاونية والاستثمارية، تقدم حلولاً مبتكرة في مجالات ريادة الأعمال والتنمية المستدامة
+                </p>
+                <button class="brand-btn" onclick="viewBrandDetails(3)">
+                    <span>عرض تفاصيل العلامة</span>
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // View brand details
+        function viewBrandDetails(brandId) {
+            window.location.href = `brand-details.html?id=${brandId}`;
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.brand-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
