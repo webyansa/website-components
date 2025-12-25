@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المشروع - منصة ويبيان</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/project-donation-details.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <a href="store-home.html" class="header-logo">
+                    <img src="images/webyan-logo.png" alt="منصة ويبيان" class="logo-img">
+                </a>
+
+                <!-- Navigation -->
+                <nav class="header-nav d-none d-lg-flex">
+                    <a href="store-home.html" class="nav-link">الرئيسية</a>
+                    <a href="association-store.html" class="nav-link">المتجر</a>
+                    <a href="donations-gate.html" class="nav-link active">بوابة التبرعات</a>
+                    <a href="#" class="nav-link">من نحن</a>
+                    <a href="#" class="nav-link">تواصل معنا</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <!-- Cart Buttons -->
+                    <a href="cart.html" class="btn-header-cart">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-label">سلة المشتريات</span>
+                        <span class="cart-badge">0</span>
+                    </a>
+                    <a href="cart.html?type=donations" class="btn-header-cart btn-donations-cart">
+                        <i class="bi bi-heart"></i>
+                        <span class="cart-label">سلة التبرعات</span>
+                        <span class="cart-badge donations-badge">0</span>
+                    </a>
+
+                    <!-- Auth Buttons -->
+                    <div class="header-auth-buttons d-none d-md-flex">
+                        <a href="#" class="btn btn-auth-login">تسجيل دخول</a>
+                        <a href="#" class="btn btn-auth-register">إنشاء حساب</a>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="btn d-lg-none mobile-menu-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb-section">
+        <div class="breadcrumb-pattern-right">
+            <img src="images/breadcrumb-pattern.svg" alt="">
+        </div>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="store-home.html">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="donations-gate.html">بوابة التبرعات</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">تفاصيل المشروع</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Stepper Section -->
+    <section class="stepper-section">
+        <div class="container">
+            <div class="stepper-wrapper">
+                <div class="stepper-item active">
+                    <div class="stepper-circle">
+                        <span>1</span>
+                    </div>
+                    <span class="stepper-label">التفاصيل</span>
+                </div>
+                <div class="stepper-line"></div>
+                <div class="stepper-item">
+                    <div class="stepper-circle">
+                        <span>2</span>
+                    </div>
+                    <span class="stepper-label">الدفع</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Left Column: Donation Form -->
+                <div class="col-lg-5 order-lg-1 order-2">
+                    <!-- Main Donation Amount Card -->
+                    <div class="donation-card" id="mainDonationCard">
+                        <h5 class="card-title-custom">
+                            <i class="bi bi-wallet2"></i>
+                            مبلغ التبرع
+                        </h5>
+                        
+                        <!-- Disabled Message (Hidden by default) -->
+                        <div class="disabled-message d-none" id="disabledMessage">
+                            <i class="bi bi-info-circle"></i>
+                            عند اختيار إهداء التبرع، يتم تحديد المبالغ من نماذج الإهداء أدناه
+                        </div>
+                        
+                        <!-- Preset Amount Buttons -->
+                        <div class="amount-buttons" id="mainAmountButtons">
+                            <button type="button" class="btn btn-amount" data-amount="10">
+                                <span class="amount-value">10</span>
+                                <span class="amount-currency">ر.س</span>
+                            </button>
+                            <button type="button" class="btn btn-amount" data-amount="50">
+                                <span class="amount-value">50</span>
+                                <span class="amount-currency">ر.س</span>
+                            </button>
+                            <button type="button" class="btn btn-amount active" data-amount="100">
+                                <span class="amount-value">100</span>
+                                <span class="amount-currency">ر.س</span>
+                            </button>
+                        </div>
+
+                        <!-- Custom Amount Input -->
+                        <div class="custom-amount-wrapper">
+                            <div class="input-group">
+                                <span class="input-group-text">ر.س</span>
+                                <input type="number" class="form-control" id="mainCustomAmount" placeholder="مبلغ آخر">
+                            </div>
+                            <small class="form-text">يمكنك اختيار أحد المبالغ المقترحة أو إدخال مبلغ مختلف</small>
+                        </div>
+                    </div>
+
+                    <!-- Gift Mode Checkbox -->
+                    <div class="gift-mode-section">
+                        <div class="form-check gift-mode-check">
+                            <input class="form-check-input" type="checkbox" id="giftModeCheckbox">
+                            <label class="form-check-label" for="giftModeCheckbox">
+                                <i class="bi bi-gift-fill"></i>
+                                أرغب في إهداء هذا التبرع لشخص أو أكثر
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Gift Cards Container (Hidden by default) -->
+                    <div class="gift-cards-container d-none" id="giftCardsContainer">
+                        <div class="gift-container-header">
+                            <h5 class="gift-container-title">
+                                <i class="bi bi-gift"></i>
+                                بيانات الإهداء
+                            </h5>
+                            <span class="gift-count-badge" id="giftCountBadge">1 إهداء</span>
+                        </div>
+
+                        <!-- Gift Cards List -->
+                        <div class="gift-cards-list" id="giftCardsList">
+                            <!-- Gift Card Template (First Card) -->
+                            <div class="gift-card" data-gift-index="1">
+                                <div class="gift-card-header">
+                                    <span class="gift-card-title">
+                                        <i class="bi bi-gift"></i>
+                                        إهداء رقم 1
+                                    </span>
+                                    <button type="button" class="btn btn-remove-gift d-none" title="حذف الإهداء">
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="gift-card-body">
+                                    <!-- Recipient Info -->
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">اسم المرسَل إليه *</label>
+                                            <input type="text" class="form-control gift-recipient-name" placeholder="اسم المهدى إليه">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">رقم جوال المرسَل إليه *</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">966+</span>
+                                                <input type="tel" class="form-control gift-recipient-phone" placeholder="5xxxxxxxx">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Gift Amount Selection -->
+                                    <label class="form-label">مبلغ التبرع لهذه الهدية *</label>
+                                    <div class="gift-amount-buttons">
+                                        <button type="button" class="btn btn-gift-amount" data-amount="10">
+                                            <span class="amount-value">10</span>
+                                            <span class="amount-currency">ر.س</span>
+                                        </button>
+                                        <button type="button" class="btn btn-gift-amount" data-amount="50">
+                                            <span class="amount-value">50</span>
+                                            <span class="amount-currency">ر.س</span>
+                                        </button>
+                                        <button type="button" class="btn btn-gift-amount active" data-amount="100">
+                                            <span class="amount-value">100</span>
+                                            <span class="amount-currency">ر.س</span>
+                                        </button>
+                                    </div>
+                                    <div class="gift-custom-amount">
+                                        <div class="input-group">
+                                            <span class="input-group-text">ر.س</span>
+                                            <input type="number" class="form-control gift-custom-input" placeholder="مبلغ آخر">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add New Gift Button -->
+                        <button type="button" class="btn btn-add-gift" id="addGiftBtn">
+                            <i class="bi bi-plus-circle"></i>
+                            إضافة إهداء جديد
+                        </button>
+
+                        <!-- Gift Total Summary -->
+                        <div class="gift-total-summary" id="giftTotalSummary">
+                            <div class="total-row">
+                                <span class="total-label">إجمالي مبالغ الإهداءات:</span>
+                                <span class="total-value" id="giftTotalValue">100 ر.س</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donor Information -->
+                    <div class="donation-card donor-card">
+                        <h5 class="card-title-custom">
+                            <i class="bi bi-person-circle"></i>
+                            بيانات المتبرع
+                        </h5>
+                        <div class="mb-3">
+                            <label for="donorName" class="form-label">اسم المتبرع *</label>
+                            <input type="text" class="form-control" id="donorName" placeholder="أدخل اسمك الكامل">
+                        </div>
+                        <div class="mb-3">
+                            <label for="donorEmail" class="form-label">البريد الإلكتروني (اختياري)</label>
+                            <input type="email" class="form-control" id="donorEmail" placeholder="example@email.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="donorPhone" class="form-label">رقم الجوال *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">966+</span>
+                                <input type="tel" class="form-control" id="donorPhone" placeholder="5xxxxxxxx">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats Cards -->
+                    <div class="quick-stats">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="stat-card">
+                                    <i class="bi bi-cash-stack"></i>
+                                    <div class="stat-value">1,252</div>
+                                    <div class="stat-label">عدد عمليات التبرع</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-card">
+                                    <i class="bi bi-clock-history"></i>
+                                    <div class="stat-value">3 ثانية</div>
+                                    <div class="stat-label">آخر عملية تبرع قبل</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-card">
+                                    <i class="bi bi-people"></i>
+                                    <div class="stat-value">238</div>
+                                    <div class="stat-label">عدد المستفيدين</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stat-card">
+                                    <i class="bi bi-eye"></i>
+                                    <div class="stat-value">844</div>
+                                    <div class="stat-label">الزيارات</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donation Action Button -->
+                    <div class="donation-action-section">
+                        <button type="button" class="btn btn-donate-main" id="submitDonation">
+                            <i class="bi bi-credit-card-2-front"></i>
+                            إتمام التبرع
+                        </button>
+                        <button type="button" class="btn btn-add-to-cart">
+                            <i class="bi bi-cart-plus"></i>
+                            أضف إلى سلة التبرعات
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Project Details -->
+                <div class="col-lg-7 order-lg-2 order-1">
+                    <div class="project-details-card">
+                        <!-- Project Image -->
+                        <div class="project-image-wrapper">
+                            <img src="https://placehold.co/800x400/1D3B8B/ffffff?text=سخانات+المياه+للأسر+المتعففة" alt="صورة المشروع" class="project-image">
+                            <span class="project-status-badge available">متاح للتبرع</span>
+                            <div class="project-progress-overlay">
+                                <span class="progress-percentage">13%</span>
+                            </div>
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h2 class="project-title">سخانات المياه للأسر المتعففة</h2>
+                                <div class="project-id">
+                                    <i class="bi bi-link-45deg"></i>
+                                    رقم الحالة: P61510
+                                </div>
+                            </div>
+
+                            <p class="project-description">
+                                ساهم في توفير سخانات المياه للأسر المتعففة. بتبرعك تمنحها وأبنائها الدفء والراحة في فصل الشتاء قارس البرد. قال الله تعالى: «إن تبدوا الصدقات فنعما هي وإن تخفوها وتؤتوها الفقراء فهو خير لكم».
+                            </p>
+
+                            <!-- Progress Bar -->
+                            <div class="project-progress-section">
+                                <div class="progress-header">
+                                    <span class="progress-label">نسبة الإنجاز</span>
+                                    <span class="progress-value">13%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 13%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Project Stats Grid -->
+                            <div class="project-stats-grid">
+                                <div class="row g-3">
+                                    <div class="col-6 col-md-4">
+                                        <div class="project-stat-item">
+                                            <span class="stat-title">تم جمع</span>
+                                            <span class="stat-amount">10,969 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="project-stat-item">
+                                            <span class="stat-title">المبلغ المتبقي</span>
+                                            <span class="stat-amount">72,331 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="project-stat-item">
+                                            <span class="stat-title">المبلغ المستهدف</span>
+                                            <span class="stat-amount highlight">83,300 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="project-stat-item">
+                                            <span class="stat-title">عدد المستفيدين</span>
+                                            <span class="stat-amount">238 مستفيد</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="project-stat-item">
+                                            <span class="stat-title">نوع المستفيدين</span>
+                                            <span class="stat-amount">المواطنون</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <div class="project-stat-item">
+                                            <span class="stat-title">المدينة</span>
+                                            <span class="stat-amount">الرياض</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Partner Section -->
+                            <div class="partner-section">
+                                <h6 class="partner-title">الشريك المنفذ</h6>
+                                <div class="partner-card">
+                                    <img src="https://placehold.co/60x60/E9ECEF/1D3B8B?text=شعار" alt="شعار الشريك" class="partner-logo">
+                                    <div class="partner-info">
+                                        <span class="partner-name">جمعية رواقد الخيرية النسائية</span>
+                                        <a href="#" class="partner-link">عرض التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Similar Projects Section -->
+    <section class="similar-projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">فرص تتوافق مع تفضيلاتك</h3>
+            </div>
+
+            <div class="row g-4">
+                <!-- Similar Project Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="similar-project-card">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/400x250/27C4F4/ffffff?text=كفالة+معلمي+تحفيظ+القرآن" alt="كفالة معلمي تحفيظ القرآن الكريم" class="card-img">
+                            <div class="progress-badge">90%</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">كفالة معلمي تحفيظ القرآن الكريم</h5>
+                            <div class="project-amounts">
+                                <div class="amount-item">
+                                    <span class="amount-label">تم جمع</span>
+                                    <span class="amount-value">175,174 ر.س</span>
+                                </div>
+                                <div class="amount-item">
+                                    <span class="amount-label">المبلغ الكلي</span>
+                                    <span class="amount-value">19,826 ر.س</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-donate">تبرّع الآن</button>
+                                <a href="#" class="btn btn-sm btn-details">عرض التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similar Project Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="similar-project-card">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/400x250/1D3B8B/ffffff?text=أجهزة+التدفئة+للأسر+المتعففة" alt="أجهزة التدفئة للأسر المتعففة" class="card-img">
+                            <div class="progress-badge warning">19%</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">أجهزة التدفئة للأسر المتعففة</h5>
+                            <div class="project-amounts">
+                                <div class="amount-item">
+                                    <span class="amount-label">تم جمع</span>
+                                    <span class="amount-value">9,362 ر.س</span>
+                                </div>
+                                <div class="amount-item">
+                                    <span class="amount-label">المبلغ الكلي</span>
+                                    <span class="amount-value">40,638 ر.س</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-donate">تبرّع الآن</button>
+                                <a href="#" class="btn btn-sm btn-details">عرض التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similar Project Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="similar-project-card">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/400x250/6c757d/ffffff?text=الأجهزة+الكهربائية+للمتعففين" alt="الأجهزة الكهربائية للمتعففين" class="card-img">
+                            <div class="progress-badge low">4%</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">الأجهزة الكهربائية للمتعففين</h5>
+                            <div class="project-amounts">
+                                <div class="amount-item">
+                                    <span class="amount-label">تم جمع</span>
+                                    <span class="amount-value">2,250 ر.س</span>
+                                </div>
+                                <div class="amount-item">
+                                    <span class="amount-label">المبلغ الكلي</span>
+                                    <span class="amount-value">59,750 ر.س</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-donate">تبرّع الآن</button>
+                                <a href="#" class="btn btn-sm btn-details">عرض التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-about">
+                        <img src="images/webyan-logo.png" alt="منصة ويبيان" class="footer-logo">
+                        <p class="footer-description">
+                            منصة ويبيان للتبرعات والخدمات الإلكترونية - نسعى لتقديم أفضل الخدمات للمستفيدين والمتبرعين
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title">روابط سريعة</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">المتجر</a></li>
+                        <li><a href="#">بوابة التبرعات</a></li>
+                        <li><a href="#">من نحن</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title">الدعم والمساعدة</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="footer-title">تواصل معنا</h6>
+                    <div class="footer-contact">
+                        <p><i class="bi bi-telephone"></i> 920000000</p>
+                        <p><i class="bi bi-envelope"></i> info@webyan.sa</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة © 2024 منصة ويبيان</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">القائمة</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="mobile-nav">
+                <a href="store-home.html" class="mobile-nav-link">الرئيسية</a>
+                <a href="association-store.html" class="mobile-nav-link">المتجر</a>
+                <a href="donations-gate.html" class="mobile-nav-link active">بوابة التبرعات</a>
+                <a href="#" class="mobile-nav-link">من نحن</a>
+                <a href="#" class="mobile-nav-link">تواصل معنا</a>
+            </nav>
+            <div class="mobile-auth-buttons">
+                <a href="#" class="btn btn-auth-login w-100 mb-2">تسجيل دخول</a>
+                <a href="#" class="btn btn-auth-register w-100">إنشاء حساب</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // DOM Elements
+        const giftModeCheckbox = document.getElementById('giftModeCheckbox');
+        const mainDonationCard = document.getElementById('mainDonationCard');
+        const mainAmountButtons = document.getElementById('mainAmountButtons');
+        const mainCustomAmount = document.getElementById('mainCustomAmount');
+        const disabledMessage = document.getElementById('disabledMessage');
+        const giftCardsContainer = document.getElementById('giftCardsContainer');
+        const giftCardsList = document.getElementById('giftCardsList');
+        const addGiftBtn = document.getElementById('addGiftBtn');
+        const giftCountBadge = document.getElementById('giftCountBadge');
+        const giftTotalValue = document.getElementById('giftTotalValue');
+
+        let giftCounter = 1;
+
+        // Toggle Gift Mode
+        giftModeCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Enable Gift Mode
+                mainDonationCard.classList.add('disabled-card');
+                disabledMessage.classList.remove('d-none');
+                
+                // Disable main amount inputs
+                mainAmountButtons.querySelectorAll('.btn-amount').forEach(btn => {
+                    btn.disabled = true;
+                });
+                mainCustomAmount.disabled = true;
+                
+                // Show gift cards container
+                giftCardsContainer.classList.remove('d-none');
+            } else {
+                // Disable Gift Mode
+                mainDonationCard.classList.remove('disabled-card');
+                disabledMessage.classList.add('d-none');
+                
+                // Enable main amount inputs
+                mainAmountButtons.querySelectorAll('.btn-amount').forEach(btn => {
+                    btn.disabled = false;
+                });
+                mainCustomAmount.disabled = false;
+                
+                // Hide gift cards container
+                giftCardsContainer.classList.add('d-none');
+            }
+        });
+
+        // Main Amount Buttons Selection
+        mainAmountButtons.querySelectorAll('.btn-amount').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.disabled) return;
+                mainAmountButtons.querySelectorAll('.btn-amount').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                mainCustomAmount.value = '';
+            });
+        });
+
+        // Clear main amount button selection when custom input is used
+        mainCustomAmount.addEventListener('input', function() {
+            if (this.value) {
+                mainAmountButtons.querySelectorAll('.btn-amount').forEach(b => b.classList.remove('active'));
+            }
+        });
+
+        // Add New Gift Card
+        addGiftBtn.addEventListener('click', function() {
+            giftCounter++;
+            const newGiftCard = createGiftCard(giftCounter);
+            giftCardsList.appendChild(newGiftCard);
+            updateGiftUI();
+            initGiftCardEvents(newGiftCard);
+        });
+
+        // Create Gift Card HTML
+        function createGiftCard(index) {
+            const card = document.createElement('div');
+            card.className = 'gift-card';
+            card.dataset.giftIndex = index;
+            card.innerHTML = `
+                <div class="gift-card-header">
+                    <span class="gift-card-title">
+                        <i class="bi bi-gift"></i>
+                        إهداء رقم ${index}
+                    </span>
+                    <button type="button" class="btn btn-remove-gift" title="حذف الإهداء">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </div>
+                
+                <div class="gift-card-body">
+                    <!-- Recipient Info -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">اسم المرسَل إليه *</label>
+                            <input type="text" class="form-control gift-recipient-name" placeholder="اسم المهدى إليه">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">رقم جوال المرسَل إليه *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">966+</span>
+                                <input type="tel" class="form-control gift-recipient-phone" placeholder="5xxxxxxxx">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gift Amount Selection -->
+                    <label class="form-label">مبلغ التبرع لهذه الهدية *</label>
+                    <div class="gift-amount-buttons">
+                        <button type="button" class="btn btn-gift-amount" data-amount="10">
+                            <span class="amount-value">10</span>
+                            <span class="amount-currency">ر.س</span>
+                        </button>
+                        <button type="button" class="btn btn-gift-amount" data-amount="50">
+                            <span class="amount-value">50</span>
+                            <span class="amount-currency">ر.س</span>
+                        </button>
+                        <button type="button" class="btn btn-gift-amount active" data-amount="100">
+                            <span class="amount-value">100</span>
+                            <span class="amount-currency">ر.س</span>
+                        </button>
+                    </div>
+                    <div class="gift-custom-amount">
+                        <div class="input-group">
+                            <span class="input-group-text">ر.س</span>
+                            <input type="number" class="form-control gift-custom-input" placeholder="مبلغ آخر">
+                        </div>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Initialize Gift Card Events
+        function initGiftCardEvents(card) {
+            // Amount buttons
+            const amountButtons = card.querySelectorAll('.btn-gift-amount');
+            const customInput = card.querySelector('.gift-custom-input');
+            
+            amountButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    amountButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    customInput.value = '';
+                    calculateGiftTotal();
+                });
+            });
+
+            // Custom amount input
+            customInput.addEventListener('input', function() {
+                if (this.value) {
+                    amountButtons.forEach(b => b.classList.remove('active'));
+                }
+                calculateGiftTotal();
+            });
+
+            // Remove button
+            const removeBtn = card.querySelector('.btn-remove-gift');
+            removeBtn.addEventListener('click', function() {
+                card.remove();
+                updateGiftUI();
+            });
+        }
+
+        // Update Gift UI (count, show/hide remove buttons)
+        function updateGiftUI() {
+            const cards = giftCardsList.querySelectorAll('.gift-card');
+            const count = cards.length;
+            
+            // Update count badge
+            giftCountBadge.textContent = count + ' إهداء';
+            
+            // Show/hide remove buttons
+            cards.forEach(card => {
+                const removeBtn = card.querySelector('.btn-remove-gift');
+                if (count > 1) {
+                    removeBtn.classList.remove('d-none');
+                } else {
+                    removeBtn.classList.add('d-none');
+                }
+            });
+
+            // Update indices
+            cards.forEach((card, index) => {
+                const title = card.querySelector('.gift-card-title');
+                title.innerHTML = `<i class="bi bi-gift"></i> إهداء رقم ${index + 1}`;
+                card.dataset.giftIndex = index + 1;
+            });
+
+            calculateGiftTotal();
+        }
+
+        // Calculate Gift Total
+        function calculateGiftTotal() {
+            const cards = giftCardsList.querySelectorAll('.gift-card');
+            let total = 0;
+
+            cards.forEach(card => {
+                const activeBtn = card.querySelector('.btn-gift-amount.active');
+                const customInput = card.querySelector('.gift-custom-input');
+                
+                if (activeBtn) {
+                    total += parseInt(activeBtn.dataset.amount);
+                } else if (customInput.value) {
+                    total += parseInt(customInput.value) || 0;
+                }
+            });
+
+            giftTotalValue.textContent = total.toLocaleString('ar-SA') + ' ر.س';
+        }
+
+        // Initialize first gift card events
+        const firstGiftCard = giftCardsList.querySelector('.gift-card');
+        if (firstGiftCard) {
+            initGiftCardEvents(firstGiftCard);
+        }
+
+        // Initial calculation
+        calculateGiftTotal();
+    </script>
+</body>
+</html>

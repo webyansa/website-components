@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الدفع - منصة ويبيان</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/payment.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-right">
+                    <a href="store-home.html" class="logo-link">
+                        <img src="images/webyan-logo.png" alt="منصة ويبيان" class="header-logo">
+                    </a>
+                </div>
+                <div class="header-left">
+                    <a href="#" class="btn btn-outline-light btn-sm me-2">
+                        <i class="bi bi-person"></i>
+                        <span>تسجيل دخول</span>
+                    </a>
+                    <a href="#" class="btn btn-light btn-sm">
+                        <i class="bi bi-person-plus"></i>
+                        <span>إنشاء حساب</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="store-home.html">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="donations-gate.html">بوابة التبرعات</a></li>
+                    <li class="breadcrumb-item"><a href="project-donation-details.html">تفاصيل المشروع</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">إتمام الدفع</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Stepper -->
+    <section class="stepper-section">
+        <div class="container">
+            <div class="stepper">
+                <div class="stepper-item completed">
+                    <div class="stepper-icon">
+                        <i class="bi bi-check-lg"></i>
+                    </div>
+                    <span class="stepper-label">التفاصيل</span>
+                </div>
+                <div class="stepper-line completed"></div>
+                <div class="stepper-item active">
+                    <div class="stepper-icon">
+                        <span>2</span>
+                    </div>
+                    <span class="stepper-label">الدفع</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Left Column: Payment Methods -->
+                <div class="col-lg-5 order-lg-1 order-2">
+                    <!-- Order Summary Card -->
+                    <div class="summary-card">
+                        <div class="summary-header">
+                            <i class="bi bi-receipt"></i>
+                            <h5>ملخص الطلب</h5>
+                        </div>
+                        <div class="summary-body">
+                            <div class="summary-project">
+                                <img src="https://placehold.co/80x80/1D3B8B/white?text=مشروع" alt="صورة المشروع" class="project-thumb">
+                                <div class="project-info">
+                                    <h6>طباعة ونشر المصاحف</h6>
+                                    <span class="project-id">رقم المشروع: P61465</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="summary-details">
+                                <div class="summary-row">
+                                    <span>مبلغ التبرع</span>
+                                    <span class="amount">100 ر.س</span>
+                                </div>
+                                <div class="summary-row" id="giftSummary" style="display: none;">
+                                    <span>عدد الإهداءات</span>
+                                    <span class="gift-count">2 إهداء</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="summary-total">
+                                <span>الإجمالي</span>
+                                <span class="total-amount">100 ر.س</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods Card -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <i class="bi bi-credit-card"></i>
+                            <h5>اختر طريقة الدفع</h5>
+                        </div>
+                        <div class="payment-body">
+                            <!-- Payment Method Options -->
+                            <div class="payment-methods">
+                                <!-- Mada -->
+                                <label class="payment-method">
+                                    <input type="radio" name="paymentMethod" value="mada" checked>
+                                    <div class="method-content">
+                                        <div class="method-icon mada-icon">
+                                            <img src="images/pay-option-mada.svg" alt="مدى">
+                                        </div>
+                                        <div class="method-info">
+                                            <span class="method-name">بطاقة مدى</span>
+                                            <span class="method-desc">الدفع عبر بطاقة مدى البنكية</span>
+                                        </div>
+                                        <div class="method-check">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Visa/Mastercard -->
+                                <label class="payment-method">
+                                    <input type="radio" name="paymentMethod" value="visa">
+                                    <div class="method-content">
+                                        <div class="method-icon visa-icon">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="فيزا">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="ماستركارد">
+                                        </div>
+                                        <div class="method-info">
+                                            <span class="method-name">فيزا / ماستركارد</span>
+                                            <span class="method-desc">الدفع عبر البطاقة الائتمانية</span>
+                                        </div>
+                                        <div class="method-check">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Apple Pay -->
+                                <label class="payment-method">
+                                    <input type="radio" name="paymentMethod" value="applepay">
+                                    <div class="method-content">
+                                        <div class="method-icon applepay-icon">
+                                            <i class="bi bi-apple"></i>
+                                        </div>
+                                        <div class="method-info">
+                                            <span class="method-name">Apple Pay</span>
+                                            <span class="method-desc">الدفع السريع عبر أبل باي</span>
+                                        </div>
+                                        <div class="method-check">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- STC Pay -->
+                                <label class="payment-method">
+                                    <input type="radio" name="paymentMethod" value="stcpay">
+                                    <div class="method-content">
+                                        <div class="method-icon stcpay-icon">
+                                            <img src="images/pay-option-stcpay.svg" alt="STC Pay">
+                                        </div>
+                                        <div class="method-info">
+                                            <span class="method-name">STC Pay</span>
+                                            <span class="method-desc">الدفع عبر محفظة STC</span>
+                                        </div>
+                                        <div class="method-check">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Tamara -->
+                                <label class="payment-method">
+                                    <input type="radio" name="paymentMethod" value="tamara">
+                                    <div class="method-content">
+                                        <div class="method-icon tamara-icon">
+                                            <img src="images/tamara-logo.svg" alt="تمارا">
+                                        </div>
+                                        <div class="method-info">
+                                            <span class="method-name">تمارا</span>
+                                            <span class="method-desc">قسّم فاتورتك على 4 دفعات بدون فوائد</span>
+                                        </div>
+                                        <div class="method-check">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- Card Details Form (for Mada/Visa) -->
+                            <div class="card-details-form" id="cardDetailsForm">
+                                <h6 class="form-section-title">
+                                    <i class="bi bi-credit-card-2-front"></i>
+                                    بيانات البطاقة
+                                </h6>
+                                <div class="mb-3">
+                                    <label class="form-label">رقم البطاقة</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19" id="cardNumber">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-credit-card"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <label class="form-label">تاريخ الانتهاء</label>
+                                        <input type="text" class="form-control" placeholder="MM/YY" maxlength="5" id="expiryDate">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">CVV</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" placeholder="***" maxlength="4" id="cvv">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-shield-lock"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="form-label">اسم حامل البطاقة</label>
+                                    <input type="text" class="form-control" placeholder="الاسم كما هو مطبوع على البطاقة" id="cardHolder">
+                                </div>
+                            </div>
+
+                            <!-- Apple Pay Button -->
+                            <div class="applepay-section d-none" id="applePaySection">
+                                <div class="applepay-info">
+                                    <i class="bi bi-apple"></i>
+                                    <p>سيتم توجيهك لإتمام الدفع عبر Apple Pay</p>
+                                </div>
+                            </div>
+
+                            <!-- STC Pay Section -->
+                            <div class="stcpay-section d-none" id="stcPaySection">
+                                <h6 class="form-section-title">
+                                    <i class="bi bi-phone"></i>
+                                    رقم جوال STC Pay
+                                </h6>
+                                <div class="input-group">
+                                    <span class="input-group-text">+966</span>
+                                    <input type="tel" class="form-control" placeholder="5xxxxxxxx" id="stcPhone">
+                                </div>
+                                <small class="text-muted mt-2 d-block">سيتم إرسال رمز التحقق إلى رقم جوالك</small>
+                            </div>
+
+                            <!-- Security Notice -->
+                            <div class="security-notice">
+                                <i class="bi bi-shield-check"></i>
+                                <span>جميع معاملاتك محمية بتشفير SSL آمن</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="btn btn-primary btn-lg w-100 btn-pay" id="payBtn">
+                            <i class="bi bi-lock-fill"></i>
+                            <span>إتمام الدفع</span>
+                            <span class="pay-amount">100 ر.س</span>
+                        </button>
+                        <a href="project-donation-details.html" class="btn btn-outline-secondary w-100 mt-3">
+                            <i class="bi bi-arrow-right"></i>
+                            العودة لتفاصيل التبرع
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Donor Info -->
+                <div class="col-lg-7 order-lg-2 order-1">
+                    <!-- Donor Information Card -->
+                    <div class="donor-card">
+                        <div class="donor-header">
+                            <i class="bi bi-person-circle"></i>
+                            <h5>معلومات المتبرع</h5>
+                            <span class="badge bg-success">تم التأكيد</span>
+                        </div>
+                        <div class="donor-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="info-item">
+                                        <label>الاسم</label>
+                                        <p>أحمد محمد العلي</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="info-item">
+                                        <label>رقم الجوال</label>
+                                        <p dir="ltr" class="text-end">+966 512345678</p>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="info-item">
+                                        <label>البريد الإلكتروني</label>
+                                        <p>ahmed@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gift Details Card (if applicable) -->
+                    <div class="gift-details-card" id="giftDetailsCard" style="display: none;">
+                        <div class="gift-header">
+                            <i class="bi bi-gift"></i>
+                            <h5>تفاصيل الإهداءات</h5>
+                            <span class="badge bg-info">2 إهداء</span>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-item">
+                                <div class="gift-number">1</div>
+                                <div class="gift-info">
+                                    <div class="gift-recipient">
+                                        <i class="bi bi-person"></i>
+                                        <span>محمد أحمد</span>
+                                    </div>
+                                    <div class="gift-phone">
+                                        <i class="bi bi-phone"></i>
+                                        <span dir="ltr">+966 555123456</span>
+                                    </div>
+                                    <div class="gift-amount">
+                                        <i class="bi bi-cash"></i>
+                                        <span>50 ر.س</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gift-item">
+                                <div class="gift-number">2</div>
+                                <div class="gift-info">
+                                    <div class="gift-recipient">
+                                        <i class="bi bi-person"></i>
+                                        <span>سارة خالد</span>
+                                    </div>
+                                    <div class="gift-phone">
+                                        <i class="bi bi-phone"></i>
+                                        <span dir="ltr">+966 555789012</span>
+                                    </div>
+                                    <div class="gift-amount">
+                                        <i class="bi bi-cash"></i>
+                                        <span>50 ر.س</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms & Conditions -->
+                    <div class="terms-card">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="termsCheck">
+                            <label class="form-check-label" for="termsCheck">
+                                أوافق على <a href="#" class="terms-link">الشروط والأحكام</a> و<a href="#" class="terms-link">سياسة الخصوصية</a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="trust-badges">
+                        <div class="trust-item">
+                            <i class="bi bi-shield-check"></i>
+                            <span>دفع آمن 100%</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="bi bi-receipt-cutoff"></i>
+                            <span>إيصال فوري</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="bi bi-award"></i>
+                            <span>جهة موثوقة</span>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq-section">
+                        <h6>
+                            <i class="bi bi-question-circle"></i>
+                            أسئلة شائعة
+                        </h6>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        هل يمكنني استرداد التبرع؟
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        التبرعات غير قابلة للاسترداد بعد إتمام العملية، حيث يتم توجيهها مباشرة للمستفيدين.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        كيف أحصل على إيصال التبرع؟
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        سيتم إرسال إيصال التبرع تلقائياً إلى بريدك الإلكتروني ورقم جوالك فور إتمام العملية.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        هل التبرع معفى من الضرائب؟
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        نعم، جميع التبرعات للجمعيات الخيرية المرخصة معفاة من الضرائب وفقاً للأنظمة المعمول بها.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/webyan-logo.png" alt="منصة ويبيان" class="footer-logo">
+                    <p>منصة ويبيان للتبرعات الخيرية</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">الشروط والأحكام</a>
+                    <a href="#">سياسة الخصوصية</a>
+                    <a href="#">اتصل بنا</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>جميع الحقوق محفوظة © 2024 منصة ويبيان</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+            const cardDetailsForm = document.getElementById('cardDetailsForm');
+            const applePaySection = document.getElementById('applePaySection');
+            const stcPaySection = document.getElementById('stcPaySection');
+            const payBtn = document.getElementById('payBtn');
+
+            // Handle payment method change
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    // Hide all sections
+                    cardDetailsForm.classList.add('d-none');
+                    applePaySection.classList.add('d-none');
+                    stcPaySection.classList.add('d-none');
+
+                    // Show relevant section
+                    switch(this.value) {
+                        case 'mada':
+                        case 'visa':
+                            cardDetailsForm.classList.remove('d-none');
+                            break;
+                        case 'applepay':
+                            applePaySection.classList.remove('d-none');
+                            break;
+                        case 'stcpay':
+                            stcPaySection.classList.remove('d-none');
+                            break;
+                    }
+
+                    // Update button text for Apple Pay
+                    if (this.value === 'applepay') {
+                        payBtn.innerHTML = '<i class="bi bi-apple"></i> <span>الدفع عبر Apple Pay</span> <span class="pay-amount">100 ر.س</span>';
+                    } else {
+                        payBtn.innerHTML = '<i class="bi bi-lock-fill"></i> <span>إتمام الدفع</span> <span class="pay-amount">100 ر.س</span>';
+                    }
+                });
+            });
+
+            // Format card number input
+            const cardNumber = document.getElementById('cardNumber');
+            cardNumber.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+                let formatted = '';
+                for (let i = 0; i < value.length; i++) {
+                    if (i > 0 && i % 4 === 0) {
+                        formatted += ' ';
+                    }
+                    formatted += value[i];
+                }
+                e.target.value = formatted;
+            });
+
+            // Format expiry date input
+            const expiryDate = document.getElementById('expiryDate');
+            expiryDate.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                e.target.value = value;
+            });
+
+            // Pay button click
+            payBtn.addEventListener('click', function() {
+                const termsCheck = document.getElementById('termsCheck');
+                if (!termsCheck.checked) {
+                    alert('يرجى الموافقة على الشروط والأحكام');
+                    return;
+                }
+
+                // Simulate payment processing
+                payBtn.disabled = true;
+                payBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> جاري المعالجة...';
+
+                setTimeout(() => {
+                    // Redirect to payment success page
+                    window.location.href = 'payment-success.html';
+                }, 2000);
+            });
+
+            // Initialize - show card form by default
+            cardDetailsForm.classList.remove('d-none');
+        });
+    </script>
+</body>
+</html>

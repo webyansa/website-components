@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المشروع - التعاونية</title>
+    <meta name="description" content="تفاصيل مشروع الريادة والتميز: أهداف، مجالات، مسارات، إنجازات وصور.">
+    <link rel="canonical" href="/project-details.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="project-header">
+        <div class="header-content">
+            <div class="project-logo-header">
+                <img src="images/ccj-logo.svg" alt="شعار المشروع">
+            </div>
+            <div class="project-info">
+                <h1 class="project-title-main">مشروع الريادة والتميز</h1>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-briefcase"></i>
+                        <span>تنمية المهارات</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>المنطقة الجنوبية</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>2024 - 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="project-nav">
+        <div class="nav-container">
+            <a href="#about" class="nav-item active" onclick="scrollToSection(event, 'about')">نبذة عن المشروع</a>
+            <a href="#goals" class="nav-item" onclick="scrollToSection(event, 'goals')">أهداف المشروع</a>
+            <a href="#fields" class="nav-item" onclick="scrollToSection(event, 'fields')">مجالات المشروع</a>
+            <a href="#tracks" class="nav-item" onclick="scrollToSection(event, 'tracks')">مسارات المشروع</a>
+            <a href="#outputs" class="nav-item" onclick="scrollToSection(event, 'outputs')">مخرجات المشروع</a>
+            <a href="#statistics" class="nav-item" onclick="scrollToSection(event, 'statistics')">أرقام وإنجازات</a>
+            <a href="/brands-section.html" class="nav-item">العلامات التجارية</a>
+            <a href="#gallery" class="nav-item" onclick="scrollToSection(event, 'gallery')">صور المشروع</a>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <div class="content-container">
+        <!-- Main Grid: Slider + Actions -->
+        <div class="main-grid">
+            <!-- Image Slider -->
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200" alt="صورة المشروع 1">
+                        <div class="slide-caption">تدريب وتأهيل الكوادر الوطنية</div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200" alt="صورة المشروع 2">
+                        <div class="slide-caption">ورش عمل متخصصة</div>
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200" alt="صورة المشروع 3">
+                        <div class="slide-caption">بناء القدرات والمهارات</div>
+                    </div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide(-1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next" onclick="moveSlide(1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <!-- Actions Sidebar -->
+            <div class="actions-sidebar">
+                <div class="action-box">
+                    <div class="action-box-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="action-box-content">
+                        <h3 class="action-box-title">الملف التعريفي</h3>
+                        <p class="action-box-description">اطلع على الملف التعريفي الكامل للمشروع</p>
+                        <a href="#" class="action-box-btn">
+                            <i class="fas fa-download"></i>
+                            <span>تحميل الملف</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="action-box secondary">
+                    <div class="action-box-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="action-box-content">
+                        <h3 class="action-box-title">انضم إلينا</h3>
+                        <p class="action-box-description">سجل الآن في برامجنا التدريبية</p>
+                        <a href="#" class="action-box-btn">
+                            <i class="fas fa-edit"></i>
+                            <span>التسجيل</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">نبذة عن المشروع</h2>
+            <div class="about-intro">
+                <p>
+                    مشروع الريادة والتميز هو مبادرة رائدة تهدف إلى تطوير قدرات الشباب السعودي وتمكينهم من اكتساب المهارات اللازمة لسوق العمل. يركز المشروع على بناء جيل من القادة والمبدعين القادرين على المساهمة الفعالة في تحقيق أهداف رؤية المملكة 2030 من خلال برامج تدريبية متخصصة وشراكات استراتيجية مع القطاعين العام والخاص.
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><i class="fas fa-eye"></i> الرؤية</h3>
+                    <p>
+                        أن نكون المنصة الرائدة في تطوير وتمكين الكوادر الوطنية، وبناء جيل من القادة المتميزين القادرين على الابتكار والمساهمة في التنمية المستدامة للمملكة العربية السعودية.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-bullseye"></i> الرسالة</h3>
+                    <p>
+                        تقديم برامج تدريبية وتأهيلية متميزة تساهم في بناء قدرات الشباب وتطوير مهاراتهم القيادية والمهنية، من خلال بيئة تعليمية محفزة وشراكات استراتيجية مع مؤسسات القطاعين العام والخاص.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section id="goals" class="section">
+            <h2 class="section-title">أهداف المشروع</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>التطوير المهني</h3>
+                    <p>تطوير المهارات المهنية والتقنية للشباب بما يتوافق مع متطلبات سوق العمل الحديث</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>بناء القدرات</h3>
+                    <p>بناء قدرات قيادية شابة قادرة على قيادة التغيير والابتكار في مختلف المجالات</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>تعزيز الابتكار</h3>
+                    <p>تعزيز ثقافة الابتكار والإبداع لدى الشباب وتحفيزهم على تطوير حلول مبتكرة</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>الشراكات الاستراتيجية</h3>
+                    <p>بناء شراكات استراتيجية مع المؤسسات الرائدة لتوفير فرص تدريبية وتوظيفية</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>التنمية المستدامة</h3>
+                    <p>المساهمة في تحقيق التنمية المستدامة من خلال تمكين الكوادر الوطنية المؤهلة</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>التميز والجودة</h3>
+                    <p>تحقيق التميز والجودة في جميع البرامج والمبادرات المقدمة للمستفيدين</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fields Section -->
+        <section id="fields" class="section">
+            <h2 class="section-title">مجالات المشروع</h2>
+            <div class="fields-grid">
+                <div class="field-card">
+                    <div class="field-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>التقنية والبرمجة</h3>
+                        <p>برامج تدريبية متخصصة في لغات البرمجة وتطوير التطبيقات والذكاء الاصطناعي</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>إدارة الأعمال</h3>
+                        <p>دورات في إدارة المشاريع والتخطيط الاستراتيجي وتطوير الأعمال</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>التصميم والإبداع</h3>
+                        <p>ورش عمل في التصميم الجرافيكي وتصميم تجربة المستخدم والمحتوى الإبداعي</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>التسويق الرقمي</h3>
+                        <p>برامج متخصصة في التسويق الإلكتروني ووسائل التواصل الاجتماعي</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>القيادة والإدارة</h3>
+                        <p>دورات في القيادة الإدارية وإدارة الفرق وتطوير المهارات القيادية</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <div class="field-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="field-content">
+                        <h3>ريادة الأعمال</h3>
+                        <p>برامج لدعم رواد الأعمال وتطوير المشاريع الناشئة والابتكار</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tracks Section -->
+        <section id="tracks" class="section">
+            <h2 class="section-title">مسارات المشروع</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>مسار التدريب المهني</h3>
+                    <p>برامج تدريبية مكثفة تهدف إلى تطوير المهارات العملية والتطبيقية في مختلف التخصصات</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>مسار القيادة</h3>
+                    <p>برنامج متخصص لتطوير المهارات القيادية وإعداد القادة المستقبليين</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>مسار الابتكار</h3>
+                    <p>برامج لتعزيز الفكر الإبداعي وتطوير مشاريع ريادية مبتكرة</p>
+                </div>
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>مسار الشهادات المهنية</h3>
+                    <p>برامج معتمدة للحصول على شهادات مهنية دولية ومعترف بها</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outputs Section -->
+        <section id="outputs" class="section">
+            <h2 class="section-title">مخرجات المشروع</h2>
+            <div class="outputs-grid">
+                <div class="output-item">
+                    <div class="output-number">500+</div>
+                    <div class="output-label">متدرب مؤهل</div>
+                </div>
+                <div class="output-item">
+                    <div class="output-number">50+</div>
+                    <div class="output-label">دورة تدريبية</div>
+                </div>
+                <div class="output-item">
+                    <div class="output-number">30+</div>
+                    <div class="output-label">شراكة استراتيجية</div>
+                </div>
+                <div class="output-item">
+                    <div class="output-number">85%</div>
+                    <div class="output-label">نسبة التوظيف</div>
+                </div>
+                <div class="output-item">
+                    <div class="output-number">20+</div>
+                    <div class="output-label">مشروع ريادي</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section id="statistics" class="section">
+            <h2 class="section-title">أرقام وإنجازات المشروع</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">1,250</div>
+                    <div class="stat-label">إجمالي المستفيدين</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number">15,000</div>
+                    <div class="stat-label">ساعة تدريبية</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">نسبة الرضا</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-number">450</div>
+                    <div class="stat-label">فرصة توظيف</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section class="section">
+            <h2 class="section-title">الرعاة والشركاء</h2>
+            <div class="sponsors-slider-container">
+                <div class="sponsors-slider-track" id="sponsorsTrack">
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo">
+                            <img src="images/deem-logo.jpg" alt="ديم">
+                        </div>
+                        <div class="sponsor-name">شركة ديم</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo">
+                            <img src="images/jadarah-logo.jpg" alt="جدارة">
+                        </div>
+                        <div class="sponsor-name">مركز جدارة</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo">
+                            <img src="images/council-network-logo.jpg" alt="شبكة المجالس">
+                        </div>
+                        <div class="sponsor-name">شبكة المجالس التعاونية</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo">
+                            <img src="images/ccj-logo.svg" alt="التعاونية">
+                        </div>
+                        <div class="sponsor-name">تعاونية البن</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo">
+                            <img src="images/deem-logo.jpg" alt="ديم">
+                        </div>
+                        <div class="sponsor-name">شركة ديم</div>
+                    </div>
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo">
+                            <img src="images/jadarah-logo.jpg" alt="جدارة">
+                        </div>
+                        <div class="sponsor-name">مركز جدارة</div>
+                    </div>
+                </div>
+                <button class="sponsors-nav-btn prev" onclick="moveSponsors(-1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="sponsors-nav-btn next" onclick="moveSponsors(1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <h2 class="section-title">صور من المشروع</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openGalleryModal(this)">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=400" alt="معرض 1">
+                    <div class="gallery-overlay">ورشة عمل تطوير المهارات</div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(this)">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400" alt="معرض 2">
+                    <div class="gallery-overlay">دورة القيادة الإدارية</div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(this)">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400" alt="معرض 3">
+                    <div class="gallery-overlay">برنامج ريادة الأعمال</div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(this)">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400" alt="معرض 4">
+                    <div class="gallery-overlay">حفل تخريج الدفعة الأولى</div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(this)">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400" alt="معرض 5">
+                    <div class="gallery-overlay">ورشة الابتكار والإبداع</div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(this)">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400" alt="معرض 6">
+                    <div class="gallery-overlay">جلسة تطوير المشاريع</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Modal -->
+        <div class="gallery-modal" id="galleryModal" onclick="closeGalleryModal()">
+            <button class="gallery-modal-close" onclick="closeGalleryModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="galleryModalImg" src="" alt="صورة مكبرة">
+        </div>
+    </div>
+
+    <script>
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            updateSlider();
+        }
+
+function updateSlider() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Auto slide
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        // Smooth scroll to section
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            // Remove active class from all nav items
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Add active class to clicked nav item
+            event.target.classList.add('active');
+            
+            // Scroll to section
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Update active nav item on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Sponsors slider functionality
+        let currentSponsorIndex = 0;
+        const sponsorCards = document.querySelectorAll('.sponsor-card');
+        const sponsorsPerView = 4;
+
+        function moveSponsors(direction) {
+            const maxIndex = Math.max(0, sponsorCards.length - sponsorsPerView);
+            currentSponsorIndex += direction;
+            
+            if (currentSponsorIndex < 0) {
+                currentSponsorIndex = maxIndex;
+            } else if (currentSponsorIndex > maxIndex) {
+                currentSponsorIndex = 0;
+            }
+            
+            updateSponsorsSlider();
+        }
+
+function updateSponsorsSlider() {
+            const track = document.getElementById('sponsorsTrack');
+            const cardWidth = sponsorCards[0].offsetWidth + 20; // width + gap
+            track.style.transform = `translateX(-${currentSponsorIndex * cardWidth}px)`;
+        }
+
+        // Auto slide sponsors
+        setInterval(() => {
+            moveSponsors(1);
+        }, 4000);
+
+        // Gallery modal functions
+        function openGalleryModal(item) {
+            const modal = document.getElementById('galleryModal');
+            const modalImg = document.getElementById('galleryModalImg');
+            const img = item.querySelector('img');
+            
+            modalImg.src = img.src.replace('w=400', 'w=1200');
+            modal.classList.add('active');
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeGalleryModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
