@@ -15,8 +15,6 @@ type PageLink = {
 type Category = {
   title: string;
   icon: string;
-  color: string;
-  bgColor: string;
   pages: PageLink[];
 };
 
@@ -24,8 +22,6 @@ const categories: Category[] = [
   {
     title: "الصفحات الرئيسية",
     icon: "🏠",
-    color: "#0d6efd",
-    bgColor: "#e7f1ff",
     pages: [
       { name: "الصفحة الرئيسية", path: "home.html", date: "2024-01-15", cssFiles: ["css/style.css"] },
       { name: "الصفحة الرئيسية الجديدة", path: "home-new.html", date: "2024-12-20", cssFiles: ["css/styles.css"], isNew: true, isImportant: true },
@@ -34,8 +30,6 @@ const categories: Category[] = [
   {
     title: "الأقسام والمحتوى",
     icon: "📋",
-    color: "#198754",
-    bgColor: "#d1e7dd",
     pages: [
       { name: "قسم الأنشطة", path: "activities-section.html", date: "2024-03-10", cssFiles: ["css/style.css"] },
       { name: "قسم الفروع", path: "branches-section.html", date: "2024-02-20", cssFiles: ["css/style.css"] },
@@ -54,8 +48,6 @@ const categories: Category[] = [
   {
     title: "المشاريع والفعاليات",
     icon: "📁",
-    color: "#6f42c1",
-    bgColor: "#e2d9f3",
     pages: [
       { name: "قسم المشاريع", path: "projects-section.html", date: "2024-03-01", cssFiles: ["css/style.css"] },
       { name: "تفاصيل المشروع", path: "project-details.html", date: "2024-03-05", cssFiles: ["css/style.css"] },
@@ -69,8 +61,6 @@ const categories: Category[] = [
   {
     title: "التبرعات والتطوع",
     icon: "❤️",
-    color: "#dc3545",
-    bgColor: "#f8d7da",
     pages: [
       { name: "بوابة التبرعات", path: "donations-gate.html", date: "2024-05-01", cssFiles: ["css/donations.css"], isImportant: true },
       { name: "تفاصيل تبرع المشروع", path: "project-donation-details.html", date: "2024-05-05", cssFiles: ["css/project-donation-details.css"] },
@@ -81,8 +71,6 @@ const categories: Category[] = [
   {
     title: "المتجر والدفع",
     icon: "🛒",
-    color: "#fd7e14",
-    bgColor: "#ffe5d0",
     pages: [
       { name: "الصفحة الرئيسية للمتجر", path: "store-home.html", date: "2024-08-01", cssFiles: ["css/store.css"], isImportant: true },
       { name: "متجر الجمعية", path: "association-store.html", date: "2024-08-05", cssFiles: ["css/style-store.css"] },
@@ -94,8 +82,6 @@ const categories: Category[] = [
   {
     title: "الخدمات والتوظيف",
     icon: "💼",
-    color: "#0dcaf0",
-    bgColor: "#cff4fc",
     pages: [
       { name: "حجز المواعيد", path: "appointment-booking.html", date: "2024-09-01", cssFiles: ["css/style.css"] },
       { name: "الوظائف", path: "careers.html", date: "2024-09-10", cssFiles: ["css/careers.css"], isNew: true },
@@ -104,8 +90,6 @@ const categories: Category[] = [
   {
     title: "قوالب البريد الإلكتروني",
     icon: "📧",
-    color: "#6c757d",
-    bgColor: "#e9ecef",
     pages: [
       { name: "قالب البريد الإلكتروني", path: "email-template.html", date: "2024-01-20", cssFiles: ["css/email-template-styles.css"] },
       { name: "تفعيل الحساب", path: "account-activation-email-template.html", date: "2024-01-21", cssFiles: ["css/email-template-styles.css"] },
@@ -130,7 +114,20 @@ const formatDate = (dateStr: string) => {
   });
 };
 
-const PageCard = ({ page, categoryColor, categoryBgColor }: { page: PageLink; categoryColor: string; categoryBgColor: string }) => {
+// Modern calm color palette
+const theme = {
+  primary: "#3b82f6",
+  primaryLight: "#eff6ff",
+  text: "#1f2937",
+  textMuted: "#6b7280",
+  border: "#e5e7eb",
+  cardBg: "#ffffff",
+  pageBg: "#f9fafb",
+  success: "#10b981",
+  warning: "#f59e0b",
+};
+
+const PageCard = ({ page }: { page: PageLink }) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const href = toHref(page.path);
 
@@ -141,13 +138,10 @@ const PageCard = ({ page, categoryColor, categoryBgColor }: { page: PageLink; ca
 
     try {
       const zip = new JSZip();
-      
-      // Fetch HTML file
       const htmlResponse = await fetch(href);
       const htmlContent = await htmlResponse.text();
       zip.file(page.path, htmlContent);
 
-      // Fetch CSS files
       if (page.cssFiles && page.cssFiles.length > 0) {
         const cssFolder = zip.folder("css");
         for (const cssFile of page.cssFiles) {
@@ -162,7 +156,6 @@ const PageCard = ({ page, categoryColor, categoryBgColor }: { page: PageLink; ca
         }
       }
 
-      // Generate and download zip
       const content = await zip.generateAsync({ type: "blob" });
       const fileName = page.path.replace(".html", "") + ".zip";
       saveAs(content, fileName);
@@ -177,143 +170,129 @@ const PageCard = ({ page, categoryColor, categoryBgColor }: { page: PageLink; ca
   return (
     <div className="col-12 col-sm-6 col-lg-4 col-xl-3">
       <div
-        className="card h-100 border-0 position-relative overflow-hidden"
+        className="card h-100 border position-relative"
         style={{
-          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-          background: "#fff",
-          borderRadius: "16px",
-          boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)",
+          transition: "all 0.2s ease",
+          background: theme.cardBg,
+          borderRadius: "10px",
+          borderColor: theme.border,
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-8px)";
-          e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)";
+          e.currentTarget.style.transform = "translateY(-4px)";
+          e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.08)";
+          e.currentTarget.style.borderColor = theme.primary;
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)";
+          e.currentTarget.style.boxShadow = "none";
+          e.currentTarget.style.borderColor = theme.border;
         }}
       >
-        {/* Top Color Bar */}
-        <div
-          style={{
-            height: "6px",
-            background: `linear-gradient(90deg, ${categoryColor}, ${categoryColor}aa)`,
-          }}
-        />
-
         {/* Badges */}
         {(page.isNew || page.isImportant) && (
-          <div className="position-absolute d-flex gap-1" style={{ top: "14px", left: "12px" }}>
+          <div className="position-absolute d-flex gap-1" style={{ top: "10px", left: "10px" }}>
             {page.isNew && (
               <span
                 className="badge"
                 style={{
-                  background: "linear-gradient(135deg, #10b981, #059669)",
+                  background: theme.success,
                   fontSize: "0.65rem",
-                  padding: "4px 8px",
-                  borderRadius: "20px",
+                  padding: "3px 7px",
+                  borderRadius: "4px",
+                  fontWeight: 500,
                 }}
               >
-                ✨ جديد
+                جديد
               </span>
             )}
             {page.isImportant && (
               <span
                 className="badge"
                 style={{
-                  background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                  background: theme.warning,
                   fontSize: "0.65rem",
-                  padding: "4px 8px",
-                  borderRadius: "20px",
+                  padding: "3px 7px",
+                  borderRadius: "4px",
+                  fontWeight: 500,
                 }}
               >
-                ⭐ مهم
+                مهم
               </span>
             )}
           </div>
         )}
 
-        <div className="card-body p-3">
-          {/* Icon */}
-          <div
-            className="d-flex align-items-center justify-content-center rounded-3 mb-3"
-            style={{
-              width: "48px",
-              height: "48px",
-              background: categoryBgColor,
-              color: categoryColor,
+        <div className="card-body p-3 d-flex flex-column">
+          {/* Title */}
+          <h6 
+            className="card-title fw-semibold mb-2" 
+            style={{ 
+              fontSize: "0.9rem", 
+              color: theme.text,
+              lineHeight: 1.4,
             }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-              <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
-            </svg>
-          </div>
-
-          {/* Title */}
-          <h6 className="card-title fw-bold mb-2" style={{ fontSize: "0.95rem", color: "#1e293b" }}>
             {page.name}
           </h6>
 
           {/* Path */}
           <div
-            className="mb-3"
+            className="mb-2"
             style={{
-              background: "#f1f5f9",
-              padding: "6px 10px",
-              borderRadius: "8px",
+              background: theme.pageBg,
+              padding: "4px 8px",
+              borderRadius: "4px",
               display: "inline-block",
+              border: `1px solid ${theme.border}`,
             }}
           >
-            <code style={{ fontSize: "0.7rem", color: categoryColor, fontWeight: 500 }}>
+            <code style={{ fontSize: "0.7rem", color: theme.textMuted }}>
               {page.path}
             </code>
           </div>
 
-          {/* Date */}
-          <div className="d-flex align-items-center gap-1 text-muted mb-3" style={{ fontSize: "0.75rem" }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-              <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-            </svg>
-            <span>{formatDate(page.date)}</span>
+          {/* Meta Info */}
+          <div className="d-flex align-items-center gap-3 mb-3" style={{ fontSize: "0.7rem", color: theme.textMuted }}>
+            <span className="d-flex align-items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              </svg>
+              {formatDate(page.date)}
+            </span>
+            {page.cssFiles && page.cssFiles.length > 0 && (
+              <span className="d-flex align-items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5z"/>
+                </svg>
+                {page.cssFiles.length} CSS
+              </span>
+            )}
           </div>
 
-          {/* CSS Files Info */}
-          {page.cssFiles && page.cssFiles.length > 0 && (
-            <div className="d-flex align-items-center gap-1 text-muted mb-3" style={{ fontSize: "0.7rem" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.527 11.85h-.893l-.823 1.439h-.036L.943 11.85H.012l1.227 1.983L0 15.85h.861l.853-1.415h.035l.85 1.415h.908l-1.254-1.992 1.274-2.007Zm.954 3.999v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596h-.025L4.58 11.85h-.806v3.999h.706Zm4.71-.674h1.696v.674H8.4V11.85h.791v3.325Z"/>
-              </svg>
-              <span>{page.cssFiles.length} ملف CSS</span>
-            </div>
-          )}
-
           {/* Action Buttons */}
-          <div className="d-flex gap-2">
+          <div className="d-flex gap-2 mt-auto">
             <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-sm flex-grow-1"
+              className="btn btn-sm flex-grow-1 d-flex align-items-center justify-content-center gap-1"
               style={{
-                background: categoryColor,
+                background: theme.primary,
                 color: "#fff",
-                borderRadius: "8px",
-                fontSize: "0.8rem",
-                padding: "8px 12px",
+                borderRadius: "6px",
+                fontSize: "0.75rem",
+                padding: "6px 10px",
                 transition: "all 0.2s",
+                border: "none",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.opacity = "0.9";
-                e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.opacity = "1";
-                e.currentTarget.style.transform = "scale(1)";
               }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="me-1" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                 <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
               </svg>
@@ -322,29 +301,30 @@ const PageCard = ({ page, categoryColor, categoryBgColor }: { page: PageLink; ca
             <button
               onClick={handleDownload}
               disabled={isDownloading}
-              className="btn btn-sm"
+              className="btn btn-sm d-flex align-items-center justify-content-center"
               style={{
-                background: categoryBgColor,
-                color: categoryColor,
-                borderRadius: "8px",
-                fontSize: "0.8rem",
-                padding: "8px 12px",
-                border: `1px solid ${categoryColor}33`,
+                background: theme.primaryLight,
+                color: theme.primary,
+                borderRadius: "6px",
+                fontSize: "0.75rem",
+                padding: "6px 10px",
+                border: `1px solid ${theme.primary}20`,
                 transition: "all 0.2s",
+                minWidth: "38px",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = categoryColor;
+                e.currentTarget.style.background = theme.primary;
                 e.currentTarget.style.color = "#fff";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = categoryBgColor;
-                e.currentTarget.style.color = categoryColor;
+                e.currentTarget.style.background = theme.primaryLight;
+                e.currentTarget.style.color = theme.primary;
               }}
             >
               {isDownloading ? (
-                <span className="spinner-border spinner-border-sm" role="status" />
+                <span className="spinner-border spinner-border-sm" role="status" style={{ width: "12px", height: "12px" }} />
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                   <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                 </svg>
@@ -387,167 +367,119 @@ const Home = () => {
   );
 
   return (
-    <div dir="rtl" className="min-vh-100" style={{ background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)" }}>
-      {/* Header */}
+    <div dir="rtl" className="min-vh-100" style={{ background: theme.pageBg }}>
+      {/* Compact Hero with Search */}
       <header
         style={{
-          background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
-          boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
+          background: "#fff",
+          borderBottom: `1px solid ${theme.border}`,
         }}
       >
         <div className="container py-4">
-          <div className="d-flex flex-column flex-md-row align-items-center gap-3">
-            <div
-              className="d-flex align-items-center justify-content-center"
-              style={{
-                background: "rgba(255,255,255,0.1)",
-                borderRadius: "16px",
-                padding: "12px",
-              }}
-            >
-              <img
-                src={webyanLogo}
-                alt="شعار ويبيان"
-                style={{ height: "48px", width: "auto", filter: "brightness(0) invert(1)" }}
-              />
-            </div>
-            <div className="text-center text-md-start flex-grow-1">
-              <h1 className="h3 fw-bold mb-1" style={{ color: "#fff" }}>
+          {/* Logo & Title Row */}
+          <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
+            <img
+              src={webyanLogo}
+              alt="شعار ويبيان"
+              style={{ height: "40px", width: "auto" }}
+            />
+            <div className="text-center">
+              <h1 className="h5 fw-bold mb-0" style={{ color: theme.text }}>
                 مكونات صفحات مواقع
               </h1>
-              <p className="mb-0" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem" }}>
-                مجموعة من الصفحات والمكونات الجاهزة للاستخدام •{" "}
-                <span
-                  style={{
-                    background: "rgba(255,255,255,0.2)",
-                    padding: "2px 10px",
-                    borderRadius: "20px",
-                    fontWeight: 600,
-                  }}
-                >
-                  {totalPages} صفحة
-                </span>
+              <p className="mb-0" style={{ color: theme.textMuted, fontSize: "0.8rem" }}>
+                {totalPages} صفحة جاهزة للاستخدام
               </p>
             </div>
           </div>
-        </div>
-      </header>
 
-      {/* Search Bar */}
-      <div
-        className="sticky-top"
-        style={{
-          background: "rgba(255,255,255,0.95)",
-          backdropFilter: "blur(10px)",
-          borderBottom: "1px solid rgba(0,0,0,0.05)",
-          zIndex: 100,
-        }}
-      >
-        <div className="container py-3">
+          {/* Search */}
           <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-6">
+            <div className="col-12 col-md-8 col-lg-5">
+              <p className="text-center mb-2" style={{ color: theme.textMuted, fontSize: "0.85rem" }}>
+                ابحث عن الصفحة التي تريدها
+              </p>
               <div
                 className="position-relative"
                 style={{
-                  background: "#f1f5f9",
-                  borderRadius: "12px",
-                  overflow: "hidden",
+                  background: theme.pageBg,
+                  borderRadius: "8px",
+                  border: `1px solid ${theme.border}`,
                 }}
               >
                 <span
                   className="position-absolute d-flex align-items-center justify-content-center"
                   style={{
-                    right: "16px",
+                    right: "12px",
                     top: "50%",
                     transform: "translateY(-50%)",
-                    color: "#64748b",
+                    color: theme.textMuted,
                   }}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                   </svg>
                 </span>
                 <input
                   type="search"
                   className="form-control border-0"
-                  placeholder="ابحث عن صفحة..."
+                  placeholder="اكتب اسم الصفحة..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
                     background: "transparent",
-                    padding: "14px 16px",
-                    paddingRight: "48px",
-                    fontSize: "1rem",
+                    padding: "10px 14px",
+                    paddingRight: "40px",
+                    fontSize: "0.9rem",
                   }}
                 />
               </div>
               {searchQuery && (
-                <div className="text-center mt-2" style={{ fontSize: "0.85rem", color: "#64748b" }}>
-                  تم العثور على <strong style={{ color: "#0d6efd" }}>{filteredCount}</strong> صفحة
+                <div className="text-center mt-2" style={{ fontSize: "0.8rem", color: theme.textMuted }}>
+                  تم العثور على <strong style={{ color: theme.primary }}>{filteredCount}</strong> صفحة
                 </div>
               )}
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Main Content */}
-      <main className="container py-5">
+      <main className="container py-4">
         {filteredCategories.length === 0 ? (
           <div className="text-center py-5">
-            <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🔍</div>
-            <h3 style={{ color: "#475569" }}>لا توجد نتائج</h3>
-            <p style={{ color: "#94a3b8" }}>جرب البحث بكلمات مختلفة</p>
+            <div style={{ fontSize: "3rem", marginBottom: "0.5rem", opacity: 0.5 }}>🔍</div>
+            <h3 style={{ color: theme.textMuted, fontSize: "1.1rem" }}>لا توجد نتائج</h3>
+            <p style={{ color: theme.textMuted, fontSize: "0.85rem" }}>جرب البحث بكلمات مختلفة</p>
           </div>
         ) : (
-          <div className="d-flex flex-column gap-5">
+          <div className="d-flex flex-column gap-4">
             {filteredCategories.map((category) => (
               <section key={category.title}>
                 {/* Category Header */}
-                <div className="d-flex align-items-center gap-3 mb-4">
-                  <div
-                    className="d-flex align-items-center justify-content-center"
+                <div className="d-flex align-items-center gap-2 mb-3">
+                  <span style={{ fontSize: "1.2rem" }}>{category.icon}</span>
+                  <h2 className="h6 fw-semibold mb-0" style={{ color: theme.text }}>
+                    {category.title}
+                  </h2>
+                  <span
                     style={{
-                      width: "56px",
-                      height: "56px",
-                      background: `linear-gradient(135deg, ${category.color}, ${category.color}dd)`,
-                      borderRadius: "16px",
-                      fontSize: "1.5rem",
-                      boxShadow: `0 4px 14px ${category.color}40`,
+                      background: theme.primaryLight,
+                      color: theme.primary,
+                      padding: "2px 8px",
+                      borderRadius: "4px",
+                      fontSize: "0.7rem",
+                      fontWeight: 500,
                     }}
                   >
-                    {category.icon}
-                  </div>
-                  <div className="flex-grow-1">
-                    <h2 className="h4 fw-bold mb-1" style={{ color: "#1e293b" }}>
-                      {category.title}
-                    </h2>
-                    <div className="d-flex align-items-center gap-2">
-                      <span
-                        style={{
-                          background: category.bgColor,
-                          color: category.color,
-                          padding: "4px 12px",
-                          borderRadius: "20px",
-                          fontSize: "0.8rem",
-                          fontWeight: 600,
-                        }}
-                      >
-                        {category.pages.length} صفحة
-                      </span>
-                    </div>
-                  </div>
+                    {category.pages.length}
+                  </span>
                 </div>
 
                 {/* Pages Grid */}
-                <div className="row g-4">
+                <div className="row g-3">
                   {category.pages.map((page) => (
-                    <PageCard
-                      key={page.path}
-                      page={page}
-                      categoryColor={category.color}
-                      categoryBgColor={category.bgColor}
-                    />
+                    <PageCard key={page.path} page={page} />
                   ))}
                 </div>
               </section>
@@ -559,26 +491,20 @@ const Home = () => {
       {/* Footer */}
       <footer
         style={{
-          background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
-          marginTop: "3rem",
+          background: "#fff",
+          borderTop: `1px solid ${theme.border}`,
+          marginTop: "2rem",
         }}
       >
-        <div className="container py-4 text-center">
-          <div
-            className="d-inline-flex align-items-center justify-content-center mb-2"
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              borderRadius: "12px",
-              padding: "8px 16px",
-            }}
-          >
+        <div className="container py-3 text-center">
+          <div className="d-flex align-items-center justify-content-center gap-2 mb-1">
             <img
               src={webyanLogo}
               alt="ويبيان"
-              style={{ height: "28px", filter: "brightness(0) invert(1)" }}
+              style={{ height: "24px" }}
             />
           </div>
-          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: 0 }}>
+          <p style={{ color: theme.textMuted, fontSize: "0.75rem", marginBottom: 0 }}>
             © {new Date().getFullYear()} ويبيان - جميع الحقوق محفوظة
           </p>
         </div>
