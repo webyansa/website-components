@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ميسري جدارة - فريق التيسير المحترف</title>
+    <meta name="description" content="تعرف على فريق الميسرين المحترفين في حاضنة جدارة للأعمال الاجتماعية">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/jadarah-hero-styles.css">
+    <link rel="stylesheet" href="css/facilitators-styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="jadarah-hero.html">
+                <img src="images/jadarah-logo-hero.png" alt="جدارة" class="logo-img">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="jadarah-hero.html#home">
+                            <span class="nav-link-text">الرئيسية</span>
+                            <span class="nav-link-underline"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jadarah-hero.html#platform">
+                            <span class="nav-link-text">المنصة التفاعلية</span>
+                            <span class="nav-link-underline"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jadarah-hero.html#services">
+                            <span class="nav-link-text">مركز الخدمات</span>
+                            <span class="nav-link-underline"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="facilitators.html">
+                            <span class="nav-link-text">فريق التيسير</span>
+                            <span class="nav-link-underline"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jadarah-hero.html#contact">
+                            <span class="nav-link-text">اتصل بنا</span>
+                            <span class="nav-link-underline"></span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Language Dropdown -->
+                    <div class="dropdown language-dropdown">
+                        <button class="btn btn-language dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-globe ms-2"></i>
+                            <span class="lang-text">العربية</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <a class="dropdown-item active" href="#" data-lang="ar">
+                                    <i class="fas fa-check ms-2"></i>
+                                    العربية
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" data-lang="en">
+                                    <i class="fas fa-check ms-2 invisible"></i>
+                                    English
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button class="btn btn-contact" data-bs-toggle="modal" data-bs-target="#contactModal">
+                        <i class="fas fa-envelope ms-2"></i>
+                        اتصل بنا
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header-section">
+        <div class="page-header-curve"></div>
+        <div class="container">
+            <div class="page-header-content">
+                <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="jadarah-hero.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">ميسري جدارة</li>
+                    </ol>
+                </nav>
+                <h1 class="page-title">ميسري جدارة</h1>
+                <p class="page-subtitle">فريق من الخبراء المحترفين لدعم رحلتك نحو النجاح</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilitators Section -->
+    <section class="facilitators-section">
+        <div class="container">
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="section-title">فريق التيسير المحترف</h2>
+                        <p class="section-description">اختر الميسر المناسب لاحتياجاتك من خلال الفلترة حسب المنطقة</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="filter-controls">
+                            <label class="filter-main-label">
+                                <i class="fas fa-filter ms-2"></i> فلترة بحسب:
+                            </label>
+                            <div class="filter-dropdowns-row">
+                                <div class="filter-dropdown-wrapper">
+                                    <button class="filter-dropdown-btn" id="regionDropdownBtn">
+                                        <span id="selectedRegion">جميع المناطق</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="filter-dropdown-menu" id="regionDropdownMenu">
+                                        <div class="filter-dropdown-item active" data-region="all">
+                                            <i class="fas fa-check"></i>
+                                            <span>جميع المناطق</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-region="الرياض">
+                                            <i class="fas fa-check"></i>
+                                            <span>الرياض</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-region="جدة">
+                                            <i class="fas fa-check"></i>
+                                            <span>جدة</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-region="الدمام">
+                                            <i class="fas fa-check"></i>
+                                            <span>الدمام</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-region="مكة">
+                                            <i class="fas fa-check"></i>
+                                            <span>مكة</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-dropdown-wrapper">
+                                    <button class="filter-dropdown-btn" id="specialtyDropdownBtn">
+                                        <span id="selectedSpecialty">جميع المجالات</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="filter-dropdown-menu" id="specialtyDropdownMenu">
+                                        <div class="filter-dropdown-item active" data-specialty="all">
+                                            <i class="fas fa-check"></i>
+                                            <span>جميع المجالات</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-specialty="الإدارة الاستراتيجية">
+                                            <i class="fas fa-check"></i>
+                                            <span>الإدارة الاستراتيجية</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-specialty="التسويق">
+                                            <i class="fas fa-check"></i>
+                                            <span>التسويق</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-specialty="الإدارة المالية">
+                                            <i class="fas fa-check"></i>
+                                            <span>الإدارة المالية</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-specialty="الموارد البشرية">
+                                            <i class="fas fa-check"></i>
+                                            <span>الموارد البشرية</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-specialty="التخطيط">
+                                            <i class="fas fa-check"></i>
+                                            <span>التخطيط</span>
+                                        </div>
+                                        <div class="filter-dropdown-item" data-specialty="الحوكمة">
+                                            <i class="fas fa-check"></i>
+                                            <span>الحوكمة</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facilitators Grid -->
+            <div class="facilitators-grid">
+                <!-- Facilitator Card 1 -->
+                <div class="facilitator-card" data-region="الرياض" data-specialty="الإدارة الاستراتيجية,التخطيط">
+                    <div class="facilitator-image-wrapper">
+                        <div class="hexagon-border"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="أحمد السعيد" class="facilitator-image">
+                        <div class="facilitator-status">متاح</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            <button class="social-link" onclick="openCV('أحمد السعيد')" title="السيرة الذاتية">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="facilitator-content">
+                        <h3 class="facilitator-name">أحمد السعيد</h3>
+                        <div class="facilitator-region">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الرياض</span>
+                        </div>
+                        <p class="facilitator-bio">خبير في الإدارة الاستراتيجية وتطوير الأعمال الاجتماعية بخبرة تزيد عن 10 سنوات</p>
+                        
+                        <div class="facilitator-specialties">
+                            <span class="specialty-tag">الإدارة الاستراتيجية</span>
+                            <span class="specialty-tag">التخطيط</span>
+                        </div>
+
+                        <div class="facilitator-actions">
+                            <button class="btn-request-facilitator" onclick="requestFacilitator('أحمد السعيد')">
+                                <i class="fas fa-paper-plane ms-2"></i>
+                                طلب الميسر أونلاين
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilitator Card 2 -->
+                <div class="facilitator-card" data-region="جدة" data-specialty="التسويق,العلامة التجارية">
+                    <div class="facilitator-image-wrapper">
+                        <div class="hexagon-border"></div>
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="فاطمة العمري" class="facilitator-image">
+                        <div class="facilitator-status">متاح</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            <button class="social-link" onclick="openCV('فاطمة العمري')" title="السيرة الذاتية">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="facilitator-content">
+                        <h3 class="facilitator-name">فاطمة العمري</h3>
+                        <div class="facilitator-region">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>جدة</span>
+                        </div>
+                        <p class="facilitator-bio">متخصصة في التسويق الاجتماعي وبناء العلامات التجارية للمؤسسات غير الربحية</p>
+                        
+                        <div class="facilitator-specialties">
+                            <span class="specialty-tag">التسويق</span>
+                            <span class="specialty-tag">العلامة التجارية</span>
+                        </div>
+
+                        <div class="facilitator-actions">
+                            <button class="btn-request-facilitator" onclick="requestFacilitator('فاطمة العمري')">
+                                <i class="fas fa-paper-plane ms-2"></i>
+                                طلب الميسر أونلاين
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilitator Card 3 -->
+                <div class="facilitator-card" data-region="الدمام" data-specialty="الإدارة المالية,الحوكمة">
+                    <div class="facilitator-image-wrapper">
+                        <div class="hexagon-border"></div>
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="محمد الخالدي" class="facilitator-image">
+                        <div class="facilitator-status">متاح</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            <button class="social-link" onclick="openCV('محمد الخالدي')" title="السيرة الذاتية">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="facilitator-content">
+                        <h3 class="facilitator-name">محمد الخالدي</h3>
+                        <div class="facilitator-region">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الدمام</span>
+                        </div>
+                        <p class="facilitator-bio">مستشار مالي وإداري للجمعيات الأهلية مع خبرة واسعة في الحوكمة والامتثال</p>
+                        
+                        <div class="facilitator-specialties">
+                            <span class="specialty-tag">الإدارة المالية</span>
+                            <span class="specialty-tag">الحوكمة</span>
+                        </div>
+
+                        <div class="facilitator-actions">
+                            <button class="btn-request-facilitator" onclick="requestFacilitator('محمد الخالدي')">
+                                <i class="fas fa-paper-plane ms-2"></i>
+                                طلب الميسر أونلاين
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilitator Card 4 -->
+                <div class="facilitator-card" data-region="مكة" data-specialty="الموارد البشرية,التدريب">
+                    <div class="facilitator-image-wrapper">
+                        <div class="hexagon-border"></div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="نورة الحربي" class="facilitator-image">
+                        <div class="facilitator-status">متاح</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            <button class="social-link" onclick="openCV('نورة الحربي')" title="السيرة الذاتية">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="facilitator-content">
+                        <h3 class="facilitator-name">نورة الحربي</h3>
+                        <div class="facilitator-region">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>مكة</span>
+                        </div>
+                        <p class="facilitator-bio">خبيرة في تطوير الموارد البشرية والتدريب والتطوير المؤسسي</p>
+                        
+                        <div class="facilitator-specialties">
+                            <span class="specialty-tag">الموارد البشرية</span>
+                            <span class="specialty-tag">التدريب</span>
+                        </div>
+
+                        <div class="facilitator-actions">
+                            <button class="btn-request-facilitator" onclick="requestFacilitator('نورة الحربي')">
+                                <i class="fas fa-paper-plane ms-2"></i>
+                                طلب الميسر أونلاين
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilitator Card 5 -->
+                <div class="facilitator-card" data-region="الرياض">
+                    <div class="facilitator-image-wrapper">
+                        <div class="hexagon-border"></div>
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" alt="خالد المطيري" class="facilitator-image">
+                        <div class="facilitator-status">متاح</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            <button class="social-link" onclick="openCV('خالد المطيري')" title="السيرة الذاتية">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="facilitator-content">
+                        <h3 class="facilitator-name">خالد المطيري</h3>
+                        <div class="facilitator-region">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الرياض</span>
+                        </div>
+                        <p class="facilitator-bio">مستشار في التحول الرقمي وتطبيق التقنية في القطاع غير الربحي</p>
+                        
+                        <div class="facilitator-specialties">
+                            <span class="specialty-tag">التحول الرقمي</span>
+                            <span class="specialty-tag">التقنية</span>
+                        </div>
+
+                        <div class="facilitator-actions">
+                            <button class="btn-request-facilitator" onclick="requestFacilitator('خالد المطيري')">
+                                <i class="fas fa-paper-plane ms-2"></i>
+                                طلب الميسر أونلاين
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilitator Card 6 -->
+                <div class="facilitator-card" data-region="جدة">
+                    <div class="facilitator-image-wrapper">
+                        <div class="hexagon-border"></div>
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="سارة القحطاني" class="facilitator-image">
+                        <div class="facilitator-status">متاح</div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link" title="X (Twitter)">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                            <button class="social-link" onclick="openCV('سارة القحطاني')" title="السيرة الذاتية">
+                                <i class="fas fa-file-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="facilitator-content">
+                        <h3 class="facilitator-name">سارة القحطاني</h3>
+                        <div class="facilitator-region">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>جدة</span>
+                        </div>
+                        <p class="facilitator-bio">خبيرة في جمع التبرعات والشراكات المجتمعية لدعم المؤسسات الخيرية</p>
+                        
+                        <div class="facilitator-specialties">
+                            <span class="specialty-tag">جمع التبرعات</span>
+                            <span class="specialty-tag">الشراكات</span>
+                        </div>
+
+                        <div class="facilitator-actions">
+                            <button class="btn-request-facilitator" onclick="requestFacilitator('سارة القحطاني')">
+                                <i class="fas fa-paper-plane ms-2"></i>
+                                طلب الميسر أونلاين
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Modal -->
+    <div class="modal fade" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cvModalLabel">السيرة الذاتية</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cvContent">
+                    <div class="cv-section">
+                        <h3 class="cv-section-title">المعلومات الشخصية</h3>
+                        <p id="facilitatorNameCV"></p>
+                        <p><strong>التخصص:</strong> مستشار أعمال اجتماعية</p>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h3 class="cv-section-title">الخبرات العملية</h3>
+                        <ul class="cv-list">
+                            <li>مستشار رئيسي في حاضنة جدارة للأعمال الاجتماعية - 2020 حتى الآن</li>
+                            <li>مدير تطوير الأعمال في مؤسسة خيرية - 2015-2020</li>
+                            <li>منسق برامج في القطاع غير الربحي - 2012-2015</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h3 class="cv-section-title">المؤهلات العلمية</h3>
+                        <ul class="cv-list">
+                            <li>ماجستير في إدارة الأعمال - جامعة الملك سعود</li>
+                            <li>بكالوريوس في الإدارة العامة - جامعة الإمام محمد بن سعود</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h3 class="cv-section-title">الدورات والشهادات</h3>
+                        <ul class="cv-list">
+                            <li>شهادة محترف في إدارة المشاريع (PMP)</li>
+                            <li>شهادة في القيادة الإستراتيجية</li>
+                            <li>دبلوم في الحوكمة المؤسسية</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                    <button type="button" class="btn btn-primary-custom">
+                        <i class="fas fa-download ms-2"></i>
+                        تحميل السيرة الذاتية
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Facilitator Modal -->
+    <div class="modal fade" id="requestFacilitatorModal" tabindex="-1" aria-labelledby="requestFacilitatorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestFacilitatorModalLabel">طلب ميسر أونلاين</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="facilitatorRequestForm">
+                        <!-- Day Selection -->
+                        <div class="mb-4">
+                            <label for="requestDay" class="form-label">
+                                <span class="text-danger">*</span> يرجى تحديد اليوم:
+                            </label>
+                            <select class="form-select" id="requestDay" required>
+                                <option value="" disabled selected>يوم الأحد</option>
+                                <option value="الأحد">الأحد</option>
+                                <option value="الإثنين">الإثنين</option>
+                                <option value="الثلاثاء">الثلاثاء</option>
+                                <option value="الأربعاء">الأربعاء</option>
+                                <option value="الخميس">الخميس</option>
+                                <option value="الجمعة">الجمعة</option>
+                                <option value="السبت">السبت</option>
+                            </select>
+                        </div>
+
+                        <!-- Date and Time -->
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <span class="text-danger">*</span> يرجى تحديد التاريخ والوقت:
+                            </label>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" id="requestDate" required>
+                                    <small class="form-text text-muted">Date</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" class="form-control" id="requestTime" required>
+                                    <small class="form-text text-muted">Time</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Association Name -->
+                        <div class="mb-4">
+                            <label for="associationName" class="form-label">
+                                <span class="text-danger">*</span> مسمى الجمعية:
+                            </label>
+                            <input type="text" class="form-control" id="associationName" required>
+                        </div>
+
+                        <!-- Administrative Region -->
+                        <div class="mb-4">
+                            <label for="administrativeRegion" class="form-label">
+                                <span class="text-danger">*</span> يرجى اختيار المنطقة الإدارية:
+                            </label>
+                            <select class="form-select" id="administrativeRegion" required>
+                                <option value="" disabled selected>منطقة الباحة</option>
+                                <option value="الرياض">الرياض</option>
+                                <option value="مكة المكرمة">مكة المكرمة</option>
+                                <option value="المدينة المنورة">المدينة المنورة</option>
+                                <option value="القصيم">القصيم</option>
+                                <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+                                <option value="عسير">عسير</option>
+                                <option value="تبوك">تبوك</option>
+                                <option value="حائل">حائل</option>
+                                <option value="الحدود الشمالية">الحدود الشمالية</option>
+                                <option value="جازان">جازان</option>
+                                <option value="نجران">نجران</option>
+                                <option value="الباحة">الباحة</option>
+                                <option value="الجوف">الجوف</option>
+                            </select>
+                        </div>
+
+                        <!-- Representative Name -->
+                        <div class="mb-4">
+                            <label for="representativeName" class="form-label">
+                                <span class="text-danger">*</span> اسم ممثل الجمعية:
+                            </label>
+                            <input type="text" class="form-control" id="representativeName" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-4">
+                            <label for="representativeEmail" class="form-label">
+                                <span class="text-danger">*</span> يرجى كتابة البريد الإلكتروني الخاص بممثل الجمعية:
+                            </label>
+                            <input type="email" class="form-control" id="representativeEmail" required>
+                            <small class="form-text text-muted">وذلك للتواصل من قبل فريق خاصة جدارة (للتأكيد موعد عقد الجلسة)</small>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mb-4">
+                            <label for="representativePhone" class="form-label">
+                                <span class="text-danger">*</span> يرجى كتابة رقم الهاتف الخاص بممثل الجمعية:
+                            </label>
+                            <input type="tel" class="form-control" id="representativePhone" required>
+                            <small class="form-text text-muted">وذلك للتواصل من قبل فريق خاصة جدارة (للتأكيد موعد عقد الجلسة)</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary-custom" onclick="submitFacilitatorRequest()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal (same as main page) -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">اتصل بنا</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">الاسم</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">الرسالة</label>
+                            <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-primary-custom">إرسال</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Logo & Info Column -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-about">
+                        <img src="images/jadarah-logo-hero.png" alt="جدارة" class="footer-logo">
+                        <p class="footer-text">للأعمال الاجتماعية</p>
+                        <div class="footer-contact">
+                            <a href="mailto:Jadarh@majlis-ngos.org.sa" class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                Jadarh@majlis-ngos.org.sa
+                            </a>
+                            <a href="tel:+966556962208" class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                +966556962208
+                            </a>
+                        </div>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-snapchat"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h3 class="footer-title">وصول سريع</h3>
+                        <ul class="links-list">
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> الملف التعريفي</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> الأسئلة الشائعة</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Important Links Column -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h3 class="footer-title">مواقع مهمة</h3>
+                        <ul class="links-list">
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> المركز الوطني لتنمية القطاع غير الربحي</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> صندوق دعم الجمعيات</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> مجلس الجمعيات الأهلية</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-left"></i> الهيئة العامة للأوقاف</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-newsletter">
+                        <h3 class="footer-title">النشرة الإخبارية</h3>
+                        <p class="newsletter-text">اشترك للحصول على آخر أخبارنا و العروض التعريفية</p>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="... أدخل البريد الإلكتروني" required>
+                            <button type="submit" class="newsletter-btn">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Dropdown functionality
+        const regionDropdownBtn = document.getElementById('regionDropdownBtn');
+        const regionDropdownMenu = document.getElementById('regionDropdownMenu');
+        const specialtyDropdownBtn = document.getElementById('specialtyDropdownBtn');
+        const specialtyDropdownMenu = document.getElementById('specialtyDropdownMenu');
+        
+        const regionDropdownItems = document.querySelectorAll('#regionDropdownMenu .filter-dropdown-item');
+        const specialtyDropdownItems = document.querySelectorAll('#specialtyDropdownMenu .filter-dropdown-item');
+        
+        const selectedRegionSpan = document.getElementById('selectedRegion');
+        const selectedSpecialtySpan = document.getElementById('selectedSpecialty');
+        const facilitatorCards = document.querySelectorAll('.facilitator-card');
+
+        let currentRegion = 'all';
+        let currentSpecialty = 'all';
+
+        // Toggle region dropdown
+        regionDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            regionDropdownMenu.classList.toggle('show');
+            regionDropdownBtn.classList.toggle('active');
+            // Close specialty dropdown
+            specialtyDropdownMenu.classList.remove('show');
+            specialtyDropdownBtn.classList.remove('active');
+        });
+
+        // Toggle specialty dropdown
+        specialtyDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            specialtyDropdownMenu.classList.toggle('show');
+            specialtyDropdownBtn.classList.toggle('active');
+            // Close region dropdown
+            regionDropdownMenu.classList.remove('show');
+            regionDropdownBtn.classList.remove('active');
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!regionDropdownBtn.contains(e.target) && !regionDropdownMenu.contains(e.target)) {
+                regionDropdownMenu.classList.remove('show');
+                regionDropdownBtn.classList.remove('active');
+            }
+            if (!specialtyDropdownBtn.contains(e.target) && !specialtyDropdownMenu.contains(e.target)) {
+                specialtyDropdownMenu.classList.remove('show');
+                specialtyDropdownBtn.classList.remove('active');
+            }
+        });
+
+        // Filter function
+        function filterCards() {
+            facilitatorCards.forEach(card => {
+                const cardRegion = card.getAttribute('data-region');
+                const cardSpecialties = card.getAttribute('data-specialty').split(',');
+                
+                const regionMatch = currentRegion === 'all' || cardRegion === currentRegion;
+                const specialtyMatch = currentSpecialty === 'all' || cardSpecialties.some(spec => spec.includes(currentSpecialty));
+                
+                if (regionMatch && specialtyMatch) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Region filter functionality
+        regionDropdownItems.forEach(item => {
+            item.addEventListener('click', function() {
+                regionDropdownItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                const regionText = this.querySelector('span').textContent;
+                selectedRegionSpan.textContent = regionText;
+                currentRegion = this.getAttribute('data-region');
+                
+                filterCards();
+                
+                regionDropdownMenu.classList.remove('show');
+                regionDropdownBtn.classList.remove('active');
+            });
+        });
+
+        // Specialty filter functionality
+        specialtyDropdownItems.forEach(item => {
+            item.addEventListener('click', function() {
+                specialtyDropdownItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                const specialtyText = this.querySelector('span').textContent;
+                selectedSpecialtySpan.textContent = specialtyText;
+                currentSpecialty = this.getAttribute('data-specialty');
+                
+                filterCards();
+                
+                specialtyDropdownMenu.classList.remove('show');
+                specialtyDropdownBtn.classList.remove('active');
+            });
+        });
+
+        // Open CV Modal
+        function openCV(name) {
+            document.getElementById('facilitatorNameCV').innerHTML = `<strong>الاسم:</strong> ${name}`;
+            const cvModal = new bootstrap.Modal(document.getElementById('cvModal'));
+            cvModal.show();
+        }
+
+        // Request Facilitator - Open Modal
+        function requestFacilitator(name) {
+            const modal = new bootstrap.Modal(document.getElementById('requestFacilitatorModal'));
+            document.getElementById('requestFacilitatorModalLabel').textContent = `طلب الميسر: ${name}`;
+            modal.show();
+        }
+
+        // Submit Facilitator Request
+        function submitFacilitatorRequest() {
+            const form = document.getElementById('facilitatorRequestForm');
+            if (form.checkValidity()) {
+                alert('تم إرسال طلبك بنجاح! سنتواصل معك قريباً.');
+                bootstrap.Modal.getInstance(document.getElementById('requestFacilitatorModal')).hide();
+                form.reset();
+            } else {
+                form.reportValidity();
+            }
+        }
+    </script>
+
+</body>
+</html>
