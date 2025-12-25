@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة المشتريات | ويبيان</title>
+    <meta name="description" content="سلة المشتريات - منصة ويبيان للمنتجات والخدمات والتبرعات">
+    
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts - Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style-cart.css">
+</head>
+<body>
+    <!-- Unified Header -->
+    <header class="webyan-header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                    <img src="images/webyan-logo.png" alt="منصة ويبيان" class="header-logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="association-store.html">المتجر</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="association-store.html#products">المنتجات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="association-store.html#services">الخدمات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="donations-gate.html">بوابة التبرعات</a>
+                        </li>
+                    </ul>
+                    <div class="header-actions">
+                        <a href="cart.html" class="btn btn-header-cart-labeled active">
+                            <i class="bi bi-cart3"></i>
+                            <span class="cart-label">سلة المشتريات</span>
+                            <span class="cart-badge-inline">3</span>
+                        </a>
+                        <a href="donations-cart.html" class="btn btn-header-cart-labeled btn-donations-cart-labeled">
+                            <i class="bi bi-heart-fill"></i>
+                            <span class="cart-label">سلة التبرعات</span>
+                            <span class="cart-badge-inline cart-badge-green">2</span>
+                        </a>
+                        <div class="header-auth-buttons">
+                            <a href="login.html" class="btn btn-auth-login">
+                                <i class="bi bi-box-arrow-in-left"></i>
+                                تسجيل دخول
+                            </a>
+                            <a href="register.html" class="btn btn-auth-register">
+                                <i class="bi bi-person-plus"></i>
+                                إنشاء حساب
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb-section">
+        <div class="breadcrumb-pattern-right">
+            <img src="images/breadcrumb-pattern.svg" alt="">
+        </div>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">سلة المشتريات</li>
+                </ol>
+            </nav>
+            <h1 class="page-title">سلة المشتريات</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Cart Items Column -->
+                <div class="col-lg-8">
+                    <!-- Products Section -->
+                    <div class="cart-section-card">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="bi bi-box-seam"></i>
+                                المنتجات المضافة للسلة
+                            </h2>
+                            <span class="items-count">3 منتجات</span>
+                        </div>
+                        <div class="cart-items-list">
+                            <!-- Product Item 1 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper">
+                                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=150&h=150&fit=crop" alt="ساعة ذكية" class="item-image">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-product">منتج</span>
+                                                    <h3 class="item-name">ساعة ذكية متعددة الوظائف</h3>
+                                                    <p class="item-description">ساعة ذكية مع متتبع اللياقة البدنية ومقاومة للماء</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <div class="input-group quantity-input-group">
+                                                        <button class="btn btn-quantity" type="button">
+                                                            <i class="bi bi-dash"></i>
+                                                        </button>
+                                                        <input type="number" class="form-control quantity-input" value="2" min="1">
+                                                        <button class="btn btn-quantity" type="button">
+                                                            <i class="bi bi-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price">450.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Item 2 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper">
+                                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=150&h=150&fit=crop" alt="سماعات" class="item-image">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-product">منتج</span>
+                                                    <h3 class="item-name">سماعات لاسلكية احترافية</h3>
+                                                    <p class="item-description">سماعات بلوتوث مع إلغاء الضوضاء النشط</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <div class="input-group quantity-input-group">
+                                                        <button class="btn btn-quantity" type="button">
+                                                            <i class="bi bi-dash"></i>
+                                                        </button>
+                                                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                                                        <button class="btn btn-quantity" type="button">
+                                                            <i class="bi bi-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price">320.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Item 3 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper">
+                                            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=150&h=150&fit=crop" alt="كاميرا" class="item-image">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-product">منتج</span>
+                                                    <h3 class="item-name">كاميرا رقمية فورية</h3>
+                                                    <p class="item-description">كاميرا فورية مع طابعة مدمجة وفلاتر إبداعية</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <div class="input-group quantity-input-group">
+                                                        <button class="btn btn-quantity" type="button">
+                                                            <i class="bi bi-dash"></i>
+                                                        </button>
+                                                        <input type="number" class="form-control quantity-input" value="1" min="1">
+                                                        <button class="btn btn-quantity" type="button">
+                                                            <i class="bi bi-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price">180.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Section -->
+                    <div class="cart-section-card">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="bi bi-gear-wide-connected"></i>
+                                الخدمات المضافة للسلة
+                            </h2>
+                            <span class="items-count">2 خدمات</span>
+                        </div>
+                        <div class="cart-items-list">
+                            <!-- Service Item 1 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper service-image">
+                                            <i class="bi bi-palette service-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-service">خدمة</span>
+                                                    <h3 class="item-name">تصميم هوية بصرية متكاملة</h3>
+                                                    <p class="item-description">تصميم شعار + بطاقات عمل + ترويسة + دليل الهوية</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <span class="service-type-label">باقة واحدة</span>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price">1,500.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Service Item 2 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper service-image">
+                                            <i class="bi bi-code-slash service-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-service">خدمة</span>
+                                                    <h3 class="item-name">تطوير موقع إلكتروني</h3>
+                                                    <p class="item-description">موقع متجاوب مع لوحة تحكم كاملة</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <span class="service-type-label">باقة واحدة</span>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price">3,000.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donations Section -->
+                    <div class="cart-section-card">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="bi bi-heart"></i>
+                                التبرعات المضافة للسلة
+                            </h2>
+                            <span class="items-count">2 تبرعات</span>
+                        </div>
+                        <div class="cart-items-list">
+                            <!-- Donation Item 1 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper donation-image">
+                                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=150&h=150&fit=crop" alt="مشروع خيري" class="item-image">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-donation">تبرع</span>
+                                                    <h3 class="item-name">مشروع إفطار صائم</h3>
+                                                    <p class="item-description">المساهمة في توفير وجبات إفطار للصائمين</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <div class="input-group donation-input-group">
+                                                        <input type="number" class="form-control donation-amount-input" value="100" min="10">
+                                                        <span class="input-group-text">ر.س</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price donation-price">100.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Donation Item 2 -->
+                            <div class="cart-item-card">
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="item-image-wrapper donation-image">
+                                            <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=150&h=150&fit=crop" alt="مشروع تعليمي" class="item-image">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="item-details">
+                                            <div class="d-flex align-items-start justify-content-between mb-2">
+                                                <div>
+                                                    <span class="item-badge badge-donation">تبرع</span>
+                                                    <h3 class="item-name">دعم التعليم للأيتام</h3>
+                                                    <p class="item-description">كفالة تعليمية شاملة للطلاب الأيتام</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                <div class="quantity-wrapper">
+                                                    <div class="input-group donation-input-group">
+                                                        <input type="number" class="form-control donation-amount-input" value="250" min="10">
+                                                        <span class="input-group-text">ر.س</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <span class="item-price donation-price">250.00 ر.س</span>
+                                                    <button class="btn btn-delete" type="button" title="حذف">
+                                                        <i class="bi bi-trash3"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Column -->
+                <div class="col-lg-4">
+                    <div class="order-summary-card">
+                        <h2 class="summary-title">
+                            <i class="bi bi-receipt"></i>
+                            ملخص الطلب
+                        </h2>
+                        
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span class="summary-label">
+                                    <i class="bi bi-box-seam"></i>
+                                    إجمالي المنتجات
+                                </span>
+                                <span class="summary-value">1,400.00 ر.س</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">
+                                    <i class="bi bi-gear-wide-connected"></i>
+                                    إجمالي الخدمات
+                                </span>
+                                <span class="summary-value">4,500.00 ر.س</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">
+                                    <i class="bi bi-heart"></i>
+                                    إجمالي التبرعات
+                                </span>
+                                <span class="summary-value">350.00 ر.س</span>
+                            </div>
+                            
+                            <hr class="summary-divider">
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">المجموع الفرعي</span>
+                                <span class="summary-value">6,250.00 ر.س</span>
+                            </div>
+                            <div class="summary-row discount-row">
+                                <span class="summary-label">
+                                    <i class="bi bi-tag"></i>
+                                    الخصم
+                                </span>
+                                <span class="summary-value discount-value">- 0.00 ر.س</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">الضريبة (15%)</span>
+                                <span class="summary-value">937.50 ر.س</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">
+                                    <i class="bi bi-truck"></i>
+                                    الشحن
+                                </span>
+                                <span class="summary-value shipping-value">مجاني</span>
+                            </div>
+                            
+                            <hr class="summary-divider">
+                            
+                            <div class="summary-row total-row">
+                                <span class="summary-label">الإجمالي النهائي</span>
+                                <span class="summary-value total-value">7,187.50 ر.س</span>
+                            </div>
+                        </div>
+
+                        <!-- Coupon Section -->
+                        <div class="coupon-section">
+                            <label class="coupon-label">هل لديك كود خصم؟</label>
+                            <div class="input-group coupon-input-group">
+                                <input type="text" class="form-control coupon-input" placeholder="أدخل كود الخصم">
+                                <button class="btn btn-coupon" type="button">تطبيق</button>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="summary-actions">
+                            <button class="btn btn-checkout">
+                                <i class="bi bi-lock-fill"></i>
+                                متابعة الدفع
+                            </button>
+                            <a href="#" class="btn btn-continue-shopping">
+                                متابعة التسوق
+                                <i class="bi bi-arrow-left"></i>
+                            </a>
+                        </div>
+
+                        <!-- Security Badge -->
+                        <div class="security-badge">
+                            <i class="bi bi-shield-check"></i>
+                            <span>دفع آمن ومشفر 100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand">
+                        <img src="images/webyan-logo.png" alt="ويبيان" class="footer-logo">
+                        <p class="footer-description">منصة ويبيان الرقمية للمنتجات والخدمات والتبرعات الخيرية</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">المنتجات</a></li>
+                        <li><a href="#">الخدمات</a></li>
+                        <li><a href="#">التبرعات</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">الدعم</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="footer-title">تواصل معنا</h4>
+                    <div class="footer-contact">
+                        <p><i class="bi bi-envelope"></i> info@webyan.com</p>
+                        <p><i class="bi bi-telephone"></i> +966 50 000 0000</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p>© 2025 ويبيان. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

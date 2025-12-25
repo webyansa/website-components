@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول الأنشطة - إدارة المشاريع</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <a href="brand-details.html" class="back-button">
+                <i class="fas fa-arrow-right"></i>
+                <span>العودة</span>
+            </a>
+            <h1>
+                <i class="fas fa-tasks"></i>
+                جدول الأنشطة
+            </h1>
+            <p>نظام إدارة ومتابعة أنشطة المشاريع بشكل تفاعلي</p>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card green">
+                <h3>الأنشطة المكتملة</h3>
+                <div class="stat-value">
+                    <span>2</span>
+                    <i class="fas fa-check-circle stat-icon"></i>
+                </div>
+            </div>
+            <div class="stat-card blue">
+                <h3>قيد التنفيذ</h3>
+                <div class="stat-value">
+                    <span>3</span>
+                    <i class="fas fa-spinner stat-icon"></i>
+                </div>
+            </div>
+            <div class="stat-card orange">
+                <h3>مخططة</h3>
+                <div class="stat-value">
+                    <span>7</span>
+                    <i class="fas fa-clock stat-icon"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>إجمالي الميزانية</h3>
+                <div class="stat-value">
+                    <span>2.5M</span>
+                    <i class="fas fa-dollar-sign stat-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activities Table -->
+        <div class="activities-card">
+            <div class="activities-table-wrapper">
+                <table class="table activities-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i class="fas fa-cog"></i>
+                                العمليات
+                            </th>
+                            <th>
+                                <i class="fas fa-tag"></i>
+                                المعرف
+                            </th>
+                            <th>
+                                <i class="fas fa-heading"></i>
+                                اسم النشاط
+                            </th>
+                            <th>
+                                <i class="fas fa-calendar-plus"></i>
+                                تاريخ البداية
+                            </th>
+                            <th>
+                                <i class="fas fa-calendar-check"></i>
+                                تاريخ النهاية
+                            </th>
+                            <th>
+                                <i class="fas fa-user-tie"></i>
+                                المسؤول
+                            </th>
+                            <th>
+                                <i class="fas fa-info-circle"></i>
+                                الحالة
+                            </th>
+                            <th>
+                                <i class="fas fa-chart-line"></i>
+                                نسبة التقدم
+                            </th>
+                            <th>
+                                <i class="fas fa-money-bill-wave"></i>
+                                الميزانية (ريال)
+                            </th>
+                            <th>
+                                <i class="fas fa-cogs"></i>
+                                الإجراءات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Parent Activity 1 -->
+                        <tr class="activity-parent">
+                            <td>
+                                <button class="toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#activity1Children" aria-expanded="false">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </td>
+                            <td><strong>ACT-001</strong></td>
+                            <td><strong>المرحلة الأولى - التخطيط</strong></td>
+                            <td>2025-01-01</td>
+                            <td>2025-03-31</td>
+                            <td>أحمد محمد العلي</td>
+                            <td><span class="status-badge in-progress">جاري التنفيذ</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill medium" style="width: 65%">65%</div>
+                                </div>
+                            </td>
+                            <td><strong>500,000</strong></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-001')">
+                                        <i class="fas fa-edit"></i>
+                                        <span>تعديل</span>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-001')">
+                                        <i class="fas fa-trash"></i>
+                                        <span>حذف</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Child Activities of Activity 1 -->
+                        <tr class="collapse activity-child" id="activity1Children">
+                            <td></td>
+                            <td>ACT-001-1</td>
+                            <td>دراسة الجدوى</td>
+                            <td>2025-01-01</td>
+                            <td>2025-01-31</td>
+                            <td>سارة أحمد الحربي</td>
+                            <td><span class="status-badge completed">مكتمل</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill high" style="width: 100%">100%</div>
+                                </div>
+                            </td>
+                            <td>150,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-001-1')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-001-1')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity1Children">
+                            <td></td>
+                            <td>ACT-001-2</td>
+                            <td>تحديد الموارد</td>
+                            <td>2025-02-01</td>
+                            <td>2025-02-28</td>
+                            <td>خالد علي السالم</td>
+                            <td><span class="status-badge in-progress">جاري التنفيذ</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill medium" style="width: 70%">70%</div>
+                                </div>
+                            </td>
+                            <td>200,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-001-2')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-001-2')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity1Children">
+                            <td></td>
+                            <td>ACT-001-3</td>
+                            <td>إعداد الخطة التنفيذية</td>
+                            <td>2025-03-01</td>
+                            <td>2025-03-31</td>
+                            <td>منى حسن القحطاني</td>
+                            <td><span class="status-badge in-progress">جاري التنفيذ</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 30%">30%</div>
+                                </div>
+                            </td>
+                            <td>150,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-001-3')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-001-3')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Parent Activity 2 -->
+                        <tr class="activity-parent">
+                            <td>
+                                <button class="toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#activity2Children" aria-expanded="false">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </td>
+                            <td><strong>ACT-002</strong></td>
+                            <td><strong>المرحلة الثانية - التنفيذ</strong></td>
+                            <td>2025-04-01</td>
+                            <td>2025-08-31</td>
+                            <td>فهد عبدالله المطيري</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td><strong>1,200,000</strong></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-002')">
+                                        <i class="fas fa-edit"></i>
+                                        <span>تعديل</span>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-002')">
+                                        <i class="fas fa-trash"></i>
+                                        <span>حذف</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Child Activities of Activity 2 -->
+                        <tr class="collapse activity-child" id="activity2Children">
+                            <td></td>
+                            <td>ACT-002-1</td>
+                            <td>تطوير المحتوى التدريبي</td>
+                            <td>2025-04-01</td>
+                            <td>2025-05-31</td>
+                            <td>نورة سعيد الدوسري</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td>400,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-002-1')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-002-1')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity2Children">
+                            <td></td>
+                            <td>ACT-002-2</td>
+                            <td>تنفيذ البرامج التدريبية</td>
+                            <td>2025-06-01</td>
+                            <td>2025-08-31</td>
+                            <td>عمر يوسف الشمري</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td>600,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-002-2')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-002-2')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity2Children">
+                            <td></td>
+                            <td>ACT-002-3</td>
+                            <td>المتابعة والإشراف</td>
+                            <td>2025-06-01</td>
+                            <td>2025-08-31</td>
+                            <td>لمى عبدالرحمن الغامدي</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td>200,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-002-3')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-002-3')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Parent Activity 3 -->
+                        <tr class="activity-parent">
+                            <td>
+                                <button class="toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#activity3Children" aria-expanded="false">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </td>
+                            <td><strong>ACT-003</strong></td>
+                            <td><strong>المرحلة الثالثة - التقييم والمراجعة</strong></td>
+                            <td>2025-09-01</td>
+                            <td>2025-10-31</td>
+                            <td>ريم محمود الزهراني</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td><strong>300,000</strong></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-003')">
+                                        <i class="fas fa-edit"></i>
+                                        <span>تعديل</span>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-003')">
+                                        <i class="fas fa-trash"></i>
+                                        <span>حذف</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Child Activities of Activity 3 -->
+                        <tr class="collapse activity-child" id="activity3Children">
+                            <td></td>
+                            <td>ACT-003-1</td>
+                            <td>جمع البيانات والمعلومات</td>
+                            <td>2025-09-01</td>
+                            <td>2025-09-30</td>
+                            <td>لينا كمال الأحمد</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td>100,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-003-1')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-003-1')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity3Children">
+                            <td></td>
+                            <td>ACT-003-2</td>
+                            <td>التحليل وقياس الأثر</td>
+                            <td>2025-10-01</td>
+                            <td>2025-10-20</td>
+                            <td>طارق ناصر العتيبي</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td>120,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-003-2')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-003-2')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity3Children">
+                            <td></td>
+                            <td>ACT-003-3</td>
+                            <td>إعداد التقرير النهائي</td>
+                            <td>2025-10-21</td>
+                            <td>2025-10-31</td>
+                            <td>هدى سلطان العنزي</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 0%">0%</div>
+                                </div>
+                            </td>
+                            <td>80,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-003-3')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-003-3')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Parent Activity 4 -->
+                        <tr class="activity-parent">
+                            <td>
+                                <button class="toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#activity4Children" aria-expanded="false">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </td>
+                            <td><strong>ACT-004</strong></td>
+                            <td><strong>التسويق والنشر</strong></td>
+                            <td>2025-02-01</td>
+                            <td>2025-06-30</td>
+                            <td>ماجد إبراهيم البقمي</td>
+                            <td><span class="status-badge in-progress">جاري التنفيذ</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill medium" style="width: 45%">45%</div>
+                                </div>
+                            </td>
+                            <td><strong>400,000</strong></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-004')">
+                                        <i class="fas fa-edit"></i>
+                                        <span>تعديل</span>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-004')">
+                                        <i class="fas fa-trash"></i>
+                                        <span>حذف</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Child Activities of Activity 4 -->
+                        <tr class="collapse activity-child" id="activity4Children">
+                            <td></td>
+                            <td>ACT-004-1</td>
+                            <td>التسويق الرقمي</td>
+                            <td>2025-02-01</td>
+                            <td>2025-06-30</td>
+                            <td>رهف محمد الجهني</td>
+                            <td><span class="status-badge in-progress">جاري التنفيذ</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill medium" style="width: 60%">60%</div>
+                                </div>
+                            </td>
+                            <td>200,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-004-1')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-004-1')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity4Children">
+                            <td></td>
+                            <td>ACT-004-2</td>
+                            <td>المواد الترويجية</td>
+                            <td>2025-03-01</td>
+                            <td>2025-04-30</td>
+                            <td>بدر فيصل العمري</td>
+                            <td><span class="status-badge completed">مكتمل</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill high" style="width: 100%">100%</div>
+                                </div>
+                            </td>
+                            <td>100,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-004-2')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-004-2')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse activity-child" id="activity4Children">
+                            <td></td>
+                            <td>ACT-004-3</td>
+                            <td>العلاقات العامة</td>
+                            <td>2025-02-15</td>
+                            <td>2025-06-30</td>
+                            <td>أسماء عادل المالكي</td>
+                            <td><span class="status-badge planned">مخطط</span></td>
+                            <td class="progress-bar-cell">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill low" style="width: 20%">20%</div>
+                                </div>
+                            </td>
+                            <td>100,000</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn edit" onclick="editActivity('ACT-004-3')">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" onclick="deleteActivity('ACT-004-3')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="activities-card">
+            <h4 style="margin-bottom: 15px; color: #06232f;">
+                <i class="fas fa-info-circle"></i>
+                دليل الحالات والألوان
+            </h4>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="status-badge completed">مكتمل</span>
+                    <span style="color: #6c757d; font-size: 0.9em;">النشاط مكتمل بنسبة 100%</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="status-badge in-progress">جاري التنفيذ</span>
+                    <span style="color: #6c757d; font-size: 0.9em;">النشاط قيد التنفيذ حالياً</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="status-badge planned">مخطط</span>
+                    <span style="color: #6c757d; font-size: 0.9em;">النشاط مجدول ولم يبدأ بعد</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Add animation when collapsing/expanding
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const icon = this.querySelector('.fa-chevron-down');
+                icon.style.transform = this.getAttribute('aria-expanded') === 'true' ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // Animate progress bars on page load
+        window.addEventListener('load', function() {
+            const progressBars = document.querySelectorAll('.progress-bar-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+
+        // Initialize Bootstrap tooltips if needed
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+        // Edit Activity Function
+        function editActivity(activityId) {
+            alert(`تعديل النشاط: ${activityId}\nسيتم فتح نموذج التعديل قريباً`);
+            // يمكنك هنا إضافة كود لفتح نافذة منبثقة للتعديل
+        }
+
+        // Delete Activity Function
+        function deleteActivity(activityId) {
+            if (confirm(`هل أنت متأكد من حذف النشاط: ${activityId}؟`)) {
+                alert(`تم حذف النشاط: ${activityId}`);
+                // يمكنك هنا إضافة كود لحذف النشاط من قاعدة البيانات
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الفرع - مجلس الجمعيات الأهلية</title>
+    <meta name="description" content="تفاصيل فرع المجلس: الأخبار، الإحصائيات، الفعاليات، الموظفون والوسائط.">
+    <link rel="canonical" href="/branch-details.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="back-button">
+                        <a href="/branches-section.html" class="btn-back">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>العودة للفروع</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-12 text-center mb-4 mb-md-0">
+                    <div class="hero-logo">
+                        <img src="images/branch-logo-1.svg" alt="شعار الفرع">
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-9 col-12 text-center text-md-start">
+                    <h1 class="hero-title">مجلس الجمعيات الأهلية بمكة المكرمة</h1>
+                    <p class="hero-subtitle">نعمل معاً لتطوير العمل الخيري والمجتمعي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-2 list-unstyled mb-0 p-0">
+                        <li><a href="#home" class="active">الرئيسية</a></li>
+                        <li><a href="#about">عن المجلس</a></li>
+                        <li><a href="#news">الأخبار</a></li>
+                        <li><a href="#achievements">الإنجازات</a></li>
+                        <li><a href="#events">الفعاليات</a></li>
+                        <li><a href="#articles">مقالات</a></li>
+                        <li><a href="#media">معرض الوسائط</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4">
+        <div class="row g-4">
+            <!-- Main Content (8 columns) -->
+            <div class="col-lg-8">
+                <!-- Hero Slider -->
+                <div class="hero-slider">
+                    <div class="slider-track" id="sliderTrack">
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&h=600&fit=crop" alt="شريحة 1">
+                            <div class="slide-content">
+                                <h3 class="slide-title">معاً نبني مستقبلاً أفضل</h3>
+                                <p class="slide-description">نسعى لتطوير المجتمع من خلال البرامج والمبادرات المبتكرة التي تخدم جميع فئات المجتمع</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop" alt="شريحة 2">
+                            <div class="slide-content">
+                                <h3 class="slide-title">شراكات استراتيجية ناجحة</h3>
+                                <p class="slide-description">نبني جسور التعاون مع القطاعين العام والخاص لتحقيق التنمية المستدامة</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&h=600&fit=crop" alt="شريحة 3">
+                            <div class="slide-content">
+                                <h3 class="slide-title">برامج تدريبية متميزة</h3>
+                                <p class="slide-description">نقدم ورش عمل ودورات تدريبية لتطوير مهارات أعضائنا وتمكينهم من النجاح</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop" alt="شريحة 4">
+                            <div class="slide-content">
+                                <h3 class="slide-title">مبادرات مجتمعية مؤثرة</h3>
+                                <p class="slide-description">نطلق مبادرات نوعية تلامس احتياجات المجتمع وتحدث تأثيراً إيجابياً ملموساً</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-arrow prev" onclick="moveSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="slider-arrow next" onclick="moveSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-nav" id="sliderNav"></div>
+                </div>
+
+                <!-- About Section -->
+                <section id="about" class="content-section">
+                    <h2 class="section-title">عن المجلس</h2>
+                    <div class="about-card">
+                        <p>مجلس الجمعيات الأهلية بمكة المكرمة هو منظمة رائدة تعمل على دعم وتطوير العمل الخيري والمجتمعي في المنطقة. نسعى لبناء مجتمع متماسك ومتعاون من خلال تقديم الخدمات المتميزة والبرامج المبتكرة.</p>
+                        <p class="mt-3">رؤيتنا هي أن نكون المرجع الأول في تطوير العمل المجتمعي والخيري، ورسالتنا هي تمكين الجمعيات الأهلية من تحقيق أهدافها وخدمة المجتمع بكفاءة وفعالية.</p>
+                    </div>
+                </section>
+
+                <!-- Statistics -->
+                <section id="stats" class="content-section">
+                    <h2 class="section-title">الإحصائيات</h2>
+                    <div class="row g-3">
+                        <div class="col-md-3 col-6">
+                            <div class="stat-box">
+                                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                <div class="stat-number">250</div>
+                                <div class="stat-label">الأعضاء</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-box">
+                                <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">المشاريع</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-box">
+                                <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                                <div class="stat-number">28</div>
+                                <div class="stat-label">الفعاليات</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="stat-box">
+                                <div class="stat-icon"><i class="fas fa-award"></i></div>
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">الجوائز</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- News Section -->
+                <section id="news" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">أخبار المجلس</h2>
+                        <a href="#" class="btn-view-all">
+                            <span>عرض الكل</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="news-card">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="خبر 1" class="news-image">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <span class="news-date"><i class="far fa-calendar"></i> 15 أكتوبر 2025</span>
+                                        <span class="news-publisher"><i class="fas fa-building"></i> فرع مكة المكرمة</span>
+                                    </div>
+                                    <h3 class="news-title">إطلاق مبادرة جديدة لدعم المشاريع</h3>
+                                    <p class="news-excerpt">أعلن المجلس عن إطلاق مبادرة جديدة تهدف إلى دعم رواد الأعمال...</p>
+                                    <a href="#" class="news-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="news-card">
+                                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop" alt="خبر 2" class="news-image">
+                                <div class="news-content">
+                                    <div class="news-meta">
+                                        <span class="news-date"><i class="far fa-calendar"></i> 12 أكتوبر 2025</span>
+                                        <span class="news-publisher"><i class="fas fa-building"></i> فرع مكة المكرمة</span>
+                                    </div>
+                                    <h3 class="news-title">توقيع اتفاقية تعاون استراتيجية</h3>
+                                    <p class="news-excerpt">تم توقيع اتفاقية تعاون مع جهات حكومية لتطوير البرامج...</p>
+                                    <a href="#" class="news-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Events Section -->
+                <section id="events" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">الفعاليات والأنشطة</h2>
+                        <a href="#" class="btn-view-all">
+                            <span>عرض الكل</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">25</div>
+                            <div class="event-month">نوفمبر</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">ورشة عمل: إدارة المشاريع الخيرية</h3>
+                            <div class="event-meta">
+                                <span><i class="far fa-clock"></i>4:00 - 7:00 مساءً</span>
+                                <span><i class="fas fa-map-marker-alt"></i>المقر الرئيسي</span>
+                                <span><i class="fas fa-users"></i>50 مقعد</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">30</div>
+                            <div class="event-month">نوفمبر</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">لقاء الأعضاء الجدد</h3>
+                            <div class="event-meta">
+                                <span><i class="far fa-clock"></i>6:00 - 8:00 مساءً</span>
+                                <span><i class="fas fa-map-marker-alt"></i>قاعة المؤتمرات</span>
+                                <span><i class="fas fa-users"></i>100 مقعد</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date-box">
+                            <div class="event-day">10</div>
+                            <div class="event-month">ديسمبر</div>
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-title">مؤتمر التطوع والعمل الخيري</h3>
+                            <div class="event-meta">
+                                <span><i class="far fa-clock"></i>9:00 ص - 5:00 م</span>
+                                <span><i class="fas fa-map-marker-alt"></i>مركز المؤتمرات</span>
+                                <span><i class="fas fa-users"></i>500 مقعد</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Staff Section -->
+                <section id="staff" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">الموظفون وأعضاء مجلس الإدارة</h2>
+                        <a href="#" class="btn-view-all">
+                            <span>عرض الكل</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+
+                    <!-- Staff Tabs -->
+                    <div class="staff-tabs">
+                        <button class="staff-tab active" data-category="all">الكل</button>
+                        <button class="staff-tab" data-category="management">الإدارة التنفيذية</button>
+                        <button class="staff-tab" data-category="board">مجلس الإدارة</button>
+                        <button class="staff-tab" data-category="employees">الموظفون</button>
+                    </div>
+
+                    <!-- Staff Slider -->
+                    <div class="staff-slider-container">
+                        <div class="staff-slider" id="staffSlider">
+                            <!-- Management -->
+                            <div class="staff-slide" data-category="management">
+                                <div class="team-card">
+                                    <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+                                    <h3 class="team-name">د. محمد العتيبي</h3>
+                                    <p class="team-position">مدير المجلس</p>
+                                    <p class="team-bio">خبرة 15 عاماً في إدارة المنظمات غير الربحية</p>
+                                    <div class="team-social">
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon social-linkedin" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon social-x" title="X">
+                                            <i class="fab fa-x-twitter"></i>
+                                        </a>
+                                        <button class="social-icon social-cv" onclick="openCVModal('د. محمد العتيبي', 'مدير المجلس', 'management')" title="عرض السيرة الذاتية">
+                                            <i class="fas fa-file-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="staff-slide" data-category="management">
+                                <div class="team-card">
+                                    <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+                                    <h3 class="team-name">م. عبدالله الحربي</h3>
+                                    <p class="team-position">مدير المشاريع</p>
+                                    <p class="team-bio">متخصص في إدارة وتنفيذ المشاريع الخيرية</p>
+                                    <div class="team-social">
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon social-linkedin" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon social-x" title="X">
+                                            <i class="fab fa-x-twitter"></i>
+                                        </a>
+                                        <button class="social-icon social-cv" onclick="openCVModal('م. عبدالله الحربي', 'مدير المشاريع', 'management')" title="عرض السيرة الذاتية">
+                                            <i class="fas fa-file-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Board -->
+                            <div class="staff-slide" data-category="board">
+                                <div class="team-card">
+                                    <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+                                    <h3 class="team-name">أ. فاطمة الزهراني</h3>
+                                    <p class="team-position">رئيسة مجلس الإدارة</p>
+                                    <p class="team-bio">متخصصة في التنمية المجتمعية والعمل التطوعي</p>
+                                    <div class="team-social">
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon social-linkedin" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon social-x" title="X">
+                                            <i class="fab fa-x-twitter"></i>
+                                        </a>
+                                        <button class="social-icon social-cv" onclick="openCVModal('أ. فاطمة الزهراني', 'رئيسة مجلس الإدارة', 'board')" title="عرض السيرة الذاتية">
+                                            <i class="fas fa-file-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="staff-slide" data-category="board">
+                                <div class="team-card">
+                                    <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+                                    <h3 class="team-name">د. خالد المطيري</h3>
+                                    <p class="team-position">نائب رئيس مجلس الإدارة</p>
+                                    <p class="team-bio">خبير في الحوكمة والشفافية المؤسسية</p>
+                                    <div class="team-social">
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon social-linkedin" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon social-x" title="X">
+                                            <i class="fab fa-x-twitter"></i>
+                                        </a>
+                                        <button class="social-icon social-cv" onclick="openCVModal('د. خالد المطيري', 'نائب رئيس مجلس الإدارة', 'board')" title="عرض السيرة الذاتية">
+                                            <i class="fas fa-file-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Employees -->
+                            <div class="staff-slide" data-category="employees">
+                                <div class="team-card">
+                                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                                    <h3 class="team-name">أ. سارة القحطاني</h3>
+                                    <p class="team-position">مديرة العلاقات العامة</p>
+                                    <p class="team-bio">خبيرة في التواصل المؤسسي والعلاقات العامة</p>
+                                    <div class="team-social">
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon social-linkedin" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon social-x" title="X">
+                                            <i class="fab fa-x-twitter"></i>
+                                        </a>
+                                        <button class="social-icon social-cv" onclick="openCVModal('أ. سارة القحطاني', 'مديرة العلاقات العامة', 'employees')" title="عرض السيرة الذاتية">
+                                            <i class="fas fa-file-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="staff-slide" data-category="employees">
+                                <div class="team-card">
+                                    <div class="team-avatar"><i class="fas fa-user"></i></div>
+                                    <h3 class="team-name">م. أحمد الشهري</h3>
+                                    <p class="team-position">مسؤول تقنية المعلومات</p>
+                                    <p class="team-bio">متخصص في الحلول التقنية والتحول الرقمي</p>
+                                    <div class="team-social">
+                                        <a href="https://linkedin.com" target="_blank" class="social-icon social-linkedin" title="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://twitter.com" target="_blank" class="social-icon social-x" title="X">
+                                            <i class="fab fa-x-twitter"></i>
+                                        </a>
+                                        <button class="social-icon social-cv" onclick="openCVModal('م. أحمد الشهري', 'مسؤول تقنية المعلومات', 'employees')" title="عرض السيرة الذاتية">
+                                            <i class="fas fa-file-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slider Arrows -->
+                    <div class="staff-slider-arrows">
+                        <button class="staff-arrow" id="staffPrev">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="staff-arrow" id="staffNext">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Media Gallery -->
+                <section id="media" class="content-section">
+                    <h2 class="section-title">معرض الوسائط</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop')">
+                            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=300&fit=crop" alt="صورة 1">
+                        </div>
+                        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=600&fit=crop')">
+                            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300&fit=crop" alt="صورة 2">
+                        </div>
+                        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=600&fit=crop')">
+                            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop" alt="صورة 3">
+                        </div>
+                        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop')">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="صورة 4">
+                        </div>
+                        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=600&fit=crop')">
+                            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&h=300&fit=crop" alt="صورة 5">
+                        </div>
+                        <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop')">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" alt="صورة 6">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar (4 columns) -->
+            <div class="col-lg-4">
+                <!-- Membership Card -->
+                <div class="sidebar-card membership-card">
+                    <h3>انضم للعضوية</h3>
+                    <p>كن جزءاً من مجتمعنا وساهم في تطوير العمل الخيري والمجتمعي</p>
+                    <button class="btn-join">سجل الآن</button>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="sidebar-card">
+                    <h3>أوقات العمل</h3>
+                    <div class="hours-item">
+                        <span class="hours-day">الأحد - الخميس</span>
+                        <span class="hours-time">8:00 ص - 4:00 م</span>
+                    </div>
+                    <div class="hours-item">
+                        <span class="hours-day">الجمعة - السبت</span>
+                        <span class="hours-time">مغلق</span>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="sidebar-card">
+                    <h3>موقعنا على الخريطة</h3>
+                    <div id="map"></div>
+                    <button class="btn-map">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>فتح في الخرائط</span>
+                    </button>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="sidebar-card">
+                    <h3>اتصل بنا</h3>
+                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="contact-name">الاسم</label>
+                            <input type="text" id="contact-name" name="name" placeholder="أدخل اسمك" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">البريد الإلكتروني</label>
+                            <input type="email" id="contact-email" name="email" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">رقم الهاتف</label>
+                            <input type="tel" id="contact-phone" name="phone" placeholder="+966 XX XXX XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-type">نوع التواصل</label>
+                            <select id="contact-type" name="type" required>
+                                <option value="">اختر نوع التواصل</option>
+                                <option value="inquiry">استفسار</option>
+                                <option value="suggestion">مقترح</option>
+                                <option value="complaint">شكوى / بلاغ</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">الرسالة</label>
+                            <textarea id="contact-message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>إرسال الرسالة</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="sidebar-card">
+                    <h3>بيانات التواصل</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-info">
+                            <h4>الهاتف</h4>
+                            <p>+966 12 345 6789</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-info">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@council.org.sa</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-info">
+                            <h4>العنوان</h4>
+                            <p>مكة المكرمة، المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img id="lightbox-img" src="" alt="صورة مكبرة">
+        </div>
+    </div>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="cv-modal" onclick="closeCVModal()">
+        <div class="cv-modal-content" onclick="event.stopPropagation()">
+            <button class="cv-modal-close" onclick="closeCVModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="cv-header">
+                <div class="cv-avatar" id="cvAvatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h2 class="cv-name" id="cvName">-</h2>
+                <p class="cv-position" id="cvPosition">-</p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="cv-section">
+                <h3 class="cv-section-title">
+                    <i class="fas fa-address-card"></i>
+                    بيانات التواصل
+                </h3>
+                <div class="cv-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:email@council.org.sa" id="cvEmail">email@council.org.sa</a>
+                </div>
+                <div class="cv-info-item">
+                    <i class="fas fa-phone"></i>
+                    <span id="cvPhone">+966 50 123 4567</span>
+                </div>
+                <div class="cv-info-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com" target="_blank">linkedin.com/in/profile</a>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="cv-section">
+                <h3 class="cv-section-title">
+                    <i class="fas fa-user"></i>
+                    نبذة مختصرة
+                </h3>
+                <p class="cv-text" id="cvBio">
+                    محترف متمرس بخبرة واسعة في مجال العمل الخيري والمجتمعي. يتمتع بقدرة عالية على القيادة والتخطيط الاستراتيجي. شارك في تطوير العديد من المبادرات والبرامج الناجحة التي أحدثت تأثيراً إيجابياً في المجتمع. يمتلك مهارات تواصل متميزة وقدرة على بناء الشراكات الفعالة.
+                </p>
+            </div>
+
+            <!-- Education -->
+            <div class="cv-section">
+                <h3 class="cv-section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    المؤهلات التعليمية
+                </h3>
+                <ul class="cv-list" id="cvEducation">
+                    <li>دكتوراه في الإدارة - جامعة الملك عبدالعزيز، 2015</li>
+                    <li>ماجستير في إدارة الأعمال - جامعة أم القرى، 2010</li>
+                    <li>بكالوريوس في العلوم الإدارية - جامعة الملك سعود، 2007</li>
+                </ul>
+            </div>
+
+            <!-- Experience -->
+            <div class="cv-section">
+                <h3 class="cv-section-title">
+                    <i class="fas fa-briefcase"></i>
+                    الخبرات السابقة
+                </h3>
+                <div id="cvExperience">
+                    <div class="cv-experience-item">
+                        <div class="cv-exp-title">مدير تنفيذي</div>
+                        <div class="cv-exp-company">جمعية البر الخيرية</div>
+                        <div class="cv-exp-period">2018 - 2022</div>
+                        <div class="cv-exp-desc">قيادة فريق من 50 موظف وإدارة ميزانية بقيمة 10 مليون ريال. تطوير استراتيجية تشغيلية شاملة نتج عنها زيادة في عدد المستفيدين بنسبة 40%.</div>
+                    </div>
+                    <div class="cv-experience-item">
+                        <div class="cv-exp-title">مدير مشاريع</div>
+                        <div class="cv-exp-company">مؤسسة المجتمع للتنمية</div>
+                        <div class="cv-exp-period">2015 - 2018</div>
+                        <div class="cv-exp-desc">إدارة وتنفيذ 25 مشروعاً مجتمعياً. التنسيق مع الجهات الحكومية والخاصة لضمان نجاح المشاريع.</div>
+                    </div>
+                    <div class="cv-experience-item">
+                        <div class="cv-exp-title">منسق برامج</div>
+                        <div class="cv-exp-company">مجلس الجمعيات الأهلية</div>
+                        <div class="cv-exp-period">2012 - 2015</div>
+                        <div class="cv-exp-desc">تخطيط وتنفيذ البرامج التدريبية والتطويرية. بناء علاقات مع الشركاء والمانحين.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="cv-section">
+                <h3 class="cv-section-title">
+                    <i class="fas fa-star"></i>
+                    المهارات
+                </h3>
+                <div class="cv-skills" id="cvSkills">
+                    <span class="cv-skill-tag">القيادة الاستراتيجية</span>
+                    <span class="cv-skill-tag">إدارة المشاريع</span>
+                    <span class="cv-skill-tag">التخطيط والتنظيم</span>
+                    <span class="cv-skill-tag">التواصل الفعال</span>
+                    <span class="cv-skill-tag">إدارة الفريق</span>
+                    <span class="cv-skill-tag">حل المشكلات</span>
+                    <span class="cv-skill-tag">إدارة الميزانية</span>
+                    <span class="cv-skill-tag">التفكير الإبداعي</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize Map
+        const map = L.map('map').setView([21.4225, 39.8262], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: ' <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+        }).addTo(map);
+
+        L.marker([21.4225, 39.8262]).addTo(map)
+            .bindPopup('مجلس الجمعيات الأهلية بمكة المكرمة')
+            .openPopup();
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const offset = document.querySelector('.nav-menu').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Update active link
+                    document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Map Button
+        document.querySelector('.btn-map').addEventListener('click', function() {
+            window.open('https://www.google.com/maps/place/21.4225,39.8262', '_blank');
+        });
+
+        // Lightbox Functions
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderNav = document.getElementById('sliderNav');
+
+        // Create navigation dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            sliderNav.appendChild(dot);
+        }
+
+        function updateSlider() {
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto-play slider
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        // Contact Form Handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                type: formData.get('type'),
+                message: formData.get('message')
+            };
+            
+            // Here you would typically send the data to a server
+            console.log('تم إرسال النموذج:', data);
+            
+            // Show success message
+            alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Staff Slider
+        let staffCurrentSlide = 0;
+        let staffCurrentCategory = 'all';
+        const staffSlider = document.getElementById('staffSlider');
+        const staffPrevBtn = document.getElementById('staffPrev');
+        const staffNextBtn = document.getElementById('staffNext');
+
+        function getVisibleStaffSlides() {
+            const allSlides = Array.from(document.querySelectorAll('.staff-slide'));
+            if (staffCurrentCategory === 'all') {
+                return allSlides;
+            }
+            return allSlides.filter(slide => slide.dataset.category === staffCurrentCategory);
+        }
+
+        function updateStaffSlider() {
+            const visibleSlides = getVisibleStaffSlides();
+            const allSlides = document.querySelectorAll('.staff-slide');
+            
+            // Hide all slides first
+            allSlides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            // Show only visible slides
+            visibleSlides.forEach(slide => {
+                slide.style.display = 'block';
+            });
+            
+            // Calculate max slides
+            const maxSlides = Math.max(0, visibleSlides.length - 2);
+            staffCurrentSlide = Math.min(staffCurrentSlide, maxSlides);
+            
+            // Update slider position
+            const slideWidth = visibleSlides[0]?.offsetWidth || 0;
+            const gap = 15;
+            const offset = -staffCurrentSlide * (slideWidth + gap);
+            staffSlider.style.transform = `translateX(${offset}px)`;
+            
+            // Update button states
+            staffPrevBtn.disabled = staffCurrentSlide === 0;
+            staffNextBtn.disabled = staffCurrentSlide >= maxSlides;
+        }
+
+        staffPrevBtn.addEventListener('click', () => {
+            if (staffCurrentSlide > 0) {
+                staffCurrentSlide--;
+                updateStaffSlider();
+            }
+        });
+
+        staffNextBtn.addEventListener('click', () => {
+            const visibleSlides = getVisibleStaffSlides();
+            const maxSlides = Math.max(0, visibleSlides.length - 2);
+            if (staffCurrentSlide < maxSlides) {
+                staffCurrentSlide++;
+                updateStaffSlider();
+            }
+        });
+
+        // Staff Tabs
+        document.querySelectorAll('.staff-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelectorAll('.staff-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Update category and reset slide position
+                staffCurrentCategory = tab.dataset.category;
+                staffCurrentSlide = 0;
+                updateStaffSlider();
+            });
+        });
+
+        // Initialize staff slider
+        updateStaffSlider();
+
+        // Update on window resize
+        window.addEventListener('resize', updateStaffSlider);
+
+        // CV Modal Functions
+        const cvData = {
+            'د. محمد العتيبي': {
+                position: 'مدير المجلس',
+                email: 'mohammed.alotibi@council.org.sa',
+                phone: '+966 50 123 4567',
+                bio: 'قائد استراتيجي بخبرة 15 عاماً في إدارة المنظمات غير الربحية. متخصص في تطوير البرامج المجتمعية وبناء الشراكات الاستراتيجية مع القطاعين العام والخاص. نجح في قيادة العديد من المبادرات التي أحدثت تأثيراً إيجابياً ملموساً في المجتمع.',
+                education: [
+                    'دكتوراه في الإدارة العامة - جامعة الملك عبدالعزيز، 2010',
+                    'ماجستير في إدارة المنظمات غير الربحية - جامعة أم القرى، 2006',
+                    'بكالوريوس في الإدارة العامة - جامعة الملك سعود، 2003'
+                ],
+                experience: [
+                    {
+                        title: 'مدير المجلس',
+                        company: 'مجلس الجمعيات الأهلية بمكة المكرمة',
+                        period: '2020 - حتى الآن',
+                        desc: 'قيادة المجلس وإدارة جميع العمليات الإدارية والتشغيلية. تطوير الخطط الاستراتيجية وضمان تحقيق الأهداف المؤسسية.'
+                    },
+                    {
+                        title: 'مدير إدارة التطوير',
+                        company: 'الهيئة العامة للأوقاف',
+                        period: '2015 - 2020',
+                        desc: 'إدارة برامج التطوير المؤسسي وتحسين الأداء التشغيلي. تطوير أنظمة الحوكمة والشفافية.'
+                    }
+                ],
+                skills: ['القيادة الاستراتيجية', 'إدارة التغيير', 'بناء الشراكات', 'التخطيط الاستراتيجي', 'إدارة المخاطر', 'الحوكمة المؤسسية', 'التواصل المؤسسي', 'إدارة الأزمات']
+            },
+            'م. عبدالله الحربي': {
+                position: 'مدير المشاريع',
+                email: 'abdullah.alharbi@council.org.sa',
+                phone: '+966 50 234 5678',
+                bio: 'مهندس متخصص في إدارة وتنفيذ المشاريع الخيرية والمجتمعية. يمتلك خبرة واسعة في التخطيط والتنفيذ ومتابعة المشاريع بكفاءة عالية. نجح في إدارة أكثر من 50 مشروعاً بميزانيات تتجاوز 30 مليون ريال.',
+                education: [
+                    'ماجستير في إدارة المشاريع - جامعة الملك فهد للبترول والمعادن، 2012',
+                    'بكالوريوس في الهندسة الصناعية - جامعة الملك عبدالعزيز، 2008',
+                    'شهادة محترف إدارة المشاريع (PMP) - معهد إدارة المشاريع، 2014'
+                ],
+                experience: [
+                    {
+                        title: 'مدير المشاريع',
+                        company: 'مجلس الجمعيات الأهلية',
+                        period: '2018 - حتى الآن',
+                        desc: 'إدارة محفظة المشاريع التطويرية والمجتمعية. ضمان تنفيذ المشاريع ضمن الميزانية والجدول الزمني المحدد.'
+                    },
+                    {
+                        title: 'مهندس مشاريع',
+                        company: 'مؤسسة التنمية المجتمعية',
+                        period: '2013 - 2018',
+                        desc: 'تخطيط وتنفيذ المشاريع التنموية. إعداد دراسات الجدوى والتقارير الفنية.'
+                    }
+                ],
+                skills: ['إدارة المشاريع', 'التخطيط والجدولة', 'إدارة الميزانيات', 'تحليل المخاطر', 'Microsoft Project', 'Primavera', 'إعداد التقارير', 'قيادة الفرق']
+            },
+            'أ. فاطمة الزهراني': {
+                position: 'رئيسة مجلس الإدارة',
+                email: 'fatimah.alzahrani@council.org.sa',
+                phone: '+966 50 345 6789',
+                bio: 'رائدة في مجال التنمية المجتمعية والعمل التطوعي. تمتلك رؤية استراتيجية واضحة لتطوير العمل الخيري والارتقاء بمستوى الخدمات المقدمة للمجتمع. حاصلة على جوائز تقديرية عديدة في مجال العمل المجتمعي.',
+                education: [
+                    'دكتوراه في التنمية المجتمعية - جامعة أم القرى، 2013',
+                    'ماجستير في علم الاجتماع - جامعة الملك سعود، 2009',
+                    'بكالوريوس في الخدمة الاجتماعية - جامعة الملك عبدالعزيز، 2005'
+                ],
+                experience: [
+                    {
+                        title: 'رئيسة مجلس الإدارة',
+                        company: 'مجلس الجمعيات الأهلية',
+                        period: '2021 - حتى الآن',
+                        desc: 'رئاسة مجلس الإدارة والإشراف على السياسات العامة والاستراتيجية المؤسسية.'
+                    },
+                    {
+                        title: 'مديرة البرامج المجتمعية',
+                        company: 'جمعية النهضة النسائية',
+                        period: '2016 - 2021',
+                        desc: 'تطوير وإدارة البرامج المجتمعية الموجهة لتمكين المرأة والشباب.'
+                    }
+                ],
+                skills: ['القيادة', 'التخطيط الاستراتيجي', 'العمل التطوعي', 'التنمية المجتمعية', 'إدارة البرامج', 'التمكين المجتمعي', 'العلاقات العامة', 'التفكير الإبداعي']
+            },
+            'د. خالد المطيري': {
+                position: 'نائب رئيس مجلس الإدارة',
+                email: 'khalid.almutairi@council.org.sa',
+                phone: '+966 50 456 7890',
+                bio: 'خبير في مجال الحوكمة والشفافية المؤسسية. يمتلك خبرة طويلة في تطوير أنظمة الرقابة والمتابعة وضمان الالتزام بأعلى معايير الحوكمة. ساهم في تطوير أطر الحوكمة للعديد من المؤسسات غير الربحية.',
+                education: [
+                    'دكتوراه في القانون الإداري - جامعة الملك سعود، 2011',
+                    'ماجستير في الحوكمة المؤسسية - جامعة الملك فهد، 2007',
+                    'بكالوريوس في القانون - جامعة الإمام محمد بن سعود، 2003'
+                ],
+                experience: [
+                    {
+                        title: 'نائب رئيس مجلس الإدارة',
+                        company: 'مجلس الجمعيات الأهلية',
+                        period: '2021 - حتى الآن',
+                        desc: 'مساعدة رئيس المجلس والإشراف على لجان الحوكمة والمراجعة الداخلية.'
+                    },
+                    {
+                        title: 'مستشار الحوكمة',
+                        company: 'الهيئة العامة للأوقاف',
+                        period: '2015 - 2021',
+                        desc: 'تطوير وتطبيق أنظمة الحوكمة والرقابة. إجراء تقييمات دورية للامتثال.'
+                    }
+                ],
+                skills: ['الحوكمة المؤسسية', 'إدارة المخاطر', 'الامتثال والرقابة', 'القانون الإداري', 'المراجعة الداخلية', 'إعداد السياسات', 'التدقيق', 'إدارة الأزمات']
+            },
+            'أ. سارة القحطاني': {
+                position: 'مديرة العلاقات العامة',
+                email: 'sarah.alqahtani@council.org.sa',
+                phone: '+966 50 567 8901',
+                bio: 'متخصصة في التواصل المؤسسي والعلاقات العامة بخبرة تزيد عن 10 سنوات. تمتلك مهارات عالية في بناء وإدارة العلاقات مع وسائل الإعلام والجهات الحكومية والخاصة. نجحت في تطوير استراتيجيات اتصال فعالة عززت من صورة المؤسسات التي عملت معها.',
+                education: [
+                    'ماجستير في الإعلام والاتصال - جامعة الملك عبدالعزيز، 2014',
+                    'بكالوريوس في العلاقات العامة - جامعة الملك سعود، 2010',
+                    'دبلوم في التسويق الرقمي - معهد التسويق البريطاني، 2016'
+                ],
+                experience: [
+                    {
+                        title: 'مديرة العلاقات العامة',
+                        company: 'مجلس الجمعيات الأهلية',
+                        period: '2019 - حتى الآن',
+                        desc: 'إدارة العلاقات مع وسائل الإعلام والشركاء. تطوير استراتيجيات الاتصال المؤسسي.'
+                    },
+                    {
+                        title: 'أخصائية علاقات عامة',
+                        company: 'جمعية البر الخيرية',
+                        period: '2014 - 2019',
+                        desc: 'التنسيق الإعلامي وإدارة الفعاليات. إعداد المواد الإعلامية والتقارير.'
+                    }
+                ],
+                skills: ['العلاقات العامة', 'التواصل المؤسسي', 'إدارة الفعاليات', 'الإعلام الرقمي', 'كتابة المحتوى', 'إدارة الأزمات الإعلامية', 'التسويق', 'بناء العلاقات']
+            },
+            'م. أحمد الشهري': {
+                position: 'مسؤول تقنية المعلومات',
+                email: 'ahmed.alshehri@council.org.sa',
+                phone: '+966 50 678 9012',
+                bio: 'متخصص في الحلول التقنية والتحول الرقمي. يمتلك خبرة واسعة في تطوير وإدارة الأنظمة التقنية وتحسين البنية التحتية الرقمية. نجح في قيادة مشاريع التحول الرقمي لعدة مؤسسات مما حسّن من كفاءتها التشغيلية بشكل كبير.',
+                education: [
+                    'ماجستير في علوم الحاسب - جامعة الملك فهد للبترول والمعادن، 2013',
+                    'بكالوريوس في هندسة الحاسب - جامعة الملك عبدالعزيز، 2009',
+                    'شهادات مهنية: CCNA، AWS Certified Solutions Architect'
+                ],
+                experience: [
+                    {
+                        title: 'مسؤول تقنية المعلومات',
+                        company: 'مجلس الجمعيات الأهلية',
+                        period: '2017 - حتى الآن',
+                        desc: 'إدارة البنية التحتية التقنية. قيادة مشاريع التحول الرقمي وتطوير الأنظمة الإلكترونية.'
+                    },
+                    {
+                        title: 'مهندس أنظمة',
+                        company: 'شركة الحلول التقنية',
+                        period: '2012 - 2017',
+                        desc: 'تصميم وتطبيق حلول تقنية متكاملة. دعم فني وصيانة للأنظمة.'
+                    }
+                ],
+                skills: ['إدارة الأنظمة', 'التحول الرقمي', 'الأمن السيبراني', 'تطوير البرمجيات', 'إدارة قواعد البيانات', 'Cloud Computing', 'الشبكات', 'إدارة المشاريع التقنية']
+            }
+        };
+
+        function openCVModal(name, position, category) {
+            const modal = document.getElementById('cvModal');
+            const data = cvData[name];
+            
+            if (data) {
+                // Update header
+                document.getElementById('cvName').textContent = name;
+                document.getElementById('cvPosition').textContent = position;
+                
+                // Update contact info
+                document.getElementById('cvEmail').textContent = data.email;
+                document.getElementById('cvEmail').href = `mailto:${data.email}`;
+                document.getElementById('cvPhone').textContent = data.phone;
+                
+                // Update bio
+                document.getElementById('cvBio').textContent = data.bio;
+                
+                // Update education
+                const educationList = document.getElementById('cvEducation');
+                educationList.innerHTML = data.education.map(edu => `<li>${edu}</li>`).join('');
+                
+                // Update experience
+                const experienceDiv = document.getElementById('cvExperience');
+                experienceDiv.innerHTML = data.experience.map(exp => `
+                    <div class="cv-experience-item">
+                        <div class="cv-exp-title">${exp.title}</div>
+                        <div class="cv-exp-company">${exp.company}</div>
+                        <div class="cv-exp-period">${exp.period}</div>
+                        <div class="cv-exp-desc">${exp.desc}</div>
+                    </div>
+                `).join('');
+                
+                // Update skills
+                const skillsDiv = document.getElementById('cvSkills');
+                skillsDiv.innerHTML = data.skills.map(skill => 
+                    `<span class="cv-skill-tag">${skill}</span>`
+                ).join('');
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCVModal() {
+            const modal = document.getElementById('cvModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close CV modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCVModal();
+            }
+        });
+    </script>
+</body>
+</html>
