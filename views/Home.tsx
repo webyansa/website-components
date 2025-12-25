@@ -83,6 +83,7 @@ const categories: Category[] = [
     title: "الخدمات والتوظيف",
     icon: "💼",
     pages: [
+      { name: "خدمات جدارة", path: "jadarah-services.html", date: "2024-12-25", cssFiles: ["css/jadarah-services.css"], isNew: true, isImportant: true },
       { name: "حجز المواعيد", path: "appointment-booking.html", date: "2024-09-01", cssFiles: ["css/style.css"] },
       { name: "الوظائف", path: "careers.html", date: "2024-09-10", cssFiles: ["css/careers.css"], isNew: true },
     ],
