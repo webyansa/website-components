@@ -7,10 +7,15 @@
   <meta name="description" content="اختر من بين مسارات جدارة المتنوعة لتطوير جمعيتك">
   
   <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Bootstrap 5 RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/jadarah-services.css">
@@ -19,219 +24,279 @@
 
   <!-- Hero Section -->
   <section class="hero-section">
-    <div class="hero-content">
-      <img src="images/jadarah-logo.jpg" alt="شعار جدارة" class="hero-logo">
-      <h1 class="hero-title">خدمات حاضنة جدارة</h1>
-      <p class="hero-subtitle">
-        نقدم لكم ثلاثة مسارات متكاملة لتطوير الجمعيات وتمكينها من تحقيق أهدافها. 
-        اختر المسار المناسب لاحتياجاتك أو حدد خدمات محددة من كل مسار.
-      </p>
+    <!-- Decorative Background Hexagons -->
+    <div class="hex-decoration hex-1"></div>
+    <div class="hex-decoration hex-2"></div>
+    <div class="hex-decoration hex-3"></div>
+    <div class="hex-decoration hex-4"></div>
+    
+    <div class="container">
+      <div class="hero-container text-center">
+        <img src="images/jadarah-logo-hero.png" alt="شعار جدارة" class="hero-logo">
+        
+        <span class="hero-badge">
+          <i class="fas fa-cogs"></i>
+          مركز الخدمات المتكاملة
+        </span>
+        
+        <h1 class="hero-title">
+          خدمات حاضنة <span class="highlight">جدارة</span>
+        </h1>
+        
+        <p class="hero-description">
+          نقدم لكم ثلاثة مسارات متكاملة لتطوير الجمعيات وتمكينها من تحقيق أهدافها. 
+          اختر المسار المناسب لاحتياجاتك أو حدد خدمات محددة من كل مسار.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Selection Summary Bar -->
   <div class="selection-bar" id="selectionBar">
-    <div class="selection-bar-content">
-      <div class="selection-count">
-        <span class="count-badge" id="selectedCount">0</span>
-        <span>خدمات محددة</span>
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div class="selection-count">
+          <span class="count-badge" id="selectedCount">0</span>
+          <span>خدمات محددة</span>
+        </div>
+        <button class="request-btn" onclick="openModal()">
+          <i class="fas fa-paper-plane"></i>
+          طلب الخدمات
+        </button>
       </div>
-      <button class="request-btn" onclick="openModal()">
-        <i class="bi bi-send-fill"></i>
-        طلب الخدمات
-      </button>
     </div>
   </div>
 
   <!-- Main Content -->
   <main class="main-content">
-    
-    <!-- Path 1: التأسيس والحوكمة -->
-    <div class="path-card expanded" data-path="1">
-      <div class="path-header" onclick="togglePath(1)">
-        <div class="path-info">
-          <div class="path-icon path-1">
-            <i class="bi bi-building-gear"></i>
+    <div class="container">
+      
+      <!-- Path 1: التأسيس والحوكمة -->
+      <div class="path-card expanded" data-path="1">
+        <div class="path-header d-flex align-items-center justify-content-between" onclick="togglePath(1)">
+          <div class="path-info d-flex align-items-center gap-3">
+            <div class="path-icon path-1">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="path-details">
+              <h3>مسار التأسيس والحوكمة</h3>
+              <p>بناء الأساس القوي للجمعية وتأسيس الحوكمة الرشيدة</p>
+            </div>
           </div>
-          <div class="path-details">
-            <h3>مسار التأسيس والحوكمة</h3>
-            <p>بناء الأساس القوي للجمعية وتأسيس الحوكمة الرشيدة</p>
+          <div class="path-actions d-flex align-items-center gap-3">
+            <button class="select-all-btn" onclick="event.stopPropagation(); selectPath(1)">
+              <i class="fas fa-check-double me-1"></i>
+              اختيار المسار
+            </button>
+            <div class="toggle-icon">
+              <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
-        <div class="path-actions">
-          <button class="select-all-btn" onclick="event.stopPropagation(); selectPath(1)">
-            اختيار المسار كاملاً
-          </button>
-          <div class="toggle-icon">
-            <i class="bi bi-chevron-down"></i>
+        <div class="services-container">
+          <div class="services-grid">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="1" data-service="1-1" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>إعداد النظام الأساسي</h4>
+                    <p>صياغة وتطوير النظام الأساسي للجمعية وفق أفضل الممارسات</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="1" data-service="1-2" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>الهيكل التنظيمي</h4>
+                    <p>تصميم الهيكل التنظيمي المناسب وتحديد المسؤوليات</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="1" data-service="1-3" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>سياسات الحوكمة</h4>
+                    <p>إعداد سياسات الحوكمة والإجراءات التنظيمية</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="1" data-service="1-4" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>دليل الإجراءات</h4>
+                    <p>توثيق جميع الإجراءات والعمليات في دليل متكامل</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="1" data-service="1-5" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>الامتثال والتراخيص</h4>
+                    <p>ضمان الامتثال للأنظمة والحصول على التراخيص اللازمة</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="services-container">
-        <div class="services-grid">
-          <div class="service-item" data-path="1" data-service="1-1" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>إعداد النظام الأساسي</h4>
-              <p>صياغة وتطوير النظام الأساسي للجمعية وفق أفضل الممارسات</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="1" data-service="1-2" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>الهيكل التنظيمي</h4>
-              <p>تصميم الهيكل التنظيمي المناسب وتحديد المسؤوليات</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="1" data-service="1-3" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>سياسات الحوكمة</h4>
-              <p>إعداد سياسات الحوكمة والإجراءات التنظيمية</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="1" data-service="1-4" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>دليل الإجراءات</h4>
-              <p>توثيق جميع الإجراءات والعمليات في دليل متكامل</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="1" data-service="1-5" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>الامتثال والتراخيص</h4>
-              <p>ضمان الامتثال للأنظمة والحصول على التراخيص اللازمة</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Path 2: التطوير المؤسسي -->
-    <div class="path-card" data-path="2">
-      <div class="path-header" onclick="togglePath(2)">
-        <div class="path-info">
-          <div class="path-icon path-2">
-            <i class="bi bi-graph-up-arrow"></i>
+      <!-- Path 2: التطوير المؤسسي -->
+      <div class="path-card" data-path="2">
+        <div class="path-header d-flex align-items-center justify-content-between" onclick="togglePath(2)">
+          <div class="path-info d-flex align-items-center gap-3">
+            <div class="path-icon path-2">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="path-details">
+              <h3>مسار التطوير المؤسسي</h3>
+              <p>رفع كفاءة الأداء وتطوير القدرات التنظيمية</p>
+            </div>
           </div>
-          <div class="path-details">
-            <h3>مسار التطوير المؤسسي</h3>
-            <p>رفع كفاءة الأداء وتطوير القدرات التنظيمية</p>
+          <div class="path-actions d-flex align-items-center gap-3">
+            <button class="select-all-btn" onclick="event.stopPropagation(); selectPath(2)">
+              <i class="fas fa-check-double me-1"></i>
+              اختيار المسار
+            </button>
+            <div class="toggle-icon">
+              <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
-        <div class="path-actions">
-          <button class="select-all-btn" onclick="event.stopPropagation(); selectPath(2)">
-            اختيار المسار كاملاً
-          </button>
-          <div class="toggle-icon">
-            <i class="bi bi-chevron-down"></i>
+        <div class="services-container">
+          <div class="services-grid">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="2" data-service="2-1" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>التخطيط الاستراتيجي</h4>
+                    <p>إعداد الخطة الاستراتيجية والأهداف طويلة المدى</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="2" data-service="2-2" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>إدارة الموارد البشرية</h4>
+                    <p>تطوير سياسات الموارد البشرية وبرامج التدريب</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="2" data-service="2-3" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>الإدارة المالية</h4>
+                    <p>تطوير النظام المالي والرقابة المالية</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="2" data-service="2-4" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>قياس الأداء</h4>
+                    <p>بناء مؤشرات الأداء ونظام التقييم والمتابعة</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="2" data-service="2-5" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>التحول الرقمي</h4>
+                    <p>رقمنة العمليات وتبني الحلول التقنية</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="services-container">
-        <div class="services-grid">
-          <div class="service-item" data-path="2" data-service="2-1" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>التخطيط الاستراتيجي</h4>
-              <p>إعداد الخطة الاستراتيجية والأهداف طويلة المدى</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="2" data-service="2-2" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>إدارة الموارد البشرية</h4>
-              <p>تطوير سياسات الموارد البشرية وبرامج التدريب</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="2" data-service="2-3" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>الإدارة المالية</h4>
-              <p>تطوير النظام المالي والرقابة المالية</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="2" data-service="2-4" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>قياس الأداء</h4>
-              <p>بناء مؤشرات الأداء ونظام التقييم والمتابعة</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="2" data-service="2-5" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>التحول الرقمي</h4>
-              <p>رقمنة العمليات وتبني الحلول التقنية</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Path 3: الاستدامة والتأثير -->
-    <div class="path-card" data-path="3">
-      <div class="path-header" onclick="togglePath(3)">
-        <div class="path-info">
-          <div class="path-icon path-3">
-            <i class="bi bi-stars"></i>
+      <!-- Path 3: الاستدامة والتأثير -->
+      <div class="path-card" data-path="3">
+        <div class="path-header d-flex align-items-center justify-content-between" onclick="togglePath(3)">
+          <div class="path-info d-flex align-items-center gap-3">
+            <div class="path-icon path-3">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="path-details">
+              <h3>مسار الاستدامة والتأثير</h3>
+              <p>تحقيق الاستدامة المالية وتعظيم الأثر المجتمعي</p>
+            </div>
           </div>
-          <div class="path-details">
-            <h3>مسار الاستدامة والتأثير</h3>
-            <p>تحقيق الاستدامة المالية وتعظيم الأثر المجتمعي</p>
+          <div class="path-actions d-flex align-items-center gap-3">
+            <button class="select-all-btn" onclick="event.stopPropagation(); selectPath(3)">
+              <i class="fas fa-check-double me-1"></i>
+              اختيار المسار
+            </button>
+            <div class="toggle-icon">
+              <i class="fas fa-chevron-down"></i>
+            </div>
           </div>
         </div>
-        <div class="path-actions">
-          <button class="select-all-btn" onclick="event.stopPropagation(); selectPath(3)">
-            اختيار المسار كاملاً
-          </button>
-          <div class="toggle-icon">
-            <i class="bi bi-chevron-down"></i>
+        <div class="services-container">
+          <div class="services-grid">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="3" data-service="3-1" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>استراتيجية التمويل</h4>
+                    <p>تطوير مصادر التمويل المتنوعة والمستدامة</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="3" data-service="3-2" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>كتابة المقترحات</h4>
+                    <p>إعداد مقترحات المشاريع والتقدم للمنح</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="3" data-service="3-3" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>قياس الأثر</h4>
+                    <p>قياس وتوثيق الأثر المجتمعي للبرامج</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="3" data-service="3-4" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>بناء الشراكات</h4>
+                    <p>تطوير الشراكات الاستراتيجية والتعاون المؤسسي</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-item" data-path="3" data-service="3-5" onclick="toggleService(this)">
+                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                  <div class="service-content">
+                    <h4>التسويق المؤسسي</h4>
+                    <p>بناء الهوية والتواصل مع المجتمع والداعمين</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="services-container">
-        <div class="services-grid">
-          <div class="service-item" data-path="3" data-service="3-1" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>استراتيجية التمويل</h4>
-              <p>تطوير مصادر التمويل المتنوعة والمستدامة</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="3" data-service="3-2" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>كتابة المقترحات</h4>
-              <p>إعداد مقترحات المشاريع والتقدم للمنح</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="3" data-service="3-3" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>قياس الأثر</h4>
-              <p>قياس وتوثيق الأثر المجتمعي للبرامج</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="3" data-service="3-4" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>بناء الشراكات</h4>
-              <p>تطوير الشراكات الاستراتيجية والتعاون المؤسسي</p>
-            </div>
-          </div>
-          <div class="service-item" data-path="3" data-service="3-5" onclick="toggleService(this)">
-            <div class="service-checkbox"><i class="bi bi-check"></i></div>
-            <div class="service-content">
-              <h4>التسويق المؤسسي</h4>
-              <p>بناء الهوية والتواصل مع المجتمع والداعمين</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
+    </div>
   </main>
 
   <!-- Request Modal -->
@@ -239,7 +304,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button class="modal-close" onclick="closeModal()">
-          <i class="bi bi-x-lg"></i>
+          <i class="fas fa-times"></i>
         </button>
         <h2>طلب خدمات جدارة</h2>
         <p>أكمل البيانات التالية لإرسال طلبك</p>
@@ -248,7 +313,7 @@
         <!-- Form State -->
         <div id="formState">
           <div class="selected-services-summary">
-            <h4>الخدمات المحددة:</h4>
+            <h4><i class="fas fa-list-check me-2"></i>الخدمات المحددة:</h4>
             <div class="selected-tags" id="selectedTags"></div>
           </div>
           
@@ -258,14 +323,18 @@
               <input type="text" class="form-control" name="associationName" placeholder="أدخل اسم الجمعية" required>
             </div>
             
-            <div class="form-row">
-              <div class="form-group">
-                <label>رقم الترخيص <span class="required">*</span></label>
-                <input type="text" class="form-control" name="licenseNumber" placeholder="رقم الترخيص" required>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>رقم الترخيص <span class="required">*</span></label>
+                  <input type="text" class="form-control" name="licenseNumber" placeholder="رقم الترخيص" required>
+                </div>
               </div>
-              <div class="form-group">
-                <label>المدينة <span class="required">*</span></label>
-                <input type="text" class="form-control" name="city" placeholder="المدينة" required>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>المدينة <span class="required">*</span></label>
+                  <input type="text" class="form-control" name="city" placeholder="المدينة" required>
+                </div>
               </div>
             </div>
             
@@ -274,14 +343,18 @@
               <input type="text" class="form-control" name="contactName" placeholder="اسم المسؤول للتواصل" required>
             </div>
             
-            <div class="form-row">
-              <div class="form-group">
-                <label>البريد الإلكتروني <span class="required">*</span></label>
-                <input type="email" class="form-control" name="email" placeholder="example@domain.com" required>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>البريد الإلكتروني <span class="required">*</span></label>
+                  <input type="email" class="form-control" name="email" placeholder="example@domain.com" required>
+                </div>
               </div>
-              <div class="form-group">
-                <label>رقم الجوال <span class="required">*</span></label>
-                <input type="tel" class="form-control" name="phone" placeholder="05xxxxxxxx" required>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>رقم الجوال <span class="required">*</span></label>
+                  <input type="tel" class="form-control" name="phone" placeholder="05xxxxxxxx" required>
+                </div>
               </div>
             </div>
             
@@ -296,7 +369,7 @@
             </div>
             
             <button type="submit" class="submit-btn">
-              <i class="bi bi-send-fill"></i>
+              <i class="fas fa-paper-plane"></i>
               إرسال الطلب
             </button>
           </form>
@@ -305,7 +378,7 @@
         <!-- Success State -->
         <div class="success-state" id="successState">
           <div class="success-icon">
-            <i class="bi bi-check-lg"></i>
+            <i class="fas fa-check"></i>
           </div>
           <h3>تم إرسال طلبك بنجاح!</h3>
           <p>شكراً لتواصلك معنا. سيقوم فريق جدارة بمراجعة طلبك والتواصل معك خلال 48 ساعة عمل.</p>
@@ -319,9 +392,14 @@
 
   <!-- Footer -->
   <footer class="page-footer">
-    <p>جميع الحقوق محفوظة © 2024 حاضنة جدارة</p>
+    <div class="container">
+      <p>جميع الحقوق محفوظة © 2024 حاضنة جدارة - مجلس الجمعيات الأهلية</p>
+    </div>
   </footer>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
   <script>
     // State
     let selectedServices = new Set();
@@ -411,9 +489,8 @@
         
         const pathServices = Array.from(services).map(s => s.dataset.service);
         const allSelected = pathServices.every(s => selectedServices.has(s));
-        const someSelected = pathServices.some(s => selectedServices.has(s));
         
-        if (allSelected) {
+        if (allSelected && pathServices.length > 0) {
           btn.classList.add('active');
           pathCard.classList.add('selected');
         } else {
@@ -496,6 +573,13 @@
     // Close modal on outside click
     document.getElementById('requestModal').addEventListener('click', function(e) {
       if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
         closeModal();
       }
     });
