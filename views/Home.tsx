@@ -368,10 +368,10 @@ const Home = () => {
 
   return (
     <div dir="rtl" className="min-vh-100" style={{ background: theme.pageBg }}>
-      {/* Professional Hero Section */}
+      {/* Professional Hero Section - Webyan Cyan Colors */}
       <header
         style={{
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
+          background: "linear-gradient(135deg, #0d9488 0%, #24c2ec 50%, #38bdf8 100%)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -381,8 +381,8 @@ const Home = () => {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                              radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.06) 0%, transparent 50%)`,
+            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 50%)`,
             pointerEvents: "none",
           }}
         />
@@ -395,19 +395,11 @@ const Home = () => {
                 src={webyanLogo}
                 alt="شعار ويبيان"
                 style={{ 
-                  height: "32px", 
+                  height: "36px", 
                   width: "auto",
                   filter: "brightness(0) invert(1)",
                 }}
               />
-              <span style={{ 
-                color: "rgba(255,255,255,0.6)", 
-                fontSize: "0.75rem",
-                fontWeight: 500,
-                letterSpacing: "0.5px",
-              }}>
-                WEBYAN
-              </span>
             </div>
             <div 
               className="d-flex align-items-center gap-2"
