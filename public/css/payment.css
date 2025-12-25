@@ -1,0 +1,960 @@
+/* ============================================
+   Payment Page Styles - Webyan Platform
+   ============================================ */
+
+:root {
+    --webyan-primary: #1D3B8B;
+    --webyan-primary-light: #2a4fa3;
+    --webyan-secondary: #27C4F4;
+    --webyan-light: #F5F7FA;
+    --webyan-light-alt: #E9ECEF;
+    --webyan-dark: #1a1a2e;
+    --webyan-text: #333;
+    --webyan-text-muted: #6c757d;
+    --webyan-success: #28a745;
+    --webyan-border: #dee2e6;
+    --webyan-shadow: 0 4px 20px rgba(29, 59, 139, 0.1);
+    --webyan-shadow-hover: 0 8px 30px rgba(29, 59, 139, 0.15);
+    --webyan-radius: 16px;
+    --webyan-radius-sm: 10px;
+}
+
+* {
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: var(--webyan-light);
+    color: var(--webyan-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   Header Styles
+   ============================================ */
+.main-header {
+    background: linear-gradient(135deg, var(--webyan-primary) 0%, var(--webyan-primary-light) 100%);
+    padding: 15px 0;
+    box-shadow: var(--webyan-shadow);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    height: 45px;
+    object-fit: contain;
+}
+
+.header-left .btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: var(--webyan-radius-sm);
+}
+
+/* ============================================
+   Breadcrumb Styles
+   ============================================ */
+.breadcrumb-section {
+    background: white;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--webyan-border);
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: var(--webyan-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--webyan-secondary);
+}
+
+.breadcrumb-item.active {
+    color: var(--webyan-text-muted);
+}
+
+/* ============================================
+   Stepper Styles
+   ============================================ */
+.stepper-section {
+    background: white;
+    padding: 25px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stepper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.stepper-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.stepper-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--webyan-light-alt);
+    color: var(--webyan-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stepper-item.active .stepper-icon {
+    background: var(--webyan-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(29, 59, 139, 0.3);
+}
+
+.stepper-item.completed .stepper-icon {
+    background: var(--webyan-success);
+    color: white;
+}
+
+.stepper-label {
+    font-size: 0.9rem;
+    color: var(--webyan-text-muted);
+    font-weight: 500;
+}
+
+.stepper-item.active .stepper-label,
+.stepper-item.completed .stepper-label {
+    color: var(--webyan-primary);
+    font-weight: 600;
+}
+
+.stepper-line {
+    flex: 1;
+    height: 3px;
+    background: var(--webyan-light-alt);
+    margin: 0 20px;
+    margin-bottom: 25px;
+    border-radius: 2px;
+}
+
+.stepper-line.completed {
+    background: var(--webyan-success);
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+.main-content {
+    flex: 1;
+    padding: 0 0 50px;
+}
+
+/* ============================================
+   Summary Card
+   ============================================ */
+.summary-card {
+    background: white;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.summary-header {
+    background: linear-gradient(135deg, var(--webyan-primary) 0%, var(--webyan-primary-light) 100%);
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.summary-header i {
+    font-size: 1.3rem;
+}
+
+.summary-header h5 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.summary-body {
+    padding: 20px;
+}
+
+.summary-project {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.project-thumb {
+    width: 70px;
+    height: 70px;
+    border-radius: var(--webyan-radius-sm);
+    object-fit: cover;
+}
+
+.project-info h6 {
+    margin: 0 0 5px;
+    font-weight: 600;
+    color: var(--webyan-text);
+}
+
+.project-id {
+    font-size: 0.85rem;
+    color: var(--webyan-text-muted);
+}
+
+.summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.summary-row .amount,
+.summary-row .gift-count {
+    font-weight: 600;
+    color: var(--webyan-primary);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.total-amount {
+    color: var(--webyan-success);
+    font-size: 1.3rem;
+}
+
+/* ============================================
+   Payment Card
+   ============================================ */
+.payment-card {
+    background: white;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.payment-header {
+    background: var(--webyan-light);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--webyan-border);
+}
+
+.payment-header i {
+    font-size: 1.3rem;
+    color: var(--webyan-primary);
+}
+
+.payment-header h5 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--webyan-text);
+}
+
+.payment-body {
+    padding: 20px;
+}
+
+/* Payment Methods */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.payment-method {
+    cursor: pointer;
+}
+
+.payment-method input {
+    display: none;
+}
+
+.method-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid var(--webyan-border);
+    border-radius: var(--webyan-radius-sm);
+    transition: all 0.3s ease;
+}
+
+.payment-method input:checked + .method-content {
+    border-color: var(--webyan-primary);
+    background: rgba(29, 59, 139, 0.03);
+}
+
+.method-content:hover {
+    border-color: var(--webyan-secondary);
+}
+
+.method-icon {
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.method-icon img {
+    max-height: 30px;
+    max-width: 55px;
+    object-fit: contain;
+}
+
+.mada-icon img {
+    max-height: 28px;
+    max-width: 60px;
+}
+
+.applepay-icon i {
+    font-size: 2rem;
+    color: #000;
+}
+
+.stcpay-icon img {
+    max-height: 32px;
+    max-width: 70px;
+}
+
+.tamara-icon img {
+    max-height: 35px;
+    max-width: 80px;
+}
+
+.method-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.method-name {
+    font-weight: 600;
+    color: var(--webyan-text);
+}
+
+.method-desc {
+    font-size: 0.8rem;
+    color: var(--webyan-text-muted);
+}
+
+.method-check {
+    color: var(--webyan-border);
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.payment-method input:checked + .method-content .method-check {
+    color: var(--webyan-success);
+}
+
+/* Card Details Form */
+.card-details-form {
+    background: var(--webyan-light);
+    padding: 20px;
+    border-radius: var(--webyan-radius-sm);
+    margin-bottom: 20px;
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--webyan-primary);
+}
+
+.form-section-title i {
+    font-size: 1.1rem;
+}
+
+.form-label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--webyan-text);
+    margin-bottom: 6px;
+}
+
+.form-control {
+    border-radius: var(--webyan-radius-sm);
+    border: 1px solid var(--webyan-border);
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--webyan-primary);
+    box-shadow: 0 0 0 3px rgba(29, 59, 139, 0.1);
+}
+
+.input-group-text {
+    background: white;
+    border-color: var(--webyan-border);
+    color: var(--webyan-text-muted);
+}
+
+/* Apple Pay Section */
+.applepay-section {
+    text-align: center;
+    padding: 30px 20px;
+    background: var(--webyan-light);
+    border-radius: var(--webyan-radius-sm);
+    margin-bottom: 20px;
+}
+
+.applepay-info i {
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.applepay-info p {
+    margin: 0;
+    color: var(--webyan-text-muted);
+}
+
+/* STC Pay Section */
+.stcpay-section {
+    background: var(--webyan-light);
+    padding: 20px;
+    border-radius: var(--webyan-radius-sm);
+    margin-bottom: 20px;
+}
+
+/* Security Notice */
+.security-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: var(--webyan-radius-sm);
+    color: var(--webyan-success);
+    font-size: 0.85rem;
+}
+
+.security-notice i {
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   Action Buttons
+   ============================================ */
+.action-buttons {
+    margin-top: 20px;
+}
+
+.btn-pay {
+    background: linear-gradient(135deg, var(--webyan-primary) 0%, var(--webyan-primary-light) 100%);
+    border: none;
+    color: white;
+    padding: 16px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--webyan-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-pay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(29, 59, 139, 0.3);
+    background: linear-gradient(135deg, var(--webyan-primary-light) 0%, var(--webyan-primary) 100%);
+}
+
+.btn-pay .pay-amount {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+}
+
+.btn-outline-secondary {
+    border-color: var(--webyan-border);
+    color: var(--webyan-text-muted);
+    padding: 12px 20px;
+    border-radius: var(--webyan-radius-sm);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--webyan-light);
+    border-color: var(--webyan-primary);
+    color: var(--webyan-primary);
+}
+
+/* ============================================
+   Donor Card
+   ============================================ */
+.donor-card {
+    background: white;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.donor-header {
+    background: var(--webyan-light);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--webyan-border);
+}
+
+.donor-header i {
+    font-size: 1.3rem;
+    color: var(--webyan-primary);
+}
+
+.donor-header h5 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--webyan-text);
+    flex: 1;
+}
+
+.donor-body {
+    padding: 20px;
+}
+
+.info-item {
+    background: var(--webyan-light);
+    padding: 15px;
+    border-radius: var(--webyan-radius-sm);
+}
+
+.info-item label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--webyan-text-muted);
+    margin-bottom: 5px;
+}
+
+.info-item p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--webyan-text);
+}
+
+/* ============================================
+   Gift Details Card
+   ============================================ */
+.gift-details-card {
+    background: white;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.gift-header {
+    background: linear-gradient(135deg, var(--webyan-secondary) 0%, #1fa8d4 100%);
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gift-header i {
+    font-size: 1.3rem;
+}
+
+.gift-header h5 {
+    margin: 0;
+    font-weight: 600;
+    flex: 1;
+}
+
+.gift-header .badge {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.gift-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gift-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: var(--webyan-light);
+    border-radius: var(--webyan-radius-sm);
+}
+
+.gift-number {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--webyan-secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.gift-info {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gift-recipient,
+.gift-phone,
+.gift-amount {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+}
+
+.gift-recipient i,
+.gift-phone i,
+.gift-amount i {
+    color: var(--webyan-text-muted);
+}
+
+.gift-amount {
+    background: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--webyan-success);
+}
+
+/* ============================================
+   Terms Card
+   ============================================ */
+.terms-card {
+    background: white;
+    padding: 20px;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 20px;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.form-check-input:checked {
+    background-color: var(--webyan-primary);
+    border-color: var(--webyan-primary);
+}
+
+.form-check-label {
+    font-size: 0.95rem;
+    color: var(--webyan-text);
+}
+
+.terms-link {
+    color: var(--webyan-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   Trust Badges
+   ============================================ */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 25px;
+    background: white;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 20px;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.trust-item i {
+    font-size: 2rem;
+    color: var(--webyan-success);
+}
+
+.trust-item span {
+    font-size: 0.85rem;
+    color: var(--webyan-text-muted);
+    font-weight: 500;
+}
+
+/* ============================================
+   FAQ Section
+   ============================================ */
+.faq-section {
+    background: white;
+    padding: 20px;
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+}
+
+.faq-section > h6 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--webyan-primary);
+}
+
+.accordion-item {
+    border: 1px solid var(--webyan-border);
+    border-radius: var(--webyan-radius-sm) !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-item:last-child {
+    margin-bottom: 0;
+}
+
+.accordion-button {
+    font-weight: 500;
+    color: var(--webyan-text);
+    background: var(--webyan-light);
+    padding: 15px 20px;
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--webyan-primary);
+    color: white;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--webyan-border);
+}
+
+.accordion-body {
+    font-size: 0.9rem;
+    color: var(--webyan-text-muted);
+    line-height: 1.7;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.main-footer {
+    background: var(--webyan-dark);
+    color: white;
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-brand p {
+    margin: 10px 0 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--webyan-secondary);
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+@media (max-width: 991.98px) {
+    .main-content {
+        padding: 0 0 30px;
+    }
+
+    .trust-badges {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .trust-item {
+        flex: 1;
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .header-left .btn span {
+        display: none;
+    }
+
+    .header-left .btn {
+        padding: 8px 12px;
+    }
+
+    .stepper-label {
+        font-size: 0.8rem;
+    }
+
+    .stepper-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+
+    .stepper-line {
+        margin: 0 10px;
+        margin-bottom: 22px;
+    }
+
+    .method-icon {
+        width: 50px;
+    }
+
+    .method-icon img {
+        max-height: 20px;
+        max-width: 35px;
+    }
+
+    .method-desc {
+        display: none;
+    }
+
+    .btn-pay {
+        font-size: 1rem;
+        padding: 14px 20px;
+    }
+
+    .trust-badges {
+        padding: 20px 15px;
+    }
+
+    .trust-item i {
+        font-size: 1.5rem;
+    }
+
+    .trust-item span {
+        font-size: 0.75rem;
+    }
+
+    .gift-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .summary-project {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-thumb {
+        margin: 0 auto;
+    }
+
+    .method-content {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .method-name {
+        font-size: 0.9rem;
+    }
+
+    .card-details-form {
+        padding: 15px;
+    }
+}

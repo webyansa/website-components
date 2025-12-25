@@ -1,0 +1,1127 @@
+/* ============================================
+   Webyan Cart Page Styles
+   Platform: Webyan
+   Version: 1.0
+   ============================================ */
+
+/* ============================================
+   CSS Variables - Webyan Brand Colors
+   ============================================ */
+:root {
+    --webyan-dark-blue: #1D3B8B;
+    --webyan-sky-blue: #27C4F4;
+    --webyan-light-bg: #F5F7FA;
+    --webyan-border: #E9ECEF;
+    --webyan-text-dark: #2D3748;
+    --webyan-text-muted: #718096;
+    --webyan-success: #48BB78;
+    --webyan-danger: #E53E3E;
+    --webyan-warning: #ECC94B;
+    --webyan-white: #FFFFFF;
+    --webyan-shadow: 0 4px 20px rgba(29, 59, 139, 0.08);
+    --webyan-shadow-hover: 0 8px 30px rgba(29, 59, 139, 0.12);
+    --webyan-radius: 16px;
+    --webyan-radius-sm: 10px;
+    --webyan-radius-xs: 6px;
+    --webyan-transition: all 0.3s ease;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--webyan-light-bg);
+    color: var(--webyan-text-dark);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* ============================================
+   Unified Header Styles
+   ============================================ */
+.webyan-header {
+    background-color: var(--webyan-white);
+    box-shadow: var(--webyan-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.webyan-header .navbar {
+    padding: 0.75rem 0;
+}
+
+.header-logo {
+    height: 42px;
+    width: auto;
+}
+
+.webyan-header .nav-link {
+    color: var(--webyan-text-dark);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    margin: 0 0.15rem;
+    border-radius: var(--webyan-radius-xs);
+    font-size: 0.9rem;
+    transition: var(--webyan-transition);
+}
+
+.webyan-header .nav-link:hover,
+.webyan-header .nav-link.active {
+    color: var(--webyan-dark-blue);
+    background-color: var(--webyan-light-bg);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-header-cart {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--webyan-light-bg);
+    color: var(--webyan-text-dark);
+    border: none;
+    transition: var(--webyan-transition);
+    font-size: 1.1rem;
+}
+
+.btn-header-cart:hover,
+.btn-header-cart.active {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+}
+
+.btn-donations-cart:hover {
+    background-color: var(--webyan-success);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-badge-store {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+}
+
+.cart-badge-donations {
+    background-color: var(--webyan-success);
+    color: var(--webyan-white);
+}
+
+/* Header Cart Buttons with Labels */
+.btn-header-cart-labeled {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background-color: var(--webyan-light-bg);
+    color: var(--webyan-text-dark);
+    border: 1px solid var(--webyan-border);
+    transition: var(--webyan-transition);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.btn-header-cart-labeled:hover,
+.btn-header-cart-labeled.active {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+    border-color: var(--webyan-dark-blue);
+}
+
+.btn-header-cart-labeled i {
+    font-size: 1.1rem;
+}
+
+.cart-label {
+    font-weight: 600;
+}
+
+.cart-badge-inline {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* Donations Cart - Green Theme */
+.btn-donations-cart-labeled {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--webyan-success);
+    border-color: var(--webyan-success);
+}
+
+.btn-donations-cart-labeled:hover {
+    background-color: var(--webyan-success);
+    color: var(--webyan-white);
+    border-color: var(--webyan-success);
+}
+
+.cart-badge-green {
+    background-color: var(--webyan-success);
+    color: var(--webyan-white);
+}
+
+/* Auth Buttons */
+.header-auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 1px solid var(--webyan-border);
+}
+
+.btn-auth-login {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--webyan-dark-blue);
+    border: 1px solid var(--webyan-dark-blue);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--webyan-transition);
+}
+
+.btn-auth-login:hover {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+}
+
+.btn-auth-register {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--webyan-dark-blue) 0%, var(--webyan-sky-blue) 100%);
+    color: var(--webyan-white);
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--webyan-transition);
+}
+
+.btn-auth-register:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    color: var(--webyan-white);
+}
+
+/* ============================================
+   Legacy Header Styles (kept for compatibility)
+   ============================================ */
+.header-section {
+    background-color: var(--webyan-white);
+    box-shadow: var(--webyan-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-link {
+    display: inline-block;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.nav-link-custom {
+    color: var(--webyan-text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--webyan-transition);
+}
+
+.nav-link-custom::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--webyan-dark-blue), var(--webyan-sky-blue));
+    transition: var(--webyan-transition);
+}
+
+.nav-link-custom:hover {
+    color: var(--webyan-dark-blue);
+}
+
+.nav-link-custom:hover::after {
+    width: 100%;
+}
+
+.cart-icon-link {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--webyan-light-bg);
+    border-radius: 50%;
+    color: var(--webyan-dark-blue);
+    font-size: 1.3rem;
+    transition: var(--webyan-transition);
+}
+
+.cart-icon-link:hover {
+    background-color: var(--webyan-sky-blue);
+    color: var(--webyan-white);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, var(--webyan-sky-blue), var(--webyan-dark-blue));
+    color: var(--webyan-white);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, var(--webyan-dark-blue), var(--webyan-sky-blue));
+    color: var(--webyan-white);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--webyan-radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--webyan-transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(29, 59, 139, 0.3);
+    color: var(--webyan-white);
+}
+
+/* ============================================
+   Breadcrumb Section
+   ============================================ */
+.breadcrumb-section {
+    background-color: var(--webyan-white);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--webyan-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.breadcrumb-pattern-right {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.breadcrumb-pattern-right img {
+    height: 100%;
+    width: auto;
+}
+
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: var(--webyan-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--webyan-transition);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--webyan-sky-blue);
+}
+
+.breadcrumb-item.active {
+    color: var(--webyan-dark-blue);
+    font-weight: 600;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: '\f284';
+    font-family: 'bootstrap-icons';
+    color: var(--webyan-border);
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--webyan-dark-blue);
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+.main-content {
+    padding: 2rem 0 4rem;
+}
+
+/* ============================================
+   Cart Section Card
+   ============================================ */
+.cart-section-card {
+    background-color: var(--webyan-white);
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(29, 59, 139, 0.03), rgba(39, 196, 244, 0.03));
+    border-bottom: 1px solid var(--webyan-border);
+}
+
+.section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--webyan-dark-blue);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-title i {
+    font-size: 1.3rem;
+    color: var(--webyan-sky-blue);
+}
+
+.items-count {
+    background: linear-gradient(135deg, var(--webyan-sky-blue), var(--webyan-dark-blue));
+    color: var(--webyan-white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+}
+
+/* ============================================
+   Cart Items List
+   ============================================ */
+.cart-items-list {
+    padding: 0.5rem;
+}
+
+.cart-item-card {
+    padding: 1.25rem;
+    border-radius: var(--webyan-radius-sm);
+    border: 1px solid transparent;
+    margin-bottom: 0.5rem;
+    transition: var(--webyan-transition);
+}
+
+.cart-item-card:hover {
+    background-color: var(--webyan-light-bg);
+    border-color: var(--webyan-border);
+}
+
+.cart-item-card:last-child {
+    margin-bottom: 0;
+}
+
+.item-image-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--webyan-radius-sm);
+    overflow: hidden;
+    background-color: var(--webyan-light-bg);
+    flex-shrink: 0;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--webyan-dark-blue), var(--webyan-sky-blue));
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--webyan-white);
+}
+
+.donation-image {
+    position: relative;
+}
+
+.donation-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(29, 59, 139, 0.1), rgba(39, 196, 244, 0.1));
+    border-radius: var(--webyan-radius-sm);
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    margin-bottom: 0.5rem;
+}
+
+.badge-product {
+    background-color: rgba(29, 59, 139, 0.1);
+    color: var(--webyan-dark-blue);
+}
+
+.badge-service {
+    background-color: rgba(39, 196, 244, 0.15);
+    color: #0891b2;
+}
+
+.badge-donation {
+    background-color: rgba(236, 201, 75, 0.2);
+    color: #b7791f;
+}
+
+.item-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--webyan-text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.item-description {
+    font-size: 0.85rem;
+    color: var(--webyan-text-muted);
+    margin-bottom: 0;
+}
+
+.quantity-wrapper {
+    min-width: 120px;
+}
+
+.quantity-input-group {
+    width: 130px;
+}
+
+.btn-quantity {
+    background-color: var(--webyan-light-bg);
+    border: 1px solid var(--webyan-border);
+    color: var(--webyan-dark-blue);
+    padding: 0.5rem 0.75rem;
+    transition: var(--webyan-transition);
+}
+
+.btn-quantity:hover {
+    background-color: var(--webyan-sky-blue);
+    border-color: var(--webyan-sky-blue);
+    color: var(--webyan-white);
+}
+
+.quantity-input {
+    text-align: center;
+    font-weight: 600;
+    border-color: var(--webyan-border);
+}
+
+.quantity-input:focus {
+    border-color: var(--webyan-sky-blue);
+    box-shadow: 0 0 0 3px rgba(39, 196, 244, 0.15);
+}
+
+.service-type-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--webyan-light-bg);
+    color: var(--webyan-text-muted);
+    font-size: 0.85rem;
+    border-radius: var(--webyan-radius-xs);
+}
+
+.donation-input-group {
+    width: 150px;
+}
+
+.donation-amount-input {
+    text-align: center;
+    font-weight: 600;
+    border-color: var(--webyan-border);
+}
+
+.donation-amount-input:focus {
+    border-color: var(--webyan-sky-blue);
+    box-shadow: 0 0 0 3px rgba(39, 196, 244, 0.15);
+}
+
+.donation-input-group .input-group-text {
+    background-color: var(--webyan-light-bg);
+    border-color: var(--webyan-border);
+    color: var(--webyan-text-muted);
+    font-size: 0.85rem;
+}
+
+.item-price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--webyan-dark-blue);
+}
+
+.donation-price {
+    color: var(--webyan-success);
+}
+
+.btn-delete {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(229, 62, 62, 0.08);
+    color: var(--webyan-danger);
+    border: none;
+    border-radius: 50%;
+    transition: var(--webyan-transition);
+}
+
+.btn-delete:hover {
+    background-color: var(--webyan-danger);
+    color: var(--webyan-white);
+    transform: scale(1.1);
+}
+
+/* ============================================
+   Order Summary Card
+   ============================================ */
+.order-summary-card {
+    background-color: var(--webyan-white);
+    border-radius: var(--webyan-radius);
+    box-shadow: var(--webyan-shadow);
+    padding: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.summary-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--webyan-dark-blue);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--webyan-light-bg);
+}
+
+.summary-title i {
+    font-size: 1.4rem;
+    color: var(--webyan-sky-blue);
+}
+
+.summary-details {
+    margin-bottom: 1.5rem;
+}
+
+.summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+}
+
+.summary-label {
+    font-size: 0.9rem;
+    color: var(--webyan-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.summary-label i {
+    font-size: 1rem;
+    color: var(--webyan-sky-blue);
+}
+
+.summary-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--webyan-text-dark);
+}
+
+.summary-divider {
+    margin: 0.5rem 0;
+    border-color: var(--webyan-border);
+    opacity: 0.5;
+}
+
+.discount-value {
+    color: var(--webyan-success);
+}
+
+.shipping-value {
+    color: var(--webyan-success);
+    font-weight: 700;
+}
+
+.total-row .summary-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--webyan-text-dark);
+}
+
+.total-value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--webyan-dark-blue);
+}
+
+/* ============================================
+   Coupon Section
+   ============================================ */
+.coupon-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--webyan-light-bg);
+    border-radius: var(--webyan-radius-sm);
+}
+
+.coupon-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--webyan-text-dark);
+    margin-bottom: 0.75rem;
+}
+
+.coupon-input-group {
+    border-radius: var(--webyan-radius-xs);
+    overflow: hidden;
+}
+
+.coupon-input {
+    border: 1px solid var(--webyan-border);
+    border-radius: var(--webyan-radius-xs) 0 0 var(--webyan-radius-xs);
+    font-size: 0.9rem;
+}
+
+.coupon-input:focus {
+    border-color: var(--webyan-sky-blue);
+    box-shadow: 0 0 0 3px rgba(39, 196, 244, 0.15);
+}
+
+.coupon-input::placeholder {
+    color: var(--webyan-text-muted);
+}
+
+.btn-coupon {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+    border: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.25rem;
+    transition: var(--webyan-transition);
+}
+
+.btn-coupon:hover {
+    background-color: var(--webyan-sky-blue);
+    color: var(--webyan-white);
+}
+
+/* ============================================
+   Summary Action Buttons
+   ============================================ */
+.summary-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--webyan-dark-blue), var(--webyan-sky-blue));
+    color: var(--webyan-white);
+    border: none;
+    border-radius: var(--webyan-radius-sm);
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: var(--webyan-transition);
+}
+
+.btn-checkout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(29, 59, 139, 0.35);
+    color: var(--webyan-white);
+}
+
+.btn-checkout i {
+    font-size: 1.1rem;
+}
+
+.btn-continue-shopping {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background-color: transparent;
+    color: var(--webyan-sky-blue);
+    border: 2px solid var(--webyan-sky-blue);
+    border-radius: var(--webyan-radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: var(--webyan-transition);
+}
+
+.btn-continue-shopping:hover {
+    background-color: var(--webyan-sky-blue);
+    color: var(--webyan-white);
+}
+
+/* ============================================
+   Security Badge
+   ============================================ */
+.security-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: rgba(72, 187, 120, 0.08);
+    border-radius: var(--webyan-radius-xs);
+    color: var(--webyan-success);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.security-badge i {
+    font-size: 1rem;
+}
+
+/* ============================================
+   Footer Styles
+   ============================================ */
+.footer-section {
+    background-color: var(--webyan-dark-blue);
+    color: var(--webyan-white);
+    padding: 3rem 0 1.5rem;
+    margin-top: 2rem;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.footer-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--webyan-white);
+    margin-bottom: 1.25rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--webyan-sky-blue), transparent);
+    border-radius: 2px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--webyan-transition);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--webyan-sky-blue);
+    transform: translateX(-5px);
+}
+
+.footer-contact p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-contact i {
+    color: var(--webyan-sky-blue);
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--webyan-white);
+    border-radius: 50%;
+    font-size: 1rem;
+    transition: var(--webyan-transition);
+}
+
+.social-link:hover {
+    background-color: var(--webyan-sky-blue);
+    color: var(--webyan-white);
+    transform: translateY(-3px);
+}
+
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 2rem 0 1rem;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+@media (max-width: 991.98px) {
+    .order-summary-card {
+        position: static;
+        margin-top: 1rem;
+    }
+    
+    .page-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .header-section .container > div {
+        flex-wrap: wrap;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .cart-item-card .row {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .item-image-wrapper {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+    }
+    
+    .item-details {
+        text-align: center;
+    }
+    
+    .item-details > div:first-child {
+        justify-content: center !important;
+    }
+    
+    .item-details > div:last-child {
+        flex-direction: column;
+        align-items: center !important;
+    }
+    
+    .quantity-wrapper {
+        margin-bottom: 1rem;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    
+    .footer-links a:hover {
+        transform: none;
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .main-content {
+        padding: 1rem 0 2rem;
+    }
+    
+    .cart-section-card {
+        border-radius: var(--webyan-radius-sm);
+    }
+    
+    .section-header {
+        padding: 1rem;
+    }
+    
+    .cart-item-card {
+        padding: 1rem;
+    }
+    
+    .order-summary-card {
+        padding: 1rem;
+        border-radius: var(--webyan-radius-sm);
+    }
+    
+    .total-value {
+        font-size: 1.2rem;
+    }
+    
+    .btn-checkout {
+        padding: 0.85rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    .header-section,
+    .footer-section,
+    .btn-delete,
+    .quantity-input-group,
+    .summary-actions,
+    .coupon-section {
+        display: none !important;
+    }
+    
+    .order-summary-card {
+        position: static;
+        box-shadow: none;
+        border: 1px solid var(--webyan-border);
+    }
+    
+    .cart-section-card {
+        box-shadow: none;
+        border: 1px solid var(--webyan-border);
+    }
+}
