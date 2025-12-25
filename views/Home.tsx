@@ -1,10 +1,13 @@
 import { useMemo, useState } from "react";
 import webyanLogo from "@/assets/webyan-logo.svg";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 
 type PageLink = {
   name: string;
   path: string;
   date: string;
+  cssFiles?: string[];
   isNew?: boolean;
   isImportant?: boolean;
 };
@@ -13,6 +16,7 @@ type Category = {
   title: string;
   icon: string;
   color: string;
+  bgColor: string;
   pages: PageLink[];
 };
 
@@ -21,89 +25,96 @@ const categories: Category[] = [
     title: "الصفحات الرئيسية",
     icon: "🏠",
     color: "#0d6efd",
+    bgColor: "#e7f1ff",
     pages: [
-      { name: "الصفحة الرئيسية", path: "home.html", date: "2024-01-15" },
-      { name: "الصفحة الرئيسية الجديدة", path: "home-new.html", date: "2024-12-20", isNew: true, isImportant: true },
+      { name: "الصفحة الرئيسية", path: "home.html", date: "2024-01-15", cssFiles: ["css/style.css"] },
+      { name: "الصفحة الرئيسية الجديدة", path: "home-new.html", date: "2024-12-20", cssFiles: ["css/styles.css"], isNew: true, isImportant: true },
     ],
   },
   {
     title: "الأقسام والمحتوى",
     icon: "📋",
     color: "#198754",
+    bgColor: "#d1e7dd",
     pages: [
-      { name: "قسم الأنشطة", path: "activities-section.html", date: "2024-03-10" },
-      { name: "قسم الفروع", path: "branches-section.html", date: "2024-02-20" },
-      { name: "تفاصيل الفرع", path: "branch-details.html", date: "2024-02-22" },
-      { name: "قسم العلامات التجارية", path: "brands-section.html", date: "2024-04-05" },
-      { name: "تفاصيل العلامة التجارية", path: "brand-details.html", date: "2024-04-06" },
-      { name: "قسم المجلس", path: "council-section.html", date: "2024-05-12" },
-      { name: "إحصائيات المجلس", path: "council-statistics.html", date: "2024-05-15", isImportant: true },
-      { name: "قسم العضوية", path: "membership-section.html", date: "2024-06-01" },
-      { name: "قسم الأدوار", path: "roles-section.html", date: "2024-06-10" },
-      { name: "قسم الخدمات", path: "services-section.html", date: "2024-07-01" },
-      { name: "قسم الإحصائيات", path: "statistics-section.html", date: "2024-07-15" },
-      { name: "الخريطة التفاعلية", path: "interactive-map.html", date: "2024-12-01", isNew: true },
+      { name: "قسم الأنشطة", path: "activities-section.html", date: "2024-03-10", cssFiles: ["css/style.css"] },
+      { name: "قسم الفروع", path: "branches-section.html", date: "2024-02-20", cssFiles: ["css/style.css"] },
+      { name: "تفاصيل الفرع", path: "branch-details.html", date: "2024-02-22", cssFiles: ["css/style.css"] },
+      { name: "قسم العلامات التجارية", path: "brands-section.html", date: "2024-04-05", cssFiles: ["css/style.css"] },
+      { name: "تفاصيل العلامة التجارية", path: "brand-details.html", date: "2024-04-06", cssFiles: ["css/style.css"] },
+      { name: "قسم المجلس", path: "council-section.html", date: "2024-05-12", cssFiles: ["css/style.css"] },
+      { name: "إحصائيات المجلس", path: "council-statistics.html", date: "2024-05-15", cssFiles: ["css/council-statistics.css"], isImportant: true },
+      { name: "قسم العضوية", path: "membership-section.html", date: "2024-06-01", cssFiles: ["css/style.css"] },
+      { name: "قسم الأدوار", path: "roles-section.html", date: "2024-06-10", cssFiles: ["css/style.css"] },
+      { name: "قسم الخدمات", path: "services-section.html", date: "2024-07-01", cssFiles: ["css/style.css"] },
+      { name: "قسم الإحصائيات", path: "statistics-section.html", date: "2024-07-15", cssFiles: ["css/style.css"] },
+      { name: "الخريطة التفاعلية", path: "interactive-map.html", date: "2024-12-01", cssFiles: ["css/style.css"], isNew: true },
     ],
   },
   {
     title: "المشاريع والفعاليات",
     icon: "📁",
     color: "#6f42c1",
+    bgColor: "#e2d9f3",
     pages: [
-      { name: "قسم المشاريع", path: "projects-section.html", date: "2024-03-01" },
-      { name: "تفاصيل المشروع", path: "project-details.html", date: "2024-03-05" },
-      { name: "تفاصيل المشروع v2", path: "project-details-v2.html", date: "2024-11-20", isNew: true },
-      { name: "تفاصيل المشروع الصغير", path: "mini-project-details.html", date: "2024-08-10" },
-      { name: "الفعاليات", path: "events.html", date: "2024-04-01", isImportant: true },
-      { name: "تفاصيل الفعالية", path: "event-details.html", date: "2024-04-02" },
-      { name: "بطل جدارة", path: "jadarah-hero.html", date: "2024-09-15", isImportant: true },
+      { name: "قسم المشاريع", path: "projects-section.html", date: "2024-03-01", cssFiles: ["css/style.css"] },
+      { name: "تفاصيل المشروع", path: "project-details.html", date: "2024-03-05", cssFiles: ["css/style.css"] },
+      { name: "تفاصيل المشروع v2", path: "project-details-v2.html", date: "2024-11-20", cssFiles: ["css/project-details-v2.css"], isNew: true },
+      { name: "تفاصيل المشروع الصغير", path: "mini-project-details.html", date: "2024-08-10", cssFiles: ["css/mini-project-details.css"] },
+      { name: "الفعاليات", path: "events.html", date: "2024-04-01", cssFiles: ["css/events-page.css"], isImportant: true },
+      { name: "تفاصيل الفعالية", path: "event-details.html", date: "2024-04-02", cssFiles: ["css/event-details.css"] },
+      { name: "بطل جدارة", path: "jadarah-hero.html", date: "2024-09-15", cssFiles: ["css/jadarah-hero-styles.css"], isImportant: true },
     ],
   },
   {
     title: "التبرعات والتطوع",
     icon: "❤️",
     color: "#dc3545",
+    bgColor: "#f8d7da",
     pages: [
-      { name: "بوابة التبرعات", path: "donations-gate.html", date: "2024-05-01", isImportant: true },
-      { name: "تفاصيل تبرع المشروع", path: "project-donation-details.html", date: "2024-05-05" },
-      { name: "فرص التطوير", path: "development-opportunities.html", date: "2024-06-20" },
-      { name: "الميسرون", path: "facilitators.html", date: "2024-07-10" },
+      { name: "بوابة التبرعات", path: "donations-gate.html", date: "2024-05-01", cssFiles: ["css/donations.css"], isImportant: true },
+      { name: "تفاصيل تبرع المشروع", path: "project-donation-details.html", date: "2024-05-05", cssFiles: ["css/project-donation-details.css"] },
+      { name: "فرص التطوير", path: "development-opportunities.html", date: "2024-06-20", cssFiles: ["css/development-opportunities.css"] },
+      { name: "الميسرون", path: "facilitators.html", date: "2024-07-10", cssFiles: ["css/facilitators-styles.css"] },
     ],
   },
   {
     title: "المتجر والدفع",
     icon: "🛒",
     color: "#fd7e14",
+    bgColor: "#ffe5d0",
     pages: [
-      { name: "الصفحة الرئيسية للمتجر", path: "store-home.html", date: "2024-08-01", isImportant: true },
-      { name: "متجر الجمعية", path: "association-store.html", date: "2024-08-05" },
-      { name: "سلة التسوق", path: "cart.html", date: "2024-08-10" },
-      { name: "الدفع", path: "payment.html", date: "2024-08-15" },
-      { name: "نجاح الدفع", path: "payment-success.html", date: "2024-08-16" },
+      { name: "الصفحة الرئيسية للمتجر", path: "store-home.html", date: "2024-08-01", cssFiles: ["css/store.css"], isImportant: true },
+      { name: "متجر الجمعية", path: "association-store.html", date: "2024-08-05", cssFiles: ["css/style-store.css"] },
+      { name: "سلة التسوق", path: "cart.html", date: "2024-08-10", cssFiles: ["css/style-cart.css"] },
+      { name: "الدفع", path: "payment.html", date: "2024-08-15", cssFiles: ["css/payment.css"] },
+      { name: "نجاح الدفع", path: "payment-success.html", date: "2024-08-16", cssFiles: ["css/payment-success.css"] },
     ],
   },
   {
     title: "الخدمات والتوظيف",
     icon: "💼",
     color: "#0dcaf0",
+    bgColor: "#cff4fc",
     pages: [
-      { name: "حجز المواعيد", path: "appointment-booking.html", date: "2024-09-01" },
-      { name: "الوظائف", path: "careers.html", date: "2024-09-10", isNew: true },
+      { name: "حجز المواعيد", path: "appointment-booking.html", date: "2024-09-01", cssFiles: ["css/style.css"] },
+      { name: "الوظائف", path: "careers.html", date: "2024-09-10", cssFiles: ["css/careers.css"], isNew: true },
     ],
   },
   {
     title: "قوالب البريد الإلكتروني",
     icon: "📧",
     color: "#6c757d",
+    bgColor: "#e9ecef",
     pages: [
-      { name: "قالب البريد الإلكتروني", path: "email-template.html", date: "2024-01-20" },
-      { name: "تفعيل الحساب", path: "account-activation-email-template.html", date: "2024-01-21" },
-      { name: "رد الاتصال", path: "contact-reply-email-template.html", date: "2024-01-22" },
-      { name: "تسجيل الفعالية", path: "event-registration-email-template.html", date: "2024-01-23" },
-      { name: "طلب الوظيفة", path: "job-application-email-template.html", date: "2024-01-24" },
-      { name: "رمز OTP", path: "otp-email-template.html", date: "2024-01-25" },
-      { name: "تغيير كلمة المرور", path: "password-changed-email-template.html", date: "2024-01-26" },
-      { name: "إعادة تعيين كلمة المرور", path: "password-reset-email-template.html", date: "2024-01-27" },
+      { name: "قالب البريد الإلكتروني", path: "email-template.html", date: "2024-01-20", cssFiles: ["css/email-template-styles.css"] },
+      { name: "تفعيل الحساب", path: "account-activation-email-template.html", date: "2024-01-21", cssFiles: ["css/email-template-styles.css"] },
+      { name: "رد الاتصال", path: "contact-reply-email-template.html", date: "2024-01-22", cssFiles: ["css/email-template-styles.css"] },
+      { name: "تسجيل الفعالية", path: "event-registration-email-template.html", date: "2024-01-23", cssFiles: ["css/email-template-styles.css"] },
+      { name: "طلب الوظيفة", path: "job-application-email-template.html", date: "2024-01-24", cssFiles: ["css/email-template-styles.css"] },
+      { name: "رمز OTP", path: "otp-email-template.html", date: "2024-01-25", cssFiles: ["css/email-template-styles.css"] },
+      { name: "تغيير كلمة المرور", path: "password-changed-email-template.html", date: "2024-01-26", cssFiles: ["css/email-template-styles.css"] },
+      { name: "إعادة تعيين كلمة المرور", path: "password-reset-email-template.html", date: "2024-01-27", cssFiles: ["css/email-template-styles.css"] },
     ],
   },
 ];
@@ -117,6 +128,233 @@ const formatDate = (dateStr: string) => {
     month: "short",
     day: "numeric",
   });
+};
+
+const PageCard = ({ page, categoryColor, categoryBgColor }: { page: PageLink; categoryColor: string; categoryBgColor: string }) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+  const href = toHref(page.path);
+
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDownloading(true);
+
+    try {
+      const zip = new JSZip();
+      
+      // Fetch HTML file
+      const htmlResponse = await fetch(href);
+      const htmlContent = await htmlResponse.text();
+      zip.file(page.path, htmlContent);
+
+      // Fetch CSS files
+      if (page.cssFiles && page.cssFiles.length > 0) {
+        const cssFolder = zip.folder("css");
+        for (const cssFile of page.cssFiles) {
+          try {
+            const cssResponse = await fetch(toHref(cssFile));
+            const cssContent = await cssResponse.text();
+            const fileName = cssFile.split("/").pop() || cssFile;
+            cssFolder?.file(fileName, cssContent);
+          } catch (err) {
+            console.warn(`Could not fetch ${cssFile}:`, err);
+          }
+        }
+      }
+
+      // Generate and download zip
+      const content = await zip.generateAsync({ type: "blob" });
+      const fileName = page.path.replace(".html", "") + ".zip";
+      saveAs(content, fileName);
+    } catch (err) {
+      console.error("Download failed:", err);
+      alert("حدث خطأ أثناء التحميل");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  return (
+    <div className="col-12 col-sm-6 col-lg-4 col-xl-3">
+      <div
+        className="card h-100 border-0 position-relative overflow-hidden"
+        style={{
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          background: "#fff",
+          borderRadius: "16px",
+          boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-8px)";
+          e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)";
+        }}
+      >
+        {/* Top Color Bar */}
+        <div
+          style={{
+            height: "6px",
+            background: `linear-gradient(90deg, ${categoryColor}, ${categoryColor}aa)`,
+          }}
+        />
+
+        {/* Badges */}
+        {(page.isNew || page.isImportant) && (
+          <div className="position-absolute d-flex gap-1" style={{ top: "14px", left: "12px" }}>
+            {page.isNew && (
+              <span
+                className="badge"
+                style={{
+                  background: "linear-gradient(135deg, #10b981, #059669)",
+                  fontSize: "0.65rem",
+                  padding: "4px 8px",
+                  borderRadius: "20px",
+                }}
+              >
+                ✨ جديد
+              </span>
+            )}
+            {page.isImportant && (
+              <span
+                className="badge"
+                style={{
+                  background: "linear-gradient(135deg, #f59e0b, #d97706)",
+                  fontSize: "0.65rem",
+                  padding: "4px 8px",
+                  borderRadius: "20px",
+                }}
+              >
+                ⭐ مهم
+              </span>
+            )}
+          </div>
+        )}
+
+        <div className="card-body p-3">
+          {/* Icon */}
+          <div
+            className="d-flex align-items-center justify-content-center rounded-3 mb-3"
+            style={{
+              width: "48px",
+              height: "48px",
+              background: categoryBgColor,
+              color: categoryColor,
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+              <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V8.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V8s1.54-1.274 1.639-1.208zM6.25 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5z"/>
+            </svg>
+          </div>
+
+          {/* Title */}
+          <h6 className="card-title fw-bold mb-2" style={{ fontSize: "0.95rem", color: "#1e293b" }}>
+            {page.name}
+          </h6>
+
+          {/* Path */}
+          <div
+            className="mb-3"
+            style={{
+              background: "#f1f5f9",
+              padding: "6px 10px",
+              borderRadius: "8px",
+              display: "inline-block",
+            }}
+          >
+            <code style={{ fontSize: "0.7rem", color: categoryColor, fontWeight: 500 }}>
+              {page.path}
+            </code>
+          </div>
+
+          {/* Date */}
+          <div className="d-flex align-items-center gap-1 text-muted mb-3" style={{ fontSize: "0.75rem" }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+              <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+            </svg>
+            <span>{formatDate(page.date)}</span>
+          </div>
+
+          {/* CSS Files Info */}
+          {page.cssFiles && page.cssFiles.length > 0 && (
+            <div className="d-flex align-items-center gap-1 text-muted mb-3" style={{ fontSize: "0.7rem" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.527 11.85h-.893l-.823 1.439h-.036L.943 11.85H.012l1.227 1.983L0 15.85h.861l.853-1.415h.035l.85 1.415h.908l-1.254-1.992 1.274-2.007Zm.954 3.999v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596h-.025L4.58 11.85h-.806v3.999h.706Zm4.71-.674h1.696v.674H8.4V11.85h.791v3.325Z"/>
+              </svg>
+              <span>{page.cssFiles.length} ملف CSS</span>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="d-flex gap-2">
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-sm flex-grow-1"
+              style={{
+                background: categoryColor,
+                color: "#fff",
+                borderRadius: "8px",
+                fontSize: "0.8rem",
+                padding: "8px 12px",
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.9";
+                e.currentTarget.style.transform = "scale(1.02)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="me-1" viewBox="0 0 16 16">
+                <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+              </svg>
+              معاينة
+            </a>
+            <button
+              onClick={handleDownload}
+              disabled={isDownloading}
+              className="btn btn-sm"
+              style={{
+                background: categoryBgColor,
+                color: categoryColor,
+                borderRadius: "8px",
+                fontSize: "0.8rem",
+                padding: "8px 12px",
+                border: `1px solid ${categoryColor}33`,
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = categoryColor;
+                e.currentTarget.style.color = "#fff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = categoryBgColor;
+                e.currentTarget.style.color = categoryColor;
+              }}
+            >
+              {isDownloading ? (
+                <span className="spinner-border spinner-border-sm" role="status" />
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const Home = () => {
@@ -149,21 +387,46 @@ const Home = () => {
   );
 
   return (
-    <div dir="rtl" className="min-vh-100" style={{ background: "#f8fafc" }}>
+    <div dir="rtl" className="min-vh-100" style={{ background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)" }}>
       {/* Header */}
-      <header className="bg-white border-bottom shadow-sm">
+      <header
+        style={{
+          background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
+          boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
+        }}
+      >
         <div className="container py-4">
           <div className="d-flex flex-column flex-md-row align-items-center gap-3">
-            <img
-              src={webyanLogo}
-              alt="شعار ويبيان"
-              style={{ height: "48px", width: "auto" }}
-            />
+            <div
+              className="d-flex align-items-center justify-content-center"
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                borderRadius: "16px",
+                padding: "12px",
+              }}
+            >
+              <img
+                src={webyanLogo}
+                alt="شعار ويبيان"
+                style={{ height: "48px", width: "auto", filter: "brightness(0) invert(1)" }}
+              />
+            </div>
             <div className="text-center text-md-start flex-grow-1">
-              <h1 className="h4 fw-bold mb-1 text-dark">مكونات صفحات مواقع</h1>
-              <p className="text-muted mb-0 small">
+              <h1 className="h3 fw-bold mb-1" style={{ color: "#fff" }}>
+                مكونات صفحات مواقع
+              </h1>
+              <p className="mb-0" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9rem" }}>
                 مجموعة من الصفحات والمكونات الجاهزة للاستخدام •{" "}
-                <strong>{totalPages} صفحة</strong>
+                <span
+                  style={{
+                    background: "rgba(255,255,255,0.2)",
+                    padding: "2px 10px",
+                    borderRadius: "20px",
+                    fontWeight: 600,
+                  }}
+                >
+                  {totalPages} صفحة
+                </span>
               </p>
             </div>
           </div>
@@ -171,34 +434,56 @@ const Home = () => {
       </header>
 
       {/* Search Bar */}
-      <div className="bg-white border-bottom">
+      <div
+        className="sticky-top"
+        style={{
+          background: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(10px)",
+          borderBottom: "1px solid rgba(0,0,0,0.05)",
+          zIndex: 100,
+        }}
+      >
         <div className="container py-3">
           <div className="row justify-content-center">
             <div className="col-12 col-md-8 col-lg-6">
-              <div className="input-group input-group-lg">
-                <span className="input-group-text bg-white border-end-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="text-muted"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              <div
+                className="position-relative"
+                style={{
+                  background: "#f1f5f9",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                }}
+              >
+                <span
+                  className="position-absolute d-flex align-items-center justify-content-center"
+                  style={{
+                    right: "16px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#64748b",
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                   </svg>
                 </span>
                 <input
                   type="search"
-                  className="form-control border-start-0"
+                  className="form-control border-0"
                   placeholder="ابحث عن صفحة..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    background: "transparent",
+                    padding: "14px 16px",
+                    paddingRight: "48px",
+                    fontSize: "1rem",
+                  }}
                 />
               </div>
               {searchQuery && (
-                <div className="text-center mt-2 small text-muted">
-                  تم العثور على <strong>{filteredCount}</strong> صفحة
+                <div className="text-center mt-2" style={{ fontSize: "0.85rem", color: "#64748b" }}>
+                  تم العثور على <strong style={{ color: "#0d6efd" }}>{filteredCount}</strong> صفحة
                 </div>
               )}
             </div>
@@ -207,123 +492,63 @@ const Home = () => {
       </div>
 
       {/* Main Content */}
-      <main className="container py-4">
+      <main className="container py-5">
         {filteredCategories.length === 0 ? (
           <div className="text-center py-5">
-            <div className="display-1 mb-3">🔍</div>
-            <h3 className="text-muted">لا توجد نتائج</h3>
-            <p className="text-muted">جرب البحث بكلمات مختلفة</p>
+            <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🔍</div>
+            <h3 style={{ color: "#475569" }}>لا توجد نتائج</h3>
+            <p style={{ color: "#94a3b8" }}>جرب البحث بكلمات مختلفة</p>
           </div>
         ) : (
           <div className="d-flex flex-column gap-5">
             {filteredCategories.map((category) => (
               <section key={category.title}>
                 {/* Category Header */}
-                <div
-                  className="d-flex align-items-center gap-3 mb-3 pb-2 border-bottom"
-                  style={{ borderColor: category.color }}
-                >
+                <div className="d-flex align-items-center gap-3 mb-4">
                   <div
-                    className="d-flex align-items-center justify-content-center rounded-3"
+                    className="d-flex align-items-center justify-content-center"
                     style={{
-                      width: "44px",
-                      height: "44px",
-                      background: category.color,
-                      fontSize: "1.25rem",
+                      width: "56px",
+                      height: "56px",
+                      background: `linear-gradient(135deg, ${category.color}, ${category.color}dd)`,
+                      borderRadius: "16px",
+                      fontSize: "1.5rem",
+                      boxShadow: `0 4px 14px ${category.color}40`,
                     }}
                   >
                     {category.icon}
                   </div>
                   <div className="flex-grow-1">
-                    <h2 className="h5 fw-bold mb-0">{category.title}</h2>
-                    <small className="text-muted">
-                      {category.pages.length} صفحة
-                    </small>
+                    <h2 className="h4 fw-bold mb-1" style={{ color: "#1e293b" }}>
+                      {category.title}
+                    </h2>
+                    <div className="d-flex align-items-center gap-2">
+                      <span
+                        style={{
+                          background: category.bgColor,
+                          color: category.color,
+                          padding: "4px 12px",
+                          borderRadius: "20px",
+                          fontSize: "0.8rem",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {category.pages.length} صفحة
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Pages Grid */}
-                <div className="row g-3">
-                  {category.pages.map((page) => {
-                    const href = toHref(page.path);
-
-                    return (
-                      <div
-                        key={page.path}
-                        className="col-12 col-sm-6 col-lg-4 col-xl-3"
-                      >
-                        <a
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-decoration-none d-block h-100"
-                        >
-                          <div
-                            className="card h-100 border-0 shadow-sm position-relative overflow-hidden"
-                            style={{
-                              transition: "all 0.2s ease",
-                              borderRight: `4px solid ${category.color}`,
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = "translateY(-4px)";
-                              e.currentTarget.style.boxShadow =
-                                "0 8px 25px rgba(0,0,0,0.15)";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.transform = "translateY(0)";
-                              e.currentTarget.style.boxShadow =
-                                "0 0.125rem 0.25rem rgba(0,0,0,0.075)";
-                            }}
-                          >
-                            {/* Badges */}
-                            <div className="position-absolute top-0 start-0 p-2 d-flex gap-1">
-                              {page.isNew && (
-                                <span className="badge bg-success">جديد</span>
-                              )}
-                              {page.isImportant && (
-                                <span className="badge bg-warning text-dark">
-                                  ⭐ مهم
-                                </span>
-                              )}
-                            </div>
-
-                            <div className="card-body pt-4">
-                              <h6 className="card-title fw-semibold text-dark mb-2">
-                                {page.name}
-                              </h6>
-                              <div className="d-flex flex-column gap-1">
-                                <code
-                                  className="small"
-                                  style={{
-                                    color: category.color,
-                                    background: "#f1f5f9",
-                                    padding: "2px 6px",
-                                    borderRadius: "4px",
-                                    fontSize: "0.7rem",
-                                  }}
-                                >
-                                  {page.path}
-                                </code>
-                                <small className="text-muted d-flex align-items-center gap-1">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="12"
-                                    height="12"
-                                    fill="currentColor"
-                                    viewBox="0 0 16 16"
-                                  >
-                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
-                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                  </svg>
-                                  {formatDate(page.date)}
-                                </small>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    );
-                  })}
+                <div className="row g-4">
+                  {category.pages.map((page) => (
+                    <PageCard
+                      key={page.path}
+                      page={page}
+                      categoryColor={category.color}
+                      categoryBgColor={category.bgColor}
+                    />
+                  ))}
                 </div>
               </section>
             ))}
@@ -332,15 +557,28 @@ const Home = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-top py-4 mt-5">
-        <div className="container text-center">
-          <img
-            src={webyanLogo}
-            alt="ويبيان"
-            style={{ height: "32px", opacity: 0.6 }}
-            className="mb-2"
-          />
-          <p className="small text-muted mb-0">
+      <footer
+        style={{
+          background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
+          marginTop: "3rem",
+        }}
+      >
+        <div className="container py-4 text-center">
+          <div
+            className="d-inline-flex align-items-center justify-content-center mb-2"
+            style={{
+              background: "rgba(255,255,255,0.1)",
+              borderRadius: "12px",
+              padding: "8px 16px",
+            }}
+          >
+            <img
+              src={webyanLogo}
+              alt="ويبيان"
+              style={{ height: "28px", filter: "brightness(0) invert(1)" }}
+            />
+          </div>
+          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: 0 }}>
             © {new Date().getFullYear()} ويبيان - جميع الحقوق محفوظة
           </p>
         </div>
