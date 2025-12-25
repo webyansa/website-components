@@ -1,7 +1,5 @@
-import Index from "./pages/Index";
+import Home from "./views/Home";
 
-const App = () => {
-  return <Index />;
-};
+const App = () => <Home />;
 
 export default App;
