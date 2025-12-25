@@ -51,25 +51,23 @@
     </div>
   </section>
 
-  <!-- Selection Summary Bar -->
-  <div class="selection-bar" id="selectionBar">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-        <div class="selection-count">
-          <span class="count-badge" id="selectedCount">0</span>
-          <span>خدمات محددة</span>
-        </div>
-        <button class="request-btn" onclick="openModal()">
-          <i class="fas fa-paper-plane"></i>
-          طلب الخدمات
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- Main Content -->
   <main class="main-content">
     <div class="container">
+      
+      <!-- Selection Summary Bar (Inside Container) -->
+      <div class="selection-bar-wrapper" id="selectionBarWrapper">
+        <div class="selection-bar-inner">
+          <div class="selection-count">
+            <span class="count-badge" id="selectedCount">0</span>
+            <span>خدمات محددة</span>
+          </div>
+          <button class="request-btn" onclick="openModal()">
+            <i class="fas fa-paper-plane"></i>
+            طلب الخدمات
+          </button>
+        </div>
+      </div>
       
       <!-- Path 1: التأسيس والحوكمة -->
       <div class="path-card expanded" data-path="1">
@@ -97,48 +95,78 @@
           <div class="services-grid">
             <div class="row g-3">
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="1" data-service="1-1" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>إعداد النظام الأساسي</h4>
-                    <p>صياغة وتطوير النظام الأساسي للجمعية وفق أفضل الممارسات</p>
+                <div class="service-item" data-path="1" data-service="1-1">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>إعداد النظام الأساسي</h4>
+                      <p>صياغة وتطوير النظام الأساسي للجمعية وفق أفضل الممارسات</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('1-1')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="1" data-service="1-2" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>الهيكل التنظيمي</h4>
-                    <p>تصميم الهيكل التنظيمي المناسب وتحديد المسؤوليات</p>
+                <div class="service-item" data-path="1" data-service="1-2">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>الهيكل التنظيمي</h4>
+                      <p>تصميم الهيكل التنظيمي المناسب وتحديد المسؤوليات</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('1-2')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="1" data-service="1-3" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>سياسات الحوكمة</h4>
-                    <p>إعداد سياسات الحوكمة والإجراءات التنظيمية</p>
+                <div class="service-item" data-path="1" data-service="1-3">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>سياسات الحوكمة</h4>
+                      <p>إعداد سياسات الحوكمة والإجراءات التنظيمية</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('1-3')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="1" data-service="1-4" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>دليل الإجراءات</h4>
-                    <p>توثيق جميع الإجراءات والعمليات في دليل متكامل</p>
+                <div class="service-item" data-path="1" data-service="1-4">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>دليل الإجراءات</h4>
+                      <p>توثيق جميع الإجراءات والعمليات في دليل متكامل</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('1-4')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="1" data-service="1-5" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>الامتثال والتراخيص</h4>
-                    <p>ضمان الامتثال للأنظمة والحصول على التراخيص اللازمة</p>
+                <div class="service-item" data-path="1" data-service="1-5">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>الامتثال والتراخيص</h4>
+                      <p>ضمان الامتثال للأنظمة والحصول على التراخيص اللازمة</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('1-5')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
             </div>
@@ -172,48 +200,78 @@
           <div class="services-grid">
             <div class="row g-3">
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="2" data-service="2-1" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>التخطيط الاستراتيجي</h4>
-                    <p>إعداد الخطة الاستراتيجية والأهداف طويلة المدى</p>
+                <div class="service-item" data-path="2" data-service="2-1">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>التخطيط الاستراتيجي</h4>
+                      <p>إعداد الخطة الاستراتيجية والأهداف طويلة المدى</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('2-1')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="2" data-service="2-2" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>إدارة الموارد البشرية</h4>
-                    <p>تطوير سياسات الموارد البشرية وبرامج التدريب</p>
+                <div class="service-item" data-path="2" data-service="2-2">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>إدارة الموارد البشرية</h4>
+                      <p>تطوير سياسات الموارد البشرية وبرامج التدريب</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('2-2')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="2" data-service="2-3" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>الإدارة المالية</h4>
-                    <p>تطوير النظام المالي والرقابة المالية</p>
+                <div class="service-item" data-path="2" data-service="2-3">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>الإدارة المالية</h4>
+                      <p>تطوير النظام المالي والرقابة المالية</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('2-3')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="2" data-service="2-4" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>قياس الأداء</h4>
-                    <p>بناء مؤشرات الأداء ونظام التقييم والمتابعة</p>
+                <div class="service-item" data-path="2" data-service="2-4">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>قياس الأداء</h4>
+                      <p>بناء مؤشرات الأداء ونظام التقييم والمتابعة</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('2-4')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="2" data-service="2-5" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>التحول الرقمي</h4>
-                    <p>رقمنة العمليات وتبني الحلول التقنية</p>
+                <div class="service-item" data-path="2" data-service="2-5">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>التحول الرقمي</h4>
+                      <p>رقمنة العمليات وتبني الحلول التقنية</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('2-5')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
             </div>
@@ -247,48 +305,78 @@
           <div class="services-grid">
             <div class="row g-3">
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="3" data-service="3-1" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>استراتيجية التمويل</h4>
-                    <p>تطوير مصادر التمويل المتنوعة والمستدامة</p>
+                <div class="service-item" data-path="3" data-service="3-1">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>استراتيجية التمويل</h4>
+                      <p>تطوير مصادر التمويل المتنوعة والمستدامة</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('3-1')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="3" data-service="3-2" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>كتابة المقترحات</h4>
-                    <p>إعداد مقترحات المشاريع والتقدم للمنح</p>
+                <div class="service-item" data-path="3" data-service="3-2">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>كتابة المقترحات</h4>
+                      <p>إعداد مقترحات المشاريع والتقدم للمنح</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('3-2')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="3" data-service="3-3" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>قياس الأثر</h4>
-                    <p>قياس وتوثيق الأثر المجتمعي للبرامج</p>
+                <div class="service-item" data-path="3" data-service="3-3">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>قياس الأثر</h4>
+                      <p>قياس وتوثيق الأثر المجتمعي للبرامج</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('3-3')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="3" data-service="3-4" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>بناء الشراكات</h4>
-                    <p>تطوير الشراكات الاستراتيجية والتعاون المؤسسي</p>
+                <div class="service-item" data-path="3" data-service="3-4">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>بناء الشراكات</h4>
+                      <p>تطوير الشراكات الاستراتيجية والتعاون المؤسسي</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('3-4')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
               <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-item" data-path="3" data-service="3-5" onclick="toggleService(this)">
-                  <div class="service-checkbox"><i class="fas fa-check"></i></div>
-                  <div class="service-content">
-                    <h4>التسويق المؤسسي</h4>
-                    <p>بناء الهوية والتواصل مع المجتمع والداعمين</p>
+                <div class="service-item" data-path="3" data-service="3-5">
+                  <div class="service-select-area" onclick="toggleService(this.parentElement)">
+                    <div class="service-checkbox"><i class="fas fa-check"></i></div>
+                    <div class="service-content">
+                      <h4>التسويق المؤسسي</h4>
+                      <p>بناء الهوية والتواصل مع المجتمع والداعمين</p>
+                    </div>
                   </div>
+                  <button class="service-info-btn" onclick="openServiceDetails('3-5')">
+                    <i class="fas fa-info-circle"></i>
+                    التفاصيل
+                  </button>
                 </div>
               </div>
             </div>
@@ -298,6 +386,53 @@
 
     </div>
   </main>
+
+  <!-- Service Details Modal -->
+  <div class="modal-overlay" id="serviceDetailsModal">
+    <div class="modal-content service-details-modal">
+      <div class="modal-header service-details-header">
+        <button class="modal-close" onclick="closeServiceDetails()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="service-modal-icon" id="serviceModalIcon">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <h2 id="serviceModalTitle">عنوان الخدمة</h2>
+      </div>
+      <div class="modal-body">
+        <div class="service-detail-section">
+          <div class="detail-icon"><i class="fas fa-info-circle"></i></div>
+          <div class="detail-content">
+            <h4>نبذة عن الخدمة</h4>
+            <p id="serviceDescription">وصف تفصيلي للخدمة</p>
+          </div>
+        </div>
+        
+        <div class="service-detail-section">
+          <div class="detail-icon"><i class="fas fa-users"></i></div>
+          <div class="detail-content">
+            <h4>لمن هذه الخدمة؟</h4>
+            <p id="serviceTarget">الفئة المستهدفة</p>
+          </div>
+        </div>
+        
+        <div class="service-detail-section">
+          <div class="detail-icon"><i class="fas fa-clipboard-list"></i></div>
+          <div class="detail-content">
+            <h4>مخرجات الخدمة</h4>
+            <ul id="serviceOutputs">
+              <li>مخرج 1</li>
+            </ul>
+          </div>
+        </div>
+        
+        <button class="select-service-btn" id="selectServiceBtn" onclick="selectFromDetails()">
+          <i class="fas fa-plus-circle"></i>
+          إضافة للطلب
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Request Modal -->
   <div class="modal-overlay" id="requestModal">
@@ -403,6 +538,116 @@
   <script>
     // State
     let selectedServices = new Set();
+    let currentServiceId = null;
+    
+    // Service data
+    const servicesData = {
+      '1-1': {
+        title: 'إعداد النظام الأساسي',
+        icon: 'fa-file-contract',
+        description: 'نقوم بصياغة وتطوير النظام الأساسي للجمعية بما يتوافق مع الأنظمة واللوائح المعتمدة، ويعكس رؤية ورسالة الجمعية بشكل واضح ومتكامل.',
+        target: 'الجمعيات الناشئة حديثاً أو الجمعيات التي تحتاج لتحديث نظامها الأساسي ليتوافق مع التحديثات النظامية.',
+        outputs: ['نظام أساسي متكامل ومعتمد', 'دليل تفسيري للنظام الأساسي', 'قائمة بالتعديلات المطلوبة (إن وجدت)']
+      },
+      '1-2': {
+        title: 'الهيكل التنظيمي',
+        icon: 'fa-sitemap',
+        description: 'تصميم هيكل تنظيمي متكامل يوضح العلاقات الإدارية والتنسيقية بين الوحدات المختلفة ويحدد المسؤوليات والصلاحيات.',
+        target: 'الجمعيات التي تحتاج لإعادة هيكلة أو تحديث هيكلها التنظيمي.',
+        outputs: ['خريطة الهيكل التنظيمي', 'الوصف الوظيفي لكل منصب', 'مصفوفة الصلاحيات والمسؤوليات']
+      },
+      '1-3': {
+        title: 'سياسات الحوكمة',
+        icon: 'fa-balance-scale',
+        description: 'إعداد سياسات الحوكمة الرشيدة التي تضمن الشفافية والمساءلة والنزاهة في جميع عمليات الجمعية.',
+        target: 'جميع الجمعيات الراغبة في تطبيق أفضل معايير الحوكمة المؤسسية.',
+        outputs: ['دليل سياسات الحوكمة', 'ميثاق أخلاقيات العمل', 'سياسة تعارض المصالح', 'سياسة الإفصاح والشفافية']
+      },
+      '1-4': {
+        title: 'دليل الإجراءات',
+        icon: 'fa-book',
+        description: 'توثيق شامل لجميع الإجراءات والعمليات الداخلية في دليل متكامل يسهل الرجوع إليه وتطبيقه.',
+        target: 'الجمعيات التي ترغب في توحيد إجراءاتها وتوثيق عملياتها.',
+        outputs: ['دليل الإجراءات التشغيلية', 'نماذج العمل الموحدة', 'خرائط سير العمل']
+      },
+      '1-5': {
+        title: 'الامتثال والتراخيص',
+        icon: 'fa-certificate',
+        description: 'مساعدة الجمعية في الامتثال لجميع المتطلبات النظامية والحصول على التراخيص اللازمة لممارسة أنشطتها.',
+        target: 'الجمعيات الجديدة أو التي تحتاج لتجديد تراخيصها.',
+        outputs: ['تقرير تقييم الامتثال', 'قائمة المتطلبات النظامية', 'خطة الامتثال التصحيحية']
+      },
+      '2-1': {
+        title: 'التخطيط الاستراتيجي',
+        icon: 'fa-chess',
+        description: 'إعداد خطة استراتيجية شاملة تحدد الرؤية والرسالة والأهداف طويلة المدى مع خطط تنفيذية واضحة.',
+        target: 'الجمعيات التي ترغب في رسم مسارها المستقبلي بشكل علمي ومدروس.',
+        outputs: ['الخطة الاستراتيجية الخماسية', 'الخطط التشغيلية السنوية', 'مؤشرات قياس الأداء الاستراتيجي']
+      },
+      '2-2': {
+        title: 'إدارة الموارد البشرية',
+        icon: 'fa-users-cog',
+        description: 'تطوير منظومة متكاملة لإدارة الموارد البشرية تشمل التوظيف والتدريب والتقييم والتطوير.',
+        target: 'الجمعيات التي تسعى لتطوير كوادرها وتحسين بيئة العمل.',
+        outputs: ['دليل سياسات الموارد البشرية', 'خطة التدريب والتطوير', 'نظام تقييم الأداء الوظيفي']
+      },
+      '2-3': {
+        title: 'الإدارة المالية',
+        icon: 'fa-calculator',
+        description: 'تطوير النظام المالي والمحاسبي للجمعية بما يضمن الشفافية والرقابة المالية الفعالة.',
+        target: 'الجمعيات الراغبة في تحسين إدارتها المالية ورقابتها الداخلية.',
+        outputs: ['دليل السياسات المالية', 'نظام الرقابة الداخلية', 'نماذج التقارير المالية']
+      },
+      '2-4': {
+        title: 'قياس الأداء',
+        icon: 'fa-tachometer-alt',
+        description: 'بناء نظام متكامل لقياس الأداء ومتابعة تحقيق الأهداف من خلال مؤشرات واضحة وقابلة للقياس.',
+        target: 'الجمعيات التي ترغب في تحسين أدائها بناءً على بيانات وتحليلات دقيقة.',
+        outputs: ['لوحة مؤشرات الأداء', 'نظام المتابعة والتقييم', 'تقارير الأداء الدورية']
+      },
+      '2-5': {
+        title: 'التحول الرقمي',
+        icon: 'fa-laptop-code',
+        description: 'رقمنة العمليات والخدمات وتبني الحلول التقنية الحديثة لرفع كفاءة العمل وتحسين تجربة المستفيدين.',
+        target: 'الجمعيات الساعية للتحول الرقمي وتحسين كفاءتها التشغيلية.',
+        outputs: ['خطة التحول الرقمي', 'منصات العمل الإلكترونية', 'أتمتة الإجراءات الروتينية']
+      },
+      '3-1': {
+        title: 'استراتيجية التمويل',
+        icon: 'fa-hand-holding-usd',
+        description: 'تطوير استراتيجية تمويل متنوعة ومستدامة تشمل مصادر متعددة للدخل وآليات لضمان الاستدامة المالية.',
+        target: 'الجمعيات الراغبة في تنويع مصادر دخلها وتحقيق الاستدامة المالية.',
+        outputs: ['استراتيجية التمويل المتنوع', 'خطة استقطاب الداعمين', 'برنامج الأوقاف والاستثمار']
+      },
+      '3-2': {
+        title: 'كتابة المقترحات',
+        icon: 'fa-file-signature',
+        description: 'المساعدة في إعداد مقترحات مشاريع احترافية للتقدم للمنح والتمويل من الجهات المانحة.',
+        target: 'الجمعيات الراغبة في التقدم للمنح والحصول على تمويل لمشاريعها.',
+        outputs: ['مقترحات مشاريع جاهزة', 'قاعدة بيانات الجهات المانحة', 'تدريب على كتابة المقترحات']
+      },
+      '3-3': {
+        title: 'قياس الأثر',
+        icon: 'fa-chart-pie',
+        description: 'قياس وتوثيق الأثر المجتمعي لبرامج ومشاريع الجمعية بطرق علمية ومنهجية.',
+        target: 'الجمعيات الراغبة في إثبات أثرها وتحسين برامجها بناءً على النتائج.',
+        outputs: ['تقارير قياس الأثر', 'منهجية قياس الأثر', 'قصص النجاح الموثقة']
+      },
+      '3-4': {
+        title: 'بناء الشراكات',
+        icon: 'fa-handshake',
+        description: 'تطوير شراكات استراتيجية مع القطاعات المختلفة لتعزيز أثر الجمعية وتوسيع نطاق خدماتها.',
+        target: 'الجمعيات الساعية لتوسيع شبكة علاقاتها وبناء شراكات فاعلة.',
+        outputs: ['استراتيجية الشراكات', 'اتفاقيات الشراكة النموذجية', 'قاعدة بيانات الشركاء المحتملين']
+      },
+      '3-5': {
+        title: 'التسويق المؤسسي',
+        icon: 'fa-bullhorn',
+        description: 'بناء الهوية المؤسسية للجمعية وتطوير استراتيجية تواصل فعالة مع المجتمع والداعمين.',
+        target: 'الجمعيات الراغبة في تعزيز حضورها وتحسين تواصلها مع المجتمع.',
+        outputs: ['دليل الهوية المؤسسية', 'استراتيجية التواصل', 'خطة التسويق الرقمي']
+      }
+    };
     
     // Service names mapping
     const serviceNames = {
@@ -450,12 +695,10 @@
       const services = pathCard.querySelectorAll('.service-item');
       const btn = pathCard.querySelector('.select-all-btn');
       
-      // Check if all services in this path are already selected
       const pathServices = Array.from(services).map(s => s.dataset.service);
       const allSelected = pathServices.every(s => selectedServices.has(s));
       
       if (allSelected) {
-        // Deselect all
         services.forEach(service => {
           service.classList.remove('selected');
           selectedServices.delete(service.dataset.service);
@@ -463,7 +706,6 @@
         btn.classList.remove('active');
         pathCard.classList.remove('selected');
       } else {
-        // Select all
         services.forEach(service => {
           service.classList.add('selected');
           selectedServices.add(service.dataset.service);
@@ -472,7 +714,6 @@
         pathCard.classList.add('selected');
       }
       
-      // Expand the path if selecting
       if (!allSelected && !pathCard.classList.contains('expanded')) {
         pathCard.classList.add('expanded');
       }
@@ -502,24 +743,76 @@
     
     // Update selection bar
     function updateSelectionBar() {
-      const bar = document.getElementById('selectionBar');
+      const wrapper = document.getElementById('selectionBarWrapper');
       const countEl = document.getElementById('selectedCount');
       
       countEl.textContent = selectedServices.size;
       
       if (selectedServices.size > 0) {
-        bar.classList.add('visible');
+        wrapper.classList.add('visible');
       } else {
-        bar.classList.remove('visible');
+        wrapper.classList.remove('visible');
       }
     }
     
-    // Open modal
+    // Open service details modal
+    function openServiceDetails(serviceId) {
+      currentServiceId = serviceId;
+      const service = servicesData[serviceId];
+      const modal = document.getElementById('serviceDetailsModal');
+      
+      document.getElementById('serviceModalIcon').innerHTML = `<i class="fas ${service.icon}"></i>`;
+      document.getElementById('serviceModalTitle').textContent = service.title;
+      document.getElementById('serviceDescription').textContent = service.description;
+      document.getElementById('serviceTarget').textContent = service.target;
+      
+      const outputsList = document.getElementById('serviceOutputs');
+      outputsList.innerHTML = service.outputs.map(o => `<li>${o}</li>`).join('');
+      
+      // Update button state
+      const btn = document.getElementById('selectServiceBtn');
+      if (selectedServices.has(serviceId)) {
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> تمت الإضافة';
+        btn.classList.add('selected');
+      } else {
+        btn.innerHTML = '<i class="fas fa-plus-circle"></i> إضافة للطلب';
+        btn.classList.remove('selected');
+      }
+      
+      modal.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    // Close service details modal
+    function closeServiceDetails() {
+      document.getElementById('serviceDetailsModal').classList.remove('visible');
+      document.body.style.overflow = '';
+      currentServiceId = null;
+    }
+    
+    // Select service from details modal
+    function selectFromDetails() {
+      if (currentServiceId) {
+        const serviceItem = document.querySelector(`.service-item[data-service="${currentServiceId}"]`);
+        toggleService(serviceItem);
+        
+        // Update button in modal
+        const btn = document.getElementById('selectServiceBtn');
+        if (selectedServices.has(currentServiceId)) {
+          btn.innerHTML = '<i class="fas fa-check-circle"></i> تمت الإضافة';
+          btn.classList.add('selected');
+        } else {
+          btn.innerHTML = '<i class="fas fa-plus-circle"></i> إضافة للطلب';
+          btn.classList.remove('selected');
+        }
+      }
+    }
+    
+    // Open request modal
     function openModal() {
       const modal = document.getElementById('requestModal');
       const tagsContainer = document.getElementById('selectedTags');
       
-      // Populate selected services tags
       tagsContainer.innerHTML = '';
       selectedServices.forEach(serviceId => {
         const tag = document.createElement('span');
@@ -528,7 +821,6 @@
         tagsContainer.appendChild(tag);
       });
       
-      // Show form, hide success
       document.getElementById('formState').style.display = 'block';
       document.getElementById('successState').classList.remove('visible');
       
@@ -538,8 +830,7 @@
     
     // Close modal
     function closeModal() {
-      const modal = document.getElementById('requestModal');
-      modal.classList.remove('visible');
+      document.getElementById('requestModal').classList.remove('visible');
       document.body.style.overflow = '';
     }
     
@@ -562,25 +853,26 @@
       
       console.log('Form submitted:', data);
       
-      // Show success state
       document.getElementById('formState').style.display = 'none';
       document.getElementById('successState').classList.add('visible');
       
-      // Reset form
       event.target.reset();
     }
     
-    // Close modal on outside click
+    // Close modals on outside click
     document.getElementById('requestModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
+      if (e.target === this) closeModal();
     });
     
-    // Close modal on Escape key
+    document.getElementById('serviceDetailsModal').addEventListener('click', function(e) {
+      if (e.target === this) closeServiceDetails();
+    });
+    
+    // Close on Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeModal();
+        closeServiceDetails();
       }
     });
   </script>
