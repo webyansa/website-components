@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العضويات</title>
+    <meta name="description" content="خطط وباقات العضويات مع الأسعار والمميزات والتفاصيل الكاملة.">
+    <link rel="canonical" href="/membership-section.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <p class="section-subtitle">العضويات</p>
+            <h2 class="section-title">العضويات</h2>
+            <div class="title-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </div>
+                <div class="decoration-line"></div>
+            </div>
+        </div>
+
+        <!-- Pricing Cards Grid -->
+        <div class="pricing-grid">
+            <!-- Card 1: عضوية منتسبة (Free) -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3 class="plan-name">عضوية منتسبة</h3>
+                    <p class="plan-description">مثالية للأفراد والبدايات</p>
+                </div>
+
+                <div class="price-section">
+                    <div class="price free-badge">Free</div>
+                    <p class="price-period">مجاناً للجميع</p>
+                </div>
+
+                <div class="buttons-container">
+                    <button class="btn-primary">
+                        <span class="btn-icon">✓</span>
+                        اشترك الآن
+                    </button>
+                    <button class="btn-secondary" onclick="openModal('free')">
+                        <span class="btn-icon">📋</span>
+                        عرض المميزات الكاملة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2: عضوية كاملة فئة (ب) - Featured -->
+            <div class="pricing-card featured">
+                <div class="best-value-badge">أفضل قيمة</div>
+                
+                <div class="card-header">
+                    <h3 class="plan-name">عضوية كاملة فئة (ب)</h3>
+                    <p class="plan-description">للشركات الكبيرة والمتطلبات المتقدمة</p>
+                </div>
+
+                <div class="price-section">
+                    <div class="price">
+                        <span class="price-currency">ر.س</span>
+                        5,000
+                    </div>
+                    <p class="price-period">/ سنوياً</p>
+                </div>
+
+                <div class="buttons-container">
+                    <button class="btn-primary">
+                        <span class="btn-icon">✓</span>
+                        اشترك الآن
+                    </button>
+                    <button class="btn-secondary" onclick="openModal('premium')">
+                        <span class="btn-icon">📋</span>
+                        عرض المميزات الكاملة
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3: عضوية كاملة فئة (أ) -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3 class="plan-name">عضوية كاملة فئة (أ)</h3>
+                    <p class="plan-description">مثالية للفرق الصغيرة والمتوسطة</p>
+                </div>
+
+                <div class="price-section">
+                    <div class="price">
+                        <span class="price-currency">ر.س</span>
+                        10,000
+                    </div>
+                    <p class="price-period">/ سنوياً</p>
+                </div>
+
+                <div class="buttons-container">
+                    <button class="btn-primary">
+                        <span class="btn-icon">✓</span>
+                        اشترك الآن
+                    </button>
+                    <button class="btn-secondary" onclick="openModal('enterprise')">
+                        <span class="btn-icon">📋</span>
+                        عرض المميزات الكاملة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+    <!-- Modal Container -->
+    <div class="modal-container" id="modalContainer">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeModal()">
+                <svg viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h3 class="modal-plan-name" id="modalPlanName">عضوية منتسبة</h3>
+            <p class="modal-plan-price" id="modalPlanPrice">مجاناً للجميع</p>
+        </div>
+
+        <div class="modal-body">
+            <h4 class="features-title">المميزات الكاملة</h4>
+            <ul class="modal-features-list" id="modalFeaturesList">
+                <!-- Features will be dynamically inserted here -->
+            </ul>
+        </div>
+
+        <div class="modal-footer">
+            <button class="modal-subscribe-btn" onclick="subscribe()">
+                <span>✓</span>
+                اشترك الآن
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Features data for each plan
+        const plansData = {
+            free: {
+                name: 'عضوية منتسبة',
+                price: 'مجاناً للجميع',
+                features: [
+                    'الوصول للموارد الأساسية',
+                    'المشاركة في الفعاليات العامة',
+                    'النشرة الإخبارية الشهرية',
+                    'الدعم عبر البريد الإلكتروني',
+                    'الوصول إلى المكتبة الرقمية',
+                    'حضور الندوات العامة',
+                    'التواصل مع الأعضاء الآخرين'
+                ]
+            },
+            premium: {
+                name: 'عضوية كاملة فئة (ب)',
+                price: '5,000 ريال / سنوياً',
+                features: [
+                    'جميع مميزات العضوية المنتسبة',
+                    'الوصول للفعاليات الحصرية',
+                    'دعم فني ذو أولوية',
+                    'شهادة عضوية معتمدة',
+                    'خصومات 25% على ورش العمل',
+                    'الوصول الكامل للمكتبة الرقمية المتقدمة',
+                    'المشاركة في اللجان التخصصية',
+                    'استشارات مجانية محدودة',
+                    'حضور المؤتمرات السنوية',
+                    'إمكانية الترشح للمجالس الفرعية'
+                ]
+            },
+            enterprise: {
+                name: 'عضوية كاملة فئة (أ)',
+                price: '10,000 ريال / سنوياً',
+                features: [
+                    'جميع مميزات الفئة (ب)',
+                    'استشارات شخصية مجانية غير محدودة',
+                    'حضور VIP للمؤتمرات والفعاليات',
+                    'دعم مخصص على مدار الساعة',
+                    'تقارير وتحليلات متقدمة',
+                    'إبراز الشعار في المنصة والفعاليات',
+                    'أولوية في التسجيل بالبرامج',
+                    'الوصول المبكر للخدمات الجديدة',
+                    'ممثل حساب مخصص',
+                    'جلسات تدريبية خاصة',
+                    'شراكات استراتيجية مميزة',
+                    'حقوق التصويت الكاملة في الجمعية العمومية'
+                ]
+            }
+        };
+
+        function openModal(planType) {
+            const plan = plansData[planType];
+            const modal = document.getElementById('modalContainer');
+            const overlay = document.getElementById('modalOverlay');
+            const planName = document.getElementById('modalPlanName');
+            const planPrice = document.getElementById('modalPlanPrice');
+            const featuresList = document.getElementById('modalFeaturesList');
+
+            // Set plan details
+            planName.textContent = plan.name;
+            planPrice.textContent = plan.price;
+
+            // Clear and populate features
+            featuresList.innerHTML = '';
+            plan.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.className = 'modal-feature-item';
+                li.innerHTML = `
+                    <span class="modal-feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <span>${feature}</span>
+                `;
+                featuresList.appendChild(li);
+            });
+
+            // Show modal
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modalContainer');
+            const overlay = document.getElementById('modalOverlay');
+            
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Subscribe function
+        function subscribe() {
+            // You can add your subscription logic here
+            alert('شكراً لاهتمامك! سيتم تحويلك إلى صفحة الاشتراك...');
+            closeModal();
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

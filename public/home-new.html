@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجلس الجمعيات الأهلية - الصفحة الرئيسية</title>
+    <meta name="description" content="مجلس الجمعيات الأهلية - بوابة شاملة للوصول إلى جميع خدماتنا ومعلوماتنا">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e3e9f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #5DD0F0 0%, #3B82F6 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(93, 208, 240, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo i {
+            font-size: 60px;
+            color: white;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #5DD0F0 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .main-subtitle {
+            color: #64748b;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Navigation Cards Grid */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #5DD0F0 0%, #3B82F6 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .nav-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(93, 208, 240, 0.2);
+            border-color: #5DD0F0;
+        }
+
+        .nav-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #5DD0F0 0%, #3B82F6 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+
+        .nav-card:hover .nav-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(93, 208, 240, 0.4);
+        }
+
+        .nav-icon i {
+            font-size: 32px;
+            color: white;
+        }
+
+        .nav-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-card:hover .nav-title {
+            color: #3B82F6;
+        }
+
+        .nav-description {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .nav-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3B82F6;
+            font-weight: 600;
+            font-size: 14px;
+            transition: gap 0.3s ease;
+        }
+
+        .nav-card:hover .nav-arrow {
+            gap: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 32px;
+            }
+
+            .main-subtitle {
+                font-size: 16px;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo i {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+            </div>
+            <h1 class="main-title">مجلس الجمعيات الأهلية</h1>
+            <p class="main-subtitle">بوابتك الشاملة للوصول إلى جميع خدماتنا ومعلوماتنا</p>
+        </header>
+
+        <!-- Navigation Grid -->
+        <div class="nav-grid">
+            <!-- Branches -->
+            <a href="branches-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h2 class="nav-title">فروع المجلس</h2>
+                    <p class="nav-description">تعرف على جميع فروعنا في مختلف المناطق والخدمات المقدمة في كل فرع</p>
+                    <span class="nav-arrow">
+                        استكشف الفروع
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Brands -->
+            <a href="brands-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h2 class="nav-title">الجهات التابعة</h2>
+                    <p class="nav-description">اطلع على الجهات والمؤسسات التابعة للمجلس وخدماتها المميزة</p>
+                    <span class="nav-arrow">
+                        عرض الجهات
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Projects -->
+            <a href="projects-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h2 class="nav-title">المشاريع</h2>
+                    <p class="nav-description">تصفح مشاريعنا المبتكرة والمبادرات التي نعمل عليها لخدمة المجتمع</p>
+                    <span class="nav-arrow">
+                        مشاهدة المشاريع
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Services -->
+            <a href="services-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h2 class="nav-title">الخدمات</h2>
+                    <p class="nav-description">اكتشف الخدمات الإلكترونية والدعم الذي نقدمه للجمعيات الأهلية</p>
+                    <span class="nav-arrow">
+                        الخدمات المتاحة
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Council Personality -->
+            <a href="council-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="nav-title">شخصية المجلس</h2>
+                    <p class="nav-description">تعرف على قيمنا ورؤيتنا ورسالتنا في دعم قطاع الجمعيات الأهلية</p>
+                    <span class="nav-arrow">
+                        معرفة المزيد
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Membership -->
+            <a href="membership-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2 class="nav-title">العضوية</h2>
+                    <p class="nav-description">انضم إلينا واستفد من مزايا العضوية والخدمات الحصرية</p>
+                    <span class="nav-arrow">
+                        الانضمام الآن
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Activities -->
+            <a href="activities-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h2 class="nav-title">الأنشطة والفعاليات</h2>
+                    <p class="nav-description">تابع آخر أنشطتنا وفعالياتنا القادمة وشارك معنا</p>
+                    <span class="nav-arrow">
+                        عرض الأنشطة
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Statistics -->
+            <a href="statistics-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="nav-title">الإحصائيات</h2>
+                    <p class="nav-description">اطلع على إنجازاتنا وأرقامنا المميزة في خدمة المجتمع</p>
+                    <span class="nav-arrow">
+                        مشاهدة الإحصائيات
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Roles -->
+            <a href="roles-section.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h2 class="nav-title">الأدوار والمهام</h2>
+                    <p class="nav-description">تعرف على الفرق والأدوار المختلفة داخل المجلس</p>
+                    <span class="nav-arrow">
+                        معرفة الأدوار
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Appointment Booking -->
+            <a href="appointment-booking.html" class="nav-card">
+                <div class="nav-card-content">
+                    <div class="nav-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h2 class="nav-title">حجز موعد</h2>
+                    <p class="nav-description">احجز موعداً لمقابلة فريقنا والحصول على الاستشارة المناسبة</p>
+                    <span class="nav-arrow">
+                        حجز الآن
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 مجلس الجمعيات الأهلية. جميع الحقوق محفوظة.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخريطة التفاعلية - مجلس الجمعيات الأهلية</title>
+    <meta name="description" content="خريطة السعودية التفاعلية - استعرض المتاحف والمواقع في جميع مناطق المملكة">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header-modern">
+            <div class="page-header-content">
+                <h1 class="page-title-modern">الخريطة التفاعلية</h1>
+                <p class="page-description-modern">اكتشف المواقع والمتاحف في جميع مناطق المملكة العربية السعودية</p>
+            </div>
+        </div>
+
+        <!-- Interactive Map Section -->
+        <section class="interactive-map-section">
+            <div class="map-container-wrapper">
+                
+                <!-- Filters -->
+                <div class="map-filters">
+                    <div class="filter-group">
+                        <select id="regionFilter" class="map-select">
+                            <option value="">جميع المناطق</option>
+                            <option value="riyadh">الرياض</option>
+                            <option value="makkah">مكة المكرمة</option>
+                            <option value="madinah">المدينة المنورة</option>
+                            <option value="eastern">المنطقة الشرقية</option>
+                            <option value="qassim">القصيم</option>
+                            <option value="asir">عسير</option>
+                            <option value="tabuk">تبوك</option>
+                            <option value="hail">حائل</option>
+                            <option value="najran">نجران</option>
+                            <option value="jazan">جازان</option>
+                            <option value="bahah">الباحة</option>
+                            <option value="jouf">الجوف</option>
+                            <option value="northern">الحدود الشمالية</option>
+                        </select>
+                        
+                        <select id="categoryFilter" class="map-select">
+                            <option value="">جميع الفئات</option>
+                            <option value="museum">المتاحف</option>
+                            <option value="park">المنتزهات الوطنية</option>
+                            <option value="cultural">المراكز الثقافية</option>
+                            <option value="heritage">المواقع التراثية</option>
+                        </select>
+                    </div>
+                    
+                    <div class="total-count">
+                        <span class="count-label">العدد الكلي:</span>
+                        <span class="count-number" id="totalCount">12</span>
+                    </div>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="map-content-grid">
+                    
+                    <!-- Map Side -->
+                    <div class="map-side">
+                        <div class="saudi-map-wrapper">
+                            <svg id="saudiMap" viewBox="0 0 800 600" class="saudi-map-svg">
+                                <!-- Saudi Arabia Map Regions -->
+                                
+                                <!-- الرياض -->
+                                <path id="riyadh" class="map-region" data-region="الرياض" 
+                                      d="M 400 280 L 480 260 L 520 300 L 500 360 L 440 380 L 380 340 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- مكة المكرمة -->
+                                <path id="makkah" class="map-region" data-region="مكة المكرمة"
+                                      d="M 200 300 L 280 280 L 320 320 L 300 380 L 240 400 L 180 360 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- المدينة المنورة -->
+                                <path id="madinah" class="map-region" data-region="المدينة المنورة"
+                                      d="M 220 200 L 300 180 L 340 220 L 320 270 L 260 290 L 200 250 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- المنطقة الشرقية -->
+                                <path id="eastern" class="map-region" data-region="المنطقة الشرقية"
+                                      d="M 540 260 L 620 240 L 660 280 L 640 340 L 580 360 L 520 320 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- عسير -->
+                                <path id="asir" class="map-region" data-region="عسير"
+                                      d="M 240 420 L 320 400 L 360 440 L 340 500 L 280 520 L 220 480 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- جازان -->
+                                <path id="jazan" class="map-region" data-region="جازان"
+                                      d="M 200 500 L 240 480 L 280 520 L 260 560 L 220 570 L 180 540 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- تبوك -->
+                                <path id="tabuk" class="map-region" data-region="تبوك"
+                                      d="M 180 120 L 260 100 L 300 140 L 280 190 L 220 210 L 160 170 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- حائل -->
+                                <path id="hail" class="map-region" data-region="حائل"
+                                      d="M 320 180 L 400 160 L 440 200 L 420 250 L 360 270 L 300 230 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- القصيم -->
+                                <path id="qassim" class="map-region" data-region="القصيم"
+                                      d="M 360 240 L 440 220 L 480 260 L 460 310 L 400 330 L 340 290 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- نجران -->
+                                <path id="najran" class="map-region" data-region="نجران"
+                                      d="M 380 460 L 460 440 L 500 480 L 480 540 L 420 560 L 360 520 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- الباحة -->
+                                <path id="bahah" class="map-region" data-region="الباحة"
+                                      d="M 260 360 L 320 340 L 360 380 L 340 430 L 280 450 L 240 410 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- الجوف -->
+                                <path id="jouf" class="map-region" data-region="الجوف"
+                                      d="M 300 100 L 380 80 L 420 120 L 400 170 L 340 190 L 280 150 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                                
+                                <!-- الحدود الشمالية -->
+                                <path id="northern" class="map-region" data-region="الحدود الشمالية"
+                                      d="M 420 100 L 500 80 L 540 120 L 520 170 L 460 190 L 400 150 Z"
+                                      fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Data Side -->
+                    <div class="data-side">
+                        <div class="data-list" id="dataList">
+                            <!-- Location cards will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Location Data
+        const locationsData = {
+            riyadh: [
+                {
+                    name: 'متحف نادي الوطني',
+                    hours: '24 ساعة',
+                    category: 'museum',
+                    description: 'متحف تراثي يعرض تاريخ المملكة'
+                },
+                {
+                    name: 'متحف حريملاء الوطني',
+                    hours: '24 ساعة',
+                    category: 'museum',
+                    description: 'متحف تاريخي بتصميم عصري'
+                },
+                {
+                    name: 'متحف الرفائع الوطني',
+                    hours: '24 ساعة',
+                    category: 'museum',
+                    description: 'متحف ثقافي شامل'
+                }
+            ],
+            makkah: [
+                {
+                    name: 'متحف مكة التاريخي',
+                    hours: '9 صباحاً - 5 مساءً',
+                    category: 'museum',
+                    description: 'متحف يعرض تاريخ مكة المكرمة'
+                },
+                {
+                    name: 'المركز الثقافي',
+                    hours: '8 صباحاً - 10 مساءً',
+                    category: 'cultural',
+                    description: 'مركز ثقافي متنوع'
+                }
+            ],
+            madinah: [
+                {
+                    name: 'متحف المدينة المنورة',
+                    hours: '9 صباحاً - 5 مساءً',
+                    category: 'museum',
+                    description: 'متحف يحكي قصة المدينة'
+                },
+                {
+                    name: 'الموقع التراثي',
+                    hours: '24 ساعة',
+                    category: 'heritage',
+                    description: 'موقع تراثي عريق'
+                }
+            ],
+            eastern: [
+                {
+                    name: 'متحف الدمام',
+                    hours: '10 صباحاً - 6 مساءً',
+                    category: 'museum',
+                    description: 'متحف عصري للفنون'
+                },
+                {
+                    name: 'منتزه الكورنيش',
+                    hours: '24 ساعة',
+                    category: 'park',
+                    description: 'منتزه ساحلي جميل'
+                }
+            ],
+            asir: [
+                {
+                    name: 'متحف عسير',
+                    hours: '9 صباحاً - 5 مساءً',
+                    category: 'museum',
+                    description: 'متحف يعرض تراث المنطقة'
+                },
+                {
+                    name: 'منتزه السودة',
+                    hours: '24 ساعة',
+                    category: 'park',
+                    description: 'منتزه جبلي رائع'
+                }
+            ]
+        };
+
+        let selectedRegion = null;
+        let selectedCategory = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setupMapInteraction();
+            setupFilters();
+            showAllLocations();
+        });
+
+        function setupMapInteraction() {
+            const regions = document.querySelectorAll('.map-region');
+            
+            regions.forEach(region => {
+                region.addEventListener('click', function() {
+                    const regionId = this.id;
+                    selectRegion(regionId);
+                });
+                
+                region.addEventListener('mouseenter', function() {
+                    if (this.id !== selectedRegion) {
+                        this.style.fill = '#cbd5e1';
+                    }
+                });
+                
+                region.addEventListener('mouseleave', function() {
+                    if (this.id !== selectedRegion) {
+                        this.style.fill = '#e2e8f0';
+                    }
+                });
+            });
+        }
+
+        function selectRegion(regionId) {
+            // Reset all regions
+            document.querySelectorAll('.map-region').forEach(r => {
+                r.style.fill = '#e2e8f0';
+                r.classList.remove('active');
+            });
+            
+            // Highlight selected region
+            const region = document.getElementById(regionId);
+            if (region) {
+                region.style.fill = '#0d7a91';
+                region.classList.add('active');
+                selectedRegion = regionId;
+                
+                // Update select
+                document.getElementById('regionFilter').value = regionId;
+                
+                // Show locations for this region
+                displayLocations(regionId);
+            }
+        }
+
+        function setupFilters() {
+            document.getElementById('regionFilter').addEventListener('change', function() {
+                const regionId = this.value;
+                if (regionId) {
+                    selectRegion(regionId);
+                } else {
+                    clearSelection();
+                    showAllLocations();
+                }
+            });
+
+            document.getElementById('categoryFilter').addEventListener('change', function() {
+                selectedCategory = this.value || null;
+                if (selectedRegion) {
+                    displayLocations(selectedRegion);
+                } else {
+                    showAllLocations();
+                }
+            });
+        }
+
+        function clearSelection() {
+            document.querySelectorAll('.map-region').forEach(r => {
+                r.style.fill = '#e2e8f0';
+                r.classList.remove('active');
+            });
+            selectedRegion = null;
+        }
+
+        function showAllLocations() {
+            const dataList = document.getElementById('dataList');
+            dataList.innerHTML = '';
+            
+            let allLocations = [];
+            Object.keys(locationsData).forEach(region => {
+                allLocations = allLocations.concat(locationsData[region]);
+            });
+
+            // Filter by category if selected
+            if (selectedCategory) {
+                allLocations = allLocations.filter(loc => loc.category === selectedCategory);
+            }
+
+            updateCount(allLocations.length);
+            allLocations.forEach(location => {
+                dataList.appendChild(createLocationCard(location));
+            });
+        }
+
+        function displayLocations(regionId) {
+            const dataList = document.getElementById('dataList');
+            dataList.innerHTML = '';
+            
+            let locations = locationsData[regionId] || [];
+
+            // Filter by category if selected
+            if (selectedCategory) {
+                locations = locations.filter(loc => loc.category === selectedCategory);
+            }
+
+            updateCount(locations.length);
+
+            if (locations.length === 0) {
+                dataList.innerHTML = '<div class="no-data"><i class="fas fa-info-circle"></i><p>لا توجد مواقع متاحة في هذه المنطقة</p></div>';
+                return;
+            }
+
+            locations.forEach(location => {
+                dataList.appendChild(createLocationCard(location));
+            });
+        }
+
+        function createLocationCard(location) {
+            const card = document.createElement('div');
+            card.className = 'location-card';
+            
+            card.innerHTML = `
+                <div class="location-status">
+                    <i class="fas fa-clock"></i>
+                    <span>${location.hours}</span>
+                </div>
+                <h3 class="location-name">${location.name}</h3>
+                <p class="location-description">${location.description}</p>
+                <div class="location-actions">
+                    <a href="#" class="location-action-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>الموقع على الخريطة</span>
+                    </a>
+                    <a href="#" class="location-action-btn">
+                        <i class="fas fa-info-circle"></i>
+                        <span>اعرف أكثر</span>
+                    </a>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function updateCount(count) {
+            document.getElementById('totalCount').textContent = count;
+        }
+    </script>
+</body>
+</html>
