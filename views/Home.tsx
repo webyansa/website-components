@@ -368,52 +368,108 @@ const Home = () => {
 
   return (
     <div dir="rtl" className="min-vh-100" style={{ background: theme.pageBg }}>
-      {/* Compact Hero with Search */}
+      {/* Professional Hero Section */}
       <header
         style={{
-          background: "#fff",
-          borderBottom: `1px solid ${theme.border}`,
+          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div className="container py-4">
-          {/* Logo & Title Row */}
-          <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
-            <img
-              src={webyanLogo}
-              alt="شعار ويبيان"
-              style={{ height: "40px", width: "auto" }}
-            />
-            <div className="text-center">
-              <h1 className="h5 fw-bold mb-0" style={{ color: theme.text }}>
-                مكونات صفحات مواقع
-              </h1>
-              <p className="mb-0" style={{ color: theme.textMuted, fontSize: "0.8rem" }}>
-                {totalPages} صفحة جاهزة للاستخدام
-              </p>
+        {/* Subtle Pattern Overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.06) 0%, transparent 50%)`,
+            pointerEvents: "none",
+          }}
+        />
+        
+        <div className="container position-relative" style={{ padding: "2.5rem 1rem" }}>
+          {/* Top Bar with Logo */}
+          <div className="d-flex align-items-center justify-content-between mb-4">
+            <div className="d-flex align-items-center gap-2">
+              <img
+                src={webyanLogo}
+                alt="شعار ويبيان"
+                style={{ 
+                  height: "32px", 
+                  width: "auto",
+                  filter: "brightness(0) invert(1)",
+                }}
+              />
+              <span style={{ 
+                color: "rgba(255,255,255,0.6)", 
+                fontSize: "0.75rem",
+                fontWeight: 500,
+                letterSpacing: "0.5px",
+              }}>
+                WEBYAN
+              </span>
+            </div>
+            <div 
+              className="d-flex align-items-center gap-2"
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <span style={{ 
+                width: "8px", 
+                height: "8px", 
+                background: "#22c55e", 
+                borderRadius: "50%",
+                boxShadow: "0 0 8px #22c55e",
+              }} />
+              <span style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.75rem" }}>
+                {totalPages} صفحة متاحة
+              </span>
             </div>
           </div>
 
-          {/* Search */}
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-5">
-              <p className="text-center mb-2" style={{ color: theme.textMuted, fontSize: "0.85rem" }}>
-                ابحث عن الصفحة التي تريدها
-              </p>
-              <div
-                className="position-relative"
-                style={{
-                  background: theme.pageBg,
-                  borderRadius: "8px",
-                  border: `1px solid ${theme.border}`,
-                }}
-              >
+          {/* Main Content */}
+          <div className="text-center" style={{ maxWidth: "600px", margin: "0 auto" }}>
+            <h1 
+              style={{ 
+                color: "#fff",
+                fontSize: "1.75rem",
+                fontWeight: 700,
+                marginBottom: "0.5rem",
+                letterSpacing: "-0.5px",
+              }}
+            >
+              مكتبة مكونات الويب
+            </h1>
+            <p style={{ 
+              color: "rgba(255,255,255,0.6)", 
+              fontSize: "0.9rem",
+              marginBottom: "1.5rem",
+              lineHeight: 1.6,
+            }}>
+              اكتشف وحمّل صفحات جاهزة للاستخدام في مشاريعك
+            </p>
+
+            {/* Search Box */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.95)",
+                borderRadius: "12px",
+                padding: "4px",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
+              }}
+            >
+              <div className="position-relative">
                 <span
                   className="position-absolute d-flex align-items-center justify-content-center"
                   style={{
-                    right: "12px",
+                    right: "16px",
                     top: "50%",
                     transform: "translateY(-50%)",
-                    color: theme.textMuted,
+                    color: "#94a3b8",
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -423,23 +479,30 @@ const Home = () => {
                 <input
                   type="search"
                   className="form-control border-0"
-                  placeholder="اكتب اسم الصفحة..."
+                  placeholder="اكتب اسم الصفحة أو المسار..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
                     background: "transparent",
-                    padding: "10px 14px",
-                    paddingRight: "40px",
-                    fontSize: "0.9rem",
+                    padding: "12px 16px",
+                    paddingRight: "44px",
+                    fontSize: "0.95rem",
+                    color: "#1e293b",
                   }}
                 />
               </div>
-              {searchQuery && (
-                <div className="text-center mt-2" style={{ fontSize: "0.8rem", color: theme.textMuted }}>
-                  تم العثور على <strong style={{ color: theme.primary }}>{filteredCount}</strong> صفحة
-                </div>
-              )}
             </div>
+            {searchQuery && (
+              <div 
+                className="text-center mt-3" 
+                style={{ 
+                  fontSize: "0.8rem", 
+                  color: "rgba(255,255,255,0.7)",
+                }}
+              >
+                تم العثور على <strong style={{ color: "#60a5fa" }}>{filteredCount}</strong> صفحة
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -457,23 +520,52 @@ const Home = () => {
             {filteredCategories.map((category) => (
               <section key={category.title}>
                 {/* Category Header */}
-                <div className="d-flex align-items-center gap-2 mb-3">
-                  <span style={{ fontSize: "1.2rem" }}>{category.icon}</span>
-                  <h2 className="h6 fw-semibold mb-0" style={{ color: theme.text }}>
-                    {category.title}
-                  </h2>
-                  <span
+                <div 
+                  className="d-flex align-items-center gap-3 mb-3 pb-2"
+                  style={{
+                    borderBottom: "1px solid #e2e8f0",
+                  }}
+                >
+                  <div
                     style={{
-                      background: theme.primaryLight,
-                      color: theme.primary,
-                      padding: "2px 8px",
-                      borderRadius: "4px",
-                      fontSize: "0.7rem",
-                      fontWeight: 500,
+                      width: "36px",
+                      height: "36px",
+                      background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)",
+                      borderRadius: "10px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.1rem",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
                     }}
                   >
-                    {category.pages.length}
-                  </span>
+                    {category.icon}
+                  </div>
+                  <div className="d-flex align-items-center gap-2">
+                    <h2 
+                      className="mb-0" 
+                      style={{ 
+                        color: "#1e293b",
+                        fontSize: "1rem",
+                        fontWeight: 600,
+                        letterSpacing: "-0.3px",
+                      }}
+                    >
+                      {category.title}
+                    </h2>
+                    <span
+                      style={{
+                        background: "#f1f5f9",
+                        color: "#64748b",
+                        padding: "3px 10px",
+                        borderRadius: "20px",
+                        fontSize: "0.7rem",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {category.pages.length} صفحة
+                    </span>
+                  </div>
                 </div>
 
                 {/* Pages Grid */}
@@ -491,20 +583,22 @@ const Home = () => {
       {/* Footer */}
       <footer
         style={{
-          background: "#fff",
-          borderTop: `1px solid ${theme.border}`,
-          marginTop: "2rem",
+          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+          marginTop: "3rem",
         }}
       >
-        <div className="container py-3 text-center">
-          <div className="d-flex align-items-center justify-content-center gap-2 mb-1">
+        <div className="container py-4 text-center">
+          <div className="d-flex align-items-center justify-content-center gap-2 mb-2">
             <img
               src={webyanLogo}
               alt="ويبيان"
-              style={{ height: "24px" }}
+              style={{ 
+                height: "28px",
+                filter: "brightness(0) invert(1)",
+              }}
             />
           </div>
-          <p style={{ color: theme.textMuted, fontSize: "0.75rem", marginBottom: 0 }}>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem", marginBottom: 0 }}>
             © {new Date().getFullYear()} ويبيان - جميع الحقوق محفوظة
           </p>
         </div>
