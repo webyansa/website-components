@@ -343,105 +343,215 @@ body {
 
 /* ==================== Service Item ==================== */
 .service-item {
-  background: var(--light-bg);
-  border: 2px solid transparent;
-  border-radius: 14px;
-  padding: 1rem;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 1.25rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-item:hover::before {
+  opacity: 1;
 }
 
 .service-item:hover {
-  background: rgba(0, 153, 204, 0.05);
-  border-color: rgba(0, 153, 204, 0.2);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 .service-item.selected {
-  background: rgba(0, 203, 169, 0.08);
+  background: linear-gradient(135deg, rgba(0, 203, 169, 0.05), rgba(0, 153, 204, 0.05));
   border-color: var(--success-color);
-  box-shadow: 0 8px 25px rgba(0, 203, 169, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 203, 169, 0.2);
+}
+
+.service-item.selected::before {
+  opacity: 1;
+  background: linear-gradient(90deg, var(--success-color), var(--accent-color));
 }
 
 .service-select-area {
   cursor: pointer;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Service Icon */
+.service-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  color: var(--white);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.service-icon-wrapper.path-1 {
+  background: linear-gradient(135deg, var(--primary-color), #ff8a6b);
+}
+
+.service-icon-wrapper.path-2 {
+  background: linear-gradient(135deg, var(--accent-color), #00d4ff);
+}
+
+.service-icon-wrapper.path-3 {
+  background: linear-gradient(135deg, var(--success-color), #00e6c3);
+}
+
+.service-item:hover .service-icon-wrapper {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-checkbox {
   position: absolute;
-  top: 0.85rem;
-  left: 0.85rem;
-  width: 24px;
-  height: 24px;
-  border: 2px solid rgba(0,0,0,0.15);
-  border-radius: 6px;
+  top: 1rem;
+  left: 1rem;
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   background: var(--white);
+  z-index: 2;
+}
+
+.service-item:hover .service-checkbox {
+  border-color: var(--accent-color);
 }
 
 .service-item.selected .service-checkbox {
   background: linear-gradient(135deg, var(--success-color), var(--accent-color));
   border-color: var(--success-color);
+  box-shadow: 0 4px 12px rgba(0, 203, 169, 0.35);
 }
 
 .service-checkbox i {
   color: var(--white);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transform: scale(0.5);
+  transition: all 0.2s ease;
 }
 
 .service-item.selected .service-checkbox i {
   opacity: 1;
+  transform: scale(1);
+}
+
+.service-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .service-content h4 {
-  margin: 0 0 0.4rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--secondary-color);
-  padding-left: 2rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.service-item:hover .service-content h4 {
+  color: var(--primary-color);
 }
 
 .service-content p {
   margin: 0;
   color: var(--text-light);
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Service Actions */
+.service-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* Service Info Button */
 .service-info-btn {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  background: transparent;
-  border: 1px solid rgba(0, 153, 204, 0.3);
+  background: linear-gradient(135deg, rgba(0, 153, 204, 0.08), rgba(0, 203, 169, 0.08));
+  border: none;
   color: var(--accent-color);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Cairo', sans-serif;
-  margin-top: 0.75rem;
-  width: 100%;
 }
 
 .service-info-btn:hover {
   background: var(--accent-color);
   color: var(--white);
-  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 153, 204, 0.25);
+}
+
+.service-add-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-bg);
+  border: none;
+  border-radius: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.service-add-btn:hover {
+  background: linear-gradient(135deg, var(--success-color), var(--accent-color));
+  color: var(--white);
+  transform: scale(1.08);
+}
+
+.service-item.selected .service-add-btn {
+  background: var(--success-color);
+  color: var(--white);
 }
 
 /* ==================== Service Details Modal ==================== */
