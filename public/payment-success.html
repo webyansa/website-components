@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تم الدفع بنجاح - منصة ويبيان</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/payment-success.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="store-home.html" class="logo">
+                    <img src="images/webyan-logo.png" alt="ويبيان" height="45">
+                </a>
+                <nav class="header-nav">
+                    <a href="store-home.html" class="nav-link">الرئيسية</a>
+                    <a href="association-store.html" class="nav-link">المتجر</a>
+                    <a href="donations-gate.html" class="nav-link">بوابة التبرعات</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Success Animation -->
+            <div class="success-animation">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message">
+                <h1>تم الدفع بنجاح!</h1>
+                <p>شكراً لك على تبرعك الكريم. جزاك الله خيراً.</p>
+            </div>
+
+            <!-- Receipt Card -->
+            <div class="receipt-card" id="receiptCard">
+                <div class="receipt-header">
+                    <img src="images/webyan-logo.png" alt="ويبيان" class="receipt-logo">
+                    <h2>إيصال التبرع</h2>
+                    <p class="receipt-date" id="receiptDate"></p>
+                </div>
+
+                <div class="receipt-body">
+                    <!-- Transaction Info -->
+                    <div class="transaction-info">
+                        <div class="transaction-number">
+                            <span class="label">رقم العملية</span>
+                            <span class="value" id="transactionNumber">TXN-2024-847291</span>
+                        </div>
+                        <div class="transaction-status">
+                            <span class="status-badge success">
+                                <i class="bi bi-check-circle-fill"></i>
+                                مكتمل
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Donation Details -->
+                    <div class="receipt-section">
+                        <h3>تفاصيل التبرع</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">اسم المشروع</span>
+                            <span class="detail-value">مشروع إفطار صائم</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">رقم المشروع</span>
+                            <span class="detail-value">#PRJ-2024-0156</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">نوع التبرع</span>
+                            <span class="detail-value" id="donationType">تبرع مباشر</span>
+                        </div>
+                    </div>
+
+                    <!-- Gift Details (if applicable) -->
+                    <div class="receipt-section gift-section" id="giftSection" style="display: none;">
+                        <h3>تفاصيل الإهداء</h3>
+                        <div class="gift-list" id="giftList">
+                            <!-- Gift items will be added here -->
+                        </div>
+                    </div>
+
+                    <!-- Donor Info -->
+                    <div class="receipt-section">
+                        <h3>بيانات المتبرع</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">الاسم</span>
+                            <span class="detail-value" id="donorName">محمد أحمد العلي</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">رقم الجوال</span>
+                            <span class="detail-value" id="donorPhone">+966 50 123 4567</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">البريد الإلكتروني</span>
+                            <span class="detail-value" id="donorEmail">mohammed@example.com</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info -->
+                    <div class="receipt-section">
+                        <h3>بيانات الدفع</h3>
+                        <div class="detail-row">
+                            <span class="detail-label">طريقة الدفع</span>
+                            <span class="detail-value" id="paymentMethod">
+                                <img src="images/pay-option-mada.svg" alt="مدى" class="payment-icon">
+                                مدى
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">آخر 4 أرقام</span>
+                            <span class="detail-value">**** 4532</span>
+                        </div>
+                    </div>
+
+                    <!-- Amount Summary -->
+                    <div class="amount-summary">
+                        <div class="summary-row">
+                            <span>مبلغ التبرع</span>
+                            <span>100.00 ر.س</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>رسوم الخدمة</span>
+                            <span>0.00 ر.س</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>الإجمالي</span>
+                            <span id="totalAmount">100.00 ر.س</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="receipt-footer">
+                    <p>هذا الإيصال صادر إلكترونياً ولا يحتاج إلى توقيع أو ختم</p>
+                    <div class="receipt-qr">
+                        <div class="qr-placeholder">
+                            <i class="bi bi-qr-code"></i>
+                        </div>
+                        <span>امسح للتحقق</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-primary btn-print" onclick="printReceipt()">
+                    <i class="bi bi-printer"></i>
+                    طباعة الإيصال
+                </button>
+                <button class="btn btn-outline-primary btn-download" onclick="downloadReceipt()">
+                    <i class="bi bi-download"></i>
+                    تحميل PDF
+                </button>
+                <button class="btn btn-outline-secondary btn-share" onclick="shareReceipt()">
+                    <i class="bi bi-share"></i>
+                    مشاركة
+                </button>
+            </div>
+
+            <!-- Additional Actions -->
+            <div class="additional-actions">
+                <a href="donations-gate.html" class="action-link">
+                    <i class="bi bi-heart"></i>
+                    تبرع بمشروع آخر
+                </a>
+                <a href="store-home.html" class="action-link">
+                    <i class="bi bi-house"></i>
+                    العودة للرئيسية
+                </a>
+            </div>
+
+            <!-- Share Message -->
+            <div class="share-message">
+                <p>شارك أجرك مع الآخرين</p>
+                <div class="social-share">
+                    <a href="#" class="social-btn whatsapp" title="واتساب">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-btn twitter" title="تويتر">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+                    <a href="#" class="social-btn telegram" title="تيليجرام">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2024 منصة ويبيان. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set current date
+        document.getElementById('receiptDate').textContent = new Date().toLocaleDateString('ar-SA', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        // Print receipt function
+        function printReceipt() {
+            window.print();
+        }
+
+        // Download receipt as PDF (simulated)
+        function downloadReceipt() {
+            alert('جاري تحميل الإيصال بصيغة PDF...');
+            // In production, this would generate and download a PDF
+        }
+
+        // Share receipt
+        function shareReceipt() {
+            const transactionNumber = document.getElementById('transactionNumber').textContent;
+            const shareText = `تم التبرع بنجاح لمشروع إفطار صائم\nرقم العملية: ${transactionNumber}\nجزاكم الله خيراً`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'إيصال تبرع',
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert('تم نسخ معلومات التبرع');
+                });
+            }
+        }
+
+        // Social share links
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const transactionNumber = document.getElementById('transactionNumber').textContent;
+                const shareText = encodeURIComponent(`الحمد لله، تم التبرع بنجاح لمشروع إفطار صائم 🤲\nرقم العملية: ${transactionNumber}\nساهم معنا في الخير`);
+                const shareUrl = encodeURIComponent(window.location.href);
+                
+                let url = '';
+                if (this.classList.contains('whatsapp')) {
+                    url = `https://wa.me/?text=${shareText}`;
+                } else if (this.classList.contains('twitter')) {
+                    url = `https://twitter.com/intent/tweet?text=${shareText}`;
+                } else if (this.classList.contains('telegram')) {
+                    url = `https://t.me/share/url?url=${shareUrl}&text=${shareText}`;
+                }
+                
+                window.open(url, '_blank', 'width=600,height=400');
+            });
+        });
+    </script>
+</body>
+</html>
