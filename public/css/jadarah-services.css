@@ -405,21 +405,40 @@ body {
   justify-content: center;
   margin-bottom: 1rem;
   font-size: 1.35rem;
-  color: var(--white);
   position: relative;
   transition: all 0.3s ease;
+  background: var(--white);
+  border: 2px solid;
 }
 
 .service-icon-wrapper.path-1 {
-  background: linear-gradient(135deg, var(--primary-color), #ff8a6b);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .service-icon-wrapper.path-2 {
-  background: linear-gradient(135deg, var(--accent-color), #00d4ff);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .service-icon-wrapper.path-3 {
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.service-item:hover .service-icon-wrapper.path-1 {
+  background: linear-gradient(135deg, var(--primary-color), #ff8a6b);
+  color: var(--white);
+}
+
+.service-item:hover .service-icon-wrapper.path-2 {
+  background: linear-gradient(135deg, var(--accent-color), #00d4ff);
+  color: var(--white);
+}
+
+.service-item:hover .service-icon-wrapper.path-3 {
   background: linear-gradient(135deg, var(--success-color), #00e6c3);
+  color: var(--white);
 }
 
 .service-item:hover .service-icon-wrapper {
