@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فرص تنموية | جدارة</title>
+  <meta name="description" content="استكشف الفرص التنموية المتاحة وتقدم لأفضل الفرص التي تناسب مهاراتك وطموحاتك">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/development-opportunities.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="opportunities-hero">
+    <div class="floating-elements">
+      <div class="floating-shape"></div>
+      <div class="floating-shape"></div>
+      <div class="floating-shape"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="bi bi-rocket-takeoff"></i>
+          <span>انطلق نحو التميز</span>
+        </div>
+        <h1 class="hero-title">فرص <span>تنموية</span> مميزة</h1>
+        <p class="hero-subtitle">اكتشف الفرص التنموية المتاحة وطوّر مهاراتك مع أفضل الجهات والعلامات التجارية المعتمدة</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="totalOpportunities">0</span>
+            <span class="stat-label">فرصة متاحة</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="activeOpportunities">0</span>
+            <span class="stat-label">فرصة نشطة</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="brandsCount">0</span>
+            <span class="stat-label">علامة تجارية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-container">
+        <div class="filter-group">
+          <select class="filter-select" id="typeFilter" onchange="filterOpportunities()">
+            <option value="">جميع الأنواع</option>
+            <option value="تدريبية">فرص تدريبية</option>
+            <option value="تأهيلية">فرص تأهيلية</option>
+            <option value="استشارية">فرص استشارية</option>
+            <option value="بحثية">فرص بحثية</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <select class="filter-select" id="statusFilter" onchange="filterOpportunities()">
+            <option value="">جميع الحالات</option>
+            <option value="متاحة">متاحة للتقديم</option>
+            <option value="قريباً">قريباً</option>
+            <option value="مغلقة">مغلقة</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <select class="filter-select" id="brandFilter" onchange="filterOpportunities()">
+            <option value="">جميع العلامات</option>
+          </select>
+        </div>
+        <div class="search-wrapper">
+          <i class="bi bi-search search-icon"></i>
+          <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن فرصة..." oninput="filterOpportunities()">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunities Grid -->
+  <section class="opportunities-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="bi bi-stars"></i>
+          <span>الفرص المتاحة</span>
+        </div>
+        <h2 class="section-title">استكشف الفرص التنموية</h2>
+        <p class="section-subtitle">اختر الفرصة المناسبة لك وابدأ رحلة التطوير</p>
+      </div>
+      
+      <div class="opportunities-grid" id="opportunitiesGrid">
+        <!-- Cards will be rendered here by JavaScript -->
+      </div>
+      
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">
+          <i class="bi bi-search"></i>
+        </div>
+        <h3 class="empty-title">لم يتم العثور على نتائج</h3>
+        <p class="empty-text">جرب تغيير معايير البحث أو إزالة بعض الفلاتر للحصول على نتائج أكثر</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal-container">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="modal-header-bg">
+          <div class="modal-header-content">
+            <div class="modal-brand">
+              <div class="modal-brand-logo">
+                <i class="bi bi-building" id="modalBrandIcon"></i>
+              </div>
+              <span class="modal-brand-name" id="modalBrandName">اسم العلامة</span>
+            </div>
+            <h2 class="modal-title" id="modalTitle">عنوان الفرصة</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Details View -->
+        <div class="details-view" id="detailsView">
+          <div class="detail-badges" id="detailBadges">
+            <!-- Badges rendered by JS -->
+          </div>
+          
+          <div class="opportunity-image" id="opportunityImage" style="display: none;">
+            <img src="" alt="صورة الفرصة" id="opportunityImg">
+          </div>
+          
+          <div class="detail-section">
+            <h3 class="detail-section-title">
+              <i class="bi bi-info-circle"></i>
+              نبذة مختصرة
+            </h3>
+            <p class="detail-text" id="shortDescription">-</p>
+          </div>
+          
+          <div class="detail-section">
+            <h3 class="detail-section-title">
+              <i class="bi bi-file-text"></i>
+              نبذة تعريفية
+            </h3>
+            <p class="detail-text" id="fullDescription">-</p>
+          </div>
+          
+          <div class="detail-section">
+            <h3 class="detail-section-title">
+              <i class="bi bi-list-check"></i>
+              شروط التقديم
+            </h3>
+            <ul class="requirements-list" id="requirementsList">
+              <!-- Requirements rendered by JS -->
+            </ul>
+          </div>
+          
+          <div class="modal-actions">
+            <button class="btn btn-apply" onclick="showApplicationForm()">
+              <i class="bi bi-send"></i>
+              <span>التقدم للفرصة</span>
+            </button>
+            <a href="#" class="btn btn-secondary" id="guideLink" target="_blank">
+              <i class="bi bi-file-earmark-pdf"></i>
+              <span>دليل الفرصة</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Application Form View -->
+        <div class="application-view" id="applicationView">
+          <div class="form-header">
+            <div class="form-icon">
+              <i class="bi bi-person-plus"></i>
+            </div>
+            <h3 class="form-title">نموذج التقديم</h3>
+            <p class="form-subtitle">أكمل البيانات التالية للتقدم لهذه الفرصة</p>
+          </div>
+          
+          <form class="application-form" id="applicationForm" onsubmit="submitApplication(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-person"></i>
+                  الاسم الكامل <span class="required">*</span>
+                </label>
+                <input type="text" class="form-input" name="fullName" required placeholder="أدخل اسمك الكامل">
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-envelope"></i>
+                  البريد الإلكتروني <span class="required">*</span>
+                </label>
+                <input type="email" class="form-input" name="email" required placeholder="example@email.com">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-phone"></i>
+                  رقم الجوال <span class="required">*</span>
+                </label>
+                <input type="tel" class="form-input" name="phone" required placeholder="05xxxxxxxx">
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-geo-alt"></i>
+                  المدينة <span class="required">*</span>
+                </label>
+                <select class="form-select" name="city" required>
+                  <option value="">اختر المدينة</option>
+                  <option value="الرياض">الرياض</option>
+                  <option value="جدة">جدة</option>
+                  <option value="مكة المكرمة">مكة المكرمة</option>
+                  <option value="المدينة المنورة">المدينة المنورة</option>
+                  <option value="الدمام">الدمام</option>
+                  <option value="أخرى">أخرى</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-mortarboard"></i>
+                  المؤهل العلمي <span class="required">*</span>
+                </label>
+                <select class="form-select" name="education" required>
+                  <option value="">اختر المؤهل</option>
+                  <option value="ثانوي">ثانوي</option>
+                  <option value="دبلوم">دبلوم</option>
+                  <option value="بكالوريوس">بكالوريوس</option>
+                  <option value="ماجستير">ماجستير</option>
+                  <option value="دكتوراه">دكتوراه</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="bi bi-briefcase"></i>
+                  سنوات الخبرة
+                </label>
+                <select class="form-select" name="experience">
+                  <option value="">اختر</option>
+                  <option value="لا يوجد">لا يوجد</option>
+                  <option value="1-2">1-2 سنة</option>
+                  <option value="3-5">3-5 سنوات</option>
+                  <option value="5+">أكثر من 5 سنوات</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group full-width">
+              <label class="form-label">
+                <i class="bi bi-file-earmark-arrow-up"></i>
+                السيرة الذاتية (اختياري)
+              </label>
+              <div class="file-upload">
+                <input type="file" name="cv" accept=".pdf,.doc,.docx" onchange="updateFileName(this)">
+                <div class="file-upload-content">
+                  <div class="file-upload-icon">
+                    <i class="bi bi-cloud-upload"></i>
+                  </div>
+                  <span class="file-upload-text">اسحب الملف هنا أو اضغط للاختيار</span>
+                  <span class="file-upload-hint">PDF, DOC, DOCX - حجم أقصى 5MB</span>
+                </div>
+                <span class="file-name" id="fileName"></span>
+              </div>
+            </div>
+            
+            <div class="form-group full-width">
+              <label class="form-label">
+                <i class="bi bi-chat-text"></i>
+                لماذا ترغب في هذه الفرصة؟ <span class="required">*</span>
+              </label>
+              <textarea class="form-textarea" name="motivation" required placeholder="اكتب سبب اهتمامك بهذه الفرصة..."></textarea>
+            </div>
+            
+            <div class="form-actions">
+              <button type="submit" class="btn btn-submit">
+                <i class="bi bi-check-circle"></i>
+                <span>إرسال الطلب</span>
+              </button>
+              <button type="button" class="btn btn-back" onclick="showDetailsView()">
+                <i class="bi bi-arrow-right"></i>
+                <span>العودة للتفاصيل</span>
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Success View -->
+        <div class="success-view" id="successView">
+          <div class="success-animation">
+            <i class="bi bi-check-lg"></i>
+          </div>
+          <h3 class="success-title">تم إرسال طلبك بنجاح!</h3>
+          <p class="success-text">شكراً لاهتمامك بهذه الفرصة. سيتم مراجعة طلبك والتواصل معك قريباً عبر البريد الإلكتروني.</p>
+          <div class="success-actions">
+            <button class="btn btn-primary" onclick="closeModal()">
+              <i class="bi bi-grid"></i>
+              <span>العودة للفرص</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Sample Data
+    const opportunities = [
+      {
+        id: 1,
+        title: "برنامج تطوير القيادات الشبابية",
+        type: "تدريبية",
+        status: "متاحة",
+        publishDate: "2024-01-15",
+        applicationDeadline: "2024-02-15",
+        brand: "أكاديمية جدارة",
+        brandIcon: "bi-mortarboard",
+        category: "تطوير ذاتي",
+        shortDescription: "برنامج مكثف لتطوير المهارات القيادية للشباب السعودي",
+        fullDescription: "برنامج شامل يهدف إلى تأهيل الشباب السعودي الطموح ليكونوا قادة المستقبل. يتضمن البرنامج تدريبات عملية، ورش عمل تفاعلية، وإرشاد من خبراء متخصصين في مجال القيادة والإدارة. مدة البرنامج 3 أشهر بمعدل 8 ساعات أسبوعياً.",
+        requirements: [
+          "أن يكون المتقدم سعودي الجنسية",
+          "العمر بين 18-35 سنة",
+          "حاصل على شهادة الثانوية كحد أدنى",
+          "إجادة استخدام الحاسب الآلي",
+          "الالتزام بحضور جميع الجلسات التدريبية"
+        ],
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800",
+        guideUrl: "#"
+      },
+      {
+        id: 2,
+        title: "منحة التميز في ريادة الأعمال",
+        type: "تأهيلية",
+        status: "متاحة",
+        publishDate: "2024-01-10",
+        applicationDeadline: "2024-03-01",
+        brand: "مركز ريادة",
+        brandIcon: "bi-lightbulb",
+        category: "ريادة أعمال",
+        shortDescription: "منحة كاملة لتأهيل رواد الأعمال الطموحين",
+        fullDescription: "منحة شاملة تقدم تدريباً مكثفاً على أساسيات ريادة الأعمال، دراسة الجدوى، التسويق الرقمي، والحصول على التمويل. تشمل المنحة إرشاداً من رواد أعمال ناجحين وفرصة للحصول على تمويل أولي للمشاريع المميزة.",
+        requirements: [
+          "امتلاك فكرة مشروع واضحة",
+          "القدرة على التفرغ الجزئي للبرنامج",
+          "لا يشترط خبرة سابقة في ريادة الأعمال",
+          "الاستعداد للعمل ضمن فريق"
+        ],
+        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800",
+        guideUrl: "#"
+      },
+      {
+        id: 3,
+        title: "برنامج المستشار المعتمد",
+        type: "استشارية",
+        status: "قريباً",
+        publishDate: "2024-01-20",
+        applicationDeadline: "2024-04-01",
+        brand: "معهد الاستشارات",
+        brandIcon: "bi-person-workspace",
+        category: "استشارات",
+        shortDescription: "كن مستشاراً معتمداً في مجال تخصصك",
+        fullDescription: "برنامج متقدم لتأهيل المتخصصين ليصبحوا مستشارين معتمدين. يغطي البرنامج أساليب الاستشارة المهنية، بناء العلاقات مع العملاء، إدارة المشاريع الاستشارية، وأخلاقيات المهنة. يمنح الخريجون شهادة مستشار معتمد.",
+        requirements: [
+          "خبرة لا تقل عن 5 سنوات في المجال",
+          "شهادة جامعية في التخصص",
+          "إتقان مهارات التواصل والعرض",
+          "اجتياز المقابلة الشخصية"
+        ],
+        image: "https://images.unsplash.com/photo-1553028826-f4804a6dba3b?w=800",
+        guideUrl: "#"
+      },
+      {
+        id: 4,
+        title: "مبادرة الباحثين الشباب",
+        type: "بحثية",
+        status: "متاحة",
+        publishDate: "2024-01-05",
+        applicationDeadline: "2024-02-28",
+        brand: "مركز البحوث",
+        brandIcon: "bi-journal-text",
+        category: "بحث علمي",
+        shortDescription: "فرصة للمشاركة في مشاريع بحثية متقدمة",
+        fullDescription: "مبادرة تهدف إلى تشجيع الشباب على البحث العلمي من خلال المشاركة في مشاريع بحثية حقيقية تحت إشراف باحثين متخصصين. توفر المبادرة دعماً مالياً للباحثين وفرصة لنشر الأبحاث في مجلات علمية محكّمة.",
+        requirements: [
+          "طالب جامعي أو خريج حديث",
+          "معدل تراكمي لا يقل عن 3.5",
+          "اهتمام واضح بالبحث العلمي",
+          "إجادة اللغة الإنجليزية كتابة وقراءة"
+        ],
+        image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800",
+        guideUrl: "#"
+      },
+      {
+        id: 5,
+        title: "برنامج المهارات الرقمية المتقدمة",
+        type: "تدريبية",
+        status: "مغلقة",
+        publishDate: "2023-12-01",
+        applicationDeadline: "2024-01-15",
+        brand: "أكاديمية التقنية",
+        brandIcon: "bi-code-slash",
+        category: "تقنية",
+        shortDescription: "اكتسب مهارات العصر الرقمي",
+        fullDescription: "برنامج تدريبي شامل يغطي أحدث التقنيات والمهارات الرقمية المطلوبة في سوق العمل. يشمل التدريب على البرمجة، تحليل البيانات، الذكاء الاصطناعي، والأمن السيبراني.",
+        requirements: [
+          "إجادة أساسيات الحاسب الآلي",
+          "القدرة على التعلم الذاتي",
+          "توفر جهاز حاسب شخصي",
+          "الالتزام بمتطلبات البرنامج"
+        ],
+        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800",
+        guideUrl: "#"
+      },
+      {
+        id: 6,
+        title: "دورة إعداد المدربين المحترفين",
+        type: "تأهيلية",
+        status: "متاحة",
+        publishDate: "2024-01-18",
+        applicationDeadline: "2024-02-20",
+        brand: "معهد التدريب",
+        brandIcon: "bi-easel",
+        category: "تدريب",
+        shortDescription: "كن مدرباً معتمداً ومؤثراً",
+        fullDescription: "دورة متكاملة لإعداد المدربين المحترفين وفق أحدث المعايير الدولية. تشمل الدورة مهارات التصميم التدريبي، إدارة القاعة التدريبية، استخدام التقنيات الحديثة، وتقييم أثر التدريب.",
+        requirements: [
+          "شهادة جامعية",
+          "خبرة في مجال التخصص",
+          "مهارات تواصل ممتازة",
+          "القدرة على العرض والإلقاء"
+        ],
+        image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800",
+        guideUrl: "#"
+      }
+    ];
+
+    let currentOpportunityId = null;
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      renderOpportunities(opportunities);
+      updateStats();
+      populateBrandFilter();
+    });
+
+    // Update statistics
+    function updateStats() {
+      const total = opportunities.length;
+      const active = opportunities.filter(o => o.status === 'متاحة').length;
+      const brands = [...new Set(opportunities.map(o => o.brand))].length;
+      
+      animateNumber('totalOpportunities', total);
+      animateNumber('activeOpportunities', active);
+      animateNumber('brandsCount', brands);
+    }
+
+    function animateNumber(elementId, target) {
+      const element = document.getElementById(elementId);
+      let current = 0;
+      const increment = target / 30;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target;
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current);
+        }
+      }, 30);
+    }
+
+    // Populate brand filter
+    function populateBrandFilter() {
+      const brands = [...new Set(opportunities.map(o => o.brand))];
+      const select = document.getElementById('brandFilter');
+      brands.forEach(brand => {
+        const option = document.createElement('option');
+        option.value = brand;
+        option.textContent = brand;
+        select.appendChild(option);
+      });
+    }
+
+    // Render opportunities
+    function renderOpportunities(data) {
+      const grid = document.getElementById('opportunitiesGrid');
+      const emptyState = document.getElementById('emptyState');
+      
+      if (data.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.add('show');
+        return;
+      }
+      
+      emptyState.classList.remove('show');
+      
+      grid.innerHTML = data.map(opportunity => `
+        <div class="opportunity-card">
+          <div class="card-image">
+            <img src="${opportunity.image}" alt="${opportunity.title}">
+            <div class="card-image-overlay"></div>
+            <span class="card-status-badge ${opportunity.status === 'متاحة' ? 'active' : opportunity.status === 'مغلقة' ? 'closed' : 'upcoming'}">
+              <i class="bi bi-${opportunity.status === 'متاحة' ? 'check-circle' : opportunity.status === 'مغلقة' ? 'x-circle' : 'clock'}"></i>
+              ${opportunity.status}
+            </span>
+            <div class="card-brand-badge">
+              <i class="${opportunity.brandIcon}"></i>
+              <span>${opportunity.brand}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title-body">${opportunity.title}</h3>
+            <p class="card-description">${opportunity.shortDescription}</p>
+            <div class="card-meta">
+              <span class="meta-badge type">
+                <i class="bi bi-tag"></i>
+                ${opportunity.type}
+              </span>
+              <span class="meta-badge date">
+                <i class="bi bi-calendar3"></i>
+                ${formatDate(opportunity.publishDate)}
+              </span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" onclick="openModal(${opportunity.id})">
+                <i class="bi bi-eye"></i>
+                <span>عرض التفاصيل</span>
+              </button>
+              <a href="${opportunity.guideUrl}" class="btn btn-secondary" target="_blank">
+                <i class="bi bi-file-pdf"></i>
+                <span>الدليل</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter opportunities
+    function filterOpportunities() {
+      const typeFilter = document.getElementById('typeFilter').value;
+      const statusFilter = document.getElementById('statusFilter').value;
+      const brandFilter = document.getElementById('brandFilter').value;
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+      
+      const filtered = opportunities.filter(opportunity => {
+        const matchesType = !typeFilter || opportunity.type === typeFilter;
+        const matchesStatus = !statusFilter || opportunity.status === statusFilter;
+        const matchesBrand = !brandFilter || opportunity.brand === brandFilter;
+        const matchesSearch = !searchQuery || 
+          opportunity.title.toLowerCase().includes(searchQuery) ||
+          opportunity.brand.toLowerCase().includes(searchQuery) ||
+          opportunity.shortDescription.toLowerCase().includes(searchQuery);
+        
+        return matchesType && matchesStatus && matchesBrand && matchesSearch;
+      });
+      
+      renderOpportunities(filtered);
+    }
+
+    // Format date
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    // Open modal
+    function openModal(id) {
+      const opportunity = opportunities.find(o => o.id === id);
+      if (!opportunity) return;
+      
+      currentOpportunityId = id;
+      
+      // Update modal header
+      document.getElementById('modalBrandIcon').className = opportunity.brandIcon;
+      document.getElementById('modalBrandName').textContent = opportunity.brand;
+      document.getElementById('modalTitle').textContent = opportunity.title;
+      
+      // Update badges
+      const badgesContainer = document.getElementById('detailBadges');
+      badgesContainer.innerHTML = `
+        <span class="detail-badge type">
+          <i class="bi bi-tag"></i>
+          ${opportunity.type}
+        </span>
+        <span class="detail-badge status ${opportunity.status === 'متاحة' ? 'active' : ''}">
+          <i class="bi bi-${opportunity.status === 'متاحة' ? 'check-circle' : 'clock'}"></i>
+          ${opportunity.status}
+        </span>
+        <span class="detail-badge category">
+          <i class="bi bi-folder"></i>
+          ${opportunity.category}
+        </span>
+        <span class="detail-badge date">
+          <i class="bi bi-calendar-event"></i>
+          آخر موعد: ${formatDate(opportunity.applicationDeadline)}
+        </span>
+      `;
+      
+      // Update image
+      const imageContainer = document.getElementById('opportunityImage');
+      const img = document.getElementById('opportunityImg');
+      if (opportunity.image) {
+        img.src = opportunity.image;
+        img.alt = opportunity.title;
+        imageContainer.style.display = 'block';
+      } else {
+        imageContainer.style.display = 'none';
+      }
+      
+      // Update descriptions
+      document.getElementById('shortDescription').textContent = opportunity.shortDescription;
+      document.getElementById('fullDescription').textContent = opportunity.fullDescription;
+      
+      // Update requirements
+      const requirementsList = document.getElementById('requirementsList');
+      requirementsList.innerHTML = opportunity.requirements.map(req => `
+        <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>${req}</span>
+        </li>
+      `).join('');
+      
+      // Update guide link
+      document.getElementById('guideLink').href = opportunity.guideUrl;
+      
+      // Show modal
+      showDetailsView();
+      document.getElementById('modalOverlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('show');
+      document.body.style.overflow = '';
+      currentOpportunityId = null;
+      
+      // Reset form
+      document.getElementById('applicationForm').reset();
+      document.getElementById('fileName').textContent = '';
+      
+      // Reset views
+      setTimeout(() => {
+        showDetailsView();
+      }, 300);
+    }
+
+    // Handle overlay click
+    function handleOverlayClick(event) {
+      if (event.target === event.currentTarget) {
+        closeModal();
+      }
+    }
+
+    // Show application form
+    function showApplicationForm() {
+      document.getElementById('detailsView').classList.add('hidden');
+      document.getElementById('applicationView').classList.add('show');
+      document.getElementById('successView').classList.remove('show');
+    }
+
+    // Show details view
+    function showDetailsView() {
+      document.getElementById('detailsView').classList.remove('hidden');
+      document.getElementById('applicationView').classList.remove('show');
+      document.getElementById('successView').classList.remove('show');
+    }
+
+    // Update file name
+    function updateFileName(input) {
+      const fileName = document.getElementById('fileName');
+      if (input.files.length > 0) {
+        fileName.textContent = input.files[0].name;
+      } else {
+        fileName.textContent = '';
+      }
+    }
+
+    // Submit application
+    function submitApplication(event) {
+      event.preventDefault();
+      
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData.entries());
+      data.opportunityId = currentOpportunityId;
+      
+      console.log('Application submitted:', data);
+      
+      // Show success view
+      document.getElementById('applicationView').classList.remove('show');
+      document.getElementById('successView').classList.add('show');
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

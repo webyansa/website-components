@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الفعالية - تدشين منصة ويبيان</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="تفاصيل فعالية تدشين منصة ويبيان - المعرض التعريفي لمنصة ويبيان. سجل الآن وانضم إلينا.">
+    <meta name="keywords" content="فعالية, تدشين, ويبيان, مؤتمرات, معارض">
+    
+    <!-- Bootstrap 5 RTL -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link href="css/event-details.css" rel="stylesheet">
+</head>
+<body class="event-page">
+
+    <!-- Hero Section with Countdown -->
+    <section class="event-hero">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80" 
+             alt="صورة الفعالية" 
+             class="event-hero-image">
+        <div class="event-hero-overlay"></div>
+        
+        <!-- Status Badge -->
+        <div class="event-status-badge">
+            <i class="bi bi-clock-fill me-2"></i>
+            التسجيل مفتوح
+        </div>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+            <div class="row g-3 justify-content-center">
+                <div class="col-auto">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-days">15</span>
+                        <span class="countdown-label">يوم</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-hours">08</span>
+                        <span class="countdown-label">ساعة</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-minutes">45</span>
+                        <span class="countdown-label">دقيقة</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-seconds">30</span>
+                        <span class="countdown-label">ثانية</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Main Content Section -->
+    <section class="event-main-section">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row g-4">
+                <!-- Right Side - Action Buttons & Quick Info -->
+                <div class="col-lg-4 col-md-5 order-md-1 order-2" data-animate="fade-in-right" data-delay="200">
+                    <div class="event-actions-card">
+                        <!-- Event Title for Mobile -->
+                        <div class="event-mobile-title d-md-none">
+                            <h1>تدشين منصة ويبيان</h1>
+                            <p>المعرض التعريفي لمنصة ويبيان</p>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="actions-wrapper">
+                            <button type="button" class="btn-event-primary w-100" data-bs-toggle="modal" data-bs-target="#registrationModal">
+                                <i class="bi bi-person-plus-fill"></i>
+                                انضم للفعالية
+                            </button>
+                            <button type="button" class="btn-event-secondary w-100" data-bs-toggle="modal" data-bs-target="#eventGuideModal">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
+                                الدليل التعريفي
+                            </button>
+                        </div>
+                        
+                        <!-- Quick Info -->
+                        <div class="quick-info-wrapper">
+                            <h4 class="quick-info-title">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                معلومات سريعة
+                            </h4>
+                            <ul class="quick-info-list">
+                                <li>
+                                    <div class="quick-info-icon category">
+                                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                                    </div>
+                                    <div class="quick-info-text">
+                                        <span class="label">التصنيف</span>
+                                        <span class="value">مؤتمرات ومعارض</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="quick-info-icon date">
+                                        <i class="bi bi-calendar-event-fill"></i>
+                                    </div>
+                                    <div class="quick-info-text">
+                                        <span class="label">التاريخ</span>
+                                        <span class="value">29 أغسطس 2025</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="quick-info-icon time">
+                                        <i class="bi bi-clock-fill"></i>
+                                    </div>
+                                    <div class="quick-info-text">
+                                        <span class="label">الوقت</span>
+                                        <span class="value">09:00 صباحاً</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="quick-info-icon type">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                    </div>
+                                    <div class="quick-info-text">
+                                        <span class="label">نوع الحضور</span>
+                                        <span class="value">حضوري</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="quick-info-icon status">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    </div>
+                                    <div class="quick-info-text">
+                                        <span class="label">الحالة</span>
+                                        <span class="value">قريباً</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- QR Code -->
+                        <div class="qr-wrapper">
+                            <h4 class="qr-title">
+                                <i class="bi bi-qr-code-scan me-2"></i>
+                                التسجيل السريع
+                            </h4>
+                            <div class="qr-code-box">
+                                <svg viewBox="0 0 200 200" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="200" height="200" fill="white"/>
+                                    <g fill="#0d4a6f">
+                                        <rect x="10" y="10" width="50" height="50"/>
+                                        <rect x="140" y="10" width="50" height="50"/>
+                                        <rect x="10" y="140" width="50" height="50"/>
+                                        <rect x="17" y="17" width="36" height="36" fill="white"/>
+                                        <rect x="147" y="17" width="36" height="36" fill="white"/>
+                                        <rect x="17" y="147" width="36" height="36" fill="white"/>
+                                        <rect x="24" y="24" width="22" height="22"/>
+                                        <rect x="154" y="24" width="22" height="22"/>
+                                        <rect x="24" y="154" width="22" height="22"/>
+                                        <rect x="70" y="10" width="10" height="10"/>
+                                        <rect x="90" y="10" width="10" height="10"/>
+                                        <rect x="110" y="10" width="10" height="10"/>
+                                        <rect x="70" y="30" width="10" height="10"/>
+                                        <rect x="100" y="30" width="10" height="10"/>
+                                        <rect x="120" y="30" width="10" height="10"/>
+                                        <rect x="80" y="50" width="10" height="10"/>
+                                        <rect x="110" y="50" width="10" height="10"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="qr-hint">امسح الرمز للتسجيل</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Left Side - Event Details -->
+                <div class="col-lg-8 col-md-7 order-md-2 order-1" data-animate="fade-in-left" data-delay="100">
+                    <div class="event-details-card">
+                        <!-- Event Title for Desktop -->
+                        <div class="event-header d-none d-md-block">
+                            <div class="event-category-badge">
+                                <i class="bi bi-star-fill me-1"></i>
+                                فعالية مميزة
+                            </div>
+                            <h1 class="event-main-title">تدشين منصة ويبيان</h1>
+                            <p class="event-subtitle">المعرض التعريفي لمنصة ويبيان - فرصة للتعرف على أحدث الحلول التقنية للقطاع غير الربحي</p>
+                        </div>
+                        
+                        <!-- Event Description -->
+                        <div class="event-description">
+                            <h3 class="section-heading">
+                                <span class="heading-icon">
+                                    <i class="bi bi-file-text-fill"></i>
+                                </span>
+                                وصف الفعالية
+                            </h3>
+                            <div class="description-content">
+                                <p>
+                                    برعاية معالي رئيس مجلس إدارة المركز الوطني لتنمية القطاع غير الربحي <strong>المهندس أحمد بن سليمان الراجحي</strong> وزير الموارد البشرية والتنمية الإجتماعية يقيم مجلس الجمعيات الأهلية الحفل الختامي لـ:
+                                </p>
+                                
+                                <div class="highlight-box">
+                                    <div class="highlight-icon">
+                                        <i class="bi bi-award-fill"></i>
+                                    </div>
+                                    <p><strong>حاضنة جدارة للأعمال الاجتماعية لعام 2024م</strong></p>
+                                </div>
+                                
+                                <p>
+                                    ولإيمانكم جزء من القطاع غير الربحي وتعزيز دوره ونموه في خدمة المجتمع، يسرنا دعوتكم لحضور الحفل الختامي لأعمال النسخة الأولى.
+                                </p>
+                                
+                                <p class="welcome-text">
+                                    <span class="welcome-icon"><i class="bi bi-hand-thumbs-up-fill"></i></span>
+                                    <strong>مرحباً بكم</strong> في هذا الحدث المميز الذي يجمع نخبة من قادة القطاع غير الربحي والمهتمين بتطوير العمل الخيري والتطوعي في المملكة العربية السعودية.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Highlights -->
+                        <div class="event-highlights">
+                            <div class="row g-3">
+                                <div class="col-sm-6 col-lg-4" data-animate="zoom-in" data-delay="100">
+                                    <div class="highlight-card">
+                                        <div class="highlight-card-icon">
+                                            <i class="bi bi-people-fill"></i>
+                                        </div>
+                                        <h5>+500</h5>
+                                        <p>مشارك متوقع</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4" data-animate="zoom-in" data-delay="200">
+                                    <div class="highlight-card">
+                                        <div class="highlight-card-icon">
+                                            <i class="bi bi-mic-fill"></i>
+                                        </div>
+                                        <h5>12</h5>
+                                        <p>متحدث</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4" data-animate="zoom-in" data-delay="300">
+                                    <div class="highlight-card">
+                                        <div class="highlight-card-icon">
+                                            <i class="bi bi-clock-history"></i>
+                                        </div>
+                                        <h5>8</h5>
+                                        <p>ساعات تفاعلية</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Agenda Section -->
+    <section class="agenda-section">
+        <div class="container-fluid px-4 px-lg-5">
+            <h2 class="main-section-title" data-animate="fade-in-up">
+                <span class="title-icon"><i class="bi bi-calendar3"></i></span>
+                جدول أعمال الفعالية
+            </h2>
+            
+            <div class="agenda-wrapper" data-animate="fade-in-up" data-delay="100">
+                <div class="agenda-timeline">
+                    <!-- Agenda Item 1 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="100">
+                        <div class="agenda-time">
+                            <span class="time-value">08:00</span>
+                            <span class="time-period">صباحاً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card">
+                                <div class="agenda-badge registration">
+                                    <i class="bi bi-door-open-fill"></i>
+                                    استقبال
+                                </div>
+                                <h4>التسجيل والاستقبال</h4>
+                                <p>استقبال الحضور والتسجيل وتوزيع المواد التعريفية</p>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 30 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> البهو الرئيسي</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda Item 2 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="200">
+                        <div class="agenda-time">
+                            <span class="time-value">08:30</span>
+                            <span class="time-period">صباحاً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card">
+                                <div class="agenda-badge opening">
+                                    <i class="bi bi-mic-fill"></i>
+                                    افتتاح
+                                </div>
+                                <h4>كلمة الافتتاح</h4>
+                                <p>كلمة ترحيبية من رئيس مجلس الجمعيات الأهلية</p>
+                                <div class="agenda-speaker">
+                                    <img src="https://ui-avatars.com/api/?name=أحمد+الراجحي&background=0d4a6f&color=fff&size=40" alt="المتحدث">
+                                    <div>
+                                        <strong>م. أحمد الراجحي</strong>
+                                        <span>رئيس مجلس الإدارة</span>
+                                    </div>
+                                </div>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 15 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> القاعة الرئيسية</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda Item 3 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="300">
+                        <div class="agenda-time">
+                            <span class="time-value">08:45</span>
+                            <span class="time-period">صباحاً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card featured">
+                                <div class="agenda-badge keynote">
+                                    <i class="bi bi-award-fill"></i>
+                                    رئيسية
+                                </div>
+                                <h4>تدشين منصة ويبيان</h4>
+                                <p>العرض التقديمي لمنصة ويبيان والإعلان الرسمي عن إطلاقها</p>
+                                <div class="agenda-speaker">
+                                    <img src="https://ui-avatars.com/api/?name=محمد+العبدالله&background=1a8a8a&color=fff&size=40" alt="المتحدث">
+                                    <div>
+                                        <strong>د. محمد العبدالله</strong>
+                                        <span>المدير التنفيذي لمنصة ويبيان</span>
+                                    </div>
+                                </div>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 45 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> القاعة الرئيسية</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda Item 4 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="400">
+                        <div class="agenda-time">
+                            <span class="time-value">09:30</span>
+                            <span class="time-period">صباحاً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card">
+                                <div class="agenda-badge break">
+                                    <i class="bi bi-cup-hot-fill"></i>
+                                    استراحة
+                                </div>
+                                <h4>استراحة قهوة</h4>
+                                <p>استراحة للتواصل والتعارف بين الحضور</p>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 30 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> منطقة الضيافة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda Item 5 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="500">
+                        <div class="agenda-time">
+                            <span class="time-value">10:00</span>
+                            <span class="time-period">صباحاً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card">
+                                <div class="agenda-badge workshop">
+                                    <i class="bi bi-laptop-fill"></i>
+                                    ورشة
+                                </div>
+                                <h4>ورشة عمل تفاعلية</h4>
+                                <p>ورشة تطبيقية على استخدام منصة ويبيان</p>
+                                <div class="agenda-speaker">
+                                    <img src="https://ui-avatars.com/api/?name=سارة+الحربي&background=28a745&color=fff&size=40" alt="المتحدث">
+                                    <div>
+                                        <strong>أ. سارة الحربي</strong>
+                                        <span>مديرة التدريب والتطوير</span>
+                                    </div>
+                                </div>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 60 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> قاعة التدريب</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda Item 6 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="600">
+                        <div class="agenda-time">
+                            <span class="time-value">11:00</span>
+                            <span class="time-period">صباحاً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card">
+                                <div class="agenda-badge panel">
+                                    <i class="bi bi-people-fill"></i>
+                                    حوار
+                                </div>
+                                <h4>جلسة حوارية</h4>
+                                <p>مستقبل التحول الرقمي في القطاع غير الربحي</p>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 45 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> القاعة الرئيسية</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda Item 7 -->
+                    <div class="agenda-item" data-animate="fade-in-right" data-delay="700">
+                        <div class="agenda-time">
+                            <span class="time-value">12:00</span>
+                            <span class="time-period">ظهراً</span>
+                        </div>
+                        <div class="agenda-connector">
+                            <div class="connector-dot"></div>
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-card closing">
+                                <div class="agenda-badge closing-badge">
+                                    <i class="bi bi-flag-fill"></i>
+                                    ختام
+                                </div>
+                                <h4>الختام والتكريم</h4>
+                                <p>توزيع الشهادات وتكريم المشاركين والشركاء</p>
+                                <div class="agenda-meta">
+                                    <span><i class="bi bi-clock"></i> 30 دقيقة</span>
+                                    <span><i class="bi bi-geo-alt"></i> القاعة الرئيسية</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container-fluid px-4 px-lg-5">
+            <h2 class="main-section-title" data-animate="fade-in-up">
+                <span class="title-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                موقع الفعالية
+            </h2>
+            
+            <div class="row g-4">
+                <div class="col-lg-8" data-animate="fade-in-left" data-delay="100">
+                    <div class="map-card">
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.674593955811!2d46.67520841499876!3d24.713552484127604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sRiyadh%20International%20Convention%20%26%20Exhibition%20Center!5e0!3m2!1sen!2ssa!4v1640000000000!5m2!1sen!2ssa"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-animate="fade-in-right" data-delay="200">
+                    <div class="location-info-card">
+                        <div class="location-detail">
+                            <div class="location-detail-icon">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <div class="location-detail-text">
+                                <span class="label">المكان</span>
+                                <span class="value">مركز الرياض الدولي للمؤتمرات</span>
+                            </div>
+                        </div>
+                        <div class="location-detail">
+                            <div class="location-detail-icon">
+                                <i class="bi bi-pin-map-fill"></i>
+                            </div>
+                            <div class="location-detail-text">
+                                <span class="label">العنوان</span>
+                                <span class="value">طريق الملك عبدالله، الرياض</span>
+                            </div>
+                        </div>
+                        <div class="location-detail">
+                            <div class="location-detail-icon">
+                                <i class="bi bi-door-open-fill"></i>
+                            </div>
+                            <div class="location-detail-text">
+                                <span class="label">القاعة</span>
+                                <span class="value">القاعة الرئيسية A</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-directions">
+                            <i class="bi bi-compass-fill me-2"></i>
+                            احصل على الاتجاهات
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Gallery Section -->
+    <section class="gallery-section">
+        <div class="container-fluid px-4 px-lg-5">
+            <h2 class="main-section-title" data-animate="fade-in-up">
+                <span class="title-icon"><i class="bi bi-images"></i></span>
+                صور من الفعالية
+            </h2>
+            
+            <div class="row g-3">
+                <div class="col-lg-6 col-md-6" data-animate="zoom-in" data-delay="100">
+                    <div class="gallery-item featured" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="صورة 1">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6" data-animate="zoom-in" data-delay="150">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80" alt="صورة 2">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6" data-animate="zoom-in" data-delay="200">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80" alt="صورة 3">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6" data-animate="zoom-in" data-delay="250">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&q=80" alt="صورة 4">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6" data-animate="zoom-in" data-delay="300">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80" alt="صورة 5">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12" data-animate="zoom-in" data-delay="350">
+                    <div class="gallery-item wide" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="صورة 6">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-zoom-in"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="gallery-lightbox" id="galleryLightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightboxImage" src="" alt="صورة مكبرة">
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content registration-modal">
+                <div class="modal-header">
+                    <div class="modal-header-content">
+                        <div class="modal-icon">
+                            <i class="bi bi-person-plus-fill"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title" id="registrationModalLabel">التسجيل في الفعالية</h5>
+                            <p class="modal-subtitle">تدشين منصة ويبيان</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registrationForm" class="registration-form">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fullName" class="form-label">
+                                        الاسم الكامل <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-person-fill"></i>
+                                        <input type="text" class="form-control" id="fullName" placeholder="أدخل الاسم الكامل" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="organization" class="form-label">
+                                        الجهة أو المؤسسة
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-building"></i>
+                                        <input type="text" class="form-control" id="organization" placeholder="اسم الجهة (اختياري)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">
+                                        البريد الإلكتروني <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-envelope-fill"></i>
+                                        <input type="email" class="form-control" id="email" placeholder="example@email.com" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">
+                                        رقم الجوال <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <i class="bi bi-phone-fill"></i>
+                                        <input type="tel" class="form-control" id="phone" placeholder="05xxxxxxxx" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="selectedEvent" class="form-label">
+                                        الفعالية المختارة <span class="required">*</span>
+                                    </label>
+                                    <div class="input-wrapper select-wrapper">
+                                        <i class="bi bi-calendar-event-fill"></i>
+                                        <select class="form-select" id="selectedEvent" required>
+                                            <option value="" selected disabled>اختر الفعالية</option>
+                                            <option value="تدشين منصة ويبيان">تدشين منصة ويبيان - 29 أغسطس 2025</option>
+                                            <option value="ورشة عمل تدريبية">ورشة عمل تدريبية - 30 أغسطس 2025</option>
+                                            <option value="الحفل الختامي">الحفل الختامي - 31 أغسطس 2025</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="notes" class="form-label">
+                                        ملاحظات إضافية
+                                    </label>
+                                    <div class="input-wrapper textarea-wrapper">
+                                        <i class="bi bi-chat-text-fill"></i>
+                                        <textarea class="form-control" id="notes" rows="3" placeholder="أي ملاحظات أو متطلبات خاصة..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check terms-check">
+                                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                    <label class="form-check-label" for="termsCheck">
+                                        أوافق على <a href="#" class="terms-link">الشروط والأحكام</a> الخاصة بالفعالية <span class="required">*</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-modal-cancel" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-2"></i>
+                        إلغاء
+                    </button>
+                    <button type="submit" form="registrationForm" class="btn-modal-submit">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        تأكيد التسجيل
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Guide Modal -->
+    <div class="modal fade" id="eventGuideModal" tabindex="-1" aria-labelledby="eventGuideModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content guide-modal">
+                <div class="modal-header">
+                    <div class="modal-header-content">
+                        <div class="modal-icon guide">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title" id="eventGuideModalLabel">الدليل التعريفي</h5>
+                            <p class="modal-subtitle">تحميل ملف الفعالية</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close-modal" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="guide-preview">
+                        <div class="guide-icon">
+                            <i class="bi bi-file-earmark-pdf"></i>
+                        </div>
+                        <div class="guide-info">
+                            <h6>دليل_فعالية_ويبيان_2025.pdf</h6>
+                            <span>2.5 ميجابايت</span>
+                        </div>
+                    </div>
+                    <div class="guide-description">
+                        <p>يحتوي الدليل التعريفي على جميع المعلومات المتعلقة بالفعالية بما في ذلك:</p>
+                        <ul>
+                            <li><i class="bi bi-check-lg"></i> جدول أعمال الفعالية</li>
+                            <li><i class="bi bi-check-lg"></i> معلومات المتحدثين</li>
+                            <li><i class="bi bi-check-lg"></i> خريطة المكان</li>
+                            <li><i class="bi bi-check-lg"></i> إرشادات الحضور</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-modal-cancel" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-2"></i>
+                        إغلاق
+                    </button>
+                    <a href="#" class="btn-modal-download">
+                        <i class="bi bi-download me-2"></i>
+                        تحميل الملف
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('2025-08-29T09:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+            
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                
+                updateNumber('countdown-days', days);
+                updateNumber('countdown-hours', hours);
+                updateNumber('countdown-minutes', minutes);
+                updateNumber('countdown-seconds', seconds);
+            }
+        }
+        
+        function updateNumber(id, value) {
+            const element = document.getElementById(id);
+            const formattedValue = value.toString().padStart(2, '0');
+            if (element.textContent !== formattedValue) {
+                element.style.transform = 'scale(1.2)';
+                element.textContent = formattedValue;
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                }, 150);
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Lightbox Functions
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('galleryLightbox');
+            const lightboxImg = document.getElementById('lightboxImage');
+            
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox(event) {
+            const lightbox = document.getElementById('galleryLightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Scroll Animations
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('[data-animate]');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const animation = el.dataset.animate;
+                        const delay = el.dataset.delay || 0;
+                        
+                        setTimeout(() => {
+                            el.classList.add('animated', animation);
+                        }, delay);
+                        
+                        observer.unobserve(el);
+                    }
+                });
+            }, observerOptions);
+            
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Initialize animations on DOM ready
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    </script>
+</body>
+</html>
