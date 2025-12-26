@@ -37,6 +37,7 @@ const categories: Category[] = [
       { name: "قسم العلامات التجارية", path: "brands-section.html", date: "2024-04-05", cssFiles: ["css/style.css"] },
       { name: "تفاصيل العلامة التجارية", path: "brand-details.html", date: "2024-04-06", cssFiles: ["css/style.css"] },
       { name: "قسم المجلس", path: "council-section.html", date: "2024-05-12", cssFiles: ["css/style.css"] },
+      { name: "نبذة عن المجلس", path: "council-about.html", date: "2024-12-26", cssFiles: ["css/council-about.css"], isNew: true, isImportant: true },
       { name: "إحصائيات المجلس", path: "council-statistics.html", date: "2024-05-15", cssFiles: ["css/council-statistics.css"], isImportant: true },
       { name: "قسم العضوية", path: "membership-section.html", date: "2024-06-01", cssFiles: ["css/style.css"] },
       { name: "قسم الأدوار", path: "roles-section.html", date: "2024-06-10", cssFiles: ["css/style.css"] },
