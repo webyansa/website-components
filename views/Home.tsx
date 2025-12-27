@@ -133,6 +133,39 @@ const PageCard = ({ page }: { page: PageLink }) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const href = toHref(page.path);
 
+  // Extract image URLs from HTML content
+  const extractImageUrls = (html: string): string[] => {
+    const images: string[] = [];
+    
+    // Match src attributes in img tags
+    const imgSrcRegex = /<img[^>]+src=["']([^"']+)["']/gi;
+    let match;
+    while ((match = imgSrcRegex.exec(html)) !== null) {
+      if (match[1] && !match[1].startsWith('http') && !match[1].startsWith('data:')) {
+        images.push(match[1]);
+      }
+    }
+    
+    // Match background-image in inline styles
+    const bgImageRegex = /background-image:\s*url\(["']?([^"')]+)["']?\)/gi;
+    while ((match = bgImageRegex.exec(html)) !== null) {
+      if (match[1] && !match[1].startsWith('http') && !match[1].startsWith('data:')) {
+        images.push(match[1]);
+      }
+    }
+    
+    // Match url() in style attributes
+    const urlRegex = /url\(["']?([^"')]+\.(?:png|jpg|jpeg|gif|svg|webp))["']?\)/gi;
+    while ((match = urlRegex.exec(html)) !== null) {
+      if (match[1] && !match[1].startsWith('http') && !match[1].startsWith('data:')) {
+        images.push(match[1]);
+      }
+    }
+    
+    // Remove duplicates and normalize paths
+    return [...new Set(images.map(img => img.replace(/^\.?\//, '')))];
+  };
+
   const handleDownload = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -144,6 +177,7 @@ const PageCard = ({ page }: { page: PageLink }) => {
       const htmlContent = await htmlResponse.text();
       zip.file(page.path, htmlContent);
 
+      // Download CSS files
       if (page.cssFiles && page.cssFiles.length > 0) {
         const cssFolder = zip.folder("css");
         for (const cssFile of page.cssFiles) {
@@ -154,6 +188,26 @@ const PageCard = ({ page }: { page: PageLink }) => {
             cssFolder?.file(fileName, cssContent);
           } catch (err) {
             console.warn(`Could not fetch ${cssFile}:`, err);
+          }
+        }
+      }
+
+      // Extract and download images from HTML
+      const imageUrls = extractImageUrls(htmlContent);
+      if (imageUrls.length > 0) {
+        const imagesFolder = zip.folder("images");
+        for (const imageUrl of imageUrls) {
+          try {
+            const imagePath = imageUrl.startsWith('images/') ? imageUrl : `images/${imageUrl.split('/').pop()}`;
+            const fetchUrl = toHref(imageUrl);
+            const imageResponse = await fetch(fetchUrl);
+            if (imageResponse.ok) {
+              const imageBlob = await imageResponse.blob();
+              const fileName = imageUrl.split("/").pop() || imageUrl;
+              imagesFolder?.file(fileName, imageBlob);
+            }
+          } catch (err) {
+            console.warn(`Could not fetch image ${imageUrl}:`, err);
           }
         }
       }
