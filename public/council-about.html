@@ -49,35 +49,36 @@
             والركيزة الأساسية للتنمية المستدامة في مجتمعنا.
           </p>
           
-          <!-- Vision & Mission - Modern Stacked Design -->
-          <div class="vm-section">
-            <!-- Vision -->
-            <div class="vm-item vision">
-              <div class="vm-line"></div>
-              <div class="vm-icon-wrapper">
-                <div class="vm-icon">
-                  <i class="fas fa-eye"></i>
-                </div>
-                <div class="vm-icon-pulse"></div>
-              </div>
-              <div class="vm-content">
-                <h3 class="vm-title">الرؤية</h3>
-                <p class="vm-text">أن نكون المرجع الأول في تمكين الشباب وتنمية قدراتهم على مستوى المنطقة.</p>
-              </div>
+          <!-- Vision & Mission - Creative Tabs -->
+          <div class="vm-tabs-container">
+            <!-- Tab Buttons -->
+            <div class="vm-tabs-nav">
+              <button class="vm-tab-btn active" data-tab="vision">
+                <span class="tab-icon"><i class="fas fa-eye"></i></span>
+                <span class="tab-label">الرؤية</span>
+                <span class="tab-indicator"></span>
+              </button>
+              <button class="vm-tab-btn" data-tab="mission">
+                <span class="tab-icon"><i class="fas fa-rocket"></i></span>
+                <span class="tab-label">الرسالة</span>
+                <span class="tab-indicator"></span>
+              </button>
+              <div class="tab-slider"></div>
             </div>
             
-            <!-- Mission -->
-            <div class="vm-item mission">
-              <div class="vm-line"></div>
-              <div class="vm-icon-wrapper">
-                <div class="vm-icon">
-                  <i class="fas fa-rocket"></i>
+            <!-- Tab Content -->
+            <div class="vm-tabs-content">
+              <div class="vm-tab-panel active" id="vision-panel">
+                <div class="panel-content">
+                  <div class="quote-mark">"</div>
+                  <p class="panel-text">أن نكون المرجع الأول في تمكين الشباب وتنمية قدراتهم على مستوى المنطقة.</p>
                 </div>
-                <div class="vm-icon-pulse"></div>
               </div>
-              <div class="vm-content">
-                <h3 class="vm-title">الرسالة</h3>
-                <p class="vm-text">تقديم برامج نوعية تسهم في بناء جيل واعٍ وقادر على المشاركة الفاعلة في التنمية.</p>
+              <div class="vm-tab-panel" id="mission-panel">
+                <div class="panel-content">
+                  <div class="quote-mark">"</div>
+                  <p class="panel-text">تقديم برامج نوعية تسهم في بناء جيل واعٍ وقادر على المشاركة الفاعلة في التنمية.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -113,40 +114,60 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    // Parallax effect on mouse move
-    document.addEventListener('mousemove', (e) => {
-      const moveX = (e.clientX - window.innerWidth / 2) * 0.008;
-      const moveY = (e.clientY - window.innerHeight / 2) * 0.008;
-      
-      const glows = document.querySelectorAll('.glow-orb');
-      glows.forEach((glow, index) => {
-        const factor = (index + 1) * 0.5;
-        glow.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px)`;
+    // Tab switching functionality
+    const tabBtns = document.querySelectorAll('.vm-tab-btn');
+    const tabPanels = document.querySelectorAll('.vm-tab-panel');
+    const tabSlider = document.querySelector('.tab-slider');
+    
+    function switchTab(targetTab) {
+      // Update buttons
+      tabBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.tab === targetTab) {
+          btn.classList.add('active');
+          // Move slider
+          const btnRect = btn.getBoundingClientRect();
+          const containerRect = btn.parentElement.getBoundingClientRect();
+          tabSlider.style.width = btn.offsetWidth + 'px';
+          tabSlider.style.transform = `translateX(${btn.offsetLeft}px)`;
+        }
       });
       
-      const shapes = document.querySelectorAll('.floating-shape');
-      shapes.forEach((shape, index) => {
-        const factor = (index + 1) * 0.3;
-        shape.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px) rotate(${moveX * 2}deg)`;
+      // Update panels with animation
+      tabPanels.forEach(panel => {
+        if (panel.id === targetTab + '-panel') {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    }
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        switchTab(btn.dataset.tab);
       });
     });
     
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px'
-    };
+    // Initialize slider position
+    setTimeout(() => {
+      const activeBtn = document.querySelector('.vm-tab-btn.active');
+      if (activeBtn && tabSlider) {
+        tabSlider.style.width = activeBtn.offsetWidth + 'px';
+        tabSlider.style.transform = `translateX(${activeBtn.offsetLeft}px)`;
+      }
+    }, 100);
     
-    const animateObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
+    // Parallax effect on mouse move
+    document.addEventListener('mousemove', (e) => {
+      const moveX = (e.clientX - window.innerWidth / 2) * 0.006;
+      const moveY = (e.clientY - window.innerHeight / 2) * 0.006;
+      
+      const glows = document.querySelectorAll('.glow-orb');
+      glows.forEach((glow, index) => {
+        const factor = (index + 1) * 0.4;
+        glow.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px)`;
       });
-    }, observerOptions);
-    
-    document.querySelectorAll('.vm-item').forEach(item => {
-      animateObserver.observe(item);
     });
   </script>
 </body>
