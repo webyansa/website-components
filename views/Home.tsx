@@ -108,6 +108,7 @@ const categories: Category[] = [
     icon: "🤝",
     pages: [
       { name: "الصفحة الرئيسية لرنين", path: "raneen-index.html", date: "2024-12-27", cssFiles: ["css/raneen-style.css"], isNew: true, isImportant: true },
+      { name: "فريق عمل رنين", path: "raneen-team.html", date: "2024-12-27", cssFiles: ["css/raneen-team.css"], isNew: true, isImportant: true },
     ],
   },
 ];
