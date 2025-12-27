@@ -103,6 +103,13 @@ const categories: Category[] = [
       { name: "إعادة تعيين كلمة المرور", path: "password-reset-email-template.html", date: "2024-01-27", cssFiles: ["css/email-template-styles.css"] },
     ],
   },
+  {
+    title: "صفحات موقع رنين",
+    icon: "🤝",
+    pages: [
+      { name: "الصفحة الرئيسية لرنين", path: "raneen-index.html", date: "2024-12-27", cssFiles: ["css/raneen-style.css"], isNew: true, isImportant: true },
+    ],
+  },
 ];
 
 const toHref = (path: string) => `${import.meta.env.BASE_URL}${path}`;
