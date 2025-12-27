@@ -16,8 +16,434 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/council-about.css">
+  <!-- Embedded Styles -->
+  <style>
+    /* ========================================
+       Council About Section - Standalone
+       ======================================== */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #fafbfc;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+    
+    /* Section */
+    .council-about-section {
+      padding: 4rem 0;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Background Shapes */
+    .bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    
+    .bg-shape-1 {
+      width: 300px;
+      height: 300px;
+      background: #0c7fae;
+      top: -60px;
+      right: -60px;
+    }
+    
+    .bg-shape-2 {
+      width: 200px;
+      height: 200px;
+      background: #42b07a;
+      bottom: -30px;
+      left: -30px;
+    }
+    
+    /* Container */
+    .council-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Grid */
+    .council-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    @media (max-width: 991px) {
+      .council-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+    
+    /* Content */
+    .council-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    @media (max-width: 991px) {
+      .council-content {
+        order: 2;
+        text-align: center;
+      }
+    }
+    
+    /* Badge */
+    .content-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(12, 127, 174, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: #0c7fae;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content-badge i {
+      font-size: 0.75rem;
+      color: #42b07a;
+    }
+    
+    /* Title */
+    .content-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #1f2937;
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+    
+    .content-title span {
+      background: linear-gradient(135deg, #0c7fae 0%, #42b07a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    @media (max-width: 768px) {
+      .content-title {
+        font-size: 1.85rem;
+      }
+    }
+    
+    /* Description */
+    .content-desc {
+      font-size: 1rem;
+      color: #6b7280;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* ========================================
+       Vision & Mission Stacked
+       ======================================== */
+    .vm-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* VM Box */
+    .vm-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(12, 127, 174, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .vm-box:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 8px 25px rgba(12, 127, 174, 0.1);
+    }
+    
+    /* Vision specific */
+    .vm-vision {
+      border-right: 3px solid #0c7fae;
+    }
+    
+    /* Mission specific */
+    .vm-mission {
+      border-right: 3px solid #42b07a;
+    }
+    
+    /* VM Icon */
+    .vm-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    
+    .vm-vision .vm-icon {
+      background: #0c7fae;
+    }
+    
+    .vm-mission .vm-icon {
+      background: #42b07a;
+    }
+    
+    /* VM Content */
+    .vm-content {
+      flex: 1;
+    }
+    
+    /* VM Label */
+    .vm-label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    
+    .vm-vision .vm-label {
+      color: #0c7fae;
+    }
+    
+    .vm-mission .vm-label {
+      color: #42b07a;
+    }
+    
+    /* VM Text */
+    .vm-text {
+      font-size: 0.92rem;
+      color: #6b7280;
+      line-height: 1.7;
+      margin: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .vm-box {
+        text-align: right;
+      }
+    }
+    
+    /* CTA Button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #0c7fae 0%, #42b07a 100%);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(12, 127, 174, 0.25);
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(12, 127, 174, 0.35);
+      color: #ffffff;
+    }
+    
+    .cta-btn i {
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .cta-btn:hover i {
+      transform: translateX(-4px);
+    }
+    
+    /* ========================================
+       Image Section
+       ======================================== */
+    .council-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    @media (max-width: 991px) {
+      .council-image {
+        order: 1;
+      }
+    }
+    
+    /* Main Image */
+    .main-img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 2;
+      animation: floatImage 6s ease-in-out infinite;
+    }
+    
+    @keyframes floatImage {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    /* Glow Effects */
+    .image-glow {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(50px);
+      animation: glowPulse 5s ease-in-out infinite;
+    }
+    
+    .glow-1 {
+      width: 160px;
+      height: 160px;
+      background: #0c7fae;
+      top: -15px;
+      right: 10%;
+    }
+    
+    .glow-2 {
+      width: 130px;
+      height: 130px;
+      background: #42b07a;
+      bottom: 10px;
+      left: 15%;
+      animation-delay: 1.5s;
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% {
+        opacity: 0.15;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.25;
+        transform: scale(1.08);
+      }
+    }
+    
+    /* Light Overlay Effect */
+    .light-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+    
+    .light-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      animation: lightSweep 4s ease-in-out infinite;
+    }
+    
+    @keyframes lightSweep {
+      0% {
+        left: -150%;
+      }
+      50%, 100% {
+        left: 150%;
+      }
+    }
+    
+    /* Image Placeholder for standalone use */
+    .image-placeholder {
+      width: 100%;
+      max-width: 450px;
+      height: 400px;
+      background: linear-gradient(135deg, #0c7fae 0%, #42b07a 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      animation: floatImage 6s ease-in-out infinite;
+    }
+    
+    .image-placeholder i {
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* ========================================
+       Responsive
+       ======================================== */
+    @media (max-width: 768px) {
+      .council-about-section {
+        padding: 3rem 0;
+      }
+      
+      .council-container {
+        padding: 0 1rem;
+      }
+      
+      .vm-box {
+        padding: 1rem;
+      }
+      
+      .vm-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+      
+      .vm-text {
+        font-size: 0.88rem;
+      }
+      
+      .main-img,
+      .image-placeholder {
+        max-width: 320px;
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -81,7 +507,10 @@
           <div class="image-glow glow-1"></div>
           <div class="image-glow glow-2"></div>
           
-          <img src="images/council-about-image.png" alt="صورة المجلس" class="main-img">
+          <!-- Use placeholder when image is not available -->
+          <div class="image-placeholder">
+            <i class="fas fa-users"></i>
+          </div>
           
           <!-- Light Effect -->
           <div class="light-overlay"></div>
