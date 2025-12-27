@@ -1,5 +1,5 @@
 /* ========================================
-   Council About Section - Premium Design
+   Council About Section - Clean Design
    ======================================== */
 
 :root {
@@ -138,168 +138,130 @@ body {
 }
 
 /* ========================================
-   Premium Accordion Tabs
+   Elegant Switcher
    ======================================== */
-.vm-premium-tabs {
+.vm-switcher {
   margin-bottom: 1.5rem;
 }
 
-.tabs-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-/* Single Tab */
-.premium-tab {
-  background: var(--white);
-  border-radius: 16px;
-  border: 1px solid rgba(38, 51, 112, 0.08);
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.premium-tab:hover {
-  border-color: rgba(38, 51, 112, 0.15);
-}
-
-.premium-tab.active {
-  box-shadow: 0 8px 30px rgba(38, 51, 112, 0.08);
-}
-
-/* Tab Header */
-.tab-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab-header:hover {
-  background: rgba(38, 51, 112, 0.015);
-}
-
-/* Icon Box */
-.tab-icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(38, 51, 112, 0.06);
-  color: var(--council-navy);
-}
-
-.premium-tab[data-tab="mission"] .tab-icon-box {
-  background: rgba(12, 127, 174, 0.08);
-  color: var(--council-cyan);
-}
-
-.premium-tab.active .tab-icon-box {
-  background: var(--gradient-vision);
-  color: var(--white);
-  box-shadow: 0 6px 20px rgba(38, 51, 112, 0.25);
-  transform: scale(1.05);
-}
-
-.premium-tab[data-tab="mission"].active .tab-icon-box {
-  background: var(--gradient-mission);
-  box-shadow: 0 6px 20px rgba(66, 176, 122, 0.25);
-}
-
-/* Title Group */
-.tab-title-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.tab-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  transition: color 0.3s ease;
-}
-
-.premium-tab.active .tab-title {
-  color: var(--council-navy);
-}
-
-.premium-tab[data-tab="mission"].active .tab-title {
-  color: var(--council-cyan);
-}
-
-.tab-subtitle {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-}
-
-/* Arrow */
-.tab-arrow {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  color: var(--text-light);
+/* Toggle Pills */
+.vm-toggle {
+  display: inline-flex;
   background: rgba(38, 51, 112, 0.04);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.premium-tab.active .tab-arrow {
-  background: rgba(38, 51, 112, 0.08);
-  color: var(--council-navy);
-  transform: rotate(180deg);
-}
-
-.premium-tab[data-tab="mission"].active .tab-arrow {
-  background: rgba(12, 127, 174, 0.08);
-  color: var(--council-cyan);
-}
-
-/* Tab Body */
-.tab-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.premium-tab.active .tab-body {
-  max-height: 150px;
-}
-
-.tab-body p {
-  padding: 0 1.25rem 1.25rem 1.25rem;
-  padding-right: 4.75rem;
-  font-size: 0.95rem;
-  color: var(--text-light);
-  line-height: 1.85;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: all 0.3s ease 0.1s;
-}
-
-.premium-tab.active .tab-body p {
-  opacity: 1;
-  transform: translateY(0);
+  border-radius: 12px;
+  padding: 4px;
+  position: relative;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 991px) {
-  .tab-body p {
-    padding-right: 1.25rem;
+  .vm-toggle {
+    justify-content: center;
+  }
+}
+
+/* Sliding Background */
+.toggle-bg {
+  position: absolute;
+  top: 4px;
+  height: calc(100% - 8px);
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(38, 51, 112, 0.12);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+/* Pill Button */
+.toggle-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.toggle-pill i {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.toggle-pill span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+/* Active Pill */
+.toggle-pill.active i {
+  color: var(--council-navy);
+}
+
+.toggle-pill.active span {
+  color: var(--council-navy);
+}
+
+.toggle-pill[data-target="mission"].active i {
+  color: var(--council-cyan);
+}
+
+.toggle-pill[data-target="mission"].active span {
+  color: var(--council-cyan);
+}
+
+/* Hover */
+.toggle-pill:not(.active):hover i,
+.toggle-pill:not(.active):hover span {
+  color: var(--text-dark);
+}
+
+/* Content Display */
+.vm-display {
+  position: relative;
+  min-height: 70px;
+}
+
+.vm-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vm-card.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.vm-card p {
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.9;
+  margin: 0;
+  padding-right: 1rem;
+  border-right: 3px solid var(--council-navy);
+}
+
+#mission p {
+  border-right-color: var(--council-green);
+}
+
+@media (max-width: 991px) {
+  .vm-card p {
     text-align: right;
   }
 }
@@ -390,7 +352,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(50px);
-  opacity: 0.18;
+  opacity: 0.15;
   z-index: 0;
   transition: transform 0.3s ease-out;
   pointer-events: none;
@@ -415,8 +377,8 @@ body {
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.12; transform: scale(1); }
-  50% { opacity: 0.22; transform: scale(1.06); }
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.05); }
 }
 
 /* ========================================
@@ -426,10 +388,11 @@ body {
   .council-about-section { padding: 3rem 0; }
   .council-about-container { padding: 0 1rem; }
   
-  .tab-header { padding: 0.85rem 1rem; gap: 0.75rem; }
-  .tab-icon-box { width: 38px; height: 38px; font-size: 0.9rem; }
-  .tab-title { font-size: 0.95rem; }
-  .tab-body p { font-size: 0.9rem; padding: 0 1rem 1rem; }
+  .toggle-pill { padding: 0.5rem 0.9rem; }
+  .toggle-pill i { font-size: 0.8rem; }
+  .toggle-pill span { font-size: 0.82rem; }
+  
+  .vm-card p { font-size: 0.95rem; }
   
   .main-image { max-width: 260px; }
 }
