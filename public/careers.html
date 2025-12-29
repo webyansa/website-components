@@ -147,70 +147,192 @@
             
             <!-- Application Form View -->
             <div class="modal-content" id="applicationView" style="display: none;">
-                <div class="form-header">
-                    <button class="back-btn" onclick="showDetailsView()">
-                        <i class="bi bi-arrow-right"></i>
-                        العودة للتفاصيل
-                    </button>
-                    <h2>نموذج التقديم</h2>
-                    <p id="formJobTitle"></p>
+                <div class="professional-form-header">
+                    <div class="form-header-icon">
+                        <i class="bi bi-person-plus-fill"></i>
+                    </div>
+                    <h2>التقديم لوظيفة</h2>
+                    <p id="formJobTitle" class="job-title-display"></p>
                 </div>
                 
-                <form id="applicationForm" onsubmit="submitApplication(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label><i class="bi bi-person"></i> الاسم الكامل</label>
-                            <input type="text" name="fullName" required placeholder="أدخل اسمك الكامل">
+                <form id="applicationForm" class="professional-form" onsubmit="submitApplication(event)">
+                    <!-- Personal Info Section -->
+                    <div class="form-section-pro">
+                        <div class="form-field-pro">
+                            <input type="text" name="fullName" required placeholder="الاسم الكامل" class="field-input-pro">
                         </div>
-                        <div class="form-group">
-                            <label><i class="bi bi-envelope"></i> البريد الإلكتروني</label>
-                            <input type="email" name="email" required placeholder="example@email.com">
+                        
+                        <div class="form-field-pro">
+                            <input type="email" name="email" required placeholder="البريد الإلكتروني" class="field-input-pro">
                         </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label><i class="bi bi-phone"></i> رقم الجوال</label>
-                            <input type="tel" name="phone" required placeholder="05xxxxxxxx">
-                        </div>
-                        <div class="form-group">
-                            <label><i class="bi bi-geo-alt"></i> المدينة</label>
-                            <input type="text" name="city" required placeholder="المدينة">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label><i class="bi bi-mortarboard"></i> المؤهل العلمي</label>
-                        <select name="education" required>
-                            <option value="">اختر المؤهل</option>
-                            <option value="highschool">ثانوية عامة</option>
-                            <option value="diploma">دبلوم</option>
-                            <option value="bachelor">بكالوريوس</option>
-                            <option value="master">ماجستير</option>
-                            <option value="phd">دكتوراه</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label><i class="bi bi-file-earmark-pdf"></i> السيرة الذاتية</label>
-                        <div class="file-upload">
-                            <input type="file" name="cv" id="cvFile" accept=".pdf,.doc,.docx" onchange="updateFileName(this)">
-                            <label for="cvFile">
-                                <i class="bi bi-cloud-upload"></i>
-                                <span id="fileName">اسحب الملف هنا أو انقر للاختيار</span>
-                            </label>
+                        
+                        <div class="form-field-pro">
+                            <div class="phone-wrapper-pro">
+                                <div class="country-selector">
+                                    <img src="https://flagcdn.com/w40/sa.png" alt="SA" class="flag-icon">
+                                    <span class="country-code-text">966+</span>
+                                </div>
+                                <input type="tel" name="phone" required placeholder="5xxxxxxxx" class="phone-input-pro" maxlength="9" oninput="validatePhone(this)">
+                                <span class="phone-validation-icon"><i class="bi bi-check-circle-fill"></i></span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label><i class="bi bi-chat-text"></i> رسالة التقديم (اختياري)</label>
-                        <textarea name="coverLetter" rows="4" placeholder="اكتب رسالة قصيرة عن نفسك ولماذا تريد هذه الفرصة..."></textarea>
+
+                    <!-- Additional Info Section -->
+                    <div class="form-section-pro">
+                        <div class="section-title-pro">الجنسية</div>
+                        <div class="form-field-pro">
+                            <div class="select-wrapper-pro">
+                                <select name="nationality" required class="field-select-pro">
+                                    <option value="">اختر الجنسية</option>
+                                    <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+                                    <option value="الإمارات">الإمارات العربية المتحدة</option>
+                                    <option value="الكويت">الكويت</option>
+                                    <option value="البحرين">البحرين</option>
+                                    <option value="قطر">قطر</option>
+                                    <option value="عمان">سلطنة عمان</option>
+                                    <option value="أخرى">أخرى</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid-pro">
+                            <div class="form-field-pro half">
+                                <div class="section-title-pro">جنس</div>
+                                <div class="select-wrapper-pro">
+                                    <select name="gender" required class="field-select-pro">
+                                        <option value="">اختر</option>
+                                        <option value="ذكر">ذكر</option>
+                                        <option value="أنثى">أنثى</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-field-pro half">
+                                <div class="section-title-pro">المستوى التعليمي</div>
+                                <div class="select-wrapper-pro">
+                                    <select name="education" required class="field-select-pro">
+                                        <option value="">اختر</option>
+                                        <option value="ثانوي">ثانوي</option>
+                                        <option value="دبلوم">دبلوم</option>
+                                        <option value="بكالوريوس">بكالوريوس</option>
+                                        <option value="ماجستير">ماجستير</option>
+                                        <option value="دكتوراه">دكتوراه</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid-pro">
+                            <div class="form-field-pro half">
+                                <div class="section-title-pro">تاريخ الميلاد</div>
+                                <div class="date-input-wrapper">
+                                    <input type="date" name="birthDate" required class="field-input-pro date-field-pro" onchange="validateDate(this)">
+                                    <span class="date-validation-icon"><i class="bi bi-check-circle-fill"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-field-pro half">
+                                <div class="section-title-pro">الخبرات</div>
+                                <div class="exp-input-wrapper">
+                                    <input type="number" name="experience" required placeholder="0" min="0" max="50" class="field-input-pro" oninput="validateExp(this)">
+                                    <span class="exp-validation-icon"><i class="bi bi-check-circle-fill"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Section -->
+                    <div class="form-section-pro">
+                        <div class="section-title-pro">المنطقة</div>
+                        <div class="form-field-pro">
+                            <div class="select-wrapper-pro">
+                                <select name="region" required class="field-select-pro">
+                                    <option value="">اختر المنطقة</option>
+                                    <option value="الرياض">الرياض</option>
+                                    <option value="مكة المكرمة">مكة المكرمة</option>
+                                    <option value="المدينة المنورة">المدينة المنورة</option>
+                                    <option value="القصيم">القصيم</option>
+                                    <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+                                    <option value="عسير">عسير</option>
+                                    <option value="تبوك">تبوك</option>
+                                    <option value="حائل">حائل</option>
+                                    <option value="الحدود الشمالية">الحدود الشمالية</option>
+                                    <option value="جازان">جازان</option>
+                                    <option value="نجران">نجران</option>
+                                    <option value="الباحة">الباحة</option>
+                                    <option value="الجوف">الجوف</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Section -->
+                    <div class="form-section-pro">
+                        <div class="form-field-pro">
+                            <div class="specialty-input-wrapper">
+                                <input type="text" name="specialty" required placeholder="التخصص المهني (مثال: تقنية معلومات مبرمج)" class="field-input-pro specialty-field">
+                            </div>
+                        </div>
+                        
+                        <div class="form-field-pro">
+                            <textarea name="skills" rows="3" placeholder="المهارات والخبرات" class="field-textarea-pro"></textarea>
+                        </div>
+                        
+                        <div class="form-field-pro">
+                            <textarea name="motivation" rows="4" required placeholder="لماذا ترغب في هذه الفرصة؟" class="field-textarea-pro"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Documents Section -->
+                    <div class="form-section-pro">
+                        <div class="form-field-pro">
+                            <div class="file-upload-pro">
+                                <input type="file" name="cv" id="cvFile" accept=".pdf,.doc,.docx" onchange="updateFileName(this)">
+                                <div class="file-content-pro">
+                                    <div class="file-icon-pro">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                    </div>
+                                    <div class="file-text-pro">
+                                        <span class="file-primary-text">اسحب الملف هنا أو اضغط للاختيار</span>
+                                        <span class="file-secondary-text">PDF, DOC, DOCX - حجم أقصى 5MB</span>
+                                    </div>
+                                </div>
+                                <span class="file-name-pro" id="fileName"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Captcha Section -->
+                    <div class="form-section-pro captcha-section">
+                        <div class="recaptcha-box">
+                            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="recaptcha-img">
+                            <div class="recaptcha-inner">
+                                <label class="checkbox-label-pro">
+                                    <input type="checkbox" name="notRobot" required>
+                                    <span class="custom-checkbox"></span>
+                                    <span class="checkbox-text">أنا لست برنامج روبوت</span>
+                                </label>
+                                <div class="recaptcha-brand">
+                                    <span>reCAPTCHA</span>
+                                    <small>الخصوصية - الشروط</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions-pro">
+                        <button type="submit" class="btn-submit-pro">
+                            <span>ارسل الآن</span>
+                            <i class="bi bi-arrow-left"></i>
+                        </button>
                     </div>
                     
-                    <button type="submit" class="btn-submit">
-                        <i class="bi bi-check-circle"></i>
-                        إرسال الطلب
-                    </button>
+                    <div class="back-link-pro">
+                        <button type="button" class="btn-back-pro" onclick="showDetailsView()">
+                            <i class="bi bi-arrow-right"></i>
+                            <span>العودة للتفاصيل</span>
+                        </button>
+                    </div>
                 </form>
             </div>
             
@@ -524,8 +646,43 @@
         }
 
         function updateFileName(input) {
-            const fileName = input.files[0]?.name || 'اسحب الملف هنا أو انقر للاختيار';
-            document.getElementById('fileName').textContent = fileName;
+            const fileNameEl = document.getElementById('fileName');
+            if (input.files[0]) {
+                fileNameEl.textContent = input.files[0].name;
+                fileNameEl.style.display = 'block';
+            } else {
+                fileNameEl.textContent = '';
+                fileNameEl.style.display = 'none';
+            }
+        }
+
+        function validatePhone(input) {
+            const value = input.value.replace(/\D/g, '');
+            input.value = value;
+            const icon = document.querySelector('.phone-validation-icon');
+            if (value.length >= 9 && value.startsWith('5')) {
+                icon.classList.add('show');
+            } else {
+                icon.classList.remove('show');
+            }
+        }
+
+        function validateDate(input) {
+            const icon = document.querySelector('.date-validation-icon');
+            if (input.value) {
+                icon.classList.add('show');
+            } else {
+                icon.classList.remove('show');
+            }
+        }
+
+        function validateExp(input) {
+            const icon = document.querySelector('.exp-validation-icon');
+            if (input.value && parseInt(input.value) >= 0) {
+                icon.classList.add('show');
+            } else {
+                icon.classList.remove('show');
+            }
         }
 
         function submitApplication(event) {
