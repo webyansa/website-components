@@ -176,119 +176,264 @@
         
         <!-- Application Form View -->
         <div class="application-view" id="applicationView">
-          <div class="form-header">
-            <div class="form-icon">
-              <i class="bi bi-person-plus"></i>
+          <div class="form-header-professional">
+            <div class="form-header-icon">
+              <i class="bi bi-person-plus-fill"></i>
             </div>
-            <h3 class="form-title">نموذج التقديم</h3>
-            <p class="form-subtitle">أكمل البيانات التالية للتقدم لهذه الفرصة</p>
+            <h3 class="form-header-title">التقديم لفرصة تنموية</h3>
+            <p class="form-header-subtitle">أكمل البيانات التالية بدقة للتقدم لهذه الفرصة</p>
           </div>
           
-          <form class="application-form" id="applicationForm" onsubmit="submitApplication(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">
-                  <i class="bi bi-person"></i>
-                  الاسم الكامل <span class="required">*</span>
-                </label>
-                <input type="text" class="form-input" name="fullName" required placeholder="أدخل اسمك الكامل">
+          <form class="application-form-professional" id="applicationForm" onsubmit="submitApplication(event)">
+            <!-- Section: Personal Information -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <i class="bi bi-person-vcard"></i>
+                <span>البيانات الشخصية</span>
               </div>
-              <div class="form-group">
-                <label class="form-label">
-                  <i class="bi bi-envelope"></i>
-                  البريد الإلكتروني <span class="required">*</span>
-                </label>
-                <input type="email" class="form-input" name="email" required placeholder="example@email.com">
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">
-                  <i class="bi bi-phone"></i>
-                  رقم الجوال <span class="required">*</span>
-                </label>
-                <input type="tel" class="form-input" name="phone" required placeholder="05xxxxxxxx">
-              </div>
-              <div class="form-group">
-                <label class="form-label">
-                  <i class="bi bi-geo-alt"></i>
-                  المدينة <span class="required">*</span>
-                </label>
-                <select class="form-select" name="city" required>
-                  <option value="">اختر المدينة</option>
-                  <option value="الرياض">الرياض</option>
-                  <option value="جدة">جدة</option>
-                  <option value="مكة المكرمة">مكة المكرمة</option>
-                  <option value="المدينة المنورة">المدينة المنورة</option>
-                  <option value="الدمام">الدمام</option>
-                  <option value="أخرى">أخرى</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">
-                  <i class="bi bi-mortarboard"></i>
-                  المؤهل العلمي <span class="required">*</span>
-                </label>
-                <select class="form-select" name="education" required>
-                  <option value="">اختر المؤهل</option>
-                  <option value="ثانوي">ثانوي</option>
-                  <option value="دبلوم">دبلوم</option>
-                  <option value="بكالوريوس">بكالوريوس</option>
-                  <option value="ماجستير">ماجستير</option>
-                  <option value="دكتوراه">دكتوراه</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">
-                  <i class="bi bi-briefcase"></i>
-                  سنوات الخبرة
-                </label>
-                <select class="form-select" name="experience">
-                  <option value="">اختر</option>
-                  <option value="لا يوجد">لا يوجد</option>
-                  <option value="1-2">1-2 سنة</option>
-                  <option value="3-5">3-5 سنوات</option>
-                  <option value="5+">أكثر من 5 سنوات</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group full-width">
-              <label class="form-label">
-                <i class="bi bi-file-earmark-arrow-up"></i>
-                السيرة الذاتية (اختياري)
-              </label>
-              <div class="file-upload">
-                <input type="file" name="cv" accept=".pdf,.doc,.docx" onchange="updateFileName(this)">
-                <div class="file-upload-content">
-                  <div class="file-upload-icon">
-                    <i class="bi bi-cloud-upload"></i>
+              
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    الاسم الكامل <span class="required-star">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="text" class="field-input" name="fullName" required placeholder="أدخل اسمك الرباعي كاملاً">
+                    <span class="input-icon"><i class="bi bi-person"></i></span>
                   </div>
-                  <span class="file-upload-text">اسحب الملف هنا أو اضغط للاختيار</span>
-                  <span class="file-upload-hint">PDF, DOC, DOCX - حجم أقصى 5MB</span>
                 </div>
-                <span class="file-name" id="fileName"></span>
+
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    البريد الإلكتروني <span class="required-star">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="email" class="field-input" name="email" required placeholder="example@email.com">
+                    <span class="input-icon"><i class="bi bi-envelope"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    رقم الجوال <span class="required-star">*</span>
+                  </label>
+                  <div class="phone-input-wrapper">
+                    <div class="country-code">
+                      <img src="https://flagcdn.com/w40/sa.png" alt="SA" class="country-flag">
+                      <span>966+</span>
+                    </div>
+                    <input type="tel" class="field-input phone-field" name="phone" required placeholder="5xxxxxxxx" maxlength="9">
+                    <span class="validation-icon" id="phoneValidation"><i class="bi bi-check-circle-fill"></i></span>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <div class="form-group full-width">
-              <label class="form-label">
-                <i class="bi bi-chat-text"></i>
-                لماذا ترغب في هذه الفرصة؟ <span class="required">*</span>
-              </label>
-              <textarea class="form-textarea" name="motivation" required placeholder="اكتب سبب اهتمامك بهذه الفرصة..."></textarea>
+
+            <!-- Section: Additional Information -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <i class="bi bi-info-circle"></i>
+                <span>معلومات إضافية</span>
+              </div>
+              
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    الجنسية <span class="required-star">*</span>
+                  </label>
+                  <div class="select-wrapper">
+                    <select class="field-select" name="nationality" required>
+                      <option value="">اختر الجنسية</option>
+                      <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+                      <option value="الإمارات العربية المتحدة">الإمارات العربية المتحدة</option>
+                      <option value="الكويت">الكويت</option>
+                      <option value="البحرين">البحرين</option>
+                      <option value="قطر">قطر</option>
+                      <option value="سلطنة عمان">سلطنة عمان</option>
+                      <option value="أخرى">أخرى</option>
+                    </select>
+                    <span class="select-icon"><i class="bi bi-chevron-down"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-field half-width">
+                  <label class="field-label">
+                    الجنس <span class="required-star">*</span>
+                  </label>
+                  <div class="select-wrapper">
+                    <select class="field-select" name="gender" required>
+                      <option value="">اختر</option>
+                      <option value="ذكر">ذكر</option>
+                      <option value="أنثى">أنثى</option>
+                    </select>
+                    <span class="select-icon"><i class="bi bi-chevron-down"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-field half-width">
+                  <label class="field-label">
+                    المستوى التعليمي <span class="required-star">*</span>
+                  </label>
+                  <div class="select-wrapper">
+                    <select class="field-select" name="education" required>
+                      <option value="">اختر</option>
+                      <option value="ثانوي">ثانوي</option>
+                      <option value="دبلوم">دبلوم</option>
+                      <option value="بكالوريوس">بكالوريوس</option>
+                      <option value="ماجستير">ماجستير</option>
+                      <option value="دكتوراه">دكتوراه</option>
+                    </select>
+                    <span class="select-icon"><i class="bi bi-chevron-down"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-field half-width">
+                  <label class="field-label">
+                    تاريخ الميلاد <span class="required-star">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="date" class="field-input date-field" name="birthDate" required>
+                    <span class="validation-icon date-valid"><i class="bi bi-check-circle-fill"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-field half-width">
+                  <label class="field-label">
+                    سنوات الخبرة <span class="required-star">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="number" class="field-input" name="experience" required placeholder="0" min="0" max="50">
+                    <span class="validation-icon exp-valid"><i class="bi bi-check-circle-fill"></i></span>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            <div class="form-actions">
-              <button type="submit" class="btn btn-submit">
-                <i class="bi bi-check-circle"></i>
-                <span>إرسال الطلب</span>
+
+            <!-- Section: Location -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <i class="bi bi-geo-alt"></i>
+                <span>الموقع</span>
+              </div>
+              
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    المنطقة <span class="required-star">*</span>
+                  </label>
+                  <div class="select-wrapper">
+                    <select class="field-select" name="region" required>
+                      <option value="">اختر المنطقة</option>
+                      <option value="الرياض">الرياض</option>
+                      <option value="مكة المكرمة">مكة المكرمة</option>
+                      <option value="المدينة المنورة">المدينة المنورة</option>
+                      <option value="القصيم">القصيم</option>
+                      <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+                      <option value="عسير">عسير</option>
+                      <option value="تبوك">تبوك</option>
+                      <option value="حائل">حائل</option>
+                      <option value="الحدود الشمالية">الحدود الشمالية</option>
+                      <option value="جازان">جازان</option>
+                      <option value="نجران">نجران</option>
+                      <option value="الباحة">الباحة</option>
+                      <option value="الجوف">الجوف</option>
+                    </select>
+                    <span class="select-icon"><i class="bi bi-chevron-down"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section: Professional Info -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <i class="bi bi-briefcase"></i>
+                <span>المعلومات المهنية</span>
+              </div>
+              
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    التخصص المهني <span class="required-star">*</span>
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="text" class="field-input" name="specialty" required placeholder="مثال: تقنية معلومات - مبرمج">
+                    <span class="input-icon"><i class="bi bi-code-slash"></i></span>
+                  </div>
+                </div>
+
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    المهارات والخبرات
+                  </label>
+                  <textarea class="field-textarea" name="skills" placeholder="اذكر أهم مهاراتك وخبراتك المتعلقة بهذه الفرصة..." rows="3"></textarea>
+                </div>
+
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    لماذا ترغب في هذه الفرصة؟ <span class="required-star">*</span>
+                  </label>
+                  <textarea class="field-textarea" name="motivation" required placeholder="اشرح سبب اهتمامك بهذه الفرصة وما الذي يميزك..." rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section: Documents -->
+            <div class="form-section">
+              <div class="form-section-header">
+                <i class="bi bi-file-earmark-arrow-up"></i>
+                <span>المستندات</span>
+              </div>
+              
+              <div class="form-grid">
+                <div class="form-field full-width">
+                  <label class="field-label">
+                    السيرة الذاتية
+                  </label>
+                  <div class="file-upload-professional">
+                    <input type="file" id="cvFile" name="cv" accept=".pdf,.doc,.docx" onchange="updateFileName(this)">
+                    <div class="file-upload-content">
+                      <div class="file-upload-icon">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                      </div>
+                      <div class="file-upload-text">
+                        <span class="primary-text">اسحب الملف هنا أو اضغط للاختيار</span>
+                        <span class="secondary-text">PDF, DOC, DOCX - حجم أقصى 5MB</span>
+                      </div>
+                    </div>
+                    <span class="file-name-display" id="fileName"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section: Verification -->
+            <div class="form-section verification-section">
+              <div class="recaptcha-wrapper">
+                <div class="recaptcha-placeholder">
+                  <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="recaptcha-logo">
+                  <div class="recaptcha-content">
+                    <label class="recaptcha-checkbox">
+                      <input type="checkbox" name="notRobot" required>
+                      <span class="checkmark"></span>
+                      <span class="recaptcha-text">أنا لست برنامج روبوت</span>
+                    </label>
+                    <div class="recaptcha-branding">
+                      <span>reCAPTCHA</span>
+                      <small>الخصوصية - الشروط</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions-professional">
+              <button type="submit" class="btn-submit-professional">
+                <i class="bi bi-send-fill"></i>
+                <span>ارسل الآن</span>
               </button>
-              <button type="button" class="btn btn-back" onclick="showDetailsView()">
+              <button type="button" class="btn-back-professional" onclick="showDetailsView()">
                 <i class="bi bi-arrow-right"></i>
                 <span>العودة للتفاصيل</span>
               </button>
