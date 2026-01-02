@@ -187,7 +187,7 @@
             
             <div class="board-grid">
                 <!-- Chairman -->
-                <div class="board-card chairman animate-on-scroll">
+                <div class="board-card chairman animate-on-scroll" onclick="openModal('chairman')">
                     <div class="chairman-badge">
                         <i class="fas fa-crown"></i>
                         رئيس المجلس
@@ -201,54 +201,58 @@
                             <i class="fas fa-star"></i>
                             رئيس مجلس الإدارة
                         </p>
+                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
                     </div>
                 </div>
                 
                 <!-- Vice Chairman -->
-                <div class="board-card animate-on-scroll">
+                <div class="board-card animate-on-scroll" onclick="openModal('viceChairman')">
                     <div class="board-card-image">
                         <img src="images/raneen/team/male-placeholder-2.jpg" alt="نائب الرئيس">
                     </div>
                     <div class="board-card-content">
                         <h3 class="board-card-name">عبدالله بن محمد الشهري</h3>
                         <p class="board-card-role">نائب رئيس مجلس الإدارة</p>
+                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
                     </div>
                 </div>
                 
                 <!-- Member 1 -->
-                <div class="board-card animate-on-scroll">
+                <div class="board-card animate-on-scroll" onclick="openModal('boardMember1')">
                     <div class="board-card-image">
                         <img src="images/raneen/team/male-placeholder-3.jpg" alt="عضو مجلس">
                     </div>
                     <div class="board-card-content">
                         <h3 class="board-card-name">سعد بن فهد الدوسري</h3>
                         <p class="board-card-role">عضو مجلس الإدارة</p>
+                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
                     </div>
                 </div>
                 
                 <!-- Member 2 -->
-                <div class="board-card animate-on-scroll">
+                <div class="board-card animate-on-scroll" onclick="openModal('boardMember2')">
                     <div class="board-card-image">
                         <img src="images/raneen/team/male-placeholder-4.jpg" alt="عضو مجلس">
                     </div>
                     <div class="board-card-content">
                         <h3 class="board-card-name">خالد بن عمر القحطاني</h3>
                         <p class="board-card-role">عضو مجلس الإدارة</p>
+                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
                     </div>
                 </div>
                 
                 <!-- Member 3 -->
-                <div class="board-card animate-on-scroll">
+                <div class="board-card animate-on-scroll" onclick="openModal('boardMember3')">
                     <div class="board-card-image">
                         <img src="images/raneen/team/female-placeholder-1.jpg" alt="عضو مجلس">
                     </div>
                     <div class="board-card-content">
                         <h3 class="board-card-name">نورة بنت سعود المالكي</h3>
                         <p class="board-card-role">عضو مجلس الإدارة</p>
+                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Team Section -->
@@ -264,7 +268,7 @@
             
             <div class="team-grid">
                 <!-- Team Member 1 -->
-                <div class="team-card animate-on-scroll">
+                <div class="team-card animate-on-scroll" onclick="openModal('team1')">
                     <div class="team-card-image">
                         <img src="images/raneen/team/male-placeholder-1.jpg" alt="موظف">
                     </div>
@@ -278,7 +282,7 @@
                 </div>
                 
                 <!-- Team Member 2 -->
-                <div class="team-card animate-on-scroll">
+                <div class="team-card animate-on-scroll" onclick="openModal('team2')">
                     <div class="team-card-image">
                         <img src="images/raneen/team/female-placeholder-1.jpg" alt="موظفة">
                     </div>
@@ -292,7 +296,7 @@
                 </div>
                 
                 <!-- Team Member 3 -->
-                <div class="team-card animate-on-scroll">
+                <div class="team-card animate-on-scroll" onclick="openModal('team3')">
                     <div class="team-card-image">
                         <img src="images/raneen/team/male-placeholder-2.jpg" alt="موظف">
                     </div>
@@ -306,7 +310,7 @@
                 </div>
                 
                 <!-- Team Member 4 -->
-                <div class="team-card animate-on-scroll">
+                <div class="team-card animate-on-scroll" onclick="openModal('team4')">
                     <div class="team-card-image">
                         <img src="images/raneen/team/male-placeholder-3.jpg" alt="موظف">
                     </div>
@@ -320,7 +324,7 @@
                 </div>
                 
                 <!-- Team Member 5 -->
-                <div class="team-card animate-on-scroll">
+                <div class="team-card animate-on-scroll" onclick="openModal('team5')">
                     <div class="team-card-image">
                         <img src="images/raneen/team/female-placeholder-2.jpg" alt="موظفة">
                     </div>
@@ -334,7 +338,7 @@
                 </div>
                 
                 <!-- Team Member 6 -->
-                <div class="team-card animate-on-scroll">
+                <div class="team-card animate-on-scroll" onclick="openModal('team6')">
                     <div class="team-card-image">
                         <img src="images/raneen/team/male-placeholder-4.jpg" alt="موظف">
                     </div>
@@ -616,6 +620,80 @@
         </div>
     </section>
 
+    <!-- CV Modal -->
+    <div class="cv-modal-overlay" id="cvModal">
+        <div class="cv-modal">
+            <button class="cv-modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="cv-modal-header">
+                <div class="cv-modal-image">
+                    <img id="modalImage" src="" alt="صورة العضو">
+                </div>
+                <div class="cv-modal-title-info">
+                    <h2 id="modalName"></h2>
+                    <p id="modalPosition" class="cv-modal-position"></p>
+                    <div class="cv-modal-social" id="modalSocial">
+                        <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link x-twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="tel:+966500000000" class="social-link phone"><i class="fas fa-phone-alt"></i></a>
+                        <a href="mailto:email@example.com" class="social-link email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cv-modal-stats" id="modalStats">
+                <div class="cv-stat">
+                    <span class="cv-stat-value" id="statYears">15+</span>
+                    <span class="cv-stat-label">سنوات الخبرة</span>
+                </div>
+                <div class="cv-stat">
+                    <span class="cv-stat-value" id="statProjects">30+</span>
+                    <span class="cv-stat-label">مشروع</span>
+                </div>
+                <div class="cv-stat">
+                    <span class="cv-stat-value" id="statCerts">5+</span>
+                    <span class="cv-stat-label">شهادة</span>
+                </div>
+            </div>
+            
+            <div class="cv-modal-body">
+                <div class="cv-section">
+                    <div class="cv-section-header">
+                        <i class="fas fa-user"></i>
+                        <h4>نبذة شخصية</h4>
+                    </div>
+                    <p id="modalBio"></p>
+                </div>
+                
+                <div class="cv-section">
+                    <div class="cv-section-header">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>المؤهلات العلمية</h4>
+                    </div>
+                    <p id="modalEducation"></p>
+                </div>
+                
+                <div class="cv-section">
+                    <div class="cv-section-header">
+                        <i class="fas fa-briefcase"></i>
+                        <h4>الخبرات المهنية</h4>
+                    </div>
+                    <p id="modalExperience"></p>
+                </div>
+                
+                <div class="cv-section">
+                    <div class="cv-section-header">
+                        <i class="fas fa-star"></i>
+                        <h4>المهارات والتخصصات</h4>
+                    </div>
+                    <div class="cv-skills" id="modalSkills"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-container">
@@ -667,6 +745,187 @@
     </footer>
 
     <script>
+        // Members Data for Modal
+        const membersData = {
+            chairman: {
+                name: 'أحمد بن سالم العتيبي',
+                position: 'رئيس مجلس الإدارة',
+                image: 'images/raneen/team/male-placeholder-1.jpg',
+                bio: 'قائد استراتيجي متميز يتمتع برؤية شاملة في تطوير قطاع الجمعيات الأهلية. يقود مجلس الإدارة بحكمة وخبرة واسعة في بناء الشراكات وتحقيق الأهداف الاستراتيجية للمجلس.',
+                education: 'ماجستير في إدارة الأعمال - جامعة الملك سعود، بكالوريوس إدارة عامة - جامعة الملك عبدالعزيز',
+                experience: 'رئيس مجلس إدارة المجلس التخصصي (2020 - الآن)، مستشار استراتيجي في عدة جهات حكومية، مؤسس ومدير لعدة مشاريع ناجحة',
+                skills: ['القيادة الاستراتيجية', 'بناء الشراكات', 'الحوكمة المؤسسية', 'إدارة الأزمات', 'التخطيط الاستراتيجي'],
+                years: '20+',
+                projects: '50+',
+                certs: '8+'
+            },
+            viceChairman: {
+                name: 'عبدالله بن محمد الشهري',
+                position: 'نائب رئيس مجلس الإدارة',
+                image: 'images/raneen/team/male-placeholder-2.jpg',
+                bio: 'متخصص في الإدارة المالية والتخطيط الاستراتيجي مع خبرة واسعة في القطاع غير الربحي. يساهم في توجيه السياسات المالية وضمان استدامة المجلس.',
+                education: 'دكتوراه في الإدارة المالية - جامعة الملك فهد، ماجستير محاسبة - جامعة الإمام',
+                experience: 'نائب رئيس مجلس الإدارة (2020 - الآن)، مدير مالي في شركة كبرى (10 سنوات)، مراجع حسابات معتمد',
+                skills: ['الإدارة المالية', 'التخطيط المالي', 'إدارة المخاطر', 'الحوكمة', 'التدقيق المالي'],
+                years: '18+',
+                projects: '40+',
+                certs: '10+'
+            },
+            boardMember1: {
+                name: 'سعد بن فهد الدوسري',
+                position: 'عضو مجلس الإدارة',
+                image: 'images/raneen/team/male-placeholder-3.jpg',
+                bio: 'خبير في تطوير البرامج والمشاريع التنموية مع سجل حافل في إدارة المبادرات الشبابية الناجحة على المستوى الوطني.',
+                education: 'ماجستير في إدارة المشاريع - جامعة الأمير سلطان، بكالوريوس هندسة صناعية',
+                experience: 'عضو مجلس إدارة (2021 - الآن)، مدير برامج في مؤسسة وطنية (8 سنوات)، مستشار تطوير مشاريع',
+                skills: ['إدارة المشاريع', 'تطوير البرامج', 'التخطيط التنموي', 'إدارة الفرق', 'قياس الأثر'],
+                years: '15+',
+                projects: '35+',
+                certs: '6+'
+            },
+            boardMember2: {
+                name: 'خالد بن عمر القحطاني',
+                position: 'عضو مجلس الإدارة',
+                image: 'images/raneen/team/male-placeholder-4.jpg',
+                bio: 'متخصص في العلاقات العامة والإعلام مع خبرة في بناء العلامات التجارية للمنظمات غير الربحية وتعزيز حضورها المجتمعي.',
+                education: 'ماجستير في الإعلام والاتصال - جامعة الملك سعود، بكالوريوس علاقات عامة',
+                experience: 'عضو مجلس إدارة (2022 - الآن)، مدير علاقات عامة (10 سنوات)، مستشار إعلامي لعدة جهات',
+                skills: ['العلاقات العامة', 'الإعلام الرقمي', 'بناء العلامة التجارية', 'إدارة الأزمات الإعلامية', 'التسويق'],
+                years: '12+',
+                projects: '30+',
+                certs: '5+'
+            },
+            boardMember3: {
+                name: 'نورة بنت سعود المالكي',
+                position: 'عضوة مجلس الإدارة',
+                image: 'images/raneen/team/female-placeholder-1.jpg',
+                bio: 'قيادية متميزة في مجال التنمية الاجتماعية وتمكين الشباب مع خبرة واسعة في تصميم وتنفيذ البرامج التطويرية.',
+                education: 'دكتوراه في التنمية الاجتماعية - جامعة أكسفورد، ماجستير علم اجتماع',
+                experience: 'عضوة مجلس إدارة (2021 - الآن)، أستاذة جامعية (12 سنة)، مستشارة في التنمية المستدامة',
+                skills: ['التنمية الاجتماعية', 'تمكين الشباب', 'البحث العلمي', 'التخطيط الاستراتيجي', 'بناء القدرات'],
+                years: '16+',
+                projects: '45+',
+                certs: '12+'
+            },
+            team1: {
+                name: 'محمد بن علي',
+                position: 'مدير المشاريع',
+                image: 'images/raneen/team/male-placeholder-1.jpg',
+                bio: 'متخصص في إدارة المشاريع وتنسيق البرامج مع خبرة في تنفيذ المبادرات الشبابية والتطوعية.',
+                education: 'بكالوريوس إدارة أعمال - جامعة الملك سعود، شهادة PMP',
+                experience: 'مدير مشاريع في المجلس (2021 - الآن)، منسق برامج (3 سنوات)',
+                skills: ['إدارة المشاريع', 'التنسيق', 'إعداد التقارير', 'التخطيط', 'إدارة الموارد'],
+                years: '7+',
+                projects: '20+',
+                certs: '4+'
+            },
+            team2: {
+                name: 'سارة بنت أحمد',
+                position: 'مسؤولة التواصل',
+                image: 'images/raneen/team/female-placeholder-1.jpg',
+                bio: 'متخصصة في التواصل المؤسسي والعلاقات العامة مع خبرة في إدارة وسائل التواصل الاجتماعي.',
+                education: 'بكالوريوس إعلام - جامعة الملك سعود',
+                experience: 'مسؤولة تواصل في المجلس (2022 - الآن)، أخصائية إعلام (2 سنة)',
+                skills: ['التواصل المؤسسي', 'إدارة السوشيال ميديا', 'كتابة المحتوى', 'العلاقات الإعلامية', 'التصميم'],
+                years: '5+',
+                projects: '15+',
+                certs: '3+'
+            },
+            team3: {
+                name: 'فهد بن سعود',
+                position: 'مصمم جرافيك',
+                image: 'images/raneen/team/male-placeholder-2.jpg',
+                bio: 'مصمم جرافيك مبدع متخصص في الهوية البصرية وتصميم المطبوعات والمحتوى الرقمي.',
+                education: 'بكالوريوس تصميم جرافيك - جامعة الأميرة نورة',
+                experience: 'مصمم جرافيك في المجلس (2021 - الآن)، مصمم حر (3 سنوات)',
+                skills: ['التصميم الجرافيكي', 'الهوية البصرية', 'تصميم UI/UX', 'الموشن جرافيك', 'Adobe Suite'],
+                years: '6+',
+                projects: '100+',
+                certs: '3+'
+            },
+            team4: {
+                name: 'عمر بن خالد',
+                position: 'منسق البرامج',
+                image: 'images/raneen/team/male-placeholder-3.jpg',
+                bio: 'منسق برامج متميز في تنظيم الفعاليات والأنشطة الشبابية والتطوعية.',
+                education: 'بكالوريوس إدارة أعمال - جامعة الملك فيصل',
+                experience: 'منسق برامج في المجلس (2022 - الآن)، مساعد إداري (2 سنة)',
+                skills: ['تنسيق البرامج', 'تنظيم الفعاليات', 'خدمة العملاء', 'العمل الجماعي', 'التواصل'],
+                years: '4+',
+                projects: '25+',
+                certs: '2+'
+            },
+            team5: {
+                name: 'هند بنت محمد',
+                position: 'محاسبة',
+                image: 'images/raneen/team/female-placeholder-2.jpg',
+                bio: 'محاسبة متخصصة في الإدارة المالية والتقارير المالية للمنظمات غير الربحية.',
+                education: 'بكالوريوس محاسبة - جامعة الملك عبدالعزيز',
+                experience: 'محاسبة في المجلس (2021 - الآن)، محاسبة في شركة خاصة (3 سنوات)',
+                skills: ['المحاسبة المالية', 'إعداد الميزانيات', 'التقارير المالية', 'برامج المحاسبة', 'التدقيق'],
+                years: '6+',
+                projects: '10+',
+                certs: '3+'
+            },
+            team6: {
+                name: 'ياسر بن عبدالله',
+                position: 'أخصائي تواصل',
+                image: 'images/raneen/team/male-placeholder-4.jpg',
+                bio: 'أخصائي تواصل مؤسسي متميز في التنسيق مع الشركاء وإدارة العلاقات الخارجية.',
+                education: 'بكالوريوس علاقات عامة - جامعة الإمام',
+                experience: 'أخصائي تواصل في المجلس (2023 - الآن)، منسق علاقات عامة (2 سنة)',
+                skills: ['التواصل المؤسسي', 'العلاقات الخارجية', 'الكتابة', 'التنسيق', 'خدمة العملاء'],
+                years: '4+',
+                projects: '12+',
+                certs: '2+'
+            }
+        };
+
+        // Open Modal Function
+        function openModal(memberId) {
+            const member = membersData[memberId];
+            if (!member) return;
+
+            document.getElementById('modalImage').src = member.image;
+            document.getElementById('modalName').textContent = member.name;
+            document.getElementById('modalPosition').textContent = member.position;
+            document.getElementById('modalBio').textContent = member.bio;
+            document.getElementById('modalEducation').textContent = member.education;
+            document.getElementById('modalExperience').textContent = member.experience;
+            document.getElementById('statYears').textContent = member.years;
+            document.getElementById('statProjects').textContent = member.projects;
+            document.getElementById('statCerts').textContent = member.certs;
+
+            // Generate skills tags
+            const skillsContainer = document.getElementById('modalSkills');
+            skillsContainer.innerHTML = member.skills.map(skill => 
+                `<span class="cv-skill-tag">${skill}</span>`
+            ).join('');
+
+            document.getElementById('cvModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Function
+        function closeModal() {
+            document.getElementById('cvModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on overlay click
+        document.getElementById('cvModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
         // Scroll Animation
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.animate-on-scroll');

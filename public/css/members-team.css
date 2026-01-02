@@ -1890,3 +1890,360 @@ body {
         padding: 6px 12px;
     }
 }
+
+/* ========================================
+   CV Modal Styles
+   ======================================== */
+.cv-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.cv-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cv-modal {
+    background: #fff;
+    border-radius: 24px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+.cv-modal-overlay.active .cv-modal {
+    transform: translateY(0) scale(1);
+}
+
+.cv-modal-close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.cv-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.cv-modal-header {
+    background: linear-gradient(135deg, var(--council-primary) 0%, var(--council-secondary) 100%);
+    padding: 40px 30px 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+}
+
+.cv-modal-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: #fff;
+    border-radius: 30px 30px 0 0;
+}
+
+.cv-modal-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.cv-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cv-modal-title-info {
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.cv-modal-title-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.cv-modal-position {
+    font-size: 1rem;
+    color: var(--council-accent);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.cv-modal-social {
+    display: flex;
+    gap: 10px;
+}
+
+.cv-modal-social .social-link {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.cv-modal-social .social-link.linkedin {
+    background: rgba(0, 119, 181, 0.8);
+}
+
+.cv-modal-social .social-link.x-twitter {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.cv-modal-social .social-link.phone {
+    background: rgba(37, 211, 102, 0.8);
+}
+
+.cv-modal-social .social-link.email {
+    background: rgba(66, 176, 122, 0.8);
+}
+
+.cv-modal-social .social-link:hover {
+    transform: translateY(-3px);
+}
+
+.cv-modal-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 30px 10px;
+    margin-top: -15px;
+    position: relative;
+    z-index: 2;
+}
+
+.cv-stat {
+    text-align: center;
+    background: linear-gradient(135deg, var(--council-light) 0%, #fff 100%);
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(38, 51, 112, 0.1);
+    min-width: 90px;
+}
+
+.cv-stat-value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--council-primary);
+    margin-bottom: 3px;
+}
+
+.cv-stat-label {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.cv-modal-body {
+    padding: 20px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cv-section {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(38, 51, 112, 0.05);
+    transition: all 0.3s ease;
+}
+
+.cv-section:hover {
+    border-color: var(--council-secondary);
+    box-shadow: 0 8px 25px rgba(12, 127, 174, 0.1);
+}
+
+.cv-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid transparent;
+    border-image: var(--council-gradient) 1;
+}
+
+.cv-section-header i {
+    width: 35px;
+    height: 35px;
+    background: var(--council-gradient);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.cv-section-header h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--council-primary);
+    margin: 0;
+}
+
+.cv-section p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.cv-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cv-skill-tag {
+    background: linear-gradient(135deg, var(--council-primary) 0%, var(--council-secondary) 100%);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cv-skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(38, 51, 112, 0.3);
+}
+
+/* View CV Hint for Cards */
+.view-cv-hint {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--council-secondary);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+}
+
+.board-card:hover .view-cv-hint,
+.team-card:hover .view-cv-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Make cards clickable */
+.board-card,
+.team-card {
+    cursor: pointer;
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+    .cv-modal-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px 40px;
+    }
+    
+    .cv-modal-title-info h2 {
+        font-size: 1.3rem;
+    }
+    
+    .cv-modal-social {
+        justify-content: center;
+    }
+    
+    .cv-modal-stats {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+    }
+    
+    .cv-stat {
+        padding: 12px 20px;
+        min-width: 80px;
+    }
+    
+    .cv-modal-body {
+        padding: 15px 20px 25px;
+    }
+    
+    .cv-section {
+        padding: 15px;
+    }
+    
+    .cv-skill-tag {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cv-modal {
+        border-radius: 20px;
+        max-height: 95vh;
+    }
+    
+    .cv-modal-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .cv-stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .cv-stat-label {
+        font-size: 0.7rem;
+    }
+}
