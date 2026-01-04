@@ -31,138 +31,191 @@
                 <i class="fas fa-envelope"></i>
                 تواصل معنا
             </a>
-            <button class="mobile-toggle">
+            <button class="mobile-toggle" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
+    <!-- Mobile Sidebar -->
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <div class="mobile-sidebar-header">
+            <img src="images/council-logo.svg" alt="شعار المجلس">
+            <button class="mobile-close" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="home.html">الرئيسية</a>
+            <a href="council-about.html">عن المجلس</a>
+            <a href="projects-section.html">المشاريع</a>
+            <a href="services-section.html">الخدمات</a>
+            <a href="events.html">الفعاليات</a>
+            <a href="members-team.html" class="active">الأعضاء والفريق</a>
+            <a href="contact.html" class="cta">تواصل معنا</a>
+        </nav>
+    </aside>
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
     <!-- Hero Section -->
-    <section class="page-hero-new">
-        <div class="hero-overlay"></div>
+    <section class="hero-section">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+            <div class="hero-glow hero-glow-1"></div>
+            <div class="hero-glow hero-glow-2"></div>
+        </div>
         <div class="hero-content">
             <div class="hero-badge">
-                <i class="fas fa-users"></i>
-                المجلس التخصصي
+                <i class="fas fa-users-gear"></i>
+                <span>المجلس التخصصي للجمعيات الشبابية</span>
             </div>
             <h1 class="hero-title">الأعضاء والهيكل التنظيمي</h1>
-            <p class="hero-desc">تعرف على أعضاء الجمعية العمومية ومجلس الإدارة وفريق العمل</p>
-            <nav class="hero-breadcrumb">
-                <a href="home.html">
-                    <i class="fas fa-home"></i>
-                    الرئيسية
-                </a>
-                <span class="separator"><i class="fas fa-chevron-left"></i></span>
-                <span class="current">الأعضاء والهيكل</span>
-            </nav>
+            <p class="hero-subtitle">تعرف على أعضاء الجمعية العمومية ومجلس الإدارة وفريق العمل المتميز</p>
+            <div class="hero-breadcrumb">
+                <a href="home.html"><i class="fas fa-home"></i> الرئيسية</a>
+                <i class="fas fa-chevron-left"></i>
+                <span>الأعضاء والهيكل</span>
+            </div>
         </div>
     </section>
 
     <!-- General Assembly Section -->
-    <section class="section section-alt" id="general-assembly">
+    <section class="content-section" id="general-assembly">
         <div class="container">
-            <div class="section-header animate-on-scroll">
+            <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-building-columns"></i>
                 </div>
                 <h2 class="section-title">أعضاء الجمعية العمومية</h2>
-                <p class="section-subtitle">الجمعيات الشبابية المنضمة للمجلس التخصصي</p>
+                <p class="section-desc">الجمعيات الشبابية المنضمة للمجلس التخصصي</p>
             </div>
-            
-            <div class="assembly-grid-pro">
-                <!-- Association 1 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/brand-logo-1.svg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">جمعية الشباب الأول</h4>
-                        <span class="assembly-badge">عضو مؤسس</span>
-                    </div>
-                </div>
-                
-                <!-- Association 2 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/brand-logo-2.svg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">جمعية التطوير الشبابي</h4>
-                        <span class="assembly-badge">عضو مؤسس</span>
+
+            <div class="assembly-grid">
+                <!-- Member 1 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/brand-logo-1.svg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>جمعية الشباب الأول</h3>
+                            <span class="assembly-badge founder">
+                                <i class="fas fa-star"></i>
+                                عضو مؤسس
+                            </span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Association 3 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/brand-logo-3.svg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">جمعية البناء المستدام</h4>
-                        <span class="assembly-badge">عضو فعال</span>
-                    </div>
-                </div>
-                
-                <!-- Association 4 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/cooperative-logo.svg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">الجمعية التعاونية</h4>
-                        <span class="assembly-badge">عضو فعال</span>
+
+                <!-- Member 2 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/brand-logo-2.svg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>جمعية التطوير الشبابي</h3>
+                            <span class="assembly-badge founder">
+                                <i class="fas fa-star"></i>
+                                عضو مؤسس
+                            </span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Association 5 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/deem-logo.jpg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">جمعية ديم</h4>
-                        <span class="assembly-badge">عضو فعال</span>
-                    </div>
-                </div>
-                
-                <!-- Association 6 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/jadarah-logo.jpg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">جمعية جدارة</h4>
-                        <span class="assembly-badge">عضو مؤسس</span>
+
+                <!-- Member 3 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/brand-logo-3.svg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>جمعية البناء المستدام</h3>
+                            <span class="assembly-badge active">
+                                <i class="fas fa-check-circle"></i>
+                                عضو فعال
+                            </span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Association 7 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/council-network-logo.jpg" alt="شعار الجمعية">
-                    </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">شبكة المجلس</h4>
-                        <span class="assembly-badge">عضو فعال</span>
+
+                <!-- Member 4 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/cooperative-logo.svg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>الجمعية التعاونية</h3>
+                            <span class="assembly-badge active">
+                                <i class="fas fa-check-circle"></i>
+                                عضو فعال
+                            </span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Association 8 -->
-                <div class="assembly-card-pro animate-on-scroll">
-                    <div class="assembly-card-glow"></div>
-                    <div class="assembly-logo-wrapper">
-                        <img src="images/webyan-logo.png" alt="شعار الجمعية">
+
+                <!-- Member 5 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/deem-logo.jpg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>جمعية ديم</h3>
+                            <span class="assembly-badge active">
+                                <i class="fas fa-check-circle"></i>
+                                عضو فعال
+                            </span>
+                        </div>
                     </div>
-                    <div class="assembly-info">
-                        <h4 class="assembly-name">جمعية وبيان</h4>
-                        <span class="assembly-badge">عضو مؤسس</span>
+                </div>
+
+                <!-- Member 6 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/jadarah-logo.jpg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>جمعية جدارة</h3>
+                            <span class="assembly-badge founder">
+                                <i class="fas fa-star"></i>
+                                عضو مؤسس
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 7 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/council-network-logo.jpg" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>شبكة المجلس</h3>
+                            <span class="assembly-badge active">
+                                <i class="fas fa-check-circle"></i>
+                                عضو فعال
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 8 -->
+                <div class="assembly-card">
+                    <div class="assembly-card-inner">
+                        <div class="assembly-logo">
+                            <img src="images/webyan-logo.png" alt="شعار الجمعية">
+                        </div>
+                        <div class="assembly-content">
+                            <h3>جمعية وبيان</h3>
+                            <span class="assembly-badge founder">
+                                <i class="fas fa-star"></i>
+                                عضو مؤسس
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,113 +223,241 @@
     </section>
 
     <!-- Board Members Section -->
-    <section class="section" id="board-members">
+    <section class="content-section section-alt" id="board-members">
         <div class="container">
-            <div class="section-header animate-on-scroll">
+            <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-user-tie"></i>
                 </div>
                 <h2 class="section-title">أعضاء مجلس الإدارة</h2>
-                <p class="section-subtitle">القيادات المسؤولة عن توجيه المجلس نحو تحقيق رؤيته</p>
+                <p class="section-desc">القيادات المسؤولة عن توجيه المجلس نحو تحقيق رؤيته</p>
             </div>
-            
+
             <div class="board-grid">
                 <!-- Chairman -->
-                <div class="board-card chairman animate-on-scroll" onclick="openModal('chairman')">
-                    <div class="chairman-badge">
+                <div class="board-card chairman" onclick="openModal('chairman')">
+                    <div class="board-crown">
                         <i class="fas fa-crown"></i>
-                        رئيس المجلس
                     </div>
-                    <div class="board-card-image">
+                    <div class="board-image">
                         <img src="images/raneen/team/male-placeholder-1.jpg" alt="رئيس المجلس">
                     </div>
-                    <div class="board-card-content">
-                        <h3 class="board-card-name">أحمد بن سالم العتيبي</h3>
-                        <p class="board-card-role">
-                            <i class="fas fa-star"></i>
-                            رئيس مجلس الإدارة
-                        </p>
-                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
+                    <div class="board-info">
+                        <h3>أحمد بن سالم العتيبي</h3>
+                        <p>رئيس مجلس الإدارة</p>
                     </div>
+                    <button class="board-cv-btn">
+                        <i class="fas fa-file-alt"></i>
+                        عرض السيرة الذاتية
+                    </button>
                 </div>
-                
+
                 <!-- Vice Chairman -->
-                <div class="board-card animate-on-scroll" onclick="openModal('viceChairman')">
-                    <div class="board-card-image">
+                <div class="board-card" onclick="openModal('viceChairman')">
+                    <div class="board-image">
                         <img src="images/raneen/team/male-placeholder-2.jpg" alt="نائب الرئيس">
                     </div>
-                    <div class="board-card-content">
-                        <h3 class="board-card-name">عبدالله بن محمد الشهري</h3>
-                        <p class="board-card-role">نائب رئيس مجلس الإدارة</p>
-                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
+                    <div class="board-info">
+                        <h3>عبدالله بن محمد الشهري</h3>
+                        <p>نائب رئيس مجلس الإدارة</p>
                     </div>
+                    <button class="board-cv-btn">
+                        <i class="fas fa-file-alt"></i>
+                        عرض السيرة الذاتية
+                    </button>
                 </div>
-                
+
                 <!-- Member 1 -->
-                <div class="board-card animate-on-scroll" onclick="openModal('boardMember1')">
-                    <div class="board-card-image">
+                <div class="board-card" onclick="openModal('boardMember1')">
+                    <div class="board-image">
                         <img src="images/raneen/team/male-placeholder-3.jpg" alt="عضو مجلس">
                     </div>
-                    <div class="board-card-content">
-                        <h3 class="board-card-name">سعد بن فهد الدوسري</h3>
-                        <p class="board-card-role">عضو مجلس الإدارة</p>
-                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
+                    <div class="board-info">
+                        <h3>سعد بن فهد الدوسري</h3>
+                        <p>عضو مجلس الإدارة</p>
                     </div>
+                    <button class="board-cv-btn">
+                        <i class="fas fa-file-alt"></i>
+                        عرض السيرة الذاتية
+                    </button>
                 </div>
-                
+
                 <!-- Member 2 -->
-                <div class="board-card animate-on-scroll" onclick="openModal('boardMember2')">
-                    <div class="board-card-image">
+                <div class="board-card" onclick="openModal('boardMember2')">
+                    <div class="board-image">
                         <img src="images/raneen/team/male-placeholder-4.jpg" alt="عضو مجلس">
                     </div>
-                    <div class="board-card-content">
-                        <h3 class="board-card-name">خالد بن عمر القحطاني</h3>
-                        <p class="board-card-role">عضو مجلس الإدارة</p>
-                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
+                    <div class="board-info">
+                        <h3>خالد بن عمر القحطاني</h3>
+                        <p>عضو مجلس الإدارة</p>
                     </div>
+                    <button class="board-cv-btn">
+                        <i class="fas fa-file-alt"></i>
+                        عرض السيرة الذاتية
+                    </button>
                 </div>
-                
+
                 <!-- Member 3 -->
-                <div class="board-card animate-on-scroll" onclick="openModal('boardMember3')">
-                    <div class="board-card-image">
+                <div class="board-card" onclick="openModal('boardMember3')">
+                    <div class="board-image">
                         <img src="images/raneen/team/female-placeholder-1.jpg" alt="عضو مجلس">
                     </div>
-                    <div class="board-card-content">
-                        <h3 class="board-card-name">نورة بنت سعود المالكي</h3>
-                        <p class="board-card-role">عضو مجلس الإدارة</p>
-                        <span class="view-cv-hint"><i class="fas fa-eye"></i> اضغط لعرض السيرة الذاتية</span>
+                    <div class="board-info">
+                        <h3>نورة بنت سعود المالكي</h3>
+                        <p>عضو مجلس الإدارة</p>
+                    </div>
+                    <button class="board-cv-btn">
+                        <i class="fas fa-file-alt"></i>
+                        عرض السيرة الذاتية
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Section -->
+    <section class="content-section ceo-section" id="ceo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon ceo-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h2 class="section-title">القيادة التنفيذية</h2>
+                <p class="section-desc">قيادة استراتيجية نحو التميز والابتكار</p>
+            </div>
+
+            <div class="ceo-card">
+                <div class="ceo-card-left">
+                    <div class="ceo-image-wrapper">
+                        <img src="images/raneen/team/male-placeholder-1.jpg" alt="الرئيس التنفيذي">
+                        <div class="ceo-crown"><i class="fas fa-crown"></i></div>
+                    </div>
+                    <h2 class="ceo-name">عثمان بن هادي الغامدي</h2>
+                    <p class="ceo-title">الرئيس التنفيذي</p>
+                    <p class="ceo-org">المجلس التخصصي للجمعيات الشبابية</p>
+                    
+                    <div class="ceo-social">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="tel:+966500000000" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
+                        <a href="mailto:ceo@council.sa" title="البريد"><i class="fas fa-envelope"></i></a>
+                    </div>
+
+                    <div class="ceo-stats">
+                        <div class="ceo-stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">سنوات الخبرة</span>
+                        </div>
+                        <div class="ceo-stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">مشروع</span>
+                        </div>
+                        <div class="ceo-stat">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">شراكة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ceo-card-right">
+                    <!-- Bio -->
+                    <div class="ceo-section-box">
+                        <div class="box-header">
+                            <i class="fas fa-user"></i>
+                            <h4>نبذة تعريفية</h4>
+                        </div>
+                        <p class="ceo-bio">قائد استراتيجي متميز يتمتع برؤية شاملة في تطوير قطاع الجمعيات الأهلية والعمل الشبابي. قاد العديد من المبادرات الوطنية التي أسهمت في تمكين الشباب وتطوير منظومة العمل التطوعي في المملكة.</p>
+                    </div>
+
+                    <!-- Qualifications & Specialization -->
+                    <div class="ceo-grid">
+                        <div class="ceo-section-box">
+                            <div class="box-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>المؤهلات</h4>
+                            </div>
+                            <div class="tags-list">
+                                <span class="tag primary">ماجستير - إدارة المنظمات غير الربحية</span>
+                                <span class="tag">بكالوريوس - إدارة الأعمال</span>
+                                <span class="tag">دبلوم القيادة - هارفارد</span>
+                            </div>
+                        </div>
+
+                        <div class="ceo-section-box">
+                            <div class="box-header">
+                                <i class="fas fa-bullseye"></i>
+                                <h4>التخصص</h4>
+                            </div>
+                            <div class="tags-list">
+                                <span class="tag accent">إدارة المنظمات غير الربحية</span>
+                                <span class="tag">التخطيط الاستراتيجي</span>
+                                <span class="tag">تطوير الموارد البشرية</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="ceo-section-box">
+                        <div class="box-header">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>الخبرات المهنية</h4>
+                        </div>
+                        <div class="experience-list">
+                            <div class="exp-item current">
+                                <div class="exp-date">2019 - الآن</div>
+                                <div class="exp-details">
+                                    <h5>الرئيس التنفيذي</h5>
+                                    <p>المجلس التخصصي للجمعيات الشبابية</p>
+                                </div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="exp-date">2015 - 2019</div>
+                                <div class="exp-details">
+                                    <h5>المدير العام</h5>
+                                    <p>جمعية رنين للتنمية</p>
+                                </div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="exp-date">2010 - 2015</div>
+                                <div class="exp-details">
+                                    <h5>مدير البرامج</h5>
+                                    <p>مؤسسة الشباب السعودي</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- Team Section -->
-    <section class="section section-alt" id="team">
+    <section class="content-section section-alt" id="team">
         <div class="container">
-            <div class="section-header animate-on-scroll">
+            <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-people-group"></i>
                 </div>
                 <h2 class="section-title">فريق العمل</h2>
-                <p class="section-subtitle">فريق متميز يعمل بشغف لتحقيق أهداف المجلس</p>
+                <p class="section-desc">فريق متميز يعمل بشغف لتحقيق أهداف المجلس</p>
             </div>
-            
-            <div class="team-grid-pro">
+
+            <div class="team-grid">
                 <!-- Team Member 1 -->
-                <div class="team-card-pro animate-on-scroll">
-                    <div class="team-card-header">
-                        <div class="team-card-image">
+                <div class="team-card">
+                    <div class="team-card-top">
+                        <div class="team-image">
                             <img src="images/raneen/team/male-placeholder-1.jpg" alt="موظف">
+                            <div class="status-dot online"></div>
                         </div>
-                        <div class="team-card-status online"></div>
                     </div>
                     <div class="team-card-body">
-                        <h3 class="team-card-name">محمد بن علي</h3>
-                        <p class="team-card-role">مدير المشاريع</p>
-                        <div class="team-card-contact">
-                            <a href="mailto:m.ali@council.sa" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-                            <a href="tel:+966500000001" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
-                            <a href="#" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>محمد بن علي</h3>
+                        <p class="team-role">مدير المشاريع</p>
+                        <div class="team-contact">
+                            <a href="mailto:m.ali@council.sa"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+966500000001"><i class="fas fa-phone-alt"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <button class="team-cv-btn" onclick="openModal('team1')">
@@ -284,22 +465,22 @@
                         عرض السيرة الذاتية
                     </button>
                 </div>
-                
+
                 <!-- Team Member 2 -->
-                <div class="team-card-pro animate-on-scroll">
-                    <div class="team-card-header">
-                        <div class="team-card-image">
+                <div class="team-card">
+                    <div class="team-card-top">
+                        <div class="team-image">
                             <img src="images/raneen/team/female-placeholder-1.jpg" alt="موظفة">
+                            <div class="status-dot online"></div>
                         </div>
-                        <div class="team-card-status online"></div>
                     </div>
                     <div class="team-card-body">
-                        <h3 class="team-card-name">سارة بنت أحمد</h3>
-                        <p class="team-card-role">مسؤولة التواصل</p>
-                        <div class="team-card-contact">
-                            <a href="mailto:s.ahmed@council.sa" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-                            <a href="tel:+966500000002" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
-                            <a href="#" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>سارة بنت أحمد</h3>
+                        <p class="team-role">مسؤولة التواصل</p>
+                        <div class="team-contact">
+                            <a href="mailto:s.ahmed@council.sa"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+966500000002"><i class="fas fa-phone-alt"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <button class="team-cv-btn" onclick="openModal('team2')">
@@ -307,22 +488,22 @@
                         عرض السيرة الذاتية
                     </button>
                 </div>
-                
+
                 <!-- Team Member 3 -->
-                <div class="team-card-pro animate-on-scroll">
-                    <div class="team-card-header">
-                        <div class="team-card-image">
+                <div class="team-card">
+                    <div class="team-card-top">
+                        <div class="team-image">
                             <img src="images/raneen/team/male-placeholder-2.jpg" alt="موظف">
+                            <div class="status-dot online"></div>
                         </div>
-                        <div class="team-card-status online"></div>
                     </div>
                     <div class="team-card-body">
-                        <h3 class="team-card-name">فهد بن سعود</h3>
-                        <p class="team-card-role">مصمم جرافيك</p>
-                        <div class="team-card-contact">
-                            <a href="mailto:f.saud@council.sa" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-                            <a href="tel:+966500000003" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
-                            <a href="#" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>فهد بن سعود</h3>
+                        <p class="team-role">مصمم جرافيك</p>
+                        <div class="team-contact">
+                            <a href="mailto:f.saud@council.sa"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+966500000003"><i class="fas fa-phone-alt"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <button class="team-cv-btn" onclick="openModal('team3')">
@@ -330,22 +511,22 @@
                         عرض السيرة الذاتية
                     </button>
                 </div>
-                
+
                 <!-- Team Member 4 -->
-                <div class="team-card-pro animate-on-scroll">
-                    <div class="team-card-header">
-                        <div class="team-card-image">
+                <div class="team-card">
+                    <div class="team-card-top">
+                        <div class="team-image">
                             <img src="images/raneen/team/male-placeholder-3.jpg" alt="موظف">
+                            <div class="status-dot online"></div>
                         </div>
-                        <div class="team-card-status online"></div>
                     </div>
                     <div class="team-card-body">
-                        <h3 class="team-card-name">عمر بن خالد</h3>
-                        <p class="team-card-role">منسق البرامج</p>
-                        <div class="team-card-contact">
-                            <a href="mailto:o.khaled@council.sa" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-                            <a href="tel:+966500000004" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
-                            <a href="#" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>عمر بن خالد</h3>
+                        <p class="team-role">منسق البرامج</p>
+                        <div class="team-contact">
+                            <a href="mailto:o.khaled@council.sa"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+966500000004"><i class="fas fa-phone-alt"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <button class="team-cv-btn" onclick="openModal('team4')">
@@ -353,22 +534,22 @@
                         عرض السيرة الذاتية
                     </button>
                 </div>
-                
+
                 <!-- Team Member 5 -->
-                <div class="team-card-pro animate-on-scroll">
-                    <div class="team-card-header">
-                        <div class="team-card-image">
+                <div class="team-card">
+                    <div class="team-card-top">
+                        <div class="team-image">
                             <img src="images/raneen/team/female-placeholder-2.jpg" alt="موظفة">
+                            <div class="status-dot online"></div>
                         </div>
-                        <div class="team-card-status online"></div>
                     </div>
                     <div class="team-card-body">
-                        <h3 class="team-card-name">هند بنت محمد</h3>
-                        <p class="team-card-role">محاسبة</p>
-                        <div class="team-card-contact">
-                            <a href="mailto:h.mohammed@council.sa" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-                            <a href="tel:+966500000005" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
-                            <a href="#" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>هند بنت محمد</h3>
+                        <p class="team-role">محاسبة</p>
+                        <div class="team-contact">
+                            <a href="mailto:h.mohammed@council.sa"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+966500000005"><i class="fas fa-phone-alt"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <button class="team-cv-btn" onclick="openModal('team5')">
@@ -376,22 +557,22 @@
                         عرض السيرة الذاتية
                     </button>
                 </div>
-                
+
                 <!-- Team Member 6 -->
-                <div class="team-card-pro animate-on-scroll">
-                    <div class="team-card-header">
-                        <div class="team-card-image">
+                <div class="team-card">
+                    <div class="team-card-top">
+                        <div class="team-image">
                             <img src="images/raneen/team/male-placeholder-4.jpg" alt="موظف">
+                            <div class="status-dot online"></div>
                         </div>
-                        <div class="team-card-status online"></div>
                     </div>
                     <div class="team-card-body">
-                        <h3 class="team-card-name">ياسر بن عبدالله</h3>
-                        <p class="team-card-role">أخصائي تواصل</p>
-                        <div class="team-card-contact">
-                            <a href="mailto:y.abdullah@council.sa" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
-                            <a href="tel:+966500000006" title="الهاتف"><i class="fas fa-phone-alt"></i></a>
-                            <a href="#" title="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                        <h3>ياسر بن عبدالله</h3>
+                        <p class="team-role">أخصائي تواصل</p>
+                        <div class="team-contact">
+                            <a href="mailto:y.abdullah@council.sa"><i class="fas fa-envelope"></i></a>
+                            <a href="tel:+966500000006"><i class="fas fa-phone-alt"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <button class="team-cv-btn" onclick="openModal('team6')">
@@ -402,625 +583,511 @@
             </div>
         </div>
     </section>
-                        <a href="mailto:h.mohammed@council.sa"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:+966500000005"><i class="fas fa-phone"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Team Member 6 -->
-                <div class="team-card animate-on-scroll" onclick="openModal('team6')">
-                    <div class="team-card-image">
-                        <img src="images/raneen/team/male-placeholder-4.jpg" alt="موظف">
-                    </div>
-                    <h3 class="team-card-name">ياسر بن عبدالله</h3>
-                    <p class="team-card-role">أخصائي تواصل</p>
-                    <div class="team-card-contact">
-                        <a href="mailto:y.abdullah@council.sa"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:+966500000006"><i class="fas fa-phone"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CEO Profile Section - Compact & Professional -->
-    <section class="section ceo-section-compact" id="ceo">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-icon ceo-section-icon">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h2 class="section-title ceo-section-title">القيادة التنفيذية</h2>
-                <p class="section-subtitle ceo-section-subtitle">قيادة استراتيجية نحو التميز والابتكار</p>
-            </div>
-            
-            <div class="ceo-compact-card animate-on-scroll">
-                <!-- Profile Header -->
-                <div class="ceo-compact-header">
-                    <div class="ceo-compact-image">
-                        <img src="images/raneen/team/male-placeholder-1.jpg" alt="الرئيس التنفيذي">
-                        <div class="ceo-compact-badge">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                    </div>
-                    <div class="ceo-compact-info">
-                        <h2 class="ceo-compact-name">عثمان بن هادي الغامدي</h2>
-                        <p class="ceo-compact-title">الرئيس التنفيذي</p>
-                        <p class="ceo-compact-org">المجلس التخصصي للجمعيات الشبابية</p>
-                        
-                        <!-- Social Links -->
-                        <div class="ceo-compact-social">
-                            <a href="#" class="social-btn linkedin" title="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-btn x-twitter" title="X">
-                                <i class="fab fa-x-twitter"></i>
-                            </a>
-                            <a href="tel:+966500000000" class="social-btn phone" title="الهاتف">
-                                <i class="fas fa-phone-alt"></i>
-                            </a>
-                            <a href="mailto:ceo@council.sa" class="social-btn email" title="البريد">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Quick Stats -->
-                    <div class="ceo-compact-stats">
-                        <div class="stat-item">
-                            <span class="stat-value">15+</span>
-                            <span class="stat-label">سنوات الخبرة</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">50+</span>
-                            <span class="stat-label">مشروع</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">100+</span>
-                            <span class="stat-label">شراكة</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Profile Body -->
-                <div class="ceo-compact-body">
-                    <!-- Bio -->
-                    <div class="ceo-compact-bio">
-                        <p>قائد استراتيجي متميز يتمتع برؤية شاملة في تطوير قطاع الجمعيات الأهلية والعمل الشبابي. قاد العديد من المبادرات الوطنية التي أسهمت في تمكين الشباب وتطوير منظومة العمل التطوعي في المملكة.</p>
-                    </div>
-                    
-                    <!-- Info Grid -->
-                    <div class="ceo-compact-grid">
-                        <!-- Education -->
-                        <div class="compact-info-box">
-                            <div class="compact-info-header">
-                                <i class="fas fa-graduation-cap"></i>
-                                <h4>المؤهلات</h4>
-                            </div>
-                            <div class="compact-info-tags">
-                                <span class="info-tag primary">ماجستير - إدارة المنظمات غير الربحية</span>
-                                <span class="info-tag">بكالوريوس - إدارة الأعمال</span>
-                                <span class="info-tag">دبلوم القيادة - هارفارد</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Specialization -->
-                        <div class="compact-info-box">
-                            <div class="compact-info-header">
-                                <i class="fas fa-bullseye"></i>
-                                <h4>التخصص</h4>
-                            </div>
-                            <div class="compact-info-tags">
-                                <span class="info-tag accent">إدارة المنظمات غير الربحية</span>
-                                <span class="info-tag">التخطيط الاستراتيجي</span>
-                                <span class="info-tag">تطوير الموارد البشرية</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Experience -->
-                        <div class="compact-info-box full-width">
-                            <div class="compact-info-header">
-                                <i class="fas fa-briefcase"></i>
-                                <h4>الخبرات المهنية</h4>
-                            </div>
-                            <div class="compact-experience">
-                                <div class="exp-compact-item current">
-                                    <span class="exp-date">2019 - الآن</span>
-                                    <span class="exp-role">الرئيس التنفيذي</span>
-                                    <span class="exp-org">المجلس التخصصي للجمعيات الشبابية</span>
-                                </div>
-                                <div class="exp-compact-item">
-                                    <span class="exp-date">2015 - 2019</span>
-                                    <span class="exp-role">المدير العام</span>
-                                    <span class="exp-org">جمعية رنين للتنمية</span>
-                                </div>
-                                <div class="exp-compact-item">
-                                    <span class="exp-date">2010 - 2015</span>
-                                    <span class="exp-role">مدير البرامج</span>
-                                    <span class="exp-org">مؤسسة الشباب السعودي</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Organizational Chart Section -->
-    <section class="section org-chart-section" id="org-chart">
+    <section class="content-section" id="org-chart">
         <div class="container">
-            <div class="section-header animate-on-scroll">
+            <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-sitemap"></i>
                 </div>
                 <h2 class="section-title">الهيكل التنظيمي</h2>
-                <p class="section-subtitle">البنية الإدارية للمجلس التخصصي للجمعيات الشبابية</p>
+                <p class="section-desc">البنية الإدارية للمجلس التخصصي للجمعيات الشبابية</p>
             </div>
-            
+
             <div class="org-chart">
                 <!-- CEO Level -->
-                <div class="org-level-ceo">
-                    <div class="org-card ceo-card animate-on-scroll">
-                        <div class="org-card-image">
+                <div class="org-level org-level-1">
+                    <div class="org-node org-ceo">
+                        <div class="org-node-image">
                             <img src="images/raneen/team/male-placeholder-1.jpg" alt="الرئيس التنفيذي">
                         </div>
-                        <h3 class="org-card-name">عثمان بن هادي</h3>
-                        <p class="org-card-role">الرئيس التنفيذي</p>
+                        <h4>عثمان بن هادي</h4>
+                        <span>الرئيس التنفيذي</span>
                     </div>
                 </div>
-                
+
+                <div class="org-connector"></div>
+
                 <!-- Managers Level -->
-                <div class="org-level-managers">
-                    <div class="org-manager-wrapper">
-                        <div class="org-card manager-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-2.jpg" alt="مدير">
-                            </div>
-                            <h3 class="org-card-name">محمد بن سالم</h3>
-                            <p class="org-card-role">مدير العمليات</p>
+                <div class="org-level org-level-2">
+                    <div class="org-node">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/male-placeholder-2.jpg" alt="مدير">
                         </div>
+                        <h4>محمد بن سالم</h4>
+                        <span>مدير العمليات</span>
                     </div>
-                    
-                    <div class="org-manager-wrapper">
-                        <div class="org-card manager-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-3.jpg" alt="مدير">
-                            </div>
-                            <h3 class="org-card-name">أحمد بن علي</h3>
-                            <p class="org-card-role">مدير البرامج</p>
+                    <div class="org-node">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/male-placeholder-3.jpg" alt="مدير">
                         </div>
+                        <h4>أحمد بن علي</h4>
+                        <span>مدير البرامج</span>
                     </div>
-                    
-                    <div class="org-manager-wrapper">
-                        <div class="org-card manager-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/female-placeholder-1.jpg" alt="مديرة">
-                            </div>
-                            <h3 class="org-card-name">نورة بنت سعد</h3>
-                            <p class="org-card-role">مديرة التواصل</p>
+                    <div class="org-node">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/female-placeholder-1.jpg" alt="مديرة">
                         </div>
+                        <h4>نورة بنت سعد</h4>
+                        <span>مديرة التواصل</span>
                     </div>
                 </div>
-                
-                <!-- Employees Level -->
-                <div class="org-level-employees">
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-4.jpg" alt="موظف">
-                            </div>
-                            <h3 class="org-card-name">فهد العتيبي</h3>
-                            <p class="org-card-role">موظف 1</p>
+
+                <div class="org-connector"></div>
+
+                <!-- Team Level -->
+                <div class="org-level org-level-3">
+                    <div class="org-node org-employee">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/male-placeholder-4.jpg" alt="موظف">
                         </div>
+                        <h4>فهد العتيبي</h4>
+                        <span>موظف</span>
                     </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-1.jpg" alt="موظف">
-                            </div>
-                            <h3 class="org-card-name">سعد الشهري</h3>
-                            <p class="org-card-role">موظف 2</p>
+                    <div class="org-node org-employee">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/male-placeholder-1.jpg" alt="موظف">
                         </div>
+                        <h4>سعد الشهري</h4>
+                        <span>موظف</span>
                     </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/female-placeholder-2.jpg" alt="موظفة">
-                            </div>
-                            <h3 class="org-card-name">هند القحطاني</h3>
-                            <p class="org-card-role">منسق برامج</p>
+                    <div class="org-node org-employee">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/female-placeholder-2.jpg" alt="موظفة">
                         </div>
+                        <h4>هند القحطاني</h4>
+                        <span>منسق برامج</span>
                     </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-2.jpg" alt="موظف">
-                            </div>
-                            <h3 class="org-card-name">عمر الدوسري</h3>
-                            <p class="org-card-role">أخصائي تواصل</p>
+                    <div class="org-node org-employee">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/male-placeholder-2.jpg" alt="موظف">
                         </div>
+                        <h4>عمر الدوسري</h4>
+                        <span>أخصائي تواصل</span>
                     </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-3.jpg" alt="موظف">
-                            </div>
-                            <h3 class="org-card-name">ياسر المالكي</h3>
-                            <p class="org-card-role">محاسب</p>
+                    <div class="org-node org-employee">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/male-placeholder-3.jpg" alt="موظف">
                         </div>
+                        <h4>ياسر المالكي</h4>
+                        <span>محاسب</span>
                     </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-4.jpg" alt="موظف">
-                            </div>
-                            <h3 class="org-card-name">خالد السبيعي</h3>
-                            <p class="org-card-role">مصمم جرافيك</p>
+                    <div class="org-node org-employee">
+                        <div class="org-node-image">
+                            <img src="images/raneen/team/female-placeholder-1.jpg" alt="موظفة">
                         </div>
-                    </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/female-placeholder-1.jpg" alt="موظفة">
-                            </div>
-                            <h3 class="org-card-name">ريم العمري</h3>
-                            <p class="org-card-role">مصمم جرافيك</p>
-                        </div>
-                    </div>
-                    
-                    <div class="org-employee-wrapper">
-                        <div class="org-card employee-card animate-on-scroll">
-                            <div class="org-card-image">
-                                <img src="images/raneen/team/male-placeholder-1.jpg" alt="موظف">
-                            </div>
-                            <h3 class="org-card-name">بندر الحربي</h3>
-                            <p class="org-card-role">منسق فعاليات</p>
-                        </div>
+                        <h4>مريم العمري</h4>
+                        <span>مساعد إداري</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="images/council-logo.svg" alt="شعار المجلس">
+                    <p>المجلس التخصصي للجمعيات الشبابية - نحو شباب فاعل ومؤثر</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <a href="home.html">الرئيسية</a>
+                    <a href="council-about.html">عن المجلس</a>
+                    <a href="projects-section.html">المشاريع</a>
+                    <a href="contact.html">تواصل معنا</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <p><i class="fas fa-envelope"></i> info@youth-council.sa</p>
+                    <p><i class="fas fa-phone"></i> +966 11 000 0000</p>
+                    <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 المجلس التخصصي للجمعيات الشبابية. جميع الحقوق محفوظة.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- CV Modal -->
-    <div class="cv-modal-overlay" id="cvModal">
-        <div class="cv-modal">
-            <button class="cv-modal-close" onclick="closeModal()">
+    <div class="modal-overlay" id="cvModal" onclick="closeModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
             
-            <div class="cv-modal-header">
-                <div class="cv-modal-image">
-                    <img id="modalImage" src="" alt="صورة العضو">
-                </div>
-                <div class="cv-modal-title-info">
-                    <h2 id="modalName"></h2>
-                    <p id="modalPosition" class="cv-modal-position"></p>
-                    <div class="cv-modal-social" id="modalSocial">
-                        <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link x-twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="tel:+966500000000" class="social-link phone"><i class="fas fa-phone-alt"></i></a>
-                        <a href="mailto:email@example.com" class="social-link email"><i class="fas fa-envelope"></i></a>
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <div class="modal-profile">
+                        <img src="images/raneen/team/male-placeholder-1.jpg" alt="صورة" id="modalImage">
+                        <div class="modal-profile-info">
+                            <h2 id="modalName">الاسم</h2>
+                            <p id="modalRole">المنصب</p>
+                            <div class="modal-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                                <a href="#"><i class="fas fa-phone-alt"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-quick-stats">
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalExp">10+</span>
+                            <span class="stat-label">سنوات الخبرة</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalProjects">25+</span>
+                            <span class="stat-label">مشروع</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="stat-value" id="modalCerts">5</span>
+                            <span class="stat-label">شهادة</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="cv-modal-stats" id="modalStats">
-                <div class="cv-stat">
-                    <span class="cv-stat-value" id="statYears">15+</span>
-                    <span class="cv-stat-label">سنوات الخبرة</span>
-                </div>
-                <div class="cv-stat">
-                    <span class="cv-stat-value" id="statProjects">30+</span>
-                    <span class="cv-stat-label">مشروع</span>
-                </div>
-                <div class="cv-stat">
-                    <span class="cv-stat-value" id="statCerts">5+</span>
-                    <span class="cv-stat-label">شهادة</span>
-                </div>
-            </div>
-            
-            <div class="cv-modal-body">
-                <div class="cv-section">
-                    <div class="cv-section-header">
-                        <i class="fas fa-user"></i>
-                        <h4>نبذة شخصية</h4>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- Bio -->
+                    <div class="modal-section">
+                        <div class="modal-section-header">
+                            <i class="fas fa-user"></i>
+                            <h3>نبذة تعريفية</h3>
+                        </div>
+                        <p id="modalBio">السيرة الذاتية...</p>
                     </div>
-                    <p id="modalBio"></p>
-                </div>
-                
-                <div class="cv-section">
-                    <div class="cv-section-header">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h4>المؤهلات العلمية</h4>
+
+                    <!-- Education & Skills Grid -->
+                    <div class="modal-grid">
+                        <div class="modal-section">
+                            <div class="modal-section-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h3>المؤهلات العلمية</h3>
+                            </div>
+                            <div class="modal-tags" id="modalEducation">
+                                <span class="modal-tag">الشهادة</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-section">
+                            <div class="modal-section-header">
+                                <i class="fas fa-lightbulb"></i>
+                                <h3>المهارات</h3>
+                            </div>
+                            <div class="modal-tags" id="modalSkills">
+                                <span class="modal-tag">المهارة</span>
+                            </div>
+                        </div>
                     </div>
-                    <p id="modalEducation"></p>
-                </div>
-                
-                <div class="cv-section">
-                    <div class="cv-section-header">
-                        <i class="fas fa-briefcase"></i>
-                        <h4>الخبرات المهنية</h4>
+
+                    <!-- Experience -->
+                    <div class="modal-section">
+                        <div class="modal-section-header">
+                            <i class="fas fa-briefcase"></i>
+                            <h3>الخبرات المهنية</h3>
+                        </div>
+                        <div class="modal-experience" id="modalExperience">
+                            <div class="modal-exp-item">
+                                <div class="modal-exp-date">التاريخ</div>
+                                <div class="modal-exp-details">
+                                    <h4>المنصب</h4>
+                                    <p>الجهة</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p id="modalExperience"></p>
                 </div>
-                
-                <div class="cv-section">
-                    <div class="cv-section-header">
-                        <i class="fas fa-star"></i>
-                        <h4>المهارات والتخصصات</h4>
-                    </div>
-                    <div class="cv-skills" id="modalSkills"></div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button class="modal-btn-secondary" onclick="closeModal()">
+                        <i class="fas fa-times"></i>
+                        إغلاق
+                    </button>
+                    <button class="modal-btn-primary">
+                        <i class="fas fa-download"></i>
+                        تحميل السيرة الذاتية
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="home.html" class="footer-logo">
-                        <img src="images/council-logo.svg" alt="شعار المجلس">
-                    </a>
-                    <p class="footer-desc">
-                        المجلس التخصصي للجمعيات الشبابية يعمل على تمكين الشباب وتطوير منظومة العمل الأهلي في المملكة العربية السعودية.
-                    </p>
-                </div>
-                
-                <div class="footer-links-col">
-                    <h4 class="footer-title">روابط سريعة</h4>
-                    <ul class="footer-links">
-                        <li><a href="home.html">الرئيسية</a></li>
-                        <li><a href="council-about.html">عن المجلس</a></li>
-                        <li><a href="projects-section.html">المشاريع</a></li>
-                        <li><a href="services-section.html">الخدمات</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links-col">
-                    <h4 class="footer-title">موارد</h4>
-                    <ul class="footer-links">
-                        <li><a href="events.html">الفعاليات</a></li>
-                        <li><a href="careers.html">الوظائف</a></li>
-                        <li><a href="contact.html">تواصل معنا</a></li>
-                        <li><a href="members-team.html">فريق العمل</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-newsletter">
-                    <h4 class="footer-title">اشترك بقائمتنا البريدية</h4>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
-                        <button type="submit">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2024 المجلس التخصصي للجمعيات الشبابية. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Members Data for Modal
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Members Data
         const membersData = {
             chairman: {
                 name: 'أحمد بن سالم العتيبي',
-                position: 'رئيس مجلس الإدارة',
+                role: 'رئيس مجلس الإدارة',
                 image: 'images/raneen/team/male-placeholder-1.jpg',
-                bio: 'قائد استراتيجي متميز يتمتع برؤية شاملة في تطوير قطاع الجمعيات الأهلية. يقود مجلس الإدارة بحكمة وخبرة واسعة في بناء الشراكات وتحقيق الأهداف الاستراتيجية للمجلس.',
-                education: 'ماجستير في إدارة الأعمال - جامعة الملك سعود، بكالوريوس إدارة عامة - جامعة الملك عبدالعزيز',
-                experience: 'رئيس مجلس إدارة المجلس التخصصي (2020 - الآن)، مستشار استراتيجي في عدة جهات حكومية، مؤسس ومدير لعدة مشاريع ناجحة',
-                skills: ['القيادة الاستراتيجية', 'بناء الشراكات', 'الحوكمة المؤسسية', 'إدارة الأزمات', 'التخطيط الاستراتيجي'],
-                years: '20+',
-                projects: '50+',
-                certs: '8+'
+                exp: '20+',
+                projects: '80+',
+                certs: '12',
+                bio: 'قائد استراتيجي يتمتع بخبرة واسعة في إدارة المنظمات غير الربحية والعمل الشبابي. قاد العديد من المبادرات الناجحة على المستوى الوطني.',
+                education: ['دكتوراه في الإدارة العامة', 'ماجستير في إدارة الأعمال', 'بكالوريوس علوم سياسية'],
+                skills: ['القيادة الاستراتيجية', 'إدارة الأزمات', 'التخطيط المؤسسي', 'بناء الشراكات'],
+                experience: [
+                    { date: '2020 - الآن', title: 'رئيس مجلس الإدارة', org: 'المجلس التخصصي للجمعيات الشبابية' },
+                    { date: '2015 - 2020', title: 'نائب الرئيس', org: 'اتحاد الجمعيات الأهلية' },
+                    { date: '2010 - 2015', title: 'مدير عام', org: 'مؤسسة الشباب الوطني' }
+                ]
             },
             viceChairman: {
                 name: 'عبدالله بن محمد الشهري',
-                position: 'نائب رئيس مجلس الإدارة',
+                role: 'نائب رئيس مجلس الإدارة',
                 image: 'images/raneen/team/male-placeholder-2.jpg',
-                bio: 'متخصص في الإدارة المالية والتخطيط الاستراتيجي مع خبرة واسعة في القطاع غير الربحي. يساهم في توجيه السياسات المالية وضمان استدامة المجلس.',
-                education: 'دكتوراه في الإدارة المالية - جامعة الملك فهد، ماجستير محاسبة - جامعة الإمام',
-                experience: 'نائب رئيس مجلس الإدارة (2020 - الآن)، مدير مالي في شركة كبرى (10 سنوات)، مراجع حسابات معتمد',
-                skills: ['الإدارة المالية', 'التخطيط المالي', 'إدارة المخاطر', 'الحوكمة', 'التدقيق المالي'],
-                years: '18+',
-                projects: '40+',
-                certs: '10+'
+                exp: '15+',
+                projects: '50+',
+                certs: '8',
+                bio: 'خبير في تطوير القطاع غير الربحي مع تركيز خاص على تمكين الشباب وبناء القدرات المؤسسية.',
+                education: ['ماجستير إدارة أعمال', 'بكالوريوس إدارة عامة', 'دبلوم حوكمة'],
+                skills: ['إدارة المشاريع', 'التطوير المؤسسي', 'الحوكمة', 'التخطيط الاستراتيجي'],
+                experience: [
+                    { date: '2020 - الآن', title: 'نائب رئيس مجلس الإدارة', org: 'المجلس التخصصي' },
+                    { date: '2016 - 2020', title: 'مدير تنفيذي', org: 'جمعية التنمية الشبابية' }
+                ]
             },
             boardMember1: {
                 name: 'سعد بن فهد الدوسري',
-                position: 'عضو مجلس الإدارة',
+                role: 'عضو مجلس الإدارة',
                 image: 'images/raneen/team/male-placeholder-3.jpg',
-                bio: 'خبير في تطوير البرامج والمشاريع التنموية مع سجل حافل في إدارة المبادرات الشبابية الناجحة على المستوى الوطني.',
-                education: 'ماجستير في إدارة المشاريع - جامعة الأمير سلطان، بكالوريوس هندسة صناعية',
-                experience: 'عضو مجلس إدارة (2021 - الآن)، مدير برامج في مؤسسة وطنية (8 سنوات)، مستشار تطوير مشاريع',
-                skills: ['إدارة المشاريع', 'تطوير البرامج', 'التخطيط التنموي', 'إدارة الفرق', 'قياس الأثر'],
-                years: '15+',
+                exp: '12+',
                 projects: '35+',
-                certs: '6+'
+                certs: '6',
+                bio: 'متخصص في الشؤون المالية والإدارية مع خبرة واسعة في القطاع غير الربحي.',
+                education: ['ماجستير محاسبة', 'بكالوريوس مالية', 'CPA معتمد'],
+                skills: ['الإدارة المالية', 'التدقيق', 'الميزانيات', 'التحليل المالي'],
+                experience: [
+                    { date: '2021 - الآن', title: 'عضو مجلس الإدارة', org: 'المجلس التخصصي' },
+                    { date: '2015 - 2021', title: 'مدير مالي', org: 'مؤسسة العطاء' }
+                ]
             },
             boardMember2: {
                 name: 'خالد بن عمر القحطاني',
-                position: 'عضو مجلس الإدارة',
+                role: 'عضو مجلس الإدارة',
                 image: 'images/raneen/team/male-placeholder-4.jpg',
-                bio: 'متخصص في العلاقات العامة والإعلام مع خبرة في بناء العلامات التجارية للمنظمات غير الربحية وتعزيز حضورها المجتمعي.',
-                education: 'ماجستير في الإعلام والاتصال - جامعة الملك سعود، بكالوريوس علاقات عامة',
-                experience: 'عضو مجلس إدارة (2022 - الآن)، مدير علاقات عامة (10 سنوات)، مستشار إعلامي لعدة جهات',
-                skills: ['العلاقات العامة', 'الإعلام الرقمي', 'بناء العلامة التجارية', 'إدارة الأزمات الإعلامية', 'التسويق'],
-                years: '12+',
-                projects: '30+',
-                certs: '5+'
+                exp: '10+',
+                projects: '40+',
+                certs: '5',
+                bio: 'خبير في التسويق والعلاقات العامة مع شغف بالعمل التطوعي وخدمة المجتمع.',
+                education: ['ماجستير تسويق', 'بكالوريوس إعلام', 'دبلوم علاقات عامة'],
+                skills: ['التسويق الرقمي', 'العلاقات العامة', 'إدارة الحملات', 'التواصل المؤسسي'],
+                experience: [
+                    { date: '2021 - الآن', title: 'عضو مجلس الإدارة', org: 'المجلس التخصصي' },
+                    { date: '2017 - 2021', title: 'مدير التسويق', org: 'شركة الاتصالات' }
+                ]
             },
             boardMember3: {
                 name: 'نورة بنت سعود المالكي',
-                position: 'عضوة مجلس الإدارة',
+                role: 'عضو مجلس الإدارة',
                 image: 'images/raneen/team/female-placeholder-1.jpg',
-                bio: 'قيادية متميزة في مجال التنمية الاجتماعية وتمكين الشباب مع خبرة واسعة في تصميم وتنفيذ البرامج التطويرية.',
-                education: 'دكتوراه في التنمية الاجتماعية - جامعة أكسفورد، ماجستير علم اجتماع',
-                experience: 'عضوة مجلس إدارة (2021 - الآن)، أستاذة جامعية (12 سنة)، مستشارة في التنمية المستدامة',
-                skills: ['التنمية الاجتماعية', 'تمكين الشباب', 'البحث العلمي', 'التخطيط الاستراتيجي', 'بناء القدرات'],
-                years: '16+',
+                exp: '14+',
                 projects: '45+',
-                certs: '12+'
+                certs: '7',
+                bio: 'رائدة في مجال تمكين المرأة والشباب مع خبرة واسعة في البرامج التنموية.',
+                education: ['ماجستير تنمية مجتمعية', 'بكالوريوس خدمة اجتماعية', 'دبلوم إدارة المنظمات'],
+                skills: ['إدارة البرامج', 'التمكين المجتمعي', 'بناء القدرات', 'التدريب والتطوير'],
+                experience: [
+                    { date: '2021 - الآن', title: 'عضو مجلس الإدارة', org: 'المجلس التخصصي' },
+                    { date: '2014 - 2021', title: 'مديرة البرامج', org: 'جمعية تنمية المرأة' }
+                ]
             },
             team1: {
                 name: 'محمد بن علي',
-                position: 'مدير المشاريع',
+                role: 'مدير المشاريع',
                 image: 'images/raneen/team/male-placeholder-1.jpg',
-                bio: 'متخصص في إدارة المشاريع وتنسيق البرامج مع خبرة في تنفيذ المبادرات الشبابية والتطوعية.',
-                education: 'بكالوريوس إدارة أعمال - جامعة الملك سعود، شهادة PMP',
-                experience: 'مدير مشاريع في المجلس (2021 - الآن)، منسق برامج (3 سنوات)',
-                skills: ['إدارة المشاريع', 'التنسيق', 'إعداد التقارير', 'التخطيط', 'إدارة الموارد'],
-                years: '7+',
-                projects: '20+',
-                certs: '4+'
+                exp: '8+',
+                projects: '30+',
+                certs: '4',
+                bio: 'محترف في إدارة المشاريع مع خبرة في تنفيذ المبادرات الشبابية والتنموية.',
+                education: ['بكالوريوس هندسة صناعية', 'PMP معتمد', 'دبلوم إدارة مشاريع'],
+                skills: ['إدارة المشاريع', 'التخطيط', 'المتابعة والتقييم', 'إدارة الفرق'],
+                experience: [
+                    { date: '2020 - الآن', title: 'مدير المشاريع', org: 'المجلس التخصصي' },
+                    { date: '2016 - 2020', title: 'منسق مشاريع', org: 'جمعية الشباب' }
+                ]
             },
             team2: {
                 name: 'سارة بنت أحمد',
-                position: 'مسؤولة التواصل',
+                role: 'مسؤولة التواصل',
                 image: 'images/raneen/team/female-placeholder-1.jpg',
-                bio: 'متخصصة في التواصل المؤسسي والعلاقات العامة مع خبرة في إدارة وسائل التواصل الاجتماعي.',
-                education: 'بكالوريوس إعلام - جامعة الملك سعود',
-                experience: 'مسؤولة تواصل في المجلس (2022 - الآن)، أخصائية إعلام (2 سنة)',
-                skills: ['التواصل المؤسسي', 'إدارة السوشيال ميديا', 'كتابة المحتوى', 'العلاقات الإعلامية', 'التصميم'],
-                years: '5+',
-                projects: '15+',
-                certs: '3+'
+                exp: '6+',
+                projects: '20+',
+                certs: '3',
+                bio: 'متخصصة في التواصل المؤسسي والعلاقات العامة مع شغف بالإعلام الرقمي.',
+                education: ['بكالوريوس علاقات عامة', 'دبلوم إعلام رقمي'],
+                skills: ['التواصل المؤسسي', 'كتابة المحتوى', 'السوشيال ميديا', 'العلاقات الإعلامية'],
+                experience: [
+                    { date: '2021 - الآن', title: 'مسؤولة التواصل', org: 'المجلس التخصصي' },
+                    { date: '2018 - 2021', title: 'أخصائية إعلام', org: 'وكالة إعلامية' }
+                ]
             },
             team3: {
                 name: 'فهد بن سعود',
-                position: 'مصمم جرافيك',
+                role: 'مصمم جرافيك',
                 image: 'images/raneen/team/male-placeholder-2.jpg',
-                bio: 'مصمم جرافيك مبدع متخصص في الهوية البصرية وتصميم المطبوعات والمحتوى الرقمي.',
-                education: 'بكالوريوس تصميم جرافيك - جامعة الأميرة نورة',
-                experience: 'مصمم جرافيك في المجلس (2021 - الآن)، مصمم حر (3 سنوات)',
-                skills: ['التصميم الجرافيكي', 'الهوية البصرية', 'تصميم UI/UX', 'الموشن جرافيك', 'Adobe Suite'],
-                years: '6+',
+                exp: '5+',
                 projects: '100+',
-                certs: '3+'
+                certs: '4',
+                bio: 'مصمم مبدع مع شغف بالهوية البصرية وتصميم تجربة المستخدم.',
+                education: ['بكالوريوس تصميم جرافيك', 'دبلوم تصميم UX/UI'],
+                skills: ['التصميم الجرافيكي', 'الهوية البصرية', 'تصميم الويب', 'Adobe Suite'],
+                experience: [
+                    { date: '2022 - الآن', title: 'مصمم جرافيك', org: 'المجلس التخصصي' },
+                    { date: '2019 - 2022', title: 'مصمم', org: 'وكالة تصميم' }
+                ]
             },
             team4: {
                 name: 'عمر بن خالد',
-                position: 'منسق البرامج',
+                role: 'منسق البرامج',
                 image: 'images/raneen/team/male-placeholder-3.jpg',
-                bio: 'منسق برامج متميز في تنظيم الفعاليات والأنشطة الشبابية والتطوعية.',
-                education: 'بكالوريوس إدارة أعمال - جامعة الملك فيصل',
-                experience: 'منسق برامج في المجلس (2022 - الآن)، مساعد إداري (2 سنة)',
-                skills: ['تنسيق البرامج', 'تنظيم الفعاليات', 'خدمة العملاء', 'العمل الجماعي', 'التواصل'],
-                years: '4+',
-                projects: '25+',
-                certs: '2+'
+                exp: '4+',
+                projects: '15+',
+                certs: '2',
+                bio: 'منسق برامج نشط مع اهتمام بالفعاليات الشبابية والمبادرات المجتمعية.',
+                education: ['بكالوريوس إدارة أعمال', 'دبلوم إدارة فعاليات'],
+                skills: ['تنسيق الفعاليات', 'إدارة المتطوعين', 'التنظيم', 'خدمة العملاء'],
+                experience: [
+                    { date: '2022 - الآن', title: 'منسق البرامج', org: 'المجلس التخصصي' },
+                    { date: '2020 - 2022', title: 'منسق فعاليات', org: 'مركز شبابي' }
+                ]
             },
             team5: {
                 name: 'هند بنت محمد',
-                position: 'محاسبة',
+                role: 'محاسبة',
                 image: 'images/raneen/team/female-placeholder-2.jpg',
-                bio: 'محاسبة متخصصة في الإدارة المالية والتقارير المالية للمنظمات غير الربحية.',
-                education: 'بكالوريوس محاسبة - جامعة الملك عبدالعزيز',
-                experience: 'محاسبة في المجلس (2021 - الآن)، محاسبة في شركة خاصة (3 سنوات)',
-                skills: ['المحاسبة المالية', 'إعداد الميزانيات', 'التقارير المالية', 'برامج المحاسبة', 'التدقيق'],
-                years: '6+',
+                exp: '7+',
                 projects: '10+',
-                certs: '3+'
+                certs: '3',
+                bio: 'محاسبة محترفة مع خبرة في الشؤون المالية للمنظمات غير الربحية.',
+                education: ['بكالوريوس محاسبة', 'CMA معتمد'],
+                skills: ['المحاسبة', 'إعداد التقارير المالية', 'الميزانيات', 'التحليل المالي'],
+                experience: [
+                    { date: '2021 - الآن', title: 'محاسبة', org: 'المجلس التخصصي' },
+                    { date: '2017 - 2021', title: 'محاسبة', org: 'شركة استشارية' }
+                ]
             },
             team6: {
                 name: 'ياسر بن عبدالله',
-                position: 'أخصائي تواصل',
+                role: 'أخصائي تواصل',
                 image: 'images/raneen/team/male-placeholder-4.jpg',
-                bio: 'أخصائي تواصل مؤسسي متميز في التنسيق مع الشركاء وإدارة العلاقات الخارجية.',
-                education: 'بكالوريوس علاقات عامة - جامعة الإمام',
-                experience: 'أخصائي تواصل في المجلس (2023 - الآن)، منسق علاقات عامة (2 سنة)',
-                skills: ['التواصل المؤسسي', 'العلاقات الخارجية', 'الكتابة', 'التنسيق', 'خدمة العملاء'],
-                years: '4+',
+                exp: '3+',
                 projects: '12+',
-                certs: '2+'
+                certs: '2',
+                bio: 'أخصائي تواصل شاب مع حماس للعمل المجتمعي والتطوعي.',
+                education: ['بكالوريوس إعلام', 'دورات تواصل مؤسسي'],
+                skills: ['التواصل', 'الكتابة الإبداعية', 'التصوير', 'المونتاج'],
+                experience: [
+                    { date: '2023 - الآن', title: 'أخصائي تواصل', org: 'المجلس التخصصي' },
+                    { date: '2021 - 2023', title: 'منتج محتوى', org: 'شركة إنتاج' }
+                ]
             }
         };
 
-        // Open Modal Function
+        // Open Modal
         function openModal(memberId) {
+            const modal = document.getElementById('cvModal');
             const member = membersData[memberId];
+            
             if (!member) return;
 
             document.getElementById('modalImage').src = member.image;
             document.getElementById('modalName').textContent = member.name;
-            document.getElementById('modalPosition').textContent = member.position;
+            document.getElementById('modalRole').textContent = member.role;
+            document.getElementById('modalExp').textContent = member.exp;
+            document.getElementById('modalProjects').textContent = member.projects;
+            document.getElementById('modalCerts').textContent = member.certs;
             document.getElementById('modalBio').textContent = member.bio;
-            document.getElementById('modalEducation').textContent = member.education;
-            document.getElementById('modalExperience').textContent = member.experience;
-            document.getElementById('statYears').textContent = member.years;
-            document.getElementById('statProjects').textContent = member.projects;
-            document.getElementById('statCerts').textContent = member.certs;
 
-            // Generate skills tags
-            const skillsContainer = document.getElementById('modalSkills');
-            skillsContainer.innerHTML = member.skills.map(skill => 
-                `<span class="cv-skill-tag">${skill}</span>`
+            // Education
+            const eduContainer = document.getElementById('modalEducation');
+            eduContainer.innerHTML = member.education.map(edu => 
+                `<span class="modal-tag">${edu}</span>`
             ).join('');
 
-            document.getElementById('cvModal').classList.add('active');
+            // Skills
+            const skillsContainer = document.getElementById('modalSkills');
+            skillsContainer.innerHTML = member.skills.map(skill => 
+                `<span class="modal-tag">${skill}</span>`
+            ).join('');
+
+            // Experience
+            const expContainer = document.getElementById('modalExperience');
+            expContainer.innerHTML = member.experience.map((exp, index) => `
+                <div class="modal-exp-item ${index === 0 ? 'current' : ''}">
+                    <div class="modal-exp-date">${exp.date}</div>
+                    <div class="modal-exp-details">
+                        <h4>${exp.title}</h4>
+                        <p>${exp.org}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // Close Modal Function
-        function closeModal() {
-            document.getElementById('cvModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
+        // Close Modal
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('cvModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Close modal on overlay click
-        document.getElementById('cvModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Close modal on Escape key
+        // Close on Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
 
-        // Scroll Animation
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight - 100;
-                if (isVisible) {
-                    el.classList.add('visible');
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        };
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const headerNav = document.querySelector('.header-nav');
-        
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                headerNav.classList.toggle('active');
-            });
-        }
+        }, observerOptions);
+
+        document.querySelectorAll('.assembly-card, .board-card, .team-card, .org-node, .section-header').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
