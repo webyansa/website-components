@@ -6,514 +6,712 @@
     <title>إحصائيات المجلس</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/council-statistics.css">
+    <link rel="stylesheet" href="css/council-statistics-v2.css">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="stats-hero">
-        <div class="hero-bg-pattern"></div>
-        <div class="hero-floating-shapes">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-            <div class="floating-shape shape-4"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
+    <!-- Preloader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-orbit">
+                <div class="orbit-ring ring-1"></div>
+                <div class="orbit-ring ring-2"></div>
+                <div class="orbit-ring ring-3"></div>
+                <div class="orbit-center">
+                    <svg viewBox="0 0 100 100" class="loader-logo">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="url(#loaderGradient)" stroke-width="2" stroke-dasharray="251" stroke-dashoffset="251" class="logo-circle"/>
+                        <defs>
+                            <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00A3B4"/>
+                                <stop offset="100%" stop-color="#4CB848"/>
+                            </linearGradient>
+                        </defs>
                     </svg>
-                    إنجازات المجلس
-                </span>
-                <h1 class="hero-title">إحصائيات <span class="gradient-text">المجلس</span></h1>
-                <p class="hero-subtitle">رحلة من الإنجازات والتأثير الإيجابي في خدمة المجتمع</p>
-            </div>
-        </div>
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="currentColor"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Main Statistics Section -->
-    <section class="statistics-section">
-        <div class="stats-bg-elements">
-            <div class="bg-circle circle-1"></div>
-            <div class="bg-circle circle-2"></div>
-            <div class="bg-circle circle-3"></div>
-        </div>
-        
-        <div class="container">
-            <div class="section-header">
-                <!-- Main Title with Integrated Badge -->
-                <div class="title-wrapper">
-                    <h2 class="section-title">
-                        أرقام تتحدث عن <span class="highlight">إنجازاتنا</span>
-                        <span class="title-badge">إنجازات ملهمة</span>
-                    </h2>
-                </div>
-                
-                <!-- Simple Elegant Decoration -->
-                <div class="title-decoration-simple">
-                    <span class="deco-line-left"></span>
-                    <span class="deco-diamond"></span>
-                    <span class="deco-line-right"></span>
                 </div>
             </div>
-
-            <div class="stats-grid">
-                <!-- Stat Card 1 - White/Navy -->
-                <div class="stat-card stat-white" data-color="navy">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=300&fit=crop" alt="متطوعين">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="9" cy="7" r="4"/>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">عدد المتطوعين</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="500">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>متطوع نشط في خدمة المجتمع</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 2 - Green -->
-                <div class="stat-card stat-green" data-color="green">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="برامج">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="3" y1="9" x2="21" y2="9"/>
-                                    <line x1="9" y1="21" x2="9" y2="9"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">عدد البرامج</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="189">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>برنامج تدريبي وتطويري</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 3 - Teal -->
-                <div class="stat-card stat-teal" data-color="teal">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop" alt="مستفيدين">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="12" cy="7" r="4"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">عدد المستفيدين</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="8000">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>مستفيد من خدماتنا</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 4 - Navy -->
-                <div class="stat-card stat-navy" data-color="white">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="مشاريع">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                    <polyline points="2 17 12 22 22 17"/>
-                                    <polyline points="2 12 12 17 22 12"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">عدد المشاريع</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="300">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>مشروع منجز بنجاح</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 5 - Green -->
-                <div class="stat-card stat-green-alt" data-color="green">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" alt="شراكات">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">الشراكات الفعالة</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="75">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>شراكة استراتيجية</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 6 - Teal Alt -->
-                <div class="stat-card stat-teal-alt" data-color="teal">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=400&h=300&fit=crop" alt="فعاليات">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">الفعاليات المنفذة</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="450">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>فعالية مجتمعية</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 7 - White Alt -->
-                <div class="stat-card stat-white-alt" data-color="navy">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="دورات">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">الدورات التدريبية</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="120">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>دورة تدريبية معتمدة</span>
-                    </div>
-                </div>
-
-                <!-- Stat Card 8 - Navy Alt -->
-                <div class="stat-card stat-navy-alt" data-color="white">
-                    <div class="card-bg-image">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=300&fit=crop" alt="جوائز">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <div class="icon-glow"></div>
-                            <div class="icon-container">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="8" r="7"/>
-                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-label">الجوائز والتكريمات</span>
-                            <div class="stat-number-wrapper">
-                                <span class="stat-number" data-target="25">0</span>
-                                <span class="stat-plus">+</span>
-                            </div>
-                        </div>
-                        <div class="card-decoration">
-                            <div class="deco-line"></div>
-                            <div class="deco-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hover-reveal">
-                        <span>جائزة تميز وإبداع</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Stats Banner -->
-    <section class="interactive-banner">
-        <div class="banner-pattern"></div>
-        <div class="container">
-            <div class="banner-content">
-                <div class="banner-stat">
-                    <div class="banner-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                        </svg>
-                    </div>
-                    <div class="banner-info">
-                        <span class="banner-number" data-target="10">0</span>
-                        <span class="banner-label">سنوات من العطاء</span>
-                    </div>
-                </div>
-                <div class="banner-divider"></div>
-                <div class="banner-stat">
-                    <div class="banner-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                    </div>
-                    <div class="banner-info">
-                        <span class="banner-number" data-target="13">0</span>
-                        <span class="banner-label">منطقة مغطاة</span>
-                    </div>
-                </div>
-                <div class="banner-divider"></div>
-                <div class="banner-stat">
-                    <div class="banner-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <div class="banner-info">
-                        <span class="banner-number" data-target="50">0</span>
-                        <span class="banner-label">جهة حكومية شريكة</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Wave -->
-    <div class="footer-section">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,0 720,120 1080,60 C1260,30 1380,90 1440,60 L1440,0 L0,0 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="footer-content">
-            <p>جميع الحقوق محفوظة © 2024 مجلس الجمعيات التعاونية</p>
+            <p class="loader-text">جاري تحميل الإحصائيات...</p>
         </div>
     </div>
 
+    <!-- Floating Particles Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Hero Section - Immersive 3D -->
+    <section class="hero-immersive">
+        <div class="hero-gradient-bg">
+            <div class="gradient-layer layer-1"></div>
+            <div class="gradient-layer layer-2"></div>
+            <div class="gradient-layer layer-3"></div>
+        </div>
+        
+        <div class="hero-mesh-grid"></div>
+        
+        <div class="hero-floating-elements">
+            <div class="float-element el-1">
+                <svg viewBox="0 0 100 100"><polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+            </div>
+            <div class="float-element el-2">
+                <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="5,5"/></svg>
+            </div>
+            <div class="float-element el-3">
+                <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="10" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+            </div>
+        </div>
+
+        <div class="container hero-container">
+            <div class="hero-content-wrapper">
+                <div class="hero-badge-wrapper">
+                    <span class="hero-badge">
+                        <span class="badge-pulse"></span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18"/>
+                            <path d="M18 17V9"/>
+                            <path d="M13 17V5"/>
+                            <path d="M8 17v-3"/>
+                        </svg>
+                        <span>إحصائيات حية</span>
+                    </span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line line-1">أرقام تصنع</span>
+                    <span class="title-line line-2">
+                        <span class="gradient-word">التأثير</span>
+                    </span>
+                </h1>
+                
+                <p class="hero-description">
+                    رحلة من الإنجازات والتميز في خدمة القطاع غير الربحي
+                </p>
+
+                <div class="hero-mini-stats">
+                    <div class="mini-stat">
+                        <span class="mini-value" data-target="15">0</span>
+                        <span class="mini-label">عاماً من العطاء</span>
+                    </div>
+                    <div class="mini-divider"></div>
+                    <div class="mini-stat">
+                        <span class="mini-value" data-target="13">0</span>
+                        <span class="mini-label">منطقة مغطاة</span>
+                    </div>
+                    <div class="mini-divider"></div>
+                    <div class="mini-stat">
+                        <span class="mini-value" data-target="50">0</span>
+                        <span class="mini-label">شريك حكومي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>اكتشف المزيد</span>
+        </div>
+
+        <div class="hero-wave-container">
+            <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+                <path d="M0,100 C360,200 720,0 1080,100 C1260,150 1380,100 1440,100 L1440,200 L0,200 Z" class="wave-path wave-1"/>
+                <path d="M0,120 C240,180 480,60 720,120 C960,180 1200,60 1440,120 L1440,200 L0,200 Z" class="wave-path wave-2"/>
+                <path d="M0,150 C180,200 360,100 540,150 C720,200 900,100 1080,150 C1260,200 1380,150 1440,150 L1440,200 L0,200 Z" class="wave-path wave-3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Orbital Statistics Section -->
+    <section class="orbital-stats-section">
+        <div class="section-bg-effects">
+            <div class="bg-glow glow-1"></div>
+            <div class="bg-glow glow-2"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-header-creative">
+                <span class="header-tag">الإنجازات بالأرقام</span>
+                <h2 class="section-main-title">
+                    <span class="title-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </span>
+                    نظرة على مسيرتنا
+                </h2>
+            </div>
+
+            <!-- Main Stats Orbital Display -->
+            <div class="orbital-display">
+                <div class="orbital-center">
+                    <div class="center-content">
+                        <div class="center-number" data-target="8000">0</div>
+                        <div class="center-label">مستفيد</div>
+                        <div class="center-glow"></div>
+                    </div>
+                    <div class="center-rings">
+                        <div class="ring ring-inner"></div>
+                        <div class="ring ring-middle"></div>
+                        <div class="ring ring-outer"></div>
+                    </div>
+                </div>
+
+                <div class="orbital-items">
+                    <!-- Orbital Item 1 -->
+                    <div class="orbital-item item-1" data-angle="0">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="500">0</div>
+                                <div class="card-label">متطوع نشط</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 2 -->
+                    <div class="orbital-item item-2" data-angle="45">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="3" y1="9" x2="21" y2="9"/>
+                                        <line x1="9" y1="21" x2="9" y2="9"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="189">0</div>
+                                <div class="card-label">برنامج تدريبي</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 3 -->
+                    <div class="orbital-item item-3" data-angle="90">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                        <polyline points="2 17 12 22 22 17"/>
+                                        <polyline points="2 12 12 17 22 12"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="300">0</div>
+                                <div class="card-label">مشروع منجز</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 4 -->
+                    <div class="orbital-item item-4" data-angle="135">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="75">0</div>
+                                <div class="card-label">شراكة فعالة</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 5 -->
+                    <div class="orbital-item item-5" data-angle="180">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="450">0</div>
+                                <div class="card-label">فعالية مجتمعية</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 6 -->
+                    <div class="orbital-item item-6" data-angle="225">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="120">0</div>
+                                <div class="card-label">دورة تدريبية</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 7 -->
+                    <div class="orbital-item item-7" data-angle="270">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="8" r="7"/>
+                                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="25">0</div>
+                                <div class="card-label">جائزة وتكريم</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 55%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+
+                    <!-- Orbital Item 8 -->
+                    <div class="orbital-item item-8" data-angle="315">
+                        <div class="orbital-card">
+                            <div class="card-inner">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                    </svg>
+                                </div>
+                                <div class="card-value" data-target="1500">0</div>
+                                <div class="card-label">استشارة مقدمة</div>
+                                <div class="card-progress">
+                                    <div class="progress-fill" style="--progress: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="connection-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header-creative">
+                <span class="header-tag">رحلة النجاح</span>
+                <h2 class="section-main-title">
+                    <span class="title-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </span>
+                    معالم بارزة
+                </h2>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line">
+                    <div class="line-progress"></div>
+                </div>
+
+                <div class="timeline-items">
+                    <div class="timeline-item" data-year="2009">
+                        <div class="item-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-ring"></div>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-year">2009</span>
+                            <h3 class="item-title">التأسيس</h3>
+                            <p class="item-desc">انطلاق المجلس لخدمة القطاع غير الربحي</p>
+                            <div class="item-stat">
+                                <span class="stat-num">1</span>
+                                <span class="stat-text">فرع رئيسي</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="2013">
+                        <div class="item-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-ring"></div>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-year">2013</span>
+                            <h3 class="item-title">التوسع</h3>
+                            <p class="item-desc">افتتاح فروع جديدة في المناطق</p>
+                            <div class="item-stat">
+                                <span class="stat-num">5</span>
+                                <span class="stat-text">فروع</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="2017">
+                        <div class="item-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-ring"></div>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-year">2017</span>
+                            <h3 class="item-title">الانتشار</h3>
+                            <p class="item-desc">تغطية جميع مناطق المملكة</p>
+                            <div class="item-stat">
+                                <span class="stat-num">13</span>
+                                <span class="stat-text">منطقة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="2021">
+                        <div class="item-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-ring"></div>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-year">2021</span>
+                            <h3 class="item-title">التحول الرقمي</h3>
+                            <p class="item-desc">إطلاق المنصات الرقمية المتكاملة</p>
+                            <div class="item-stat">
+                                <span class="stat-num">100%</span>
+                                <span class="stat-text">رقمنة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-year="2024">
+                        <div class="item-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-ring"></div>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-year">2024</span>
+                            <h3 class="item-title">الريادة</h3>
+                            <p class="item-desc">تحقيق إنجازات استثنائية</p>
+                            <div class="item-stat">
+                                <span class="stat-num">8000+</span>
+                                <span class="stat-text">مستفيد</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Stats Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header-creative">
+                <span class="header-tag">التقدم والنمو</span>
+                <h2 class="section-main-title">
+                    <span class="title-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="12" y1="20" x2="12" y2="10"/>
+                            <line x1="18" y1="20" x2="18" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="16"/>
+                        </svg>
+                    </span>
+                    مقارنة الإنجازات
+                </h2>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="card-header">
+                        <span class="year-badge">2019</span>
+                        <span class="vs-badge">VS</span>
+                        <span class="year-badge current">2024</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span class="item-label">المتطوعين</span>
+                        <div class="bars-container">
+                            <div class="bar-wrapper">
+                                <div class="bar bar-old" style="--width: 40%">
+                                    <span class="bar-value">200</span>
+                                </div>
+                            </div>
+                            <div class="bar-wrapper">
+                                <div class="bar bar-new" style="--width: 100%">
+                                    <span class="bar-value">500+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="growth-badge">+150%</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span class="item-label">المشاريع</span>
+                        <div class="bars-container">
+                            <div class="bar-wrapper">
+                                <div class="bar bar-old" style="--width: 33%">
+                                    <span class="bar-value">100</span>
+                                </div>
+                            </div>
+                            <div class="bar-wrapper">
+                                <div class="bar bar-new" style="--width: 100%">
+                                    <span class="bar-value">300+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="growth-badge">+200%</span>
+                    </div>
+                    <div class="comparison-item">
+                        <span class="item-label">المستفيدين</span>
+                        <div class="bars-container">
+                            <div class="bar-wrapper">
+                                <div class="bar bar-old" style="--width: 25%">
+                                    <span class="bar-value">2000</span>
+                                </div>
+                            </div>
+                            <div class="bar-wrapper">
+                                <div class="bar bar-new" style="--width: 100%">
+                                    <span class="bar-value">8000+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="growth-badge">+300%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="stats-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,50 C360,100 720,0 1080,50 C1260,75 1380,50 1440,50 L1440,100 L0,100 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="container">
+            <p>© 2024 المجلس التنسيقي للجمعيات الأهلية. جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
     <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.page-loader').classList.add('loaded');
+                document.body.classList.add('page-loaded');
+            }, 1500);
+        });
+
+        // Particles Background
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
         // Counter Animation
         function animateCounter(element, target, duration = 2000) {
             let start = 0;
-            const increment = target / (duration / 16);
+            const startTime = performance.now();
             
-            function updateCounter() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start).toLocaleString('ar-SA');
-                    requestAnimationFrame(updateCounter);
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 4);
+                const current = Math.floor(easeProgress * target);
+                
+                element.textContent = current.toLocaleString('ar-SA');
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
                 } else {
                     element.textContent = target.toLocaleString('ar-SA');
                 }
             }
-            updateCounter();
+            
+            requestAnimationFrame(update);
         }
 
-        // Intersection Observer for animations
+        // Intersection Observer for Animations
         const observerOptions = {
             threshold: 0.2,
-            rootMargin: '0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const statsObserver = new IntersectionObserver((entries) => {
+        // Hero Mini Stats Observer
+        const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Animate stat cards
-                    const cards = entry.target.querySelectorAll('.stat-card');
-                    cards.forEach((card, index) => {
+                    entry.target.querySelectorAll('.mini-value').forEach((el, i) => {
                         setTimeout(() => {
-                            card.classList.add('animate-in');
-                            const numberEl = card.querySelector('.stat-number');
-                            if (numberEl) {
-                                const target = parseInt(numberEl.dataset.target);
-                                animateCounter(numberEl, target);
+                            animateCounter(el, parseInt(el.dataset.target), 1500);
+                        }, i * 200);
+                    });
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hero-mini-stats').forEach(el => heroObserver.observe(el));
+
+        // Orbital Stats Observer
+        const orbitalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate center number
+                    const centerNum = entry.target.querySelector('.center-number');
+                    if (centerNum) {
+                        animateCounter(centerNum, parseInt(centerNum.dataset.target), 2500);
+                    }
+                    
+                    // Animate orbital cards
+                    entry.target.querySelectorAll('.orbital-item').forEach((item, i) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-in');
+                            const cardValue = item.querySelector('.card-value');
+                            if (cardValue) {
+                                animateCounter(cardValue, parseInt(cardValue.dataset.target), 2000);
                             }
-                        }, index * 150);
+                        }, i * 150);
                     });
-                    statsObserver.unobserve(entry.target);
+                    
+                    // Animate progress bars
+                    setTimeout(() => {
+                        entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+                            bar.style.width = bar.style.getPropertyValue('--progress');
+                        });
+                    }, 500);
+                    
+                    orbitalObserver.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        const bannerObserver = new IntersectionObserver((entries) => {
+        document.querySelectorAll('.orbital-display').forEach(el => orbitalObserver.observe(el));
+
+        // Timeline Observer
+        const timelineObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const numbers = entry.target.querySelectorAll('.banner-number');
-                    numbers.forEach((el, index) => {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Animate line progress
+                    const lineProgress = entry.target.querySelector('.line-progress');
+                    if (lineProgress) {
+                        lineProgress.style.height = '100%';
+                    }
+                    
+                    // Animate timeline items
+                    entry.target.querySelectorAll('.timeline-item').forEach((item, i) => {
                         setTimeout(() => {
-                            const target = parseInt(el.dataset.target);
-                            animateCounter(el, target, 1500);
-                        }, index * 200);
+                            item.classList.add('animate-in');
+                        }, i * 300);
                     });
-                    bannerObserver.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe sections
-        document.querySelectorAll('.stats-grid').forEach(grid => {
-            statsObserver.observe(grid);
+        document.querySelectorAll('.timeline-container').forEach(el => timelineObserver.observe(el));
+
+        // Comparison Section Observer
+        const comparisonObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.bar').forEach((bar, i) => {
+                        setTimeout(() => {
+                            bar.style.width = bar.style.getPropertyValue('--width');
+                        }, i * 100);
+                    });
+                    comparisonObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.comparison-card').forEach(el => comparisonObserver.observe(el));
+
+        // Scroll-based Parallax
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            
+            // Hero parallax
+            const heroElements = document.querySelectorAll('.float-element');
+            heroElements.forEach((el, i) => {
+                const speed = 0.05 * (i + 1);
+                el.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
+            });
+            
+            // Gradient layers parallax
+            document.querySelectorAll('.gradient-layer').forEach((layer, i) => {
+                layer.style.transform = `translateY(${scrolled * 0.1 * (i + 1)}px)`;
+            });
         });
 
-        document.querySelectorAll('.interactive-banner').forEach(banner => {
-            bannerObserver.observe(banner);
-        });
-
-        // Card hover effects with mouse tracking
-        document.querySelectorAll('.stat-card').forEach(card => {
+        // Orbital Card Hover Effects
+        document.querySelectorAll('.orbital-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
                 
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
             });
             
             card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
             });
         });
 
-        // Parallax effect for hero shapes
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.floating-shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 20;
-                const xMove = (x - 0.5) * speed;
-                const yMove = (y - 0.5) * speed;
-                shape.style.transform = `translate(${xMove}px, ${yMove}px)`;
-            });
+        // Smooth scroll indicator
+        document.querySelector('.hero-scroll-indicator')?.addEventListener('click', () => {
+            document.querySelector('.orbital-stats-section').scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>
