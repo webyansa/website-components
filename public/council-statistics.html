@@ -10,17 +10,22 @@
         :root {
             --primary-teal: #00A3B4;
             --primary-teal-light: #00c4d6;
+            --primary-teal-dark: #008999;
             --primary-green: #4CB848;
             --primary-green-light: #6dd068;
-            --dark-bg: #0a1628;
-            --dark-bg-lighter: #0f2140;
-            --card-bg: rgba(15, 33, 64, 0.85);
-            --card-bg-hover: rgba(20, 45, 85, 0.95);
-            --card-border: rgba(0, 163, 180, 0.15);
-            --text-white: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.65);
+            --white-bg: #ffffff;
+            --light-bg: #f8fafb;
+            --card-bg: #ffffff;
+            --card-bg-hover: #ffffff;
+            --card-border: rgba(0, 163, 180, 0.12);
+            --text-dark: #1a2744;
+            --text-muted: #5a6b7d;
+            --text-light: #8494a7;
             --accent-gold: #D4A853;
             --accent-gradient: linear-gradient(135deg, var(--primary-teal), var(--primary-green));
+            --shadow-sm: 0 2px 8px rgba(0, 163, 180, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 163, 180, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 163, 180, 0.15);
         }
 
         * {
@@ -31,8 +36,8 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-white);
+            background: var(--white-bg);
+            color: var(--text-dark);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -41,7 +46,7 @@
         .page-loader {
             position: fixed;
             inset: 0;
-            background: var(--dark-bg);
+            background: var(--white-bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -62,7 +67,7 @@
             width: 100px;
             height: 100px;
             animation: pulse-glow 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(0, 163, 180, 0.5));
+            filter: drop-shadow(0 0 30px rgba(0, 163, 180, 0.3));
         }
 
         .loader-text {
@@ -82,10 +87,9 @@
             position: fixed;
             inset: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 163, 180, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 40% at 100% 100%, rgba(76, 184, 72, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 30% at 0% 50%, rgba(0, 163, 180, 0.06) 0%, transparent 50%),
-                linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-bg-lighter) 50%, var(--dark-bg) 100%);
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 163, 180, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 100% 100%, rgba(76, 184, 72, 0.03) 0%, transparent 50%),
+                var(--white-bg);
             pointer-events: none;
         }
 
@@ -96,7 +100,7 @@
             background-image: 
                 linear-gradient(var(--primary-teal) 1px, transparent 1px),
                 linear-gradient(90deg, var(--primary-teal) 1px, transparent 1px);
-            background-size: 80px 80px;
+            background-size: 100px 100px;
             pointer-events: none;
         }
 
@@ -110,84 +114,30 @@
         .shape {
             position: absolute;
             border-radius: 50%;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         .shape-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 163, 180, 0.15) 0%, transparent 70%);
-            top: -100px;
-            right: -50px;
-            animation: float-slow 25s ease-in-out infinite;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 163, 180, 0.08) 0%, transparent 70%);
+            top: -150px;
+            right: -100px;
+            animation: float-slow 30s ease-in-out infinite;
         }
 
         .shape-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(76, 184, 72, 0.12) 0%, transparent 70%);
-            bottom: 10%;
-            left: -80px;
-            animation: float-slow 20s ease-in-out infinite reverse;
-        }
-
-        .shape-3 {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(212, 168, 83, 0.1) 0%, transparent 70%);
-            top: 40%;
-            right: 10%;
-            animation: float-slow 18s ease-in-out infinite 3s;
-        }
-
-        .shape-4 {
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(0, 163, 180, 0.1) 0%, transparent 70%);
-            bottom: 20%;
-            right: 30%;
-            animation: float-slow 22s ease-in-out infinite 5s;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(76, 184, 72, 0.06) 0%, transparent 70%);
+            bottom: 5%;
+            left: -100px;
+            animation: float-slow 25s ease-in-out infinite reverse;
         }
 
         @keyframes float-slow {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, -30px) rotate(5deg); }
-            50% { transform: translate(-15px, 15px) rotate(-3deg); }
-            75% { transform: translate(25px, 25px) rotate(3deg); }
-        }
-
-        /* Decorative Lines */
-        .deco-lines {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .deco-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(0, 163, 180, 0.2), transparent);
-            height: 1px;
-        }
-
-        .deco-line-1 {
-            top: 20%;
-            left: 0;
-            right: 0;
-            animation: line-move 15s linear infinite;
-        }
-
-        .deco-line-2 {
-            top: 60%;
-            left: 0;
-            right: 0;
-            animation: line-move 20s linear infinite reverse;
-        }
-
-        @keyframes line-move {
-            0% { transform: translateX(-100%); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%); opacity: 0; }
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -20px); }
         }
 
         /* Main Container */
@@ -220,7 +170,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 40px rgba(0, 163, 180, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 163, 180, 0.25);
             animation: float-icon 4s ease-in-out infinite;
         }
 
@@ -239,19 +189,13 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(0, 163, 180, 0.1);
-            border: 1px solid rgba(0, 163, 180, 0.25);
+            background: rgba(0, 163, 180, 0.08);
+            border: 1px solid rgba(0, 163, 180, 0.2);
             padding: 10px 24px;
             border-radius: 50px;
             font-size: 0.9rem;
-            color: var(--primary-teal-light);
+            color: var(--primary-teal);
             margin-bottom: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        .header-badge svg {
-            width: 18px;
-            height: 18px;
         }
 
         .badge-dot {
@@ -272,6 +216,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--text-dark);
         }
 
         .page-title .gradient-text {
@@ -298,12 +243,10 @@
             margin-bottom: 50px;
         }
 
-        /* Featured Card - Left Side */
+        /* Featured Card */
         .featured-card {
-            background: 
-                linear-gradient(145deg, rgba(0, 163, 180, 0.15), rgba(0, 163, 180, 0.03)),
-                var(--card-bg);
-            border: 1px solid rgba(0, 163, 180, 0.25);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 28px;
             padding: 50px 45px;
             display: flex;
@@ -312,41 +255,45 @@
             position: relative;
             overflow: hidden;
             min-height: 420px;
-            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .featured-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 163, 180, 0.2), transparent 60%);
-            animation: glow-rotate 15s linear infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
         }
 
-        .featured-card::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -20%;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(76, 184, 72, 0.15), transparent 60%);
-            animation: glow-rotate 20s linear infinite reverse;
-        }
-
-        @keyframes glow-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .featured-card-pattern {
+        /* Featured Card Background Image */
+        .featured-card-bg {
             position: absolute;
             inset: 0;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300A3B4' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800') center/cover;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1.1);
+        }
+
+        .featured-card-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+        }
+
+        .featured-card:hover .featured-card-bg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
         .featured-content {
@@ -369,7 +316,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 163, 180, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 163, 180, 0.3);
+            transition: transform 0.5s;
+        }
+
+        .featured-card:hover .featured-icon {
+            transform: rotate(10deg) scale(1.1);
         }
 
         .featured-icon svg {
@@ -379,12 +331,12 @@
         }
 
         .featured-label-tag {
-            background: rgba(76, 184, 72, 0.15);
-            border: 1px solid rgba(76, 184, 72, 0.3);
+            background: rgba(76, 184, 72, 0.1);
+            border: 1px solid rgba(76, 184, 72, 0.25);
             padding: 8px 18px;
             border-radius: 30px;
             font-size: 0.85rem;
-            color: var(--primary-green-light);
+            color: var(--primary-green);
             font-weight: 600;
         }
 
@@ -403,13 +355,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1;
-            text-shadow: 0 0 80px rgba(0, 163, 180, 0.4);
         }
 
         .featured-years-text {
             font-size: 1.9rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--text-dark);
             line-height: 1.4;
         }
 
@@ -425,7 +376,7 @@
             gap: 30px;
             margin-top: 30px;
             padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(0, 163, 180, 0.1);
         }
 
         .featured-highlight {
@@ -442,7 +393,7 @@
             color: var(--primary-teal);
         }
 
-        /* Stats Grid - Right Side */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -457,11 +408,60 @@
             padding: 32px 28px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        /* Card Background Images with Advanced Animation */
+        .stat-card-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.2) rotate(2deg);
+        }
+
+        .stat-card-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.85) 100%);
+            backdrop-filter: blur(2px);
+        }
+
+        .stat-card-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(0, 163, 180, 0.05) 100%);
+        }
+
+        /* Different images for each card */
+        .stat-card:nth-child(1) .stat-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600');
+        }
+
+        .stat-card:nth-child(2) .stat-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600');
+        }
+
+        .stat-card:nth-child(3) .stat-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600');
+        }
+
+        .stat-card:nth-child(4) .stat-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600');
+        }
+
+        .stat-card:hover .stat-card-bg {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
         }
 
         .stat-card::before {
@@ -472,99 +472,73 @@
             right: 0;
             height: 3px;
             background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .stat-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 163, 180, 0.1), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .stat-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 163, 180, 0.35);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.3),
-                0 0 40px rgba(0, 163, 180, 0.1);
-            background: var(--card-bg-hover);
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(0, 163, 180, 0.25);
+            box-shadow: var(--shadow-lg);
         }
 
         .stat-card:hover::before {
-            opacity: 1;
-        }
-
-        .stat-card:hover::after {
-            opacity: 1;
-        }
-
-        .stat-card-image {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            opacity: 0.06;
-            pointer-events: none;
-        }
-
-        .stat-card-image svg {
-            width: 100%;
-            height: 100%;
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .stat-icon {
             width: 55px;
             height: 55px;
-            background: linear-gradient(135deg, rgba(0, 163, 180, 0.2), rgba(76, 184, 72, 0.15));
-            border: 1px solid rgba(0, 163, 180, 0.2);
+            background: linear-gradient(135deg, rgba(0, 163, 180, 0.1), rgba(76, 184, 72, 0.08));
+            border: 1px solid rgba(0, 163, 180, 0.15);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 22px;
-            transition: all 0.4s;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 1;
         }
 
         .stat-card:hover .stat-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 25px rgba(0, 163, 180, 0.3);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 12px 30px rgba(0, 163, 180, 0.25);
             background: var(--accent-gradient);
+            border-color: transparent;
         }
 
         .stat-icon svg {
             width: 26px;
             height: 26px;
             color: var(--primary-teal);
-            transition: color 0.3s;
+            transition: all 0.4s;
         }
 
         .stat-card:hover .stat-icon svg {
             color: white;
+            transform: scale(1.1);
         }
 
         .stat-number {
             font-size: 2.8rem;
             font-weight: 800;
-            color: var(--text-white);
+            color: var(--text-dark);
             margin-bottom: 8px;
             display: flex;
             align-items: baseline;
             position: relative;
             z-index: 1;
+            transition: all 0.4s;
         }
 
-        .stat-number .counter {
-            transition: all 0.3s;
+        .stat-card:hover .stat-number {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-number .suffix {
@@ -583,6 +557,11 @@
             font-weight: 500;
             position: relative;
             z-index: 1;
+            transition: color 0.4s;
+        }
+
+        .stat-card:hover .stat-label {
+            color: var(--text-dark);
         }
 
         /* Additional Stats Section */
@@ -600,14 +579,14 @@
         .divider-line {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0, 163, 180, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 163, 180, 0.2), transparent);
         }
 
         .divider-icon {
             width: 45px;
             height: 45px;
-            background: rgba(0, 163, 180, 0.1);
-            border: 1px solid rgba(0, 163, 180, 0.2);
+            background: rgba(0, 163, 180, 0.08);
+            border: 1px solid rgba(0, 163, 180, 0.15);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -639,19 +618,50 @@
             border-radius: 20px;
             padding: 28px 22px;
             text-align: center;
-            transition: all 0.4s;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
         }
 
-        .stat-card-mini::before {
+        /* Mini Card Background Images */
+        .stat-card-mini-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.15);
+        }
+
+        .stat-card-mini-bg::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.4s;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.85) 100%);
+        }
+
+        .stat-card-mini:nth-child(1) .stat-card-mini-bg {
+            background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400');
+        }
+
+        .stat-card-mini:nth-child(2) .stat-card-mini-bg {
+            background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400');
+        }
+
+        .stat-card-mini:nth-child(3) .stat-card-mini-bg {
+            background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400');
+        }
+
+        .stat-card-mini:nth-child(4) .stat-card-mini-bg {
+            background-image: url('https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=400');
+        }
+
+        .stat-card-mini:hover .stat-card-mini-bg {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .stat-card-mini::after {
@@ -669,9 +679,9 @@
         }
 
         .stat-card-mini:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 163, 180, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            transform: translateY(-10px);
+            border-color: rgba(0, 163, 180, 0.25);
+            box-shadow: var(--shadow-lg);
         }
 
         .stat-card-mini:hover::after {
@@ -687,12 +697,27 @@
             z-index: 1;
         }
 
+        .stat-card-mini:hover .stat-icon {
+            transform: scale(1.15) rotate(10deg);
+            background: var(--accent-gradient);
+        }
+
+        .stat-card-mini:hover .stat-icon svg {
+            color: white;
+        }
+
         .stat-card-mini .stat-number {
             font-size: 2rem;
             justify-content: center;
             margin-bottom: 8px;
             position: relative;
             z-index: 1;
+        }
+
+        .stat-card-mini:hover .stat-number {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-card-mini .stat-label {
@@ -713,16 +738,50 @@
         }
 
         .highlight-card {
-            background: 
-                linear-gradient(145deg, rgba(0, 163, 180, 0.08), rgba(76, 184, 72, 0.04)),
-                var(--card-bg);
-            border: 1px solid rgba(0, 163, 180, 0.18);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 35px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s;
-            backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        /* Highlight Card Background Images */
+        .highlight-card-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.15) translateY(10px);
+        }
+
+        .highlight-card-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(255,255,255,0.93) 0%, rgba(255,255,255,0.88) 100%);
+        }
+
+        .highlight-card:nth-child(1) .highlight-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=500');
+        }
+
+        .highlight-card:nth-child(2) .highlight-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500');
+        }
+
+        .highlight-card:nth-child(3) .highlight-card-bg {
+            background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500');
+        }
+
+        .highlight-card:hover .highlight-card-bg {
+            opacity: 1;
+            transform: scale(1) translateY(0);
         }
 
         .highlight-card::before {
@@ -739,25 +798,13 @@
         }
 
         .highlight-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 163, 180, 0.35);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.25),
-                0 0 50px rgba(0, 163, 180, 0.08);
+            transform: translateY(-10px);
+            border-color: rgba(0, 163, 180, 0.3);
+            box-shadow: var(--shadow-lg);
         }
 
         .highlight-card:hover::before {
             transform: scaleX(1);
-        }
-
-        .highlight-image {
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 120px;
-            height: 120px;
-            opacity: 0.04;
-            pointer-events: none;
         }
 
         .highlight-header {
@@ -765,6 +812,8 @@
             align-items: center;
             gap: 18px;
             margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
 
         .highlight-icon {
@@ -776,12 +825,12 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 10px 30px rgba(0, 163, 180, 0.3);
-            transition: transform 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 163, 180, 0.25);
+            transition: transform 0.5s;
         }
 
         .highlight-card:hover .highlight-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.15) rotate(10deg);
         }
 
         .highlight-icon svg {
@@ -793,7 +842,7 @@
         .highlight-title {
             font-size: 1.15rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--text-dark);
         }
 
         .highlight-value {
@@ -804,28 +853,26 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
         }
 
         .highlight-desc {
             font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
         .highlight-progress {
             margin-top: 20px;
             height: 8px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(0, 163, 180, 0.08);
             border-radius: 4px;
             overflow: hidden;
             position: relative;
-        }
-
-        .highlight-progress::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 163, 180, 0.1);
+            z-index: 1;
         }
 
         .highlight-progress-fill {
@@ -843,7 +890,7 @@
             right: 0;
             width: 20px;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
             animation: shimmer 2s infinite;
         }
 
@@ -857,13 +904,12 @@
             margin-top: 70px;
             text-align: center;
             padding: 50px;
-            background: 
-                linear-gradient(145deg, rgba(0, 163, 180, 0.1), rgba(76, 184, 72, 0.05)),
-                var(--card-bg);
-            border: 1px solid rgba(0, 163, 180, 0.15);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 28px;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
 
         .bottom-cta::before {
@@ -874,7 +920,7 @@
             transform: translateX(-50%);
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(0, 163, 180, 0.15), transparent 60%);
+            background: radial-gradient(circle, rgba(0, 163, 180, 0.08), transparent 60%);
         }
 
         .cta-title {
@@ -883,6 +929,7 @@
             margin-bottom: 15px;
             position: relative;
             z-index: 1;
+            color: var(--text-dark);
         }
 
         .cta-description {
@@ -904,15 +951,15 @@
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 163, 180, 0.35);
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 163, 180, 0.3);
             position: relative;
             z-index: 1;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 163, 180, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 163, 180, 0.4);
             color: white;
         }
 
@@ -995,17 +1042,6 @@
             }
         }
 
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
         .animate-in {
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -1034,12 +1070,6 @@
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-    </div>
-    <div class="deco-lines">
-        <div class="deco-line deco-line-1"></div>
-        <div class="deco-line deco-line-2"></div>
     </div>
 
     <!-- Main Content -->
@@ -1067,7 +1097,7 @@
             <div class="stats-layout">
                 <!-- Featured Card -->
                 <div class="featured-card animate-in">
-                    <div class="featured-card-pattern"></div>
+                    <div class="featured-card-bg"></div>
                     <div class="featured-content">
                         <div class="featured-icon-wrapper">
                             <div class="featured-icon">
@@ -1115,13 +1145,7 @@
                 <!-- Stats Grid -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-card-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <circle cx="50" cy="30" r="20" opacity="0.5"/>
-                                <circle cx="25" cy="70" r="15" opacity="0.3"/>
-                                <circle cx="75" cy="70" r="15" opacity="0.3"/>
-                            </svg>
-                        </div>
+                        <div class="stat-card-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -1138,12 +1162,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-card-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <rect x="20" y="20" width="60" height="60" rx="8" opacity="0.3"/>
-                                <rect x="30" y="30" width="40" height="40" rx="6" opacity="0.5"/>
-                            </svg>
-                        </div>
+                        <div class="stat-card-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polygon points="12 2 2 7 12 12 22 7 12 2"/>
@@ -1159,11 +1178,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-card-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <path d="M50 20 L80 50 L50 80 L20 50 Z" opacity="0.3"/>
-                            </svg>
-                        </div>
+                        <div class="stat-card-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
@@ -1180,12 +1195,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <div class="stat-card-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <path d="M50 10 L90 50 L50 90 L10 50 Z" opacity="0.2"/>
-                                <circle cx="50" cy="50" r="25" opacity="0.3"/>
-                            </svg>
-                        </div>
+                        <div class="stat-card-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -1215,6 +1225,7 @@
 
                 <div class="stats-row">
                     <div class="stat-card-mini">
+                        <div class="stat-card-mini-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -1230,6 +1241,7 @@
                     </div>
 
                     <div class="stat-card-mini">
+                        <div class="stat-card-mini-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -1246,6 +1258,7 @@
                     </div>
 
                     <div class="stat-card-mini">
+                        <div class="stat-card-mini-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
@@ -1260,6 +1273,7 @@
                     </div>
 
                     <div class="stat-card-mini">
+                        <div class="stat-card-mini-bg"></div>
                         <div class="stat-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="8" r="7"/>
@@ -1290,11 +1304,7 @@
 
                 <div class="highlights-grid">
                     <div class="highlight-card">
-                        <div class="highlight-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <circle cx="50" cy="50" r="40" opacity="0.5"/>
-                            </svg>
-                        </div>
+                        <div class="highlight-card-bg"></div>
                         <div class="highlight-header">
                             <div class="highlight-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1311,11 +1321,7 @@
                     </div>
 
                     <div class="highlight-card">
-                        <div class="highlight-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <rect x="20" y="20" width="60" height="60" rx="10" opacity="0.5"/>
-                            </svg>
-                        </div>
+                        <div class="highlight-card-bg"></div>
                         <div class="highlight-header">
                             <div class="highlight-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1334,23 +1340,22 @@
                     </div>
 
                     <div class="highlight-card">
-                        <div class="highlight-image">
-                            <svg viewBox="0 0 100 100" fill="currentColor">
-                                <path d="M50 20 C 70 20, 80 40, 80 50 C 80 70, 50 85, 50 85 C 50 85, 20 70, 20 50 C 20 40, 30 20, 50 20" opacity="0.5"/>
-                            </svg>
-                        </div>
+                        <div class="highlight-card-bg"></div>
                         <div class="highlight-header">
                             <div class="highlight-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                                 </svg>
                             </div>
-                            <span class="highlight-title">رضا المستفيدين</span>
+                            <span class="highlight-title">المنظمات المستفيدة</span>
                         </div>
-                        <div class="highlight-value">98%</div>
-                        <p class="highlight-desc">نسبة رضا عالية من المستفيدين والشركاء</p>
+                        <div class="highlight-value" data-target="250">0+</div>
+                        <p class="highlight-desc">منظمة غير ربحية استفادت من خدماتنا</p>
                         <div class="highlight-progress">
-                            <div class="highlight-progress-fill" style="width: 0%" data-width="98%"></div>
+                            <div class="highlight-progress-fill" style="width: 0%" data-width="85%"></div>
                         </div>
                     </div>
                 </div>
@@ -1358,8 +1363,8 @@
 
             <!-- Bottom CTA -->
             <div class="bottom-cta">
-                <h3 class="cta-title">انضم إلى رحلة التأثير</h3>
-                <p class="cta-description">كن جزءاً من منظومة العمل غير الربحي وساهم في بناء مجتمع أفضل</p>
+                <h2 class="cta-title">انضم إلى مسيرة التميز</h2>
+                <p class="cta-description">كن جزءاً من قصة نجاح المجلس وساهم في تطوير القطاع غير الربحي</p>
                 <a href="#" class="cta-button">
                     <span>تواصل معنا</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1372,11 +1377,11 @@
     </div>
 
     <script>
-        // Hide preloader
-        window.addEventListener('load', function() {
+        // Preloader
+        window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('pageLoader').classList.add('hidden');
-            }, 1000);
+            }, 800);
         });
 
         // Counter Animation
@@ -1384,98 +1389,82 @@
             let start = 0;
             const increment = target / (duration / 16);
             
-            function updateCounter() {
+            function update() {
                 start += increment;
                 if (start < target) {
                     element.textContent = Math.floor(start).toLocaleString('ar-SA');
-                    requestAnimationFrame(updateCounter);
+                    requestAnimationFrame(update);
                 } else {
                     element.textContent = target.toLocaleString('ar-SA');
                 }
             }
             
-            updateCounter();
+            update();
         }
 
         // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add visible class with staggered delay
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 120);
-
+                    entry.target.classList.add('visible');
+                    
                     // Animate counters
-                    const counters = entry.target.querySelectorAll('[data-target]');
+                    const counters = entry.target.querySelectorAll('.counter');
                     counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-target'));
-                        setTimeout(() => {
-                            animateCounter(counter, target);
-                        }, 300);
+                        const target = parseInt(counter.dataset.target);
+                        animateCounter(counter, target);
+                    });
+
+                    // Animate featured number
+                    const featuredNumber = entry.target.querySelector('.featured-number');
+                    if (featuredNumber && featuredNumber.dataset.target) {
+                        const target = parseInt(featuredNumber.dataset.target);
+                        animateCounter(featuredNumber, target, 2500);
+                    }
+
+                    // Animate highlight values
+                    const highlightValues = entry.target.querySelectorAll('.highlight-value');
+                    highlightValues.forEach(value => {
+                        const target = parseInt(value.dataset.target);
+                        if (target) {
+                            const hasPlus = value.textContent.includes('+');
+                            animateCounter(value, target);
+                            if (hasPlus) {
+                                setTimeout(() => {
+                                    value.textContent = value.textContent + '+';
+                                }, 2100);
+                            }
+                        }
                     });
 
                     // Animate progress bars
                     const progressBars = entry.target.querySelectorAll('.highlight-progress-fill');
                     progressBars.forEach(bar => {
-                        const width = bar.getAttribute('data-width');
+                        const width = bar.dataset.width;
                         setTimeout(() => {
                             bar.style.width = width;
-                        }, 600);
+                        }, 500);
                     });
-
-                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.2 });
 
-        // Observe all animated elements
-        document.querySelectorAll('.stat-card, .stat-card-mini, .highlight-card').forEach(el => {
+        // Observe elements
+        document.querySelectorAll('.stat-card, .stat-card-mini, .highlight-card, .featured-card').forEach(el => {
             observer.observe(el);
         });
 
-        // Featured number animation
-        const featuredNumber = document.querySelector('.featured-number');
-        if (featuredNumber) {
-            const target = parseInt(featuredNumber.getAttribute('data-target'));
-            const featuredObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    animateCounter(featuredNumber, target, 1500);
-                    featuredObserver.disconnect();
-                }
-            }, { threshold: 0.5 });
-            
-            featuredObserver.observe(featuredNumber);
-        }
-
-        // Highlight values animation
-        document.querySelectorAll('.highlight-value[data-target]').forEach(el => {
-            const highlightObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    const target = parseInt(el.getAttribute('data-target'));
-                    animateCounter(el, target);
-                    highlightObserver.disconnect();
-                }
-            }, { threshold: 0.5 });
-            
-            highlightObserver.observe(el);
+        // Staggered animation delay
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
         });
 
-        // Parallax effect for floating shapes
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.shape');
-            const x = (e.clientX / window.innerWidth - 0.5) * 20;
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.3;
-                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
+        document.querySelectorAll('.stat-card-mini').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.highlight-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.15}s`;
         });
     </script>
 </body>
