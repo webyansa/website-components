@@ -6,712 +6,966 @@
     <title>إحصائيات المجلس</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/council-statistics-v2.css">
+    <style>
+        :root {
+            --primary-teal: #00A3B4;
+            --primary-green: #4CB848;
+            --dark-bg: #0a0f1a;
+            --card-bg: rgba(20, 30, 50, 0.8);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --accent-red: #E63946;
+            --accent-gradient: linear-gradient(135deg, var(--accent-red), #ff6b6b);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Preloader */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+
+        .loader-text {
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Background Effects */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--primary-teal) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--primary-green) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .bg-gradient-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary-teal);
+            top: -200px;
+            right: -100px;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-red);
+            bottom: -150px;
+            left: -100px;
+            animation: float-orb 25s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-green);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float-orb 15s ease-in-out infinite;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(20px, 30px) scale(1.05); }
+        }
+
+        /* Main Container */
+        .statistics-page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 163, 180, 0.15);
+            border: 1px solid rgba(0, 163, 180, 0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--primary-teal);
+            margin-bottom: 24px;
+        }
+
+        .header-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .page-title span {
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Statistics Layout */
+        .stats-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        /* Featured Card - Left Side */
+        .featured-card {
+            background: linear-gradient(145deg, rgba(230, 57, 70, 0.2), rgba(230, 57, 70, 0.05));
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 24px;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(230, 57, 70, 0.2), transparent 60%);
+            pointer-events: none;
+        }
+
+        .featured-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(230, 57, 70, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(230, 57, 70, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .featured-icon svg {
+            width: 30px;
+            height: 30px;
+            color: var(--accent-red);
+        }
+
+        .featured-number-row {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .featured-number {
+            font-size: clamp(4rem, 10vw, 7rem);
+            font-weight: 900;
+            color: var(--accent-red);
+            line-height: 1;
+            text-shadow: 0 0 60px rgba(230, 57, 70, 0.5);
+        }
+
+        .featured-years-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-white);
+            line-height: 1.3;
+        }
+
+        .featured-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 400px;
+        }
+
+        /* Stats Grid - Right Side */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 163, 180, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 163, 180, 0.2), rgba(76, 184, 72, 0.1));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .stat-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary-teal);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .stat-number .counter {
+            transition: all 0.3s;
+        }
+
+        .stat-number .suffix {
+            font-size: 1.5rem;
+            color: var(--primary-teal);
+            margin-right: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Additional Stats Section */
+        .additional-stats {
+            margin-top: 40px;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+        }
+
+        .divider-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card-mini {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card-mini::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));
+            border-radius: 3px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .stat-card-mini:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 163, 180, 0.2);
+        }
+
+        .stat-card-mini:hover::after {
+            opacity: 1;
+            width: 80%;
+        }
+
+        .stat-card-mini .stat-icon {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 15px;
+        }
+
+        .stat-card-mini .stat-number {
+            font-size: 1.8rem;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .stat-card-mini .stat-label {
+            font-size: 0.85rem;
+        }
+
+        /* Achievement Highlights */
+        .highlights-section {
+            margin-top: 60px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .highlight-card {
+            background: linear-gradient(145deg, rgba(0, 163, 180, 0.1), rgba(76, 184, 72, 0.05));
+            border: 1px solid rgba(0, 163, 180, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(0, 163, 180, 0.4);
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-green));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .highlight-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .highlight-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .highlight-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .highlight-progress {
+            margin-top: 15px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .highlight-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));
+            border-radius: 3px;
+            transition: width 1.5s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card {
+                min-height: auto;
+                padding: 40px 30px;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .statistics-page {
+                padding: 40px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-number {
+                font-size: 4rem;
+            }
+
+            .featured-years-text {
+                font-size: 1.3rem;
+            }
+
+            .page-header {
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .stat-card, .stat-card-mini, .highlight-card {
+            opacity: 0;
+        }
+
+        .stat-card.visible, .stat-card-mini.visible, .highlight-card.visible {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Counter Animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
-    <div class="page-loader">
+    <div class="page-loader" id="pageLoader">
         <div class="loader-content">
-            <div class="loader-orbit">
-                <div class="orbit-ring ring-1"></div>
-                <div class="orbit-ring ring-2"></div>
-                <div class="orbit-ring ring-3"></div>
-                <div class="orbit-center">
-                    <svg viewBox="0 0 100 100" class="loader-logo">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="url(#loaderGradient)" stroke-width="2" stroke-dasharray="251" stroke-dashoffset="251" class="logo-circle"/>
-                        <defs>
-                            <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00A3B4"/>
-                                <stop offset="100%" stop-color="#4CB848"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-            </div>
+            <img src="images/scfyn-logo-loader.svg" alt="Loading" class="loader-logo">
             <p class="loader-text">جاري تحميل الإحصائيات...</p>
         </div>
     </div>
 
-    <!-- Floating Particles Background -->
-    <div class="particles-container" id="particles"></div>
+    <!-- Background Effects -->
+    <div class="bg-pattern"></div>
+    <div class="bg-gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
-    <!-- Hero Section - Immersive 3D -->
-    <section class="hero-immersive">
-        <div class="hero-gradient-bg">
-            <div class="gradient-layer layer-1"></div>
-            <div class="gradient-layer layer-2"></div>
-            <div class="gradient-layer layer-3"></div>
-        </div>
-        
-        <div class="hero-mesh-grid"></div>
-        
-        <div class="hero-floating-elements">
-            <div class="float-element el-1">
-                <svg viewBox="0 0 100 100"><polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-            </div>
-            <div class="float-element el-2">
-                <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="5,5"/></svg>
-            </div>
-            <div class="float-element el-3">
-                <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="10" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-            </div>
-        </div>
-
-        <div class="container hero-container">
-            <div class="hero-content-wrapper">
-                <div class="hero-badge-wrapper">
-                    <span class="hero-badge">
-                        <span class="badge-pulse"></span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3v18h18"/>
-                            <path d="M18 17V9"/>
-                            <path d="M13 17V5"/>
-                            <path d="M8 17v-3"/>
-                        </svg>
-                        <span>إحصائيات حية</span>
-                    </span>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span class="title-line line-1">أرقام تصنع</span>
-                    <span class="title-line line-2">
-                        <span class="gradient-word">التأثير</span>
-                    </span>
-                </h1>
-                
-                <p class="hero-description">
-                    رحلة من الإنجازات والتميز في خدمة القطاع غير الربحي
-                </p>
-
-                <div class="hero-mini-stats">
-                    <div class="mini-stat">
-                        <span class="mini-value" data-target="15">0</span>
-                        <span class="mini-label">عاماً من العطاء</span>
-                    </div>
-                    <div class="mini-divider"></div>
-                    <div class="mini-stat">
-                        <span class="mini-value" data-target="13">0</span>
-                        <span class="mini-label">منطقة مغطاة</span>
-                    </div>
-                    <div class="mini-divider"></div>
-                    <div class="mini-stat">
-                        <span class="mini-value" data-target="50">0</span>
-                        <span class="mini-label">شريك حكومي</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-scroll-indicator">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span>اكتشف المزيد</span>
-        </div>
-
-        <div class="hero-wave-container">
-            <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
-                <path d="M0,100 C360,200 720,0 1080,100 C1260,150 1380,100 1440,100 L1440,200 L0,200 Z" class="wave-path wave-1"/>
-                <path d="M0,120 C240,180 480,60 720,120 C960,180 1200,60 1440,120 L1440,200 L0,200 Z" class="wave-path wave-2"/>
-                <path d="M0,150 C180,200 360,100 540,150 C720,200 900,100 1080,150 C1260,200 1380,150 1440,150 L1440,200 L0,200 Z" class="wave-path wave-3"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Orbital Statistics Section -->
-    <section class="orbital-stats-section">
-        <div class="section-bg-effects">
-            <div class="bg-glow glow-1"></div>
-            <div class="bg-glow glow-2"></div>
-        </div>
-
+    <!-- Main Content -->
+    <div class="statistics-page">
         <div class="container">
-            <div class="section-header-creative">
-                <span class="header-tag">الإنجازات بالأرقام</span>
-                <h2 class="section-main-title">
-                    <span class="title-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                    </span>
-                    نظرة على مسيرتنا
-                </h2>
-            </div>
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 3v18h18"/>
+                        <path d="M18 17V9"/>
+                        <path d="M13 17V5"/>
+                        <path d="M8 17v-3"/>
+                    </svg>
+                    <span>إحصائيات حية</span>
+                </div>
+                <h1 class="page-title">إحصائيات <span>المجلس</span></h1>
+                <p class="page-subtitle">رحلة من الإنجازات والتميز في خدمة القطاع غير الربحي بالمملكة</p>
+            </header>
 
-            <!-- Main Stats Orbital Display -->
-            <div class="orbital-display">
-                <div class="orbital-center">
-                    <div class="center-content">
-                        <div class="center-number" data-target="8000">0</div>
-                        <div class="center-label">مستفيد</div>
-                        <div class="center-glow"></div>
-                    </div>
-                    <div class="center-rings">
-                        <div class="ring ring-inner"></div>
-                        <div class="ring ring-middle"></div>
-                        <div class="ring ring-outer"></div>
+            <!-- Main Stats Layout -->
+            <div class="stats-layout">
+                <!-- Featured Card -->
+                <div class="featured-card animate-in">
+                    <div class="featured-content">
+                        <div class="featured-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="featured-number-row">
+                            <span class="featured-number" data-target="15">0</span>
+                            <span class="featured-years-text">عاماً من<br>العطاء والتميز</span>
+                        </div>
+                        <p class="featured-description">
+                            منذ تأسيسنا ونحن نعمل بشغف لدعم وتمكين منظمات القطاع غير الربحي، 
+                            وبناء شراكات فعالة تحقق التنمية المستدامة في مجتمعنا
+                        </p>
                     </div>
                 </div>
 
-                <div class="orbital-items">
-                    <!-- Orbital Item 1 -->
-                    <div class="orbital-item item-1" data-angle="0">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="500">0</div>
-                                <div class="card-label">متطوع نشط</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
                         </div>
-                        <div class="connection-line"></div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="8000">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">مستفيد من خدماتنا</div>
                     </div>
 
-                    <!-- Orbital Item 2 -->
-                    <div class="orbital-item item-2" data-angle="45">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                                        <line x1="3" y1="9" x2="21" y2="9"/>
-                                        <line x1="9" y1="21" x2="9" y2="9"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="189">0</div>
-                                <div class="card-label">برنامج تدريبي</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
+                            </svg>
                         </div>
-                        <div class="connection-line"></div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="300">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">مشروع منجز</div>
                     </div>
 
-                    <!-- Orbital Item 3 -->
-                    <div class="orbital-item item-3" data-angle="90">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                        <polyline points="2 17 12 22 22 17"/>
-                                        <polyline points="2 12 12 17 22 12"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="300">0</div>
-                                <div class="card-label">مشروع منجز</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <line x1="19" y1="8" x2="19" y2="14"/>
+                                <line x1="22" y1="11" x2="16" y2="11"/>
+                            </svg>
                         </div>
-                        <div class="connection-line"></div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="500">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">متطوع نشط</div>
                     </div>
 
-                    <!-- Orbital Item 4 -->
-                    <div class="orbital-item item-4" data-angle="135">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="75">0</div>
-                                <div class="card-label">شراكة فعالة</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 65%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
                         </div>
-                        <div class="connection-line"></div>
-                    </div>
-
-                    <!-- Orbital Item 5 -->
-                    <div class="orbital-item item-5" data-angle="180">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                        <line x1="16" y1="2" x2="16" y2="6"/>
-                                        <line x1="8" y1="2" x2="8" y2="6"/>
-                                        <line x1="3" y1="10" x2="21" y2="10"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="450">0</div>
-                                <div class="card-label">فعالية مجتمعية</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="75">0</span>
+                            <span class="suffix">+</span>
                         </div>
-                        <div class="connection-line"></div>
-                    </div>
-
-                    <!-- Orbital Item 6 -->
-                    <div class="orbital-item item-6" data-angle="225">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="120">0</div>
-                                <div class="card-label">دورة تدريبية</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 70%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
-                        </div>
-                        <div class="connection-line"></div>
-                    </div>
-
-                    <!-- Orbital Item 7 -->
-                    <div class="orbital-item item-7" data-angle="270">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <circle cx="12" cy="8" r="7"/>
-                                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="25">0</div>
-                                <div class="card-label">جائزة وتكريم</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 55%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
-                        </div>
-                        <div class="connection-line"></div>
-                    </div>
-
-                    <!-- Orbital Item 8 -->
-                    <div class="orbital-item item-8" data-angle="315">
-                        <div class="orbital-card">
-                            <div class="card-inner">
-                                <div class="card-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                                    </svg>
-                                </div>
-                                <div class="card-value" data-target="1500">0</div>
-                                <div class="card-label">استشارة مقدمة</div>
-                                <div class="card-progress">
-                                    <div class="progress-fill" style="--progress: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="card-glow"></div>
-                        </div>
-                        <div class="connection-line"></div>
+                        <div class="stat-label">شراكة استراتيجية</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Interactive Timeline Section -->
-    <section class="timeline-section">
-        <div class="container">
-            <div class="section-header-creative">
-                <span class="header-tag">رحلة النجاح</span>
-                <h2 class="section-main-title">
-                    <span class="title-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
-                    </span>
-                    معالم بارزة
-                </h2>
-            </div>
-
-            <div class="timeline-container">
-                <div class="timeline-line">
-                    <div class="line-progress"></div>
+            <!-- Additional Stats -->
+            <div class="additional-stats">
+                <div class="section-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">المزيد من الإنجازات</span>
+                    <div class="divider-line"></div>
                 </div>
 
-                <div class="timeline-items">
-                    <div class="timeline-item" data-year="2009">
-                        <div class="item-marker">
-                            <div class="marker-dot"></div>
-                            <div class="marker-ring"></div>
+                <div class="stats-row">
+                    <div class="stat-card-mini">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
                         </div>
-                        <div class="item-content">
-                            <span class="item-year">2009</span>
-                            <h3 class="item-title">التأسيس</h3>
-                            <p class="item-desc">انطلاق المجلس لخدمة القطاع غير الربحي</p>
-                            <div class="item-stat">
-                                <span class="stat-num">1</span>
-                                <span class="stat-text">فرع رئيسي</span>
+                        <div class="stat-number">
+                            <span class="counter" data-target="189">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">برنامج تدريبي</div>
+                    </div>
+
+                    <div class="stat-card-mini">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="450">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">فعالية مجتمعية</div>
+                    </div>
+
+                    <div class="stat-card-mini">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="120">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">دورة تدريبية</div>
+                    </div>
+
+                    <div class="stat-card-mini">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number">
+                            <span class="counter" data-target="25">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="stat-label">جائزة وتكريم</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Highlights -->
+            <div class="highlights-section">
+                <div class="section-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">إنجازات بارزة</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-header">
+                            <div class="highlight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                                </svg>
                             </div>
+                            <span class="highlight-title">الاستشارات المقدمة</span>
+                        </div>
+                        <div class="highlight-value" data-target="1500">0+</div>
+                        <p class="highlight-desc">استشارة متخصصة لدعم المنظمات غير الربحية</p>
+                        <div class="highlight-progress">
+                            <div class="highlight-progress-fill" style="width: 0%" data-width="95%"></div>
                         </div>
                     </div>
 
-                    <div class="timeline-item" data-year="2013">
-                        <div class="item-marker">
-                            <div class="marker-dot"></div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="item-content">
-                            <span class="item-year">2013</span>
-                            <h3 class="item-title">التوسع</h3>
-                            <p class="item-desc">افتتاح فروع جديدة في المناطق</p>
-                            <div class="item-stat">
-                                <span class="stat-num">5</span>
-                                <span class="stat-text">فروع</span>
+                    <div class="highlight-card">
+                        <div class="highlight-header">
+                            <div class="highlight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
                             </div>
+                            <span class="highlight-title">المناطق المغطاة</span>
+                        </div>
+                        <div class="highlight-value" data-target="13">0</div>
+                        <p class="highlight-desc">تغطية شاملة لجميع مناطق المملكة</p>
+                        <div class="highlight-progress">
+                            <div class="highlight-progress-fill" style="width: 0%" data-width="100%"></div>
                         </div>
                     </div>
 
-                    <div class="timeline-item" data-year="2017">
-                        <div class="item-marker">
-                            <div class="marker-dot"></div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="item-content">
-                            <span class="item-year">2017</span>
-                            <h3 class="item-title">الانتشار</h3>
-                            <p class="item-desc">تغطية جميع مناطق المملكة</p>
-                            <div class="item-stat">
-                                <span class="stat-num">13</span>
-                                <span class="stat-text">منطقة</span>
+                    <div class="highlight-card">
+                        <div class="highlight-header">
+                            <div class="highlight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
                             </div>
+                            <span class="highlight-title">رضا المستفيدين</span>
                         </div>
-                    </div>
-
-                    <div class="timeline-item" data-year="2021">
-                        <div class="item-marker">
-                            <div class="marker-dot"></div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="item-content">
-                            <span class="item-year">2021</span>
-                            <h3 class="item-title">التحول الرقمي</h3>
-                            <p class="item-desc">إطلاق المنصات الرقمية المتكاملة</p>
-                            <div class="item-stat">
-                                <span class="stat-num">100%</span>
-                                <span class="stat-text">رقمنة</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item" data-year="2024">
-                        <div class="item-marker">
-                            <div class="marker-dot"></div>
-                            <div class="marker-ring"></div>
-                        </div>
-                        <div class="item-content">
-                            <span class="item-year">2024</span>
-                            <h3 class="item-title">الريادة</h3>
-                            <p class="item-desc">تحقيق إنجازات استثنائية</p>
-                            <div class="item-stat">
-                                <span class="stat-num">8000+</span>
-                                <span class="stat-text">مستفيد</span>
-                            </div>
+                        <div class="highlight-value">98%</div>
+                        <p class="highlight-desc">نسبة رضا عالية من المستفيدين والشركاء</p>
+                        <div class="highlight-progress">
+                            <div class="highlight-progress-fill" style="width: 0%" data-width="98%"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Comparison Stats Section -->
-    <section class="comparison-section">
-        <div class="container">
-            <div class="section-header-creative">
-                <span class="header-tag">التقدم والنمو</span>
-                <h2 class="section-main-title">
-                    <span class="title-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <line x1="12" y1="20" x2="12" y2="10"/>
-                            <line x1="18" y1="20" x2="18" y2="4"/>
-                            <line x1="6" y1="20" x2="6" y2="16"/>
-                        </svg>
-                    </span>
-                    مقارنة الإنجازات
-                </h2>
-            </div>
-
-            <div class="comparison-grid">
-                <div class="comparison-card">
-                    <div class="card-header">
-                        <span class="year-badge">2019</span>
-                        <span class="vs-badge">VS</span>
-                        <span class="year-badge current">2024</span>
-                    </div>
-                    <div class="comparison-item">
-                        <span class="item-label">المتطوعين</span>
-                        <div class="bars-container">
-                            <div class="bar-wrapper">
-                                <div class="bar bar-old" style="--width: 40%">
-                                    <span class="bar-value">200</span>
-                                </div>
-                            </div>
-                            <div class="bar-wrapper">
-                                <div class="bar bar-new" style="--width: 100%">
-                                    <span class="bar-value">500+</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="growth-badge">+150%</span>
-                    </div>
-                    <div class="comparison-item">
-                        <span class="item-label">المشاريع</span>
-                        <div class="bars-container">
-                            <div class="bar-wrapper">
-                                <div class="bar bar-old" style="--width: 33%">
-                                    <span class="bar-value">100</span>
-                                </div>
-                            </div>
-                            <div class="bar-wrapper">
-                                <div class="bar bar-new" style="--width: 100%">
-                                    <span class="bar-value">300+</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="growth-badge">+200%</span>
-                    </div>
-                    <div class="comparison-item">
-                        <span class="item-label">المستفيدين</span>
-                        <div class="bars-container">
-                            <div class="bar-wrapper">
-                                <div class="bar bar-old" style="--width: 25%">
-                                    <span class="bar-value">2000</span>
-                                </div>
-                            </div>
-                            <div class="bar-wrapper">
-                                <div class="bar bar-new" style="--width: 100%">
-                                    <span class="bar-value">8000+</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="growth-badge">+300%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="stats-footer">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path d="M0,50 C360,100 720,0 1080,50 C1260,75 1380,50 1440,50 L1440,100 L0,100 Z" fill="currentColor"/>
-            </svg>
-        </div>
-        <div class="container">
-            <p>© 2024 المجلس التنسيقي للجمعيات الأهلية. جميع الحقوق محفوظة</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
+        // Hide preloader
+        window.addEventListener('load', function() {
             setTimeout(() => {
-                document.querySelector('.page-loader').classList.add('loaded');
-                document.body.classList.add('page-loaded');
-            }, 1500);
+                document.getElementById('pageLoader').classList.add('hidden');
+            }, 800);
         });
-
-        // Particles Background
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.width = Math.random() * 4 + 2 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                container.appendChild(particle);
-            }
-        }
-        createParticles();
 
         // Counter Animation
         function animateCounter(element, target, duration = 2000) {
             let start = 0;
-            const startTime = performance.now();
+            const increment = target / (duration / 16);
             
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeProgress = 1 - Math.pow(1 - progress, 4);
-                const current = Math.floor(easeProgress * target);
-                
-                element.textContent = current.toLocaleString('ar-SA');
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString('ar-SA');
+                    requestAnimationFrame(updateCounter);
                 } else {
                     element.textContent = target.toLocaleString('ar-SA');
                 }
             }
             
-            requestAnimationFrame(update);
+            updateCounter();
         }
 
-        // Intersection Observer for Animations
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.2,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        // Hero Mini Stats Observer
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.mini-value').forEach((el, i) => {
-                        setTimeout(() => {
-                            animateCounter(el, parseInt(el.dataset.target), 1500);
-                        }, i * 200);
-                    });
-                    heroObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.hero-mini-stats').forEach(el => heroObserver.observe(el));
-
-        // Orbital Stats Observer
-        const orbitalObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate center number
-                    const centerNum = entry.target.querySelector('.center-number');
-                    if (centerNum) {
-                        animateCounter(centerNum, parseInt(centerNum.dataset.target), 2500);
-                    }
-                    
-                    // Animate orbital cards
-                    entry.target.querySelectorAll('.orbital-item').forEach((item, i) => {
-                        setTimeout(() => {
-                            item.classList.add('animate-in');
-                            const cardValue = item.querySelector('.card-value');
-                            if (cardValue) {
-                                animateCounter(cardValue, parseInt(cardValue.dataset.target), 2000);
-                            }
-                        }, i * 150);
-                    });
-                    
-                    // Animate progress bars
+                    // Add visible class with delay
                     setTimeout(() => {
-                        entry.target.querySelectorAll('.progress-fill').forEach(bar => {
-                            bar.style.width = bar.style.getPropertyValue('--progress');
-                        });
-                    }, 500);
-                    
-                    orbitalObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+                        entry.target.classList.add('visible');
+                    }, index * 100);
 
-        document.querySelectorAll('.orbital-display').forEach(el => orbitalObserver.observe(el));
-
-        // Timeline Observer
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    
-                    // Animate line progress
-                    const lineProgress = entry.target.querySelector('.line-progress');
-                    if (lineProgress) {
-                        lineProgress.style.height = '100%';
-                    }
-                    
-                    // Animate timeline items
-                    entry.target.querySelectorAll('.timeline-item').forEach((item, i) => {
-                        setTimeout(() => {
-                            item.classList.add('animate-in');
-                        }, i * 300);
+                    // Animate counters
+                    const counters = entry.target.querySelectorAll('[data-target]');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        animateCounter(counter, target);
                     });
-                }
-            });
-        }, observerOptions);
 
-        document.querySelectorAll('.timeline-container').forEach(el => timelineObserver.observe(el));
-
-        // Comparison Section Observer
-        const comparisonObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.bar').forEach((bar, i) => {
+                    // Animate progress bars
+                    const progressBars = entry.target.querySelectorAll('.highlight-progress-fill');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
                         setTimeout(() => {
-                            bar.style.width = bar.style.getPropertyValue('--width');
-                        }, i * 100);
+                            bar.style.width = width;
+                        }, 500);
                     });
-                    comparisonObserver.unobserve(entry.target);
+
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.comparison-card').forEach(el => comparisonObserver.observe(el));
-
-        // Scroll-based Parallax
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            
-            // Hero parallax
-            const heroElements = document.querySelectorAll('.float-element');
-            heroElements.forEach((el, i) => {
-                const speed = 0.05 * (i + 1);
-                el.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
-            });
-            
-            // Gradient layers parallax
-            document.querySelectorAll('.gradient-layer').forEach((layer, i) => {
-                layer.style.transform = `translateY(${scrolled * 0.1 * (i + 1)}px)`;
-            });
+        // Observe all animated elements
+        document.querySelectorAll('.stat-card, .stat-card-mini, .highlight-card').forEach(el => {
+            observer.observe(el);
         });
 
-        // Orbital Card Hover Effects
-        document.querySelectorAll('.orbital-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
+        // Featured number animation
+        const featuredNumber = document.querySelector('.featured-number');
+        if (featuredNumber) {
+            const target = parseInt(featuredNumber.getAttribute('data-target'));
+            const featuredObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateCounter(featuredNumber, target, 1500);
+                    featuredObserver.disconnect();
+                }
+            }, { threshold: 0.5 });
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-            });
-        });
+            featuredObserver.observe(featuredNumber);
+        }
 
-        // Smooth scroll indicator
-        document.querySelector('.hero-scroll-indicator')?.addEventListener('click', () => {
-            document.querySelector('.orbital-stats-section').scrollIntoView({ behavior: 'smooth' });
+        // Highlight values animation
+        document.querySelectorAll('.highlight-value[data-target]').forEach(el => {
+            const highlightObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    const target = parseInt(el.getAttribute('data-target'));
+                    animateCounter(el, target);
+                    highlightObserver.disconnect();
+                }
+            }, { threshold: 0.5 });
+            
+            highlightObserver.observe(el);
         });
     </script>
 </body>
