@@ -100,36 +100,29 @@
             <p class="section-subtitle">القيادة الاستراتيجية لشركة رنين</p>
           </div>
 
-          <!-- CEO Card - Featured -->
-          <div class="ceo-featured animate-on-scroll">
-            <div class="ceo-card">
-              <div class="ceo-image-wrapper">
-                <img src="images/raneen/team/male-placeholder-1.jpg" alt="أ. محمد الغامدي" />
-                <div class="ceo-badge">
-                  <i class="bi bi-star-fill"></i>
-                </div>
+          <!-- Board Members Grid with CEO -->
+          <div class="board-grid">
+            <!-- CEO Card - Distinguished -->
+            <div class="board-card ceo-card-unified animate-on-scroll" style="--delay: 0s">
+              <div class="ceo-crown">
+                <i class="bi bi-star-fill"></i>
               </div>
-              <div class="ceo-info">
-                <span class="ceo-role">الرئيس التنفيذي</span>
-                <h3 class="ceo-name">أ. محمد الغامدي</h3>
-                <p class="ceo-title">الرئيس التنفيذي والشريك المؤسس</p>
-                <p class="ceo-bio">قائد استراتيجي يتمتع بخبرة تزيد عن 15 عاماً في مجال التطوير المؤسسي والاستشارات الإدارية</p>
-                <div class="ceo-actions">
-                  <button class="btn-cv" data-bs-toggle="modal" data-bs-target="#cvModal">
+              <div class="board-image">
+                <img src="images/raneen/team/male-placeholder-1.jpg" alt="أ. محمد الغامدي" />
+              </div>
+              <div class="board-content">
+                <span class="board-role ceo-role-badge">الرئيس التنفيذي</span>
+                <h4 class="board-name">أ. محمد الغامدي</h4>
+                <p class="board-title">الرئيس التنفيذي والشريك المؤسس</p>
+                <div class="board-actions">
+                  <button class="btn-cv-sm" data-bs-toggle="modal" data-bs-target="#cvModal">
                     <i class="bi bi-file-earmark-person"></i>
-                    السيرة الذاتية
                   </button>
-                  <div class="ceo-social">
-                    <a href="mailto:ceo@raneen.sa"><i class="bi bi-envelope"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  <a href="mailto:ceo@raneen.sa" class="btn-contact"><i class="bi bi-envelope"></i></a>
+                  <a href="#" class="btn-contact"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Board Members Grid -->
-          <div class="board-grid">
             <div class="board-card animate-on-scroll" style="--delay: 0.1s">
               <div class="board-image">
                 <img src="images/raneen/team/male-placeholder-2.jpg" alt="د. عبدالله الشريف" />
@@ -723,61 +716,191 @@
 
     </main>
 
-    <!-- CV Modal -->
-    <div class="modal fade cv-modal" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
+    <!-- CV Modal - Fullscreen Professional -->
+    <div class="modal fade cv-modal-fullscreen" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cvModalLabel">السيرة الذاتية</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          <!-- Modal Header -->
+          <div class="cv-modal-header">
+            <div class="cv-header-brand">
+              <img src="images/raneen/raneen-logo.svg" alt="رنين" class="cv-header-logo">
+              <span class="cv-header-title">السيرة الذاتية</span>
+            </div>
+            <button type="button" class="cv-close-btn" data-bs-dismiss="modal" aria-label="إغلاق">
+              <i class="bi bi-x-lg"></i>
+            </button>
           </div>
-          <div class="modal-body">
-            <div class="cv-profile">
-              <div class="cv-photo">
-                <img src="images/raneen/team/male-placeholder-1.jpg" alt="صورة الموظف" id="modalPhoto" />
-              </div>
-              <div class="cv-info">
-                <h3 id="modalName">اسم الموظف</h3>
-                <p class="position" id="modalPosition">المسمى الوظيفي</p>
-                <span class="department" id="modalDepartment">الإدارة</span>
-              </div>
-            </div>
-
-            <div class="cv-section">
-              <h4><i class="bi bi-person-lines-fill"></i> نبذة شخصية</h4>
-              <p id="modalBio">خبير متخصص يتمتع بخبرة واسعة في مجاله. يسعى دائماً لتحقيق التميز والابتكار في العمل.</p>
-            </div>
-
-            <div class="cv-section">
-              <h4><i class="bi bi-briefcase"></i> الخبرات المهنية</h4>
-              <ul id="modalExperience">
-                <li>خبرة 10+ سنوات في المجال</li>
-                <li>قيادة فرق عمل متعددة</li>
-                <li>إدارة مشاريع ناجحة</li>
-              </ul>
-            </div>
-
-            <div class="cv-section">
-              <h4><i class="bi bi-mortarboard"></i> المؤهلات العلمية</h4>
-              <ul id="modalEducation">
-                <li>بكالوريوس في إدارة الأعمال</li>
-                <li>ماجستير في التخصص</li>
-              </ul>
-            </div>
-
-            <div class="cv-section">
-              <h4><i class="bi bi-tools"></i> المهارات</h4>
-              <div class="cv-skills-grid" id="modalSkills">
-                <span class="cv-skill-badge">القيادة</span>
-                <span class="cv-skill-badge">إدارة المشاريع</span>
-                <span class="cv-skill-badge">التخطيط الاستراتيجي</span>
-                <span class="cv-skill-badge">التواصل الفعال</span>
-              </div>
+          
+          <!-- Modal Body -->
+          <div class="cv-modal-body">
+            <div class="cv-layout">
+              <!-- Left Sidebar -->
+              <aside class="cv-sidebar">
+                <div class="cv-profile-card">
+                  <div class="cv-avatar-wrapper">
+                    <img src="images/raneen/team/male-placeholder-1.jpg" alt="صورة الموظف" id="modalPhoto" />
+                    <div class="cv-avatar-badge">
+                      <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                  </div>
+                  <h2 class="cv-name" id="modalName">أ. محمد الغامدي</h2>
+                  <p class="cv-position" id="modalPosition">الرئيس التنفيذي</p>
+                  <span class="cv-department" id="modalDepartment">مجلس الإدارة</span>
+                </div>
+                
+                <div class="cv-contact-card">
+                  <h4 class="cv-card-title"><i class="bi bi-telephone"></i> التواصل</h4>
+                  <div class="cv-contact-list">
+                    <a href="mailto:m.alghamdi@raneen.sa" class="cv-contact-item">
+                      <i class="bi bi-envelope"></i>
+                      <span>m.alghamdi@raneen.sa</span>
+                    </a>
+                    <a href="tel:+966500000000" class="cv-contact-item">
+                      <i class="bi bi-phone"></i>
+                      <span dir="ltr">+966 50 000 0000</span>
+                    </a>
+                    <a href="#" class="cv-contact-item">
+                      <i class="bi bi-linkedin"></i>
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="cv-stats-card">
+                  <div class="cv-stat">
+                    <span class="cv-stat-value">15+</span>
+                    <span class="cv-stat-label">سنة خبرة</span>
+                  </div>
+                  <div class="cv-stat">
+                    <span class="cv-stat-value">50+</span>
+                    <span class="cv-stat-label">مشروع ناجح</span>
+                  </div>
+                  <div class="cv-stat">
+                    <span class="cv-stat-value">100+</span>
+                    <span class="cv-stat-label">عميل سعيد</span>
+                  </div>
+                </div>
+              </aside>
+              
+              <!-- Main Content -->
+              <main class="cv-main">
+                <div class="cv-content-grid">
+                  <!-- Bio Section -->
+                  <section class="cv-section-card cv-bio-section">
+                    <div class="cv-section-header">
+                      <div class="cv-section-icon">
+                        <i class="bi bi-person-lines-fill"></i>
+                      </div>
+                      <h3>نبذة شخصية</h3>
+                    </div>
+                    <p class="cv-bio-text" id="modalBio">قائد استراتيجي يتمتع بخبرة تزيد عن 15 عاماً في مجال التطوير المؤسسي والاستشارات الإدارية. ساهم في بناء وتطوير العديد من المنظمات والشركات الرائدة في المملكة العربية السعودية.</p>
+                  </section>
+                  
+                  <!-- Experience Section -->
+                  <section class="cv-section-card">
+                    <div class="cv-section-header">
+                      <div class="cv-section-icon">
+                        <i class="bi bi-briefcase"></i>
+                      </div>
+                      <h3>الخبرات المهنية</h3>
+                    </div>
+                    <div class="cv-timeline" id="modalExperience">
+                      <div class="cv-timeline-item">
+                        <div class="cv-timeline-dot"></div>
+                        <div class="cv-timeline-content">
+                          <span class="cv-timeline-date">2020 - الآن</span>
+                          <h4>الرئيس التنفيذي</h4>
+                          <p>شركة رنين للتنمية</p>
+                        </div>
+                      </div>
+                      <div class="cv-timeline-item">
+                        <div class="cv-timeline-dot"></div>
+                        <div class="cv-timeline-content">
+                          <span class="cv-timeline-date">2015 - 2020</span>
+                          <h4>مدير التطوير المؤسسي</h4>
+                          <p>شركة استشارية كبرى</p>
+                        </div>
+                      </div>
+                      <div class="cv-timeline-item">
+                        <div class="cv-timeline-dot"></div>
+                        <div class="cv-timeline-content">
+                          <span class="cv-timeline-date">2010 - 2015</span>
+                          <h4>مستشار أعمال</h4>
+                          <p>القطاع الخاص</p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  
+                  <!-- Education Section -->
+                  <section class="cv-section-card">
+                    <div class="cv-section-header">
+                      <div class="cv-section-icon">
+                        <i class="bi bi-mortarboard"></i>
+                      </div>
+                      <h3>المؤهلات العلمية</h3>
+                    </div>
+                    <div class="cv-education-grid" id="modalEducation">
+                      <div class="cv-education-item">
+                        <div class="cv-edu-icon">
+                          <i class="bi bi-award"></i>
+                        </div>
+                        <div class="cv-edu-info">
+                          <h4>ماجستير إدارة الأعمال</h4>
+                          <p>جامعة الملك سعود - 2012</p>
+                        </div>
+                      </div>
+                      <div class="cv-education-item">
+                        <div class="cv-edu-icon">
+                          <i class="bi bi-mortarboard"></i>
+                        </div>
+                        <div class="cv-edu-info">
+                          <h4>بكالوريوس إدارة الأعمال</h4>
+                          <p>جامعة الملك فهد - 2008</p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  
+                  <!-- Skills Section -->
+                  <section class="cv-section-card cv-skills-section">
+                    <div class="cv-section-header">
+                      <div class="cv-section-icon">
+                        <i class="bi bi-tools"></i>
+                      </div>
+                      <h3>المهارات</h3>
+                    </div>
+                    <div class="cv-skills-list" id="modalSkills">
+                      <div class="cv-skill-item">
+                        <span class="cv-skill-name">القيادة الاستراتيجية</span>
+                        <div class="cv-skill-bar"><div class="cv-skill-progress" style="width: 95%"></div></div>
+                      </div>
+                      <div class="cv-skill-item">
+                        <span class="cv-skill-name">إدارة المشاريع</span>
+                        <div class="cv-skill-bar"><div class="cv-skill-progress" style="width: 90%"></div></div>
+                      </div>
+                      <div class="cv-skill-item">
+                        <span class="cv-skill-name">التخطيط الاستراتيجي</span>
+                        <div class="cv-skill-bar"><div class="cv-skill-progress" style="width: 92%"></div></div>
+                      </div>
+                      <div class="cv-skill-item">
+                        <span class="cv-skill-name">التواصل الفعال</span>
+                        <div class="cv-skill-bar"><div class="cv-skill-progress" style="width: 88%"></div></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </main>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
-            <a href="mailto:info@raneen.sa" class="btn btn-primary">
+          
+          <!-- Modal Footer -->
+          <div class="cv-modal-footer">
+            <button type="button" class="cv-btn cv-btn-secondary" data-bs-dismiss="modal">
+              <i class="bi bi-x-lg"></i>
+              إغلاق
+            </button>
+            <a href="mailto:info@raneen.sa" class="cv-btn cv-btn-primary">
               <i class="bi bi-envelope"></i>
               تواصل معنا
             </a>
