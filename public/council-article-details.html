@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل المقالة - المجلس التخصصي للجمعيات الشبابية</title>
+  <meta name="description" content="تفاصيل المقالة - المجلس التخصصي للجمعيات الشبابية">
+  
+  <!-- Bootstrap 5 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/council-article-details.css">
+</head>
+<body>
+
+  <!-- ========================================
+       Navigation Bar
+       ======================================== -->
+  <nav class="article-navbar">
+    <div class="navbar-container">
+      <a href="council-articles.html" class="back-link">
+        <i class="fas fa-arrow-right"></i>
+        <span>العودة للمركز الإعلامي</span>
+      </a>
+      <div class="navbar-brand">
+        <img src="images/council-logo.svg" alt="شعار المجلس" class="navbar-logo">
+      </div>
+      <div class="navbar-actions">
+        <button class="action-btn" onclick="window.print()">
+          <i class="fas fa-print"></i>
+        </button>
+        <button class="action-btn share-toggle" onclick="toggleShareMenu()">
+          <i class="fas fa-share-alt"></i>
+        </button>
+        <div class="share-dropdown" id="shareDropdown">
+          <a href="#" class="share-item twitter" onclick="shareArticle('twitter')">
+            <i class="fab fa-twitter"></i>
+            <span>تويتر</span>
+          </a>
+          <a href="#" class="share-item facebook" onclick="shareArticle('facebook')">
+            <i class="fab fa-facebook-f"></i>
+            <span>فيسبوك</span>
+          </a>
+          <a href="#" class="share-item linkedin" onclick="shareArticle('linkedin')">
+            <i class="fab fa-linkedin-in"></i>
+            <span>لينكدإن</span>
+          </a>
+          <a href="#" class="share-item whatsapp" onclick="shareArticle('whatsapp')">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب</span>
+          </a>
+          <button class="share-item copy" onclick="copyLink()">
+            <i class="fas fa-link"></i>
+            <span>نسخ الرابط</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       Hero Header
+       ======================================== -->
+  <header class="article-hero">
+    <div class="hero-bg">
+      <img src="images/council-hero-image.png" alt="صورة المقالة" id="articleHeroImage">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="article-meta-top">
+        <span class="article-category" id="articleCategory">
+          <i class="fas fa-folder-open"></i>
+          أخبار المجلس
+        </span>
+        <span class="article-date" id="articleDate">
+          <i class="fas fa-calendar-alt"></i>
+          15 يناير 2024
+        </span>
+      </div>
+      <h1 class="article-title" id="articleTitle">
+        المجلس يطلق مبادرة جديدة لتمكين الشباب في المناطق النائية
+      </h1>
+      <div class="article-meta-bottom">
+        <div class="meta-item">
+          <div class="meta-icon">
+            <i class="fas fa-user-edit"></i>
+          </div>
+          <div class="meta-info">
+            <span class="meta-label">الكاتب</span>
+            <span class="meta-value" id="articleAuthor">فريق التحرير</span>
+          </div>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="meta-info">
+            <span class="meta-label">وقت القراءة</span>
+            <span class="meta-value" id="articleReadTime">5 دقائق</span>
+          </div>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <div class="meta-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="meta-info">
+            <span class="meta-label">المشاهدات</span>
+            <span class="meta-value" id="articleViews">1,234</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>اقرأ المقالة</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </header>
+
+  <!-- ========================================
+       Progress Bar
+       ======================================== -->
+  <div class="reading-progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- ========================================
+       Main Content
+       ======================================== -->
+  <main class="article-main">
+    <div class="article-container">
+      
+      <!-- Sidebar -->
+      <aside class="article-sidebar">
+        <div class="sidebar-sticky">
+          <!-- Table of Contents -->
+          <div class="sidebar-card toc-card">
+            <h3 class="sidebar-title">
+              <i class="fas fa-list-ul"></i>
+              محتويات المقالة
+            </h3>
+            <nav class="toc-nav" id="tocNav">
+              <!-- Will be generated dynamically -->
+            </nav>
+          </div>
+          
+          <!-- Share Card -->
+          <div class="sidebar-card share-card">
+            <h3 class="sidebar-title">
+              <i class="fas fa-share-alt"></i>
+              مشاركة المقالة
+            </h3>
+            <div class="sidebar-share-buttons">
+              <button class="sidebar-share-btn twitter" onclick="shareArticle('twitter')">
+                <i class="fab fa-twitter"></i>
+              </button>
+              <button class="sidebar-share-btn facebook" onclick="shareArticle('facebook')">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+              <button class="sidebar-share-btn linkedin" onclick="shareArticle('linkedin')">
+                <i class="fab fa-linkedin-in"></i>
+              </button>
+              <button class="sidebar-share-btn whatsapp" onclick="shareArticle('whatsapp')">
+                <i class="fab fa-whatsapp"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Article Body -->
+      <article class="article-body">
+        <div class="article-content" id="articleContent">
+          <!-- Lead paragraph -->
+          <p class="lead">
+            أعلن المجلس التخصصي للجمعيات الشبابية عن إطلاق مبادرة جديدة تستهدف تمكين الشباب في المناطق النائية، في خطوة تأتي ضمن جهود المجلس لتعزيز دور الشباب في التنمية المستدامة وتحقيق أهداف رؤية المملكة 2030.
+          </p>
+
+          <h2 id="section-1">أهداف المبادرة</h2>
+          <p>
+            تهدف المبادرة إلى توفير فرص تدريبية وتأهيلية للشباب في المناطق البعيدة عن المراكز الحضرية الرئيسية، مع التركيز على تنمية المهارات الرقمية وريادة الأعمال والقيادة المجتمعية.
+          </p>
+          <p>
+            وتشمل الأهداف الرئيسية للمبادرة ما يلي:
+          </p>
+          <ul class="styled-list">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>تدريب 5000 شاب وشابة على المهارات الرقمية</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>إنشاء 50 مركزاً تدريبياً متنقلاً</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>دعم 200 مشروع ريادي شبابي</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>إقامة 100 ورشة عمل تخصصية</span>
+            </li>
+          </ul>
+
+          <!-- Quote Block -->
+          <blockquote class="article-quote">
+            <div class="quote-icon">
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <p>نؤمن بأن الشباب في كل مكان يستحقون فرصاً متساوية للتطور والنمو، وهذه المبادرة هي خطوة مهمة نحو تحقيق العدالة في الفرص التنموية.</p>
+            <cite>
+              <strong>رئيس المجلس التخصصي</strong>
+              <span>خلال حفل الإطلاق</span>
+            </cite>
+          </blockquote>
+
+          <h2 id="section-2">محاور العمل الرئيسية</h2>
+          <p>
+            تتضمن المبادرة عدة محاور عمل رئيسية تشمل التدريب والتأهيل، والتمويل والدعم، والتوجيه والإرشاد، بالإضافة إلى بناء الشراكات مع القطاعين العام والخاص.
+          </p>
+
+          <!-- Info Cards Grid -->
+          <div class="info-cards-grid">
+            <div class="info-card">
+              <div class="info-card-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <h4>التدريب والتأهيل</h4>
+              <p>برامج تدريبية متخصصة في مختلف المجالات</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+              </div>
+              <h4>التمويل والدعم</h4>
+              <p>دعم مالي للمشاريع الشبابية الواعدة</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <i class="fas fa-compass"></i>
+              </div>
+              <h4>التوجيه والإرشاد</h4>
+              <p>برامج إرشادية من خبراء ومتخصصين</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h4>بناء الشراكات</h4>
+              <p>تعاون مع مؤسسات محلية ودولية</p>
+            </div>
+          </div>
+
+          <h2 id="section-3">الفئات المستهدفة</h2>
+          <p>
+            تستهدف المبادرة الشباب من الفئة العمرية 18-35 سنة المقيمين في المناطق النائية والقرى البعيدة عن المدن الرئيسية، مع إعطاء أولوية خاصة للفئات الأقل حظاً والباحثين عن عمل.
+          </p>
+
+          <!-- Image with Caption -->
+          <figure class="article-figure">
+            <img src="images/council-about-image.png" alt="فعالية المبادرة">
+            <figcaption>
+              <i class="fas fa-camera"></i>
+              صورة من حفل إطلاق المبادرة في مقر المجلس التخصصي
+            </figcaption>
+          </figure>
+
+          <h2 id="section-4">آلية التسجيل</h2>
+          <p>
+            يمكن للراغبين في الاستفادة من المبادرة التسجيل عبر البوابة الإلكترونية للمجلس، حيث سيتم فتح باب التسجيل اعتباراً من الأول من الشهر القادم ولمدة شهرين.
+          </p>
+          
+          <!-- CTA Box -->
+          <div class="cta-box">
+            <div class="cta-content">
+              <h3>سجّل الآن في المبادرة</h3>
+              <p>انضم إلى آلاف الشباب المستفيدين من برامج المجلس التخصصي</p>
+            </div>
+            <a href="#" class="cta-button">
+              <span>التسجيل في المبادرة</span>
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+
+          <h2 id="section-5">الشركاء والداعمون</h2>
+          <p>
+            تحظى المبادرة بدعم من عدة جهات حكومية وخاصة، من أبرزها وزارة الموارد البشرية والتنمية الاجتماعية، وهيئة المنشآت الصغيرة والمتوسطة، بالإضافة إلى عدد من المؤسسات الداعمة للقطاع الثالث.
+          </p>
+
+          <!-- Tags -->
+          <div class="article-tags">
+            <span class="tags-label">
+              <i class="fas fa-tags"></i>
+              الوسوم:
+            </span>
+            <a href="#" class="tag">تمكين الشباب</a>
+            <a href="#" class="tag">رؤية 2030</a>
+            <a href="#" class="tag">المناطق النائية</a>
+            <a href="#" class="tag">ريادة الأعمال</a>
+            <a href="#" class="tag">التدريب</a>
+          </div>
+        </div>
+
+        <!-- Author Box -->
+        <div class="author-box">
+          <div class="author-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="author-info">
+            <span class="author-label">كتب بواسطة</span>
+            <h4 class="author-name" id="authorName">فريق التحرير</h4>
+            <p class="author-bio">فريق التحرير في المجلس التخصصي للجمعيات الشبابية مسؤول عن نشر الأخبار والتقارير والمقالات المتعلقة بأنشطة المجلس وبرامجه.</p>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="article-navigation">
+          <a href="#" class="nav-article prev">
+            <span class="nav-label">
+              <i class="fas fa-arrow-right"></i>
+              المقالة السابقة
+            </span>
+            <span class="nav-title">توقيع اتفاقية تعاون مع وزارة الموارد البشرية</span>
+          </a>
+          <a href="#" class="nav-article next">
+            <span class="nav-label">
+              المقالة التالية
+              <i class="fas fa-arrow-left"></i>
+            </span>
+            <span class="nav-title">ورشة عمل حول تطوير الجمعيات الأهلية</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ========================================
+       Related Articles
+       ======================================== -->
+  <section class="related-articles">
+    <div class="related-container">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-icon">
+            <i class="fas fa-newspaper"></i>
+          </span>
+          مقالات ذات صلة
+        </h2>
+        <a href="council-articles.html" class="view-all-link">
+          عرض جميع المقالات
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+      <div class="related-grid">
+        <article class="related-card">
+          <div class="related-image">
+            <img src="images/council-about-image.png" alt="مقالة">
+            <div class="related-overlay"></div>
+          </div>
+          <div class="related-content">
+            <span class="related-date">
+              <i class="fas fa-calendar-alt"></i>
+              02 يناير 2024
+            </span>
+            <h3 class="related-title">توقيع اتفاقية تعاون مع وزارة الموارد البشرية</h3>
+            <a href="#" class="related-link">
+              اقرأ المزيد
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </article>
+        <article class="related-card">
+          <div class="related-image">
+            <img src="images/leadership-vision.png" alt="مقالة">
+            <div class="related-overlay"></div>
+          </div>
+          <div class="related-content">
+            <span class="related-date">
+              <i class="fas fa-calendar-alt"></i>
+              25 ديسمبر 2023
+            </span>
+            <h3 class="related-title">ورشة عمل حول تطوير الجمعيات الأهلية</h3>
+            <a href="#" class="related-link">
+              اقرأ المزيد
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </article>
+        <article class="related-card">
+          <div class="related-image">
+            <img src="images/council-hero-image.png" alt="مقالة">
+            <div class="related-overlay"></div>
+          </div>
+          <div class="related-content">
+            <span class="related-date">
+              <i class="fas fa-calendar-alt"></i>
+              18 ديسمبر 2023
+            </span>
+            <h3 class="related-title">المجلس يستضيف المؤتمر السنوي للجمعيات</h3>
+            <a href="#" class="related-link">
+              اقرأ المزيد
+              <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       Footer
+       ======================================== -->
+  <footer class="article-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <img src="images/council-logo.svg" alt="شعار المجلس" class="footer-logo">
+        <p class="footer-text">المجلس التخصصي للجمعيات الشبابية - جميع الحقوق محفوظة © 2024</p>
+      </div>
+      <div class="footer-links">
+        <a href="council-articles.html">المركز الإعلامي</a>
+        <a href="council-about.html">عن المجلس</a>
+        <a href="home.html">الرئيسية</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================
+       Floating Action Buttons
+       ======================================== -->
+  <div class="floating-actions">
+    <button class="fab-btn scroll-top" onclick="scrollToTop()" id="scrollTopBtn">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- ========================================
+       JavaScript
+       ======================================== -->
+  <script>
+    // Sample article data (would come from URL params in real scenario)
+    const articleData = {
+      1: {
+        title: 'المجلس يطلق مبادرة جديدة لتمكين الشباب في المناطق النائية',
+        category: 'أخبار المجلس',
+        date: '15 يناير 2024',
+        author: 'فريق التحرير',
+        readTime: '5 دقائق',
+        views: '1,234',
+        image: 'images/council-hero-image.png',
+        content: document.getElementById('articleContent').innerHTML
+      },
+      5: {
+        title: 'توقيع اتفاقية تعاون مع وزارة الموارد البشرية',
+        category: 'أخبار المجلس',
+        date: '02 يناير 2024',
+        author: 'فريق التحرير',
+        readTime: '3 دقائق',
+        views: '890',
+        image: 'images/council-about-image.png',
+        content: `
+          <p class="lead">وقع المجلس التخصصي للجمعيات الشبابية اتفاقية تعاون استراتيجية مع وزارة الموارد البشرية والتنمية الاجتماعية، تهدف إلى دعم برامج التوظيف الشبابي وتأهيل الكوادر الوطنية.</p>
+          
+          <h2 id="section-1">بنود الاتفاقية</h2>
+          <p>تتضمن الاتفاقية عدة محاور رئيسية تشمل:</p>
+          <ul class="styled-list">
+            <li><i class="fas fa-check-circle"></i><span>تبادل الخبرات والمعلومات بين الجهتين</span></li>
+            <li><i class="fas fa-check-circle"></i><span>تنفيذ برامج تدريبية مشتركة</span></li>
+            <li><i class="fas fa-check-circle"></i><span>دعم مبادرات التوظيف الشبابي</span></li>
+            <li><i class="fas fa-check-circle"></i><span>تطوير المهارات المهنية للشباب</span></li>
+          </ul>
+          
+          <h2 id="section-2">أهمية الشراكة</h2>
+          <p>تأتي هذه الاتفاقية في إطار جهود المجلس لتعزيز الشراكات الاستراتيجية مع الجهات الحكومية، بما يخدم أهداف تمكين الشباب السعودي وتأهيلهم لسوق العمل.</p>
+          
+          <blockquote class="article-quote">
+            <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+            <p>هذه الشراكة تمثل نموذجاً للتكامل بين القطاعات المختلفة في خدمة الشباب السعودي.</p>
+            <cite><strong>معالي وزير الموارد البشرية</strong></cite>
+          </blockquote>
+        `
+      }
+    };
+
+    // Get article ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id') || '1';
+
+    // Load article data
+    function loadArticle() {
+      const data = articleData[articleId];
+      if (data) {
+        document.getElementById('articleTitle').textContent = data.title;
+        document.getElementById('articleCategory').innerHTML = `<i class="fas fa-folder-open"></i> ${data.category}`;
+        document.getElementById('articleDate').innerHTML = `<i class="fas fa-calendar-alt"></i> ${data.date}`;
+        document.getElementById('articleAuthor').textContent = data.author;
+        document.getElementById('articleReadTime').textContent = data.readTime;
+        document.getElementById('articleViews').textContent = data.views;
+        document.getElementById('articleHeroImage').src = data.image;
+        document.getElementById('articleContent').innerHTML = data.content;
+        document.getElementById('authorName').textContent = data.author;
+        document.title = `${data.title} - المجلس التخصصي للجمعيات الشبابية`;
+        
+        // Generate TOC
+        generateTOC();
+      }
+    }
+
+    // Generate Table of Contents
+    function generateTOC() {
+      const content = document.getElementById('articleContent');
+      const headings = content.querySelectorAll('h2[id]');
+      const tocNav = document.getElementById('tocNav');
+      
+      tocNav.innerHTML = '';
+      headings.forEach((heading, index) => {
+        const link = document.createElement('a');
+        link.href = `#${heading.id}`;
+        link.className = 'toc-link';
+        link.innerHTML = `<span class="toc-number">${index + 1}</span><span class="toc-text">${heading.textContent}</span>`;
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        tocNav.appendChild(link);
+      });
+    }
+
+    // Reading Progress Bar
+    function updateProgressBar() {
+      const article = document.querySelector('.article-main');
+      const progressBar = document.getElementById('progressBar');
+      
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.scrollY;
+      
+      const progress = Math.min(Math.max((scrollTop - articleTop + windowHeight * 0.5) / articleHeight * 100, 0), 100);
+      progressBar.style.width = `${progress}%`;
+    }
+
+    // Scroll to Top
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toggle Share Menu
+    function toggleShareMenu() {
+      const dropdown = document.getElementById('shareDropdown');
+      dropdown.classList.toggle('active');
+    }
+
+    // Share Article
+    function shareArticle(platform) {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+      
+      let shareUrl;
+      switch (platform) {
+        case 'twitter':
+          shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+          break;
+        case 'facebook':
+          shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+          break;
+        case 'linkedin':
+          shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+          break;
+        case 'whatsapp':
+          shareUrl = `https://wa.me/?text=${title}%20${url}`;
+          break;
+      }
+      
+      if (shareUrl) {
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+      }
+    }
+
+    // Copy Link
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('تم نسخ الرابط بنجاح!');
+      });
+    }
+
+    // Show/Hide Scroll Top Button
+    function toggleScrollTopBtn() {
+      const btn = document.getElementById('scrollTopBtn');
+      if (window.scrollY > 500) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+
+    // Highlight Active TOC Link
+    function highlightTOCLink() {
+      const headings = document.querySelectorAll('.article-content h2[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+      
+      let currentHeading = '';
+      headings.forEach(heading => {
+        if (window.scrollY >= heading.offsetTop - 200) {
+          currentHeading = heading.id;
+        }
+      });
+      
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentHeading}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Event Listeners
+    window.addEventListener('scroll', () => {
+      updateProgressBar();
+      toggleScrollTopBtn();
+      highlightTOCLink();
+    });
+
+    // Close share dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.share-toggle') && !e.target.closest('.share-dropdown')) {
+        document.getElementById('shareDropdown').classList.remove('active');
+      }
+    });
+
+    // Initialize
+    loadArticle();
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
