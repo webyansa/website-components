@@ -456,12 +456,14 @@ body {
         font-size: 26px;
     }
 
-    /* Horizontal Scroll Container */
+    /* Horizontal Scroll Container - First Section */
     .cj-accordion {
+        display: flex;
         flex-direction: row;
-        height: 400px;
-        gap: 12px;
-        padding: 0 20px;
+        flex-wrap: nowrap;
+        height: 420px;
+        gap: 10px;
+        padding: 0 15px;
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
@@ -474,53 +476,98 @@ body {
     }
 
     .cj-item {
-        flex: 0 0 120px;
-        min-width: 120px;
+        position: relative;
+        flex: 0 0 90px;
+        min-width: 90px;
+        max-width: 90px;
         height: 100%;
-        scroll-snap-align: start;
-        border-radius: 60px;
+        scroll-snap-align: center;
+        border-radius: 50px;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .cj-item.active,
-    .cj-item:focus {
-        flex: 0 0 85vw;
-        min-width: 85vw;
-        border-radius: 30px;
+    .cj-item.active {
+        flex: 0 0 80vw;
+        min-width: 80vw;
+        max-width: 80vw;
+        border-radius: 25px;
+    }
+
+    .cj-item .cj-item-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(38, 51, 112, 0.9) 0%,
+            rgba(38, 51, 112, 0.4) 100%
+        );
+        transition: all 0.4s ease;
+    }
+
+    .cj-item.active .cj-item-overlay {
+        background: linear-gradient(
+            to top,
+            rgba(38, 51, 112, 0.95) 0%,
+            rgba(38, 51, 112, 0.3) 50%,
+            rgba(38, 51, 112, 0.1) 100%
+        );
     }
 
     .cj-item-number {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-        top: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .cj-item.active .cj-item-number {
+        top: 20px;
         right: 20px;
-    }
-
-    .cj-collapsed-title {
-        font-size: 14px;
-        bottom: 25px;
+        transform: translate(0, 0) scale(0.9);
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 
     .cj-item-content {
-        padding: 25px;
+        padding: 20px;
+        padding-top: 70px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease 0.1s;
+    }
+
+    .cj-item.active .cj-item-content {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .cj-item-category {
         font-size: 12px;
-        padding: 6px 15px;
+        padding: 6px 14px;
+        margin-bottom: 10px;
     }
 
     .cj-item-title {
-        font-size: 18px;
+        font-size: 17px;
         max-width: 100%;
+        line-height: 1.5;
+        margin-bottom: 12px;
     }
 
     .cj-item-text {
-        font-size: 14px;
+        font-size: 13px;
         max-width: 100%;
+        line-height: 1.7;
+    }
+
+    .cj-item .cj-item-bg {
+        transition: transform 0.5s ease;
+    }
+
+    .cj-item.active .cj-item-bg {
+        transform: scale(1.05);
     }
 
     /* Vertical Accordion for Mobile */
@@ -602,56 +649,100 @@ body {
 
 @media (max-width: 575px) {
     .cj-title {
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    .cj-section-title {
+        font-size: 22px;
     }
 
     .cj-accordion {
-        height: 350px;
-        gap: 10px;
-        padding: 0 15px;
+        height: 380px;
+        gap: 8px;
+        padding: 0 12px;
     }
 
     .cj-item {
-        flex: 0 0 100px;
-        min-width: 100px;
-        border-radius: 50px;
+        flex: 0 0 70px;
+        min-width: 70px;
+        max-width: 70px;
+        border-radius: 40px;
     }
 
     .cj-item.active {
-        flex: 0 0 80vw;
-        min-width: 80vw;
-        border-radius: 25px;
+        flex: 0 0 82vw;
+        min-width: 82vw;
+        max-width: 82vw;
+        border-radius: 22px;
+    }
+
+    .cj-item-number {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+
+    .cj-item.active .cj-item-number {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        top: 15px;
+        right: 15px;
     }
 
     .cj-item-content {
-        padding: 20px;
+        padding: 15px;
+        padding-top: 60px;
+    }
+
+    .cj-item-category {
+        font-size: 11px;
+        padding: 5px 12px;
     }
 
     .cj-item-title {
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 10px;
     }
 
-    .cj-collapsed-title {
+    .cj-item-text {
         font-size: 12px;
+        line-height: 1.6;
     }
 
     .cj-vertical-item {
-        height: 70px;
+        height: 65px;
+        border-radius: 18px;
     }
 
     .cj-vertical-item.active {
-        height: 320px;
-    }
-
-    .cj-vertical-item .cj-collapsed-title {
-        font-size: 14px;
-        right: 75px;
+        height: 300px;
+        border-radius: 22px;
     }
 
     .cj-vertical-item .cj-item-number {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         font-size: 14px;
+        right: 15px;
+    }
+
+    .cj-vertical-item.active .cj-item-number {
+        top: 15px;
+    }
+
+    .cj-vertical-item .cj-item-content {
+        padding: 15px;
+        padding-top: 65px;
+    }
+
+    .cj-vertical-item .cj-item-title {
+        font-size: 15px;
+    }
+
+    .cj-vertical-item .cj-item-text {
+        font-size: 12px;
     }
 }
 
