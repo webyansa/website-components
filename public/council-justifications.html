@@ -294,99 +294,111 @@
     </div>
     
     <script>
-        // First Section - Horizontal Accordion
-        const items = document.querySelectorAll('.cj-accordion .cj-item');
-        const dots = document.querySelectorAll('#scrollIndicator1 .cj-scroll-dot');
-        const accordion = document.querySelector('.cj-accordion');
-        
-        // Second Section - Vertical Accordion
-        const verticalItems = document.querySelectorAll('.cj-vertical-item');
-        
-        // Desktop hover functionality for first section
-        if (window.innerWidth > 991) {
-            items.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    items.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            // First Section - Horizontal Accordion
+            const items = document.querySelectorAll('.cj-accordion .cj-item');
+            const dots = document.querySelectorAll('#scrollIndicator1 .cj-scroll-dot');
+            const accordion = document.querySelector('.cj-accordion');
             
-            // Desktop hover for vertical section
-            verticalItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    verticalItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
+            // Second Section - Vertical Accordion
+            const verticalItems = document.querySelectorAll('.cj-vertical-item');
+            
+            const isMobile = () => window.innerWidth <= 991;
+            
+            // Function to handle item activation
+            function activateItem(itemsArray, clickedItem) {
+                const wasActive = clickedItem.classList.contains('active');
+                itemsArray.forEach(i => i.classList.remove('active'));
+                if (!wasActive) {
+                    clickedItem.classList.add('active');
+                    // Scroll into view on mobile
+                    if (isMobile()) {
+                        setTimeout(() => {
+                            clickedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 100);
+                    }
+                }
+            }
+            
+            // First Section - Click handlers
+            items.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    activateItem(items, this);
+                    const index = parseInt(this.dataset.index);
+                    updateDots(index);
                 });
-            });
-        }
-        
-        // Mobile click functionality for first section
-        items.forEach(item => {
-            item.addEventListener('click', function() {
-                const wasActive = this.classList.contains('active');
-                items.forEach(i => i.classList.remove('active'));
-                if (!wasActive) {
-                    this.classList.add('active');
-                    updateDots(parseInt(this.dataset.index));
-                }
-            });
-        });
-        
-        // Mobile click functionality for vertical section
-        verticalItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const wasActive = this.classList.contains('active');
-                verticalItems.forEach(i => i.classList.remove('active'));
-                if (!wasActive) {
-                    this.classList.add('active');
-                }
-            });
-        });
-        
-        // Scroll indicator dots click
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const index = parseInt(this.dataset.index);
-                const targetItem = items[index];
-                items.forEach(i => i.classList.remove('active'));
-                targetItem.classList.add('active');
-                targetItem.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-                updateDots(index);
-            });
-        });
-        
-        // Update dots on scroll
-        if (window.innerWidth <= 991) {
-            accordion.addEventListener('scroll', function() {
-                const scrollLeft = accordion.scrollLeft;
-                const itemWidth = accordion.querySelector('.cj-item').offsetWidth + 12;
-                const activeIndex = Math.round(scrollLeft / itemWidth);
-                updateDots(activeIndex);
-            });
-        }
-        
-        function updateDots(activeIndex) {
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === activeIndex);
-            });
-        }
-        
-        // Handle resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 991) {
-                items.forEach(item => {
+                
+                // Desktop hover
+                if (!isMobile()) {
                     item.addEventListener('mouseenter', function() {
                         items.forEach(i => i.classList.remove('active'));
                         this.classList.add('active');
                     });
+                }
+            });
+            
+            // Second Section - Click handlers (Works on both mobile and desktop)
+            verticalItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    activateItem(verticalItems, this);
                 });
                 
-                verticalItems.forEach(item => {
+                // Desktop hover
+                if (!isMobile()) {
                     item.addEventListener('mouseenter', function() {
                         verticalItems.forEach(i => i.classList.remove('active'));
                         this.classList.add('active');
                     });
+                }
+            });
+            
+            // Touch support for vertical items
+            verticalItems.forEach(item => {
+                item.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    activateItem(verticalItems, this);
+                }, { passive: false });
+            });
+            
+            // Scroll indicator dots click
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    const targetItem = items[index];
+                    items.forEach(i => i.classList.remove('active'));
+                    targetItem.classList.add('active');
+                    targetItem.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    updateDots(index);
                 });
+            });
+            
+            // Update dots on scroll
+            if (accordion) {
+                accordion.addEventListener('scroll', function() {
+                    if (isMobile()) {
+                        const scrollLeft = accordion.scrollLeft;
+                        const itemWidth = accordion.querySelector('.cj-item').offsetWidth + 10;
+                        const activeIndex = Math.round(scrollLeft / itemWidth);
+                        updateDots(activeIndex);
+                    }
+                });
+            }
+            
+            function updateDots(activeIndex) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === activeIndex);
+                });
+            }
+            
+            // Set first items as active on load
+            if (items.length > 0 && !document.querySelector('.cj-item.active')) {
+                items[0].classList.add('active');
+            }
+            if (verticalItems.length > 0 && !document.querySelector('.cj-vertical-item.active')) {
+                verticalItems[0].classList.add('active');
             }
         });
     </script>
