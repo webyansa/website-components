@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصفحة الرئيسية - هيرو سلايدر</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/hero-slider.css">
+</head>
+<body class="hero-slider-page">
+
+  <!-- Hero Slider Section -->
+  <section class="hs-hero" id="heroSlider">
+    
+    <!-- Navbar -->
+    <nav class="hs-navbar" id="hsNavbar">
+      <a href="#" class="hs-brand">
+        <img src="images/scfyn-logo.svg" alt="الشعار" class="hs-logo">
+      </a>
+      
+      <ul class="hs-nav-links">
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">من نحن</a></li>
+        <li><a href="#">المشاريع</a></li>
+        <li><a href="#">الخدمات</a></li>
+        <li><a href="#">المركز الإعلامي</a></li>
+        <li><a href="#">تواصل معنا</a></li>
+      </ul>
+      
+      <div class="hs-nav-actions">
+        <button class="hs-lang-btn">EN</button>
+        <button class="hs-search-btn"><i class="fas fa-search"></i></button>
+        <div class="hs-menu-toggle" id="hsMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Slides Container -->
+    <div class="hs-slides" id="hsSlides">
+      
+      <!-- Slide 1 - Video -->
+      <div class="hs-slide active" data-type="video">
+        <video class="hs-slide-video" autoplay muted loop playsinline>
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="hs-slide-overlay"></div>
+        <div class="hs-slide-content">
+          <p class="hs-subtitle">نرحب بكم في منصتنا الرقمية</p>
+          <h1 class="hs-title">نحو مستقبل مشرق</h1>
+          <h2 class="hs-title-secondary">"الابتكار"</h2>
+          <p class="hs-description">
+            نسعى لتقديم أفضل الحلول والخدمات التي تلبي احتياجات مجتمعنا، من خلال منظومة متكاملة من البرامج والمبادرات التي تهدف إلى تحقيق التنمية المستدامة والتطور الشامل في جميع المجالات.
+          </p>
+          <a href="#" class="hs-cta">
+            <span>المزيد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        <div class="hs-video-play" onclick="openVideoModal()">
+          <div class="hs-play-btn">
+            <i class="fas fa-play"></i>
+          </div>
+          <span class="hs-play-text">شاهد الفيديو</span>
+        </div>
+      </div>
+      
+      <!-- Slide 2 - Image -->
+      <div class="hs-slide" data-type="image">
+        <img src="images/council-hero-image.png" alt="صورة الخلفية" class="hs-slide-bg">
+        <div class="hs-slide-overlay"></div>
+        <div class="hs-slide-content">
+          <p class="hs-subtitle">إنجازاتنا المتميزة</p>
+          <h1 class="hs-title">نبني للمستقبل</h1>
+          <h2 class="hs-title-secondary">"التميز"</h2>
+          <p class="hs-description">
+            من خلال رؤية واضحة واستراتيجية محكمة، نعمل على تحقيق أهدافنا الطموحة وبناء مستقبل أفضل لأجيالنا القادمة، مع الحفاظ على قيمنا الأصيلة وهويتنا الثقافية.
+          </p>
+          <a href="#" class="hs-cta">
+            <span>اكتشف المزيد</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Slide 3 - Image -->
+      <div class="hs-slide" data-type="image">
+        <img src="images/events-header-bg.png" alt="صورة الخلفية" class="hs-slide-bg">
+        <div class="hs-slide-overlay"></div>
+        <div class="hs-slide-content">
+          <p class="hs-subtitle">فعالياتنا ومبادراتنا</p>
+          <h1 class="hs-title">شراكات فاعلة</h1>
+          <h2 class="hs-title-secondary">"التعاون"</h2>
+          <p class="hs-description">
+            نؤمن بأهمية الشراكات الاستراتيجية في تحقيق الأهداف المشتركة، ونعمل مع شركائنا على تطوير برامج ومبادرات نوعية تسهم في خدمة المجتمع وتحقيق التنمية الشاملة.
+          </p>
+          <a href="#" class="hs-cta">
+            <span>تعرف على شركائنا</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Slide 4 - Video -->
+      <div class="hs-slide" data-type="video">
+        <video class="hs-slide-video" autoplay muted loop playsinline>
+          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+        </video>
+        <div class="hs-slide-overlay"></div>
+        <div class="hs-slide-content">
+          <p class="hs-subtitle">رحلتنا نحو التطور</p>
+          <h1 class="hs-title">الاستدامة والتنمية</h1>
+          <h2 class="hs-title-secondary">"الريادة"</h2>
+          <p class="hs-description">
+            نلتزم بتحقيق أعلى معايير الاستدامة في جميع مشاريعنا ومبادراتنا، مع التركيز على الابتكار والتطوير المستمر لتلبية تطلعات المستفيدين وتحقيق أثر إيجابي دائم.
+          </p>
+          <a href="#" class="hs-cta">
+            <span>شاهد إنجازاتنا</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+        <div class="hs-video-play" onclick="openVideoModal()">
+          <div class="hs-play-btn">
+            <i class="fas fa-play"></i>
+          </div>
+          <span class="hs-play-text">شاهد الفيديو</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Decorative Floating Shapes -->
+    <div class="hs-floating-shapes">
+      <div class="hs-shape hs-shape-1"></div>
+      <div class="hs-shape hs-shape-2"></div>
+      <div class="hs-shape hs-shape-3"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="hs-particles" id="hsParticles"></div>
+
+    <!-- Dots Navigation (Side) -->
+    <div class="hs-dots" id="hsDots">
+      <div class="hs-dot active" data-slide="0"></div>
+      <div class="hs-dot" data-slide="1"></div>
+      <div class="hs-dot" data-slide="2"></div>
+      <div class="hs-dot" data-slide="3"></div>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="hs-counter">
+      <span class="hs-counter-current" id="hsCounterCurrent">01</span>
+      <span class="hs-counter-separator"></span>
+      <span class="hs-counter-total" id="hsCounterTotal">04</span>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="hs-nav-arrows">
+      <button class="hs-nav-arrow hs-nav-next" id="hsNext">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="hs-nav-arrow hs-nav-prev" id="hsPrev">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="hs-progress">
+      <div class="hs-progress-bar" id="hsProgressBar"></div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="hs-scroll-indicator">
+      <div class="hs-scroll-mouse"></div>
+      <span class="hs-scroll-text">اسحب للأسفل</span>
+    </div>
+
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // Hero Slider Class
+    class HeroSlider {
+      constructor() {
+        this.slides = document.querySelectorAll('.hs-slide');
+        this.dots = document.querySelectorAll('.hs-dot');
+        this.prevBtn = document.getElementById('hsPrev');
+        this.nextBtn = document.getElementById('hsNext');
+        this.progressBar = document.getElementById('hsProgressBar');
+        this.counterCurrent = document.getElementById('hsCounterCurrent');
+        this.counterTotal = document.getElementById('hsCounterTotal');
+        
+        this.currentSlide = 0;
+        this.totalSlides = this.slides.length;
+        this.autoPlayInterval = null;
+        this.autoPlayDelay = 8000; // 8 seconds
+        this.progressInterval = null;
+        this.progressValue = 0;
+        
+        this.init();
+      }
+      
+      init() {
+        // Set total count
+        this.counterTotal.textContent = String(this.totalSlides).padStart(2, '0');
+        
+        // Event Listeners
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        // Dots Navigation
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') this.nextSlide();
+          if (e.key === 'ArrowRight') this.prevSlide();
+        });
+        
+        // Touch/Swipe Support
+        this.initTouchSupport();
+        
+        // Create Particles
+        this.createParticles();
+        
+        // Navbar Scroll Effect
+        this.initNavbarScroll();
+        
+        // Start AutoPlay
+        this.startAutoPlay();
+        
+        // Pause on hover
+        const hero = document.getElementById('heroSlider');
+        hero.addEventListener('mouseenter', () => this.pauseAutoPlay());
+        hero.addEventListener('mouseleave', () => this.startAutoPlay());
+      }
+      
+      goToSlide(index) {
+        // Remove active from current
+        this.slides[this.currentSlide].classList.remove('active');
+        this.dots[this.currentSlide].classList.remove('active');
+        
+        // Pause video on current slide
+        const currentVideo = this.slides[this.currentSlide].querySelector('video');
+        if (currentVideo) currentVideo.pause();
+        
+        // Update index
+        this.currentSlide = index;
+        if (this.currentSlide >= this.totalSlides) this.currentSlide = 0;
+        if (this.currentSlide < 0) this.currentSlide = this.totalSlides - 1;
+        
+        // Add active to new slide
+        this.slides[this.currentSlide].classList.add('active');
+        this.dots[this.currentSlide].classList.add('active');
+        
+        // Play video on new slide
+        const newVideo = this.slides[this.currentSlide].querySelector('video');
+        if (newVideo) newVideo.play();
+        
+        // Update counter
+        this.counterCurrent.textContent = String(this.currentSlide + 1).padStart(2, '0');
+        
+        // Reset progress
+        this.resetProgress();
+      }
+      
+      nextSlide() {
+        this.goToSlide(this.currentSlide + 1);
+      }
+      
+      prevSlide() {
+        this.goToSlide(this.currentSlide - 1);
+      }
+      
+      startAutoPlay() {
+        this.pauseAutoPlay();
+        this.startProgress();
+        this.autoPlayInterval = setInterval(() => {
+          this.nextSlide();
+        }, this.autoPlayDelay);
+      }
+      
+      pauseAutoPlay() {
+        if (this.autoPlayInterval) {
+          clearInterval(this.autoPlayInterval);
+          this.autoPlayInterval = null;
+        }
+        this.stopProgress();
+      }
+      
+      startProgress() {
+        this.progressValue = 0;
+        this.progressBar.style.width = '0%';
+        
+        const step = 100 / (this.autoPlayDelay / 50);
+        this.progressInterval = setInterval(() => {
+          this.progressValue += step;
+          this.progressBar.style.width = `${Math.min(this.progressValue, 100)}%`;
+        }, 50);
+      }
+      
+      stopProgress() {
+        if (this.progressInterval) {
+          clearInterval(this.progressInterval);
+          this.progressInterval = null;
+        }
+      }
+      
+      resetProgress() {
+        this.stopProgress();
+        this.progressValue = 0;
+        this.progressBar.style.width = '0%';
+        if (this.autoPlayInterval) {
+          this.startProgress();
+        }
+      }
+      
+      initTouchSupport() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const hero = document.getElementById('heroSlider');
+        
+        hero.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        hero.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+      }
+      
+      handleSwipe(startX, endX) {
+        const threshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) {
+            // Swipe Left (RTL = Next)
+            this.nextSlide();
+          } else {
+            // Swipe Right (RTL = Prev)
+            this.prevSlide();
+          }
+        }
+      }
+      
+      createParticles() {
+        const container = document.getElementById('hsParticles');
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'hs-particle';
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.animationDelay = `${Math.random() * 15}s`;
+          particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+          particle.style.width = `${2 + Math.random() * 4}px`;
+          particle.style.height = particle.style.width;
+          container.appendChild(particle);
+        }
+      }
+      
+      initNavbarScroll() {
+        const navbar = document.getElementById('hsNavbar');
+        
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+        });
+      }
+    }
+    
+    // Initialize Slider
+    document.addEventListener('DOMContentLoaded', () => {
+      new HeroSlider();
+    });
+    
+    // Video Modal Function
+    function openVideoModal() {
+      alert('يمكنك إضافة modal للفيديو هنا');
+    }
+  </script>
+
+</body>
+</html>
