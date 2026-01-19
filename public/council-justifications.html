@@ -22,6 +22,7 @@
         <!-- Decorative Elements -->
         <div class="cj-decoration cj-decoration-1"></div>
         <div class="cj-decoration cj-decoration-2"></div>
+        <div class="cj-decoration cj-decoration-3"></div>
         
         <!-- Navigation -->
         <nav class="cj-nav">
@@ -34,6 +35,7 @@
         <!-- Header Section -->
         <header class="cj-header">
             <div class="cj-header-content">
+                <img src="images/scfyn-logo.svg" alt="شعار المجلس" class="cj-logo">
                 <span class="cj-subtitle">
                     <i class="ri-lightbulb-flash-line"></i>
                     المجلس التخصصي للجمعيات الشبابية
@@ -45,9 +47,14 @@
             </div>
         </header>
         
-        <!-- Justifications Container -->
+        <!-- First Section: Horizontal Accordion (Horizontal on mobile) -->
         <section class="cj-container">
             <div class="cj-wrapper">
+                <div class="cj-section-header">
+                    <h2 class="cj-section-title">الأسباب الاستراتيجية</h2>
+                    <p class="cj-section-subtitle">الدوافع الرئيسية لتأسيس المجلس</p>
+                </div>
+                
                 <div class="cj-accordion">
                     <!-- Item 1 -->
                     <div class="cj-item active" data-index="0">
@@ -165,13 +172,117 @@
                 </div>
                 
                 <!-- Scroll Indicator for Mobile -->
-                <div class="cj-scroll-indicator">
+                <div class="cj-scroll-indicator" id="scrollIndicator1">
                     <span class="cj-scroll-dot active" data-index="0"></span>
                     <span class="cj-scroll-dot" data-index="1"></span>
                     <span class="cj-scroll-dot" data-index="2"></span>
                     <span class="cj-scroll-dot" data-index="3"></span>
                     <span class="cj-scroll-dot" data-index="4"></span>
                     <span class="cj-scroll-dot" data-index="5"></span>
+                </div>
+            </div>
+        </section>
+        
+        <div class="cj-divider"></div>
+        
+        <!-- Second Section: Vertical Accordion on Mobile -->
+        <section class="cj-vertical-section">
+            <div class="cj-vertical-wrapper">
+                <div class="cj-section-header">
+                    <h2 class="cj-section-title">التحديات والفرص</h2>
+                    <p class="cj-section-subtitle">المجالات التي يعمل المجلس على تطويرها</p>
+                </div>
+                
+                <div class="cj-vertical-accordion">
+                    <!-- Item 1 -->
+                    <div class="cj-vertical-item active" data-index="0">
+                        <div class="cj-item-bg" style="background-image: url('images/council/justification-04.jpg');"></div>
+                        <div class="cj-item-overlay"></div>
+                        <span class="cj-item-number">01</span>
+                        <span class="cj-collapsed-title">بناء القدرات</span>
+                        <div class="cj-item-content">
+                            <span class="cj-item-category">
+                                <i class="ri-user-star-line"></i>
+                                تطوير الكوادر
+                            </span>
+                            <h3 class="cj-item-title">بناء قدرات العاملين في الجمعيات الشبابية</h3>
+                            <p class="cj-item-text">
+                                تطوير برامج تدريبية متخصصة لرفع كفاءة العاملين في القطاع الشبابي وتزويدهم بالمهارات اللازمة لتحقيق الأهداف المرجوة.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="cj-vertical-item" data-index="1">
+                        <div class="cj-item-bg" style="background-image: url('images/council/justification-05.jpg');"></div>
+                        <div class="cj-item-overlay"></div>
+                        <span class="cj-item-number">02</span>
+                        <span class="cj-collapsed-title">الاستدامة المالية</span>
+                        <div class="cj-item-content">
+                            <span class="cj-item-category">
+                                <i class="ri-money-dollar-circle-line"></i>
+                                الموارد المالية
+                            </span>
+                            <h3 class="cj-item-title">تعزيز الاستدامة المالية للجمعيات الشبابية</h3>
+                            <p class="cj-item-text">
+                                دعم الجمعيات الشبابية في تنويع مصادر دخلها وتطوير نماذج أعمال مستدامة تضمن استمرارية عملها وتأثيرها.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="cj-vertical-item" data-index="2">
+                        <div class="cj-item-bg" style="background-image: url('images/council/justification-03.jpg');"></div>
+                        <div class="cj-item-overlay"></div>
+                        <span class="cj-item-number">03</span>
+                        <span class="cj-collapsed-title">الحوكمة المؤسسية</span>
+                        <div class="cj-item-content">
+                            <span class="cj-item-category">
+                                <i class="ri-shield-check-line"></i>
+                                الحوكمة
+                            </span>
+                            <h3 class="cj-item-title">تطوير معايير الحوكمة والشفافية</h3>
+                            <p class="cj-item-text">
+                                وضع معايير واضحة للحوكمة المؤسسية تضمن الشفافية والمساءلة في عمل الجمعيات الشبابية وتعزز ثقة المجتمع بها.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="cj-vertical-item" data-index="3">
+                        <div class="cj-item-bg" style="background-image: url('images/council/justification-02.jpg');"></div>
+                        <div class="cj-item-overlay"></div>
+                        <span class="cj-item-number">04</span>
+                        <span class="cj-collapsed-title">التحول الرقمي</span>
+                        <div class="cj-item-content">
+                            <span class="cj-item-category">
+                                <i class="ri-smartphone-line"></i>
+                                الرقمنة
+                            </span>
+                            <h3 class="cj-item-title">تسريع التحول الرقمي في القطاع الشبابي</h3>
+                            <p class="cj-item-text">
+                                دعم الجمعيات الشبابية في تبني التقنيات الحديثة وتطوير خدماتها الرقمية للوصول لأكبر شريحة من الشباب.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 5 -->
+                    <div class="cj-vertical-item" data-index="4">
+                        <div class="cj-item-bg" style="background-image: url('images/council/justification-06.jpg');"></div>
+                        <div class="cj-item-overlay"></div>
+                        <span class="cj-item-number">05</span>
+                        <span class="cj-collapsed-title">الشراكات الاستراتيجية</span>
+                        <div class="cj-item-content">
+                            <span class="cj-item-category">
+                                <i class="ri-handshake-line"></i>
+                                الشراكات
+                            </span>
+                            <h3 class="cj-item-title">بناء شراكات استراتيجية فاعلة</h3>
+                            <p class="cj-item-text">
+                                تطوير شراكات مع القطاعين الحكومي والخاص ومؤسسات المجتمع المدني لتعزيز أثر الجمعيات الشبابية وتوسيع نطاق خدماتها.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -183,12 +294,15 @@
     </div>
     
     <script>
-        // Desktop Hover Accordion
-        const items = document.querySelectorAll('.cj-item');
-        const dots = document.querySelectorAll('.cj-scroll-dot');
+        // First Section - Horizontal Accordion
+        const items = document.querySelectorAll('.cj-accordion .cj-item');
+        const dots = document.querySelectorAll('#scrollIndicator1 .cj-scroll-dot');
         const accordion = document.querySelector('.cj-accordion');
         
-        // Desktop hover functionality
+        // Second Section - Vertical Accordion
+        const verticalItems = document.querySelectorAll('.cj-vertical-item');
+        
+        // Desktop hover functionality for first section
         if (window.innerWidth > 991) {
             items.forEach(item => {
                 item.addEventListener('mouseenter', function() {
@@ -196,9 +310,17 @@
                     this.classList.add('active');
                 });
             });
+            
+            // Desktop hover for vertical section
+            verticalItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    verticalItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
         }
         
-        // Mobile touch/click functionality
+        // Mobile click functionality for first section
         items.forEach(item => {
             item.addEventListener('click', function() {
                 const wasActive = this.classList.contains('active');
@@ -206,6 +328,17 @@
                 if (!wasActive) {
                     this.classList.add('active');
                     updateDots(parseInt(this.dataset.index));
+                }
+            });
+        });
+        
+        // Mobile click functionality for vertical section
+        verticalItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const wasActive = this.classList.contains('active');
+                verticalItems.forEach(i => i.classList.remove('active'));
+                if (!wasActive) {
+                    this.classList.add('active');
                 }
             });
         });
@@ -244,6 +377,13 @@
                 items.forEach(item => {
                     item.addEventListener('mouseenter', function() {
                         items.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                verticalItems.forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        verticalItems.forEach(i => i.classList.remove('active'));
                         this.classList.add('active');
                     });
                 });
