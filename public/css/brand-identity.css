@@ -1,5 +1,5 @@
 /* =============================================
-   Brand Identity Page - Compact Edition
+   Brand Identity Page - Refined Edition
    Font: Tajawal (تجوال)
    ============================================= */
 
@@ -11,6 +11,8 @@
     --bi-white: #ffffff;
     --bi-gray: #64748b;
     --bi-dark: #1e293b;
+    --bi-radius: 20px;
+    --bi-shadow: 0 10px 40px rgba(38, 51, 112, 0.08);
 }
 
 * {
@@ -95,7 +97,7 @@ body {
 /* Header */
 .bi-header {
     position: relative;
-    padding: 60px 40px;
+    padding: 80px 40px;
     text-align: center;
     overflow: hidden;
 }
@@ -125,60 +127,97 @@ body {
 .bi-header-content {
     position: relative;
     z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.bi-header-logo {
+    margin-bottom: 30px;
+}
+
+.bi-header-logo img {
+    height: 120px;
+    filter: brightness(0) invert(1);
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .bi-title {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 900;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .bi-subtitle {
     font-size: 18px;
     color: rgba(255, 255, 255, 0.85);
     font-weight: 500;
+    margin-bottom: 35px;
+}
+
+.bi-header-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bi-header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.bi-btn-primary {
+    background: white;
+    color: var(--bi-navy);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.bi-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.bi-btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.bi-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
 }
 
 /* =============================================
    Content Section
    ============================================= */
 .bi-content {
-    padding: 50px 40px;
+    padding: 60px 40px;
 }
 
 .bi-container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-/* Blocks */
-.bi-block {
-    background: var(--bi-white);
-    border-radius: 24px;
-    padding: 35px;
-    box-shadow: 0 10px 40px rgba(38, 51, 112, 0.08);
-    transition: all 0.3s ease;
-}
-
-.bi-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(38, 51, 112, 0.12);
-}
-
-.bi-block-header {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--bi-light);
+    flex-direction: column;
+    gap: 40px;
 }
 
-.bi-block-icon {
+/* Icon Box */
+.bi-icon-box {
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, var(--bi-navy), var(--bi-cyan));
@@ -188,266 +227,361 @@ body {
     justify-content: center;
     color: white;
     font-size: 20px;
+    flex-shrink: 0;
 }
 
-.bi-block-header h2 {
-    font-size: 22px;
+/* Section Full Width */
+.bi-section-full {
+    background: var(--bi-white);
+    border-radius: var(--bi-radius);
+    padding: 40px;
+    box-shadow: var(--bi-shadow);
+}
+
+.bi-section-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.bi-section-header h2 {
+    font-size: 24px;
     font-weight: 800;
     color: var(--bi-navy);
+    margin-bottom: 5px;
 }
 
-/* Logo Block */
-.bi-logo-block {
-    grid-column: span 2;
+.bi-section-header p {
+    font-size: 14px;
+    color: var(--bi-gray);
 }
 
-.bi-logo-display {
+/* Logo Grid */
+.bi-logo-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
-    margin-bottom: 25px;
 }
 
-.bi-logo-item {
-    border-radius: 20px;
+.bi-logo-card {
+    border-radius: 16px;
     padding: 50px 30px;
     text-align: center;
+    position: relative;
     transition: all 0.3s ease;
 }
 
-.bi-logo-item:hover {
-    transform: scale(1.02);
+.bi-logo-card:hover {
+    transform: translateY(-5px);
 }
 
 .bi-logo-light {
-    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-    border: 1px solid rgba(38, 51, 112, 0.1);
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+    border: 1px solid rgba(38, 51, 112, 0.08);
 }
 
 .bi-logo-dark {
     background: linear-gradient(135deg, var(--bi-navy), #1a2550);
 }
 
-.bi-logo-item img {
-    height: 100px;
-    margin-bottom: 15px;
-}
-
-.bi-logo-item span {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.bi-logo-light span {
-    color: var(--bi-gray);
-}
-
-.bi-logo-dark span {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.bi-downloads {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.bi-download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 14px;
+.bi-logo-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 700;
-    transition: all 0.3s ease;
-    background: var(--bi-light);
+}
+
+.bi-logo-light .bi-logo-badge {
+    background: white;
     color: var(--bi-navy);
-    border: 2px solid transparent;
 }
 
-.bi-download-btn:hover {
-    border-color: var(--bi-cyan);
-    transform: translateY(-2px);
-}
-
-.bi-download-main {
-    background: linear-gradient(135deg, var(--bi-cyan), var(--bi-green));
+.bi-logo-dark .bi-logo-badge {
+    background: rgba(255, 255, 255, 0.15);
     color: white;
 }
 
-.bi-download-main:hover {
-    border-color: transparent;
-    box-shadow: 0 8px 25px rgba(12, 127, 174, 0.3);
+.bi-logo-card img {
+    height: 100px;
 }
 
-/* Colors Block */
-.bi-colors-grid {
+/* Two Columns */
+.bi-two-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* Card */
+.bi-card {
+    background: var(--bi-white);
+    border-radius: var(--bi-radius);
+    padding: 35px;
+    box-shadow: var(--bi-shadow);
+}
+
+.bi-card-header {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--bi-light);
 }
 
-.bi-color-card {
-    flex: 1;
+.bi-card-header h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--bi-navy);
+}
+
+/* Colors List */
+.bi-colors-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 15px;
 }
 
-.bi-color-swatch {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.bi-color-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--bi-light);
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
-.bi-color-card:hover .bi-color-swatch {
-    transform: scale(1.1) rotate(5deg);
+.bi-color-row:hover {
+    transform: translateX(-5px);
 }
 
-.bi-color-info h4 {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--bi-dark);
-    margin-bottom: 5px;
+.bi-color-dot {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.bi-color-role {
+.bi-color-details {
+    flex: 1;
+}
+
+.bi-color-details strong {
     display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--bi-dark);
+}
+
+.bi-color-details span {
     font-size: 12px;
     color: var(--bi-gray);
-    margin-bottom: 8px;
 }
 
-.bi-color-info code {
+.bi-color-row code {
     font-family: 'Courier New', monospace;
     font-size: 13px;
     font-weight: 700;
     color: var(--bi-cyan);
-    background: var(--bi-light);
-    padding: 5px 12px;
+    background: white;
+    padding: 6px 12px;
     border-radius: 8px;
 }
 
-/* Typography Block */
-.bi-font-showcase {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.bi-font-preview {
+/* Font Display */
+.bi-font-display {
     background: linear-gradient(135deg, var(--bi-navy), var(--bi-cyan));
-    border-radius: 20px;
-    padding: 40px;
+    border-radius: 16px;
+    padding: 35px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.bi-font-arabic {
-    font-size: 48px;
+.bi-font-chars {
+    font-size: 42px;
     font-weight: 900;
     color: white;
-    letter-spacing: 10px;
+    letter-spacing: 8px;
 }
 
-.bi-font-weights {
+.bi-font-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
-.bi-weight {
+.bi-font-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 12px 16px;
     background: var(--bi-light);
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
-.bi-weight span {
-    font-size: 20px;
+.bi-font-row span {
+    font-size: 18px;
     color: var(--bi-navy);
 }
 
-.bi-weight small {
-    font-size: 13px;
+.bi-font-row small {
+    font-size: 12px;
     color: var(--bi-gray);
     font-weight: 600;
 }
 
-/* Guidelines Block */
-.bi-guidelines-grid {
+/* Downloads Section */
+.bi-downloads-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: 1px solid rgba(38, 51, 112, 0.08);
+}
+
+.bi-downloads-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-.bi-guideline {
-    padding: 25px;
+.bi-download-card {
+    background: var(--bi-white);
     border-radius: 16px;
+    padding: 25px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-.bi-do {
-    background: rgba(66, 176, 122, 0.1);
-    border: 1px solid rgba(66, 176, 122, 0.2);
+.bi-download-card:hover {
+    border-color: var(--bi-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(12, 127, 174, 0.15);
 }
 
-.bi-dont {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.2);
-}
-
-.bi-guideline h4 {
+.bi-download-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(38, 51, 112, 0.1), rgba(12, 127, 174, 0.1));
+    border-radius: 16px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 16px;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--bi-cyan);
+}
+
+.bi-download-icon.bi-icon-ai {
+    background: linear-gradient(135deg, var(--bi-cyan), var(--bi-green));
+    color: white;
+}
+
+.bi-download-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--bi-dark);
+    margin-bottom: 5px;
+}
+
+.bi-download-info p {
+    font-size: 12px;
+    color: var(--bi-gray);
+}
+
+.bi-format {
+    background: var(--bi-light);
+    color: var(--bi-navy);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 800;
+}
+
+/* Guide Section */
+.bi-guide-section {
+    margin-top: 10px;
+}
+
+.bi-guide-card {
+    background: linear-gradient(135deg, var(--bi-navy), var(--bi-cyan));
+    border-radius: var(--bi-radius);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.bi-guide-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.bi-guide-content {
+    flex: 1;
+}
+
+.bi-guide-content h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.bi-guide-content p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 15px;
 }
 
-.bi-do h4 {
-    color: var(--bi-green);
-}
-
-.bi-dont h4 {
-    color: #ef4444;
-}
-
-.bi-guideline ul {
-    list-style: none;
+.bi-guide-meta {
     display: flex;
-    flex-direction: column;
+    gap: 20px;
+}
+
+.bi-guide-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bi-guide-btn {
+    display: inline-flex;
+    align-items: center;
     gap: 10px;
+    background: white;
+    color: var(--bi-navy);
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
 }
 
-.bi-guideline li {
-    font-size: 14px;
-    color: var(--bi-dark);
-    padding-right: 20px;
-    position: relative;
-}
-
-.bi-guideline li::before {
-    content: '•';
-    position: absolute;
-    right: 0;
-    font-weight: bold;
-}
-
-.bi-do li::before {
-    color: var(--bi-green);
-}
-
-.bi-dont li::before {
-    color: #ef4444;
+.bi-guide-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* =============================================
@@ -474,12 +608,17 @@ body {
    Responsive Design
    ============================================= */
 @media (max-width: 1024px) {
-    .bi-container {
-        grid-template-columns: 1fr;
+    .bi-downloads-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
-    .bi-logo-block {
-        grid-column: span 1;
+    .bi-guide-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .bi-guide-meta {
+        justify-content: center;
     }
 }
 
@@ -497,7 +636,11 @@ body {
     }
     
     .bi-header {
-        padding: 50px 20px;
+        padding: 60px 20px;
+    }
+    
+    .bi-header-logo img {
+        height: 80px;
     }
     
     .bi-title {
@@ -508,60 +651,71 @@ body {
         font-size: 15px;
     }
     
-    .bi-content {
-        padding: 30px 20px;
-    }
-    
-    .bi-block {
-        padding: 25px;
-    }
-    
-    .bi-logo-display {
-        grid-template-columns: 1fr;
-    }
-    
-    .bi-logo-item img {
-        height: 80px;
-    }
-    
-    .bi-colors-grid {
+    .bi-header-actions {
         flex-direction: column;
         align-items: center;
     }
     
-    .bi-color-card {
+    .bi-header-btn {
         width: 100%;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 20px;
-        text-align: right;
+        max-width: 280px;
+        justify-content: center;
     }
     
-    .bi-color-swatch {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 0;
-        flex-shrink: 0;
+    .bi-content {
+        padding: 40px 20px;
     }
     
-    .bi-font-arabic {
+    .bi-container {
+        gap: 30px;
+    }
+    
+    .bi-section-full,
+    .bi-card {
+        padding: 25px;
+    }
+    
+    .bi-logo-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bi-logo-card {
+        padding: 40px 20px;
+    }
+    
+    .bi-logo-card img {
+        height: 80px;
+    }
+    
+    .bi-two-cols {
+        grid-template-columns: 1fr;
+    }
+    
+    .bi-font-chars {
         font-size: 32px;
         letter-spacing: 5px;
     }
     
-    .bi-font-preview {
-        padding: 30px 20px;
-    }
-    
-    .bi-guidelines-grid {
+    .bi-downloads-grid {
         grid-template-columns: 1fr;
     }
     
-    .bi-downloads {
-        flex-direction: column;
+    .bi-guide-card {
+        padding: 30px;
     }
     
-    .bi-download-btn {
+    .bi-guide-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .bi-guide-content h3 {
+        font-size: 18px;
+    }
+    
+    .bi-guide-btn {
+        width: 100%;
         justify-content: center;
     }
 }
@@ -581,7 +735,11 @@ body {
     }
     
     .bi-header {
-        padding: 40px 15px;
+        padding: 50px 15px;
+    }
+    
+    .bi-header-logo img {
+        height: 70px;
     }
     
     .bi-title {
@@ -589,47 +747,80 @@ body {
     }
     
     .bi-content {
-        padding: 20px 15px;
+        padding: 30px 15px;
     }
     
-    .bi-container {
-        gap: 20px;
-    }
-    
-    .bi-block {
+    .bi-section-full,
+    .bi-card {
         padding: 20px;
-        border-radius: 20px;
+        border-radius: 16px;
     }
     
-    .bi-block-header {
-        margin-bottom: 20px;
-        padding-bottom: 15px;
+    .bi-section-header {
+        flex-direction: column;
+        text-align: center;
     }
     
-    .bi-block-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-    
-    .bi-block-header h2 {
+    .bi-icon-box {
+        width: 45px;
+        height: 45px;
         font-size: 18px;
     }
     
-    .bi-logo-item {
-        padding: 35px 20px;
+    .bi-section-header h2 {
+        font-size: 20px;
     }
     
-    .bi-logo-item img {
-        height: 70px;
+    .bi-card-header {
+        flex-direction: column;
+        text-align: center;
     }
     
-    .bi-weight span {
+    .bi-color-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .bi-color-details {
+        width: 100%;
+        order: 2;
+    }
+    
+    .bi-color-row code {
+        order: 3;
+        margin-top: 10px;
+    }
+    
+    .bi-font-display {
+        padding: 25px;
+    }
+    
+    .bi-font-chars {
+        font-size: 28px;
+    }
+    
+    .bi-font-row span {
         font-size: 16px;
     }
     
-    .bi-font-arabic {
-        font-size: 28px;
+    .bi-download-card {
+        padding: 20px;
+    }
+    
+    .bi-download-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .bi-guide-content p {
+        font-size: 13px;
+    }
+    
+    .bi-guide-meta {
+        flex-direction: column;
+        gap: 10px;
     }
     
     .bi-footer {
