@@ -1,0 +1,302 @@
+/*
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                       قالب الجمعية 1 - RTL Support                           ║
+║              دعم اتجاه النص من اليمين لليسار والعكس                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+*/
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RTL DEFAULT (Arabic)
+   ═══════════════════════════════════════════════════════════════════════════ */
+html {
+    direction: rtl;
+}
+
+body {
+    text-align: right;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LTR OVERRIDE (English)
+   To switch to LTR, add class "ltr" to <html> tag
+   ═══════════════════════════════════════════════════════════════════════════ */
+html.ltr {
+    direction: ltr;
+}
+
+html.ltr body {
+    text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENT-SPECIFIC RTL ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Timeline */
+.timeline {
+    padding-right: var(--space-3xl);
+    padding-left: 0;
+}
+
+.timeline::before {
+    right: 12px;
+    left: auto;
+}
+
+.timeline-dot {
+    right: calc(-1 * var(--space-3xl) + 4px);
+    left: auto;
+}
+
+html.ltr .timeline {
+    padding-right: 0;
+    padding-left: var(--space-3xl);
+}
+
+html.ltr .timeline::before {
+    right: auto;
+    left: 12px;
+}
+
+html.ltr .timeline-dot {
+    right: auto;
+    left: calc(-1 * var(--space-3xl) + 4px);
+}
+
+/* Navbar Link Underline */
+.navbar-link::after {
+    right: 0;
+    left: auto;
+}
+
+html.ltr .navbar-link::after {
+    right: auto;
+    left: 0;
+}
+
+/* Tab Trigger Underline */
+.tab-trigger::after {
+    right: 0;
+    left: auto;
+}
+
+html.ltr .tab-trigger::after {
+    right: auto;
+    left: 0;
+}
+
+/* Mobile Menu */
+.navbar-mobile {
+    right: -100%;
+    left: auto;
+}
+
+.navbar-mobile.open {
+    right: 0;
+    left: auto;
+}
+
+.navbar-mobile-close {
+    left: var(--space-lg);
+    right: auto;
+}
+
+html.ltr .navbar-mobile {
+    right: auto;
+    left: -100%;
+}
+
+html.ltr .navbar-mobile.open {
+    right: auto;
+    left: 0;
+}
+
+html.ltr .navbar-mobile-close {
+    left: auto;
+    right: var(--space-lg);
+}
+
+/* Search Icon */
+.search-icon {
+    right: var(--space-lg);
+    left: auto;
+}
+
+.search-input {
+    padding-right: var(--space-3xl);
+    padding-left: var(--space-xl);
+}
+
+html.ltr .search-icon {
+    right: auto;
+    left: var(--space-lg);
+}
+
+html.ltr .search-input {
+    padding-right: var(--space-xl);
+    padding-left: var(--space-3xl);
+}
+
+/* Project Status Badge */
+.project-card .project-status {
+    left: var(--space-md);
+    right: auto;
+}
+
+html.ltr .project-card .project-status {
+    left: auto;
+    right: var(--space-md);
+}
+
+/* Accordion Text Align */
+.accordion-trigger {
+    text-align: right;
+}
+
+html.ltr .accordion-trigger {
+    text-align: left;
+}
+
+/* Form Label Required */
+.form-label.required::after {
+    margin-right: var(--space-xs);
+    margin-left: 0;
+}
+
+html.ltr .form-label.required::after {
+    margin-right: 0;
+    margin-left: var(--space-xs);
+}
+
+/* Hero Image Position */
+.hero-image {
+    left: 0;
+    right: auto;
+}
+
+html.ltr .hero-image {
+    left: auto;
+    right: 0;
+}
+
+/* Hero Shapes */
+.hero-shape-1 {
+    left: -100px;
+    right: auto;
+}
+
+html.ltr .hero-shape-1 {
+    left: auto;
+    right: -100px;
+}
+
+/* Breadcrumb Separator Margin */
+.breadcrumb-item {
+    flex-direction: row-reverse;
+}
+
+html.ltr .breadcrumb-item {
+    flex-direction: row;
+}
+
+/* Icon Margins in Components */
+.btn i:first-child,
+.badge i:first-child,
+.section-badge i:first-child,
+.hero-badge i:first-child {
+    margin-left: var(--space-xs);
+    margin-right: 0;
+}
+
+html.ltr .btn i:first-child,
+html.ltr .badge i:first-child,
+html.ltr .section-badge i:first-child,
+html.ltr .hero-badge i:first-child {
+    margin-left: 0;
+    margin-right: var(--space-xs);
+}
+
+/* Footer Contact Icon */
+.footer-contact-item i {
+    order: 1;
+}
+
+.footer-contact-item span {
+    order: 0;
+}
+
+html.ltr .footer-contact-item i {
+    order: 0;
+}
+
+html.ltr .footer-contact-item span {
+    order: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LOGICAL PROPERTIES FALLBACK
+   For browsers that don't fully support logical properties
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* margin-inline fallback */
+.mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* padding-inline fallback */
+.container {
+    padding-right: var(--space-lg);
+    padding-left: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-right: var(--space-md);
+        padding-left: var(--space-md);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ICON FLIPPING
+   Some icons need to be flipped in RTL
+   ═══════════════════════════════════════════════════════════════════════════ */
+.icon-flip-rtl {
+    transform: scaleX(-1);
+}
+
+html.ltr .icon-flip-rtl {
+    transform: scaleX(1);
+}
+
+/* Common icons that should flip */
+.fa-arrow-right,
+.fa-arrow-left,
+.fa-chevron-right,
+.fa-chevron-left,
+.fa-angle-right,
+.fa-angle-left {
+    transform: scaleX(-1);
+}
+
+html.ltr .fa-arrow-right,
+html.ltr .fa-arrow-left,
+html.ltr .fa-chevron-right,
+html.ltr .fa-chevron-left,
+html.ltr .fa-angle-right,
+html.ltr .fa-angle-left {
+    transform: scaleX(1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media print {
+    html {
+        direction: rtl;
+    }
+    
+    html.ltr {
+        direction: ltr;
+    }
+}

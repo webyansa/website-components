@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوستر أثر السنة - جمعية [اسم الجمعية]</title>
+    <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0fbfae;
+            --secondary: #53687a;
+            --accent: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Tajawal', sans-serif; background: #f8fafc; }
+        .poster {
+            width: 210mm; height: 297mm; margin: 20px auto;
+            background: linear-gradient(180deg, var(--secondary) 0%, #3d4f5e 100%);
+            padding: 40px; color: white; position: relative; overflow: hidden;
+        }
+        .logo { height: 60px; margin-bottom: 30px; }
+        .poster-title { font-size: 48px; font-weight: 900; margin-bottom: 20px; }
+        .poster-subtitle { font-size: 24px; opacity: 0.9; margin-bottom: 50px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 50px; }
+        .stat-box { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; text-align: center; }
+        .stat-number { font-size: 56px; font-weight: 900; color: var(--primary); }
+        .stat-label { font-size: 18px; opacity: 0.9; }
+        .achievements { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; margin-bottom: 40px; }
+        .achievements h3 { font-size: 24px; margin-bottom: 20px; color: var(--primary); }
+        .achievements ul { list-style: none; }
+        .achievements li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 18px; }
+        .achievements li:before { content: "✓"; color: var(--primary); margin-left: 10px; }
+        .qr-section { text-align: center; margin-top: 40px; }
+        .qr-placeholder { width: 100px; height: 100px; background: white; border-radius: 10px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 12px; }
+        .footer-text { text-align: center; font-size: 14px; opacity: 0.7; margin-top: 30px; }
+        @media print { body { background: none; } .poster { margin: 0; box-shadow: none; } }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <img src="../assets/img/logo.svg" alt="شعار الجمعية" class="logo">
+        <h1 class="poster-title">أثر عام 2024</h1>
+        <p class="poster-subtitle">إنجازات ملموسة وأثر مستدام في خدمة المجتمع</p>
+        
+        <div class="stats-grid">
+            <div class="stat-box"><div class="stat-number">+50,000</div><div class="stat-label">مستفيد</div></div>
+            <div class="stat-box"><div class="stat-number">+120</div><div class="stat-label">مشروع ومبادرة</div></div>
+            <div class="stat-box"><div class="stat-number">+500</div><div class="stat-label">متطوع</div></div>
+            <div class="stat-box"><div class="stat-number">+35</div><div class="stat-label">شريك استراتيجي</div></div>
+        </div>
+        
+        <div class="achievements">
+            <h3>أبرز الإنجازات</h3>
+            <ul>
+                <li>إطلاق برنامج تمكين الشباب بمشاركة 500 شاب وشابة</li>
+                <li>توزيع 10,000 وجبة إفطار صائم في رمضان</li>
+                <li>تأهيل 200 متدرب للالتحاق بسوق العمل</li>
+                <li>دعم 150 أسرة منتجة اقتصادياً</li>
+            </ul>
+        </div>
+        
+        <div class="qr-section">
+            <div class="qr-placeholder">QR Code</div>
+            <p>امسح للاطلاع على التقرير السنوي الكامل</p>
+        </div>
+        
+        <p class="footer-text">جمعية [اسم الجمعية] | مدعوم عبر منصة ويبيان</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="انضم معنا - تطوع، عضوية، تبرع - جمعية [اسم الجمعية]">
+    <title>انضم معنا - جمعية [اسم الجمعية]</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="assets/img/logo.svg" alt="شعار جمعية [اسم الجمعية]" class="navbar-logo">
+            </a>
+            
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="navbar-link">الرئيسية</a></li>
+                <li><a href="about.html" class="navbar-link">عن الجمعية</a></li>
+                <li><a href="projects.html" class="navbar-link">المشاريع</a></li>
+                <li><a href="services.html" class="navbar-link">الخدمات</a></li>
+                <li><a href="governance.html" class="navbar-link">الحوكمة</a></li>
+                <li><a href="contact.html" class="navbar-link">اتصل بنا</a></li>
+            </ul>
+            
+            <a href="join.html" class="btn btn-primary navbar-cta">
+                <i class="fas fa-heart"></i>
+                انضم معنا
+            </a>
+            
+            <button class="navbar-toggle" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay"></div>
+    <div class="navbar-mobile">
+        <button class="navbar-mobile-close" aria-label="إغلاق القائمة">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="navbar-mobile-nav">
+            <a href="index.html" class="navbar-mobile-link">الرئيسية</a>
+            <a href="about.html" class="navbar-mobile-link">عن الجمعية</a>
+            <a href="projects.html" class="navbar-mobile-link">المشاريع</a>
+            <a href="services.html" class="navbar-mobile-link">الخدمات</a>
+            <a href="governance.html" class="navbar-mobile-link">الحوكمة</a>
+            <a href="contact.html" class="navbar-mobile-link">اتصل بنا</a>
+            <a href="join.html" class="btn btn-primary btn-block mt-lg">انضم معنا</a>
+        </nav>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <nav class="breadcrumb" aria-label="مسار التنقل">
+                    <span class="breadcrumb-item"><a href="index.html">الرئيسية</a></span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-item active">انضم معنا</span>
+                </nav>
+                <h1 class="page-hero-title">انضم معنا</h1>
+                <p class="page-hero-subtitle">كن جزءاً من رحلتنا في خدمة المجتمع</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="section" aria-labelledby="join-title">
+        <div class="container">
+            <!-- Join Tabs -->
+            <div class="join-tabs">
+                <button class="join-tab active" data-join-tab="volunteer-form">
+                    <div class="join-tab-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div>
+                        <div class="join-tab-title">تطوع معنا</div>
+                        <div class="join-tab-desc">ساهم بوقتك ومهاراتك</div>
+                    </div>
+                </button>
+                
+                <button class="join-tab" data-join-tab="membership-form">
+                    <div class="join-tab-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div>
+                        <div class="join-tab-title">عضوية الجمعية</div>
+                        <div class="join-tab-desc">انضم كعضو فاعل</div>
+                    </div>
+                </button>
+                
+                <button class="join-tab" data-join-tab="donate-section">
+                    <div class="join-tab-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div>
+                        <div class="join-tab-title">تبرع</div>
+                        <div class="join-tab-desc">ادعم مشاريعنا</div>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Volunteer Form -->
+            <div id="volunteer-form" class="join-form-content active">
+                <div class="join-form-container">
+                    <h2 class="text-center mb-xl" style="font-size: var(--font-size-2xl); color: var(--text-primary);">
+                        <i class="fas fa-hands-helping text-primary"></i>
+                        نموذج التطوع
+                    </h2>
+                    
+                    <form data-validate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">الاسم الكامل</label>
+                                <input type="text" class="form-control" placeholder="أدخل اسمك الكامل" required minlength="3">
+                                <span class="form-feedback"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label required">البريد الإلكتروني</label>
+                                <input type="email" class="form-control" placeholder="example@email.com" required>
+                                <span class="form-feedback"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">رقم الجوال</label>
+                                <input type="tel" class="form-control" placeholder="05XXXXXXXX" required>
+                                <span class="form-feedback"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">المدينة</label>
+                                <select class="form-control">
+                                    <option value="">اختر المدينة</option>
+                                    <option value="riyadh">الرياض</option>
+                                    <option value="jeddah">جدة</option>
+                                    <option value="dammam">الدمام</option>
+                                    <option value="makkah">مكة المكرمة</option>
+                                    <option value="madinah">المدينة المنورة</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">مجالات التطوع المفضلة</label>
+                            <div class="flex flex-wrap gap-md mt-sm">
+                                <label class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="events">
+                                    <span class="form-check-label">تنظيم الفعاليات</span>
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="training">
+                                    <span class="form-check-label">التدريب</span>
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="media">
+                                    <span class="form-check-label">الإعلام والتصوير</span>
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="admin">
+                                    <span class="form-check-label">العمل الإداري</span>
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="field">
+                                    <span class="form-check-label">العمل الميداني</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">نبذة عنك ومهاراتك</label>
+                            <textarea class="form-control" rows="4" placeholder="اكتب نبذة مختصرة عن نفسك وخبراتك..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال طلب التطوع
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Membership Form -->
+            <div id="membership-form" class="join-form-content" style="display: none;">
+                <div class="join-form-container">
+                    <h2 class="text-center mb-xl" style="font-size: var(--font-size-2xl); color: var(--text-primary);">
+                        <i class="fas fa-id-card text-primary"></i>
+                        نموذج العضوية
+                    </h2>
+                    
+                    <form data-validate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">الاسم الكامل</label>
+                                <input type="text" class="form-control" placeholder="أدخل اسمك الكامل" required minlength="3">
+                                <span class="form-feedback"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label required">رقم الهوية الوطنية</label>
+                                <input type="text" class="form-control" placeholder="10XXXXXXXX" required>
+                                <span class="form-feedback"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label required">البريد الإلكتروني</label>
+                                <input type="email" class="form-control" placeholder="example@email.com" required>
+                                <span class="form-feedback"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label required">رقم الجوال</label>
+                                <input type="tel" class="form-control" placeholder="05XXXXXXXX" required>
+                                <span class="form-feedback"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">المؤهل العلمي</label>
+                                <select class="form-control">
+                                    <option value="">اختر المؤهل</option>
+                                    <option value="high-school">ثانوية عامة</option>
+                                    <option value="diploma">دبلوم</option>
+                                    <option value="bachelor">بكالوريوس</option>
+                                    <option value="master">ماجستير</option>
+                                    <option value="phd">دكتوراه</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">جهة العمل</label>
+                                <input type="text" class="form-control" placeholder="اسم جهة العمل">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">نوع العضوية</label>
+                            <div class="flex flex-wrap gap-xl mt-sm">
+                                <label class="form-check">
+                                    <input type="radio" name="membership-type" class="form-check-input" value="regular" checked>
+                                    <span class="form-check-label">عضوية عادية (100 ريال/سنة)</span>
+                                </label>
+                                <label class="form-check">
+                                    <input type="radio" name="membership-type" class="form-check-input" value="active">
+                                    <span class="form-check-label">عضوية عاملة (200 ريال/سنة)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-check">
+                                <input type="checkbox" class="form-check-input" required>
+                                <span class="form-check-label">أوافق على شروط وأحكام العضوية</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال طلب العضوية
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Donate Section -->
+            <div id="donate-section" class="join-form-content" style="display: none;">
+                <div class="donation-cta">
+                    <div class="donation-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2 class="donation-title">ساهم في دعم مشاريعنا</h2>
+                    <p class="donation-text">
+                        تبرعك يساهم في استمرار مشاريعنا التنموية والإنسانية ويصل نفعه إلى آلاف المستفيدين
+                    </p>
+                    <div class="flex gap-md justify-center flex-wrap">
+                        <a href="#" class="btn btn-lg" style="background: white; color: var(--accent);">
+                            <i class="fas fa-credit-card"></i>
+                            تبرع الآن
+                        </a>
+                        <a href="contact.html" class="btn btn-outline-white btn-lg">
+                            <i class="fas fa-phone"></i>
+                            تواصل معنا
+                        </a>
+                    </div>
+                    
+                    <div class="mt-2xl" style="opacity: 0.9;">
+                        <p style="font-size: var(--font-size-sm);">طرق التبرع المتاحة:</p>
+                        <div class="flex gap-lg justify-center mt-md flex-wrap">
+                            <span><i class="fas fa-university"></i> تحويل بنكي</span>
+                            <span><i class="fab fa-cc-visa"></i> بطاقات الائتمان</span>
+                            <span><i class="fas fa-mobile-alt"></i> Apple Pay</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.svg" alt="شعار جمعية [اسم الجمعية]" class="footer-logo">
+                    <p class="footer-about">نعمل من أجل مجتمع أفضل من خلال مشاريع تنموية ومبادرات مستدامة.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="footer-social" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <nav class="footer-links">
+                        <a href="about.html" class="footer-link">عن الجمعية</a>
+                        <a href="projects.html" class="footer-link">المشاريع</a>
+                        <a href="services.html" class="footer-link">الخدمات</a>
+                        <a href="governance.html" class="footer-link">الحوكمة</a>
+                        <a href="join.html" class="footer-link">انضم معنا</a>
+                    </nav>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">خدماتنا</h3>
+                    <nav class="footer-links">
+                        <a href="services.html" class="footer-link">الاستشارات</a>
+                        <a href="services.html" class="footer-link">التدريب</a>
+                        <a href="services.html" class="footer-link">الدعم المجتمعي</a>
+                        <a href="services.html" class="footer-link">البرامج التنموية</a>
+                    </nav>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">تواصل معنا</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>المملكة العربية السعودية - الرياض</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span dir="ltr">+966 11 XXX XXXX</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@association.org.sa</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">جميع الحقوق محفوظة © <span id="current-year"></span> جمعية [اسم الجمعية]</p>
+                <p class="footer-powered">مدعوم عبر منصة <a href="https://webyan.sa" target="_blank" rel="noopener">ويبيان</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

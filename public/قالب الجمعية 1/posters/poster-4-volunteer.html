@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوستر التطوع - جمعية [اسم الجمعية]</title>
+    <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0fbfae; --secondary: #53687a; --accent: #f59e0b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Tajawal', sans-serif; background: #f8fafc; }
+        .poster { width: 210mm; height: 297mm; margin: 20px auto; background: linear-gradient(135deg, var(--primary) 0%, #0a9a8c 100%); padding: 50px; color: white; position: relative; overflow: hidden; }
+        .pattern { position: absolute; inset: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+        .content { position: relative; z-index: 1; }
+        .logo { height: 60px; margin-bottom: 40px; }
+        .icon { font-size: 100px; margin-bottom: 30px; }
+        .title { font-size: 56px; font-weight: 900; margin-bottom: 20px; }
+        .subtitle { font-size: 24px; opacity: 0.9; margin-bottom: 50px; }
+        .benefits { background: rgba(255,255,255,0.15); border-radius: 25px; padding: 40px; margin-bottom: 40px; }
+        .benefits h3 { font-size: 26px; margin-bottom: 25px; }
+        .benefit-list { list-style: none; }
+        .benefit-list li { font-size: 20px; padding: 12px 0; display: flex; align-items: center; gap: 15px; }
+        .benefit-list li:before { content: "✓"; background: white; color: var(--primary); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .cta { background: white; color: var(--secondary); border-radius: 20px; padding: 35px; text-align: center; margin-bottom: 40px; }
+        .cta h3 { font-size: 28px; margin-bottom: 15px; color: var(--primary); }
+        .cta p { font-size: 18px; }
+        .qr-section { text-align: center; }
+        .qr-placeholder { width: 100px; height: 100px; background: white; border-radius: 15px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 12px; }
+        .footer { position: absolute; bottom: 40px; left: 50px; right: 50px; text-align: center; font-size: 14px; opacity: 0.8; }
+        @media print { body { background: none; } .poster { margin: 0; } }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="pattern"></div>
+        <div class="content">
+            <img src="../assets/img/logo.svg" alt="شعار الجمعية" class="logo">
+            <div class="icon">🤝</div>
+            <h1 class="title">تطوع معنا</h1>
+            <p class="subtitle">كن جزءاً من رحلتنا في خدمة المجتمع وصناعة الأثر</p>
+            
+            <div class="benefits">
+                <h3>مميزات التطوع</h3>
+                <ul class="benefit-list">
+                    <li>اكتساب خبرات ومهارات جديدة</li>
+                    <li>شهادات معتمدة وتوثيق الساعات التطوعية</li>
+                    <li>التواصل مع شبكة من المتطوعين</li>
+                    <li>المساهمة في خدمة المجتمع</li>
+                </ul>
+            </div>
+            
+            <div class="cta">
+                <h3>سجّل الآن!</h3>
+                <p>انضم لفريق المتطوعين وساهم في صناعة الفرق</p>
+            </div>
+            
+            <div class="qr-section">
+                <div class="qr-placeholder">QR Code</div>
+                <p style="font-size: 16px;">امسح للتسجيل كمتطوع</p>
+            </div>
+        </div>
+        <div class="footer">جمعية [اسم الجمعية] | مدعوم عبر منصة ويبيان</div>
+    </div>
+</body>
+</html>
