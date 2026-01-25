@@ -31,12 +31,12 @@
     <link rel="stylesheet" href="css/loader.css?v=20260125">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/pages.css">
-    <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/home-premium.css">
     <link rel="stylesheet" href="css/rtl.css">
 </head>
 <body>
-    <!-- Page Loader (spinner only) -->
+    <!-- Page Loader -->
     <div class="page-loader" id="page-loader" role="status" aria-label="جاري التحميل">
         <div class="loader-content">
             <div class="loader-spinner" aria-hidden="true"></div>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         NAVBAR - Premium Sticky Navigation with Dropdowns
+         NAVBAR - Premium Sticky Navigation
          ═══════════════════════════════════════════════════════════════════════════ -->
     <nav class="navbar dark-mode" role="navigation" aria-label="القائمة الرئيسية">
         <div class="navbar-container">
@@ -67,7 +67,6 @@
                         <li><a href="general-assembly.html"><i class="fas fa-users"></i> الجمعية العمومية</a></li>
                         <li><a href="org-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a></li>
                         <li><a href="committees.html"><i class="fas fa-user-friends"></i> اللجان</a></li>
-                        <li><a href="master-document.html"><i class="fas fa-file-alt"></i> الوثيقة الشاملة</a></li>
                         <li><a href="team.html"><i class="fas fa-id-badge"></i> فريق العمل</a></li>
                     </ul>
                 </li>
@@ -88,7 +87,7 @@
                 <li><a href="contact.html" class="navbar-link">اتصل بنا</a></li>
             </ul>
             
-            <a href="join.html" class="btn btn-primary navbar-cta">
+            <a href="join.html" class="ds-btn ds-btn-primary navbar-cta">
                 <i class="fas fa-heart"></i>
                 انضم معنا
             </a>
@@ -115,8 +114,6 @@
                 <i class="fas fa-home"></i>
                 الرئيسية
             </a>
-            
-            <!-- عن الجمعية Dropdown -->
             <div class="mobile-dropdown">
                 <button class="navbar-mobile-link mobile-dropdown-toggle">
                     <i class="fas fa-building"></i>
@@ -131,12 +128,9 @@
                     <a href="general-assembly.html">الجمعية العمومية</a>
                     <a href="org-structure.html">الهيكل التنظيمي</a>
                     <a href="committees.html">اللجان</a>
-                    <a href="master-document.html">الوثيقة الشاملة</a>
                     <a href="team.html">فريق العمل</a>
                 </div>
             </div>
-            
-            <!-- المركز الإعلامي Dropdown -->
             <div class="mobile-dropdown">
                 <button class="navbar-mobile-link mobile-dropdown-toggle">
                     <i class="fas fa-photo-video"></i>
@@ -149,7 +143,6 @@
                     <a href="media/gallery.html">معرض الصور</a>
                 </div>
             </div>
-            
             <a href="projects.html" class="navbar-mobile-link">
                 <i class="fas fa-project-diagram"></i>
                 المشاريع
@@ -166,7 +159,7 @@
                 <i class="fas fa-envelope"></i>
                 اتصل بنا
             </a>
-            <a href="join.html" class="btn btn-primary btn-block mt-6">
+            <a href="join.html" class="ds-btn ds-btn-primary" style="margin-top: 24px; width: 100%;">
                 <i class="fas fa-heart"></i>
                 انضم معنا
             </a>
@@ -174,104 +167,105 @@
     </aside>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         1. HERO SECTION - Cinematic Full-Screen
+         1. HERO SECTION - Cinematic Full-Screen with Slider
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="hero" aria-label="القسم الرئيسي">
-        <!-- Hero Image Slider -->
-        <div class="hero-slider" data-autoplay="true" data-interval="6000">
-            <div class="hero-slides">
-                <div class="hero-slide active">
-                    <img src="assets/svg/placeholder-hero-1.svg" alt="صورة الهيرو 1">
+    <section class="hero-cinema" aria-label="القسم الرئيسي">
+        <!-- Cinematic Image Slider -->
+        <div class="hero-cinema-slider">
+            <div class="hero-cinema-slides">
+                <div class="hero-cinema-slide active">
+                    <img src="assets/svg/placeholder-hero-1.svg" alt="">
                 </div>
-                <div class="hero-slide">
-                    <img src="assets/svg/placeholder-hero-2.svg" alt="صورة الهيرو 2">
+                <div class="hero-cinema-slide">
+                    <img src="assets/svg/placeholder-hero-2.svg" alt="">
                 </div>
-                <div class="hero-slide">
-                    <img src="assets/svg/placeholder-hero-3.svg" alt="صورة الهيرو 3">
+                <div class="hero-cinema-slide">
+                    <img src="assets/svg/placeholder-hero-3.svg" alt="">
+                </div>
+                <div class="hero-cinema-slide">
+                    <img src="assets/svg/placeholder-hero-4.svg" alt="">
                 </div>
             </div>
             
-            <!-- Slider Controls -->
-            <div class="hero-slider-controls">
-                <button class="slider-nav prev" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>
-                <div class="slider-dots"></div>
-                <button class="slider-nav next" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>
-            </div>
+            <!-- Navigation -->
+            <button class="hero-nav hero-nav-prev" aria-label="السابق">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="hero-nav hero-nav-next" aria-label="التالي">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Dots -->
+            <div class="hero-cinema-dots"></div>
             
             <!-- Progress Bars -->
-            <div class="slider-progress">
-                <div class="progress-bar active"></div>
-                <div class="progress-bar"></div>
-                <div class="progress-bar"></div>
+            <div class="hero-progress-bars">
+                <div class="hero-progress-bar"></div>
+                <div class="hero-progress-bar"></div>
+                <div class="hero-progress-bar"></div>
+                <div class="hero-progress-bar"></div>
             </div>
-        </div>
-        
-        <!-- Video Background (behind slider, subtle layer) -->
-        <div class="hero-video-wrapper" style="opacity: 0.3;">
-            <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero.jpg">
-                <source src="assets/img/hero.webm" type="video/webm">
-                <source src="assets/img/hero.mp4" type="video/mp4">
-            </video>
         </div>
         
         <!-- Gradient Overlay -->
-        <div class="hero-overlay"></div>
+        <div class="hero-cinema-overlay"></div>
         
         <!-- Noise Texture -->
-        <div class="hero-noise"></div>
+        <div class="hero-cinema-noise"></div>
         
-        <!-- Decorative Shapes -->
-        <div class="hero-shapes">
+        <!-- Floating Shapes -->
+        <div class="hero-cinema-shapes">
             <div class="hero-shape hero-shape-1"></div>
             <div class="hero-shape hero-shape-2"></div>
-            <div class="hero-shape hero-shape-3"></div>
         </div>
         
-        <!-- Dot Pattern -->
-        <div class="hero-pattern"></div>
-        
+        <!-- Content -->
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-cinema-content">
                 <span class="hero-badge">
                     <i class="fas fa-star"></i>
                     أكثر من 15 عاماً من العطاء
                 </span>
                 
-                <h1 class="hero-title">
+                <h1 class="hero-cinema-title">
                     نبني مجتمعاً مستداماً
                     <span>بمشاريع تنموية مؤثرة</span>
                 </h1>
                 
-                <p class="hero-text">
+                <p class="hero-cinema-text">
                     نسعى لتحقيق التنمية المستدامة من خلال مشاريع ومبادرات نوعية تخدم المجتمع 
                     وتمكّن أفراده من المساهمة الفاعلة في بناء مستقبل أفضل.
                 </p>
                 
-                <div class="hero-actions">
-                    <a href="projects.html" class="btn btn-primary btn-lg">
+                <div class="hero-cinema-actions">
+                    <a href="projects.html" class="ds-btn ds-btn-primary ds-btn-lg">
                         <i class="fas fa-folder-open"></i>
                         استكشف مشاريعنا
-                        <i class="fas fa-arrow-left btn-arrow"></i>
+                        <i class="fas fa-arrow-left btn-icon-arrow"></i>
                     </a>
-                    <a href="join.html" class="btn btn-outline-white btn-lg">
+                    <a href="join.html" class="ds-btn ds-btn-secondary ds-btn-lg">
                         <i class="fas fa-users"></i>
                         انضم معنا
                     </a>
                 </div>
                 
-                <!-- Hero KPI Strip -->
-                <div class="hero-kpis">
-                    <div class="hero-kpi">
-                        <div class="hero-kpi-value" data-counter="50000" data-suffix="+">0</div>
-                        <div class="hero-kpi-label">مستفيد</div>
+                <!-- Micro KPIs -->
+                <div class="ds-hero-kpis">
+                    <div class="ds-hero-kpi">
+                        <div class="ds-hero-kpi-value" data-count="50000" data-suffix="+">0</div>
+                        <div class="ds-hero-kpi-label">مستفيد</div>
                     </div>
-                    <div class="hero-kpi">
-                        <div class="hero-kpi-value" data-counter="120" data-suffix="+">0</div>
-                        <div class="hero-kpi-label">مشروع</div>
+                    <div class="ds-hero-kpi">
+                        <div class="ds-hero-kpi-value" data-count="120" data-suffix="+">0</div>
+                        <div class="ds-hero-kpi-label">مشروع</div>
                     </div>
-                    <div class="hero-kpi">
-                        <div class="hero-kpi-value" data-counter="35" data-suffix="+">0</div>
-                        <div class="hero-kpi-label">شريك</div>
+                    <div class="ds-hero-kpi">
+                        <div class="ds-hero-kpi-value" data-count="35" data-suffix="+">0</div>
+                        <div class="ds-hero-kpi-label">شريك</div>
+                    </div>
+                    <div class="ds-hero-kpi">
+                        <div class="ds-hero-kpi-value" data-count="500" data-suffix="+">0</div>
+                        <div class="ds-hero-kpi-label">متطوع</div>
                     </div>
                 </div>
             </div>
@@ -285,43 +279,49 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         2. ABOUT PREVIEW SECTION
+         2. ABOUT SECTION - Split Layout with Glass Card
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section" aria-labelledby="about-title">
+    <section class="section about-section" aria-labelledby="about-title">
         <div class="container">
-            <div class="about-preview reveal">
-                <div class="about-preview-image reveal-right">
-                    <img src="assets/img/sections/about.jpg" alt="صورة عن الجمعية" class="about-preview-img" 
-                         onerror="this.style.background='linear-gradient(135deg, var(--primary-100), var(--primary-50))'; this.style.minHeight='400px';">
-                    <div class="about-preview-badge">
-                        <span class="about-preview-badge-number">+15</span>
-                        <span class="about-preview-badge-text">سنة من العطاء</span>
+            <div class="about-split ds-reveal">
+                <!-- Image Side -->
+                <div class="about-image-wrapper">
+                    <img src="assets/svg/placeholder-about.svg" alt="عن الجمعية" class="about-image">
+                    <div class="about-image-badge">
+                        <span class="about-badge-number">+15</span>
+                        <span class="about-badge-text">سنة من العطاء</span>
                     </div>
                 </div>
                 
-                <div class="about-preview-content reveal-left">
-                    <span class="section-badge">
+                <!-- Content Side -->
+                <div class="about-content">
+                    <span class="ds-section-badge">
                         <i class="fas fa-info-circle"></i>
                         من نحن
                     </span>
-                    <h2 class="section-title" id="about-title">نبذة عن الجمعية</h2>
+                    <h2 class="ds-section-title" id="about-title">نبذة عن الجمعية</h2>
+                    <p class="about-intro">
+                        نعمل من أجل مجتمع أفضل من خلال مشاريع تنموية ومبادرات مستدامة 
+                        تخدم أفراد المجتمع وتحقق رؤيتنا في التنمية الشاملة.
+                    </p>
                     
-                    <div class="about-tabs">
-                        <button class="about-tab active" data-about-tab="mission-content">الرسالة</button>
-                        <button class="about-tab" data-about-tab="vision-content">الرؤية</button>
+                    <!-- Glass Card for Vision/Mission -->
+                    <div class="about-glass-card ds-glass-panel">
+                        <div class="about-tabs">
+                            <button class="about-tab active" data-tab="mission">الرسالة</button>
+                            <button class="about-tab" data-tab="vision">الرؤية</button>
+                        </div>
+                        <div class="about-tab-content active" id="mission">
+                            <p>بناء مبادرات تنموية اقتصادية تحقق حياة اجتماعية واقتصادية كريمة لأفراد المجتمع من خلال تنمية قدراتهم وتوفير الموارد للاستدامة.</p>
+                        </div>
+                        <div class="about-tab-content" id="vision">
+                            <p>أن نكون الجمعية الرائدة في تحقيق التنمية المستدامة والريادة المجتمعية على مستوى المملكة العربية السعودية.</p>
+                        </div>
                     </div>
                     
-                    <div id="mission-content" class="about-tab-content active">
-                        <p>بناء مبادرات تنموية اقتصادية تحقق حياة اجتماعية واقتصادية كريمة لأفراد المجتمع من خلال تنمية قدراتهم وتوفير الموارد للاستدامة وتهيئة بيئة الأعمال والمشاريع التنموية.</p>
-                    </div>
-                    
-                    <div id="vision-content" class="about-tab-content">
-                        <p>أن نكون الجمعية الرائدة في تحقيق التنمية المستدامة والريادة المجتمعية على مستوى المملكة العربية السعودية، ونموذجاً يُحتذى به في الحوكمة والشفافية.</p>
-                    </div>
-                    
-                    <a href="about.html" class="btn btn-outline mt-6">
-                        <i class="fas fa-arrow-left"></i>
-                        اعرف المزيد عنا
+                    <a href="about.html" class="ds-btn ds-btn-ghost">
+                        <span>تعرف علينا</span>
+                        <i class="fas fa-arrow-left btn-icon"></i>
                     </a>
                 </div>
             </div>
@@ -329,177 +329,175 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         3. FIELDS SECTION (6 Cards)
+         3. FIELDS SECTION - Horizontal Scroll
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section bg-light" aria-labelledby="fields-title">
+    <section class="section bg-light fields-section" aria-labelledby="fields-title">
         <div class="container">
-            <header class="section-header reveal">
-                <span class="section-badge">
+            <header class="ds-section-header ds-reveal">
+                <span class="ds-section-badge">
                     <i class="fas fa-compass"></i>
                     مجالاتنا
                 </span>
-                <h2 class="section-title" id="fields-title">مجالات عمل الجمعية</h2>
-                <p class="section-subtitle">نعمل في مجالات متنوعة تخدم المجتمع وتحقق التنمية المستدامة بأعلى معايير الحوكمة</p>
+                <h2 class="ds-section-title" id="fields-title">مجالات عمل الجمعية</h2>
+                <p class="ds-section-subtitle">نعمل في مجالات متنوعة تخدم المجتمع وتحقق التنمية المستدامة</p>
             </header>
+        </div>
+        
+        <div class="fields-scroll-container ds-horizontal-scroll ds-reveal-stagger">
+            <article class="ds-icon-card">
+                <div class="ds-icon-card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="ds-icon-card-title">التعليم والتدريب</h3>
+                <p class="ds-icon-card-text">برامج تعليمية وتدريبية متقدمة لتطوير المهارات وبناء القدرات</p>
+            </article>
             
-            <div class="fields-grid">
-                <article class="field-card reveal">
-                    <div class="field-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="field-title">التعليم والتدريب</h3>
-                    <p class="field-text">برامج تعليمية وتدريبية متقدمة لتطوير المهارات وبناء القدرات</p>
-                </article>
-                
-                <article class="field-card reveal">
-                    <div class="field-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3 class="field-title">الخدمات الإنسانية</h3>
-                    <p class="field-text">مساعدات وإغاثة عاجلة للمحتاجين والمتضررين</p>
-                </article>
-                
-                <article class="field-card reveal">
-                    <div class="field-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3 class="field-title">ريادة الأعمال</h3>
-                    <p class="field-text">دعم وتمكين رواد الأعمال والمشاريع الصغيرة والمتوسطة</p>
-                </article>
-                
-                <article class="field-card reveal">
-                    <div class="field-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="field-title">التمكين المجتمعي</h3>
-                    <p class="field-text">برامج شاملة لتمكين الأسر والشباب والمرأة</p>
-                </article>
-                
-                <article class="field-card reveal">
-                    <div class="field-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="field-title">الصحة والرعاية</h3>
-                    <p class="field-text">خدمات صحية وتوعوية شاملة للمجتمع</p>
-                </article>
-                
-                <article class="field-card reveal">
-                    <div class="field-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="field-title">البيئة والاستدامة</h3>
-                    <p class="field-text">مبادرات رائدة للحفاظ على البيئة والتنمية المستدامة</p>
-                </article>
-            </div>
+            <article class="ds-icon-card">
+                <div class="ds-icon-card-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="ds-icon-card-title">الخدمات الإنسانية</h3>
+                <p class="ds-icon-card-text">مساعدات وإغاثة عاجلة للمحتاجين والمتضررين في المجتمع</p>
+            </article>
+            
+            <article class="ds-icon-card">
+                <div class="ds-icon-card-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="ds-icon-card-title">ريادة الأعمال</h3>
+                <p class="ds-icon-card-text">دعم وتمكين رواد الأعمال والمشاريع الصغيرة والمتوسطة</p>
+            </article>
+            
+            <article class="ds-icon-card">
+                <div class="ds-icon-card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="ds-icon-card-title">التمكين المجتمعي</h3>
+                <p class="ds-icon-card-text">برامج شاملة لتمكين الأسر والشباب والمرأة</p>
+            </article>
+            
+            <article class="ds-icon-card">
+                <div class="ds-icon-card-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="ds-icon-card-title">الصحة والرعاية</h3>
+                <p class="ds-icon-card-text">خدمات صحية وتوعوية شاملة للمجتمع</p>
+            </article>
+            
+            <article class="ds-icon-card">
+                <div class="ds-icon-card-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="ds-icon-card-title">البيئة والاستدامة</h3>
+                <p class="ds-icon-card-text">مبادرات رائدة للحفاظ على البيئة والتنمية المستدامة</p>
+            </article>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         4. PROJECTS SECTION
+         4. PROJECTS SECTION - Story Cards Carousel
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section" aria-labelledby="projects-title">
+    <section class="section projects-section" aria-labelledby="projects-title">
         <div class="container">
-            <header class="section-header reveal">
-                <span class="section-badge">
+            <header class="ds-section-header ds-reveal">
+                <span class="ds-section-badge">
                     <i class="fas fa-project-diagram"></i>
                     مشاريعنا
                 </span>
-                <h2 class="section-title" id="projects-title">المشاريع والمبادرات</h2>
-                <p class="section-subtitle">نفخر بمشاريعنا التي تحقق أثراً ملموساً في المجتمع</p>
+                <h2 class="ds-section-title" id="projects-title">المشاريع والمبادرات</h2>
+                <p class="ds-section-subtitle">نفخر بمشاريعنا التي تحقق أثراً ملموساً في المجتمع</p>
             </header>
             
-            <!-- Filter Buttons -->
-            <div class="filter-buttons reveal">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="in-progress">قيد التنفيذ</button>
-                <button class="filter-btn" data-filter="completed">مكتمل</button>
+            <div class="projects-carousel ds-reveal">
+                <div class="projects-carousel-track">
+                    <!-- Project 1 -->
+                    <article class="ds-project-card">
+                        <span class="ds-project-card-badge active">قيد التنفيذ</span>
+                        <div class="ds-project-card-img">
+                            <img src="assets/svg/placeholder-project.svg" alt="مشروع تمكين الشباب">
+                        </div>
+                        <div class="ds-project-card-body">
+                            <h3 class="ds-project-card-title">مشروع تمكين الشباب</h3>
+                            <p class="ds-project-card-text">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل</p>
+                            <div class="ds-progress">
+                                <div class="ds-progress-bar" style="width: 65%;"></div>
+                            </div>
+                            <div class="ds-project-card-kpis">
+                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 500 مستفيد</span>
+                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 2 -->
+                    <article class="ds-project-card">
+                        <span class="ds-project-card-badge complete">مكتمل</span>
+                        <div class="ds-project-card-img">
+                            <img src="assets/svg/placeholder-project.svg" alt="مبادرة إفطار صائم">
+                        </div>
+                        <div class="ds-project-card-body">
+                            <h3 class="ds-project-card-title">مبادرة إفطار صائم</h3>
+                            <p class="ds-project-card-text">توزيع وجبات إفطار على الصائمين في شهر رمضان</p>
+                            <div class="ds-progress">
+                                <div class="ds-progress-bar" style="width: 100%;"></div>
+                            </div>
+                            <div class="ds-project-card-kpis">
+                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 10,000 مستفيد</span>
+                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 3 -->
+                    <article class="ds-project-card">
+                        <span class="ds-project-card-badge active">قيد التنفيذ</span>
+                        <div class="ds-project-card-img">
+                            <img src="assets/svg/placeholder-project.svg" alt="برنامج التدريب المهني">
+                        </div>
+                        <div class="ds-project-card-body">
+                            <h3 class="ds-project-card-title">برنامج التدريب المهني</h3>
+                            <p class="ds-project-card-text">دورات تدريبية متخصصة لتأهيل الكوادر الوطنية</p>
+                            <div class="ds-progress">
+                                <div class="ds-progress-bar" style="width: 40%;"></div>
+                            </div>
+                            <div class="ds-project-card-kpis">
+                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 200 مستفيد</span>
+                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2025</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 4 -->
+                    <article class="ds-project-card">
+                        <span class="ds-project-card-badge complete">مكتمل</span>
+                        <div class="ds-project-card-img">
+                            <img src="assets/svg/placeholder-project.svg" alt="مشروع كسوة الشتاء">
+                        </div>
+                        <div class="ds-project-card-body">
+                            <h3 class="ds-project-card-title">مشروع كسوة الشتاء</h3>
+                            <p class="ds-project-card-text">توزيع ملابس شتوية على الأسر المحتاجة</p>
+                            <div class="ds-progress">
+                                <div class="ds-progress-bar" style="width: 100%;"></div>
+                            </div>
+                            <div class="ds-project-card-kpis">
+                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 3,000 مستفيد</span>
+                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Carousel Navigation -->
+                <button class="carousel-nav carousel-prev" aria-label="السابق">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="carousel-nav carousel-next" aria-label="التالي">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
             </div>
             
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <article class="card project-card reveal" data-status="in-progress" style="transition: all 0.3s ease;">
-                    <span class="badge badge-warning project-status">قيد التنفيذ</span>
-                    <div class="card-img-wrapper">
-                        <img src="assets/img/sections/project-1.jpg" alt="مشروع تمكين الشباب" class="card-img"
-                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i></div>';">
-                        <div class="card-img-overlay"></div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title" data-searchable>مشروع تمكين الشباب</h3>
-                        <p class="card-text">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل</p>
-                        <div class="card-meta">
-                            <span class="card-meta-item"><i class="fas fa-users"></i> 500 مستفيد</span>
-                            <span class="card-meta-item"><i class="fas fa-calendar"></i> 2024</span>
-                        </div>
-                        <div class="progress mt-4">
-                            <div class="progress-bar" style="width: 65%;"></div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <span class="badge badge-primary">تنمية</span>
-                        <button class="btn btn-sm btn-ghost" data-modal="project-modal">
-                            التفاصيل <i class="fas fa-arrow-left"></i>
-                        </button>
-                    </div>
-                </article>
-                
-                <!-- Project 2 -->
-                <article class="card project-card reveal" data-status="completed" style="transition: all 0.3s ease;">
-                    <span class="badge badge-success project-status">مكتمل</span>
-                    <div class="card-img-wrapper">
-                        <img src="assets/img/sections/project-2.jpg" alt="مبادرة إفطار صائم" class="card-img"
-                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i></div>';">
-                        <div class="card-img-overlay"></div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title" data-searchable>مبادرة إفطار صائم</h3>
-                        <p class="card-text">توزيع وجبات إفطار على الصائمين في شهر رمضان</p>
-                        <div class="card-meta">
-                            <span class="card-meta-item"><i class="fas fa-users"></i> 10,000 مستفيد</span>
-                            <span class="card-meta-item"><i class="fas fa-calendar"></i> 2024</span>
-                        </div>
-                        <div class="progress mt-4">
-                            <div class="progress-bar success" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <span class="badge badge-primary">إنساني</span>
-                        <button class="btn btn-sm btn-ghost" data-modal="project-modal">
-                            التفاصيل <i class="fas fa-arrow-left"></i>
-                        </button>
-                    </div>
-                </article>
-                
-                <!-- Project 3 -->
-                <article class="card project-card reveal" data-status="in-progress" style="transition: all 0.3s ease;">
-                    <span class="badge badge-warning project-status">قيد التنفيذ</span>
-                    <div class="card-img-wrapper">
-                        <img src="assets/img/sections/project-3.jpg" alt="برنامج التدريب المهني" class="card-img"
-                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i></div>';">
-                        <div class="card-img-overlay"></div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title" data-searchable>برنامج التدريب المهني</h3>
-                        <p class="card-text">دورات تدريبية متخصصة لتأهيل الكوادر الوطنية</p>
-                        <div class="card-meta">
-                            <span class="card-meta-item"><i class="fas fa-users"></i> 200 مستفيد</span>
-                            <span class="card-meta-item"><i class="fas fa-calendar"></i> 2024</span>
-                        </div>
-                        <div class="progress mt-4">
-                            <div class="progress-bar" style="width: 40%;"></div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <span class="badge badge-primary">تدريب</span>
-                        <button class="btn btn-sm btn-ghost" data-modal="project-modal">
-                            التفاصيل <i class="fas fa-arrow-left"></i>
-                        </button>
-                    </div>
-                </article>
-            </div>
-            
-            <div class="text-center mt-12 reveal">
-                <a href="projects.html" class="btn btn-outline btn-lg">
+            <div class="text-center mt-12 ds-reveal">
+                <a href="projects.html" class="ds-btn ds-btn-secondary">
                     <i class="fas fa-th-large"></i>
                     عرض جميع المشاريع
                 </a>
@@ -508,205 +506,188 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         5. NEWS SECTION
+         5. NEWS SECTION - Editorial Magazine Layout
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section bg-light" aria-labelledby="news-title">
+    <section class="section bg-light news-section" aria-labelledby="news-title">
         <div class="container">
-            <header class="section-header reveal">
-                <span class="section-badge">
+            <header class="ds-section-header ds-reveal">
+                <span class="ds-section-badge">
                     <i class="fas fa-newspaper"></i>
                     آخر الأخبار
                 </span>
-                <h2 class="section-title" id="news-title">أخبار الجمعية</h2>
-                <p class="section-subtitle">تابع آخر أخبارنا وفعالياتنا</p>
+                <h2 class="ds-section-title" id="news-title">أخبار الجمعية</h2>
+                <p class="ds-section-subtitle">تابع آخر أخبارنا وفعالياتنا ومستجداتنا</p>
             </header>
             
-            <div class="news-grid">
-                <article class="card news-card reveal">
-                    <div class="card-img-wrapper">
-                        <img src="assets/img/sections/news-1.jpg" alt="افتتاح المقر الجديد" class="card-img"
-                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-newspaper\'></i></div>';">
+            <div class="ds-news-grid ds-reveal">
+                <!-- Featured News -->
+                <a href="media/news-details.html" class="ds-news-featured">
+                    <div class="ds-news-featured-img">
+                        <img src="assets/svg/placeholder-news.svg" alt="افتتاح المقر الجديد">
                     </div>
-                    <div class="card-body">
-                        <div class="card-date">
+                    <div class="ds-news-featured-overlay"></div>
+                    <div class="ds-news-featured-content">
+                        <span class="ds-news-featured-date">
                             <i class="fas fa-calendar-alt"></i>
-                            <time datetime="2024-03-15">15 مارس 2024</time>
-                        </div>
-                        <h3 class="card-title">افتتاح المقر الجديد للجمعية</h3>
-                        <p class="card-text">تم بحمد الله افتتاح المقر الجديد للجمعية بحضور عدد من الشخصيات البارزة...</p>
-                        <a href="#" class="btn btn-sm btn-ghost">
-                            اقرأ المزيد <i class="fas fa-arrow-left"></i>
-                        </a>
+                            15 مارس 2024
+                        </span>
+                        <h3 class="ds-news-featured-title">افتتاح المقر الجديد للجمعية بحضور نخبة من الشخصيات</h3>
+                        <p class="ds-news-featured-excerpt">تم بحمد الله افتتاح المقر الجديد للجمعية الذي يمثل نقلة نوعية في مسيرة العمل المؤسسي...</p>
                     </div>
-                </article>
+                </a>
                 
-                <article class="card news-card reveal">
-                    <div class="card-img-wrapper">
-                        <img src="assets/img/sections/news-2.jpg" alt="توقيع اتفاقية شراكة" class="card-img"
-                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-newspaper\'></i></div>';">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-date">
-                            <i class="fas fa-calendar-alt"></i>
-                            <time datetime="2024-03-10">10 مارس 2024</time>
+                <!-- Side News List -->
+                <div class="ds-news-list">
+                    <a href="media/news-details.html" class="ds-news-item">
+                        <div class="ds-news-item-img">
+                            <img src="assets/svg/placeholder-news.svg" alt="توقيع اتفاقية">
                         </div>
-                        <h3 class="card-title">توقيع اتفاقية شراكة استراتيجية</h3>
-                        <p class="card-text">وقعت الجمعية اتفاقية شراكة مع عدد من الجهات الحكومية والخاصة...</p>
-                        <a href="#" class="btn btn-sm btn-ghost">
-                            اقرأ المزيد <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="card news-card reveal">
-                    <div class="card-img-wrapper">
-                        <img src="assets/img/sections/news-3.jpg" alt="إطلاق مبادرة معاً نبني" class="card-img"
-                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-newspaper\'></i></div>';">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-date">
-                            <i class="fas fa-calendar-alt"></i>
-                            <time datetime="2024-03-05">5 مارس 2024</time>
+                        <div class="ds-news-item-content">
+                            <span class="ds-news-item-date">10 مارس 2024</span>
+                            <h4 class="ds-news-item-title">توقيع اتفاقية شراكة استراتيجية مع القطاع الخاص</h4>
                         </div>
-                        <h3 class="card-title">إطلاق مبادرة "معاً نبني"</h3>
-                        <p class="card-text">أطلقت الجمعية مبادرة جديدة تهدف إلى تعزيز التكافل المجتمعي...</p>
-                        <a href="#" class="btn btn-sm btn-ghost">
-                            اقرأ المزيد <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </article>
+                    </a>
+                    
+                    <a href="media/news-details.html" class="ds-news-item">
+                        <div class="ds-news-item-img">
+                            <img src="assets/svg/placeholder-news.svg" alt="إطلاق مبادرة">
+                        </div>
+                        <div class="ds-news-item-content">
+                            <span class="ds-news-item-date">5 مارس 2024</span>
+                            <h4 class="ds-news-item-title">إطلاق مبادرة "معاً نبني" للتنمية المجتمعية</h4>
+                        </div>
+                    </a>
+                    
+                    <a href="media/news-details.html" class="ds-news-item">
+                        <div class="ds-news-item-img">
+                            <img src="assets/svg/placeholder-news.svg" alt="تكريم المتطوعين">
+                        </div>
+                        <div class="ds-news-item-content">
+                            <span class="ds-news-item-date">28 فبراير 2024</span>
+                            <h4 class="ds-news-item-title">حفل تكريم المتطوعين المتميزين لعام 2024</h4>
+                        </div>
+                    </a>
+                </div>
             </div>
             
-            <div class="text-center mt-12 reveal">
-                <a href="#" class="btn btn-outline">
+            <div class="text-center mt-12 ds-reveal">
+                <a href="media/news.html" class="ds-btn ds-btn-secondary">
                     <i class="fas fa-newspaper"></i>
-                    عرض المزيد
+                    عرض جميع الأخبار
                 </a>
             </div>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         6. STATISTICS SECTION
+         6. TEAM SECTION - Horizontal Slider
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section stats-section" aria-labelledby="stats-title">
+    <section class="section team-section" aria-labelledby="team-title">
         <div class="container">
-            <header class="section-header section-header-light reveal">
-                <span class="section-badge">
-                    <i class="fas fa-chart-bar"></i>
-                    إنجازاتنا
+            <header class="ds-section-header ds-reveal">
+                <span class="ds-section-badge">
+                    <i class="fas fa-users"></i>
+                    فريقنا
                 </span>
-                <h2 class="section-title" id="stats-title">الإحصائيات والأرقام</h2>
-                <p class="section-subtitle">أرقام تعكس جهودنا وأثرنا في المجتمع</p>
+                <h2 class="ds-section-title" id="team-title">فريق العمل</h2>
+                <p class="ds-section-subtitle">نخبة من الكفاءات المتميزة تعمل بشغف لخدمة المجتمع</p>
             </header>
             
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-number" data-counter="50000" data-suffix="+">0</div>
-                    <div class="stat-label">مستفيد</div>
+            <div class="team-slider ds-reveal">
+                <div class="team-slider-track">
+                    <article class="ds-team-card">
+                        <div class="ds-team-card-img">
+                            <img src="assets/svg/placeholder-person-m.svg" alt="أحمد محمد">
+                        </div>
+                        <h3 class="ds-team-card-name">أحمد محمد</h3>
+                        <p class="ds-team-card-role">المدير التنفيذي</p>
+                    </article>
+                    
+                    <article class="ds-team-card">
+                        <div class="ds-team-card-img">
+                            <img src="assets/svg/placeholder-person-f.svg" alt="سارة أحمد">
+                        </div>
+                        <h3 class="ds-team-card-name">سارة أحمد</h3>
+                        <p class="ds-team-card-role">مدير البرامج</p>
+                    </article>
+                    
+                    <article class="ds-team-card">
+                        <div class="ds-team-card-img">
+                            <img src="assets/svg/placeholder-person-m.svg" alt="خالد العمري">
+                        </div>
+                        <h3 class="ds-team-card-name">خالد العمري</h3>
+                        <p class="ds-team-card-role">مدير المشاريع</p>
+                    </article>
+                    
+                    <article class="ds-team-card">
+                        <div class="ds-team-card-img">
+                            <img src="assets/svg/placeholder-person-f.svg" alt="نورة السالم">
+                        </div>
+                        <h3 class="ds-team-card-name">نورة السالم</h3>
+                        <p class="ds-team-card-role">مدير التسويق</p>
+                    </article>
+                    
+                    <article class="ds-team-card">
+                        <div class="ds-team-card-img">
+                            <img src="assets/svg/placeholder-person-m.svg" alt="محمد الفهد">
+                        </div>
+                        <h3 class="ds-team-card-name">محمد الفهد</h3>
+                        <p class="ds-team-card-role">المدير المالي</p>
+                    </article>
+                    
+                    <article class="ds-team-card">
+                        <div class="ds-team-card-img">
+                            <img src="assets/svg/placeholder-person-f.svg" alt="هند الشمري">
+                        </div>
+                        <h3 class="ds-team-card-name">هند الشمري</h3>
+                        <p class="ds-team-card-role">مدير الموارد البشرية</p>
+                    </article>
                 </div>
                 
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <div class="stat-number" data-counter="120" data-suffix="+">0</div>
-                    <div class="stat-label">مشروع ومبادرة</div>
-                </div>
-                
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <div class="stat-number" data-counter="500" data-suffix="+">0</div>
-                    <div class="stat-label">متطوع</div>
-                </div>
-                
-                <div class="stat-item reveal">
-                    <div class="stat-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <div class="stat-number" data-counter="35" data-suffix="+">0</div>
-                    <div class="stat-label">شريك استراتيجي</div>
-                </div>
+                <!-- Slider Navigation -->
+                <button class="carousel-nav team-prev" aria-label="السابق">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="carousel-nav team-next" aria-label="التالي">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div class="text-center mt-12 ds-reveal">
+                <a href="team.html" class="ds-btn ds-btn-secondary">
+                    <i class="fas fa-users"></i>
+                    عرض فريق العمل كاملاً
+                </a>
             </div>
         </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         7. PARTNERS SECTION - Logo Marquee
+         7. FOOTER CTA + FOOTER
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section" aria-labelledby="partners-title">
+    <section class="section footer-cta-section" aria-label="دعوة للعمل">
         <div class="container">
-            <header class="section-header reveal">
-                <span class="section-badge">
-                    <i class="fas fa-handshake"></i>
-                    شركاؤنا
-                </span>
-                <h2 class="section-title" id="partners-title">شركاء النجاح</h2>
-                <p class="section-subtitle">نفخر بشراكتنا مع نخبة من المؤسسات والجهات</p>
-            </header>
-            
-            <div class="partners-grid reveal">
-                <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-1.png" alt="شريك 1"
-                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
-                </div>
-                <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-2.png" alt="شريك 2"
-                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
-                </div>
-                <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-3.png" alt="شريك 3"
-                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
-                </div>
-                <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-4.png" alt="شريك 4"
-                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
-                </div>
-                <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-5.png" alt="شريك 5"
-                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
-                </div>
-                <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-6.png" alt="شريك 6"
-                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         8. GOVERNANCE PREVIEW SECTION
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section bg-light" aria-labelledby="governance-preview-title">
-        <div class="container">
-            <div class="governance-preview reveal">
-                <div class="governance-icon">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <div class="governance-content">
-                    <h2 class="governance-title" id="governance-preview-title">ملفات الحوكمة والشفافية</h2>
-                    <p class="governance-text">
-                        نؤمن بأهمية الشفافية والمساءلة في العمل المؤسسي. اطلع على تقاريرنا السنوية، 
-                        والقوائم المالية، ولوائح الحوكمة التي تضمن سير العمل بأعلى معايير النزاهة والمهنية.
-                    </p>
-                    <a href="governance.html" class="btn btn-primary">
-                        <i class="fas fa-file-alt"></i>
-                        عرض ملفات الحوكمة
-                        <i class="fas fa-arrow-left btn-arrow"></i>
+            <div class="ds-footer-cta ds-reveal">
+                <h2 class="ds-footer-cta-title">كن جزءاً من التغيير الإيجابي</h2>
+                <p class="ds-footer-cta-text">
+                    انضم إلينا اليوم وساهم في بناء مستقبل أفضل لمجتمعنا. 
+                    معاً نستطيع تحقيق الأثر المستدام والشفافية الكاملة.
+                </p>
+                <div class="ds-footer-cta-actions">
+                    <a href="join.html" class="ds-btn ds-btn-primary ds-btn-lg">
+                        <i class="fas fa-heart"></i>
+                        انضم معنا
+                        <i class="fas fa-arrow-left btn-icon-arrow"></i>
+                    </a>
+                    <a href="contact.html" class="ds-btn ds-btn-ghost ds-btn-ghost-light ds-btn-lg">
+                        <i class="fas fa-envelope"></i>
+                        تواصل معنا
                     </a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         9. FOOTER
-         ═══════════════════════════════════════════════════════════════════════════ -->
+    
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
@@ -718,18 +699,10 @@
                         تخدم أفراد المجتمع وتحقق رؤيتنا في التنمية الشاملة.
                     </p>
                     <div class="footer-socials">
-                        <a href="#" class="footer-social" aria-label="تويتر">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="footer-social" aria-label="إنستغرام">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="footer-social" aria-label="يوتيوب">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="footer-social" aria-label="لينكدإن">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <a href="#" class="footer-social" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="footer-social" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -785,75 +758,6 @@
         </div>
     </footer>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         PROJECT MODAL
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <div class="modal-backdrop" data-modal-backdrop="project-modal" aria-hidden="true"></div>
-    <div class="modal modal-lg" id="project-modal" role="dialog" aria-labelledby="project-modal-title" aria-hidden="true">
-        <div class="modal-header">
-            <h2 class="modal-title" id="project-modal-title">تفاصيل المشروع</h2>
-            <button class="modal-close" aria-label="إغلاق">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="project-modal-header">
-                <img src="assets/img/sections/project-1.jpg" alt="صورة المشروع" class="project-modal-img"
-                     onerror="this.style.background='var(--bg-tertiary)';">
-                <div class="project-modal-info">
-                    <h3>مشروع تمكين الشباب</h3>
-                    <span class="badge badge-warning">قيد التنفيذ</span>
-                    <p class="mt-4">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل من خلال التدريب والتأهيل والتوظيف.</p>
-                </div>
-            </div>
-            
-            <div class="project-modal-timeline mt-8">
-                <h4 class="mb-4">مراحل المشروع</h4>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">يناير 2024</div>
-                        <div class="timeline-title">إطلاق المشروع</div>
-                        <p class="timeline-text">بداية المشروع والإعلان عن فتح التسجيل</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">فبراير 2024</div>
-                        <div class="timeline-title">مرحلة التدريب</div>
-                        <p class="timeline-text">تنفيذ البرامج التدريبية المتخصصة</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">مارس 2024</div>
-                        <div class="timeline-title">التأهيل والتوظيف</div>
-                        <p class="timeline-text">ربط المتدربين بفرص العمل المناسبة</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-modal-kpis">
-                <div class="kpi-item">
-                    <div class="kpi-value">500+</div>
-                    <div class="kpi-label">مستفيد</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-value">65%</div>
-                    <div class="kpi-label">نسبة الإنجاز</div>
-                </div>
-                <div class="kpi-item">
-                    <div class="kpi-value">12</div>
-                    <div class="kpi-label">شهر</div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-ghost" onclick="closeModal('project-modal')">إغلاق</button>
-            <a href="projects.html" class="btn btn-primary">
-                عرض جميع المشاريع
-            </a>
-        </div>
-    </div>
-
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" aria-label="العودة للأعلى">
         <i class="fas fa-arrow-up"></i>
@@ -861,8 +765,27 @@
 
     <!-- Scripts -->
     <script src="js/loader.js?v=20260125"></script>
-    <script src="js/main.js"></script>
+    <script src="js/home-premium.js"></script>
     <script src="js/components.js"></script>
-    <script src="js/media-center.js"></script>
+    
+    <!-- About Tabs Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.about-tab');
+            const contents = document.querySelectorAll('.about-tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
