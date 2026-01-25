@@ -12,6 +12,33 @@ type PageLink = {
   isImportant?: boolean;
 };
 
+// Templates data structure
+type Template = {
+  id: string;
+  name: string;
+  description: string;
+  previewPath: string;
+  folderPath: string;
+  thumbnail: string;
+  features: string[];
+  pages: number;
+  isNew?: boolean;
+};
+
+const templates: Template[] = [
+  {
+    id: "theme-1",
+    name: "قالب الجمعية الأول",
+    description: "قالب احترافي متكامل للجمعيات الخيرية والمنظمات غير الربحية يدعم العربية RTL بتصميم عصري",
+    previewPath: "theme-1/index.html",
+    folderPath: "theme-1",
+    thumbnail: "theme-1/assets/img/logo.svg",
+    features: ["7 صفحات رئيسية", "5 بوسترات جاهزة", "تصميم متجاوب", "دعم RTL"],
+    pages: 12,
+    isNew: true,
+  },
+];
+
 type Category = {
   title: string;
   icon: string;
@@ -401,6 +428,247 @@ const PageCard = ({ page }: { page: PageLink }) => {
   );
 };
 
+// Template Card Component
+const TemplateCard = ({ template }: { template: Template }) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+  const previewHref = `${import.meta.env.BASE_URL}${template.previewPath}`;
+  const thumbnailHref = `${import.meta.env.BASE_URL}${template.thumbnail}`;
+
+  const handleDownloadTemplate = async () => {
+    setIsDownloading(true);
+    try {
+      const zip = new JSZip();
+      const basePath = template.folderPath;
+      
+      // Template files to download
+      const templateFiles = [
+        "index.html", "about.html", "projects.html", "services.html",
+        "governance.html", "join.html", "contact.html",
+        "css/main.css", "css/components.css", "css/pages.css", "css/rtl.css",
+        "js/main.js", "js/components.js",
+        "assets/img/logo.svg", "assets/icons/favicon.svg",
+        "posters/poster-1-impact.html", "posters/poster-2-project.html",
+        "posters/poster-3-governance.html", "posters/poster-4-volunteer.html",
+        "posters/poster-5-partners.html",
+      ];
+
+      for (const file of templateFiles) {
+        try {
+          const response = await fetch(`${import.meta.env.BASE_URL}${basePath}/${file}`);
+          if (response.ok) {
+            const content = await response.text();
+            zip.file(file, content);
+          }
+        } catch (err) {
+          console.warn(`Could not fetch ${file}:`, err);
+        }
+      }
+
+      const content = await zip.generateAsync({ type: "blob" });
+      saveAs(content, `${template.id}.zip`);
+    } catch (err) {
+      console.error("Download failed:", err);
+      alert("حدث خطأ أثناء التحميل");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  return (
+    <div className="col-12 col-md-6 col-lg-4">
+      <div
+        className="card h-100 border-0 overflow-hidden position-relative"
+        style={{
+          borderRadius: "16px",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+          transition: "all 0.3s ease",
+          background: "#fff",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-8px)";
+          e.currentTarget.style.boxShadow = "0 12px 40px rgba(13, 148, 136, 0.2)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "0 4px 24px rgba(0,0,0,0.08)";
+        }}
+      >
+        {/* Template Preview Image */}
+        <div
+          style={{
+            height: "180px",
+            background: "linear-gradient(135deg, #0d9488 0%, #24c2ec 100%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <img
+            src={thumbnailHref}
+            alt={template.name}
+            style={{
+              height: "80px",
+              width: "auto",
+              filter: "brightness(0) invert(1)",
+              opacity: 0.9,
+            }}
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+          {template.isNew && (
+            <span
+              className="badge position-absolute"
+              style={{
+                top: "12px",
+                left: "12px",
+                background: "#22c55e",
+                color: "#fff",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                fontSize: "0.7rem",
+                fontWeight: 600,
+              }}
+            >
+              جديد ✨
+            </span>
+          )}
+        </div>
+
+        <div className="card-body p-4">
+          {/* Template Name */}
+          <h5
+            className="card-title mb-2"
+            style={{
+              color: "#1e293b",
+              fontWeight: 700,
+              fontSize: "1.1rem",
+            }}
+          >
+            {template.name}
+          </h5>
+
+          {/* Description */}
+          <p
+            style={{
+              color: "#64748b",
+              fontSize: "0.85rem",
+              lineHeight: 1.6,
+              marginBottom: "1rem",
+            }}
+          >
+            {template.description}
+          </p>
+
+          {/* Features Tags */}
+          <div className="d-flex flex-wrap gap-2 mb-3">
+            {template.features.map((feature, idx) => (
+              <span
+                key={idx}
+                style={{
+                  background: "#f0fdfa",
+                  color: "#0d9488",
+                  padding: "4px 10px",
+                  borderRadius: "20px",
+                  fontSize: "0.7rem",
+                  fontWeight: 500,
+                  border: "1px solid #99f6e4",
+                }}
+              >
+                {feature}
+              </span>
+            ))}
+          </div>
+
+          {/* Stats */}
+          <div
+            className="d-flex align-items-center gap-3 mb-3 pb-3"
+            style={{ borderBottom: "1px solid #e2e8f0" }}
+          >
+            <span
+              className="d-flex align-items-center gap-1"
+              style={{ color: "#64748b", fontSize: "0.8rem" }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5z"/>
+              </svg>
+              {template.pages} صفحة
+            </span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="d-flex gap-2">
+            <a
+              href={previewHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn flex-grow-1 d-flex align-items-center justify-content-center gap-2"
+              style={{
+                background: "linear-gradient(135deg, #0d9488 0%, #24c2ec 100%)",
+                color: "#fff",
+                borderRadius: "10px",
+                fontSize: "0.85rem",
+                padding: "10px 16px",
+                border: "none",
+                fontWeight: 600,
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.9";
+                e.currentTarget.style.transform = "scale(1.02)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+              معاينة القالب
+            </a>
+            <button
+              onClick={handleDownloadTemplate}
+              disabled={isDownloading}
+              className="btn d-flex align-items-center justify-content-center gap-2"
+              style={{
+                background: "#f0fdfa",
+                color: "#0d9488",
+                borderRadius: "10px",
+                fontSize: "0.85rem",
+                padding: "10px 16px",
+                border: "1px solid #99f6e4",
+                fontWeight: 600,
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#0d9488";
+                e.currentTarget.style.color = "#fff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#f0fdfa";
+                e.currentTarget.style.color = "#0d9488";
+              }}
+            >
+              {isDownloading ? (
+                <span className="spinner-border spinner-border-sm" role="status" style={{ width: "14px", height: "14px" }} />
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+              )}
+              تحميل
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -562,6 +830,49 @@ const Home = () => {
           </div>
         </div>
       </header>
+
+      {/* Templates Section */}
+      <section className="py-5" style={{ background: "#f0fdfa" }}>
+        <div className="container">
+          {/* Section Header */}
+          <div className="text-center mb-5">
+            <span
+              style={{
+                background: "linear-gradient(135deg, #0d9488 0%, #24c2ec 100%)",
+                color: "#fff",
+                padding: "6px 16px",
+                borderRadius: "20px",
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                display: "inline-block",
+                marginBottom: "1rem",
+              }}
+            >
+              🎨 قوالب جاهزة
+            </span>
+            <h2
+              style={{
+                color: "#1e293b",
+                fontSize: "1.75rem",
+                fontWeight: 700,
+                marginBottom: "0.5rem",
+              }}
+            >
+              قوالب الجمعيات
+            </h2>
+            <p style={{ color: "#64748b", fontSize: "0.95rem", maxWidth: "500px", margin: "0 auto" }}>
+              قوالب احترافية متكاملة للجمعيات والمنظمات غير الربحية جاهزة للتخصيص والاستخدام
+            </p>
+          </div>
+
+          {/* Templates Grid */}
+          <div className="row g-4 justify-content-center">
+            {templates.map((template) => (
+              <TemplateCard key={template.id} template={template} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Main Content */}
       <main className="container py-4">
