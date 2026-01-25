@@ -1,0 +1,47 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0fbfae;stop-opacity:0.15" />
+      <stop offset="50%" style="stop-color:#53687a;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#0fbfae;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0fbfae" />
+      <stop offset="100%" style="stop-color:#26d4c6" />
+    </linearGradient>
+    <pattern id="dotPattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#0fbfae" opacity="0.2"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#f8fafc"/>
+  <rect width="1200" height="600" fill="url(#bgGrad1)"/>
+  <rect width="1200" height="600" fill="url(#dotPattern)"/>
+  
+  <!-- Decorative Shapes -->
+  <circle cx="150" cy="100" r="80" fill="#0fbfae" opacity="0.08"/>
+  <circle cx="1050" cy="500" r="120" fill="#53687a" opacity="0.06"/>
+  <circle cx="600" cy="300" r="200" stroke="#0fbfae" stroke-width="1" fill="none" opacity="0.15"/>
+  
+  <!-- Center Icon -->
+  <g transform="translate(550, 250)">
+    <rect x="0" y="0" width="100" height="100" rx="20" fill="url(#accentGrad)" opacity="0.15"/>
+    <path d="M50 25 L75 50 L50 75 L25 50 Z" stroke="url(#accentGrad)" stroke-width="2" fill="none" filter="url(#glow)"/>
+    <circle cx="50" cy="50" r="8" fill="url(#accentGrad)"/>
+  </g>
+  
+  <!-- Text Placeholder -->
+  <rect x="400" y="380" width="400" height="16" rx="8" fill="#e2e8f0"/>
+  <rect x="450" y="410" width="300" height="12" rx="6" fill="#e2e8f0"/>
+  
+  <!-- Bottom Accent Line -->
+  <rect x="0" y="596" width="1200" height="4" fill="url(#accentGrad)"/>
+</svg>

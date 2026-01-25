@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة الفيديو - جمعية [اسم الجمعية]</title>
+    <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+</head>
+<body>
+    <div class="page-loader" id="page-loader">
+        <div class="loader-content"><img src="../assets/img/logo.svg" alt="جاري التحميل..." class="loader-logo"><div class="loader-spinner"></div></div>
+    </div>
+
+    <nav class="navbar" role="navigation">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-brand"><img src="../assets/img/logo.svg" alt="شعار الجمعية" class="navbar-logo"></a>
+            <ul class="navbar-nav">
+                <li><a href="../index.html" class="navbar-link">الرئيسية</a></li>
+                <li><a href="../projects.html" class="navbar-link">المشاريع</a></li>
+                <li><a href="../governance.html" class="navbar-link">الحوكمة</a></li>
+                <li><a href="../contact.html" class="navbar-link">اتصل بنا</a></li>
+            </ul>
+            <a href="../join.html" class="btn btn-primary navbar-cta"><i class="fas fa-heart"></i> انضم معنا</a>
+            <button class="navbar-toggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    
+    <div class="mobile-overlay"></div>
+    <aside class="navbar-mobile">
+        <div class="navbar-mobile-header">
+            <img src="../assets/img/logo.svg" alt="شعار الجمعية" style="height: 36px;">
+            <button class="navbar-mobile-close"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="navbar-mobile-nav">
+            <a href="../index.html" class="navbar-mobile-link"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="videos.html" class="navbar-mobile-link active"><i class="fas fa-video"></i> مكتبة الفيديو</a>
+        </nav>
+    </aside>
+
+    <section class="page-hero">
+        <div class="page-hero-bg"><img src="../assets/svg/placeholder-video.svg" alt="" class="page-hero-img"><div class="page-hero-overlay"></div></div>
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../index.html" class="breadcrumb-link">الرئيسية</a>
+                <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+                <span class="breadcrumb-current">مكتبة الفيديو</span>
+            </nav>
+            <h1 class="page-hero-title">مكتبة الفيديو</h1>
+            <p class="page-hero-subtitle">شاهد أبرز فعالياتنا ومشاريعنا</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="videos-grid reveal">
+                <article class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <div class="video-thumbnail">
+                        <img src="../assets/svg/placeholder-video.svg" alt="فيديو">
+                        <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                        <span class="video-duration">5:30</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>التقرير المرئي السنوي 2024</h3>
+                        <p>استعراض لأبرز إنجازات الجمعية خلال العام</p>
+                    </div>
+                </article>
+                <article class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <div class="video-thumbnail">
+                        <img src="../assets/svg/placeholder-video.svg" alt="فيديو">
+                        <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                        <span class="video-duration">3:45</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>حفل تخريج برنامج تمكين الشباب</h3>
+                        <p>لحظات من حفل تخريج الدفعة الأولى</p>
+                    </div>
+                </article>
+                <article class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <div class="video-thumbnail">
+                        <img src="../assets/svg/placeholder-video.svg" alt="فيديو">
+                        <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                        <span class="video-duration">2:15</span>
+                    </div>
+                    <div class="video-content">
+                        <h3>رسالة رئيس مجلس الإدارة</h3>
+                        <p>كلمة رئيس المجلس بمناسبة الذكرى السنوية</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal-backdrop" data-modal-backdrop="video-modal"></div>
+    <div class="modal" id="video-modal">
+        <div class="modal-content modal-lg">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="video-player">
+                <iframe id="video-iframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© <span id="current-year">2024</span> جميع الحقوق محفوظة</p>
+                <p class="footer-powered">مدعوم عبر منصة <a href="https://webyan.com" target="_blank">ويبيان</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/loader.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/components.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // Video modal
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const videoUrl = card.dataset.video;
+                document.getElementById('video-iframe').src = videoUrl + '?autoplay=1';
+                openModal('video-modal');
+            });
+        });
+    </script>
+</body>
+</html>

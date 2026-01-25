@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="استراتيجية جمعية [اسم الجمعية] - رؤيتنا وأهدافنا الاستراتيجية">
+    <title>استراتيجيتنا - جمعية [اسم الجمعية]</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-content">
+            <img src="assets/img/logo.svg" alt="جاري التحميل..." class="loader-logo">
+            <div class="loader-spinner"></div>
+            <div class="loader-progress"><div class="loader-progress-bar"></div></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         NAVBAR - Premium Sticky Navigation with Dropdowns
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="assets/img/logo.svg" alt="شعار الجمعية" class="navbar-logo">
+            </a>
+            
+            <ul class="navbar-nav">
+                <li><a href="index.html" class="navbar-link">الرئيسية</a></li>
+                <li class="navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle active">
+                        عن الجمعية
+                        <i class="fas fa-chevron-down navbar-dropdown-icon"></i>
+                    </a>
+                    <ul class="navbar-dropdown-menu">
+                        <li><a href="strategy.html" class="active"><i class="fas fa-chess"></i> استراتيجيتنا</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                        <li><a href="founders.html"><i class="fas fa-landmark"></i> مؤسسونا</a></li>
+                        <li><a href="board.html"><i class="fas fa-users-cog"></i> مجلس الإدارة</a></li>
+                        <li><a href="general-assembly.html"><i class="fas fa-users"></i> الجمعية العمومية</a></li>
+                        <li><a href="org-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a></li>
+                        <li><a href="committees.html"><i class="fas fa-user-friends"></i> اللجان</a></li>
+                        <li><a href="master-document.html"><i class="fas fa-file-alt"></i> الوثيقة الشاملة</a></li>
+                        <li><a href="team.html"><i class="fas fa-id-badge"></i> فريق العمل</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-dropdown">
+                    <a href="#" class="navbar-link navbar-dropdown-toggle">
+                        المركز الإعلامي
+                        <i class="fas fa-chevron-down navbar-dropdown-icon"></i>
+                    </a>
+                    <ul class="navbar-dropdown-menu">
+                        <li><a href="media/news.html"><i class="fas fa-newspaper"></i> أخبار الجمعية</a></li>
+                        <li><a href="media/videos.html"><i class="fas fa-video"></i> مكتبة الفيديو</a></li>
+                        <li><a href="media/gallery.html"><i class="fas fa-images"></i> معرض الصور</a></li>
+                    </ul>
+                </li>
+                <li><a href="projects.html" class="navbar-link">المشاريع</a></li>
+                <li><a href="services.html" class="navbar-link">الخدمات</a></li>
+                <li><a href="governance.html" class="navbar-link">الحوكمة</a></li>
+                <li><a href="contact.html" class="navbar-link">اتصل بنا</a></li>
+            </ul>
+            
+            <a href="join.html" class="btn btn-primary navbar-cta">
+                <i class="fas fa-heart"></i>
+                انضم معنا
+            </a>
+            
+            <button class="navbar-toggle" aria-label="فتح القائمة" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+    <aside class="navbar-mobile" role="dialog" aria-label="القائمة المتنقلة">
+        <div class="navbar-mobile-header">
+            <img src="assets/img/logo.svg" alt="شعار الجمعية" style="height: 36px;">
+            <button class="navbar-mobile-close" aria-label="إغلاق القائمة">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="navbar-mobile-nav">
+            <a href="index.html" class="navbar-mobile-link">
+                <i class="fas fa-home"></i>
+                الرئيسية
+            </a>
+            
+            <!-- عن الجمعية Dropdown -->
+            <div class="mobile-dropdown">
+                <button class="navbar-mobile-link mobile-dropdown-toggle">
+                    <i class="fas fa-building"></i>
+                    عن الجمعية
+                    <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
+                </button>
+                <div class="mobile-dropdown-menu">
+                    <a href="strategy.html" class="active">استراتيجيتنا</a>
+                    <a href="about.html">من نحن</a>
+                    <a href="founders.html">مؤسسونا</a>
+                    <a href="board.html">مجلس الإدارة</a>
+                    <a href="general-assembly.html">الجمعية العمومية</a>
+                    <a href="org-structure.html">الهيكل التنظيمي</a>
+                    <a href="committees.html">اللجان</a>
+                    <a href="master-document.html">الوثيقة الشاملة</a>
+                    <a href="team.html">فريق العمل</a>
+                </div>
+            </div>
+            
+            <!-- المركز الإعلامي Dropdown -->
+            <div class="mobile-dropdown">
+                <button class="navbar-mobile-link mobile-dropdown-toggle">
+                    <i class="fas fa-photo-video"></i>
+                    المركز الإعلامي
+                    <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
+                </button>
+                <div class="mobile-dropdown-menu">
+                    <a href="media/news.html">أخبار الجمعية</a>
+                    <a href="media/videos.html">مكتبة الفيديو</a>
+                    <a href="media/gallery.html">معرض الصور</a>
+                </div>
+            </div>
+            
+            <a href="projects.html" class="navbar-mobile-link">
+                <i class="fas fa-project-diagram"></i>
+                المشاريع
+            </a>
+            <a href="services.html" class="navbar-mobile-link">
+                <i class="fas fa-concierge-bell"></i>
+                الخدمات
+            </a>
+            <a href="governance.html" class="navbar-mobile-link">
+                <i class="fas fa-balance-scale"></i>
+                الحوكمة
+            </a>
+            <a href="contact.html" class="navbar-mobile-link">
+                <i class="fas fa-envelope"></i>
+                اتصل بنا
+            </a>
+            <a href="join.html" class="btn btn-primary btn-block mt-6">
+                <i class="fas fa-heart"></i>
+                انضم معنا
+            </a>
+        </nav>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         PAGE HERO
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section class="page-hero">
+        <div class="page-hero-bg">
+            <img src="assets/svg/placeholder-cover.svg" alt="" class="page-hero-img">
+            <div class="page-hero-overlay"></div>
+        </div>
+        <div class="container">
+            <nav class="breadcrumb" aria-label="التنقل">
+                <a href="index.html" class="breadcrumb-link">الرئيسية</a>
+                <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+                <span class="breadcrumb-current">استراتيجيتنا</span>
+            </nav>
+            <h1 class="page-hero-title">استراتيجيتنا</h1>
+            <p class="page-hero-subtitle">خارطة طريقنا نحو تحقيق الأثر المستدام</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         VISION & MISSION
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section class="section">
+        <div class="container">
+            <div class="strategy-vmp-grid reveal">
+                <article class="strategy-vmp-card">
+                    <div class="strategy-vmp-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2 class="strategy-vmp-title">رؤيتنا</h2>
+                    <p class="strategy-vmp-text">
+                        أن نكون الجمعية الرائدة في تحقيق التنمية المستدامة والريادة المجتمعية على مستوى المملكة العربية السعودية، ونموذجاً يُحتذى به في الحوكمة والشفافية.
+                    </p>
+                </article>
+                
+                <article class="strategy-vmp-card featured">
+                    <div class="strategy-vmp-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h2 class="strategy-vmp-title">رسالتنا</h2>
+                    <p class="strategy-vmp-text">
+                        بناء مبادرات تنموية اقتصادية تحقق حياة اجتماعية واقتصادية كريمة لأفراد المجتمع من خلال تنمية قدراتهم وتوفير الموارد للاستدامة.
+                    </p>
+                </article>
+                
+                <article class="strategy-vmp-card">
+                    <div class="strategy-vmp-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h2 class="strategy-vmp-title">قيمنا</h2>
+                    <p class="strategy-vmp-text">
+                        الشفافية • النزاهة • التميز • الابتكار • المسؤولية المجتمعية • العمل الجماعي
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         STRATEGIC GOALS
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section class="section bg-light">
+        <div class="container">
+            <header class="section-header reveal">
+                <span class="section-badge">
+                    <i class="fas fa-bullseye"></i>
+                    الأهداف الاستراتيجية
+                </span>
+                <h2 class="section-title">أهدافنا الاستراتيجية</h2>
+                <p class="section-subtitle">نسعى لتحقيق أهداف طموحة تخدم المجتمع وتحقق رؤية المملكة 2030</p>
+            </header>
+            
+            <div class="strategy-goals-grid">
+                <article class="strategy-goal-card reveal">
+                    <div class="strategy-goal-number">01</div>
+                    <div class="strategy-goal-content">
+                        <h3 class="strategy-goal-title">تمكين الفئات المستهدفة</h3>
+                        <p class="strategy-goal-text">تطوير برامج شاملة لتمكين الأسر والشباب والمرأة اقتصادياً واجتماعياً</p>
+                        <div class="strategy-goal-kpis">
+                            <div class="strategy-kpi">
+                                <span class="strategy-kpi-value" data-counter="10000">0</span>
+                                <span class="strategy-kpi-label">مستفيد</span>
+                            </div>
+                            <div class="strategy-kpi">
+                                <span class="strategy-kpi-value" data-counter="50">0</span>
+                                <span class="strategy-kpi-label">برنامج</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="strategy-goal-card reveal">
+                    <div class="strategy-goal-number">02</div>
+                    <div class="strategy-goal-content">
+                        <h3 class="strategy-goal-title">تعزيز الاستدامة المالية</h3>
+                        <p class="strategy-goal-text">بناء نموذج مالي مستدام يضمن استمرارية البرامج والمشاريع</p>
+                        <div class="strategy-goal-kpis">
+                            <div class="strategy-kpi">
+                                <span class="strategy-kpi-value" data-counter="80" data-suffix="%">0</span>
+                                <span class="strategy-kpi-label">استدامة</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="strategy-goal-card reveal">
+                    <div class="strategy-goal-number">03</div>
+                    <div class="strategy-goal-content">
+                        <h3 class="strategy-goal-title">التميز المؤسسي</h3>
+                        <p class="strategy-goal-text">تطبيق أعلى معايير الحوكمة والجودة في العمل المؤسسي</p>
+                        <div class="strategy-goal-kpis">
+                            <div class="strategy-kpi">
+                                <span class="strategy-kpi-value" data-counter="100" data-suffix="%">0</span>
+                                <span class="strategy-kpi-label">شفافية</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="strategy-goal-card reveal">
+                    <div class="strategy-goal-number">04</div>
+                    <div class="strategy-goal-content">
+                        <h3 class="strategy-goal-title">توسيع الشراكات</h3>
+                        <p class="strategy-goal-text">بناء شراكات استراتيجية مع القطاعين العام والخاص</p>
+                        <div class="strategy-goal-kpis">
+                            <div class="strategy-kpi">
+                                <span class="strategy-kpi-value" data-counter="35" data-suffix="+">0</span>
+                                <span class="strategy-kpi-label">شريك</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         STRATEGIC PILLARS
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section class="section">
+        <div class="container">
+            <header class="section-header reveal">
+                <span class="section-badge">
+                    <i class="fas fa-columns"></i>
+                    الركائز
+                </span>
+                <h2 class="section-title">ركائزنا الاستراتيجية</h2>
+            </header>
+            
+            <div class="strategy-pillars reveal">
+                <div class="strategy-pillar">
+                    <div class="strategy-pillar-icon"><i class="fas fa-users"></i></div>
+                    <h3>التمكين</h3>
+                    <p>تمكين الأفراد والأسر من تحقيق الاستقلالية</p>
+                </div>
+                <div class="strategy-pillar">
+                    <div class="strategy-pillar-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>الاستدامة</h3>
+                    <p>ضمان استمرارية الأثر على المدى الطويل</p>
+                </div>
+                <div class="strategy-pillar">
+                    <div class="strategy-pillar-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>الشراكة</h3>
+                    <p>بناء علاقات تعاونية مثمرة</p>
+                </div>
+                <div class="strategy-pillar">
+                    <div class="strategy-pillar-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>الابتكار</h3>
+                    <p>تطوير حلول إبداعية للتحديات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/img/logo.svg" alt="شعار الجمعية" class="footer-logo">
+                    <p class="footer-desc">نسعى لبناء مجتمع مستدام من خلال مشاريع تنموية مؤثرة تحقق الأثر والشفافية.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="انستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-nav">
+                        <li><a href="about.html">عن الجمعية</a></li>
+                        <li><a href="projects.html">المشاريع</a></li>
+                        <li><a href="services.html">الخدمات</a></li>
+                        <li><a href="governance.html">الحوكمة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+966500000000">+966 50 000 0000</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@association.org">info@association.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© <span id="current-year">2024</span> جميع الحقوق محفوظة</p>
+                <p class="footer-powered">مدعوم عبر منصة <a href="https://webyan.com" target="_blank" rel="noopener">ويبيان</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/loader.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
