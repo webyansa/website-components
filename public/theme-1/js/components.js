@@ -9,12 +9,14 @@
  *  - Tabs with keyboard navigation
  *  - Accordions with animation
  *  - Scroll to top button
+ *  - Mobile Dropdowns
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
+    initMobileDropdowns();
     initModals();
     initTabs();
     initAccordions();
@@ -23,6 +25,33 @@ document.addEventListener('DOMContentLoaded', function() {
     initSidebarNav();
     initScrollToTop();
 });
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * MOBILE DROPDOWNS
+ * Toggle dropdowns in mobile menu
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initMobileDropdowns() {
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = this.parentElement;
+            
+            // Close other dropdowns
+            document.querySelectorAll('.mobile-dropdown').forEach(other => {
+                if (other !== dropdown) {
+                    other.classList.remove('open');
+                }
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('open');
+        });
+    });
+}
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
