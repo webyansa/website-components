@@ -274,6 +274,134 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   NAVBAR DROPDOWNS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.navbar-dropdown {
+    position: relative;
+}
+
+.navbar-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.navbar-dropdown-icon {
+    font-size: 0.7rem;
+    transition: transform var(--duration-300) var(--ease-out);
+}
+
+.navbar-dropdown:hover .navbar-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.navbar-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 220px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--duration-300) var(--ease-out);
+    z-index: 100;
+    list-style: none;
+}
+
+.navbar-dropdown:hover .navbar-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navbar-dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    transition: all var(--duration-200) var(--ease-out);
+}
+
+.navbar-dropdown-menu li a:hover,
+.navbar-dropdown-menu li a.active {
+    background: rgba(var(--primary-rgb), 0.08);
+    color: var(--primary);
+}
+
+.navbar-dropdown-menu li a i {
+    width: 18px;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.navbar-dropdown-menu li a:hover i {
+    color: var(--primary);
+}
+
+/* Mobile Dropdowns */
+.mobile-dropdown {
+    width: 100%;
+}
+
+.mobile-dropdown-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: right;
+}
+
+.mobile-dropdown-icon {
+    margin-right: auto;
+    font-size: 0.7rem;
+    transition: transform var(--duration-300) var(--ease-out);
+}
+
+.mobile-dropdown.open .mobile-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+    display: none;
+    padding-right: var(--space-10);
+    padding-top: var(--space-2);
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.mobile-dropdown.open .mobile-dropdown-menu {
+    display: flex;
+}
+
+.mobile-dropdown-menu a {
+    display: block;
+    padding: var(--space-3);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    transition: all var(--duration-200) var(--ease-out);
+}
+
+.mobile-dropdown-menu a:hover,
+.mobile-dropdown-menu a.active {
+    background: rgba(var(--primary-rgb), 0.08);
+    color: var(--primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    BUTTONS - Premium Interactive States
    ═══════════════════════════════════════════════════════════════════════════ */
 .btn {
