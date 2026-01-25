@@ -1,524 +1,411 @@
 
-# خطة تحسين الصفحة الرئيسية - Premium Light Theme
+# خطة تحسين الصفحة الرئيسية - Premium Light Theme 100%
 
-## الرؤية
-صفحة رئيسية هادئة، راقية، مستوحاة من Apple/Google/Microsoft بـ Light Theme نظيف (95% فاتح)، مع سلايدر Hero سينمائي وأقسام حديثة غير تقليدية.
+## الوضع الحالي
+
+### المشاكل المكتشفة:
+1. **Hero Section يستخدم خلفية داكنة** - السطر 545-550 في `main.css`:
+   ```css
+   .hero { background: linear-gradient(135deg, #1A1F36 0%, #0F172A 100%); }
+   .hero-premium { background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%); }
+   ```
+   هذا يتعارض مع متطلب Light Theme 100%
+
+2. **Footer يستخدم خلفية سوداء** - السطر 1552:
+   ```css
+   .footer { background: #0F172A; }
+   ```
+
+3. **قسم About تقليدي** - لا يحتوي على تصميم Split Layout مع صور متداخلة
+
+4. **عدم وجود صور Placeholders للـ About** - المطلوب `about-1.jpg` و `about-2.jpg`
+
+5. **الألوان الحالية مختلفة عن المطلوبة**:
+   - المطلوب: `--primary: #0F766E`
+   - الحالي: `--primary: #0D9488`
 
 ---
 
-## 1. هيكل الملفات المُحدّث
+## نطاق التحسينات
+
+### المحور 1: تصحيح نظام الألوان
+
+**التغييرات في `main.css` (`:root`):**
+
+| المتغير الحالي | القيمة المطلوبة |
+|---------------|-----------------|
+| `--bg` | `#F7F8FA` |
+| `--surface` | `#FFFFFF` |
+| `--text` | `#0F172A` |
+| `--muted` | `#64748B` |
+| `--border` | `#E5E7EB` |
+| `--primary` | `#0F766E` |
+| `--primary-soft` | `#E6F4F2` |
+| `--accent` | `#2563EB` |
+| `--accent-soft` | `#EFF6FF` |
+| `--shadow` | `0 14px 40px rgba(2, 6, 23, 0.08)` |
+
+**حذف:**
+- `--gold` و `--gold-soft` (غير مطلوبين)
+- أي إشارة لتدرجات داكنة
+
+---
+
+### المحور 2: إعادة تصميم Hero Section (Light Theme)
+
+**الهيكل الجديد:**
 
 ```text
-public/theme-1/
-├── index.html                    (تحديث كامل)
-├── css/
-│   └── main.css                  (ملف CSS الوحيد - ~900 سطر)
-├── js/
-│   └── main.js                   (ملف JS الوحيد - ~350 سطر)
-└── assets/
-    ├── img/
-    │   ├── logo.svg
-    │   ├── hero/                 (مجلد جديد)
-    │   │   ├── hero-1.jpg        (placeholder SVG مؤقتاً)
-    │   │   ├── hero-2.jpg
-    │   │   ├── hero-3.jpg
-    │   │   ├── hero-4.jpg
-    │   │   ├── hero-5.jpg
-    │   │   └── hero-6.jpg
-    │   └── placeholders/         (مجلد جديد)
-    │       ├── project-1.jpg
-    │       ├── team-1.jpg
-    │       └── partner-logo.svg
-    └── svg/
-        ├── placeholder-hero-1.svg ... placeholder-hero-6.svg (جديد)
-        ├── placeholder-field-*.svg (6 أيقونات مجالات)
-        ├── placeholder-team-*.svg  (صور الفريق)
-        └── (الموجود حالياً)
+┌───────────────────────────────────────────────────────────────────────┐
+│  [صورة سلايدر 1/2/3 - Ken Burns خفيف]                                │
+│                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │  [Overlay فاتح: gradient أبيض 30%]                              │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│                                                                       │
+│       منذ 2009                                                        │
+│       ══════════════════════                                          │
+│       نبني مجتمعاً                                                    │
+│       أكثر استدامة                                                    │
+│       ══════════════════════                                          │
+│       نعمل بمنهجية علمية وشفافية كاملة...                            │
+│                                                                       │
+│       [استكشف مشاريعنا] [تعرف علينا]                                  │
+│                                                                       │
+│       ╔════════════╗  ╔════════════╗  ╔════════════╗                 │
+│       ║   50,000   ║  ║    120     ║  ║     15     ║                 │
+│       ║   مستفيد   ║  ║   مشروع    ║  ║  سنة خبرة  ║                 │
+│       ╚════════════╝  ╚════════════╝  ╚════════════╝                 │
+│                                                                       │
+│          [●] [○] [○]      ← →     01/03                              │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
 ```
 
----
+**التغييرات التقنية:**
 
-## 2. نظام الألوان - Light Theme (إلزامي)
-
-داخل `:root` في main.css:
-
+1. **Overlay فاتح بدلاً من داكن:**
 ```css
-:root {
-    /* Backgrounds - Light Theme 95% */
-    --bg: #F7F8FA;
-    --surface: #FFFFFF;
-    --surface-alt: #F1F3F5;
-    
-    /* Text - Not Pure Black */
-    --text: #0F172A;
-    --text-secondary: #475569;
-    --muted: #64748B;
-    
-    /* Borders */
-    --border: #E5E7EB;
-    --border-light: #F3F4F6;
-    
-    /* Primary Accent - Calm Teal */
-    --primary: #0F766E;
-    --primary-soft: #E6F4F2;
-    --primary-rgb: 15, 118, 110;
-    
-    /* Secondary Accent */
-    --accent: #2563EB;
-    --accent-soft: #EFF6FF;
-    
-    /* Shadows - Ultra Soft */
-    --shadow-sm: 0 1px 3px rgba(2, 6, 23, 0.04);
-    --shadow-md: 0 4px 12px rgba(2, 6, 23, 0.06);
-    --shadow-lg: 0 14px 40px rgba(2, 6, 23, 0.08);
-    
-    /* Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-full: 9999px;
+.hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(247, 248, 250, 0.7) 50%,
+        rgba(255, 255, 255, 0.6) 100%
+    );
 }
 ```
 
----
-
-## 3. Design System - الأزرار (3 أنواع فقط)
-
-### btn-primary
-- خلفية: `--primary` مع gradient خفيف
-- Hover: gradient shift + lift بسيط
-- سهم داخلي يتحرك على hover
-
-### btn-secondary
-- Outline فقط (border: 1.5px solid --border)
-- Hover: يمتلئ من اليمين لليسار (RTL)
-
-### btn-ghost
-- نص + أيقونة بدون خلفية
-- Hover: لون primary
-
+2. **نصوص داكنة على خلفية فاتحة:**
 ```css
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, #0d6560 100%);
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: var(--radius-full);
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
+.hero-title { color: var(--text); }
+.hero-subtitle { color: var(--text-secondary); }
+.hero-eyebrow { color: var(--primary); background: var(--primary-soft); }
+```
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(15, 118, 110, 0.25);
+3. **KPIs بخلفية زجاجية فاتحة:**
+```css
+.hero-kpis {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
 }
+```
 
-.btn-primary .btn-arrow {
-    transition: transform 0.2s ease;
+4. **Controls فاتحة:**
+```css
+.hero-controls {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
 }
-
-.btn-primary:hover .btn-arrow {
-    transform: translateX(-4px);
-}
+.hero-nav { background: var(--surface); color: var(--text); }
 ```
 
 ---
 
-## 4. Hero Section - سلايدر سينمائي
+### المحور 3: إعادة تصميم قسم "نبذة عن الجمعية"
 
-### البنية HTML
+**التصميم الجديد - Split Layout:**
+
+```text
+┌───────────────────────────────────────────────────────────────────────┐
+│                                                                       │
+│  ┌─────────────────────────────┐  ┌─────────────────────────────────┐│
+│  │                             │  │  ┌─────────────────────────────┐││
+│  │  نبذة عن الجمعية            │  │  │                             │││
+│  │                             │  │  │  [صورة كبيرة - about-1]     │││
+│  │  جمعية أهلية تعمل على       │  │  │  ┌───────────────┐          │││
+│  │  تصميم وتنفيذ مبادرات       │  │  │  │ مبادرات ميدانية │ Badge   │││
+│  │  تنموية تخدم المجتمع       │  │  │  └───────────────┘          │││
+│  │  بفاعلية وشفافية.          │  │  └─────────────────────────────┘││
+│  │                             │  │         ┌───────────────────────┐│
+│  │  نركّز على تحويل الاحتياج   │  │         │                       ││
+│  │  إلى برامج قابلة للقياس... │  │         │ [صورة صغيرة - about-2] ││
+│  │                             │  │         │ ┌───────────────┐     ││
+│  │  ┌──────────────────────┐   │  │         │ │حوكمة وشفافية │     ││
+│  │  │ الرؤية               │   │  │         │ └───────────────┘     ││
+│  │  │ مجتمع مزدهر تُقاس    │   │  │         └───────────────────────┘│
+│  │  │ فيه التنمية بالأثر   │   │  └─────────────────────────────────┘│
+│  │  └──────────────────────┘   │                                      │
+│  │  ┌──────────────────────┐   │                                      │
+│  │  │ الرسالة              │   │                                      │
+│  │  │ تمكين المجتمع عبر    │   │                                      │
+│  │  │ مبادرات تنموية منهجية│   │                                      │
+│  │  └──────────────────────┘   │                                      │
+│  │                             │                                      │
+│  │  [تعرف على المزيد →]        │                                      │
+│  │                             │                                      │
+│  └─────────────────────────────┘                                      │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+```
+
+**البنية HTML الجديدة:**
+
 ```html
-<section class="hero" aria-label="القسم الرئيسي">
-    <!-- Image Slider -->
-    <div class="hero-slider" data-autoplay="5000">
-        <div class="hero-slides">
-            <div class="hero-slide active">
-                <img src="assets/svg/placeholder-hero-1.svg" alt="">
+<section id="about" class="section about-section">
+    <div class="container">
+        <div class="about-grid reveal">
+            <!-- Content Column -->
+            <div class="about-content">
+                <span class="section-eyebrow">من نحن</span>
+                <h2 class="section-title">نبذة عن الجمعية</h2>
+                <p class="about-text">
+                    جمعية أهلية تعمل على تصميم وتنفيذ مبادرات تنموية تخدم المجتمع بفاعلية وشفافية.
+                    نركّز على تحويل الاحتياج إلى برامج قابلة للقياس،
+                    وبناء شراكات فعّالة،
+                    وتوثيق النتائج بما يعزز الثقة ويضمن استدامة الأثر.
+                </p>
+                
+                <div class="about-cards">
+                    <div class="about-card">
+                        <h4 class="about-card-title">الرؤية</h4>
+                        <p class="about-card-text">مجتمع مزدهر تُقاس فيه التنمية بالأثر.</p>
+                    </div>
+                    <div class="about-card">
+                        <h4 class="about-card-title">الرسالة</h4>
+                        <p class="about-card-text">تمكين المجتمع عبر مبادرات تنموية منهجية وشراكات فاعلة وشفافية تعكس النتائج.</p>
+                    </div>
+                </div>
+                
+                <a href="about.html" class="btn btn-ghost">
+                    <span>تعرف على المزيد</span>
+                    <svg>...</svg>
+                </a>
             </div>
-            <!-- ... 6 slides -->
-        </div>
-        
-        <!-- Overlay (خفيف جداً - ليس أسود) -->
-        <div class="hero-overlay"></div>
-        
-        <!-- Controls -->
-        <div class="hero-controls">
-            <button class="hero-nav prev"><i class="fas fa-chevron-right"></i></button>
-            <div class="hero-dots"></div>
-            <button class="hero-nav next"><i class="fas fa-chevron-left"></i></button>
-        </div>
-        
-        <!-- Progress Bars -->
-        <div class="hero-progress"></div>
-    </div>
-    
-    <!-- Content -->
-    <div class="hero-content">
-        <span class="hero-eyebrow">منذ 2009</span>
-        <h1 class="hero-title">نبني مجتمعاً أفضل</h1>
-        <p class="hero-subtitle">نعمل بمنهجية علمية وشفافية كاملة...</p>
-        
-        <div class="hero-actions">
-            <a href="#" class="btn-primary">
-                استكشف مشاريعنا
-                <i class="fas fa-arrow-left btn-arrow"></i>
-            </a>
-            <a href="#" class="btn-secondary">تعرف علينا</a>
-        </div>
-        
-        <!-- Micro KPIs -->
-        <div class="hero-kpis">
-            <div class="hero-kpi">
-                <span class="hero-kpi-value" data-count="50000">0</span>
-                <span class="hero-kpi-label">مستفيد</span>
+            
+            <!-- Images Column -->
+            <div class="about-images">
+                <div class="about-image-main">
+                    <img src="assets/img/placeholders/about-1.jpg" alt="مبادرات ميدانية">
+                    <span class="about-badge">مبادرات ميدانية</span>
+                </div>
+                <div class="about-image-secondary">
+                    <img src="assets/img/placeholders/about-2.jpg" alt="حوكمة وشفافية">
+                    <span class="about-badge">حوكمة وشفافية</span>
+                </div>
             </div>
-            <!-- ... -->
         </div>
     </div>
 </section>
 ```
 
-### CSS للسلايدر
-- Crossfade انتقال 900ms
-- Ken Burns خفيف (scale 1.02)
-- Overlay: `rgba(255,255,255,0.3)` (ليس أسود!)
-- Dots + Prev/Next
-- Progress bar لكل شريحة
-
-### JavaScript
-- Autoplay كل 5 ثواني
-- Pause on hover
-- احترام `prefers-reduced-motion` (إيقاف Ken Burns)
-- Touch/Swipe support
-
----
-
-## 5. قسم نبذة عن الجمعية
-
-تصميم هادئ بدون صور:
-- عنوان قوي على 3 أسطر
-- فقرة 3-4 أسطر احترافية
-- 3 KPIs كبيرة مع عداد تصاعدي
-- زر Ghost "تعرف على الجمعية"
-
-```text
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│          منهجية علمية.                              │
-│          شفافية كاملة.                              │
-│          أثر مستدام.                                │
-│                                                     │
-│   نتبنى نهجاً تنموياً شاملاً يركز على تمكين       │
-│   الأفراد والمجتمعات من خلال برامج مدروسة...       │
-│                                                     │
-│   ╔═══════════╗  ╔═══════════╗  ╔═══════════╗      │
-│   ║  50,000   ║  ║    120    ║  ║    15     ║      │
-│   ║  مستفيد   ║  ║   مشروع   ║  ║   سنة     ║      │
-│   ╚═══════════╝  ╚═══════════╝  ╚═══════════╝      │
-│                                                     │
-│              [تعرف على الجمعية →]                  │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
-
----
-
-## 6. قسم مجالات الجمعية (Horizontal Scroll)
-
-عرض أفقي قابل للسحب (6 مجالات):
-
-```text
-←  [مجال 1] [مجال 2] [مجال 3] [مجال 4] [مجال 5] [مجال 6]  →
-```
-
-كل بطاقة:
-- أيقونة SVG كبيرة (64x64)
-- عنوان المجال
-- وصف سطر واحد
-- Hover: lift + border accent subtle
+**CSS الجديد:**
 
 ```css
-.fields-scroll {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding: 20px 0;
-}
-
-.field-card {
-    flex-shrink: 0;
-    width: 280px;
-    padding: 32px;
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
-    scroll-snap-align: start;
-    transition: all 0.3s ease;
-}
-
-.field-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(var(--primary-rgb), 0.2);
-}
-```
-
----
-
-## 7. قسم المشاريع (Project Index - UN Style)
-
-قائمة رأسية رسمية (3 مشاريع مميزة):
-
-```text
-┌─────────────────────────────────────────────────────┐
-│ [صورة]  │  التمكين والتدريب                         │
-│         │  برنامج تمكين الشباب المهني                │
-│         │  برنامج شامل لتأهيل الشباب السعودي...     │
-│         │                     [قيد التنفيذ] [→]      │
-├─────────────────────────────────────────────────────┤
-│ [صورة]  │  الخدمات الإنسانية                         │
-│         │  مبادرة إفطار صائم                         │
-│         │  توزيع وجبات إفطار على الصائمين...        │
-│         │                     [مكتمل] [→]            │
-└─────────────────────────────────────────────────────┘
-
-              [عرض جميع المشاريع]
-```
-
----
-
-## 8. قسم الأخبار (Editorial Newsroom)
-
-تخطيط مجلة احترافي:
-
-```text
-┌─────────────────────────┬───────────────────────┐
-│                         │  10  توقيع اتفاقية   │
-│   [صورة خبر رئيسي]      │  مارس شراكة...       │
-│                         ├───────────────────────┤
-│   15 مارس 2024         │  05  إطلاق مبادرة    │
-│   افتتاح المقر الجديد   │  مارس "معاً نبني"    │
-│   للجمعية بحضور...      ├───────────────────────┤
-│                         │  28  حفل تكريم       │
-│                         │  فبراير المتطوعين    │
-└─────────────────────────┴───────────────────────┘
-```
-
----
-
-## 9. قسم فريق العمل (Slider أفقي)
-
-سلايدر أفقي للفريق:
-
-```text
-←  [عضو 1] [عضو 2] [عضو 3] [عضو 4] [عضو 5]  →
-```
-
-كل بطاقة:
-- صورة دائرية (placeholder)
-- الاسم
-- المسمى الوظيفي
-- Hover: subtle glow
-
-```css
-.team-card {
-    text-align: center;
-    padding: 24px;
-}
-
-.team-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 16px;
-    border: 3px solid var(--border-light);
-    transition: all 0.3s ease;
-}
-
-.team-card:hover .team-avatar {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px var(--primary-soft);
-}
-```
-
----
-
-## 10. قسم شركاء النجاح
-
-شبكة شعارات هادئة:
-
-```text
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│   [logo] [logo] [logo] [logo] [logo] [logo]        │
-│                                                     │
-│   [logo] [logo] [logo] [logo] [logo] [logo]        │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
-
-```css
-.partners-grid {
+.about-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
     align-items: center;
 }
 
-.partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.5;
-    transition: all 0.3s ease;
+.about-images {
+    position: relative;
+    height: 500px;
 }
 
-.partner-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
+.about-image-main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.about-image-secondary {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 55%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--surface);
+}
+
+.about-badge {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin: var(--space-2xl) 0;
+}
+
+.about-card {
+    background: var(--bg);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border-right: 4px solid var(--primary);
 }
 ```
 
 ---
 
-## 11. CTA ختامي + Footer
+### المحور 4: تحسين Footer (Light Theme)
 
-CTA نظيف:
-```text
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│           كن جزءاً من التغيير                       │
-│   انضم إلينا وساهم في بناء مستقبل أفضل لمجتمعنا    │
-│                                                     │
-│        [انضم معنا]    [تواصل معنا]                  │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
+**تحويل Footer إلى Light:**
 
-Footer:
-- خلفية داكنة (الاستثناء الوحيد من Light Theme)
-- 4 أعمدة: Brand, روابط, دعم, تواصل
-- حقوق + رابط ويبيان
-
----
-
-## 12. Motion & Animations
-
-### Reveals (IntersectionObserver)
 ```css
-.reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+.footer {
+    background: var(--bg);
+    color: var(--text);
+    border-top: 1px solid var(--border);
 }
 
-.reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-```
-
-### احترام prefers-reduced-motion
-```css
-@media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-    
-    .hero-slide img {
-        animation: none;
-    }
-}
+.footer-desc { color: var(--muted); }
+.footer-column h4 { color: var(--text); }
+.footer-links a { color: var(--text-secondary); }
+.social-link { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+.footer-copyright { color: var(--muted); }
 ```
 
 ---
 
-## 13. SVG Placeholders الجديدة
+### المحور 5: إنشاء SVG Placeholders جديدة
 
-سأنشئ:
-- 6 صور Hero (placeholder-hero-1.svg ... 6.svg)
-- 6 أيقونات مجالات (field-*.svg)
-- 6 صور فريق (team-*.svg)
-- شعارات شركاء (partner-logo.svg)
+**ملفات جديدة مطلوبة:**
 
-تصميم كل SVG:
-- تدرجات هادئة (primary-soft)
-- أيقونة مركزية
-- pattern نقاط خفيف
-- أبعاد مناسبة للاستخدام
+1. `assets/img/placeholders/about-1.svg` - مبادرة ميدانية
+2. `assets/img/placeholders/about-2.svg` - اجتماع/حوكمة
+
+**تصميم SVG نموذجي:**
+
+```xml
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F766E;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#E6F4F2;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  
+  <rect fill="#F7F8FA" width="600" height="400"/>
+  <rect fill="url(#grad)" width="600" height="400"/>
+  
+  <!-- Icon/Illustration -->
+  <g transform="translate(250, 150)">
+    <!-- People icons for field activity -->
+    <circle cx="50" cy="50" r="30" fill="#0F766E" opacity="0.2"/>
+    <circle cx="50" cy="35" r="15" fill="#0F766E" opacity="0.3"/>
+  </g>
+</svg>
+```
 
 ---
 
-## 14. Image Prompts (8 صور)
+### المحور 6: تحسينات إضافية
+
+**1. تحسين الأزرار:**
+- تأكيد 3 أنواع فقط (Primary, Secondary, Ghost)
+- حالات focus/active/disabled واضحة
+
+**2. تحسين Ken Burns:**
+- تخفيف scale من 1.08 إلى 1.02
+- إيقاف تام عند prefers-reduced-motion
+
+**3. تنظيف الكود:**
+- إزالة أي إشارات لألوان داكنة
+- توحيد جميع الظلال
+
+---
+
+## ملخص الملفات المتأثرة
+
+| الملف | التغيير |
+|-------|---------|
+| `css/main.css` | تعديل ~300 سطر (ألوان، Hero، About، Footer) |
+| `index.html` | تعديل قسم About بالكامل (~50 سطر) |
+| `assets/svg/placeholder-about-1.svg` | ملف جديد |
+| `assets/svg/placeholder-about-2.svg` | ملف جديد |
+
+---
+
+## Image Generation Prompts (6 صور)
 
 ### النسخة العربية:
 
-1. **Hero Slide 1**: مجموعة من المتطوعين السعوديين في نشاط ميداني، ملابس محتشمة، إضاءة طبيعية صباحية، تصوير وثائقي، جودة 4K
+1. **مبادرة ميدانية:**
+   "صورة واقعية وثائقية لمبادرة ميدانية لجمعية سعودية غير ربحية، متطوعون بملابس محتشمة، بيئة مجتمعية حقيقية، إضاءة طبيعية ناعمة، ألوان هادئة، أسلوب تصوير عالمي للمنظمات غير الحكومية."
 
-2. **Hero Slide 2**: اجتماع مجلس إدارة جمعية سعودية، قاعة اجتماعات حديثة، رجال بثوب أبيض، إضاءة مكتبية ناعمة، تصوير احترافي
+2. **اجتماع تخطيطي:**
+   "صورة احترافية لاجتماع تخطيطي لجمعية سعودية، قاعة حديثة، ملابس محتشمة، أجهزة لابتوب ووثائق، أسلوب مؤسسي بسيط، إضاءة طبيعية."
 
-3. **Hero Slide 3**: ورشة تدريب للشباب السعودي، قاعة تدريب حديثة، مشاركين متفاعلين، شاشة عرض، إضاءة طبيعية
+3. **ورشة تدريب:**
+   "صورة ورشة تدريب لجمعية سعودية غير ربحية، مشاركون متنوعون، أجواء مهنية هادئة، أسلوب تصوير عالمي للمنظمات غير الحكومية."
 
-4. **Hero Slide 4**: توزيع مساعدات غذائية، متطوعون يحملون صناديق، ملابس محتشمة، خلفية مستودع، تصوير وثائقي
+4. **فريق العمل:**
+   "صورة جماعية لفريق جمعية سعودية غير ربحية، احترافية ودافئة، ملابس محتشمة، مكتب حديث، إضاءة ناعمة."
 
-5. **Hero Slide 5**: فريق عمل جمعية سعودية في مكتب حديث، تنوع (رجال ونساء محجبات)، بيئة عمل احترافية
+5. **نشاط مجتمعي:**
+   "نشاط تفاعلي مجتمعي لجمعية سعودية غير ربحية، بيئة واقعية، تصوير وثائقي يركز على الإنسان."
 
-6. **Hero Slide 6**: حفل توقيع اتفاقية شراكة، مصافحة رسمية، خلفية شعار جمعية، تصوير رسمي
+6. **شراكة:**
+   "مشهد توقيع اتفاقية شراكة لجمعية سعودية غير ربحية، بيئة احترافية، أجواء هادئة وموثوقة."
 
-7. **صورة مشروع**: شباب سعودي في برنامج تدريب مهني، ورشة عمل تقنية، تركيز على التعلم
+### English Version:
 
-8. **صورة فعالية**: حفل تكريم متطوعين، مسرح صغير، جوائز، جمهور، إضاءة دافئة
+1. **Field Initiative:**
+   "Realistic documentary photo of a Saudi nonprofit field initiative, modestly dressed volunteers, authentic community setting, soft natural lighting, calm colors, global NGO editorial style."
 
-### English Versions:
+2. **Planning Meeting:**
+   "Professional Saudi nonprofit planning meeting, modern room, modest attire, laptops and documents, minimal corporate style, natural light."
 
-1. **Hero Slide 1**: Saudi volunteers in outdoor community activity, modest traditional clothing, natural morning light, documentary style, 4K quality
+3. **Training Workshop:**
+   "Saudi nonprofit training workshop, diverse participants, calm professional atmosphere, global NGO style photography."
 
-2. **Hero Slide 2**: Saudi nonprofit board meeting, modern meeting room, men in white thobe, soft office lighting, professional photography
+4. **Team Portrait:**
+   "Saudi nonprofit team portrait, professional yet warm, modest attire, modern office, soft lighting."
 
-3. **Hero Slide 3**: Youth training workshop in Saudi Arabia, modern training hall, engaged participants, presentation screen, natural lighting
+5. **Community Activity:**
+   "Community engagement activity by a Saudi nonprofit, realistic environment, human-centered documentary photography."
 
-4. **Hero Slide 4**: Food aid distribution, volunteers carrying boxes, modest clothing, warehouse background, documentary photography
-
-5. **Hero Slide 5**: Saudi nonprofit team in modern office, diverse group (men and hijabi women), professional work environment
-
-6. **Hero Slide 6**: Partnership agreement signing ceremony, formal handshake, nonprofit logo backdrop, formal photography
-
-7. **Project Image**: Saudi youth in vocational training program, technical workshop, focus on learning, modern equipment
-
-8. **Event Image**: Volunteer appreciation ceremony, small stage, awards, audience, warm lighting
-
----
-
-## 15. ملخص الملفات
-
-| الملف | الحجم التقريبي | المحتوى |
-|-------|---------------|---------|
-| `index.html` | ~450 سطر | كل الأقسام مع semantic HTML |
-| `css/main.css` | ~900 سطر | Design tokens + Components + Sections |
-| `js/main.js` | ~350 سطر | Slider + Reveals + Counters + Navigation |
-| SVGs جديدة | 14 ملف | Hero + Fields + Team placeholders |
+6. **Partnership:**
+   "Saudi nonprofit partnership signing or collaboration scene, professional setting, calm and credible atmosphere."
 
 ---
 
-## 16. ترتيب التنفيذ
+## ترتيب التنفيذ
 
-1. **إنشاء main.css** - Design System + Tokens + Base + Components
-2. **إنشاء SVG Placeholders** - Hero + Fields + Team
-3. **تحديث index.html** - هيكل كامل مع كل الأقسام
-4. **إنشاء main.js** - Slider + Reveals + Interactions
-5. **حذف الملفات القديمة** - home-calm.css, home-calm.js (توحيد)
-
----
-
-## نتيجة متوقعة
-
-صفحة رئيسية:
-- Light Theme نظيف (95%)
-- سلايدر Hero سينمائي مع 6 صور
-- 8 أقسام متكاملة
-- Design System موحد
-- أداء ممتاز + احترام Accessibility
-- جاهزة للصور الحقيقية (استبدال SVGs)
+1. **تحديث نظام الألوان** في `:root` بـ `main.css`
+2. **تعديل Hero Section** - Overlay فاتح، نصوص داكنة، controls فاتحة
+3. **إنشاء SVG Placeholders** للـ About section
+4. **تحديث قسم About** في `index.html` - Split Layout جديد
+5. **إضافة CSS الجديد** لـ About section
+6. **تحويل Footer** إلى Light Theme
+7. **تنظيف الكود** من أي ألوان داكنة متبقية
+8. **اختبار Reduced Motion** والتأكد من احترامه
