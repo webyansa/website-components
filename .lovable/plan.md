@@ -1,443 +1,789 @@
 
-# خطة تحسين قالب الجمعية 1 (theme-1) - Premium Edition
+# خطة تحويل قالب الجمعية إلى Premium Edition
 
-## ملخص الوضع الحالي
+## الوضع الحالي
 
-بعد المراجعة الشاملة، وجدت أن **معظم الملفات موجودة** لكن هناك **مشاكل تكامل** تحتاج إصلاح:
+القالب يحتوي على:
+- بنية CSS قوية مع Design Tokens (main.css: 1077 سطر)
+- مكونات متعددة (components.css: 1999 سطر)
+- صفحات متنوعة (pages.css: 3582 سطر)
+- 8 ملفات SVG Placeholder موجودة في assets/svg/
+- نظام JavaScript جيد للتفاعلات الأساسية
 
-### ما هو موجود فعلاً:
-- 13 صفحة جديدة (strategy, founders, board, etc.) 
-- ملفات اللودر (css/loader.css + js/loader.js)
-- 8 SVG Placeholders في assets/svg/
-- 4 صفحات المركز الإعلامي في media/
-- Navbar مع Dropdowns في الصفحات الفرعية
-
-### المشاكل المكتشفة:
-1. **الصفحة الرئيسية (index.html)**: لا تستخدم Navbar المحدث مع Dropdowns
-2. **الصفحة الرئيسية**: لا تستورد loader.css ولا تحتوي على Page Loader
-3. **CSS للمكونات الجديدة**: pages.css يفتقر لأنماط الصفحات الجديدة (org-chart, gallery-masonry, news-editorial, article-layout, founders-grid, committees-grid, etc.)
+## نطاق التحسينات (7 محاور رئيسية)
 
 ---
 
-## المهام المرتبة (10 مهام)
+## المحور 1: توحيد Page Hero للصفحات الداخلية
 
-### المهمة 1: تحديث الصفحة الرئيسية - إضافة اللودر
-**الملف:** `public/theme-1/index.html`
-**التغييرات:**
-- إضافة `<link rel="stylesheet" href="css/loader.css">` في الـ head
-- إضافة HTML الخاص باللودر بعد فتح `<body>`:
+### الملفات المتأثرة:
+- `css/pages.css` (إضافة أنماط جديدة)
+- جميع الصفحات الداخلية (14+ صفحة)
+
+### التغييرات:
+
+**1.1 تصميم Page Hero الجديد:**
+
+```text
++------------------------------------------------------------------+
+|  [Pattern SVG خلفية]                                              |
+|  [صورة/تدرج خلفية مع Wave Shape]                                  |
+|                                                                   |
+|  [شارة نوع الصفحة]  مثال: "الحوكمة" / "المشاريع"                  |
+|                                                                   |
+|  الرئيسية / عن الجمعية / استراتيجيتنا  ← Breadcrumb               |
+|                                                                   |
+|  ═══ عنوان الصفحة ═══                                             |
+|  وصف مختصر للصفحة                                                 |
+|                                                                   |
+|  [مشاركة] [طباعة] [تنزيل]  ← شريط الإجراءات                       |
+|                                                                   |
+|  ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿ Wave Shape                                  |
++------------------------------------------------------------------+
+```
+
+**1.2 CSS الجديد (يضاف إلى pages.css):**
+
+```css
+/* Premium Page Hero - Unified Internal Pages */
+.page-hero-premium {
+    position: relative;
+    padding: var(--space-40) 0 var(--space-24);
+    min-height: 380px;
+    background: linear-gradient(135deg, var(--secondary-800) 0%, var(--secondary-700) 100%);
+    overflow: hidden;
+}
+
+/* Background Image Layer */
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.page-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+}
+
+/* Pattern Overlay */
+.page-hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,..."); /* Dot Pattern */
+    opacity: 0.08;
+    z-index: 1;
+}
+
+/* Wave Shape Bottom */
+.page-hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 3;
+}
+
+/* Content */
+.page-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+/* Page Type Badge/Chip */
+.page-hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(var(--primary-rgb), 0.2);
+    border: 1px solid rgba(var(--primary-rgb), 0.4);
+    border-radius: var(--radius-full);
+    color: var(--primary-300);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-4);
+    backdrop-filter: blur(8px);
+}
+
+/* Actions Bar */
+.page-hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.page-hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-lg);
+    color: rgba(255,255,255,0.8);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--duration-200) var(--ease-out);
+}
+
+.page-hero-action:hover {
+    background: rgba(255,255,255,0.2);
+    color: var(--text-inverse);
+}
+```
+
+**1.3 HTML Template للاستخدام في كل صفحة داخلية:**
+
 ```html
-<div class="page-loader" id="page-loader">
-    <div class="loader-content">
-        <img src="assets/img/logo.svg" alt="جاري التحميل..." class="loader-logo">
-        <div class="loader-spinner"></div>
-        <div class="loader-progress"><div class="loader-progress-bar"></div></div>
+<section class="page-hero-premium">
+    <div class="page-hero-bg">
+        <img src="assets/svg/placeholder-cover.svg" alt="">
+    </div>
+    <div class="page-hero-pattern"></div>
+    
+    <div class="container">
+        <div class="page-hero-content">
+            <span class="page-hero-chip">
+                <i class="fas fa-chess"></i>
+                الاستراتيجية
+            </span>
+            
+            <nav class="breadcrumb breadcrumb-light">
+                <a href="index.html">الرئيسية</a>
+                <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+                <span>استراتيجيتنا</span>
+            </nav>
+            
+            <h1 class="page-hero-title">استراتيجيتنا</h1>
+            <p class="page-hero-subtitle">خارطة طريقنا نحو تحقيق الأثر المستدام</p>
+            
+            <div class="page-hero-actions">
+                <button class="page-hero-action" onclick="shareCurrentPage()">
+                    <i class="fas fa-share-alt"></i> مشاركة
+                </button>
+                <button class="page-hero-action" onclick="window.print()">
+                    <i class="fas fa-print"></i> طباعة
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <svg class="page-hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path fill="#fff" d="M0,30 C360,80 1080,-20 1440,30 L1440,60 L0,60 Z"/>
+    </svg>
+</section>
+```
+
+---
+
+## المحور 2: تطوير صفحات التفاصيل إلى Premium
+
+### 2.1 صفحة project-details.html
+
+**التحسينات:**
+- Hero Cover بتأثير Parallax خفيف
+- شريط Badges (حالة المشروع، المنطقة، التصنيف)
+- KPI Strip معاد تصميمه بأيقونات متحركة
+- Impact Stories Section جديد
+- قائمة وثائق محسنة مع أيقونات ملونة
+
+```text
++------------------------------------------------------------------+
+| [HERO COVER - Full Width with Parallax]                          |
+|                                                                   |
+|  ┌─────────┐ ┌─────────┐ ┌─────────┐                             |
+|  │ قيد     │ │ الرياض  │ │ تمكين   │ ← Badges                    |
+|  │ التنفيذ │ │         │ │ الشباب  │                             |
+|  └─────────┘ └─────────┘ └─────────┘                             |
++------------------------------------------------------------------+
+|                                                                   |
+|  ╔════════╗  ╔════════╗  ╔════════╗  ╔════════╗                  |
+|  ║  500   ║  ║  20    ║  ║  150   ║  ║  85%   ║  ← KPI Strip     |
+|  ║ مستفيد ║  ║ دورة   ║  ║ فرصة   ║  ║ توظيف ║                   |
+|  ╚════════╝  ╚════════╝  ╚════════╝  ╚════════╝                  |
+|                                                                   |
+|  [نظرة عامة] [الأثر] [الجدول الزمني] [الشركاء] [التقارير]        |
+|  ═══════════════════════════════════════════════════════════════  |
+|                                                                   |
+|  ┌─ Impact Stories ─────────────────────────────────────────────┐ |
+|  │ قصص نجاح حقيقية من المستفيدين مع صور وشهادات               │ |
+|  └──────────────────────────────────────────────────────────────┘ |
++------------------------------------------------------------------+
+```
+
+### 2.2 صفحة media/news-details.html
+
+**التحسينات:**
+- تخطيط Editorial (عمود محتوى رئيسي + Sidebar)
+- Meta Bar محسن (تاريخ، تصنيف، وقت القراءة، المشاهدات)
+- Quote Block مميز
+- معرض صور داخل المقال
+- Related Items محسن
+
+```text
++------------------------------------------------------------------+
+| [ARTICLE HERO - Panoramic Cover Image]                           |
++------------------------------------------------------------------+
+|                                                                   |
+|  ┌──────────────────────────────┐  ┌───────────────────────────┐ |
+|  │                              │  │  📅 تاريخ النشر          │ |
+|  │   Main Content Column        │  │  📂 التصنيف              │ |
+|  │                              │  │  ⏱ وقت القراءة           │ |
+|  │   ┌────────────────────────┐ │  │                           │ |
+|  │   │   Quote Block         │ │  │  ┌─────────────────────┐ │ |
+|  │   │   مع تصميم مميز        │ │  │  │ أخبار ذات صلة     │ │ |
+|  │   └────────────────────────┘ │  │  │ ──────────────────  │ │ |
+|  │                              │  │  │ [خبر 1]            │ │ |
+|  │   [معرض صور المقال]         │  │  │ [خبر 2]            │ │ |
+|  │                              │  │  │ [خبر 3]            │ │ |
+|  │                              │  │  └─────────────────────┘ │ |
+|  └──────────────────────────────┘  └───────────────────────────┘ |
++------------------------------------------------------------------+
+```
+
+---
+
+## المحور 3: نظام Modal موحد لـ 4 أنواع محتوى
+
+### الملفات الجديدة:
+- `css/modal-system.css` (أو إضافة إلى components.css)
+- `js/media-center.js` (ملف JavaScript جديد)
+
+### 3.1 هيكل Content Cards في news.html:
+
+```html
+<!-- مقال يفتح صفحة تفاصيل -->
+<article class="content-card" data-type="article" data-id="123">
+    <img src="..." class="content-card-img">
+    <div class="content-card-body">
+        <span class="content-type-badge article"><i class="fas fa-newspaper"></i> مقال</span>
+        <h3>عنوان المقال</h3>
+    </div>
+</article>
+
+<!-- فيديو يفتح Modal -->
+<article class="content-card" data-type="video" 
+         data-video-url="https://www.youtube.com/embed/VIDEO_ID">
+    <div class="content-card-img">
+        <img src="...">
+        <div class="play-icon"><i class="fas fa-play"></i></div>
+    </div>
+    <span class="content-type-badge video"><i class="fas fa-video"></i> فيديو</span>
+</article>
+
+<!-- معرض صور يفتح Modal Slider -->
+<article class="content-card" data-type="gallery" 
+         data-gallery='["img1.jpg","img2.jpg","img3.jpg"]'>
+    <div class="content-card-img gallery-preview">
+        <img src="...">
+        <span class="gallery-count"><i class="fas fa-images"></i> 12 صورة</span>
+    </div>
+    <span class="content-type-badge gallery"><i class="fas fa-images"></i> معرض</span>
+</article>
+
+<!-- مستند يفتح Modal مع iframe -->
+<article class="content-card" data-type="document" 
+         data-doc-url="https://drive.google.com/file/d/FILE_ID/preview"
+         data-download-url="https://drive.google.com/uc?export=download&id=FILE_ID">
+    <div class="content-card-img doc-preview">
+        <i class="fas fa-file-pdf fa-3x"></i>
+    </div>
+    <span class="content-type-badge document"><i class="fas fa-file-alt"></i> مستند</span>
+</article>
+```
+
+### 3.2 Modal System الموحد:
+
+```html
+<!-- Universal Modal -->
+<div class="modal-backdrop" id="media-modal-backdrop"></div>
+<div class="modal media-modal" id="media-modal">
+    <button class="modal-close"><i class="fas fa-times"></i></button>
+    
+    <!-- Video Content -->
+    <div class="modal-video-content" hidden>
+        <div class="video-wrapper">
+            <iframe id="video-iframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <!-- Gallery Content -->
+    <div class="modal-gallery-content" hidden>
+        <div class="gallery-slider">
+            <div class="gallery-slides"></div>
+            <button class="gallery-nav prev"><i class="fas fa-chevron-right"></i></button>
+            <button class="gallery-nav next"><i class="fas fa-chevron-left"></i></button>
+            <div class="gallery-dots"></div>
+            <div class="gallery-counter">1 / 12</div>
+        </div>
+    </div>
+    
+    <!-- Document Content -->
+    <div class="modal-document-content" hidden>
+        <div class="doc-preview-wrapper">
+            <iframe id="doc-iframe" src=""></iframe>
+        </div>
+        <div class="doc-actions">
+            <a href="#" class="btn btn-primary" id="doc-open-new" target="_blank">
+                <i class="fas fa-external-link-alt"></i> فتح في تبويب جديد
+            </a>
+            <a href="#" class="btn btn-outline" id="doc-download" download>
+                <i class="fas fa-download"></i> تحميل
+            </a>
+        </div>
     </div>
 </div>
 ```
-- إضافة `<script src="js/loader.js"></script>` قبل السكربتات الأخرى
 
----
+### 3.3 JavaScript (media-center.js):
 
-### المهمة 2: تحديث الصفحة الرئيسية - Navbar مع Dropdowns
-**الملف:** `public/theme-1/index.html`
-**التغييرات:**
-- استبدال الـ Navbar الحالي (سطر 40-66) بالـ Navbar المحدث الذي يحتوي:
-  - Dropdown "عن الجمعية" مع 9 روابط
-  - Dropdown "المركز الإعلامي" مع 3 روابط
-- تحديث Mobile Menu (سطر 68-107) بإضافة Mobile Dropdowns
-
----
-
-### المهمة 3: إضافة أنماط CSS للـ Navbar Dropdowns
-**الملف:** `public/theme-1/css/components.css`
-**إضافة بعد سطر 275:**
-```css
-/* Navbar Dropdown */
-.navbar-dropdown { position: relative; }
-.navbar-dropdown-toggle { display: flex; align-items: center; gap: 0.5rem; }
-.navbar-dropdown-icon { font-size: 0.7rem; transition: transform 0.3s; }
-.navbar-dropdown:hover .navbar-dropdown-icon { transform: rotate(180deg); }
-.navbar-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 220px;
-    background: var(--bg-primary);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    padding: 0.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s;
-    z-index: 100;
+```javascript
+// Initialize Media Center
+function initMediaCenter() {
+    const contentCards = document.querySelectorAll('.content-card[data-type]');
+    
+    contentCards.forEach(card => {
+        card.addEventListener('click', () => handleContentClick(card));
+    });
 }
-.navbar-dropdown:hover .navbar-dropdown-menu {
+
+function handleContentClick(card) {
+    const type = card.dataset.type;
+    
+    switch(type) {
+        case 'article':
+            window.location.href = `news-details.html?id=${card.dataset.id}`;
+            break;
+        case 'video':
+            openVideoModal(card.dataset.videoUrl);
+            break;
+        case 'gallery':
+            openGalleryModal(JSON.parse(card.dataset.gallery));
+            break;
+        case 'document':
+            openDocumentModal(card.dataset.docUrl, card.dataset.downloadUrl);
+            break;
+    }
+}
+
+// Gallery Slider مع Autoplay و Pause on Hover
+function openGalleryModal(images) {
+    // ... slider logic with prev/next/dots/autoplay
+}
+```
+
+---
+
+## المحور 4: Hero Slider للصفحة الرئيسية
+
+### الملفات المتأثرة:
+- `index.html` (تعديل قسم Hero)
+- `css/pages.css` (إضافة أنماط Slider)
+- `js/main.js` (إضافة وظائف Slider)
+
+### 4.1 البنية الجديدة للـ Hero:
+
+```html
+<section class="hero" aria-label="القسم الرئيسي">
+    <!-- Video Background (خلف السلايدر) -->
+    <div class="hero-video-wrapper">
+        <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero.jpg">
+            <source src="assets/img/hero.webm" type="video/webm">
+        </video>
+    </div>
+    
+    <!-- Image Slider -->
+    <div class="hero-slider" data-autoplay="true" data-interval="6000">
+        <div class="hero-slides">
+            <div class="hero-slide active">
+                <img src="assets/img/hero/hero-1.jpg" alt="">
+            </div>
+            <div class="hero-slide">
+                <img src="assets/img/hero/hero-2.jpg" alt="">
+            </div>
+            <!-- ... more slides -->
+        </div>
+        
+        <!-- Controls -->
+        <div class="hero-slider-controls">
+            <button class="slider-nav prev"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots"></div>
+            <button class="slider-nav next"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        
+        <!-- Progress Bars -->
+        <div class="slider-progress">
+            <div class="progress-bar active"></div>
+            <div class="progress-bar"></div>
+            <!-- ... -->
+        </div>
+    </div>
+    
+    <!-- Overlays and Content (كما هي) -->
+    <div class="hero-overlay"></div>
+    <div class="hero-content">...</div>
+</section>
+```
+
+### 4.2 CSS للـ Slider:
+
+```css
+/* Hero Image Slider */
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
     opacity: 1;
-    visibility: visible;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenBurns 8s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+    0% { transform: scale(1) translateX(0); }
+    100% { transform: scale(1.05) translateX(-1%); }
+}
+
+/* Pause on Hover */
+.hero-slider:hover .hero-slide img {
+    animation-play-state: paused;
+}
+
+/* Dots */
+.slider-dots {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all var(--duration-300);
+}
+
+.slider-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide img {
+        animation: none;
+    }
+    .hero-slider {
+        /* Show first image only */
+    }
+}
+```
+
+---
+
+## المحور 5: Micro-interactions الإبداعية
+
+### 5.1 Buttons (إضافة إلى components.css):
+
+```css
+/* Button Gradient Shift on Hover */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition: all var(--duration-300) var(--ease-out), 
+                background-position var(--duration-500) var(--ease-out);
+}
+
+.btn-primary:hover {
+    background-position: 100% 50%;
+}
+
+/* Arrow Slide */
+.btn .btn-arrow {
+    transition: transform var(--duration-200) var(--ease-out);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(-6px);
+}
+
+/* Subtle Ripple Effect */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), 
+                rgba(255,255,255,0.3) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--duration-300);
+}
+
+.btn:active::after {
+    opacity: 1;
+}
+```
+
+### 5.2 Cards (Lift + Border Glow):
+
+```css
+.card, .field-card, .project-card {
+    transition: all var(--duration-300) var(--ease-out);
+}
+
+.card:hover, .field-card:hover, .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(var(--primary-rgb), 0.1);
+}
+
+/* Subtle Border Glow */
+.card:hover::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-rgb), 0.3), 
+        rgba(var(--primary-rgb), 0.1));
+    border-radius: inherit;
+    z-index: -1;
+    filter: blur(4px);
+}
+```
+
+### 5.3 Navbar (Enhanced Sticky + Shrink):
+
+```css
+.navbar {
+    transition: all var(--duration-300) var(--ease-out),
+                backdrop-filter var(--duration-300);
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+}
+
+.navbar.scrolled .navbar-logo {
+    height: 32px; /* Shrink */
+}
+
+.navbar.scrolled .navbar-container {
+    padding-block: var(--space-2);
+}
+```
+
+### 5.4 Reveals المحسنة:
+
+```css
+/* Fade Up Gentle */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--duration-700) var(--ease-out),
+                transform var(--duration-700) var(--ease-out);
+}
+
+.reveal.revealed {
+    opacity: 1;
     transform: translateY(0);
 }
-/* Mobile Dropdowns */
-.mobile-dropdown-toggle { width: 100%; justify-content: space-between; }
-.mobile-dropdown-menu { display: none; padding-right: 2rem; }
-.mobile-dropdown.open .mobile-dropdown-menu { display: block; }
-.mobile-dropdown.open .mobile-dropdown-icon { transform: rotate(180deg); }
+
+/* Stagger Effect للعناصر المتعددة */
+.reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal:nth-child(2) { transition-delay: 100ms; }
+.reveal:nth-child(3) { transition-delay: 200ms; }
+.reveal:nth-child(4) { transition-delay: 300ms; }
 ```
 
 ---
 
-### المهمة 4: إضافة أنماط CSS للصفحات الجديدة - الجزء 1
-**الملف:** `public/theme-1/css/pages.css`
-**إضافة بعد السطر الأخير:**
-```css
-/* Strategy Page VMP Cards */
-.strategy-vmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.strategy-vmp-card { text-align: center; padding: 2rem; background: var(--bg-primary); border-radius: 1.5rem; border: 1px solid var(--border-light); }
-.strategy-vmp-card.featured { border-color: var(--primary); box-shadow: var(--shadow-primary); }
-.strategy-vmp-icon { width: 80px; height: 80px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); border-radius: 1rem; font-size: 2rem; color: white; }
+## المحور 6: نظام Placeholders الاحترافي
 
-/* Strategy Goals */
-.strategy-goals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.strategy-goal-card { display: flex; gap: 1.5rem; padding: 2rem; background: var(--bg-primary); border-radius: 1.5rem; border: 1px solid var(--border-light); }
-.strategy-goal-number { font-size: 3rem; font-weight: 900; color: var(--primary); opacity: 0.3; }
-.strategy-goal-kpis { display: flex; gap: 1.5rem; margin-top: 1rem; }
-.strategy-kpi { text-align: center; }
-.strategy-kpi-value { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-.strategy-kpi-label { font-size: 0.875rem; color: var(--text-secondary); }
+### 6.1 SVG Placeholders الجديدة:
 
-/* Founders Grid */
-.founders-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.founder-card { background: var(--bg-primary); border-radius: 1.5rem; overflow: hidden; border: 1px solid var(--border-light); }
-.founder-img-wrapper { position: relative; aspect-ratio: 1; }
-.founder-img { width: 100%; height: 100%; object-fit: cover; }
-.founder-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); display: flex; align-items: flex-end; padding: 1rem; }
-.founder-badge { background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; }
-.founder-content { padding: 1.5rem; }
-.founder-name { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); }
-.founder-role { font-size: 0.875rem; color: var(--primary); margin-bottom: 0.5rem; }
-.founder-bio { font-size: 0.875rem; color: var(--text-secondary); }
+| الملف | الاستخدام |
+|-------|----------|
+| `placeholder-hero-1.svg` ... `placeholder-hero-6.svg` | Hero Slider |
+| `placeholder-org-chart.svg` | الهيكل التنظيمي |
+| `placeholder-person-m.svg` | صور الأشخاص (ذكر) |
+| `placeholder-person-f.svg` | صور الأشخاص (أنثى) |
+| `placeholder-project-wide.svg` | Covers المشاريع |
+| `placeholder-news-wide.svg` | Covers الأخبار |
+| `placeholder-gallery-grid.svg` | Preview المعارض |
+| `placeholder-video-cover.svg` | أغلفة الفيديو |
+| `placeholder-document-pdf.svg` | معاينة المستندات |
+
+### 6.2 تصميم SVG Placeholder نموذجي:
+
+```xml
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0fbfae;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#53687a;stop-opacity:0.05" />
+    </linearGradient>
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="2" cy="2" r="1" fill="#0fbfae" opacity="0.15"/>
+    </pattern>
+  </defs>
+  
+  <rect fill="#f8fafc" width="800" height="400"/>
+  <rect fill="url(#grad)" width="800" height="400"/>
+  <rect fill="url(#dots)" width="800" height="400"/>
+  
+  <!-- Icon in Center -->
+  <g transform="translate(350, 150)">
+    <rect width="100" height="100" rx="20" fill="#0fbfae" opacity="0.12"/>
+    <path d="..." stroke="#0fbfae" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Text placeholder lines -->
+  <rect x="300" y="280" width="200" height="14" rx="7" fill="#e2e8f0"/>
+  <rect x="330" y="305" width="140" height="10" rx="5" fill="#e2e8f0"/>
+</svg>
+```
+
+### 6.3 إنشاء مجلد Hero Placeholders:
+
+```
+assets/
+├── img/
+│   └── hero/
+│       ├── hero-1.jpg (or use SVG fallback)
+│       ├── hero-2.jpg
+│       ├── hero-3.jpg
+│       ├── hero-4.jpg
+│       ├── hero-5.jpg
+│       └── hero-6.jpg
+└── svg/
+    ├── placeholder-hero-1.svg
+    ├── placeholder-hero-2.svg
+    └── ... (fallbacks)
 ```
 
 ---
 
-### المهمة 5: إضافة أنماط CSS للصفحات الجديدة - الجزء 2
-**الملف:** `public/theme-1/css/pages.css`
-**إضافة بعد المهمة 4:**
-```css
-/* Board Page */
-.board-chairman { margin-bottom: 3rem; }
-.chairman-card { display: flex; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-50), var(--bg-secondary)); border-radius: 1.5rem; }
-.board-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.board-card { text-align: center; padding: 1.5rem; background: var(--bg-primary); border-radius: 1.5rem; border: 1px solid var(--border-light); }
-.board-img-wrapper { width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; }
-.board-img { width: 100%; height: 100%; object-fit: cover; }
-.board-role-badge { display: inline-block; padding: 0.25rem 0.75rem; background: var(--primary); color: white; border-radius: 1rem; font-size: 0.75rem; margin-bottom: 0.5rem; }
-.board-role-badge.secondary { background: var(--secondary); }
-.board-name { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
-.board-bio { font-size: 0.875rem; color: var(--text-secondary); }
+## المحور 7: تحديثات خاصة بصفحة org-structure.html
 
-/* Responsibilities Grid */
-.responsibilities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.responsibility-card { text-align: center; padding: 2rem; background: var(--bg-primary); border-radius: 1.5rem; }
-.responsibility-icon { width: 60px; height: 60px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); border-radius: 1rem; font-size: 1.5rem; color: white; }
+### إضافات:
+- صورة مركزية للهيكل التنظيمي (كبيرة وقابلة للتكبير)
+- Lightbox لعرض الصورة بحجم كامل
+- أيقونة تكبير Hover
 
-/* Org Chart */
-.org-chart { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 3rem; background: var(--bg-secondary); border-radius: 2rem; }
-.org-level { display: flex; justify-content: center; gap: 1.5rem; }
-.org-connector { width: 2px; height: 30px; background: var(--border-default); }
-.org-connector-split { width: 80%; height: 2px; background: var(--border-default); position: relative; }
-.org-node { text-align: center; padding: 1rem 2rem; background: var(--bg-primary); border-radius: 1rem; border: 2px solid var(--border-light); min-width: 150px; }
-.org-node-primary { border-color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--primary-600)); color: white; }
-.org-node-secondary { border-color: var(--primary); }
-.org-node-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-.org-level-4 { flex-wrap: wrap; }
+```html
+<!-- في org-structure.html -->
+<div class="org-chart-visual reveal">
+    <div class="org-chart-image-wrapper" data-lightbox="assets/img/org-chart-full.jpg">
+        <img src="assets/svg/placeholder-org-chart.svg" alt="الهيكل التنظيمي" class="org-chart-img">
+        <div class="org-chart-zoom">
+            <i class="fas fa-search-plus"></i>
+            <span>اضغط للتكبير</span>
+        </div>
+    </div>
+</div>
 
-/* Committees Grid */
-.committees-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.committee-card { padding: 1.5rem; background: var(--bg-primary); border-radius: 1.5rem; border: 1px solid var(--border-light); }
-.committee-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.committee-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); border-radius: 0.75rem; font-size: 1.25rem; color: white; }
-.committee-status { padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; font-weight: 600; }
-.committee-status.active { background: var(--success-light); color: var(--success); }
-.committee-title { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
-.committee-desc { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem; }
-.committee-meta { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--text-muted); }
+<!-- Lightbox -->
+<div class="lightbox" id="org-lightbox">
+    <button class="lightbox-close"><i class="fas fa-times"></i></button>
+    <img src="" alt="" class="lightbox-img">
+</div>
 ```
 
 ---
 
-### المهمة 6: إضافة أنماط CSS للصفحات الجديدة - الجزء 3
-**الملف:** `public/theme-1/css/pages.css`
-**إضافة بعد المهمة 5:**
-```css
-/* Page Hero (Sub-pages) */
-.page-hero { position: relative; padding: 140px 0 60px; min-height: 300px; display: flex; align-items: flex-end; }
-.page-hero-bg { position: absolute; inset: 0; }
-.page-hero-img { width: 100%; height: 100%; object-fit: cover; }
-.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(var(--secondary-rgb), 0.95), rgba(var(--secondary-rgb), 0.8)); }
-.page-hero-title { font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
-.page-hero-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.8); }
+## ملخص الملفات المتأثرة
 
-/* Document Overview */
-.document-overview { display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: center; }
-.document-preview { position: relative; }
-.document-preview img { width: 100%; border-radius: 1rem; box-shadow: var(--shadow-xl); }
-.document-badge { position: absolute; top: 1rem; right: 1rem; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--success); color: white; border-radius: 1rem; font-size: 0.875rem; font-weight: 600; }
-.document-meta { display: flex; gap: 2rem; margin: 1.5rem 0; }
-.document-meta-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); }
+### ملفات CSS:
+| الملف | التعديل |
+|-------|---------|
+| `css/pages.css` | إضافة ~400 سطر (Page Hero Premium, Hero Slider, Improvements) |
+| `css/components.css` | إضافة ~200 سطر (Modal System, Micro-interactions) |
 
-/* Document Sections */
-.document-sections { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.document-section-card { padding: 1.5rem; background: var(--bg-primary); border-radius: 1rem; border: 1px solid var(--border-light); }
-.document-section-number { font-size: 2rem; font-weight: 900; color: var(--primary); opacity: 0.3; margin-bottom: 0.5rem; }
+### ملفات JavaScript:
+| الملف | التعديل |
+|-------|---------|
+| `js/main.js` | إضافة Hero Slider, Enhanced Reveals |
+| `js/components.js` | تحديث Modal System |
+| `js/media-center.js` | ملف جديد (~150 سطر) |
 
-/* Team Page */
-.team-leadership { display: flex; justify-content: center; margin-bottom: 3rem; }
-.leadership-card { max-width: 500px; text-align: center; padding: 2rem; background: linear-gradient(135deg, var(--primary-50), var(--bg-secondary)); border-radius: 1.5rem; }
-.team-stats { display: flex; justify-content: center; gap: 4rem; padding: 3rem; background: var(--bg-secondary); border-radius: 2rem; }
-.team-stat { text-align: center; }
-.team-stat-value { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
-.team-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
+### ملفات HTML:
+| الملف | التعديل |
+|-------|---------|
+| `index.html` | إضافة Hero Slider |
+| جميع الصفحات الداخلية (14+) | تطبيق Page Hero الجديد |
+| `media/news.html` | إضافة Content Cards + Modal |
+| `project-details.html` | تحسينات Premium |
+| `media/news-details.html` | Editorial Layout |
+| `org-structure.html` | Lightbox للهيكل |
 
-/* CTA Section */
-.bg-primary-gradient { background: linear-gradient(135deg, var(--primary), var(--primary-600)); }
-.cta-content { padding: 3rem 0; }
-.text-inverse { color: white !important; }
-.text-center { text-align: center; }
-.btn-outline-white { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); }
-.btn-outline-white:hover { background: white; color: var(--primary); }
+### ملفات SVG جديدة:
+- 6 ملفات Hero Placeholders
+- 4 ملفات Person Placeholders
+- 1 ملف Org Chart Placeholder
+
+---
+
+## تعليمات استبدال الصور
+
+**لاستبدال صور Hero Slider:**
+1. ضع صورك في `assets/img/hero/` بأسماء `hero-1.jpg` ... `hero-6.jpg`
+2. الأبعاد المثالية: 1920x1080 أو أعلى
+3. سيتم تطبيق Ken Burns تلقائياً
+
+**لاستبدال Placeholders:**
+1. استبدل مسار `assets/svg/placeholder-*.svg` بمسار صورتك
+2. أو ضع صورًا حقيقية في `assets/img/` واستخدم مساراتها
+
+**للحفاظ على Fallback:**
+```html
+<img src="assets/img/my-image.jpg" 
+     onerror="this.src='assets/svg/placeholder-cover.svg'"
+     alt="وصف الصورة">
 ```
 
 ---
 
-### المهمة 7: إضافة أنماط CSS لصفحات المركز الإعلامي
-**الملف:** `public/theme-1/css/pages.css`
-**إضافة بعد المهمة 6:**
-```css
-/* News Editorial Layout */
-.news-editorial { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
-.news-featured { position: relative; border-radius: 1.5rem; overflow: hidden; }
-.news-featured-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-.news-featured-content { padding: 2rem; background: var(--bg-primary); }
-.news-sidebar { display: flex; flex-direction: column; gap: 1rem; }
-.news-sidebar-item { display: flex; gap: 1rem; padding: 1rem; background: var(--bg-primary); border-radius: 1rem; border: 1px solid var(--border-light); }
-.news-sidebar-img { width: 80px; height: 60px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0; }
-.news-sidebar-content { flex: 1; }
-.news-sidebar-content h3 { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; line-height: 1.4; }
-.news-date { font-size: 0.75rem; color: var(--text-muted); }
-.news-card { background: var(--bg-primary); border-radius: 1.5rem; overflow: hidden; border: 1px solid var(--border-light); }
-.news-card-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
-.news-card-content { padding: 1.5rem; }
+## ترتيب التنفيذ المقترح
 
-/* Pagination */
-.pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 3rem; }
-.pagination-btn, .pagination-num { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); border: 1px solid var(--border-light); border-radius: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; }
-.pagination-num.active, .pagination-btn:hover:not(.disabled), .pagination-num:hover { background: var(--primary); color: white; border-color: var(--primary); }
-.pagination-btn.disabled { opacity: 0.5; cursor: not-allowed; }
-
-/* Video Grid */
-.videos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.video-card { cursor: pointer; background: var(--bg-primary); border-radius: 1.5rem; overflow: hidden; border: 1px solid var(--border-light); transition: all 0.3s; }
-.video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.video-thumbnail { position: relative; }
-.video-thumbnail img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-.video-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.3s; }
-.video-card:hover .video-play-btn { transform: translate(-50%, -50%) scale(1.1); }
-.video-duration { position: absolute; bottom: 0.75rem; right: 0.75rem; background: rgba(0,0,0,0.8); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; }
-.video-content { padding: 1rem; }
-.video-content h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
-.video-content p { font-size: 0.875rem; color: var(--text-secondary); }
-.video-player { aspect-ratio: 16/9; }
-.video-player iframe { width: 100%; height: 100%; }
-
-/* Gallery Masonry */
-.gallery-filter { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; }
-.gallery-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.gallery-item { position: relative; cursor: pointer; border-radius: 1rem; overflow: hidden; aspect-ratio: 1; }
-.gallery-item-tall { grid-row: span 2; aspect-ratio: auto; }
-.gallery-item-wide { grid-column: span 2; aspect-ratio: 2/1; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; opacity: 0; transition: opacity 0.3s; }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-title { color: white; font-weight: 600; margin-bottom: 0.25rem; }
-
-/* Lightbox */
-.lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; }
-.lightbox.open { display: flex; }
-.lightbox-img { max-width: 90%; max-height: 90%; object-fit: contain; }
-.lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 48px; height: 48px; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; color: white; font-size: 1.5rem; cursor: pointer; }
-.lightbox-nav { position: absolute; bottom: 2rem; display: flex; gap: 1rem; }
-.lightbox-prev, .lightbox-next { width: 48px; height: 48px; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; color: white; font-size: 1.25rem; cursor: pointer; }
-```
-
----
-
-### المهمة 8: إضافة أنماط CSS لصفحة تفاصيل المشروع والخبر
-**الملف:** `public/theme-1/css/pages.css`
-**إضافة بعد المهمة 7:**
-```css
-/* Project Details Hero */
-.project-hero { position: relative; padding: 140px 0 80px; min-height: 400px; display: flex; align-items: flex-end; }
-.project-hero-bg { position: absolute; inset: 0; }
-.project-hero-img { width: 100%; height: 100%; object-fit: cover; }
-.project-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(var(--secondary-rgb), 0.95), rgba(var(--secondary-rgb), 0.7)); }
-.project-hero-content { position: relative; z-index: 1; }
-.project-hero-title { font-size: 2.5rem; font-weight: 800; color: white; margin: 0.5rem 0; }
-.project-hero-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.8); }
-
-/* Project KPIs */
-.project-kpis-section { background: var(--bg-secondary); padding: 0; margin-top: -40px; position: relative; z-index: 10; }
-.project-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; transform: translateY(-50%); }
-.project-kpi { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: var(--bg-primary); border-radius: 1rem; box-shadow: var(--shadow-lg); }
-.project-kpi-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary), var(--primary-600)); border-radius: 0.75rem; font-size: 1.25rem; color: white; }
-.project-kpi-value { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); }
-.project-kpi-label { font-size: 0.75rem; color: var(--text-secondary); }
-
-/* Project Detail Layout */
-.project-detail-grid { display: grid; grid-template-columns: 1fr 350px; gap: 2rem; }
-.project-main-content { min-width: 0; }
-.project-sidebar { position: sticky; top: 100px; height: fit-content; }
-.sidebar-card { background: var(--bg-primary); border-radius: 1.5rem; padding: 1.5rem; border: 1px solid var(--border-light); margin-bottom: 1.5rem; }
-.sidebar-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
-.project-info-list { list-style: none; }
-.project-info-list li { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border-light); }
-.info-label { display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.875rem; }
-.info-value { font-weight: 600; color: var(--text-primary); font-size: 0.875rem; }
-.project-progress { margin-top: 1.5rem; }
-.progress-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem; }
-.progress-bar { height: 8px; background: var(--bg-secondary); border-radius: 1rem; overflow: hidden; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-400)); border-radius: 1rem; }
-.cta-card { background: linear-gradient(135deg, var(--primary-50), var(--bg-secondary)); border-color: var(--primary); }
-
-/* Project Tabs */
-.project-tabs .tab-content { padding: 1.5rem 0; }
-.project-objectives { list-style: none; margin: 1.5rem 0; }
-.project-objectives li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0; }
-.project-objectives li i { color: var(--success); margin-top: 0.25rem; }
-
-/* Project Timeline */
-.project-timeline { position: relative; padding-right: 2rem; }
-.project-timeline::before { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 2px; background: var(--border-light); }
-.timeline-item { position: relative; padding-bottom: 2rem; padding-right: 2rem; }
-.timeline-marker { position: absolute; right: -2rem; top: 0; width: 20px; height: 20px; background: var(--bg-secondary); border: 2px solid var(--border-default); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.625rem; transform: translateX(50%); }
-.timeline-item.completed .timeline-marker { background: var(--success); border-color: var(--success); color: white; }
-.timeline-item.active .timeline-marker { background: var(--primary); border-color: var(--primary); color: white; animation: pulse 2s infinite; }
-.timeline-date { font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-bottom: 0.25rem; }
-
-/* Reports List */
-.reports-list { display: flex; flex-direction: column; gap: 0.75rem; }
-.report-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 0.75rem; text-decoration: none; transition: all 0.2s; }
-.report-item:hover { background: var(--bg-tertiary); }
-.report-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(var(--primary-rgb), 0.1); border-radius: 0.5rem; font-size: 1.25rem; color: var(--primary); }
-.report-info { flex: 1; }
-.report-info h3 { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.125rem; }
-.report-info span { font-size: 0.75rem; color: var(--text-muted); }
-
-/* Article Page */
-.article-hero { position: relative; padding: 180px 0 80px; min-height: 450px; }
-.article-hero-bg { position: absolute; inset: 0; }
-.article-hero-img { width: 100%; height: 100%; object-fit: cover; }
-.article-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4)); }
-.article-hero-title { font-size: 2.25rem; font-weight: 800; color: white; margin: 1rem 0 0.5rem; max-width: 800px; line-height: 1.3; }
-.article-meta { display: flex; gap: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.875rem; }
-
-/* Article Layout */
-.article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; }
-.article-content { line-height: 1.8; }
-.article-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 2rem 0 1rem; }
-.article-content p { margin-bottom: 1.5rem; color: var(--text-secondary); }
-.article-content ul { margin: 1.5rem 0; padding-right: 1.5rem; }
-.article-content li { margin-bottom: 0.5rem; color: var(--text-secondary); }
-.article-lead { font-size: 1.25rem; color: var(--text-primary) !important; font-weight: 500; }
-.article-quote { margin: 2rem 0; padding: 2rem; background: var(--bg-secondary); border-right: 4px solid var(--primary); border-radius: 0 1rem 1rem 0; }
-.article-quote p { font-size: 1.25rem; font-style: italic; color: var(--text-primary); margin-bottom: 0.5rem; }
-.article-quote cite { font-size: 0.875rem; color: var(--primary); font-style: normal; }
-.article-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0; }
-.article-gallery img { width: 100%; border-radius: 0.75rem; }
-.article-share { display: flex; align-items: center; gap: 1rem; padding-top: 2rem; border-top: 1px solid var(--border-light); margin-top: 2rem; }
-.share-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); border-radius: 50%; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; }
-.share-btn:hover { background: var(--primary); color: white; }
-.article-sidebar .related-news { display: flex; flex-direction: column; gap: 1rem; }
-.related-item { display: flex; gap: 0.75rem; text-decoration: none; }
-.related-img { width: 70px; height: 50px; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0; }
-.related-content h4 { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); line-height: 1.4; margin-bottom: 0.25rem; }
-.related-content span { font-size: 0.75rem; color: var(--text-muted); }
-```
-
----
-
-### المهمة 9: تحديث Mobile Dropdowns في JavaScript
-**الملف:** `public/theme-1/js/components.js`
-**إضافة في نهاية الملف:**
-```javascript
-// Mobile Dropdown Toggle
-document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const dropdown = this.parentElement;
-        dropdown.classList.toggle('open');
-    });
-});
-```
-
----
-
-### المهمة 10: إضافة Responsive للأنماط الجديدة
-**الملف:** `public/theme-1/css/pages.css`
-**إضافة في نهاية الملف:**
-```css
-/* Responsive - New Pages */
-@media (max-width: 992px) {
-    .strategy-vmp-grid { grid-template-columns: 1fr; }
-    .strategy-goals-grid { grid-template-columns: 1fr; }
-    .founders-grid { grid-template-columns: repeat(2, 1fr); }
-    .board-grid { grid-template-columns: repeat(2, 1fr); }
-    .responsibilities-grid { grid-template-columns: repeat(2, 1fr); }
-    .committees-grid { grid-template-columns: repeat(2, 1fr); }
-    .document-overview { grid-template-columns: 1fr; }
-    .document-sections { grid-template-columns: repeat(2, 1fr); }
-    .news-editorial { grid-template-columns: 1fr; }
-    .videos-grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
-    .project-kpis { grid-template-columns: repeat(2, 1fr); }
-    .project-detail-grid { grid-template-columns: 1fr; }
-    .article-layout { grid-template-columns: 1fr; }
-    .org-level-4 { flex-wrap: wrap; gap: 1rem; }
-    .org-node { min-width: 120px; padding: 0.75rem 1rem; }
-}
-
-@media (max-width: 576px) {
-    .founders-grid { grid-template-columns: 1fr; }
-    .board-grid { grid-template-columns: 1fr; }
-    .responsibilities-grid { grid-template-columns: 1fr; }
-    .committees-grid { grid-template-columns: 1fr; }
-    .document-sections { grid-template-columns: 1fr; }
-    .videos-grid { grid-template-columns: 1fr; }
-    .gallery-masonry { grid-template-columns: 1fr; }
-    .gallery-item-tall, .gallery-item-wide { grid-column: auto; grid-row: auto; }
-    .project-kpis { grid-template-columns: 1fr; }
-    .team-stats { flex-direction: column; gap: 2rem; }
-    .chairman-card { flex-direction: column; text-align: center; }
-    .page-hero-title { font-size: 2rem; }
-    .article-hero-title { font-size: 1.75rem; }
-}
-```
-
----
-
-## ملاحظات التنفيذ
-
-### ترتيب التنفيذ المقترح:
-1. **مهام CSS أولاً** (المهام 3-8, 10) - لضمان ظهور الأنماط بشكل صحيح
-2. **تحديث JavaScript** (المهمة 9)
-3. **تحديث الصفحة الرئيسية** (المهام 1-2)
-
-### كيفية استبدال الـ Placeholders:
-1. ضع صورك الحقيقية في `assets/img/`
-2. استبدل المسارات في HTML من `assets/svg/placeholder-*.svg` إلى `assets/img/your-image.jpg`
-3. الـ SVG Placeholders تعمل كـ fallback ممتاز عند عدم توفر صور
-
-### ملاحظة تقنية:
-جميع المكونات تستخدم CSS Variables المعرفة في `main.css` لضمان التناسق البصري وسهولة التخصيص.
+1. **المرحلة 1**: إضافة أنماط CSS الجديدة (pages.css + components.css)
+2. **المرحلة 2**: إنشاء SVG Placeholders الجديدة
+3. **المرحلة 3**: تطبيق Page Hero الموحد على الصفحات الداخلية
+4. **المرحلة 4**: Hero Slider في الصفحة الرئيسية
+5. **المرحلة 5**: نظام Modal للمركز الإعلامي
+6. **المرحلة 6**: تحسينات صفحات التفاصيل
+7. **المرحلة 7**: Micro-interactions والتحسينات النهائية
