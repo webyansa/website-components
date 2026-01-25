@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="جمعية [اسم الجمعية] - نعمل من أجل مجتمع أفضل من خلال مشاريع تنموية ومبادرات مستدامة">
-    <meta name="keywords" content="جمعية، مؤسسة خيرية، تطوع، تنمية، السعودية">
+    <meta name="description" content="جمعية [اسم الجمعية] - نسعى لبناء مجتمع مستدام من خلال مشاريع تنموية مؤثرة تحقق الأثر والشفافية">
+    <meta name="keywords" content="جمعية، مؤسسة خيرية، تطوع، تنمية، السعودية، حوكمة، شفافية">
+    <meta name="author" content="ويبيان">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="جمعية [اسم الجمعية] - نبني مجتمعاً مستداماً">
+    <meta property="og:description" content="نسعى لبناء مجتمع مستدام من خلال مشاريع تنموية مؤثرة">
+    <meta property="og:type" content="website">
+    
     <title>الرئيسية - جمعية [اسم الجمعية]</title>
     
     <!-- Favicon -->
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/icons/favicon.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,9 +35,9 @@
 </head>
 <body>
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         NAVBAR
+         NAVBAR - Premium Sticky Navigation
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
+    <nav class="navbar dark-mode" role="navigation" aria-label="القائمة الرئيسية">
         <div class="navbar-container">
             <a href="index.html" class="navbar-brand">
                 <img src="assets/img/logo.svg" alt="شعار جمعية [اسم الجمعية]" class="navbar-logo">
@@ -59,53 +67,124 @@
     
     <!-- Mobile Menu -->
     <div class="mobile-overlay" aria-hidden="true"></div>
-    <div class="navbar-mobile" role="dialog" aria-label="القائمة المتنقلة">
-        <button class="navbar-mobile-close" aria-label="إغلاق القائمة">
-            <i class="fas fa-times"></i>
-        </button>
+    <aside class="navbar-mobile" role="dialog" aria-label="القائمة المتنقلة">
+        <div class="navbar-mobile-header">
+            <img src="assets/img/logo.svg" alt="شعار الجمعية" style="height: 36px;">
+            <button class="navbar-mobile-close" aria-label="إغلاق القائمة">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
         <nav class="navbar-mobile-nav">
-            <a href="index.html" class="navbar-mobile-link">الرئيسية</a>
-            <a href="about.html" class="navbar-mobile-link">عن الجمعية</a>
-            <a href="projects.html" class="navbar-mobile-link">المشاريع</a>
-            <a href="services.html" class="navbar-mobile-link">الخدمات</a>
-            <a href="governance.html" class="navbar-mobile-link">الحوكمة</a>
-            <a href="contact.html" class="navbar-mobile-link">اتصل بنا</a>
-            <a href="join.html" class="btn btn-primary btn-block mt-lg">انضم معنا</a>
+            <a href="index.html" class="navbar-mobile-link active">
+                <i class="fas fa-home"></i>
+                الرئيسية
+            </a>
+            <a href="about.html" class="navbar-mobile-link">
+                <i class="fas fa-info-circle"></i>
+                عن الجمعية
+            </a>
+            <a href="projects.html" class="navbar-mobile-link">
+                <i class="fas fa-project-diagram"></i>
+                المشاريع
+            </a>
+            <a href="services.html" class="navbar-mobile-link">
+                <i class="fas fa-concierge-bell"></i>
+                الخدمات
+            </a>
+            <a href="governance.html" class="navbar-mobile-link">
+                <i class="fas fa-balance-scale"></i>
+                الحوكمة
+            </a>
+            <a href="contact.html" class="navbar-mobile-link">
+                <i class="fas fa-envelope"></i>
+                اتصل بنا
+            </a>
+            <a href="join.html" class="btn btn-primary btn-block mt-6">
+                <i class="fas fa-heart"></i>
+                انضم معنا
+            </a>
         </nav>
-    </div>
+    </aside>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         1. HERO SECTION
+         1. HERO SECTION - Cinematic Full-Screen
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="hero" aria-label="القسم الرئيسي">
+        <!-- Video Background (Optional) -->
+        <div class="hero-video-wrapper">
+            <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero.jpg">
+                <source src="assets/img/hero.webm" type="video/webm">
+                <source src="assets/img/hero.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <!-- Gradient Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Noise Texture -->
+        <div class="hero-noise"></div>
+        
+        <!-- Decorative Shapes -->
+        <div class="hero-shapes">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
+        
+        <!-- Dot Pattern -->
         <div class="hero-pattern"></div>
-        <div class="hero-shape hero-shape-1"></div>
-        <div class="hero-shape hero-shape-2"></div>
         
         <div class="container">
             <div class="hero-content">
                 <span class="hero-badge">
                     <i class="fas fa-star"></i>
-                    نعمل من أجل مجتمع أفضل
+                    أكثر من 15 عاماً من العطاء
                 </span>
+                
                 <h1 class="hero-title">
                     نبني مجتمعاً مستداماً
                     <span>بمشاريع تنموية مؤثرة</span>
                 </h1>
+                
                 <p class="hero-text">
-                    نسعى في جمعيتنا لتحقيق التنمية المستدامة من خلال مشاريع ومبادرات نوعية تخدم المجتمع وتمكّن أفراده من المساهمة الفاعلة في بناء مستقبل أفضل.
+                    نسعى لتحقيق التنمية المستدامة من خلال مشاريع ومبادرات نوعية تخدم المجتمع 
+                    وتمكّن أفراده من المساهمة الفاعلة في بناء مستقبل أفضل.
                 </p>
+                
                 <div class="hero-actions">
                     <a href="projects.html" class="btn btn-primary btn-lg">
                         <i class="fas fa-folder-open"></i>
                         استكشف مشاريعنا
+                        <i class="fas fa-arrow-left btn-arrow"></i>
                     </a>
                     <a href="join.html" class="btn btn-outline-white btn-lg">
                         <i class="fas fa-users"></i>
                         انضم معنا
                     </a>
                 </div>
+                
+                <!-- Hero KPI Strip -->
+                <div class="hero-kpis">
+                    <div class="hero-kpi">
+                        <div class="hero-kpi-value" data-counter="50000" data-suffix="+">0</div>
+                        <div class="hero-kpi-label">مستفيد</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="hero-kpi-value" data-counter="120" data-suffix="+">0</div>
+                        <div class="hero-kpi-label">مشروع</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="hero-kpi-value" data-counter="35" data-suffix="+">0</div>
+                        <div class="hero-kpi-label">شريك</div>
+                    </div>
+                </div>
             </div>
+        </div>
+        
+        <!-- Scroll Cue -->
+        <div class="scroll-cue">
+            <div class="scroll-cue-icon"></div>
+            <span>اكتشف المزيد</span>
         </div>
     </section>
 
@@ -114,16 +193,17 @@
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section" aria-labelledby="about-title">
         <div class="container">
-            <div class="about-preview">
-                <div class="about-preview-image">
-                    <img src="assets/img/placeholders/about-preview.jpg" alt="صورة عن الجمعية" class="about-preview-img">
+            <div class="about-preview reveal">
+                <div class="about-preview-image reveal-right">
+                    <img src="assets/img/sections/about.jpg" alt="صورة عن الجمعية" class="about-preview-img" 
+                         onerror="this.style.background='linear-gradient(135deg, var(--primary-100), var(--primary-50))'; this.style.minHeight='400px';">
                     <div class="about-preview-badge">
                         <span class="about-preview-badge-number">+15</span>
                         <span class="about-preview-badge-text">سنة من العطاء</span>
                     </div>
                 </div>
                 
-                <div class="about-preview-content">
+                <div class="about-preview-content reveal-left">
                     <span class="section-badge">
                         <i class="fas fa-info-circle"></i>
                         من نحن
@@ -140,10 +220,10 @@
                     </div>
                     
                     <div id="vision-content" class="about-tab-content">
-                        <p>أن نكون الجمعية الرائدة في تحقيق التنمية المستدامة والريادة المجتمعية على مستوى المملكة العربية السعودية.</p>
+                        <p>أن نكون الجمعية الرائدة في تحقيق التنمية المستدامة والريادة المجتمعية على مستوى المملكة العربية السعودية، ونموذجاً يُحتذى به في الحوكمة والشفافية.</p>
                     </div>
                     
-                    <a href="about.html" class="btn btn-outline mt-lg">
+                    <a href="about.html" class="btn btn-outline mt-6">
                         <i class="fas fa-arrow-left"></i>
                         اعرف المزيد عنا
                     </a>
@@ -157,62 +237,62 @@
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section bg-light" aria-labelledby="fields-title">
         <div class="container">
-            <header class="section-header">
+            <header class="section-header reveal">
                 <span class="section-badge">
                     <i class="fas fa-compass"></i>
                     مجالاتنا
                 </span>
                 <h2 class="section-title" id="fields-title">مجالات عمل الجمعية</h2>
-                <p class="section-subtitle">نعمل في مجالات متنوعة تخدم المجتمع وتحقق التنمية المستدامة</p>
+                <p class="section-subtitle">نعمل في مجالات متنوعة تخدم المجتمع وتحقق التنمية المستدامة بأعلى معايير الحوكمة</p>
             </header>
             
             <div class="fields-grid">
-                <article class="field-card">
+                <article class="field-card reveal">
                     <div class="field-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3 class="field-title">التعليم والتدريب</h3>
-                    <p class="field-text">برامج تعليمية وتدريبية لتطوير المهارات وبناء القدرات</p>
+                    <p class="field-text">برامج تعليمية وتدريبية متقدمة لتطوير المهارات وبناء القدرات</p>
                 </article>
                 
-                <article class="field-card">
+                <article class="field-card reveal">
                     <div class="field-icon">
                         <i class="fas fa-hand-holding-heart"></i>
                     </div>
                     <h3 class="field-title">الخدمات الإنسانية</h3>
-                    <p class="field-text">مساعدات وإغاثة للمحتاجين والمتضررين</p>
+                    <p class="field-text">مساعدات وإغاثة عاجلة للمحتاجين والمتضررين</p>
                 </article>
                 
-                <article class="field-card">
+                <article class="field-card reveal">
                     <div class="field-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <h3 class="field-title">ريادة الأعمال</h3>
-                    <p class="field-text">دعم وتمكين رواد الأعمال والمشاريع الصغيرة</p>
+                    <p class="field-text">دعم وتمكين رواد الأعمال والمشاريع الصغيرة والمتوسطة</p>
                 </article>
                 
-                <article class="field-card">
+                <article class="field-card reveal">
                     <div class="field-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="field-title">التمكين المجتمعي</h3>
-                    <p class="field-text">برامج تمكين الأسر والشباب والمرأة</p>
+                    <p class="field-text">برامج شاملة لتمكين الأسر والشباب والمرأة</p>
                 </article>
                 
-                <article class="field-card">
+                <article class="field-card reveal">
                     <div class="field-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h3 class="field-title">الصحة والرعاية</h3>
-                    <p class="field-text">خدمات صحية وتوعوية للمجتمع</p>
+                    <p class="field-text">خدمات صحية وتوعوية شاملة للمجتمع</p>
                 </article>
                 
-                <article class="field-card">
+                <article class="field-card reveal">
                     <div class="field-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3 class="field-title">البيئة والاستدامة</h3>
-                    <p class="field-text">مبادرات للحفاظ على البيئة والتنمية المستدامة</p>
+                    <p class="field-text">مبادرات رائدة للحفاظ على البيئة والتنمية المستدامة</p>
                 </article>
             </div>
         </div>
@@ -223,7 +303,7 @@
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section" aria-labelledby="projects-title">
         <div class="container">
-            <header class="section-header">
+            <header class="section-header reveal">
                 <span class="section-badge">
                     <i class="fas fa-project-diagram"></i>
                     مشاريعنا
@@ -233,7 +313,7 @@
             </header>
             
             <!-- Filter Buttons -->
-            <div class="filter-buttons">
+            <div class="filter-buttons reveal">
                 <button class="filter-btn active" data-filter="all">الكل</button>
                 <button class="filter-btn" data-filter="in-progress">قيد التنفيذ</button>
                 <button class="filter-btn" data-filter="completed">مكتمل</button>
@@ -241,15 +321,22 @@
             
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <article class="card project-card" data-status="in-progress">
+                <article class="card project-card reveal" data-status="in-progress" style="transition: all 0.3s ease;">
                     <span class="badge badge-warning project-status">قيد التنفيذ</span>
-                    <img src="assets/img/placeholders/project-1.jpg" alt="مشروع تمكين الشباب" class="card-img">
+                    <div class="card-img-wrapper">
+                        <img src="assets/img/sections/project-1.jpg" alt="مشروع تمكين الشباب" class="card-img"
+                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i></div>';">
+                        <div class="card-img-overlay"></div>
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title" data-searchable>مشروع تمكين الشباب</h3>
                         <p class="card-text">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل</p>
                         <div class="card-meta">
-                            <span><i class="fas fa-users"></i> 500 مستفيد</span>
-                            <span><i class="fas fa-calendar"></i> 2024</span>
+                            <span class="card-meta-item"><i class="fas fa-users"></i> 500 مستفيد</span>
+                            <span class="card-meta-item"><i class="fas fa-calendar"></i> 2024</span>
+                        </div>
+                        <div class="progress mt-4">
+                            <div class="progress-bar" style="width: 65%;"></div>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -261,15 +348,22 @@
                 </article>
                 
                 <!-- Project 2 -->
-                <article class="card project-card" data-status="completed">
+                <article class="card project-card reveal" data-status="completed" style="transition: all 0.3s ease;">
                     <span class="badge badge-success project-status">مكتمل</span>
-                    <img src="assets/img/placeholders/project-2.jpg" alt="مبادرة إفطار صائم" class="card-img">
+                    <div class="card-img-wrapper">
+                        <img src="assets/img/sections/project-2.jpg" alt="مبادرة إفطار صائم" class="card-img"
+                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i></div>';">
+                        <div class="card-img-overlay"></div>
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title" data-searchable>مبادرة إفطار صائم</h3>
                         <p class="card-text">توزيع وجبات إفطار على الصائمين في شهر رمضان</p>
                         <div class="card-meta">
-                            <span><i class="fas fa-users"></i> 10,000 مستفيد</span>
-                            <span><i class="fas fa-calendar"></i> 2024</span>
+                            <span class="card-meta-item"><i class="fas fa-users"></i> 10,000 مستفيد</span>
+                            <span class="card-meta-item"><i class="fas fa-calendar"></i> 2024</span>
+                        </div>
+                        <div class="progress mt-4">
+                            <div class="progress-bar success" style="width: 100%;"></div>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -281,15 +375,22 @@
                 </article>
                 
                 <!-- Project 3 -->
-                <article class="card project-card" data-status="in-progress">
+                <article class="card project-card reveal" data-status="in-progress" style="transition: all 0.3s ease;">
                     <span class="badge badge-warning project-status">قيد التنفيذ</span>
-                    <img src="assets/img/placeholders/project-3.jpg" alt="برنامج التدريب المهني" class="card-img">
+                    <div class="card-img-wrapper">
+                        <img src="assets/img/sections/project-3.jpg" alt="برنامج التدريب المهني" class="card-img"
+                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-image\'></i></div>';">
+                        <div class="card-img-overlay"></div>
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title" data-searchable>برنامج التدريب المهني</h3>
                         <p class="card-text">دورات تدريبية متخصصة لتأهيل الكوادر الوطنية</p>
                         <div class="card-meta">
-                            <span><i class="fas fa-users"></i> 200 مستفيد</span>
-                            <span><i class="fas fa-calendar"></i> 2024</span>
+                            <span class="card-meta-item"><i class="fas fa-users"></i> 200 مستفيد</span>
+                            <span class="card-meta-item"><i class="fas fa-calendar"></i> 2024</span>
+                        </div>
+                        <div class="progress mt-4">
+                            <div class="progress-bar" style="width: 40%;"></div>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -301,7 +402,7 @@
                 </article>
             </div>
             
-            <div class="text-center mt-2xl">
+            <div class="text-center mt-12 reveal">
                 <a href="projects.html" class="btn btn-outline btn-lg">
                     <i class="fas fa-th-large"></i>
                     عرض جميع المشاريع
@@ -315,7 +416,7 @@
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section bg-light" aria-labelledby="news-title">
         <div class="container">
-            <header class="section-header">
+            <header class="section-header reveal">
                 <span class="section-badge">
                     <i class="fas fa-newspaper"></i>
                     آخر الأخبار
@@ -325,23 +426,29 @@
             </header>
             
             <div class="news-grid">
-                <article class="card news-card">
-                    <img src="assets/img/placeholders/news-1.jpg" alt="خبر افتتاح المقر الجديد" class="card-img">
+                <article class="card news-card reveal">
+                    <div class="card-img-wrapper">
+                        <img src="assets/img/sections/news-1.jpg" alt="افتتاح المقر الجديد" class="card-img"
+                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-newspaper\'></i></div>';">
+                    </div>
                     <div class="card-body">
                         <div class="card-date">
                             <i class="fas fa-calendar-alt"></i>
                             <time datetime="2024-03-15">15 مارس 2024</time>
                         </div>
                         <h3 class="card-title">افتتاح المقر الجديد للجمعية</h3>
-                        <p class="card-text">تم بحمد الله افتتاح المقر الجديد للجمعية بحضور عدد من الشخصيات...</p>
+                        <p class="card-text">تم بحمد الله افتتاح المقر الجديد للجمعية بحضور عدد من الشخصيات البارزة...</p>
                         <a href="#" class="btn btn-sm btn-ghost">
                             اقرأ المزيد <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
                 </article>
                 
-                <article class="card news-card">
-                    <img src="assets/img/placeholders/news-2.jpg" alt="توقيع اتفاقية شراكة" class="card-img">
+                <article class="card news-card reveal">
+                    <div class="card-img-wrapper">
+                        <img src="assets/img/sections/news-2.jpg" alt="توقيع اتفاقية شراكة" class="card-img"
+                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-newspaper\'></i></div>';">
+                    </div>
                     <div class="card-body">
                         <div class="card-date">
                             <i class="fas fa-calendar-alt"></i>
@@ -355,8 +462,11 @@
                     </div>
                 </article>
                 
-                <article class="card news-card">
-                    <img src="assets/img/placeholders/news-3.jpg" alt="إطلاق مبادرة جديدة" class="card-img">
+                <article class="card news-card reveal">
+                    <div class="card-img-wrapper">
+                        <img src="assets/img/sections/news-3.jpg" alt="إطلاق مبادرة معاً نبني" class="card-img"
+                             onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fas fa-newspaper\'></i></div>';">
+                    </div>
                     <div class="card-body">
                         <div class="card-date">
                             <i class="fas fa-calendar-alt"></i>
@@ -371,7 +481,7 @@
                 </article>
             </div>
             
-            <div class="text-center mt-2xl">
+            <div class="text-center mt-12 reveal">
                 <a href="#" class="btn btn-outline">
                     <i class="fas fa-newspaper"></i>
                     عرض المزيد
@@ -385,8 +495,8 @@
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section stats-section" aria-labelledby="stats-title">
         <div class="container">
-            <header class="section-header">
-                <span class="section-badge" style="background: rgba(255,255,255,0.2); color: #fff;">
+            <header class="section-header section-header-light reveal">
+                <span class="section-badge">
                     <i class="fas fa-chart-bar"></i>
                     إنجازاتنا
                 </span>
@@ -395,7 +505,7 @@
             </header>
             
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-icon">
                         <i class="fas fa-users"></i>
                     </div>
@@ -403,7 +513,7 @@
                     <div class="stat-label">مستفيد</div>
                 </div>
                 
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-icon">
                         <i class="fas fa-project-diagram"></i>
                     </div>
@@ -411,7 +521,7 @@
                     <div class="stat-label">مشروع ومبادرة</div>
                 </div>
                 
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-icon">
                         <i class="fas fa-hands-helping"></i>
                     </div>
@@ -419,7 +529,7 @@
                     <div class="stat-label">متطوع</div>
                 </div>
                 
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -431,11 +541,11 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         7. PARTNERS SECTION
+         7. PARTNERS SECTION - Logo Marquee
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section" aria-labelledby="partners-title">
         <div class="container">
-            <header class="section-header">
+            <header class="section-header reveal">
                 <span class="section-badge">
                     <i class="fas fa-handshake"></i>
                     شركاؤنا
@@ -444,24 +554,30 @@
                 <p class="section-subtitle">نفخر بشراكتنا مع نخبة من المؤسسات والجهات</p>
             </header>
             
-            <div class="partners-grid">
+            <div class="partners-grid reveal">
                 <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-1.png" alt="شريك 1">
+                    <img src="assets/img/placeholders/partner-1.png" alt="شريك 1"
+                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
                 </div>
                 <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-2.png" alt="شريك 2">
+                    <img src="assets/img/placeholders/partner-2.png" alt="شريك 2"
+                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
                 </div>
                 <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-3.png" alt="شريك 3">
+                    <img src="assets/img/placeholders/partner-3.png" alt="شريك 3"
+                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
                 </div>
                 <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-4.png" alt="شريك 4">
+                    <img src="assets/img/placeholders/partner-4.png" alt="شريك 4"
+                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
                 </div>
                 <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-5.png" alt="شريك 5">
+                    <img src="assets/img/placeholders/partner-5.png" alt="شريك 5"
+                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
                 </div>
                 <div class="partner-item">
-                    <img src="assets/img/placeholders/partner-6.png" alt="شريك 6">
+                    <img src="assets/img/placeholders/partner-6.png" alt="شريك 6"
+                         onerror="this.style.background='var(--bg-tertiary)'; this.style.padding='20px'; this.alt='شريك';">
                 </div>
             </div>
         </div>
@@ -472,18 +588,20 @@
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="section bg-light" aria-labelledby="governance-preview-title">
         <div class="container">
-            <div class="governance-preview">
+            <div class="governance-preview reveal">
                 <div class="governance-icon">
                     <i class="fas fa-balance-scale"></i>
                 </div>
                 <div class="governance-content">
                     <h2 class="governance-title" id="governance-preview-title">ملفات الحوكمة والشفافية</h2>
                     <p class="governance-text">
-                        نؤمن بأهمية الشفافية والمساءلة في العمل المؤسسي. اطلع على تقاريرنا السنوية، والقوائم المالية، ولوائح الحوكمة التي تضمن سير العمل بأعلى معايير النزاهة.
+                        نؤمن بأهمية الشفافية والمساءلة في العمل المؤسسي. اطلع على تقاريرنا السنوية، 
+                        والقوائم المالية، ولوائح الحوكمة التي تضمن سير العمل بأعلى معايير النزاهة والمهنية.
                     </p>
                     <a href="governance.html" class="btn btn-primary">
                         <i class="fas fa-file-alt"></i>
                         عرض ملفات الحوكمة
+                        <i class="fas fa-arrow-left btn-arrow"></i>
                     </a>
                 </div>
             </div>
@@ -500,7 +618,8 @@
                 <div class="footer-brand">
                     <img src="assets/img/logo.svg" alt="شعار جمعية [اسم الجمعية]" class="footer-logo">
                     <p class="footer-about">
-                        نعمل من أجل مجتمع أفضل من خلال مشاريع تنموية ومبادرات مستدامة تخدم أفراد المجتمع وتحقق رؤيتنا في التنمية الشاملة.
+                        نعمل من أجل مجتمع أفضل من خلال مشاريع تنموية ومبادرات مستدامة 
+                        تخدم أفراد المجتمع وتحقق رؤيتنا في التنمية الشاملة.
                     </p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social" aria-label="تويتر">
@@ -550,7 +669,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <span dir="ltr">+966 11 XXX XXXX</span>
+                        <span class="phone-number">+966 11 XXX XXXX</span>
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
@@ -561,7 +680,7 @@
             
             <div class="footer-bottom">
                 <p class="footer-copyright">
-                    جميع الحقوق محفوظة © <span id="current-year"></span> جمعية [اسم الجمعية]
+                    جميع الحقوق محفوظة © <span id="current-year">2024</span> جمعية [اسم الجمعية]
                 </p>
                 <p class="footer-powered">
                     مدعوم عبر منصة <a href="https://webyan.sa" target="_blank" rel="noopener">ويبيان</a>
@@ -583,16 +702,17 @@
         </div>
         <div class="modal-body">
             <div class="project-modal-header">
-                <img src="assets/img/placeholders/project-1.jpg" alt="صورة المشروع" class="project-modal-img">
+                <img src="assets/img/sections/project-1.jpg" alt="صورة المشروع" class="project-modal-img"
+                     onerror="this.style.background='var(--bg-tertiary)';">
                 <div class="project-modal-info">
                     <h3>مشروع تمكين الشباب</h3>
                     <span class="badge badge-warning">قيد التنفيذ</span>
-                    <p class="mt-md">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل من خلال التدريب والتأهيل والتوظيف.</p>
+                    <p class="mt-4">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل من خلال التدريب والتأهيل والتوظيف.</p>
                 </div>
             </div>
             
-            <div class="project-modal-timeline">
-                <h4 class="mb-lg">مراحل المشروع</h4>
+            <div class="project-modal-timeline mt-8">
+                <h4 class="mb-4">مراحل المشروع</h4>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
@@ -621,30 +741,30 @@
                     <div class="kpi-label">مستفيد</div>
                 </div>
                 <div class="kpi-item">
-                    <div class="kpi-value">85%</div>
-                    <div class="kpi-label">نسبة التوظيف</div>
+                    <div class="kpi-value">65%</div>
+                    <div class="kpi-label">نسبة الإنجاز</div>
                 </div>
                 <div class="kpi-item">
-                    <div class="kpi-value">20</div>
-                    <div class="kpi-label">شريك</div>
+                    <div class="kpi-value">12</div>
+                    <div class="kpi-label">شهر</div>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-outline" onclick="closeModal('project-modal')">إغلاق</button>
-            <a href="projects.html" class="btn btn-primary">عرض جميع المشاريع</a>
+            <button class="btn btn-ghost" onclick="closeModal('project-modal')">إغلاق</button>
+            <a href="projects.html" class="btn btn-primary">
+                عرض جميع المشاريع
+            </a>
         </div>
     </div>
 
-    <!-- Toast Container -->
-    <div class="toast-container" aria-live="polite"></div>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Scripts -->
-    <script src="js/components.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <script src="js/components.js"></script>
 </body>
 </html>

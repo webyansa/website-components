@@ -1,46 +1,125 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- *                         قالب الجمعية 1 - Main JS
- *                    المنطق الرئيسي وتفاعلات الصفحات
+ *                     PREMIUM ASSOCIATION TEMPLATE
+ *                       Main JavaScript Module
+ * 
+ *  Features:
+ *  - Smooth scroll reveals with IntersectionObserver
+ *  - Animated counters with easing
+ *  - Project filtering and search
+ *  - Form validation with feedback
+ *  - Toast notifications
+ *  - Parallax effects
+ *  - Performance optimized
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function() {
     initNavbarScroll();
+    initScrollReveal();
     initCounters();
     initProjectFilters();
     initSearch();
     initFormValidation();
+    initParallax();
+    initLazyLoad();
+    initScrollCue();
+    setCurrentYear();
 });
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * NAVBAR SCROLL EFFECT
+ * Premium sticky navbar with glass morphism on scroll
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateNavbar() {
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+        
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SCROLL REVEAL ANIMATIONS
+ * Elegant fade-in animations on scroll using IntersectionObserver
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initScrollReveal() {
+    // Check for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            el.classList.add('revealed');
+        });
+        return;
+    }
+
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    if (revealElements.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.1
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add stagger delay based on element index within parent
+                const siblings = entry.target.parentElement?.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale') || [];
+                const siblingIndex = Array.from(siblings).indexOf(entry.target);
+                const delay = siblingIndex * 100;
+                
+                setTimeout(() => {
+                    entry.target.classList.add('revealed');
+                }, delay);
+                
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 }
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * ANIMATED COUNTERS (Stats Section)
- * Using IntersectionObserver for performance
+ * ANIMATED COUNTERS
+ * Smooth counting animation with easing function
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initCounters() {
     const counters = document.querySelectorAll('[data-counter]');
     if (counters.length === 0) return;
+
+    // Check for reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const observerOptions = {
         root: null,
@@ -51,7 +130,15 @@ function initCounters() {
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCounter(entry.target);
+                if (prefersReducedMotion) {
+                    // Show final value immediately
+                    const target = parseInt(entry.target.getAttribute('data-counter'), 10);
+                    const suffix = entry.target.getAttribute('data-suffix') || '';
+                    const prefix = entry.target.getAttribute('data-prefix') || '';
+                    entry.target.textContent = prefix + formatNumber(target) + suffix;
+                } else {
+                    animateCounter(entry.target);
+                }
                 observer.unobserve(entry.target);
             }
         });
@@ -64,31 +151,44 @@ function initCounters() {
 
 function animateCounter(element) {
     const target = parseInt(element.getAttribute('data-counter'), 10);
-    const duration = 2000; // 2 seconds
-    const step = target / (duration / 16); // ~60fps
-    let current = 0;
-
+    const duration = 2500;
     const suffix = element.getAttribute('data-suffix') || '';
     const prefix = element.getAttribute('data-prefix') || '';
+    
+    let startTime = null;
 
-    const updateCounter = () => {
-        current += step;
-        if (current < target) {
-            element.textContent = prefix + Math.floor(current).toLocaleString('ar-SA') + suffix;
-            requestAnimationFrame(updateCounter);
+    function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    function update(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutExpo(progress);
+        const current = Math.floor(easedProgress * target);
+
+        element.textContent = prefix + formatNumber(current) + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
         } else {
-            element.textContent = prefix + target.toLocaleString('ar-SA') + suffix;
+            element.textContent = prefix + formatNumber(target) + suffix;
         }
-    };
+    }
 
-    updateCounter();
+    requestAnimationFrame(update);
+}
+
+function formatNumber(num) {
+    return num.toLocaleString('ar-SA');
 }
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * PROJECT FILTERS
- * Filter projects by status (all / in-progress / completed)
- * ═══════════════════════════════════════════════════════════════════════════
+ * Animated filtering with smooth transitions
+ * ═══════════════════════════════════════════════════════════════════════════ 
  */
 function initProjectFilters() {
     const filterButtons = document.querySelectorAll('[data-filter]');
@@ -100,20 +200,35 @@ function initProjectFilters() {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
 
-            // Update active button
+            // Update active button with smooth transition
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
-            // Filter projects
-            projectCards.forEach(card => {
+            // Filter projects with stagger animation
+            let visibleIndex = 0;
+            
+            projectCards.forEach((card, index) => {
                 const status = card.getAttribute('data-status');
-                
-                if (filter === 'all' || status === filter) {
+                const shouldShow = filter === 'all' || status === filter;
+
+                if (shouldShow) {
+                    card.style.transitionDelay = `${visibleIndex * 50}ms`;
                     card.style.display = '';
-                    card.classList.add('animate-fadeInUp');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    });
+                    
+                    visibleIndex++;
                 } else {
-                    card.style.display = 'none';
-                    card.classList.remove('animate-fadeInUp');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
                 }
             });
         });
@@ -123,7 +238,7 @@ function initProjectFilters() {
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * SEARCH FUNCTIONALITY
- * Live search for projects and files
+ * Real-time search with debouncing
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initSearch() {
@@ -133,26 +248,42 @@ function initSearch() {
     const targetSelector = searchInput.getAttribute('data-search');
     const items = document.querySelectorAll(targetSelector);
 
+    let debounceTimer;
+
     searchInput.addEventListener('input', function() {
-        const query = this.value.trim().toLowerCase();
+        clearTimeout(debounceTimer);
+        
+        debounceTimer = setTimeout(() => {
+            const query = this.value.trim().toLowerCase();
 
-        items.forEach(item => {
-            const title = item.querySelector('[data-searchable]')?.textContent.toLowerCase() || '';
-            const match = title.includes(query);
+            items.forEach(item => {
+                const searchableElements = item.querySelectorAll('[data-searchable]');
+                let text = '';
+                
+                searchableElements.forEach(el => {
+                    text += ' ' + el.textContent.toLowerCase();
+                });
 
-            if (match || query === '') {
-                item.style.display = '';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+                const match = text.includes(query) || query === '';
+
+                if (match) {
+                    item.style.display = '';
+                    item.style.opacity = '1';
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 200);
+                }
+            });
+        }, 150);
     });
 }
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * FORM VALIDATION
- * Client-side validation with visual feedback
+ * Premium validation with real-time feedback
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initFormValidation() {
@@ -163,14 +294,13 @@ function initFormValidation() {
             e.preventDefault();
             
             if (validateForm(this)) {
-                // Show success toast
                 showToast('success', 'تم الإرسال بنجاح', 'سيتم التواصل معك قريباً');
                 this.reset();
                 clearValidation(this);
             }
         });
 
-        // Real-time validation on input
+        // Real-time validation
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('blur', function() {
@@ -276,7 +406,7 @@ function clearValidation(form) {
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * TOAST NOTIFICATIONS
- * Show success/error/info messages
+ * Premium notification system
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function showToast(type, title, message) {
@@ -323,15 +453,118 @@ function createToastContainer() {
 }
 
 function removeToast(toast) {
-    toast.style.animation = 'fadeIn 0.3s ease reverse forwards';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-20px)';
     setTimeout(() => {
         toast.remove();
     }, 300);
 }
 
+// Global function
+window.showToast = showToast;
+
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * SMOOTH SCROLL TO SECTIONS
+ * PARALLAX EFFECTS
+ * Subtle parallax for hero elements
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initParallax() {
+    // Skip parallax if reduced motion is preferred
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const parallaxElements = document.querySelectorAll('[data-parallax]');
+    if (parallaxElements.length === 0) return;
+
+    let ticking = false;
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.getAttribute('data-parallax')) || 0.5;
+                    const offset = scrollY * speed;
+                    el.style.transform = `translateY(${offset}px)`;
+                });
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * LAZY LOAD IMAGES
+ * Performance optimized image loading
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initLazyLoad() {
+    if ('loading' in HTMLImageElement.prototype) {
+        // Native lazy loading supported
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            img.loading = 'lazy';
+        });
+    } else if ('IntersectionObserver' in window) {
+        // Fallback to IntersectionObserver
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SCROLL CUE ANIMATION
+ * Animated scroll indicator
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initScrollCue() {
+    const scrollCue = document.querySelector('.scroll-cue');
+    if (!scrollCue) return;
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            scrollCue.style.opacity = '0';
+            scrollCue.style.pointerEvents = 'none';
+        } else {
+            scrollCue.style.opacity = '1';
+            scrollCue.style.pointerEvents = 'auto';
+        }
+    }, { passive: true });
+
+    scrollCue.addEventListener('click', function() {
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            const nextSection = heroSection.nextElementSibling;
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SMOOTH SCROLL
+ * Enhanced smooth scrolling for anchor links
  * ═══════════════════════════════════════════════════════════════════════════
  */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -355,33 +588,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * UTILITY: Arabic Number Formatting
+ * UTILITY FUNCTIONS
  * ═══════════════════════════════════════════════════════════════════════════
  */
-function formatArabicNumber(num) {
-    return num.toLocaleString('ar-SA');
+function setCurrentYear() {
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 }
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * LAZY LOAD IMAGES
+ * RIPPLE EFFECT FOR BUTTONS
+ * Material Design inspired ripple effect
  * ═══════════════════════════════════════════════════════════════════════════
  */
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                }
-                observer.unobserve(img);
-            }
-        });
-    });
+document.addEventListener('click', function(e) {
+    const button = e.target.closest('.btn');
+    if (!button) return;
+    
+    // Check for reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+    
+    button.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+});

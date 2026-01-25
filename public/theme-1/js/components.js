@@ -1,7 +1,14 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- *                       قالب الجمعية 1 - Components JS
- *                  مكونات التفاعل: موبايل منيو، مودال، تابس، أكورديون
+ *                     PREMIUM ASSOCIATION TEMPLATE
+ *                     Components JavaScript Module
+ * 
+ *  Interactive Components:
+ *  - Mobile navigation with smooth transitions
+ *  - Modal dialogs with focus trap
+ *  - Tabs with keyboard navigation
+ *  - Accordions with animation
+ *  - Scroll to top button
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -12,12 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initTabs();
     initAccordions();
     initAboutTabs();
+    initJoinTabs();
+    initSidebarNav();
+    initScrollToTop();
 });
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * MOBILE MENU
- * Hamburger menu toggle with overlay
+ * Premium mobile navigation with smooth animations
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initMobileMenu() {
@@ -26,6 +36,7 @@ function initMobileMenu() {
     const closeBtn = document.querySelector('.navbar-mobile-close');
     const overlay = document.querySelector('.mobile-overlay');
     const mobileLinks = document.querySelectorAll('.navbar-mobile-link');
+    const body = document.body;
 
     if (!toggle || !mobileMenu) return;
 
@@ -64,20 +75,24 @@ function initMobileMenu() {
 
     function openMobileMenu() {
         toggle.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
         mobileMenu.classList.add('open');
         if (overlay) overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        body.style.overflow = 'hidden';
         
-        // Focus trap
+        // Focus trap - focus first focusable element
         const firstFocusable = mobileMenu.querySelector('button, a');
-        if (firstFocusable) firstFocusable.focus();
+        if (firstFocusable) {
+            setTimeout(() => firstFocusable.focus(), 100);
+        }
     }
 
     function closeMobileMenu() {
         toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
         mobileMenu.classList.remove('open');
         if (overlay) overlay.classList.remove('active');
-        document.body.style.overflow = '';
+        body.style.overflow = '';
         toggle.focus();
     }
 }
@@ -85,7 +100,7 @@ function initMobileMenu() {
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * MODALS
- * Project detail modals and generic modal functionality
+ * Accessible modal dialogs with focus management
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initModals() {
@@ -118,8 +133,8 @@ function initModals() {
     // Close on Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            const openModal = document.querySelector('.modal.open');
-            if (openModal) closeModal(openModal.id);
+            const openModalElement = document.querySelector('.modal.open');
+            if (openModalElement) closeModal(openModalElement.id);
         }
     });
 }
@@ -135,11 +150,19 @@ function openModal(modalId) {
     document.body.style.overflow = 'hidden';
 
     // Focus first focusable element
-    const firstFocusable = modal.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if (firstFocusable) firstFocusable.focus();
+    const focusableElements = modal.querySelectorAll(
+        'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusableElements.length > 0) {
+        setTimeout(() => focusableElements[0].focus(), 100);
+    }
 
-    // Announce to screen readers
+    // Update ARIA
     modal.setAttribute('aria-hidden', 'false');
+    if (backdrop) backdrop.setAttribute('aria-hidden', 'false');
+
+    // Focus trap
+    modal.addEventListener('keydown', trapFocus);
 }
 
 function closeModal(modalId) {
@@ -152,21 +175,49 @@ function closeModal(modalId) {
     modal.classList.remove('open');
     document.body.style.overflow = '';
 
+    // Update ARIA
     modal.setAttribute('aria-hidden', 'true');
+    if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
 
     // Return focus to trigger
     const trigger = document.querySelector(`[data-modal="${modalId}"]`);
     if (trigger) trigger.focus();
+
+    // Remove focus trap
+    modal.removeEventListener('keydown', trapFocus);
 }
 
-// Global function to open/close modals from anywhere
+function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+
+    const modal = e.currentTarget;
+    const focusableElements = modal.querySelectorAll(
+        'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        }
+    } else {
+        if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
+}
+
+// Global functions
 window.openModal = openModal;
 window.closeModal = closeModal;
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * TABS
- * Generic tab component functionality
+ * Accessible tabs with keyboard navigation
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initTabs() {
@@ -179,53 +230,73 @@ function initTabs() {
         triggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const tabId = trigger.getAttribute('data-tab');
-                
-                // Update triggers
-                triggers.forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-selected', 'false');
-                });
-                trigger.classList.add('active');
-                trigger.setAttribute('aria-selected', 'true');
-
-                // Update contents
-                contents.forEach(content => {
-                    content.classList.remove('active');
-                    content.setAttribute('aria-hidden', 'true');
-                });
-
-                const activeContent = group.querySelector(`#${tabId}`);
-                if (activeContent) {
-                    activeContent.classList.add('active');
-                    activeContent.setAttribute('aria-hidden', 'false');
-                }
+                activateTab(group, trigger, tabId);
             });
 
             // Keyboard navigation
             trigger.addEventListener('keydown', (e) => {
-                const triggersArray = Array.from(triggers);
-                const currentIndex = triggersArray.indexOf(trigger);
-                let newIndex;
-
-                switch (e.key) {
-                    case 'ArrowRight':
-                        newIndex = currentIndex > 0 ? currentIndex - 1 : triggersArray.length - 1;
-                        triggersArray[newIndex].focus();
-                        break;
-                    case 'ArrowLeft':
-                        newIndex = currentIndex < triggersArray.length - 1 ? currentIndex + 1 : 0;
-                        triggersArray[newIndex].focus();
-                        break;
-                    case 'Home':
-                        triggersArray[0].focus();
-                        break;
-                    case 'End':
-                        triggersArray[triggersArray.length - 1].focus();
-                        break;
-                }
+                handleTabKeyboard(e, triggers);
             });
         });
     });
+}
+
+function activateTab(group, trigger, tabId) {
+    const triggers = group.querySelectorAll('.tab-trigger');
+    const contents = group.querySelectorAll('.tab-content');
+
+    // Update triggers
+    triggers.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+    });
+    trigger.classList.add('active');
+    trigger.setAttribute('aria-selected', 'true');
+    trigger.setAttribute('tabindex', '0');
+
+    // Update contents
+    contents.forEach(content => {
+        content.classList.remove('active');
+        content.setAttribute('aria-hidden', 'true');
+    });
+
+    const activeContent = group.querySelector(`#${tabId}`);
+    if (activeContent) {
+        activeContent.classList.add('active');
+        activeContent.setAttribute('aria-hidden', 'false');
+    }
+}
+
+function handleTabKeyboard(e, triggers) {
+    const triggersArray = Array.from(triggers);
+    const currentIndex = triggersArray.indexOf(e.target);
+    let newIndex;
+
+    switch (e.key) {
+        case 'ArrowRight':
+            newIndex = currentIndex > 0 ? currentIndex - 1 : triggersArray.length - 1;
+            triggersArray[newIndex].focus();
+            triggersArray[newIndex].click();
+            e.preventDefault();
+            break;
+        case 'ArrowLeft':
+            newIndex = currentIndex < triggersArray.length - 1 ? currentIndex + 1 : 0;
+            triggersArray[newIndex].focus();
+            triggersArray[newIndex].click();
+            e.preventDefault();
+            break;
+        case 'Home':
+            triggersArray[0].focus();
+            triggersArray[0].click();
+            e.preventDefault();
+            break;
+        case 'End':
+            triggersArray[triggersArray.length - 1].focus();
+            triggersArray[triggersArray.length - 1].click();
+            e.preventDefault();
+            break;
+    }
 }
 
 /**
@@ -281,7 +352,6 @@ function initAccordions() {
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * ABOUT TABS (Home page - Vision/Mission)
- * Simple tab switching for about section
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initAboutTabs() {
@@ -298,13 +368,19 @@ function initAboutTabs() {
             aboutTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            // Update content
+            // Update content with fade effect
             aboutContents.forEach(content => {
                 content.classList.remove('active');
-                if (content.id === target) {
-                    content.classList.add('active');
-                }
+                content.style.opacity = '0';
             });
+            
+            const targetContent = document.getElementById(target);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                setTimeout(() => {
+                    targetContent.style.opacity = '1';
+                }, 50);
+            }
         });
     });
 }
@@ -343,9 +419,6 @@ function initJoinTabs() {
     });
 }
 
-// Initialize join tabs
-document.addEventListener('DOMContentLoaded', initJoinTabs);
-
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  * SIDEBAR NAVIGATION (Governance page)
@@ -366,20 +439,36 @@ function initSidebarNav() {
             sidebarLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
 
-            // Filter files
+            // Filter files with animation
+            let visibleIndex = 0;
+            
             fileCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
-                if (category === 'all' || cardCategory === category) {
+                const shouldShow = category === 'all' || cardCategory === category;
+                
+                if (shouldShow) {
+                    card.style.transitionDelay = `${visibleIndex * 50}ms`;
                     card.style.display = '';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    });
+                    
+                    visibleIndex++;
                 } else {
-                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 200);
                 }
             });
         });
     });
 }
-
-document.addEventListener('DOMContentLoaded', initSidebarNav);
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
@@ -390,13 +479,21 @@ function initScrollToTop() {
     const button = document.querySelector('.scroll-to-top');
     if (!button) return;
 
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            button.classList.add('visible');
-        } else {
-            button.classList.remove('visible');
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                if (window.scrollY > 500) {
+                    button.classList.add('visible');
+                } else {
+                    button.classList.remove('visible');
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
-    });
+    }, { passive: true });
 
     button.addEventListener('click', () => {
         window.scrollTo({
@@ -406,4 +503,57 @@ function initScrollToTop() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', initScrollToTop);
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * LOGO MARQUEE
+ * Pause on hover for partner logos
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initLogoMarquee() {
+    const marqueeContainers = document.querySelectorAll('.logo-marquee');
+    
+    marqueeContainers.forEach(container => {
+        const track = container.querySelector('.logo-marquee-track');
+        if (!track) return;
+
+        container.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
+
+        container.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initLogoMarquee);
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * VIDEO BACKGROUND
+ * Lazy load and manage video backgrounds
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initVideoBackground() {
+    const videos = document.querySelectorAll('.hero-video');
+    
+    videos.forEach(video => {
+        // Play when in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {
+                        // Video autoplay blocked, show poster
+                        video.style.display = 'none';
+                    });
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.25 });
+
+        observer.observe(video);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initVideoBackground);
