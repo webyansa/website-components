@@ -13,12 +13,16 @@
     justify-content: center;
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
     transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+    /* Hard safety net: never block the site if JS fails */
+    animation: loader-force-hide 0.35s ease-out forwards;
+    animation-delay: 900ms;
 }
 
 .page-loader.loaded {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    animation: none;
 }
 
 .loader-content {
@@ -30,8 +34,7 @@
 
 /* Logo */
 .loader-logo {
-    width: 100px;
-    height: auto;
+    display: none;
 }
 
 /* Single Spinner - Clean Design */
@@ -46,7 +49,7 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    border: 3px solid #e2e8f0;
+    border: 3px solid var(--border-light, #e2e8f0);
 }
 
 .loader-spinner::after {
@@ -55,12 +58,20 @@
     inset: 0;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: #0fbfae;
+    border-top-color: var(--primary, #0fbfae);
     animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+@keyframes loader-force-hide {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 }
 
 /* Hide other elements - only spinner */
@@ -73,7 +84,7 @@
 @media (prefers-reduced-motion: reduce) {
     .loader-spinner::after {
         animation: none;
-        border-top-color: #0fbfae;
-        border-right-color: #0fbfae;
+        border-top-color: var(--primary, #0fbfae);
+        border-right-color: var(--primary, #0fbfae);
     }
 }
