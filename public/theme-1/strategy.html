@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/premium.css">
     <link rel="stylesheet" href="css/rtl.css">
 </head>
 <body>
@@ -164,22 +165,48 @@
     </aside>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         PAGE HERO
+         PAGE HERO PREMIUM
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="page-hero">
+    <section class="page-hero-premium">
         <div class="page-hero-bg">
-            <img src="assets/svg/placeholder-cover.svg" alt="" class="page-hero-img">
-            <div class="page-hero-overlay"></div>
+            <img src="assets/svg/placeholder-cover.svg" alt="">
         </div>
+        <div class="page-hero-pattern"></div>
+        <div class="page-hero-shapes">
+            <div class="page-hero-shape page-hero-shape-1"></div>
+            <div class="page-hero-shape page-hero-shape-2"></div>
+        </div>
+        
         <div class="container">
-            <nav class="breadcrumb" aria-label="التنقل">
-                <a href="index.html" class="breadcrumb-link">الرئيسية</a>
-                <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
-                <span class="breadcrumb-current">استراتيجيتنا</span>
-            </nav>
-            <h1 class="page-hero-title">استراتيجيتنا</h1>
-            <p class="page-hero-subtitle">خارطة طريقنا نحو تحقيق الأثر المستدام</p>
+            <div class="page-hero-content">
+                <span class="page-hero-chip">
+                    <i class="fas fa-chess"></i>
+                    الاستراتيجية
+                </span>
+                
+                <nav class="breadcrumb-premium" aria-label="التنقل">
+                    <a href="index.html">الرئيسية</a>
+                    <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+                    <span class="breadcrumb-current">استراتيجيتنا</span>
+                </nav>
+                
+                <h1 class="page-hero-title">استراتيجيتنا</h1>
+                <p class="page-hero-subtitle">خارطة طريقنا نحو تحقيق الأثر المستدام</p>
+                
+                <div class="page-hero-actions">
+                    <button class="page-hero-action" onclick="shareCurrentPage()">
+                        <i class="fas fa-share-alt"></i> مشاركة
+                    </button>
+                    <button class="page-hero-action" onclick="window.print()">
+                        <i class="fas fa-print"></i> طباعة
+                    </button>
+                </div>
+            </div>
         </div>
+        
+        <svg class="page-hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,30 C360,80 1080,-20 1440,30 L1440,60 L0,60 Z"/>
+        </svg>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
@@ -382,9 +409,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/loader.js"></script>
+    <script src="js/loader.js?v=20260125"></script>
     <script src="js/main.js"></script>
     <script src="js/components.js"></script>
+    <script src="js/media-center.js"></script>
     <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

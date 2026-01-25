@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/premium.css">
     <link rel="stylesheet" href="css/rtl.css">
 </head>
 <body>
@@ -176,8 +177,37 @@
          1. HERO SECTION - Cinematic Full-Screen
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section class="hero" aria-label="القسم الرئيسي">
-        <!-- Video Background (Optional) -->
-        <div class="hero-video-wrapper">
+        <!-- Hero Image Slider -->
+        <div class="hero-slider" data-autoplay="true" data-interval="6000">
+            <div class="hero-slides">
+                <div class="hero-slide active">
+                    <img src="assets/svg/placeholder-hero-1.svg" alt="صورة الهيرو 1">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/svg/placeholder-hero-2.svg" alt="صورة الهيرو 2">
+                </div>
+                <div class="hero-slide">
+                    <img src="assets/svg/placeholder-hero-3.svg" alt="صورة الهيرو 3">
+                </div>
+            </div>
+            
+            <!-- Slider Controls -->
+            <div class="hero-slider-controls">
+                <button class="slider-nav prev" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-dots"></div>
+                <button class="slider-nav next" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            
+            <!-- Progress Bars -->
+            <div class="slider-progress">
+                <div class="progress-bar active"></div>
+                <div class="progress-bar"></div>
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+        
+        <!-- Video Background (behind slider, subtle layer) -->
+        <div class="hero-video-wrapper" style="opacity: 0.3;">
             <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero.jpg">
                 <source src="assets/img/hero.webm" type="video/webm">
                 <source src="assets/img/hero.mp4" type="video/mp4">
@@ -833,5 +863,6 @@
     <script src="js/loader.js?v=20260125"></script>
     <script src="js/main.js"></script>
     <script src="js/components.js"></script>
+    <script src="js/media-center.js"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="أخبار جمعية [اسم الجمعية]">
-    <title>أخبار الجمعية - جمعية [اسم الجمعية]</title>
+    <meta name="description" content="المركز الإعلامي - جمعية [اسم الجمعية]">
+    <title>المركز الإعلامي - جمعية [اسم الجمعية]</title>
     <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/premium.css">
     <link rel="stylesheet" href="../css/rtl.css">
 </head>
 <body>
@@ -69,110 +70,153 @@
         </nav>
     </aside>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
+    <!-- Page Hero Premium -->
+    <section class="page-hero-premium">
         <div class="page-hero-bg">
-            <img src="../assets/svg/placeholder-news.svg" alt="" class="page-hero-img">
-            <div class="page-hero-overlay"></div>
+            <img src="../assets/svg/placeholder-news.svg" alt="">
         </div>
+        <div class="page-hero-pattern"></div>
+        <div class="page-hero-shapes">
+            <div class="page-hero-shape page-hero-shape-1"></div>
+            <div class="page-hero-shape page-hero-shape-2"></div>
+        </div>
+        
         <div class="container">
-            <nav class="breadcrumb">
-                <a href="../index.html" class="breadcrumb-link">الرئيسية</a>
-                <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
-                <span class="breadcrumb-current">أخبار الجمعية</span>
-            </nav>
-            <h1 class="page-hero-title">أخبار الجمعية</h1>
-            <p class="page-hero-subtitle">آخر الأخبار والمستجدات</p>
+            <div class="page-hero-content">
+                <span class="page-hero-chip">
+                    <i class="fas fa-newspaper"></i>
+                    المركز الإعلامي
+                </span>
+                
+                <nav class="breadcrumb-premium">
+                    <a href="../index.html">الرئيسية</a>
+                    <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+                    <span class="breadcrumb-current">المركز الإعلامي</span>
+                </nav>
+                
+                <h1 class="page-hero-title">المركز الإعلامي</h1>
+                <p class="page-hero-subtitle">آخر الأخبار والفعاليات والمحتوى المرئي</p>
+            </div>
         </div>
+        
+        <svg class="page-hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0,30 C360,80 1080,-20 1440,30 L1440,60 L0,60 Z"/>
+        </svg>
     </section>
 
-    <!-- Featured News -->
+    <!-- Content Type Filters -->
     <section class="section">
         <div class="container">
-            <div class="news-editorial reveal">
-                <article class="news-featured">
-                    <img src="../assets/svg/placeholder-news.svg" alt="الخبر الرئيسي" class="news-featured-img">
-                    <div class="news-featured-content">
-                        <span class="badge badge-primary">أخبار</span>
-                        <h2>الجمعية توقع شراكة استراتيجية مع وزارة الموارد البشرية</h2>
-                        <p>في خطوة استراتيجية نحو تعزيز برامج التمكين، وقعت الجمعية اتفاقية شراكة مع وزارة الموارد البشرية...</p>
-                        <div class="news-meta">
+            <div class="filters-bar reveal" style="display: flex; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-10); flex-wrap: wrap;">
+                <button class="btn btn-outline active" data-filter="all">الكل</button>
+                <button class="btn btn-outline" data-filter="article"><i class="fas fa-newspaper"></i> مقالات</button>
+                <button class="btn btn-outline" data-filter="video"><i class="fas fa-video"></i> فيديو</button>
+                <button class="btn btn-outline" data-filter="gallery"><i class="fas fa-images"></i> معارض</button>
+                <button class="btn btn-outline" data-filter="document"><i class="fas fa-file-alt"></i> وثائق</button>
+            </div>
+            
+            <!-- Content Cards Grid -->
+            <div class="news-grid reveal-stagger" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6);">
+                
+                <!-- Article Card -->
+                <article class="content-card" data-type="article" data-id="1" data-url="news-details.html">
+                    <div class="content-card-img">
+                        <img src="../assets/svg/placeholder-news.svg" alt="مقال">
+                        <span class="content-type-badge article"><i class="fas fa-newspaper"></i> مقال</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3 class="content-card-title">الجمعية توقع شراكة استراتيجية مع وزارة الموارد البشرية</h3>
+                        <div class="content-card-meta">
                             <span><i class="fas fa-calendar"></i> 15 يناير 2024</span>
-                            <span><i class="fas fa-clock"></i> 5 دقائق قراءة</span>
+                            <span><i class="fas fa-clock"></i> 5 دقائق</span>
                         </div>
-                        <a href="news-details.html" class="btn btn-primary">اقرأ المزيد</a>
                     </div>
                 </article>
                 
-                <div class="news-sidebar">
-                    <article class="news-sidebar-item">
-                        <img src="../assets/svg/placeholder-news.svg" alt="خبر" class="news-sidebar-img">
-                        <div class="news-sidebar-content">
-                            <span class="news-date">10 يناير 2024</span>
-                            <h3>إطلاق برنامج تمكين الشباب في نسخته الثالثة</h3>
-                            <a href="news-details.html">اقرأ المزيد</a>
+                <!-- Video Card -->
+                <article class="content-card" data-type="video" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <div class="content-card-img">
+                        <img src="../assets/svg/placeholder-video-cover.svg" alt="فيديو">
+                        <span class="content-type-badge video"><i class="fas fa-video"></i> فيديو</span>
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="content-card-body">
+                        <h3 class="content-card-title">فيلم وثائقي: رحلة الجمعية نحو التميز</h3>
+                        <div class="content-card-meta">
+                            <span><i class="fas fa-calendar"></i> 10 يناير 2024</span>
+                            <span><i class="fas fa-play-circle"></i> 12:30</span>
                         </div>
-                    </article>
-                    <article class="news-sidebar-item">
-                        <img src="../assets/svg/placeholder-news.svg" alt="خبر" class="news-sidebar-img">
-                        <div class="news-sidebar-content">
-                            <span class="news-date">5 يناير 2024</span>
-                            <h3>الجمعية تحقق جائزة التميز في الحوكمة</h3>
-                            <a href="news-details.html">اقرأ المزيد</a>
-                        </div>
-                    </article>
-                    <article class="news-sidebar-item">
-                        <img src="../assets/svg/placeholder-news.svg" alt="خبر" class="news-sidebar-img">
-                        <div class="news-sidebar-content">
-                            <span class="news-date">1 يناير 2024</span>
-                            <h3>تخريج الدفعة الأولى من برنامج ريادة الأعمال</h3>
-                            <a href="news-details.html">اقرأ المزيد</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- All News -->
-    <section class="section bg-light">
-        <div class="container">
-            <header class="section-header reveal">
-                <h2 class="section-title">جميع الأخبار</h2>
-            </header>
-            
-            <div class="news-grid reveal">
-                <article class="news-card">
-                    <img src="../assets/svg/placeholder-news.svg" alt="خبر" class="news-card-img">
-                    <div class="news-card-content">
-                        <span class="news-date"><i class="fas fa-calendar"></i> 20 ديسمبر 2023</span>
-                        <h3>افتتاح مقر الجمعية الجديد في المنطقة الشرقية</h3>
-                        <p>تم افتتاح المقر الجديد للجمعية في المنطقة الشرقية لخدمة المستفيدين...</p>
-                        <a href="news-details.html" class="btn btn-ghost btn-sm">اقرأ المزيد</a>
                     </div>
                 </article>
-                <article class="news-card">
-                    <img src="../assets/svg/placeholder-news.svg" alt="خبر" class="news-card-img">
-                    <div class="news-card-content">
-                        <span class="news-date"><i class="fas fa-calendar"></i> 15 ديسمبر 2023</span>
-                        <h3>ورشة عمل حول التحول الرقمي في القطاع الثالث</h3>
-                        <p>نظمت الجمعية ورشة عمل متخصصة حول التحول الرقمي...</p>
-                        <a href="news-details.html" class="btn btn-ghost btn-sm">اقرأ المزيد</a>
+                
+                <!-- Gallery Card -->
+                <article class="content-card" data-type="gallery" data-gallery='["../assets/svg/placeholder-gallery.svg", "../assets/svg/placeholder-gallery.svg", "../assets/svg/placeholder-gallery.svg", "../assets/svg/placeholder-gallery.svg"]'>
+                    <div class="content-card-img">
+                        <img src="../assets/svg/placeholder-gallery.svg" alt="معرض صور">
+                        <span class="content-type-badge gallery"><i class="fas fa-images"></i> معرض</span>
+                        <span class="gallery-count-overlay"><i class="fas fa-images"></i> 12 صورة</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3 class="content-card-title">معرض صور: حفل تخريج الدفعة الثالثة</h3>
+                        <div class="content-card-meta">
+                            <span><i class="fas fa-calendar"></i> 5 يناير 2024</span>
+                            <span><i class="fas fa-images"></i> 12 صورة</span>
+                        </div>
                     </div>
                 </article>
-                <article class="news-card">
-                    <img src="../assets/svg/placeholder-news.svg" alt="خبر" class="news-card-img">
-                    <div class="news-card-content">
-                        <span class="news-date"><i class="fas fa-calendar"></i> 10 ديسمبر 2023</span>
-                        <h3>اعتماد التقرير السنوي من الجمعية العمومية</h3>
-                        <p>اعتمدت الجمعية العمومية التقرير السنوي والميزانية العمومية...</p>
-                        <a href="news-details.html" class="btn btn-ghost btn-sm">اقرأ المزيد</a>
+                
+                <!-- Document Card -->
+                <article class="content-card" data-type="document" data-doc-url="https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/preview" data-download-url="https://drive.google.com/uc?export=download&id=1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms">
+                    <div class="content-card-img" style="background: linear-gradient(135deg, #fff7ed, #ffedd5); display: flex; align-items: center; justify-content: center;">
+                        <span class="content-type-badge document"><i class="fas fa-file-alt"></i> مستند</span>
+                        <div class="doc-icon-overlay">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>PDF</span>
+                        </div>
+                    </div>
+                    <div class="content-card-body">
+                        <h3 class="content-card-title">التقرير السنوي 2023</h3>
+                        <div class="content-card-meta">
+                            <span><i class="fas fa-calendar"></i> 1 يناير 2024</span>
+                            <span><i class="fas fa-file"></i> 2.5 MB</span>
+                        </div>
                     </div>
                 </article>
+                
+                <!-- More Article Cards -->
+                <article class="content-card" data-type="article" data-id="2" data-url="news-details.html">
+                    <div class="content-card-img">
+                        <img src="../assets/svg/placeholder-news.svg" alt="مقال">
+                        <span class="content-type-badge article"><i class="fas fa-newspaper"></i> مقال</span>
+                    </div>
+                    <div class="content-card-body">
+                        <h3 class="content-card-title">إطلاق برنامج تمكين الشباب في نسخته الثالثة</h3>
+                        <div class="content-card-meta">
+                            <span><i class="fas fa-calendar"></i> 10 يناير 2024</span>
+                            <span><i class="fas fa-clock"></i> 3 دقائق</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="content-card" data-type="video" data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <div class="content-card-img">
+                        <img src="../assets/svg/placeholder-video-cover.svg" alt="فيديو">
+                        <span class="content-type-badge video"><i class="fas fa-video"></i> فيديو</span>
+                        <div class="play-icon-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="content-card-body">
+                        <h3 class="content-card-title">كلمة رئيس مجلس الإدارة في الملتقى السنوي</h3>
+                        <div class="content-card-meta">
+                            <span><i class="fas fa-calendar"></i> 25 ديسمبر 2023</span>
+                            <span><i class="fas fa-play-circle"></i> 8:45</span>
+                        </div>
+                    </div>
+                </article>
+                
             </div>
             
             <!-- Pagination -->
-            <nav class="pagination reveal">
+            <nav class="pagination reveal" style="margin-top: var(--space-12);">
                 <a href="#" class="pagination-btn disabled"><i class="fas fa-chevron-right"></i></a>
                 <a href="#" class="pagination-num active">1</a>
                 <a href="#" class="pagination-num">2</a>
@@ -208,6 +252,30 @@
     <script src="../js/loader.js?v=20260125"></script>
     <script src="../js/main.js"></script>
     <script src="../js/components.js"></script>
-    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+    <script src="../js/media-center.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Content Type Filter
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.content-card').forEach(card => {
+                    const type = card.dataset.type;
+                    if (filter === 'all' || type === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => { card.style.display = 'none'; }, 200);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
