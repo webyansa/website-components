@@ -28,6 +28,7 @@
             this.prevBtn = element.querySelector('.hero-nav.prev');
             this.nextBtn = element.querySelector('.hero-nav.next');
             this.progressBar = element.querySelector('.hero-progress-bar');
+            this.progressCounter = element.querySelector('.hero-progress-counter');
             
             this.currentIndex = 0;
             this.slideCount = this.slides.length;
@@ -44,6 +45,7 @@
         init() {
             this.createDots();
             this.bindEvents();
+            this.updateCounter();
             this.startAutoplay();
         }
         
@@ -123,8 +125,19 @@
                 this.dots[this.currentIndex].classList.add('active');
             }
             
+            // Update counter
+            this.updateCounter();
+            
             // Reset progress
             this.resetProgress();
+        }
+        
+        updateCounter() {
+            if (!this.progressCounter) return;
+            
+            const current = String(this.currentIndex + 1).padStart(2, '0');
+            const total = String(this.slideCount).padStart(2, '0');
+            this.progressCounter.textContent = `${current} / ${total}`;
         }
         
         next() {
