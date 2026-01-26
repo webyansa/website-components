@@ -98,173 +98,82 @@
       z-index: 1;
     }
 
-    /* Logo-Inspired Animated Shape */
-    .loader-shape {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Logo-Inspired Columns (6 bars like in the logo) */
+    /* Logo-Inspired Columns (6 bars) */
     .loader-bars {
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      gap: 5px;
-      height: 44px;
-      position: relative;
+      gap: 6px;
+      height: 50px;
     }
 
     .loader-bar {
-      width: 6px;
+      width: 7px;
       border-radius: 100px;
       transform-origin: bottom;
-      animation: loaderBarPulse 1.1s ease-in-out infinite;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: loaderBarWave 1.4s ease-in-out infinite;
     }
 
     /* Navy Blue - 2 bars */
     .loader-bar:nth-child(1) {
       background: #263370;
-      animation-delay: 0ms;
-      height: 20px;
+      height: 22px;
+      animation-delay: 0s;
     }
 
     .loader-bar:nth-child(2) {
       background: #263370;
-      animation-delay: 80ms;
-      height: 28px;
+      height: 30px;
+      animation-delay: 0.1s;
     }
 
     /* Light Blue - 2 bars */
     .loader-bar:nth-child(3) {
       background: #0c7fae;
-      animation-delay: 160ms;
-      height: 36px;
+      height: 40px;
+      animation-delay: 0.2s;
     }
 
     .loader-bar:nth-child(4) {
       background: #0c7fae;
-      animation-delay: 240ms;
-      height: 32px;
+      height: 34px;
+      animation-delay: 0.3s;
     }
 
     /* Green - 2 bars */
     .loader-bar:nth-child(5) {
       background: #42b07a;
-      animation-delay: 320ms;
-      height: 24px;
+      height: 26px;
+      animation-delay: 0.4s;
     }
 
     .loader-bar:nth-child(6) {
       background: #42b07a;
-      animation-delay: 400ms;
       height: 18px;
+      animation-delay: 0.5s;
     }
 
-    /* Subtle glow behind bars */
-    .loader-bars::before {
-      content: '';
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: radial-gradient(circle, rgba(12, 127, 174, 0.15), transparent 70%);
-      border-radius: 50%;
-      filter: blur(10px);
-      animation: loaderGlow 2s ease-in-out infinite;
-    }
-
-    /* Loading Text */
-    .loader-text {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #263370;
-      letter-spacing: 0.5px;
-      opacity: 0.7;
-      animation: loaderTextFade 1.5s ease-in-out infinite;
-    }
-
-    /* Progress Dots */
-    .loader-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .loader-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #0c7fae;
-      animation: loaderDotBounce 1.4s ease-in-out infinite;
-    }
-
-    .loader-dot:nth-child(1) { animation-delay: 0ms; }
-    .loader-dot:nth-child(2) { animation-delay: 150ms; }
-    .loader-dot:nth-child(3) { animation-delay: 300ms; }
-
-    /* Keyframe Animations */
-    @keyframes loaderBarPulse {
+    @keyframes loaderBarWave {
       0%, 100% { 
-        transform: scaleY(0.5);
-        opacity: 0.6;
+        transform: scaleY(0.4);
+        opacity: 0.5;
       }
-      50% { 
+      40% { 
         transform: scaleY(1);
         opacity: 1;
       }
-    }
-
-    @keyframes loaderGlow {
-      0%, 100% { 
-        opacity: 0.3;
-        transform: scale(0.9);
-      }
-      50% { 
-        opacity: 0.6;
-        transform: scale(1.1);
-      }
-    }
-
-    @keyframes loaderTextFade {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 0.9; }
-    }
-
-    @keyframes loaderDotBounce {
-      0%, 100% { 
-        transform: translateY(0);
-        opacity: 0.4;
-      }
-      50% { 
-        transform: translateY(-6px);
+      60% { 
+        transform: scaleY(1);
         opacity: 1;
       }
     }
 
     /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
-      .page-loader,
-      .loader-shape::before,
-      .loader-shape::after,
-      .loader-bar,
-      .loader-bars::before,
-      .loader-text,
-      .loader-dot {
-        animation: none !important;
-      }
-      
       .loader-bar {
+        animation: none !important;
         transform: scaleY(1);
         opacity: 1;
-      }
-      
-      .loader-dot {
-        opacity: 1;
-      }
-      
-      .loader-text {
-        opacity: 0.8;
       }
     }
 
@@ -1970,26 +1879,14 @@
   <!-- Page Loader - Premium Minimal -->
   <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="جاري تحميل الصفحة">
     <div class="loader-content">
-      <!-- Logo-Inspired Animated Shape -->
-      <div class="loader-shape" aria-hidden="true">
-        <div class="loader-bars">
-          <span class="loader-bar"></span>
-          <span class="loader-bar"></span>
-          <span class="loader-bar"></span>
-          <span class="loader-bar"></span>
-          <span class="loader-bar"></span>
-          <span class="loader-bar"></span>
-        </div>
+      <div class="loader-bars" aria-hidden="true">
+        <span class="loader-bar"></span>
+        <span class="loader-bar"></span>
+        <span class="loader-bar"></span>
+        <span class="loader-bar"></span>
+        <span class="loader-bar"></span>
+        <span class="loader-bar"></span>
       </div>
-      
-      <!-- Progress Dots -->
-      <div class="loader-dots" aria-hidden="true">
-        <span class="loader-dot"></span>
-        <span class="loader-dot"></span>
-        <span class="loader-dot"></span>
-      </div>
-      
-      <div class="loader-text">جاري التحميل</div>
     </div>
   </div>
 
