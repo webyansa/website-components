@@ -101,35 +101,9 @@
     /* Logo-Inspired Animated Shape */
     .loader-shape {
       position: relative;
-      width: 80px;
-      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    /* Outer Ring - Rotating */
-    .loader-shape::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 3px solid transparent;
-      border-top-color: #263370;
-      border-right-color: #0c7fae;
-      animation: loaderRotate 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    /* Inner Ring - Counter Rotating */
-    .loader-shape::after {
-      content: '';
-      position: absolute;
-      inset: 12px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      border-bottom-color: #42b07a;
-      border-left-color: #0c7fae;
-      animation: loaderRotateReverse 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
     /* Logo-Inspired Columns (3 bars like in the logo) */
@@ -137,13 +111,13 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      gap: 6px;
-      height: 36px;
+      gap: 8px;
+      height: 48px;
+      position: relative;
     }
 
     .loader-bar {
-      width: 8px;
-      height: 100%;
+      width: 10px;
       border-radius: 100px;
       transform-origin: bottom;
       animation: loaderBarPulse 1.2s ease-in-out infinite;
@@ -152,19 +126,19 @@
     .loader-bar:nth-child(1) {
       background: linear-gradient(180deg, #263370, #3a4a8f);
       animation-delay: 0ms;
-      height: 24px;
+      height: 28px;
     }
 
     .loader-bar:nth-child(2) {
       background: linear-gradient(180deg, #0c7fae, #1a9fd0);
       animation-delay: 150ms;
-      height: 32px;
+      height: 40px;
     }
 
     .loader-bar:nth-child(3) {
       background: linear-gradient(180deg, #42b07a, #5cc992);
       animation-delay: 300ms;
-      height: 28px;
+      height: 34px;
     }
 
     /* Subtle glow behind bars */
@@ -208,16 +182,6 @@
     .loader-dot:nth-child(3) { animation-delay: 300ms; }
 
     /* Keyframe Animations */
-    @keyframes loaderRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes loaderRotateReverse {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(-360deg); }
-    }
-
     @keyframes loaderBarPulse {
       0%, 100% { 
         transform: scaleY(0.5);
