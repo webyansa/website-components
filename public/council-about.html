@@ -98,74 +98,96 @@
       z-index: 1;
     }
 
-    /* Logo-Inspired Columns (6 bars) */
+    /* Logo-Inspired Columns (6 bars) - Green > Blue > Navy */
     .loader-bars {
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      gap: 6px;
-      height: 50px;
+      gap: 5px;
+      height: 52px;
+      direction: ltr;
     }
 
     .loader-bar {
-      width: 7px;
+      width: 8px;
       border-radius: 100px;
       transform-origin: bottom;
-      animation: loaderBarWave 1.4s ease-in-out infinite;
     }
 
-    /* Navy Blue - 2 bars */
+    /* Green - 2 bars (Left) */
     .loader-bar:nth-child(1) {
-      background: #263370;
-      height: 22px;
-      animation-delay: 0s;
+      background: linear-gradient(to top, #42b07a, #5cd492);
+      height: 18px;
+      animation: barRise1 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
     .loader-bar:nth-child(2) {
-      background: #263370;
-      height: 30px;
-      animation-delay: 0.1s;
+      background: linear-gradient(to top, #42b07a, #5cd492);
+      height: 26px;
+      animation: barRise2 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    /* Light Blue - 2 bars */
+    /* Light Blue - 2 bars (Center) */
     .loader-bar:nth-child(3) {
-      background: #0c7fae;
-      height: 40px;
-      animation-delay: 0.2s;
+      background: linear-gradient(to top, #0c7fae, #2ba0d4);
+      height: 38px;
+      animation: barRise3 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
     .loader-bar:nth-child(4) {
-      background: #0c7fae;
-      height: 34px;
-      animation-delay: 0.3s;
+      background: linear-gradient(to top, #0c7fae, #2ba0d4);
+      height: 32px;
+      animation: barRise4 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    /* Green - 2 bars */
+    /* Navy Blue - 2 bars (Right) */
     .loader-bar:nth-child(5) {
-      background: #42b07a;
-      height: 26px;
-      animation-delay: 0.4s;
+      background: linear-gradient(to top, #263370, #3a4a8f);
+      height: 24px;
+      animation: barRise5 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
     .loader-bar:nth-child(6) {
-      background: #42b07a;
-      height: 18px;
-      animation-delay: 0.5s;
+      background: linear-gradient(to top, #263370, #3a4a8f);
+      height: 16px;
+      animation: barRise6 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    @keyframes loaderBarWave {
-      0%, 100% { 
-        transform: scaleY(0.4);
-        opacity: 0.5;
-      }
-      40% { 
-        transform: scaleY(1);
-        opacity: 1;
-      }
-      60% { 
-        transform: scaleY(1);
-        opacity: 1;
-      }
+    /* Staggered Wave Animation - Each bar has unique timing */
+    @keyframes barRise1 {
+      0%, 100% { transform: scaleY(0.6); opacity: 0.7; }
+      20% { transform: scaleY(1.1); opacity: 1; }
+      40% { transform: scaleY(0.8); opacity: 0.85; }
+    }
+
+    @keyframes barRise2 {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.65; }
+      25% { transform: scaleY(1.15); opacity: 1; }
+      50% { transform: scaleY(0.75); opacity: 0.8; }
+    }
+
+    @keyframes barRise3 {
+      0%, 100% { transform: scaleY(0.55); opacity: 0.7; }
+      30% { transform: scaleY(1.1); opacity: 1; }
+      55% { transform: scaleY(0.7); opacity: 0.85; }
+    }
+
+    @keyframes barRise4 {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.65; }
+      35% { transform: scaleY(1.12); opacity: 1; }
+      60% { transform: scaleY(0.72); opacity: 0.8; }
+    }
+
+    @keyframes barRise5 {
+      0%, 100% { transform: scaleY(0.55); opacity: 0.7; }
+      40% { transform: scaleY(1.08); opacity: 1; }
+      65% { transform: scaleY(0.75); opacity: 0.85; }
+    }
+
+    @keyframes barRise6 {
+      0%, 100% { transform: scaleY(0.6); opacity: 0.7; }
+      45% { transform: scaleY(1.05); opacity: 1; }
+      70% { transform: scaleY(0.78); opacity: 0.85; }
     }
 
     /* Reduced Motion */
