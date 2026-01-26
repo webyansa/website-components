@@ -1,12 +1,12 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
  *                     PREMIUM HOME PAGE - JavaScript
- *                   Cinematic Slider + Reveal + Interactions
+ *              Premium Hero Slider + Cinematic Motion + Smooth Scroll
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    initCinematicHero();
+    initPremiumHeroSlider();
     initScrollReveal();
     initCounters();
     initFieldsScroll();
@@ -14,182 +14,256 @@ document.addEventListener('DOMContentLoaded', function() {
     initTeamSlider();
     initNavbarScroll();
     initMobileMenu();
+    initSmoothScroll();
 });
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * CINEMATIC HERO SLIDER
- * Crossfade with Ken Burns effect + Progress bars
+ * PREMIUM HERO SLIDER
+ * Crossfade with Ken Burns effect + Progress indicators + Light theme
  * ═══════════════════════════════════════════════════════════════════════════
  */
-function initCinematicHero() {
-    const slider = document.querySelector('.hero-cinema-slider');
-    if (!slider) return;
+function initPremiumHeroSlider() {
+    const heroSection = document.querySelector('.hero-premium');
+    const sliderWrapper = document.querySelector('.hero-slider-premium');
+    if (!heroSection || !sliderWrapper) return;
     
-    const slides = slider.querySelectorAll('.hero-cinema-slide');
-    const progressBars = slider.querySelectorAll('.hero-progress-bar');
-    const dotsContainer = slider.querySelector('.hero-cinema-dots');
-    const prevBtn = slider.querySelector('.hero-nav-prev');
-    const nextBtn = slider.querySelector('.hero-nav-next');
+    const slides = sliderWrapper.querySelectorAll('.hero-slide-premium');
+    const progressItems = document.querySelectorAll('.hero-progress-item');
+    const prevBtn = heroSection.querySelector('.hero-nav-prev');
+    const nextBtn = heroSection.querySelector('.hero-nav-next');
+    const counterCurrent = heroSection.querySelector('.counter-current');
     
     if (slides.length === 0) return;
     
     let currentIndex = 0;
-    let interval = null;
+    let autoplayInterval = null;
     let isPaused = false;
-    const duration = 7000; // 7 seconds per slide
+    const slideDuration = 6000; // 6 seconds per slide
     
-    // Check for reduced motion
+    // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
-    // Create dots
-    if (dotsContainer) {
-        slides.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = 'hero-cinema-dot' + (index === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', `الانتقال للشريحة ${index + 1}`);
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
+    /**
+     * Update slide counter display
+     */
+    function updateCounter(index) {
+        if (counterCurrent) {
+            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+        }
     }
     
-    const dots = dotsContainer ? dotsContainer.querySelectorAll('.hero-cinema-dot') : [];
-    
-    function goToSlide(index) {
-        // Remove active from current
+    /**
+     * Go to specific slide
+     */
+    function goToSlide(index, resetProgress = true) {
+        // Bounds check
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        // Remove active from current slide
         slides[currentIndex].classList.remove('active');
-        if (progressBars[currentIndex]) {
-            progressBars[currentIndex].classList.remove('active', 'completed');
-        }
-        if (dots[currentIndex]) {
-            dots[currentIndex].classList.remove('active');
-        }
         
-        // Mark previous as completed
-        for (let i = 0; i < index; i++) {
-            if (progressBars[i]) {
-                progressBars[i].classList.add('completed');
-                progressBars[i].classList.remove('active');
+        // Reset progress bars
+        progressItems.forEach((item, i) => {
+            item.classList.remove('active', 'completed');
+            if (i < index) {
+                item.classList.add('completed');
             }
-        }
+        });
         
-        // Reset future
-        for (let i = index; i < slides.length; i++) {
-            if (progressBars[i]) {
-                progressBars[i].classList.remove('completed');
-            }
-        }
-        
-        // Activate new
+        // Activate new slide
         currentIndex = index;
         slides[currentIndex].classList.add('active');
-        if (progressBars[currentIndex]) {
-            progressBars[currentIndex].classList.remove('completed');
-            progressBars[currentIndex].classList.add('active');
-        }
-        if (dots[currentIndex]) {
-            dots[currentIndex].classList.add('active');
+        
+        // Activate progress for current
+        if (progressItems[currentIndex]) {
+            progressItems[currentIndex].classList.add('active');
         }
         
+        // Update counter
+        updateCounter(currentIndex);
+        
         // Reset autoplay timer
-        if (!prefersReducedMotion && !isPaused) {
-            resetInterval();
+        if (!prefersReducedMotion && !isPaused && resetProgress) {
+            resetAutoplay();
         }
     }
     
+    /**
+     * Next slide
+     */
     function nextSlide() {
         const next = (currentIndex + 1) % slides.length;
         
-        // If we're going back to 0, reset all progress bars
+        // If cycling back to start, reset all progress
         if (next === 0) {
-            progressBars.forEach(bar => bar.classList.remove('completed'));
+            progressItems.forEach(item => item.classList.remove('completed'));
         }
         
         goToSlide(next);
     }
     
+    /**
+     * Previous slide
+     */
     function prevSlide() {
-        const prev = (currentIndex - 1 + slides.length) % slides.length;
-        goToSlide(prev);
+        goToSlide(currentIndex - 1);
     }
     
-    function resetInterval() {
-        if (interval) clearInterval(interval);
-        interval = setInterval(nextSlide, duration);
+    /**
+     * Reset autoplay interval
+     */
+    function resetAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+        }
+        autoplayInterval = setInterval(nextSlide, slideDuration);
     }
     
-    // Navigation buttons
+    /**
+     * Pause slider
+     */
+    function pauseSlider() {
+        isPaused = true;
+        sliderWrapper.classList.add('paused');
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+        }
+    }
+    
+    /**
+     * Resume slider
+     */
+    function resumeSlider() {
+        isPaused = false;
+        sliderWrapper.classList.remove('paused');
+        if (!prefersReducedMotion) {
+            resetAutoplay();
+        }
+    }
+    
+    // Navigation button events
     if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             prevSlide();
         });
     }
     
     if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             nextSlide();
         });
     }
     
-    // Pause on hover
-    slider.addEventListener('mouseenter', () => {
-        isPaused = true;
-        slider.classList.add('paused');
-        if (interval) clearInterval(interval);
+    // Progress bar click navigation
+    progressItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            goToSlide(index);
+        });
     });
     
-    slider.addEventListener('mouseleave', () => {
-        isPaused = false;
-        slider.classList.remove('paused');
-        if (!prefersReducedMotion) {
-            resetInterval();
-        }
-    });
+    // Pause on hover (desktop)
+    heroSection.addEventListener('mouseenter', pauseSlider);
+    heroSection.addEventListener('mouseleave', resumeSlider);
     
-    // Touch support
+    // Touch events for mobile
     let touchStartX = 0;
     let touchEndX = 0;
+    let isTouching = false;
     
-    slider.addEventListener('touchstart', (e) => {
+    sliderWrapper.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        isTouching = true;
+        pauseSlider();
     }, { passive: true });
     
-    slider.addEventListener('touchend', (e) => {
+    sliderWrapper.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
+        isTouching = false;
         handleSwipe();
+        // Resume after a short delay
+        setTimeout(resumeSlider, 300);
     }, { passive: true });
     
     function handleSwipe() {
         const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
             if (diff > 0) {
-                // Swipe left (next in RTL)
+                // Swipe left = next in RTL
                 prevSlide();
             } else {
-                // Swipe right (prev in RTL)
+                // Swipe right = prev in RTL
                 nextSlide();
             }
         }
     }
     
     // Keyboard navigation
-    slider.setAttribute('tabindex', '0');
-    slider.addEventListener('keydown', (e) => {
+    heroSection.setAttribute('tabindex', '0');
+    heroSection.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') {
-            prevSlide(); // RTL
+            prevSlide(); // RTL: right = previous
         } else if (e.key === 'ArrowLeft') {
-            nextSlide(); // RTL
+            nextSlide(); // RTL: left = next
+        } else if (e.key === 'Escape') {
+            if (isPaused) resumeSlider();
+            else pauseSlider();
         }
     });
     
+    // Initialize first slide
+    updateCounter(0);
+    if (progressItems[0]) {
+        progressItems[0].classList.add('active');
+    }
+    
     // Start autoplay if motion is allowed
     if (!prefersReducedMotion) {
-        // Activate first progress bar
-        if (progressBars[0]) {
-            progressBars[0].classList.add('active');
-        }
-        resetInterval();
+        resetAutoplay();
+    } else {
+        // For reduced motion: show all progress as complete
+        progressItems.forEach(item => item.classList.add('completed'));
     }
+    
+    // Visibility change: pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            pauseSlider();
+        } else if (!prefersReducedMotion) {
+            resumeSlider();
+        }
+    });
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * SMOOTH SCROLL - For scroll down button
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initSmoothScroll() {
+    const scrollBtn = document.querySelector('.hero-scroll-btn');
+    if (!scrollBtn) return;
+    
+    scrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = scrollBtn.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+            const navbarHeight = 80; // Account for fixed navbar
+            
+            window.scrollTo({
+                top: offsetTop - navbarHeight,
+                behavior: 'smooth'
+            });
+        }
+    });
 }
 
 /**
