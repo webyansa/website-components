@@ -167,121 +167,100 @@
     </aside>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
-         1. HERO SECTION - Cinematic Full-Screen with Slider
+         1. HERO SECTION - Premium Cinematic Slider (Light Theme)
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="hero-cinema" aria-label="القسم الرئيسي">
+    <section class="hero-premium" id="hero" aria-label="القسم الرئيسي">
         <!-- Cinematic Image Slider -->
-        <div class="hero-cinema-slider">
-            <div class="hero-cinema-slides">
-                <div class="hero-cinema-slide active">
-                    <img src="assets/svg/placeholder-hero-1.svg" alt="">
+        <div class="hero-slider-premium" data-autoplay="true" data-interval="6000">
+            <div class="hero-slides-track">
+                <div class="hero-slide-premium active" data-slide="0">
+                    <img src="assets/img/hero/hero-1.jpg" alt="مبادرات تنموية مجتمعية" loading="eager">
                 </div>
-                <div class="hero-cinema-slide">
-                    <img src="assets/svg/placeholder-hero-2.svg" alt="">
+                <div class="hero-slide-premium" data-slide="1">
+                    <img src="assets/img/hero/hero-2.jpg" alt="دعم الأسر والأطفال" loading="lazy">
                 </div>
-                <div class="hero-cinema-slide">
-                    <img src="assets/svg/placeholder-hero-3.svg" alt="">
-                </div>
-                <div class="hero-cinema-slide">
-                    <img src="assets/svg/placeholder-hero-4.svg" alt="">
+                <div class="hero-slide-premium" data-slide="2">
+                    <img src="assets/img/hero/hero-3.jpg" alt="برامج تعليمية وتأهيلية" loading="lazy">
                 </div>
             </div>
             
-            <!-- Navigation -->
-            <button class="hero-nav hero-nav-prev" aria-label="السابق">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <button class="hero-nav hero-nav-next" aria-label="التالي">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <!-- Light Gradient Overlay -->
+            <div class="hero-overlay-light"></div>
             
-            <!-- Dots -->
-            <div class="hero-cinema-dots"></div>
-            
-            <!-- Progress Bars -->
-            <div class="hero-progress-bars">
-                <div class="hero-progress-bar"></div>
-                <div class="hero-progress-bar"></div>
-                <div class="hero-progress-bar"></div>
-                <div class="hero-progress-bar"></div>
+            <!-- Decorative Pattern -->
+            <div class="hero-pattern-overlay"></div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button class="hero-nav-btn hero-nav-prev" aria-label="الشريحة السابقة">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+        <button class="hero-nav-btn hero-nav-next" aria-label="الشريحة التالية">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        
+        <!-- Progress Indicators -->
+        <div class="hero-progress-track">
+            <div class="hero-progress-item active" data-index="0">
+                <div class="hero-progress-fill"></div>
+            </div>
+            <div class="hero-progress-item" data-index="1">
+                <div class="hero-progress-fill"></div>
+            </div>
+            <div class="hero-progress-item" data-index="2">
+                <div class="hero-progress-fill"></div>
             </div>
         </div>
         
-        <!-- Gradient Overlay -->
-        <div class="hero-cinema-overlay"></div>
-        
-        <!-- Noise Texture -->
-        <div class="hero-cinema-noise"></div>
-        
-        <!-- Floating Shapes -->
-        <div class="hero-cinema-shapes">
-            <div class="hero-shape hero-shape-1"></div>
-            <div class="hero-shape hero-shape-2"></div>
+        <!-- Slide Counter -->
+        <div class="hero-slide-counter">
+            <span class="counter-current">01</span>
+            <span class="counter-separator">/</span>
+            <span class="counter-total">03</span>
         </div>
         
-        <!-- Content -->
+        <!-- Main Content -->
         <div class="container">
-            <div class="hero-cinema-content">
-                <span class="hero-badge">
-                    <i class="fas fa-star"></i>
-                    أكثر من 15 عاماً من العطاء
-                </span>
-                
-                <h1 class="hero-cinema-title">
-                    نبني مجتمعاً مستداماً
-                    <span>بمشاريع تنموية مؤثرة</span>
+            <div class="hero-content-premium">
+                <h1 class="hero-title-premium">
+                    <span class="title-line title-line-1">نحو أثرٍ</span>
+                    <span class="title-line title-line-2">تنمويٍ موثوق</span>
                 </h1>
                 
-                <p class="hero-cinema-text">
-                    نسعى لتحقيق التنمية المستدامة من خلال مشاريع ومبادرات نوعية تخدم المجتمع 
-                    وتمكّن أفراده من المساهمة الفاعلة في بناء مستقبل أفضل.
+                <p class="hero-desc-premium">
+                    نحوّل الاحتياج إلى مبادرات قابلة للقياس، بشفافية وشراكات تصنع فرقًا.
                 </p>
                 
-                <div class="hero-cinema-actions">
+                <div class="hero-cta-group">
                     <a href="projects.html" class="ds-btn ds-btn-primary ds-btn-lg">
-                        <i class="fas fa-folder-open"></i>
-                        استكشف مشاريعنا
-                        <i class="fas fa-arrow-left btn-icon-arrow"></i>
+                        <span>استكشف المشاريع</span>
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
                     </a>
-                    <a href="join.html" class="ds-btn ds-btn-secondary ds-btn-lg">
-                        <i class="fas fa-users"></i>
-                        انضم معنا
-                    </a>
-                </div>
-                
-                <!-- Micro KPIs -->
-                <div class="ds-hero-kpis">
-                    <div class="ds-hero-kpi">
-                        <div class="ds-hero-kpi-value" data-count="50000" data-suffix="+">0</div>
-                        <div class="ds-hero-kpi-label">مستفيد</div>
-                    </div>
-                    <div class="ds-hero-kpi">
-                        <div class="ds-hero-kpi-value" data-count="120" data-suffix="+">0</div>
-                        <div class="ds-hero-kpi-label">مشروع</div>
-                    </div>
-                    <div class="ds-hero-kpi">
-                        <div class="ds-hero-kpi-value" data-count="35" data-suffix="+">0</div>
-                        <div class="ds-hero-kpi-label">شريك</div>
-                    </div>
-                    <div class="ds-hero-kpi">
-                        <div class="ds-hero-kpi-value" data-count="500" data-suffix="+">0</div>
-                        <div class="ds-hero-kpi-label">متطوع</div>
-                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Scroll Cue -->
-        <div class="scroll-cue">
-            <div class="scroll-cue-icon"></div>
-            <span>اكتشف المزيد</span>
-        </div>
+        <!-- Scroll Down Button -->
+        <a href="#about-preview" class="hero-scroll-btn" aria-label="انتقل للأسفل">
+            <div class="scroll-btn-inner">
+                <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+            <span class="scroll-btn-text">اكتشف المزيد</span>
+        </a>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════════════════
          2. ABOUT SECTION - Split Layout with Glass Card
          ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section about-section" aria-labelledby="about-title">
+    <section class="section about-section" id="about-preview" aria-labelledby="about-title">
         <div class="container">
             <div class="about-split ds-reveal">
                 <!-- Image Side -->
