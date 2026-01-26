@@ -55,7 +55,10 @@
     }
 
     /* ========================================
-       Page Loader - Premium Minimal (No Card)
+       Page Loader - Premium Logo-Based Animation
+       Concept: Sequential reveal with subtle pulse,
+       creating a "wave" effect across the logo elements.
+       Reflects growth, unity, and forward momentum.
        ======================================== */
     body.is-loading {
       overflow: hidden;
@@ -67,19 +70,9 @@
       z-index: 2000;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
-      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                  visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Subtle background pattern */
-    .page-loader::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, rgba(38, 51, 112, 0.03) 1px, transparent 0);
-      background-size: 32px 32px;
-      pointer-events: none;
+      background: #FFFFFF;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                  visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body.is-loaded .page-loader {
@@ -88,113 +81,68 @@
       pointer-events: none;
     }
 
-    /* Loader Content - Centered */
+    /* Loader Content - Centered Logo */
     .loader-content {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 28px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Logo-Inspired Columns (6 bars) - Green > Blue > Navy */
-    .loader-bars {
-      display: flex;
-      align-items: flex-end;
       justify-content: center;
-      gap: 5px;
-      height: 52px;
-      direction: ltr;
     }
 
-    .loader-bar {
-      width: 8px;
-      border-radius: 100px;
-      transform-origin: bottom;
+    /* Logo SVG Container */
+    .loader-logo-svg {
+      width: 72px;
+      height: auto;
     }
 
-    /* Green - 2 bars (Left) */
-    .loader-bar:nth-child(1) {
-      background: linear-gradient(to top, #42b07a, #5cd492);
-      height: 18px;
-      animation: barRise1 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    /* Bars Animation - Sequential Wave Pulse */
+    .loader-logo-svg .bar {
+      opacity: 0.25;
+      animation: barPulse 2s ease-in-out infinite;
     }
 
-    .loader-bar:nth-child(2) {
-      background: linear-gradient(to top, #42b07a, #5cd492);
-      height: 26px;
-      animation: barRise2 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    .loader-logo-svg .bar-1 { animation-delay: 0s; }
+    .loader-logo-svg .bar-2 { animation-delay: 0.12s; }
+    .loader-logo-svg .bar-3 { animation-delay: 0.24s; }
+    .loader-logo-svg .bar-4 { animation-delay: 0.36s; }
+    .loader-logo-svg .bar-5 { animation-delay: 0.48s; }
+    .loader-logo-svg .bar-6 { animation-delay: 0.6s; }
+
+    @keyframes barPulse {
+      0%, 100% {
+        opacity: 0.25;
+      }
+      40%, 60% {
+        opacity: 1;
+      }
     }
 
-    /* Light Blue - 2 bars (Center) */
-    .loader-bar:nth-child(3) {
-      background: linear-gradient(to top, #0c7fae, #2ba0d4);
-      height: 38px;
-      animation: barRise3 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    /* Dots Animation - Sequential Glow */
+    .loader-logo-svg .dot {
+      opacity: 0.2;
+      animation: dotGlow 2s ease-in-out infinite;
     }
 
-    .loader-bar:nth-child(4) {
-      background: linear-gradient(to top, #0c7fae, #2ba0d4);
-      height: 32px;
-      animation: barRise4 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    .loader-logo-svg .dot-1 { animation-delay: 0.06s; }
+    .loader-logo-svg .dot-2 { animation-delay: 0.18s; }
+    .loader-logo-svg .dot-3 { animation-delay: 0.3s; }
+    .loader-logo-svg .dot-4 { animation-delay: 0.42s; }
+    .loader-logo-svg .dot-5 { animation-delay: 0.54s; }
+    .loader-logo-svg .dot-6 { animation-delay: 0.66s; }
+
+    @keyframes dotGlow {
+      0%, 100% {
+        opacity: 0.2;
+      }
+      40%, 60% {
+        opacity: 1;
+      }
     }
 
-    /* Navy Blue - 2 bars (Right) */
-    .loader-bar:nth-child(5) {
-      background: linear-gradient(to top, #263370, #3a4a8f);
-      height: 24px;
-      animation: barRise5 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    .loader-bar:nth-child(6) {
-      background: linear-gradient(to top, #263370, #3a4a8f);
-      height: 16px;
-      animation: barRise6 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    /* Staggered Wave Animation - Each bar has unique timing */
-    @keyframes barRise1 {
-      0%, 100% { transform: scaleY(0.6); opacity: 0.7; }
-      20% { transform: scaleY(1.1); opacity: 1; }
-      40% { transform: scaleY(0.8); opacity: 0.85; }
-    }
-
-    @keyframes barRise2 {
-      0%, 100% { transform: scaleY(0.5); opacity: 0.65; }
-      25% { transform: scaleY(1.15); opacity: 1; }
-      50% { transform: scaleY(0.75); opacity: 0.8; }
-    }
-
-    @keyframes barRise3 {
-      0%, 100% { transform: scaleY(0.55); opacity: 0.7; }
-      30% { transform: scaleY(1.1); opacity: 1; }
-      55% { transform: scaleY(0.7); opacity: 0.85; }
-    }
-
-    @keyframes barRise4 {
-      0%, 100% { transform: scaleY(0.5); opacity: 0.65; }
-      35% { transform: scaleY(1.12); opacity: 1; }
-      60% { transform: scaleY(0.72); opacity: 0.8; }
-    }
-
-    @keyframes barRise5 {
-      0%, 100% { transform: scaleY(0.55); opacity: 0.7; }
-      40% { transform: scaleY(1.08); opacity: 1; }
-      65% { transform: scaleY(0.75); opacity: 0.85; }
-    }
-
-    @keyframes barRise6 {
-      0%, 100% { transform: scaleY(0.6); opacity: 0.7; }
-      45% { transform: scaleY(1.05); opacity: 1; }
-      70% { transform: scaleY(0.78); opacity: 0.85; }
-    }
-
-    /* Reduced Motion */
+    /* Reduced Motion - Static Logo */
     @media (prefers-reduced-motion: reduce) {
-      .loader-bar {
+      .loader-logo-svg .bar,
+      .loader-logo-svg .dot {
         animation: none !important;
-        transform: scaleY(1);
         opacity: 1;
       }
     }
@@ -1898,17 +1846,31 @@
 </head>
 <body class="is-loading">
 
-  <!-- Page Loader - Premium Minimal -->
+  <!-- Page Loader - Premium Logo-Based Animation -->
   <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="جاري تحميل الصفحة">
     <div class="loader-content">
-      <div class="loader-bars" aria-hidden="true">
-        <span class="loader-bar"></span>
-        <span class="loader-bar"></span>
-        <span class="loader-bar"></span>
-        <span class="loader-bar"></span>
-        <span class="loader-bar"></span>
-        <span class="loader-bar"></span>
-      </div>
+      <!-- Animated Logo SVG -->
+      <svg class="loader-logo-svg" viewBox="0 0 166.27 158.88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Navy Bars (Left in logo) -->
+        <path class="bar bar-1" fill="#263370" d="M10.67,101.79h0c5.89,0,10.67-4.78,10.67-10.67v-40.77c0-5.89-4.78-10.67-10.67-10.67S0,44.46,0,50.35v40.77c0,5.89,4.78,10.67,10.67,10.67"/>
+        <path class="bar bar-2" fill="#263370" d="M39.65,135.31h0c5.89,0,10.67-4.78,10.67-10.67V35.96c0-5.89-4.78-10.67-10.67-10.67s-10.67,4.78-10.67,10.67v88.69c0,5.89,4.78,10.67,10.67,10.67"/>
+        
+        <!-- Light Blue Bars (Center in logo) -->
+        <path class="bar bar-3" fill="#0c7fae" d="M68.64,158.88h0c5.89,0,10.67-4.78,10.67-10.67V44.13c0-5.89-4.78-10.67-10.67-10.67s-10.67,4.78-10.67,10.67v104.09c0,5.89,4.78,10.67,10.67,10.67"/>
+        <path class="bar bar-4" fill="#0c7fae" d="M97.63,158.88h0c5.89,0,10.67-4.78,10.67-10.67V55.36c0-5.89-4.78-10.67-10.67-10.67s-10.67,4.78-10.67,10.67v92.86c0,5.89,4.78,10.67,10.67,10.67"/>
+        
+        <!-- Green Bars (Right in logo) -->
+        <path class="bar bar-5" fill="#42b07a" d="M126.61,145.9h0c5.89,0,10.67-4.78,10.67-10.67v-49.79c0-5.89-4.78-10.67-10.67-10.67s-10.67,4.78-10.67,10.67v49.79c0,5.89,4.78,10.67,10.67,10.67"/>
+        <path class="bar bar-6" fill="#42b07a" d="M155.6,138.96h0c5.89,0,10.67-4.78,10.67-10.67v-27.13c0-5.89-4.78-10.67-10.67-10.67s-10.67,4.78-10.67,10.67v27.13c0,5.89,4.78,10.67,10.67,10.67"/>
+        
+        <!-- Dots (Data Points) -->
+        <circle class="dot dot-1" fill="#263370" cx="10.57" cy="24.9" r="10.47"/>
+        <circle class="dot dot-2" fill="#263370" cx="39.6" cy="10.47" r="10.47"/>
+        <circle class="dot dot-3" fill="#0c7fae" cx="68.65" cy="18.79" r="10.47"/>
+        <circle class="dot dot-4" fill="#0c7fae" cx="97.64" cy="29.99" r="10.47"/>
+        <circle class="dot dot-5" fill="#42b07a" cx="126.81" cy="60.16" r="10.47"/>
+        <circle class="dot dot-6" fill="#42b07a" cx="155.6" cy="75.88" r="10.47"/>
+      </svg>
     </div>
   </div>
 
