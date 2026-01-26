@@ -55,10 +55,10 @@
     }
 
     /* ========================================
-       Page Loader - Premium Logo-Based Animation
-       Concept: Sequential reveal with subtle pulse,
-       creating a "wave" effect across the logo elements.
-       Reflects growth, unity, and forward momentum.
+       Page Loader - Premium Staggered Reveal
+       Motion Design: Each element reveals sequentially
+       with subtle vertical movement, creating a
+       "rising data" effect that reflects growth.
        ======================================== */
     body.is-loading {
       overflow: hidden;
@@ -71,8 +71,8 @@
       display: grid;
       place-items: center;
       background: #FFFFFF;
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                  visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                  visibility 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     body.is-loaded .page-loader {
@@ -81,69 +81,102 @@
       pointer-events: none;
     }
 
-    /* Loader Content - Centered Logo */
+    /* Loader Content */
     .loader-content {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Logo SVG Container */
+    /* Logo SVG - Constrained Size */
     .loader-logo-svg {
-      width: 72px;
-      height: auto;
+      height: 52px;
+      width: auto;
     }
 
-    /* Bars Animation - Sequential Wave Pulse */
+    @media (max-width: 768px) {
+      .loader-logo-svg {
+        height: 44px;
+      }
+    }
+
+    /* ===== Staggered Reveal Animation ===== */
+    
+    /* Bars - Rise from bottom with opacity */
     .loader-logo-svg .bar {
-      opacity: 0.25;
-      animation: barPulse 2s ease-in-out infinite;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: barReveal 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
     }
 
+    /* Stagger delays for bars (left to right) - 80ms apart */
     .loader-logo-svg .bar-1 { animation-delay: 0s; }
-    .loader-logo-svg .bar-2 { animation-delay: 0.12s; }
-    .loader-logo-svg .bar-3 { animation-delay: 0.24s; }
-    .loader-logo-svg .bar-4 { animation-delay: 0.36s; }
-    .loader-logo-svg .bar-5 { animation-delay: 0.48s; }
-    .loader-logo-svg .bar-6 { animation-delay: 0.6s; }
+    .loader-logo-svg .bar-2 { animation-delay: 0.08s; }
+    .loader-logo-svg .bar-3 { animation-delay: 0.16s; }
+    .loader-logo-svg .bar-4 { animation-delay: 0.24s; }
+    .loader-logo-svg .bar-5 { animation-delay: 0.32s; }
+    .loader-logo-svg .bar-6 { animation-delay: 0.4s; }
 
-    @keyframes barPulse {
-      0%, 100% {
-        opacity: 0.25;
+    @keyframes barReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(8px);
       }
-      40%, 60% {
+      15% {
         opacity: 1;
+        transform: translateY(0);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      85%, 100% {
+        opacity: 0;
+        transform: translateY(-4px);
       }
     }
 
-    /* Dots Animation - Sequential Glow */
+    /* Dots - Fade in with scale after bars */
     .loader-logo-svg .dot {
-      opacity: 0.2;
-      animation: dotGlow 2s ease-in-out infinite;
+      opacity: 0;
+      transform: scale(0.7);
+      animation: dotReveal 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
     }
 
+    /* Stagger delays for dots - slightly after corresponding bar */
     .loader-logo-svg .dot-1 { animation-delay: 0.06s; }
-    .loader-logo-svg .dot-2 { animation-delay: 0.18s; }
-    .loader-logo-svg .dot-3 { animation-delay: 0.3s; }
-    .loader-logo-svg .dot-4 { animation-delay: 0.42s; }
-    .loader-logo-svg .dot-5 { animation-delay: 0.54s; }
-    .loader-logo-svg .dot-6 { animation-delay: 0.66s; }
+    .loader-logo-svg .dot-2 { animation-delay: 0.14s; }
+    .loader-logo-svg .dot-3 { animation-delay: 0.22s; }
+    .loader-logo-svg .dot-4 { animation-delay: 0.3s; }
+    .loader-logo-svg .dot-5 { animation-delay: 0.38s; }
+    .loader-logo-svg .dot-6 { animation-delay: 0.46s; }
 
-    @keyframes dotGlow {
-      0%, 100% {
-        opacity: 0.2;
+    @keyframes dotReveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.7);
       }
-      40%, 60% {
+      18% {
         opacity: 1;
+        transform: scale(1);
+      }
+      68% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      83%, 100% {
+        opacity: 0;
+        transform: scale(0.85);
       }
     }
 
-    /* Reduced Motion - Static Logo */
+    /* ===== Reduced Motion ===== */
     @media (prefers-reduced-motion: reduce) {
       .loader-logo-svg .bar,
       .loader-logo-svg .dot {
         animation: none !important;
         opacity: 1;
+        transform: none;
       }
     }
 
