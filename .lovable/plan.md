@@ -1,524 +1,789 @@
 
-# خطة تحسين الصفحة الرئيسية - Premium Light Theme
+# خطة تحويل قالب الجمعية إلى Premium Edition
 
-## الرؤية
-صفحة رئيسية هادئة، راقية، مستوحاة من Apple/Google/Microsoft بـ Light Theme نظيف (95% فاتح)، مع سلايدر Hero سينمائي وأقسام حديثة غير تقليدية.
+## الوضع الحالي
+
+القالب يحتوي على:
+- بنية CSS قوية مع Design Tokens (main.css: 1077 سطر)
+- مكونات متعددة (components.css: 1999 سطر)
+- صفحات متنوعة (pages.css: 3582 سطر)
+- 8 ملفات SVG Placeholder موجودة في assets/svg/
+- نظام JavaScript جيد للتفاعلات الأساسية
+
+## نطاق التحسينات (7 محاور رئيسية)
 
 ---
 
-## 1. هيكل الملفات المُحدّث
+## المحور 1: توحيد Page Hero للصفحات الداخلية
+
+### الملفات المتأثرة:
+- `css/pages.css` (إضافة أنماط جديدة)
+- جميع الصفحات الداخلية (14+ صفحة)
+
+### التغييرات:
+
+**1.1 تصميم Page Hero الجديد:**
 
 ```text
-public/theme-1/
-├── index.html                    (تحديث كامل)
-├── css/
-│   └── main.css                  (ملف CSS الوحيد - ~900 سطر)
-├── js/
-│   └── main.js                   (ملف JS الوحيد - ~350 سطر)
-└── assets/
-    ├── img/
-    │   ├── logo.svg
-    │   ├── hero/                 (مجلد جديد)
-    │   │   ├── hero-1.jpg        (placeholder SVG مؤقتاً)
-    │   │   ├── hero-2.jpg
-    │   │   ├── hero-3.jpg
-    │   │   ├── hero-4.jpg
-    │   │   ├── hero-5.jpg
-    │   │   └── hero-6.jpg
-    │   └── placeholders/         (مجلد جديد)
-    │       ├── project-1.jpg
-    │       ├── team-1.jpg
-    │       └── partner-logo.svg
-    └── svg/
-        ├── placeholder-hero-1.svg ... placeholder-hero-6.svg (جديد)
-        ├── placeholder-field-*.svg (6 أيقونات مجالات)
-        ├── placeholder-team-*.svg  (صور الفريق)
-        └── (الموجود حالياً)
++------------------------------------------------------------------+
+|  [Pattern SVG خلفية]                                              |
+|  [صورة/تدرج خلفية مع Wave Shape]                                  |
+|                                                                   |
+|  [شارة نوع الصفحة]  مثال: "الحوكمة" / "المشاريع"                  |
+|                                                                   |
+|  الرئيسية / عن الجمعية / استراتيجيتنا  ← Breadcrumb               |
+|                                                                   |
+|  ═══ عنوان الصفحة ═══                                             |
+|  وصف مختصر للصفحة                                                 |
+|                                                                   |
+|  [مشاركة] [طباعة] [تنزيل]  ← شريط الإجراءات                       |
+|                                                                   |
+|  ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿ Wave Shape                                  |
++------------------------------------------------------------------+
 ```
 
----
-
-## 2. نظام الألوان - Light Theme (إلزامي)
-
-داخل `:root` في main.css:
+**1.2 CSS الجديد (يضاف إلى pages.css):**
 
 ```css
-:root {
-    /* Backgrounds - Light Theme 95% */
-    --bg: #F7F8FA;
-    --surface: #FFFFFF;
-    --surface-alt: #F1F3F5;
-    
-    /* Text - Not Pure Black */
-    --text: #0F172A;
-    --text-secondary: #475569;
-    --muted: #64748B;
-    
-    /* Borders */
-    --border: #E5E7EB;
-    --border-light: #F3F4F6;
-    
-    /* Primary Accent - Calm Teal */
-    --primary: #0F766E;
-    --primary-soft: #E6F4F2;
-    --primary-rgb: 15, 118, 110;
-    
-    /* Secondary Accent */
-    --accent: #2563EB;
-    --accent-soft: #EFF6FF;
-    
-    /* Shadows - Ultra Soft */
-    --shadow-sm: 0 1px 3px rgba(2, 6, 23, 0.04);
-    --shadow-md: 0 4px 12px rgba(2, 6, 23, 0.06);
-    --shadow-lg: 0 14px 40px rgba(2, 6, 23, 0.08);
-    
-    /* Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-full: 9999px;
+/* Premium Page Hero - Unified Internal Pages */
+.page-hero-premium {
+    position: relative;
+    padding: var(--space-40) 0 var(--space-24);
+    min-height: 380px;
+    background: linear-gradient(135deg, var(--secondary-800) 0%, var(--secondary-700) 100%);
+    overflow: hidden;
 }
-```
 
----
+/* Background Image Layer */
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
 
-## 3. Design System - الأزرار (3 أنواع فقط)
+.page-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+}
 
-### btn-primary
-- خلفية: `--primary` مع gradient خفيف
-- Hover: gradient shift + lift بسيط
-- سهم داخلي يتحرك على hover
+/* Pattern Overlay */
+.page-hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,..."); /* Dot Pattern */
+    opacity: 0.08;
+    z-index: 1;
+}
 
-### btn-secondary
-- Outline فقط (border: 1.5px solid --border)
-- Hover: يمتلئ من اليمين لليسار (RTL)
+/* Wave Shape Bottom */
+.page-hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 3;
+}
 
-### btn-ghost
-- نص + أيقونة بدون خلفية
-- Hover: لون primary
+/* Content */
+.page-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
 
-```css
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, #0d6560 100%);
-    color: #fff;
-    padding: 14px 28px;
+/* Page Type Badge/Chip */
+.page-hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(var(--primary-rgb), 0.2);
+    border: 1px solid rgba(var(--primary-rgb), 0.4);
     border-radius: var(--radius-full);
-    font-weight: 500;
-    transition: all 0.3s ease;
+    color: var(--primary-300);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-4);
+    backdrop-filter: blur(8px);
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(15, 118, 110, 0.25);
+/* Actions Bar */
+.page-hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
 }
 
-.btn-primary .btn-arrow {
-    transition: transform 0.2s ease;
+.page-hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-lg);
+    color: rgba(255,255,255,0.8);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--duration-200) var(--ease-out);
 }
 
-.btn-primary:hover .btn-arrow {
-    transform: translateX(-4px);
+.page-hero-action:hover {
+    background: rgba(255,255,255,0.2);
+    color: var(--text-inverse);
 }
 ```
 
----
+**1.3 HTML Template للاستخدام في كل صفحة داخلية:**
 
-## 4. Hero Section - سلايدر سينمائي
-
-### البنية HTML
 ```html
-<section class="hero" aria-label="القسم الرئيسي">
-    <!-- Image Slider -->
-    <div class="hero-slider" data-autoplay="5000">
-        <div class="hero-slides">
-            <div class="hero-slide active">
-                <img src="assets/svg/placeholder-hero-1.svg" alt="">
+<section class="page-hero-premium">
+    <div class="page-hero-bg">
+        <img src="assets/svg/placeholder-cover.svg" alt="">
+    </div>
+    <div class="page-hero-pattern"></div>
+    
+    <div class="container">
+        <div class="page-hero-content">
+            <span class="page-hero-chip">
+                <i class="fas fa-chess"></i>
+                الاستراتيجية
+            </span>
+            
+            <nav class="breadcrumb breadcrumb-light">
+                <a href="index.html">الرئيسية</a>
+                <span class="breadcrumb-sep"><i class="fas fa-chevron-left"></i></span>
+                <span>استراتيجيتنا</span>
+            </nav>
+            
+            <h1 class="page-hero-title">استراتيجيتنا</h1>
+            <p class="page-hero-subtitle">خارطة طريقنا نحو تحقيق الأثر المستدام</p>
+            
+            <div class="page-hero-actions">
+                <button class="page-hero-action" onclick="shareCurrentPage()">
+                    <i class="fas fa-share-alt"></i> مشاركة
+                </button>
+                <button class="page-hero-action" onclick="window.print()">
+                    <i class="fas fa-print"></i> طباعة
+                </button>
             </div>
-            <!-- ... 6 slides -->
         </div>
-        
-        <!-- Overlay (خفيف جداً - ليس أسود) -->
-        <div class="hero-overlay"></div>
-        
-        <!-- Controls -->
-        <div class="hero-controls">
-            <button class="hero-nav prev"><i class="fas fa-chevron-right"></i></button>
-            <div class="hero-dots"></div>
-            <button class="hero-nav next"><i class="fas fa-chevron-left"></i></button>
-        </div>
-        
-        <!-- Progress Bars -->
-        <div class="hero-progress"></div>
     </div>
     
-    <!-- Content -->
-    <div class="hero-content">
-        <span class="hero-eyebrow">منذ 2009</span>
-        <h1 class="hero-title">نبني مجتمعاً أفضل</h1>
-        <p class="hero-subtitle">نعمل بمنهجية علمية وشفافية كاملة...</p>
-        
-        <div class="hero-actions">
-            <a href="#" class="btn-primary">
-                استكشف مشاريعنا
-                <i class="fas fa-arrow-left btn-arrow"></i>
-            </a>
-            <a href="#" class="btn-secondary">تعرف علينا</a>
-        </div>
-        
-        <!-- Micro KPIs -->
-        <div class="hero-kpis">
-            <div class="hero-kpi">
-                <span class="hero-kpi-value" data-count="50000">0</span>
-                <span class="hero-kpi-label">مستفيد</span>
-            </div>
-            <!-- ... -->
-        </div>
-    </div>
+    <svg class="page-hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path fill="#fff" d="M0,30 C360,80 1080,-20 1440,30 L1440,60 L0,60 Z"/>
+    </svg>
 </section>
 ```
 
-### CSS للسلايدر
-- Crossfade انتقال 900ms
-- Ken Burns خفيف (scale 1.02)
-- Overlay: `rgba(255,255,255,0.3)` (ليس أسود!)
-- Dots + Prev/Next
-- Progress bar لكل شريحة
-
-### JavaScript
-- Autoplay كل 5 ثواني
-- Pause on hover
-- احترام `prefers-reduced-motion` (إيقاف Ken Burns)
-- Touch/Swipe support
-
 ---
 
-## 5. قسم نبذة عن الجمعية
+## المحور 2: تطوير صفحات التفاصيل إلى Premium
 
-تصميم هادئ بدون صور:
-- عنوان قوي على 3 أسطر
-- فقرة 3-4 أسطر احترافية
-- 3 KPIs كبيرة مع عداد تصاعدي
-- زر Ghost "تعرف على الجمعية"
+### 2.1 صفحة project-details.html
+
+**التحسينات:**
+- Hero Cover بتأثير Parallax خفيف
+- شريط Badges (حالة المشروع، المنطقة، التصنيف)
+- KPI Strip معاد تصميمه بأيقونات متحركة
+- Impact Stories Section جديد
+- قائمة وثائق محسنة مع أيقونات ملونة
 
 ```text
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│          منهجية علمية.                              │
-│          شفافية كاملة.                              │
-│          أثر مستدام.                                │
-│                                                     │
-│   نتبنى نهجاً تنموياً شاملاً يركز على تمكين       │
-│   الأفراد والمجتمعات من خلال برامج مدروسة...       │
-│                                                     │
-│   ╔═══════════╗  ╔═══════════╗  ╔═══════════╗      │
-│   ║  50,000   ║  ║    120    ║  ║    15     ║      │
-│   ║  مستفيد   ║  ║   مشروع   ║  ║   سنة     ║      │
-│   ╚═══════════╝  ╚═══════════╝  ╚═══════════╝      │
-│                                                     │
-│              [تعرف على الجمعية →]                  │
-│                                                     │
-└─────────────────────────────────────────────────────┘
++------------------------------------------------------------------+
+| [HERO COVER - Full Width with Parallax]                          |
+|                                                                   |
+|  ┌─────────┐ ┌─────────┐ ┌─────────┐                             |
+|  │ قيد     │ │ الرياض  │ │ تمكين   │ ← Badges                    |
+|  │ التنفيذ │ │         │ │ الشباب  │                             |
+|  └─────────┘ └─────────┘ └─────────┘                             |
++------------------------------------------------------------------+
+|                                                                   |
+|  ╔════════╗  ╔════════╗  ╔════════╗  ╔════════╗                  |
+|  ║  500   ║  ║  20    ║  ║  150   ║  ║  85%   ║  ← KPI Strip     |
+|  ║ مستفيد ║  ║ دورة   ║  ║ فرصة   ║  ║ توظيف ║                   |
+|  ╚════════╝  ╚════════╝  ╚════════╝  ╚════════╝                  |
+|                                                                   |
+|  [نظرة عامة] [الأثر] [الجدول الزمني] [الشركاء] [التقارير]        |
+|  ═══════════════════════════════════════════════════════════════  |
+|                                                                   |
+|  ┌─ Impact Stories ─────────────────────────────────────────────┐ |
+|  │ قصص نجاح حقيقية من المستفيدين مع صور وشهادات               │ |
+|  └──────────────────────────────────────────────────────────────┘ |
++------------------------------------------------------------------+
+```
+
+### 2.2 صفحة media/news-details.html
+
+**التحسينات:**
+- تخطيط Editorial (عمود محتوى رئيسي + Sidebar)
+- Meta Bar محسن (تاريخ، تصنيف، وقت القراءة، المشاهدات)
+- Quote Block مميز
+- معرض صور داخل المقال
+- Related Items محسن
+
+```text
++------------------------------------------------------------------+
+| [ARTICLE HERO - Panoramic Cover Image]                           |
++------------------------------------------------------------------+
+|                                                                   |
+|  ┌──────────────────────────────┐  ┌───────────────────────────┐ |
+|  │                              │  │  📅 تاريخ النشر          │ |
+|  │   Main Content Column        │  │  📂 التصنيف              │ |
+|  │                              │  │  ⏱ وقت القراءة           │ |
+|  │   ┌────────────────────────┐ │  │                           │ |
+|  │   │   Quote Block         │ │  │  ┌─────────────────────┐ │ |
+|  │   │   مع تصميم مميز        │ │  │  │ أخبار ذات صلة     │ │ |
+|  │   └────────────────────────┘ │  │  │ ──────────────────  │ │ |
+|  │                              │  │  │ [خبر 1]            │ │ |
+|  │   [معرض صور المقال]         │  │  │ [خبر 2]            │ │ |
+|  │                              │  │  │ [خبر 3]            │ │ |
+|  │                              │  │  └─────────────────────┘ │ |
+|  └──────────────────────────────┘  └───────────────────────────┘ |
++------------------------------------------------------------------+
 ```
 
 ---
 
-## 6. قسم مجالات الجمعية (Horizontal Scroll)
+## المحور 3: نظام Modal موحد لـ 4 أنواع محتوى
 
-عرض أفقي قابل للسحب (6 مجالات):
+### الملفات الجديدة:
+- `css/modal-system.css` (أو إضافة إلى components.css)
+- `js/media-center.js` (ملف JavaScript جديد)
 
-```text
-←  [مجال 1] [مجال 2] [مجال 3] [مجال 4] [مجال 5] [مجال 6]  →
+### 3.1 هيكل Content Cards في news.html:
+
+```html
+<!-- مقال يفتح صفحة تفاصيل -->
+<article class="content-card" data-type="article" data-id="123">
+    <img src="..." class="content-card-img">
+    <div class="content-card-body">
+        <span class="content-type-badge article"><i class="fas fa-newspaper"></i> مقال</span>
+        <h3>عنوان المقال</h3>
+    </div>
+</article>
+
+<!-- فيديو يفتح Modal -->
+<article class="content-card" data-type="video" 
+         data-video-url="https://www.youtube.com/embed/VIDEO_ID">
+    <div class="content-card-img">
+        <img src="...">
+        <div class="play-icon"><i class="fas fa-play"></i></div>
+    </div>
+    <span class="content-type-badge video"><i class="fas fa-video"></i> فيديو</span>
+</article>
+
+<!-- معرض صور يفتح Modal Slider -->
+<article class="content-card" data-type="gallery" 
+         data-gallery='["img1.jpg","img2.jpg","img3.jpg"]'>
+    <div class="content-card-img gallery-preview">
+        <img src="...">
+        <span class="gallery-count"><i class="fas fa-images"></i> 12 صورة</span>
+    </div>
+    <span class="content-type-badge gallery"><i class="fas fa-images"></i> معرض</span>
+</article>
+
+<!-- مستند يفتح Modal مع iframe -->
+<article class="content-card" data-type="document" 
+         data-doc-url="https://drive.google.com/file/d/FILE_ID/preview"
+         data-download-url="https://drive.google.com/uc?export=download&id=FILE_ID">
+    <div class="content-card-img doc-preview">
+        <i class="fas fa-file-pdf fa-3x"></i>
+    </div>
+    <span class="content-type-badge document"><i class="fas fa-file-alt"></i> مستند</span>
+</article>
 ```
 
-كل بطاقة:
-- أيقونة SVG كبيرة (64x64)
-- عنوان المجال
-- وصف سطر واحد
-- Hover: lift + border accent subtle
+### 3.2 Modal System الموحد:
+
+```html
+<!-- Universal Modal -->
+<div class="modal-backdrop" id="media-modal-backdrop"></div>
+<div class="modal media-modal" id="media-modal">
+    <button class="modal-close"><i class="fas fa-times"></i></button>
+    
+    <!-- Video Content -->
+    <div class="modal-video-content" hidden>
+        <div class="video-wrapper">
+            <iframe id="video-iframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+    
+    <!-- Gallery Content -->
+    <div class="modal-gallery-content" hidden>
+        <div class="gallery-slider">
+            <div class="gallery-slides"></div>
+            <button class="gallery-nav prev"><i class="fas fa-chevron-right"></i></button>
+            <button class="gallery-nav next"><i class="fas fa-chevron-left"></i></button>
+            <div class="gallery-dots"></div>
+            <div class="gallery-counter">1 / 12</div>
+        </div>
+    </div>
+    
+    <!-- Document Content -->
+    <div class="modal-document-content" hidden>
+        <div class="doc-preview-wrapper">
+            <iframe id="doc-iframe" src=""></iframe>
+        </div>
+        <div class="doc-actions">
+            <a href="#" class="btn btn-primary" id="doc-open-new" target="_blank">
+                <i class="fas fa-external-link-alt"></i> فتح في تبويب جديد
+            </a>
+            <a href="#" class="btn btn-outline" id="doc-download" download>
+                <i class="fas fa-download"></i> تحميل
+            </a>
+        </div>
+    </div>
+</div>
+```
+
+### 3.3 JavaScript (media-center.js):
+
+```javascript
+// Initialize Media Center
+function initMediaCenter() {
+    const contentCards = document.querySelectorAll('.content-card[data-type]');
+    
+    contentCards.forEach(card => {
+        card.addEventListener('click', () => handleContentClick(card));
+    });
+}
+
+function handleContentClick(card) {
+    const type = card.dataset.type;
+    
+    switch(type) {
+        case 'article':
+            window.location.href = `news-details.html?id=${card.dataset.id}`;
+            break;
+        case 'video':
+            openVideoModal(card.dataset.videoUrl);
+            break;
+        case 'gallery':
+            openGalleryModal(JSON.parse(card.dataset.gallery));
+            break;
+        case 'document':
+            openDocumentModal(card.dataset.docUrl, card.dataset.downloadUrl);
+            break;
+    }
+}
+
+// Gallery Slider مع Autoplay و Pause on Hover
+function openGalleryModal(images) {
+    // ... slider logic with prev/next/dots/autoplay
+}
+```
+
+---
+
+## المحور 4: Hero Slider للصفحة الرئيسية
+
+### الملفات المتأثرة:
+- `index.html` (تعديل قسم Hero)
+- `css/pages.css` (إضافة أنماط Slider)
+- `js/main.js` (إضافة وظائف Slider)
+
+### 4.1 البنية الجديدة للـ Hero:
+
+```html
+<section class="hero" aria-label="القسم الرئيسي">
+    <!-- Video Background (خلف السلايدر) -->
+    <div class="hero-video-wrapper">
+        <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero.jpg">
+            <source src="assets/img/hero.webm" type="video/webm">
+        </video>
+    </div>
+    
+    <!-- Image Slider -->
+    <div class="hero-slider" data-autoplay="true" data-interval="6000">
+        <div class="hero-slides">
+            <div class="hero-slide active">
+                <img src="assets/img/hero/hero-1.jpg" alt="">
+            </div>
+            <div class="hero-slide">
+                <img src="assets/img/hero/hero-2.jpg" alt="">
+            </div>
+            <!-- ... more slides -->
+        </div>
+        
+        <!-- Controls -->
+        <div class="hero-slider-controls">
+            <button class="slider-nav prev"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-dots"></div>
+            <button class="slider-nav next"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        
+        <!-- Progress Bars -->
+        <div class="slider-progress">
+            <div class="progress-bar active"></div>
+            <div class="progress-bar"></div>
+            <!-- ... -->
+        </div>
+    </div>
+    
+    <!-- Overlays and Content (كما هي) -->
+    <div class="hero-overlay"></div>
+    <div class="hero-content">...</div>
+</section>
+```
+
+### 4.2 CSS للـ Slider:
 
 ```css
-.fields-scroll {
+/* Hero Image Slider */
+.hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenBurns 8s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+    0% { transform: scale(1) translateX(0); }
+    100% { transform: scale(1.05) translateX(-1%); }
+}
+
+/* Pause on Hover */
+.hero-slider:hover .hero-slide img {
+    animation-play-state: paused;
+}
+
+/* Dots */
+.slider-dots {
     display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding: 20px 0;
+    gap: var(--space-2);
 }
 
-.field-card {
-    flex-shrink: 0;
-    width: 280px;
-    padding: 32px;
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
-    scroll-snap-align: start;
-    transition: all 0.3s ease;
-}
-
-.field-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: rgba(var(--primary-rgb), 0.2);
-}
-```
-
----
-
-## 7. قسم المشاريع (Project Index - UN Style)
-
-قائمة رأسية رسمية (3 مشاريع مميزة):
-
-```text
-┌─────────────────────────────────────────────────────┐
-│ [صورة]  │  التمكين والتدريب                         │
-│         │  برنامج تمكين الشباب المهني                │
-│         │  برنامج شامل لتأهيل الشباب السعودي...     │
-│         │                     [قيد التنفيذ] [→]      │
-├─────────────────────────────────────────────────────┤
-│ [صورة]  │  الخدمات الإنسانية                         │
-│         │  مبادرة إفطار صائم                         │
-│         │  توزيع وجبات إفطار على الصائمين...        │
-│         │                     [مكتمل] [→]            │
-└─────────────────────────────────────────────────────┘
-
-              [عرض جميع المشاريع]
-```
-
----
-
-## 8. قسم الأخبار (Editorial Newsroom)
-
-تخطيط مجلة احترافي:
-
-```text
-┌─────────────────────────┬───────────────────────┐
-│                         │  10  توقيع اتفاقية   │
-│   [صورة خبر رئيسي]      │  مارس شراكة...       │
-│                         ├───────────────────────┤
-│   15 مارس 2024         │  05  إطلاق مبادرة    │
-│   افتتاح المقر الجديد   │  مارس "معاً نبني"    │
-│   للجمعية بحضور...      ├───────────────────────┤
-│                         │  28  حفل تكريم       │
-│                         │  فبراير المتطوعين    │
-└─────────────────────────┴───────────────────────┘
-```
-
----
-
-## 9. قسم فريق العمل (Slider أفقي)
-
-سلايدر أفقي للفريق:
-
-```text
-←  [عضو 1] [عضو 2] [عضو 3] [عضو 4] [عضو 5]  →
-```
-
-كل بطاقة:
-- صورة دائرية (placeholder)
-- الاسم
-- المسمى الوظيفي
-- Hover: subtle glow
-
-```css
-.team-card {
-    text-align: center;
-    padding: 24px;
-}
-
-.team-avatar {
-    width: 120px;
-    height: 120px;
+.slider-dot {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 16px;
-    border: 3px solid var(--border-light);
-    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all var(--duration-300);
 }
 
-.team-card:hover .team-avatar {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 4px var(--primary-soft);
+.slider-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide img {
+        animation: none;
+    }
+    .hero-slider {
+        /* Show first image only */
+    }
 }
 ```
 
 ---
 
-## 10. قسم شركاء النجاح
+## المحور 5: Micro-interactions الإبداعية
 
-شبكة شعارات هادئة:
-
-```text
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│   [logo] [logo] [logo] [logo] [logo] [logo]        │
-│                                                     │
-│   [logo] [logo] [logo] [logo] [logo] [logo]        │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
+### 5.1 Buttons (إضافة إلى components.css):
 
 ```css
-.partners-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 32px;
-    align-items: center;
+/* Button Gradient Shift on Hover */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition: all var(--duration-300) var(--ease-out), 
+                background-position var(--duration-500) var(--ease-out);
 }
 
-.partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.5;
-    transition: all 0.3s ease;
+.btn-primary:hover {
+    background-position: 100% 50%;
 }
 
-.partner-logo:hover {
-    filter: grayscale(0%);
+/* Arrow Slide */
+.btn .btn-arrow {
+    transition: transform var(--duration-200) var(--ease-out);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(-6px);
+}
+
+/* Subtle Ripple Effect */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), 
+                rgba(255,255,255,0.3) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--duration-300);
+}
+
+.btn:active::after {
     opacity: 1;
 }
 ```
 
----
+### 5.2 Cards (Lift + Border Glow):
 
-## 11. CTA ختامي + Footer
+```css
+.card, .field-card, .project-card {
+    transition: all var(--duration-300) var(--ease-out);
+}
 
-CTA نظيف:
-```text
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│           كن جزءاً من التغيير                       │
-│   انضم إلينا وساهم في بناء مستقبل أفضل لمجتمعنا    │
-│                                                     │
-│        [انضم معنا]    [تواصل معنا]                  │
-│                                                     │
-└─────────────────────────────────────────────────────┘
+.card:hover, .field-card:hover, .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(var(--primary-rgb), 0.1);
+}
+
+/* Subtle Border Glow */
+.card:hover::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, 
+        rgba(var(--primary-rgb), 0.3), 
+        rgba(var(--primary-rgb), 0.1));
+    border-radius: inherit;
+    z-index: -1;
+    filter: blur(4px);
+}
 ```
 
-Footer:
-- خلفية داكنة (الاستثناء الوحيد من Light Theme)
-- 4 أعمدة: Brand, روابط, دعم, تواصل
-- حقوق + رابط ويبيان
+### 5.3 Navbar (Enhanced Sticky + Shrink):
 
----
-
-## 12. Motion & Animations
-
-### Reveals (IntersectionObserver)
 ```css
+.navbar {
+    transition: all var(--duration-300) var(--ease-out),
+                backdrop-filter var(--duration-300);
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+}
+
+.navbar.scrolled .navbar-logo {
+    height: 32px; /* Shrink */
+}
+
+.navbar.scrolled .navbar-container {
+    padding-block: var(--space-2);
+}
+```
+
+### 5.4 Reveals المحسنة:
+
+```css
+/* Fade Up Gentle */
 .reveal {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(30px);
+    transition: opacity var(--duration-700) var(--ease-out),
+                transform var(--duration-700) var(--ease-out);
 }
 
 .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
 }
-```
 
-### احترام prefers-reduced-motion
-```css
-@media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-    
-    .hero-slide img {
-        animation: none;
-    }
-}
+/* Stagger Effect للعناصر المتعددة */
+.reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal:nth-child(2) { transition-delay: 100ms; }
+.reveal:nth-child(3) { transition-delay: 200ms; }
+.reveal:nth-child(4) { transition-delay: 300ms; }
 ```
 
 ---
 
-## 13. SVG Placeholders الجديدة
+## المحور 6: نظام Placeholders الاحترافي
 
-سأنشئ:
-- 6 صور Hero (placeholder-hero-1.svg ... 6.svg)
-- 6 أيقونات مجالات (field-*.svg)
-- 6 صور فريق (team-*.svg)
-- شعارات شركاء (partner-logo.svg)
+### 6.1 SVG Placeholders الجديدة:
 
-تصميم كل SVG:
-- تدرجات هادئة (primary-soft)
-- أيقونة مركزية
-- pattern نقاط خفيف
-- أبعاد مناسبة للاستخدام
+| الملف | الاستخدام |
+|-------|----------|
+| `placeholder-hero-1.svg` ... `placeholder-hero-6.svg` | Hero Slider |
+| `placeholder-org-chart.svg` | الهيكل التنظيمي |
+| `placeholder-person-m.svg` | صور الأشخاص (ذكر) |
+| `placeholder-person-f.svg` | صور الأشخاص (أنثى) |
+| `placeholder-project-wide.svg` | Covers المشاريع |
+| `placeholder-news-wide.svg` | Covers الأخبار |
+| `placeholder-gallery-grid.svg` | Preview المعارض |
+| `placeholder-video-cover.svg` | أغلفة الفيديو |
+| `placeholder-document-pdf.svg` | معاينة المستندات |
 
----
+### 6.2 تصميم SVG Placeholder نموذجي:
 
-## 14. Image Prompts (8 صور)
+```xml
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0fbfae;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#53687a;stop-opacity:0.05" />
+    </linearGradient>
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="2" cy="2" r="1" fill="#0fbfae" opacity="0.15"/>
+    </pattern>
+  </defs>
+  
+  <rect fill="#f8fafc" width="800" height="400"/>
+  <rect fill="url(#grad)" width="800" height="400"/>
+  <rect fill="url(#dots)" width="800" height="400"/>
+  
+  <!-- Icon in Center -->
+  <g transform="translate(350, 150)">
+    <rect width="100" height="100" rx="20" fill="#0fbfae" opacity="0.12"/>
+    <path d="..." stroke="#0fbfae" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Text placeholder lines -->
+  <rect x="300" y="280" width="200" height="14" rx="7" fill="#e2e8f0"/>
+  <rect x="330" y="305" width="140" height="10" rx="5" fill="#e2e8f0"/>
+</svg>
+```
 
-### النسخة العربية:
+### 6.3 إنشاء مجلد Hero Placeholders:
 
-1. **Hero Slide 1**: مجموعة من المتطوعين السعوديين في نشاط ميداني، ملابس محتشمة، إضاءة طبيعية صباحية، تصوير وثائقي، جودة 4K
-
-2. **Hero Slide 2**: اجتماع مجلس إدارة جمعية سعودية، قاعة اجتماعات حديثة، رجال بثوب أبيض، إضاءة مكتبية ناعمة، تصوير احترافي
-
-3. **Hero Slide 3**: ورشة تدريب للشباب السعودي، قاعة تدريب حديثة، مشاركين متفاعلين، شاشة عرض، إضاءة طبيعية
-
-4. **Hero Slide 4**: توزيع مساعدات غذائية، متطوعون يحملون صناديق، ملابس محتشمة، خلفية مستودع، تصوير وثائقي
-
-5. **Hero Slide 5**: فريق عمل جمعية سعودية في مكتب حديث، تنوع (رجال ونساء محجبات)، بيئة عمل احترافية
-
-6. **Hero Slide 6**: حفل توقيع اتفاقية شراكة، مصافحة رسمية، خلفية شعار جمعية، تصوير رسمي
-
-7. **صورة مشروع**: شباب سعودي في برنامج تدريب مهني، ورشة عمل تقنية، تركيز على التعلم
-
-8. **صورة فعالية**: حفل تكريم متطوعين، مسرح صغير، جوائز، جمهور، إضاءة دافئة
-
-### English Versions:
-
-1. **Hero Slide 1**: Saudi volunteers in outdoor community activity, modest traditional clothing, natural morning light, documentary style, 4K quality
-
-2. **Hero Slide 2**: Saudi nonprofit board meeting, modern meeting room, men in white thobe, soft office lighting, professional photography
-
-3. **Hero Slide 3**: Youth training workshop in Saudi Arabia, modern training hall, engaged participants, presentation screen, natural lighting
-
-4. **Hero Slide 4**: Food aid distribution, volunteers carrying boxes, modest clothing, warehouse background, documentary photography
-
-5. **Hero Slide 5**: Saudi nonprofit team in modern office, diverse group (men and hijabi women), professional work environment
-
-6. **Hero Slide 6**: Partnership agreement signing ceremony, formal handshake, nonprofit logo backdrop, formal photography
-
-7. **Project Image**: Saudi youth in vocational training program, technical workshop, focus on learning, modern equipment
-
-8. **Event Image**: Volunteer appreciation ceremony, small stage, awards, audience, warm lighting
-
----
-
-## 15. ملخص الملفات
-
-| الملف | الحجم التقريبي | المحتوى |
-|-------|---------------|---------|
-| `index.html` | ~450 سطر | كل الأقسام مع semantic HTML |
-| `css/main.css` | ~900 سطر | Design tokens + Components + Sections |
-| `js/main.js` | ~350 سطر | Slider + Reveals + Counters + Navigation |
-| SVGs جديدة | 14 ملف | Hero + Fields + Team placeholders |
-
----
-
-## 16. ترتيب التنفيذ
-
-1. **إنشاء main.css** - Design System + Tokens + Base + Components
-2. **إنشاء SVG Placeholders** - Hero + Fields + Team
-3. **تحديث index.html** - هيكل كامل مع كل الأقسام
-4. **إنشاء main.js** - Slider + Reveals + Interactions
-5. **حذف الملفات القديمة** - home-calm.css, home-calm.js (توحيد)
+```
+assets/
+├── img/
+│   └── hero/
+│       ├── hero-1.jpg (or use SVG fallback)
+│       ├── hero-2.jpg
+│       ├── hero-3.jpg
+│       ├── hero-4.jpg
+│       ├── hero-5.jpg
+│       └── hero-6.jpg
+└── svg/
+    ├── placeholder-hero-1.svg
+    ├── placeholder-hero-2.svg
+    └── ... (fallbacks)
+```
 
 ---
 
-## نتيجة متوقعة
+## المحور 7: تحديثات خاصة بصفحة org-structure.html
 
-صفحة رئيسية:
-- Light Theme نظيف (95%)
-- سلايدر Hero سينمائي مع 6 صور
-- 8 أقسام متكاملة
-- Design System موحد
-- أداء ممتاز + احترام Accessibility
-- جاهزة للصور الحقيقية (استبدال SVGs)
+### إضافات:
+- صورة مركزية للهيكل التنظيمي (كبيرة وقابلة للتكبير)
+- Lightbox لعرض الصورة بحجم كامل
+- أيقونة تكبير Hover
+
+```html
+<!-- في org-structure.html -->
+<div class="org-chart-visual reveal">
+    <div class="org-chart-image-wrapper" data-lightbox="assets/img/org-chart-full.jpg">
+        <img src="assets/svg/placeholder-org-chart.svg" alt="الهيكل التنظيمي" class="org-chart-img">
+        <div class="org-chart-zoom">
+            <i class="fas fa-search-plus"></i>
+            <span>اضغط للتكبير</span>
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="org-lightbox">
+    <button class="lightbox-close"><i class="fas fa-times"></i></button>
+    <img src="" alt="" class="lightbox-img">
+</div>
+```
+
+---
+
+## ملخص الملفات المتأثرة
+
+### ملفات CSS:
+| الملف | التعديل |
+|-------|---------|
+| `css/pages.css` | إضافة ~400 سطر (Page Hero Premium, Hero Slider, Improvements) |
+| `css/components.css` | إضافة ~200 سطر (Modal System, Micro-interactions) |
+
+### ملفات JavaScript:
+| الملف | التعديل |
+|-------|---------|
+| `js/main.js` | إضافة Hero Slider, Enhanced Reveals |
+| `js/components.js` | تحديث Modal System |
+| `js/media-center.js` | ملف جديد (~150 سطر) |
+
+### ملفات HTML:
+| الملف | التعديل |
+|-------|---------|
+| `index.html` | إضافة Hero Slider |
+| جميع الصفحات الداخلية (14+) | تطبيق Page Hero الجديد |
+| `media/news.html` | إضافة Content Cards + Modal |
+| `project-details.html` | تحسينات Premium |
+| `media/news-details.html` | Editorial Layout |
+| `org-structure.html` | Lightbox للهيكل |
+
+### ملفات SVG جديدة:
+- 6 ملفات Hero Placeholders
+- 4 ملفات Person Placeholders
+- 1 ملف Org Chart Placeholder
+
+---
+
+## تعليمات استبدال الصور
+
+**لاستبدال صور Hero Slider:**
+1. ضع صورك في `assets/img/hero/` بأسماء `hero-1.jpg` ... `hero-6.jpg`
+2. الأبعاد المثالية: 1920x1080 أو أعلى
+3. سيتم تطبيق Ken Burns تلقائياً
+
+**لاستبدال Placeholders:**
+1. استبدل مسار `assets/svg/placeholder-*.svg` بمسار صورتك
+2. أو ضع صورًا حقيقية في `assets/img/` واستخدم مساراتها
+
+**للحفاظ على Fallback:**
+```html
+<img src="assets/img/my-image.jpg" 
+     onerror="this.src='assets/svg/placeholder-cover.svg'"
+     alt="وصف الصورة">
+```
+
+---
+
+## ترتيب التنفيذ المقترح
+
+1. **المرحلة 1**: إضافة أنماط CSS الجديدة (pages.css + components.css)
+2. **المرحلة 2**: إنشاء SVG Placeholders الجديدة
+3. **المرحلة 3**: تطبيق Page Hero الموحد على الصفحات الداخلية
+4. **المرحلة 4**: Hero Slider في الصفحة الرئيسية
+5. **المرحلة 5**: نظام Modal للمركز الإعلامي
+6. **المرحلة 6**: تحسينات صفحات التفاصيل
+7. **المرحلة 7**: Micro-interactions والتحسينات النهائية
