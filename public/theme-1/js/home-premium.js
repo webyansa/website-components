@@ -1,12 +1,12 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- *                     PREMIUM HOME PAGE - JavaScript
- *              Premium Hero Slider + Cinematic Motion + Smooth Scroll
+ *                     ULTRA PREMIUM HOME PAGE - JavaScript
+ *         Ultra Hero Slider + Content Animation + Smooth Interactions
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    initPremiumHeroSlider();
+    initUltraHeroSlider();
     initScrollReveal();
     initCounters();
     initFieldsScroll();
@@ -19,42 +19,81 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * PREMIUM HERO SLIDER
- * Crossfade with Ken Burns effect + Progress indicators + Light theme
+ * ULTRA HERO SLIDER
+ * Fullscreen with per-slide content animations + vertical progress
  * ═══════════════════════════════════════════════════════════════════════════
  */
-function initPremiumHeroSlider() {
-    const heroSection = document.querySelector('.hero-premium');
-    const sliderWrapper = document.querySelector('.hero-slider-premium');
-    if (!heroSection || !sliderWrapper) return;
+function initUltraHeroSlider() {
+    const heroSection = document.querySelector('.hero-ultra');
+    const sliderWrapper = document.querySelector('.hero-slider-ultra');
     
-    const slides = sliderWrapper.querySelectorAll('.hero-slide-premium');
-    const progressItems = document.querySelectorAll('.hero-progress-item');
+    // Fallback to legacy slider if ultra doesn't exist
+    if (!heroSection || !sliderWrapper) {
+        initPremiumHeroSlider();
+        return;
+    }
+    
+    const slides = sliderWrapper.querySelectorAll('.hero-slide-ultra');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    const progressLineFill = document.querySelector('.progress-line-fill');
     const prevBtn = heroSection.querySelector('.hero-nav-prev');
     const nextBtn = heroSection.querySelector('.hero-nav-next');
-    const counterCurrent = heroSection.querySelector('.counter-current');
+    const counterCurrent = heroSection.querySelector('.progress-counter .counter-current');
+    const prevNumber = heroSection.querySelector('.prev-number');
+    const nextNumber = heroSection.querySelector('.next-number');
     
     if (slides.length === 0) return;
     
     let currentIndex = 0;
     let autoplayInterval = null;
     let isPaused = false;
-    const slideDuration = 6000; // 6 seconds per slide
+    const slideDuration = 7000; // 7 seconds per slide
     
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     /**
-     * Update slide counter display
+     * Update all counters and navigation numbers
      */
-    function updateCounter(index) {
+    function updateCounters(index) {
+        const current = index + 1;
+        const prev = index === 0 ? slides.length : index;
+        const next = index === slides.length - 1 ? 1 : index + 2;
+        
         if (counterCurrent) {
-            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+            counterCurrent.textContent = String(current).padStart(2, '0');
+        }
+        if (prevNumber) {
+            prevNumber.textContent = String(prev).padStart(2, '0');
+        }
+        if (nextNumber) {
+            nextNumber.textContent = String(next).padStart(2, '0');
         }
     }
     
     /**
-     * Go to specific slide
+     * Update progress dots
+     */
+    function updateProgressDots(index) {
+        progressDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    /**
+     * Reset progress line animation
+     */
+    function resetProgressLine() {
+        if (!progressLineFill) return;
+        
+        // Reset animation
+        progressLineFill.style.animation = 'none';
+        progressLineFill.offsetHeight; // Trigger reflow
+        progressLineFill.style.animation = `progressVertical ${slideDuration}ms linear forwards`;
+    }
+    
+    /**
+     * Go to specific slide with content animation
      */
     function goToSlide(index, resetProgress = true) {
         // Bounds check
@@ -64,28 +103,17 @@ function initPremiumHeroSlider() {
         // Remove active from current slide
         slides[currentIndex].classList.remove('active');
         
-        // Reset progress bars
-        progressItems.forEach((item, i) => {
-            item.classList.remove('active', 'completed');
-            if (i < index) {
-                item.classList.add('completed');
-            }
-        });
-        
         // Activate new slide
         currentIndex = index;
         slides[currentIndex].classList.add('active');
         
-        // Activate progress for current
-        if (progressItems[currentIndex]) {
-            progressItems[currentIndex].classList.add('active');
-        }
+        // Update all UI elements
+        updateCounters(currentIndex);
+        updateProgressDots(currentIndex);
         
-        // Update counter
-        updateCounter(currentIndex);
-        
-        // Reset autoplay timer
+        // Reset progress and autoplay
         if (!prefersReducedMotion && !isPaused && resetProgress) {
+            resetProgressLine();
             resetAutoplay();
         }
     }
@@ -94,14 +122,7 @@ function initPremiumHeroSlider() {
      * Next slide
      */
     function nextSlide() {
-        const next = (currentIndex + 1) % slides.length;
-        
-        // If cycling back to start, reset all progress
-        if (next === 0) {
-            progressItems.forEach(item => item.classList.remove('completed'));
-        }
-        
-        goToSlide(next);
+        goToSlide(currentIndex + 1);
     }
     
     /**
@@ -127,6 +148,9 @@ function initPremiumHeroSlider() {
     function pauseSlider() {
         isPaused = true;
         sliderWrapper.classList.add('paused');
+        if (progressLineFill) {
+            progressLineFill.style.animationPlayState = 'paused';
+        }
         if (autoplayInterval) {
             clearInterval(autoplayInterval);
         }
@@ -138,6 +162,9 @@ function initPremiumHeroSlider() {
     function resumeSlider() {
         isPaused = false;
         sliderWrapper.classList.remove('paused');
+        if (progressLineFill) {
+            progressLineFill.style.animationPlayState = 'running';
+        }
         if (!prefersReducedMotion) {
             resetAutoplay();
         }
@@ -158,9 +185,9 @@ function initPremiumHeroSlider() {
         });
     }
     
-    // Progress bar click navigation
-    progressItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
+    // Progress dots click navigation
+    progressDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
             goToSlide(index);
         });
     });
@@ -172,19 +199,15 @@ function initPremiumHeroSlider() {
     // Touch events for mobile
     let touchStartX = 0;
     let touchEndX = 0;
-    let isTouching = false;
     
     sliderWrapper.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-        isTouching = true;
         pauseSlider();
     }, { passive: true });
     
     sliderWrapper.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
-        isTouching = false;
         handleSwipe();
-        // Resume after a short delay
         setTimeout(resumeSlider, 300);
     }, { passive: true });
     
@@ -194,11 +217,9 @@ function initPremiumHeroSlider() {
         
         if (Math.abs(diff) > threshold) {
             if (diff > 0) {
-                // Swipe left = next in RTL
-                prevSlide();
+                prevSlide(); // Swipe left = prev in RTL
             } else {
-                // Swipe right = prev in RTL
-                nextSlide();
+                nextSlide(); // Swipe right = next in RTL
             }
         }
     }
@@ -207,9 +228,9 @@ function initPremiumHeroSlider() {
     heroSection.setAttribute('tabindex', '0');
     heroSection.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') {
-            prevSlide(); // RTL: right = previous
+            prevSlide(); // RTL
         } else if (e.key === 'ArrowLeft') {
-            nextSlide(); // RTL: left = next
+            nextSlide(); // RTL
         } else if (e.key === 'Escape') {
             if (isPaused) resumeSlider();
             else pauseSlider();
@@ -217,17 +238,13 @@ function initPremiumHeroSlider() {
     });
     
     // Initialize first slide
-    updateCounter(0);
-    if (progressItems[0]) {
-        progressItems[0].classList.add('active');
-    }
+    updateCounters(0);
+    updateProgressDots(0);
     
     // Start autoplay if motion is allowed
     if (!prefersReducedMotion) {
+        resetProgressLine();
         resetAutoplay();
-    } else {
-        // For reduced motion: show all progress as complete
-        progressItems.forEach(item => item.classList.add('completed'));
     }
     
     // Visibility change: pause when tab is hidden
@@ -242,27 +259,94 @@ function initPremiumHeroSlider() {
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
+ * LEGACY PREMIUM HERO SLIDER (Fallback)
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+function initPremiumHeroSlider() {
+    const heroSection = document.querySelector('.hero-premium');
+    const sliderWrapper = document.querySelector('.hero-slider-premium');
+    if (!heroSection || !sliderWrapper) return;
+    
+    const slides = sliderWrapper.querySelectorAll('.hero-slide-premium');
+    const progressItems = document.querySelectorAll('.hero-progress-item');
+    const prevBtn = heroSection.querySelector('.hero-nav-prev');
+    const nextBtn = heroSection.querySelector('.hero-nav-next');
+    const counterCurrent = heroSection.querySelector('.counter-current');
+    
+    if (slides.length === 0) return;
+    
+    let currentIndex = 0;
+    let autoplayInterval = null;
+    const slideDuration = 6000;
+    
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    function updateCounter(index) {
+        if (counterCurrent) {
+            counterCurrent.textContent = String(index + 1).padStart(2, '0');
+        }
+    }
+    
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        slides[currentIndex].classList.remove('active');
+        progressItems.forEach((item, i) => {
+            item.classList.remove('active', 'completed');
+            if (i < index) item.classList.add('completed');
+        });
+        
+        currentIndex = index;
+        slides[currentIndex].classList.add('active');
+        if (progressItems[currentIndex]) progressItems[currentIndex].classList.add('active');
+        updateCounter(currentIndex);
+        
+        if (!prefersReducedMotion) resetAutoplay();
+    }
+    
+    function resetAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), slideDuration);
+    }
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    
+    progressItems.forEach((item, index) => {
+        item.addEventListener('click', () => goToSlide(index));
+    });
+    
+    updateCounter(0);
+    if (progressItems[0]) progressItems[0].classList.add('active');
+    if (!prefersReducedMotion) resetAutoplay();
+}
+
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
  * SMOOTH SCROLL - For scroll down button
  * ═══════════════════════════════════════════════════════════════════════════
  */
 function initSmoothScroll() {
-    const scrollBtn = document.querySelector('.hero-scroll-btn');
-    if (!scrollBtn) return;
+    // Support both new and old scroll buttons
+    const scrollBtns = document.querySelectorAll('.hero-scroll-ultra, .hero-scroll-btn');
     
-    scrollBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = scrollBtn.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
-            const navbarHeight = 80; // Account for fixed navbar
+    scrollBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
             
-            window.scrollTo({
-                top: offsetTop - navbarHeight,
-                behavior: 'smooth'
-            });
-        }
+            if (targetSection) {
+                const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+                const navbarHeight = 80;
+                
+                window.scrollTo({
+                    top: offsetTop - navbarHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 }
 
