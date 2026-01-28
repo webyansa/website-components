@@ -871,6 +871,46 @@ const Home = () => {
               <TemplateCard key={template.id} template={template} />
             ))}
           </div>
+
+          {/* Link to Webyan Templates Page */}
+          <div className="text-center mt-5">
+            <a
+              href={`${import.meta.env.BASE_URL}webyan-templates.html`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn d-inline-flex align-items-center gap-2"
+              style={{
+                background: "linear-gradient(135deg, #1a73a7 0%, #24c2ec 100%)",
+                color: "#fff",
+                padding: "14px 32px",
+                borderRadius: "14px",
+                fontSize: "1rem",
+                fontWeight: 700,
+                border: "none",
+                textDecoration: "none",
+                boxShadow: "0 8px 25px rgba(26, 115, 167, 0.25)",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = "0 12px 35px rgba(26, 115, 167, 0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 8px 25px rgba(26, 115, 167, 0.25)";
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+                <line x1="1" y1="5" x2="15" y2="5" stroke="currentColor" strokeWidth="1.5"/>
+                <line x1="5" y1="5" x2="5" y2="15" stroke="currentColor" strokeWidth="1.5"/>
+              </svg>
+              استعرض جميع قوالب ويبيان
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path fillRule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 

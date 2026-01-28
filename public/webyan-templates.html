@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوالب ويبيان | حلول مواقع احترافية للجمعيات والكيانات</title>
+    <meta name="description" content="قوالب ويبيان - حلول مواقع احترافية متكاملة للجمعيات والكيانات غير الربحية. قوالب بيسك، بلس، وبرو تناسب مختلف الاحتياجات.">
+    
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- Google Fonts - Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --webyan-primary: #1a73a7;
+            --webyan-secondary: #24c2ec;
+            --webyan-accent: #4fd1c5;
+            --webyan-dark: #0f172a;
+            --webyan-light: #f8fafc;
+            --webyan-gradient: linear-gradient(135deg, #1a73a7 0%, #24c2ec 100%);
+            --webyan-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+        }
+        
+        * {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background: var(--webyan-light);
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+        
+        /* ===== NAVBAR ===== */
+        .webyan-navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .webyan-navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .webyan-logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-link-custom {
+            color: #475569;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link-custom:hover {
+            color: var(--webyan-primary);
+            background: rgba(26, 115, 167, 0.08);
+        }
+        
+        .btn-cta {
+            background: var(--webyan-gradient);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cta:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 115, 167, 0.35);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            background: var(--webyan-gradient-dark);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(36, 194, 236, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(79, 209, 197, 0.1) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(36, 194, 236, 0.2);
+            color: #24c2ec;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(36, 194, 236, 0.3);
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title span {
+            background: linear-gradient(135deg, #24c2ec 0%, #4fd1c5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .hero-stat {
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #24c2ec;
+            display: block;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* ===== TEMPLATES SECTION ===== */
+        .templates-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--webyan-gradient);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== TEMPLATE CARD PREMIUM ===== */
+        .template-card-premium {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .template-card-premium:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(26, 115, 167, 0.18);
+        }
+        
+        .template-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--webyan-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .template-card-premium:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .template-image-wrapper {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .template-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.6s ease;
+        }
+        
+        .template-card-premium:hover .template-image {
+            transform: scale(1.05);
+        }
+        
+        .template-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+        
+        .template-badge img {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            padding: 8px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .template-tier-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+        
+        .tier-basic {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            color: #fff;
+        }
+        
+        .tier-plus {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: #fff;
+        }
+        
+        .tier-pro {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            color: #fff;
+        }
+        
+        .template-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .template-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+        
+        .template-description {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .template-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .template-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        
+        .template-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .template-feature-icon svg {
+            width: 14px;
+            height: 14px;
+            color: var(--webyan-primary);
+        }
+        
+        .template-target {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e8f4fd 100%);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-right: 4px solid var(--webyan-secondary);
+        }
+        
+        .template-target-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+        
+        .template-target-text {
+            font-size: 0.95rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .template-actions {
+            margin-top: auto;
+        }
+        
+        .btn-view-template {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--webyan-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view-template:hover {
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 115, 167, 0.35);
+        }
+        
+        .btn-view-template svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-view-template:hover svg {
+            transform: translateX(-5px);
+        }
+        
+        /* ===== FOOTER ===== */
+        .webyan-footer {
+            background: var(--webyan-gradient-dark);
+            padding: 3rem 0 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-logo {
+            height: 36px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: auto;
+                padding: 120px 0 80px;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 2rem;
+                justify-content: center;
+            }
+            
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+            
+            .template-image-wrapper {
+                height: 260px;
+            }
+            
+            .template-content {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="webyan-navbar" id="navbar">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="/" class="d-flex align-items-center text-decoration-none">
+                    <img src="images/raneen/webyan-logo.svg" alt="ويبيان" class="webyan-logo">
+                </a>
+                
+                <div class="d-flex align-items-center gap-4">
+                    <a href="/" class="nav-link-custom d-none d-md-block">الصفحة الرئيسية</a>
+                    <a href="#templates" class="nav-link-custom d-none d-md-block">القوالب</a>
+                    <a href="https://webyan.com" target="_blank" class="btn btn-cta">
+                        تواصل معنا
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        قوالب ويبيان الاحترافية
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        قوالب مرنة تتناسب مع
+                        <span>مختلف الكيانات</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        نقدم لك مجموعة من القوالب الاحترافية المصممة خصيصاً للجمعيات والكيانات غير الربحية في المملكة العربية السعودية، مع دعم كامل للغة العربية وتصميم متجاوب يعمل على جميع الأجهزة.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">3+</span>
+                            <span class="hero-stat-label">قوالب متاحة</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">100%</span>
+                            <span class="hero-stat-label">دعم RTL</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">24/7</span>
+                            <span class="hero-stat-label">دعم فني</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Templates Section -->
+    <section class="templates-section" id="templates">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    اختر القالب المناسب
+                </span>
+                <h2 class="section-title">قوالب ويبيان</h2>
+                <p class="section-subtitle">
+                    اختر القالب المناسب لحجم وطبيعة كيانك واحتياجاتك التقنية
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Template 1: Basic -->
+                <div class="col-lg-4">
+                    <div class="template-card-premium">
+                        <div class="template-image-wrapper">
+                            <img src="images/templates/template-basic.jpg" alt="قالب بيسك" class="template-image">
+                            <div class="template-badge">
+                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان">
+                            </div>
+                            <span class="template-tier-badge tier-basic">بيسك</span>
+                        </div>
+                        
+                        <div class="template-content">
+                            <h3 class="template-name">قالب بيسك</h3>
+                            <p class="template-description">
+                                قالب بسيط وأنيق مثالي للكيانات الصغيرة والناشئة التي تبحث عن حضور رقمي احترافي بتكلفة مناسبة.
+                            </p>
+                            
+                            <div class="template-features">
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </span>
+                                    موقع صفحة واحدة
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                        </svg>
+                                    </span>
+                                    متعدد اللغات
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                                        </svg>
+                                    </span>
+                                    لوحة تحكم مستقلة
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                        </svg>
+                                    </span>
+                                    واجهات احترافية
+                                </div>
+                            </div>
+                            
+                            <div class="template-target">
+                                <div class="template-target-label">مناسب لـ</div>
+                                <div class="template-target-text">الكيانات الصغيرة والكيانات الناشئة</div>
+                            </div>
+                            
+                            <div class="template-actions">
+                                <a href="theme-1/index.html" target="_blank" class="btn-view-template">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    عرض القالب
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Template 2: Plus -->
+                <div class="col-lg-4">
+                    <div class="template-card-premium">
+                        <div class="template-image-wrapper">
+                            <img src="images/templates/template-plus.jpg" alt="قالب بلس" class="template-image">
+                            <div class="template-badge">
+                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان">
+                            </div>
+                            <span class="template-tier-badge tier-plus">بلس</span>
+                        </div>
+                        
+                        <div class="template-content">
+                            <h3 class="template-name">قالب بلس</h3>
+                            <p class="template-description">
+                                قالب متقدم يوفر المزيد من الصفحات والميزات للكيانات المتوسطة التي تحتاج لحضور رقمي أكثر شمولاً.
+                            </p>
+                            
+                            <div class="template-features">
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                    </span>
+                                    متعدد الصفحات
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                        </svg>
+                                    </span>
+                                    متعدد اللغات
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                                        </svg>
+                                    </span>
+                                    لوحة تحكم مستقلة
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 20h9"></path>
+                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                        </svg>
+                                    </span>
+                                    واجهات احترافية
+                                </div>
+                            </div>
+                            
+                            <div class="template-target">
+                                <div class="template-target-label">مناسب لـ</div>
+                                <div class="template-target-text">الكيانات المتوسطة الناشئة ما بعد التأسيس</div>
+                            </div>
+                            
+                            <div class="template-actions">
+                                <a href="theme-1/index.html" target="_blank" class="btn-view-template">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    عرض القالب
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Template 3: Pro -->
+                <div class="col-lg-4">
+                    <div class="template-card-premium">
+                        <div class="template-image-wrapper">
+                            <img src="images/templates/template-pro.jpg" alt="قالب برو" class="template-image">
+                            <div class="template-badge">
+                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان">
+                            </div>
+                            <span class="template-tier-badge tier-pro">برو</span>
+                        </div>
+                        
+                        <div class="template-content">
+                            <h3 class="template-name">قالب برو</h3>
+                            <p class="template-description">
+                                قالب احترافي متكامل يوفر كل الميزات المتقدمة بما في ذلك المتجر الإلكتروني وبوابة التبرعات.
+                            </p>
+                            
+                            <div class="template-features">
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                        </svg>
+                                    </span>
+                                    كل مميزات بلس
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="9" cy="21" r="1"></circle>
+                                            <circle cx="20" cy="21" r="1"></circle>
+                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                        </svg>
+                                    </span>
+                                    متجر إلكتروني احترافي
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                        </svg>
+                                    </span>
+                                    بوابة تبرعات الجمعية
+                                </div>
+                                <div class="template-feature">
+                                    <span class="template-feature-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                                        </svg>
+                                    </span>
+                                    لوحة تحكم مستقلة
+                                </div>
+                            </div>
+                            
+                            <div class="template-target">
+                                <div class="template-target-label">مناسب لـ</div>
+                                <div class="template-target-text">الكيانات المتوسطة والكبيرة الباحثة عن فتح متجر إلكتروني احترافي</div>
+                            </div>
+                            
+                            <div class="template-actions">
+                                <a href="theme-1/index.html" target="_blank" class="btn-view-template">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    عرض القالب
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="webyan-footer">
+        <div class="container text-center">
+            <img src="images/raneen/webyan-logo.svg" alt="ويبيان" class="footer-logo">
+            <p class="footer-text">
+                © 2026 ويبيان - جميع الحقوق محفوظة
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
