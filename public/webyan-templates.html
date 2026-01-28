@@ -215,18 +215,45 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.02),
+                0 10px 20px rgba(0, 0, 0, 0.04);
             height: 100%;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        .template-card-premium::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent 0%, transparent 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
         }
         
         .template-card-premium:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(26, 115, 167, 0.15);
-            border-color: rgba(26, 115, 167, 0.1);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 20px 30px rgba(26, 115, 167, 0.12),
+                0 35px 60px rgba(26, 115, 167, 0.18),
+                0 0 0 1px rgba(26, 115, 167, 0.1);
+            border-color: transparent;
+        }
+        
+        .template-card-premium:hover::before {
+            background: linear-gradient(135deg, rgba(26, 115, 167, 0.4) 0%, rgba(36, 194, 236, 0.4) 100%);
+            opacity: 1;
         }
         
         .template-image-wrapper {
