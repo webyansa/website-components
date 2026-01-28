@@ -209,45 +209,31 @@
             margin: 0 auto;
         }
         
-        /* ===== TEMPLATE CARD PREMIUM ===== */
+        /* ===== TEMPLATE CARD COMPACT ===== */
         .template-card-premium {
             background: #fff;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             height: 100%;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
         
         .template-card-premium:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 60px rgba(26, 115, 167, 0.18);
-        }
-        
-        .template-card-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--webyan-gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        
-        .template-card-premium:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(26, 115, 167, 0.15);
+            border-color: rgba(26, 115, 167, 0.1);
         }
         
         .template-image-wrapper {
             position: relative;
-            height: 320px;
+            height: 200px;
             overflow: hidden;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
         }
         
         .template-image {
@@ -255,128 +241,107 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            transition: transform 0.6s ease;
+            transition: transform 0.5s ease;
         }
         
         .template-card-premium:hover .template-image {
-            transform: scale(1.05);
-        }
-        
-        .template-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 2;
-        }
-        
-        .template-badge img {
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            padding: 8px;
-            border-radius: 14px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transform: scale(1.03);
         }
         
         .template-tier-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 8px 18px;
+            top: 12px;
+            left: 12px;
+            padding: 6px 14px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             z-index: 2;
+            backdrop-filter: blur(8px);
         }
         
         .tier-basic {
             background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
             color: #fff;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
         
         .tier-plus {
             background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
             color: #fff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
         
         .tier-pro {
             background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
             color: #fff;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
         }
         
         .template-content {
-            padding: 2rem;
+            padding: 1.25rem 1.5rem 1.5rem;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
         
-        .template-name {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #0f172a;
+        .template-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 0.75rem;
         }
         
+        .template-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+        
+        .template-logo {
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            padding: 6px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        
         .template-description {
-            font-size: 0.95rem;
-            color: #64748b;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-        
-        .template-features {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .template-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
             font-size: 0.9rem;
-            color: #475569;
-        }
-        
-        .template-feature-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .template-feature-icon svg {
-            width: 14px;
-            height: 14px;
-            color: var(--webyan-primary);
-        }
-        
-        .template-target {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e8f4fd 100%);
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border-right: 4px solid var(--webyan-secondary);
-        }
-        
-        .template-target-label {
-            font-size: 0.75rem;
             color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.25rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
-        .template-target-text {
-            font-size: 0.95rem;
-            color: #1e293b;
-            font-weight: 600;
+        .template-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .template-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #475569;
+            font-weight: 500;
+        }
+        
+        .template-tag svg {
+            width: 12px;
+            height: 12px;
+            color: var(--webyan-primary);
         }
         
         .template-actions {
@@ -387,14 +352,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 0.85rem 1.25rem;
             background: var(--webyan-gradient);
             color: #fff;
             border: none;
-            border-radius: 14px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -402,8 +367,7 @@
         
         .btn-view-template:hover {
             color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(26, 115, 167, 0.35);
+            box-shadow: 0 8px 25px rgba(26, 115, 167, 0.3);
         }
         
         .btn-view-template svg {
@@ -411,7 +375,7 @@
         }
         
         .btn-view-template:hover svg {
-            transform: translateX(-5px);
+            transform: translateX(-4px);
         }
         
         /* ===== FOOTER ===== */
@@ -553,67 +517,36 @@
                     <div class="template-card-premium">
                         <div class="template-image-wrapper">
                             <img src="images/templates/template-basic.jpg" alt="قالب بيسك" class="template-image">
-                            <div class="template-badge">
-                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان">
-                            </div>
                             <span class="template-tier-badge tier-basic">بيسك</span>
                         </div>
                         
                         <div class="template-content">
-                            <h3 class="template-name">قالب بيسك</h3>
+                            <div class="template-header">
+                                <h3 class="template-name">قالب بيسك</h3>
+                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان" class="template-logo">
+                            </div>
                             <p class="template-description">
-                                قالب بسيط وأنيق مثالي للكيانات الصغيرة والناشئة التي تبحث عن حضور رقمي احترافي بتكلفة مناسبة.
+                                قالب بسيط وأنيق للكيانات الصغيرة والناشئة - حضور رقمي احترافي بتكلفة مناسبة
                             </p>
                             
-                            <div class="template-features">
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                        </svg>
-                                    </span>
-                                    موقع صفحة واحدة
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                        </svg>
-                                    </span>
+                            <div class="template-tags">
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+                                    صفحة واحدة
+                                </span>
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
                                     متعدد اللغات
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                                        </svg>
-                                    </span>
-                                    لوحة تحكم مستقلة
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                        </svg>
-                                    </span>
-                                    واجهات احترافية
-                                </div>
-                            </div>
-                            
-                            <div class="template-target">
-                                <div class="template-target-label">مناسب لـ</div>
-                                <div class="template-target-text">الكيانات الصغيرة والكيانات الناشئة</div>
+                                </span>
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect></svg>
+                                    لوحة تحكم
+                                </span>
                             </div>
                             
                             <div class="template-actions">
                                 <a href="theme-1/index.html" target="_blank" class="btn-view-template">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                         <circle cx="12" cy="12" r="3"></circle>
                                     </svg>
@@ -629,67 +562,36 @@
                     <div class="template-card-premium">
                         <div class="template-image-wrapper">
                             <img src="images/templates/template-plus.jpg" alt="قالب بلس" class="template-image">
-                            <div class="template-badge">
-                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان">
-                            </div>
                             <span class="template-tier-badge tier-plus">بلس</span>
                         </div>
                         
                         <div class="template-content">
-                            <h3 class="template-name">قالب بلس</h3>
+                            <div class="template-header">
+                                <h3 class="template-name">قالب بلس</h3>
+                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان" class="template-logo">
+                            </div>
                             <p class="template-description">
-                                قالب متقدم يوفر المزيد من الصفحات والميزات للكيانات المتوسطة التي تحتاج لحضور رقمي أكثر شمولاً.
+                                قالب متقدم متعدد الصفحات للكيانات المتوسطة - حضور رقمي شامل ومتكامل
                             </p>
                             
-                            <div class="template-features">
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                        </svg>
-                                    </span>
+                            <div class="template-tags">
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
                                     متعدد الصفحات
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                        </svg>
-                                    </span>
+                                </span>
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
                                     متعدد اللغات
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                                        </svg>
-                                    </span>
-                                    لوحة تحكم مستقلة
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 20h9"></path>
-                                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                        </svg>
-                                    </span>
-                                    واجهات احترافية
-                                </div>
-                            </div>
-                            
-                            <div class="template-target">
-                                <div class="template-target-label">مناسب لـ</div>
-                                <div class="template-target-text">الكيانات المتوسطة الناشئة ما بعد التأسيس</div>
+                                </span>
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect></svg>
+                                    لوحة تحكم
+                                </span>
                             </div>
                             
                             <div class="template-actions">
                                 <a href="theme-1/index.html" target="_blank" class="btn-view-template">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                         <circle cx="12" cy="12" r="3"></circle>
                                     </svg>
@@ -705,66 +607,36 @@
                     <div class="template-card-premium">
                         <div class="template-image-wrapper">
                             <img src="images/templates/template-pro.jpg" alt="قالب برو" class="template-image">
-                            <div class="template-badge">
-                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان">
-                            </div>
                             <span class="template-tier-badge tier-pro">برو</span>
                         </div>
                         
                         <div class="template-content">
-                            <h3 class="template-name">قالب برو</h3>
+                            <div class="template-header">
+                                <h3 class="template-name">قالب برو</h3>
+                                <img src="images/raneen/webyan-logo.svg" alt="ويبيان" class="template-logo">
+                            </div>
                             <p class="template-description">
-                                قالب احترافي متكامل يوفر كل الميزات المتقدمة بما في ذلك المتجر الإلكتروني وبوابة التبرعات.
+                                قالب احترافي متكامل بكل الميزات المتقدمة - متجر إلكتروني وبوابة تبرعات
                             </p>
                             
-                            <div class="template-features">
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                                            <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                                        </svg>
-                                    </span>
-                                    كل مميزات بلس
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="9" cy="21" r="1"></circle>
-                                            <circle cx="20" cy="21" r="1"></circle>
-                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                        </svg>
-                                    </span>
-                                    متجر إلكتروني احترافي
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                        </svg>
-                                    </span>
-                                    بوابة تبرعات الجمعية
-                                </div>
-                                <div class="template-feature">
-                                    <span class="template-feature-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                                        </svg>
-                                    </span>
-                                    لوحة تحكم مستقلة
-                                </div>
-                            </div>
-                            
-                            <div class="template-target">
-                                <div class="template-target-label">مناسب لـ</div>
-                                <div class="template-target-text">الكيانات المتوسطة والكبيرة الباحثة عن فتح متجر إلكتروني احترافي</div>
+                            <div class="template-tags">
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle></svg>
+                                    متجر إلكتروني
+                                </span>
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                    بوابة تبرعات
+                                </span>
+                                <span class="template-tag">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect></svg>
+                                    لوحة تحكم
+                                </span>
                             </div>
                             
                             <div class="template-actions">
                                 <a href="theme-1/index.html" target="_blank" class="btn-view-template">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                         <circle cx="12" cy="12" r="3"></circle>
                                     </svg>
