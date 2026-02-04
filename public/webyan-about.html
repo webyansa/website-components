@@ -320,6 +320,137 @@
         }
         
         /* ========================================
+           Strategic Goals Section
+           ======================================== */
+        .goals-section {
+            padding: 5rem 2rem;
+            background: #e8ecef;
+            position: relative;
+        }
+        
+        .goals-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .goals-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .goals-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 0.5rem;
+        }
+        
+        .goals-slider-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+        }
+        
+        .goals-slider {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .goals-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .goal-card {
+            flex: 0 0 calc(50% - 0.75rem);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .goal-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+        
+        .goal-number {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+        
+        .goal-text {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .goals-nav {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .goals-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .goals-nav-prev {
+            background: #e8a87c;
+            color: white;
+        }
+        
+        .goals-nav-prev:hover {
+            background: #d9956d;
+            transform: scale(1.1);
+        }
+        
+        .goals-nav-next {
+            background: #10b981;
+            color: white;
+        }
+        
+        .goals-nav-next:hover {
+            background: #059669;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .goal-card {
+                flex: 0 0 100%;
+            }
+            
+            .goals-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .goals-nav svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .goals-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* ========================================
            Vision & Mission Section
            ======================================== */
         .vm-section {
@@ -862,6 +993,55 @@
         </div>
     </section>
 
+    <!-- Strategic Goals Section -->
+    <section class="goals-section" id="goals">
+        <div class="goals-container">
+            <div class="goals-header">
+                <span class="section-label">الأهداف الاستراتيجية</span>
+                <h2 class="goals-title">الأهداف الاستراتيجية</h2>
+            </div>
+            
+            <div class="goals-slider-wrapper">
+                <button class="goals-nav goals-nav-prev" onclick="slideGoals(-1)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                
+                <div class="goals-slider" id="goalsSlider">
+                    <div class="goals-track" id="goalsTrack">
+                        <div class="goal-card">
+                            <h3 class="goal-number">الهدف الأول</h3>
+                            <p class="goal-text">تطوير حلول تقنية مبتكرة تلبي احتياجات القطاع غير الربحي</p>
+                        </div>
+                        <div class="goal-card">
+                            <h3 class="goal-number">الهدف الثاني</h3>
+                            <p class="goal-text">توفير موارد مستدامة تحقق التمكين الزراعي والاقتصادي</p>
+                        </div>
+                        <div class="goal-card">
+                            <h3 class="goal-number">الهدف الثالث</h3>
+                            <p class="goal-text">تهيئة بيئة الأعمال الزراعية والتجارية لنمو سوق البن السعودي</p>
+                        </div>
+                        <div class="goal-card">
+                            <h3 class="goal-number">الهدف الرابع</h3>
+                            <p class="goal-text">بناء شراكات استراتيجية مع المؤسسات المحلية والدولية</p>
+                        </div>
+                        <div class="goal-card">
+                            <h3 class="goal-number">الهدف الخامس</h3>
+                            <p class="goal-text">تعزيز الوعي المجتمعي بأهمية التحول الرقمي للقطاع الثالث</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="goals-nav goals-nav-next" onclick="slideGoals(1)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Vision & Mission -->
     <section class="vm-section">
         <div class="vm-container">
@@ -993,6 +1173,32 @@
     <footer class="footer">
         <p>© 2024 ويبيان - جميع الحقوق محفوظة | تطوير <a href="#">فريق ويبيان</a></p>
     </footer>
+
+    <script>
+        // Goals Slider
+        let currentGoalSlide = 0;
+        const goalsTrack = document.getElementById('goalsTrack');
+        const goalCards = document.querySelectorAll('.goal-card');
+        const totalGoals = goalCards.length;
+        const visibleCards = window.innerWidth <= 768 ? 1 : 2;
+        const maxSlide = totalGoals - visibleCards;
+
+        function slideGoals(direction) {
+            currentGoalSlide += direction;
+            
+            if (currentGoalSlide < 0) currentGoalSlide = maxSlide;
+            if (currentGoalSlide > maxSlide) currentGoalSlide = 0;
+            
+            const cardWidth = goalCards[0].offsetWidth + 24; // card width + gap
+            goalsTrack.style.transform = `translateX(${currentGoalSlide * cardWidth}px)`;
+        }
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            currentGoalSlide = 0;
+            goalsTrack.style.transform = 'translateX(0)';
+        });
+    </script>
 
 </body>
 </html>
