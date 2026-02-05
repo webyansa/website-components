@@ -58,6 +58,7 @@ const categories: Category[] = [
     title: "الأقسام والمحتوى",
     icon: "📋",
     pages: [
+      { name: "من نحن", path: "webyan-about.html", date: "2025-02-03", cssFiles: ["css/styles.css"], isNew: true, isImportant: true },
       { name: "قسم الأنشطة", path: "activities-section.html", date: "2024-03-10", cssFiles: ["css/style.css"] },
       { name: "قسم الفروع", path: "branches-section.html", date: "2024-02-20", cssFiles: ["css/style.css"] },
       { name: "تفاصيل الفرع", path: "branch-details.html", date: "2024-02-22", cssFiles: ["css/style.css"] },
