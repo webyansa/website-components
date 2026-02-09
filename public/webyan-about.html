@@ -342,109 +342,75 @@
             position: relative;
         }
         
-        /* Decorative line behind title */
-        .goals-header::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
         .goals-header-content {
             position: relative;
             z-index: 1;
         }
         
-        .goals-eyebrow {
+        .goals-chip {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            gap: 0.6rem;
+            padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+            background: #f0fdf4;
+            border-radius: 100px;
+            margin-bottom: 1.75rem;
         }
         
-        .goals-eyebrow-line {
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #10b981);
-            border-radius: 2px;
+        .goals-chip-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .goals-eyebrow-line:last-child {
-            background: linear-gradient(90deg, #10b981, transparent);
+        .goals-chip-dot svg {
+            width: 14px;
+            height: 14px;
+            color: white;
         }
         
-        .goals-eyebrow-text {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #10b981;
+        .goals-chip-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #065f46;
         }
         
         .goals-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: transparent;
-            background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #0f172a 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            margin: 0 0 1.25rem 0;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        
+        .goals-divider {
+            width: 48px;
+            height: 4px;
+            background: #10b981;
+            border-radius: 4px;
+            margin: 0 auto 1.25rem;
         }
         
         .goals-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #64748b;
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
-            line-height: 1.8;
-        }
-        
-        .goals-decorative-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-        
-        .goals-decorative-dots span {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .goals-decorative-dots span:nth-child(2) {
-            width: 24px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #10b981, #34d399);
+            line-height: 1.9;
+            font-weight: 400;
         }
         
         @media (max-width: 768px) {
             .goals-title {
-                font-size: 2.25rem;
+                font-size: 2rem;
             }
-            
             .goals-subtitle {
-                font-size: 1rem;
-            }
-            
-            .goals-eyebrow-line {
-                width: 25px;
-            }
-            
-            .goals-header::before {
-                width: 200px;
-                height: 200px;
+                font-size: 0.95rem;
             }
         }
         
@@ -1129,18 +1095,17 @@
         <div class="goals-container">
             <div class="goals-header">
                 <div class="goals-header-content">
-                    <div class="goals-eyebrow">
-                        <span class="goals-eyebrow-line"></span>
-                        <span class="goals-eyebrow-text">Strategic Goals</span>
-                        <span class="goals-eyebrow-line"></span>
+                    <div class="goals-chip">
+                        <span class="goals-chip-dot">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 5l0 14M5 12l14 0"/>
+                            </svg>
+                        </span>
+                        <span class="goals-chip-label">أهدافنا</span>
                     </div>
                     <h2 class="goals-title">الأهداف الاستراتيجية</h2>
+                    <div class="goals-divider"></div>
                     <p class="goals-subtitle">نعمل على تحقيق رؤيتنا من خلال أهداف واضحة ومحددة تدفع عجلة التطوير</p>
-                    <div class="goals-decorative-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
                 </div>
             </div>
             
