@@ -347,70 +347,58 @@
             z-index: 1;
         }
         
-        .goals-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.5rem 1.25rem 0.5rem 0.5rem;
-            background: #f0fdf4;
-            border-radius: 100px;
-            margin-bottom: 1.75rem;
-        }
-        
-        .goals-chip-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #10b981;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .goals-chip-dot svg {
-            width: 14px;
-            height: 14px;
-            color: white;
-        }
-        
-        .goals-chip-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #065f46;
-        }
-        
         .goals-title {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 800;
             color: #0f172a;
-            margin: 0 0 1rem 0;
+            margin: 0 0 1.5rem 0;
             letter-spacing: -0.02em;
             line-height: 1.3;
         }
         
-        .goals-divider {
-            width: 48px;
-            height: 4px;
-            background: #10b981;
-            border-radius: 4px;
-            margin: 0 auto 1.25rem;
+        .goals-title-border {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+        
+        .goals-title-border span:nth-child(1),
+        .goals-title-border span:nth-child(3) {
+            height: 1.5px;
+            width: 60px;
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+        
+        .goals-title-border span:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
         
         .goals-subtitle {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: #64748b;
-            max-width: 480px;
+            max-width: 520px;
             margin: 0 auto;
-            line-height: 1.9;
+            line-height: 2;
             font-weight: 400;
         }
         
         @media (max-width: 768px) {
             .goals-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .goals-subtitle {
                 font-size: 0.95rem;
+            }
+            .goals-title-border span:nth-child(1),
+            .goals-title-border span:nth-child(3) {
+                width: 40px;
             }
         }
         
@@ -1095,17 +1083,13 @@
         <div class="goals-container">
             <div class="goals-header">
                 <div class="goals-header-content">
-                    <div class="goals-chip">
-                        <span class="goals-chip-dot">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 5l0 14M5 12l14 0"/>
-                            </svg>
-                        </span>
-                        <span class="goals-chip-label">أهدافنا</span>
-                    </div>
                     <h2 class="goals-title">الأهداف الاستراتيجية</h2>
-                    <div class="goals-divider"></div>
-                    <p class="goals-subtitle">نعمل على تحقيق رؤيتنا من خلال أهداف واضحة ومحددة تدفع عجلة التطوير</p>
+                    <div class="goals-title-border">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p class="goals-subtitle">نعمل على تحقيق رؤيتنا من خلال أهداف واضحة ومحددة تدفع عجلة التطوير والنمو المستدام</p>
                 </div>
             </div>
             
