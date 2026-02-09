@@ -340,6 +340,7 @@
             text-align: center;
             margin-bottom: 5rem;
             position: relative;
+            overflow: hidden;
         }
         
         .goals-header-content {
@@ -347,39 +348,104 @@
             z-index: 1;
         }
         
-        .goals-title {
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin: 0 0 1.5rem 0;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
+        /* Animated background ring */
+        .goals-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(16, 185, 129, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: goals-ring-expand 1.2s ease-out forwards;
+            animation-play-state: paused;
         }
         
-        .goals-title-border {
+        .goals-header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgba(16, 185, 129, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: goals-ring-expand 1.2s 0.2s ease-out forwards;
+            animation-play-state: paused;
+        }
+        
+        .goals-header.is-visible::before,
+        .goals-header.is-visible::after {
+            animation-play-state: running;
+        }
+        
+        @keyframes goals-ring-expand {
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        /* Title */
+        .goals-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin: 0;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        
+        .goals-header.is-visible .goals-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Ornamental border */
+        .goals-ornament {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 1.75rem;
+            gap: 1rem;
+            margin: 1.75rem 0;
+            opacity: 0;
+            transition: opacity 0.6s 0.3s ease;
         }
         
-        .goals-title-border span:nth-child(1),
-        .goals-title-border span:nth-child(3) {
-            height: 1.5px;
-            width: 60px;
+        .goals-header.is-visible .goals-ornament {
+            opacity: 1;
+        }
+        
+        .goals-ornament-line {
+            height: 1px;
+            width: 0;
             background: #cbd5e1;
-            border-radius: 2px;
+            transition: width 0.8s 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
         
-        .goals-title-border span:nth-child(2) {
+        .goals-header.is-visible .goals-ornament-line {
+            width: 70px;
+        }
+        
+        .goals-ornament-diamond {
             width: 10px;
             height: 10px;
             border: 2px solid #10b981;
-            border-radius: 50%;
+            transform: rotate(45deg) scale(0);
             flex-shrink: 0;
+            transition: transform 0.5s 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
+        .goals-header.is-visible .goals-ornament-diamond {
+            transform: rotate(45deg) scale(1);
+        }
+        
+        /* Subtitle */
         .goals-subtitle {
             font-size: 1.1rem;
             color: #64748b;
@@ -387,19 +453,20 @@
             margin: 0 auto;
             line-height: 2;
             font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s 0.4s ease, transform 0.7s 0.4s ease;
+        }
+        
+        .goals-header.is-visible .goals-subtitle {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         @media (max-width: 768px) {
-            .goals-title {
-                font-size: 2.2rem;
-            }
-            .goals-subtitle {
-                font-size: 0.95rem;
-            }
-            .goals-title-border span:nth-child(1),
-            .goals-title-border span:nth-child(3) {
-                width: 40px;
-            }
+            .goals-title { font-size: 2.2rem; }
+            .goals-subtitle { font-size: 0.95rem; }
+            .goals-header.is-visible .goals-ornament-line { width: 40px; }
         }
         
         .goals-slider-wrapper {
@@ -1084,10 +1151,10 @@
             <div class="goals-header">
                 <div class="goals-header-content">
                     <h2 class="goals-title">الأهداف الاستراتيجية</h2>
-                    <div class="goals-title-border">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div class="goals-ornament">
+                        <span class="goals-ornament-line"></span>
+                        <span class="goals-ornament-diamond"></span>
+                        <span class="goals-ornament-line"></span>
                     </div>
                     <p class="goals-subtitle">نعمل على تحقيق رؤيتنا من خلال أهداف واضحة ومحددة تدفع عجلة التطوير والنمو المستدام</p>
                 </div>
@@ -1390,6 +1457,18 @@
     </footer>
 
     <script>
+        // Goals Header Animation
+        const goalsHeader = document.querySelector('.goals-header');
+        if (goalsHeader) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(goalsHeader);
+        }
         // Goals Slider
         let currentGoalSlide = 0;
         const goalsTrack = document.getElementById('goalsTrack');
