@@ -1897,7 +1897,7 @@ body {
     pointer-events: none;
 }
 
-/* Main Card */
+/* Main Card - Content first (right in RTL), Image second (left in RTL) */
 .vision-v2-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1905,7 +1905,7 @@ body {
     border-radius: 32px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-    min-height: 420px;
+    min-height: 440px;
     position: relative;
 }
 
@@ -1917,46 +1917,27 @@ body {
     align-items: center;
     justify-content: center;
     padding: 2.5rem;
+    order: 2;
 }
 
 .vision-v2-image-frame {
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 24px;
     overflow: hidden;
 }
 
 .vision-v2-image-frame img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.08));
 }
 
 .vision-v2-card:hover .vision-v2-image-frame img {
-    transform: scale(1.04);
-}
-
-.vision-v2-image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(232, 108, 79, 0.03) 0%, transparent 60%);
-    pointer-events: none;
-}
-
-/* Watercolor decorative edge */
-.vision-v2-watercolor {
-    position: absolute;
-    top: 50%;
-    left: -30px;
-    transform: translateY(-50%);
-    width: 80px;
-    height: 200px;
-    background: radial-gradient(ellipse, rgba(232, 108, 79, 0.06) 0%, transparent 70%);
-    filter: blur(20px);
-    pointer-events: none;
+    transform: scale(1.03);
 }
 
 /* Content Side */
@@ -1966,16 +1947,17 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
+    order: 1;
 }
 
-/* Quote Icon - Large SVG */
+/* Quote Icon */
 .vision-v2-quote-icon {
     margin-bottom: 2rem;
     text-align: right;
 }
 
 .vision-v2-quote-icon svg {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* Quote Text */
@@ -1985,7 +1967,7 @@ body {
 }
 
 .vision-v2-content .quote-sentence {
-    font-size: 1.6rem;
+    font-size: 1.65rem;
     line-height: 2.2;
     color: #1A2B49;
     font-weight: 700;
@@ -1997,7 +1979,7 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Author Info - Premium */
+/* Author Info */
 .vision-v2-author {
     display: flex;
     align-items: center;
@@ -2016,9 +1998,7 @@ body {
     flex-shrink: 0;
 }
 
-.vision-v2-author-info {
-    flex: 1;
-}
+.vision-v2-author-info { flex: 1; }
 
 .vision-v2-author .author-name-compact {
     font-size: 1.15rem;
@@ -2043,46 +2023,21 @@ body {
         grid-template-columns: 1fr;
         min-height: auto;
     }
-    .vision-v2-image {
-        padding: 2rem 2rem 0;
-        min-height: 300px;
-    }
-    .vision-v2-content {
-        padding: 2rem;
-    }
-    .vision-v2-content .quote-sentence {
-        font-size: 1.3rem;
-    }
+    .vision-v2-content { padding: 2rem; order: 2; }
+    .vision-v2-image { padding: 2rem; order: 1; min-height: 280px; }
+    .vision-v2-content .quote-sentence { font-size: 1.3rem; }
 }
 
 @media (max-width: 575px) {
     .vision-v2 { padding: 3rem 0; }
     .vision-v2-card { border-radius: 20px; }
-    .vision-v2-image {
-        padding: 1.5rem 1.5rem 0;
-        min-height: 250px;
-    }
-    .vision-v2-image-frame { border-radius: 16px; }
-    .vision-v2-content {
-        padding: 1.5rem;
-    }
-    .vision-v2-content .quote-sentence {
-        font-size: 1.1rem;
-        line-height: 2;
-    }
-    .vision-v2-quote-icon svg {
-        width: 36px;
-        height: 27px;
-    }
-    .vision-v2-author {
-        padding: 1rem 1.25rem;
-    }
-    .vision-v2-author .author-name-compact {
-        font-size: 1rem;
-    }
-    .vision-v2-author .author-title-compact {
-        font-size: 0.85rem;
-    }
+    .vision-v2-image { padding: 1.5rem; }
+    .vision-v2-content { padding: 1.5rem; }
+    .vision-v2-content .quote-sentence { font-size: 1.1rem; line-height: 2; }
+    .vision-v2-quote-icon svg { width: 36px; height: 27px; }
+    .vision-v2-author { padding: 1rem 1.25rem; }
+    .vision-v2-author .author-name-compact { font-size: 1rem; }
+    .vision-v2-author .author-title-compact { font-size: 0.85rem; }
 }
 
 /* ==================== Statistics Section (جدارة في أرقام) ==================== */
@@ -2994,337 +2949,182 @@ body {
 }
 
 /* =============================================
-   ROLES SECTION STYLES
+   ROLES SECTION V2
    ============================================= */
 
-.roles-section-jadarah {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f5 100%);
+.roles-v2 {
+    padding: 7rem 0;
+    background: #ffffff;
     position: relative;
     overflow: hidden;
 }
 
-.roles-section-jadarah .container {
-    max-width: 1400px;
-}
-
-.roles-section-jadarah::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -10%;
-    width: 40%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(244, 162, 97, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.roles-section-jadarah::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: -10%;
-    width: 40%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(231, 111, 81, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.section-header-roles {
-    margin-bottom: 4rem;
+.roles-v2 .container {
+    max-width: 1300px;
     position: relative;
-    z-index: 1;
-    text-align: center;
+    z-index: 2;
 }
 
-.section-title-roles {
-    font-size: 2.75rem;
+.roles-v2-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(26, 43, 73, 0.02) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* Header */
+.roles-v2-header {
+    margin-bottom: 4.5rem;
+}
+
+.roles-v2-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232, 108, 79, 0.07);
+    color: #E86C4F;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+}
+
+.roles-v2-title {
+    font-size: 3rem;
     font-weight: 800;
     color: #1A2B49;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.02em;
 }
 
-.section-divider-roles {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #E86C4F 0%, #00CBA9 100%);
-    margin: 1rem auto;
-    border-radius: 2px;
-}
-
-.section-subtitle-roles {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #6B7280;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.section-title-roles::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    right: 50%;
-    transform: translateX(50%);
-    width: 0;
-    height: 0;
-}
-
-.roles-grid-jadarah {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.role-card-jadarah {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 2.5rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
+.roles-v2-divider {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    overflow: hidden;
-    border: 2px solid transparent;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 1.5rem auto;
 }
 
-.role-card-jadarah::before {
-    content: '';
+.roles-v2-divider-line {
+    width: 60px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+}
+
+.roles-v2-divider-diamond {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #E86C4F;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* Grid */
+.roles-v2-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Card */
+.role-v2-card {
+    background: #f9fafb;
+    border-radius: 24px;
+    padding: 3rem 2.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.role-v2-card:hover {
+    background: #ffffff;
+    transform: translateY(-10px);
+    box-shadow: 0 24px 60px rgba(26, 43, 73, 0.1);
+    border-color: transparent;
+}
+
+/* Accent bar */
+.role-v2-accent {
     position: absolute;
-    top: 0;
-    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 0 0 24px 24px;
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: right;
+}
+
+.role-v2-card:hover .role-v2-accent {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* 3D Cube Icon */
+.role-v2-icon {
+    width: 110px;
+    height: 126px;
+    margin: 0 auto 2rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.08));
+}
+
+.role-v2-icon svg {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(244, 162, 97, 0.05) 0%, rgba(231, 111, 81, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
 }
 
-.role-card-jadarah:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(231, 111, 81, 0.2);
-    border-color: #F4A261;
+.role-v2-card:hover .role-v2-icon {
+    transform: translateY(-8px) scale(1.06);
+    filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.12));
 }
 
-.role-card-jadarah:hover::before {
-    opacity: 1;
-}
-
-.role-card-jadarah:nth-child(1):hover .role-icon {
-    color: #E76F51;
-}
-
-.role-card-jadarah:nth-child(2):hover .role-icon {
-    color: #2A9D8F;
-}
-
-.role-card-jadarah:nth-child(3):hover .role-icon {
-    color: #F4A261;
-}
-
-.role-icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.role-icon {
-    width: 120px;
-    height: 120px;
-    color: #6C757D;
-    transition: all 0.8s ease;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-}
-
-.role-card-jadarah:hover .role-icon {
-    transform: rotateY(20deg) scale(1.05);
-}
-
-.role-card-jadarah:hover .icon-top {
-    opacity: 0.9;
-}
-
-.role-card-jadarah:hover .icon-side {
-    opacity: 0.6;
-}
-
-.role-title-jadarah {
-    text-align: center;
-    font-size: 1.6rem;
+/* Title */
+.role-v2-title {
+    font-size: 1.5rem;
     font-weight: 700;
     color: #1A2B49;
     margin-bottom: 1.25rem;
-    text-align: center;
     transition: color 0.3s ease;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 0.5rem;
 }
 
-.role-title-jadarah::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    width: 60%;
-    height: 3px;
-    background: currentColor;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: center;
-}
+.role-v2-card:nth-child(1):hover .role-v2-title { color: #E86C4F; }
+.role-v2-card:nth-child(2):hover .role-v2-title { color: #0099CC; }
+.role-v2-card:nth-child(3):hover .role-v2-title { color: #E9A94F; }
 
-.role-card-jadarah:hover .role-title-jadarah {
-    color: #E76F51;
-}
-
-.role-card-jadarah:hover .role-title-jadarah::after {
-    transform: translateX(-50%) scaleX(1);
-}
-
-.role-card-jadarah:nth-child(1):hover .role-title-jadarah {
-    color: #E76F51;
-}
-
-.role-card-jadarah:nth-child(1):hover .role-title-jadarah::after {
-    background: #E76F51;
-}
-
-.role-card-jadarah:nth-child(2):hover .role-title-jadarah {
-    color: #2A9D8F;
-}
-
-.role-card-jadarah:nth-child(2):hover .role-title-jadarah::after {
-    background: #2A9D8F;
-}
-
-.role-card-jadarah:nth-child(3):hover .role-title-jadarah {
-    color: #F4A261;
-}
-
-.role-card-jadarah:nth-child(3):hover .role-title-jadarah::after {
-    background: #F4A261;
-}
-
-.role-description-jadarah {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #495057;
-    text-align: center;
+/* Description */
+.role-v2-desc {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: #6B7280;
     margin: 0;
+    text-align: center;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 991px) {
-    .roles-section-jadarah {
-        padding: 4rem 0;
-    }
-
-    .section-title-roles,
-    .section-title-goals,
-    .section-title-stats {
-        font-size: 2.2rem;
-    }
-
-    .section-divider-roles,
-    .section-divider-goals,
-    .section-divider-stats {
-        width: 70px;
-        height: 2.5px;
-    }
-
-    .section-subtitle-roles,
-    .section-subtitle-goals,
-    .section-subtitle-stats {
-        font-size: 0.85rem;
-    }
-
-    .roles-grid-jadarah {
-        gap: 2rem;
-    }
-
-    .role-card-jadarah {
-        padding: 2rem;
-    }
-
-    .role-icon {
-        width: 100px;
-        height: 100px;
-    }
-
-    .role-title-jadarah {
-        font-size: 1.4rem;
-    }
-
-    .role-description-jadarah {
-        font-size: 0.95rem;
-    }
+    .roles-v2 { padding: 5rem 0; }
+    .roles-v2-title { font-size: 2.25rem; }
+    .roles-v2-grid { gap: 1.5rem; }
+    .role-v2-card { padding: 2.5rem 2rem 2rem; }
+    .role-v2-icon { width: 90px; height: 104px; }
+    .role-v2-title { font-size: 1.3rem; }
 }
 
 @media (max-width: 767px) {
-    .roles-section-jadarah {
-        padding: 3rem 0;
-    }
-
-    .section-header-roles {
-        margin-bottom: 2.5rem;
-    }
-
-    .section-title-roles,
-    .section-title-goals,
-    .section-title-stats {
-        font-size: 1.8rem;
-    }
-
-    .section-divider-roles,
-    .section-divider-goals,
-    .section-divider-stats {
-        width: 60px;
-        height: 2px;
-    }
-
-    .section-subtitle-roles,
-    .section-subtitle-goals,
-    .section-subtitle-stats {
-        font-size: 0.8rem;
-    }
-
-    .roles-grid-jadarah {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .role-card-jadarah {
-        padding: 1.75rem;
-    }
-
-    .role-icon {
-        width: 90px;
-        height: 90px;
-    }
-
-    .role-icon-wrapper {
-        margin-bottom: 1.5rem;
-    }
-
-    .role-title-jadarah {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-    }
-
-    .role-description-jadarah {
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
+    .roles-v2 { padding: 4rem 0; }
+    .roles-v2-title { font-size: 1.75rem; }
+    .roles-v2-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .role-v2-card { padding: 2rem 1.5rem 1.5rem; }
+    .role-v2-icon { width: 80px; height: 92px; margin-bottom: 1.5rem; }
+    .role-v2-title { font-size: 1.25rem; }
+    .role-v2-desc { font-size: 0.9rem; }
+}
 
     .nav-link {
         padding: 0.5rem 1rem !important;
