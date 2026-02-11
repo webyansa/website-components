@@ -2657,237 +2657,296 @@ body {
 }
 
 /* ========================================
-   Goals Section - Jadarah
+   Goals Section - Jadarah (Premium Redesign)
    ======================================== */
 
 .goals-section-jadarah {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    padding: 7rem 0;
+    background: #f7f8fc;
     position: relative;
     overflow: hidden;
 }
 
-.goals-section-jadarah .container {
-    max-width: 1400px;
-}
-
-.goals-section-jadarah::before {
-    content: '';
+/* Background Decorations */
+.goals-bg-pattern {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(23, 162, 184, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 70% 50%, rgba(232, 108, 79, 0.03) 0%, transparent 50%);
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(26, 43, 73, 0.03) 1px, transparent 0);
+    background-size: 40px 40px;
     pointer-events: none;
 }
 
+.goals-bg-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.goals-bg-glow-1 {
+    top: -150px;
+    right: -100px;
+    background: rgba(232, 108, 79, 0.08);
+}
+
+.goals-bg-glow-2 {
+    bottom: -150px;
+    left: -100px;
+    background: rgba(0, 203, 169, 0.08);
+}
+
+/* Header */
 .section-header-goals {
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
     position: relative;
     text-align: center;
 }
 
+.goals-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232, 108, 79, 0.08);
+    color: #E86C4F;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+}
+
+.goals-badge i {
+    font-size: 0.8rem;
+}
+
 .section-title-goals {
-    font-size: 2.75rem;
+    font-size: 3rem;
     font-weight: 800;
     color: #1A2B49;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .section-divider-goals {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #E86C4F 0%, #00CBA9 100%);
-    margin: 1rem auto;
-    border-radius: 2px;
-}
-
-.section-subtitle-goals {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #6B7280;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-.goals-grid-jadarah {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.goal-card-jadarah {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(232, 108, 79, 0.15);
-    border-radius: 16px;
-    padding: 1.75rem 2rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-}
-
-.goal-header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.goal-card-jadarah::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, #E86C4F, #17A2B8);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.3s ease;
-}
-
-.goal-card-jadarah:hover {
-    transform: translateX(-5px);
-    border-color: rgba(232, 108, 79, 0.3);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.goal-card-jadarah:hover::before {
-    transform: scaleY(1);
-}
-
-.goal-icon-plus {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #E86C4F 0%, #ff8a6b 100%);
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(232, 108, 79, 0.2);
+    gap: 0.75rem;
+    margin: 1.5rem auto;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
 }
 
-.goal-card-jadarah:hover .goal-icon-plus {
-    transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 6px 25px rgba(232, 108, 79, 0.4);
+.divider-line-g {
+    display: block;
+    width: 60px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
 }
 
-.goal-card-jadarah.active .goal-icon-plus {
+.divider-diamond-g {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #E86C4F;
     transform: rotate(45deg);
-    background: linear-gradient(135deg, #17A2B8 0%, #1a8f9e 100%);
+    flex-shrink: 0;
 }
 
-.goal-title-jadarah {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #1A2B49;
-    margin: 0;
-    flex: 1;
-    text-align: right;
-    line-height: 1.5;
-    margin-left: 1.5rem;
+.section-subtitle-goals {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #6B7280;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.9;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
-.goal-description {
-    max-height: 0;
+/* Goals Grid - 4 Columns */
+.goals-grid-jadarah {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Goal Card */
+.goal-card-jadarah {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    padding: 2.25rem 1.75rem 2rem;
+    position: relative;
     overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
-    padding-top: 0;
-    margin-right: 56px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    cursor: default;
 }
 
-.goal-card-jadarah.active .goal-description {
-    max-height: 200px;
-    opacity: 1;
-    padding-top: 1rem;
+.goal-card-jadarah:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(26, 43, 73, 0.1);
+    border-color: transparent;
 }
 
-.goal-description p {
+/* Gradient accent bar at bottom */
+.goal-card-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #E86C4F, #00CBA9);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.goal-card-jadarah:hover .goal-card-accent {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Card Number */
+.goal-card-number {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: rgba(26, 43, 73, 0.08);
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    transition: color 0.4s ease;
+    user-select: none;
+}
+
+.goal-card-jadarah:hover .goal-card-number {
+    color: rgba(232, 108, 79, 0.12);
+}
+
+/* Icon Circle */
+.goal-icon-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(232, 108, 79, 0.08) 0%, rgba(0, 203, 169, 0.08) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.goal-icon-circle i {
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, #E86C4F 0%, #d4583f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.4s ease;
+}
+
+.goal-card-jadarah:hover .goal-icon-circle {
+    background: linear-gradient(135deg, #E86C4F 0%, #ff8a6b 100%);
+    transform: scale(1.08);
+    box-shadow: 0 8px 30px rgba(232, 108, 79, 0.25);
+}
+
+.goal-card-jadarah:hover .goal-icon-circle i {
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+}
+
+/* Title */
+.goal-title-jadarah {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1A2B49;
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Description */
+.goal-desc-jadarah {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #6B7280;
     margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #495057;
-    text-align: right;
+    text-align: center;
 }
 
-/* Responsive */
-@media (max-width: 991px) {
-    .section-title-goals {
-        font-size: 2.2rem;
+/* ========== Responsive ========== */
+@media (max-width: 1200px) {
+    .goals-grid-jadarah {
+        grid-template-columns: repeat(3, 1fr);
     }
-    
-    .section-divider-goals {
-        width: 70px;
-        height: 2.5px;
+}
+
+@media (max-width: 991px) {
+    .goals-section-jadarah {
+        padding: 5rem 0;
     }
 
-    .section-subtitle-goals {
-        font-size: 0.85rem;
+    .section-title-goals {
+        font-size: 2.25rem;
     }
-    
+
     .goals-grid-jadarah {
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem;
     }
-    
+
     .goal-card-jadarah {
-        padding: 1.5rem 1.75rem;
-    }
-    
-    .goal-title-jadarah {
-        font-size: 1.05rem;
+        padding: 2rem 1.5rem 1.75rem;
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 575px) {
     .goals-section-jadarah {
         padding: 4rem 0;
     }
-    
+
     .section-title-goals {
-        font-size: 1.8rem;
-    }
-    
-    .section-divider-goals {
-        width: 60px;
-        height: 2px;
+        font-size: 1.75rem;
     }
 
-    .section-subtitle-goals {
-        font-size: 0.8rem;
-    }
-    
     .goals-grid-jadarah {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .goal-card-jadarah {
-        padding: 1.25rem 1.5rem;
+        padding: 1.75rem 1.25rem 1.5rem;
     }
-    
-    .goal-icon-plus {
-        width: 36px;
-        height: 36px;
+
+    .goal-icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+    }
+
+    .goal-icon-circle i {
         font-size: 1.3rem;
     }
-    
-    .goal-title-jadarah {
-        font-size: 1rem;
+
+    .goal-card-number {
+        font-size: 2rem;
     }
 }
 
