@@ -201,640 +201,413 @@
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Products Section - 4 Types -->
     <section id="products" class="products-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">منتجاتنا</h2>
-                <p class="section-subtitle">منتجات متنوعة تدعم برامج الجمعية</p>
+                <span class="section-badge-v2"><i class="bi bi-shop-window"></i> متجرنا</span>
+                <h2 class="section-title">منتجات وخدمات مميزة</h2>
+                <p class="section-subtitle">تصفح منتجاتنا وخدماتنا المتنوعة التي تلبي احتياجاتك</p>
             </div>
-            <div class="row g-4">
-                <!-- Product 1 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop" alt="قهوة عربية فاخرة" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-featured"><i class="bi bi-star-fill"></i> مميز</span>
+
+            <!-- Type Filter Tabs -->
+            <div class="type-filter-tabs">
+                <button class="type-tab active" data-filter="all">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                    الكل
+                </button>
+                <button class="type-tab" data-filter="ready">
+                    <i class="bi bi-box-seam"></i>
+                    منتج جاهز
+                </button>
+                <button class="type-tab" data-filter="service">
+                    <i class="bi bi-gear-wide-connected"></i>
+                    منتج خدمي
+                </button>
+                <button class="type-tab" data-filter="digital">
+                    <i class="bi bi-cloud-download"></i>
+                    منتج رقمي
+                </button>
+                <button class="type-tab" data-filter="donation">
+                    <i class="bi bi-heart-pulse"></i>
+                    تبرع
+                </button>
+            </div>
+
+            <div class="row g-4" id="productsGrid">
+
+                <!-- ===== منتج جاهز 1 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="ready">
+                    <div class="product-card-v2 type-ready">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop" alt="قهوة عربية فاخرة" class="pv2-image">
+                            <div class="pv2-type-ribbon">
+                                <i class="bi bi-box-seam"></i> منتج جاهز
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <span class="pv2-badge pv2-badge-new">جديد</span>
+                            <button class="pv2-wishlist"><i class="bi bi-heart"></i></button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> معاينة سريعة</button>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">منتجات القهوة</span>
-                            <h3 class="product-title">قهوة عربية فاخرة</h3>
-                            <p class="product-description">قهوة عربية أصيلة محمصة بعناية من أجود الحبوب</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
+                        <div class="pv2-content">
+                            <span class="pv2-category">منتجات القهوة</span>
+                            <h3 class="pv2-title">قهوة عربية فاخرة</h3>
+                            <p class="pv2-desc">قهوة عربية أصيلة محمصة بعناية من أجود الحبوب</p>
+                            <div class="pv2-footer">
+                                <div class="pv2-price-row">
+                                    <span class="pv2-price">75 <small>ر.س</small></span>
                                 </div>
-                                <span class="rating-count">(24)</span>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price">75 ر.س</span>
-                                </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
+                                <div class="pv2-actions-row">
+                                    <div class="pv2-qty">
+                                        <button class="pv2-qty-btn pv2-qty-plus"><i class="bi bi-plus"></i></button>
+                                        <input type="number" value="1" min="1" class="pv2-qty-input">
+                                        <button class="pv2-qty-btn pv2-qty-minus"><i class="bi bi-dash"></i></button>
                                     </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
                                 </div>
+                                <button class="pv2-add-cart">
+                                    <i class="bi bi-cart-plus"></i>
+                                    إضافة للسلة
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 2 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop" alt="دليل العمل التطوعي" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-new"><i class="bi bi-lightning-fill"></i> جديد</span>
+                <!-- ===== منتج جاهز 2 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="ready">
+                    <div class="product-card-v2 type-ready">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=400&fit=crop" alt="حقيبة هدايا تعريفية" class="pv2-image">
+                            <div class="pv2-type-ribbon">
+                                <i class="bi bi-box-seam"></i> منتج جاهز
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <span class="pv2-badge pv2-badge-best">الأكثر مبيعاً</span>
+                            <button class="pv2-wishlist"><i class="bi bi-heart"></i></button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> معاينة سريعة</button>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">ملفات وأدلة</span>
-                            <h3 class="product-title">دليل العمل التطوعي</h3>
-                            <p class="product-description">دليل شامل يحتوي على أساسيات وأفضل ممارسات التطوع</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
+                        <div class="pv2-content">
+                            <span class="pv2-category">هدايا تعريفية</span>
+                            <h3 class="pv2-title">حقيبة هدايا تعريفية</h3>
+                            <p class="pv2-desc">حقيبة أنيقة تحتوي على هدايا تعريفية بالجمعية</p>
+                            <div class="pv2-footer">
+                                <div class="pv2-price-row">
+                                    <span class="pv2-price-old">150 ر.س</span>
+                                    <span class="pv2-price">120 <small>ر.س</small></span>
                                 </div>
-                                <span class="rating-count">(18)</span>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price">45 ر.س</span>
-                                </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
+                                <div class="pv2-actions-row">
+                                    <div class="pv2-qty">
+                                        <button class="pv2-qty-btn pv2-qty-plus"><i class="bi bi-plus"></i></button>
+                                        <input type="number" value="1" min="1" class="pv2-qty-input">
+                                        <button class="pv2-qty-btn pv2-qty-minus"><i class="bi bi-dash"></i></button>
                                     </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
                                 </div>
+                                <button class="pv2-add-cart">
+                                    <i class="bi bi-cart-plus"></i>
+                                    إضافة للسلة
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 3 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=400&fit=crop" alt="حقيبة هدايا تعريفية" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-bestseller"><i class="bi bi-trophy-fill"></i> الأكثر مبيعاً</span>
+                <!-- ===== منتج خدمي 1 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="service">
+                    <div class="product-card-v2 type-service">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="استشارات إدارية" class="pv2-image">
+                            <div class="pv2-type-ribbon type-ribbon-service">
+                                <i class="bi bi-gear-wide-connected"></i> منتج خدمي
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <button class="pv2-wishlist"><i class="bi bi-heart"></i></button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> تفاصيل الخدمة</button>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">هدايا تعريفية</span>
-                            <h3 class="product-title">حقيبة هدايا تعريفية</h3>
-                            <p class="product-description">حقيبة أنيقة تحتوي على هدايا تعريفية بالجمعية</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star"></i>
-                                </div>
-                                <span class="rating-count">(32)</span>
+                        <div class="pv2-content">
+                            <span class="pv2-category pv2-cat-service">استشارات</span>
+                            <h3 class="pv2-title">استشارات إدارية متخصصة</h3>
+                            <p class="pv2-desc">استشارات متخصصة في تطوير المنظمات غير الربحية</p>
+                            <div class="pv2-service-features">
+                                <span class="pv2-feature"><i class="bi bi-check-circle-fill"></i> تحليل شامل</span>
+                                <span class="pv2-feature"><i class="bi bi-check-circle-fill"></i> تقرير مفصل</span>
+                                <span class="pv2-feature"><i class="bi bi-check-circle-fill"></i> متابعة لمدة شهر</span>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price-old">150 ر.س</span>
-                                    <span class="product-price">120 ر.س</span>
+                            <div class="pv2-footer">
+                                <div class="pv2-price-row">
+                                    <span class="pv2-price pv2-price-service">500 <small>ر.س</small></span>
                                 </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
+                                <button class="pv2-request-service">
+                                    <i class="bi bi-send"></i>
+                                    اطلب الخدمة
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 4 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=400&h=400&fit=crop" alt="حقيبة تدريبية متكاملة" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-featured"><i class="bi bi-star-fill"></i> مميز</span>
+                <!-- ===== منتج خدمي 2 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="service">
+                    <div class="product-card-v2 type-service">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=400&fit=crop" alt="دورات تدريبية" class="pv2-image">
+                            <div class="pv2-type-ribbon type-ribbon-service">
+                                <i class="bi bi-gear-wide-connected"></i> منتج خدمي
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <span class="pv2-badge pv2-badge-new">جديد</span>
+                            <button class="pv2-wishlist"><i class="bi bi-heart"></i></button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> تفاصيل الخدمة</button>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">حقائب تدريبية</span>
-                            <h3 class="product-title">حقيبة تدريبية متكاملة</h3>
-                            <p class="product-description">حقيبة تدريبية شاملة للمدربين والمتدربين</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <span class="rating-count">(45)</span>
+                        <div class="pv2-content">
+                            <span class="pv2-category pv2-cat-service">تدريب</span>
+                            <h3 class="pv2-title">دورات تدريبية متقدمة</h3>
+                            <p class="pv2-desc">برامج تدريبية متخصصة للعاملين في القطاع غير الربحي</p>
+                            <div class="pv2-service-features">
+                                <span class="pv2-feature"><i class="bi bi-check-circle-fill"></i> 12 ساعة تدريبية</span>
+                                <span class="pv2-feature"><i class="bi bi-check-circle-fill"></i> شهادة معتمدة</span>
+                                <span class="pv2-feature"><i class="bi bi-check-circle-fill"></i> مواد تدريبية</span>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price">250 ر.س</span>
+                            <div class="pv2-footer">
+                                <div class="pv2-price-row">
+                                    <span class="pv2-price pv2-price-service">750 <small>ر.س</small></span>
                                 </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
+                                <button class="pv2-request-service">
+                                    <i class="bi bi-send"></i>
+                                    اطلب الخدمة
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 5 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&h=400&fit=crop" alt="كتاب القيادة الفعالة" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-new"><i class="bi bi-lightning-fill"></i> جديد</span>
+                <!-- ===== منتج رقمي 1 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="digital">
+                    <div class="product-card-v2 type-digital">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop" alt="دليل العمل التطوعي" class="pv2-image">
+                            <div class="pv2-type-ribbon type-ribbon-digital">
+                                <i class="bi bi-cloud-download"></i> منتج رقمي
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <span class="pv2-badge pv2-badge-new">جديد</span>
+                            <button class="pv2-wishlist"><i class="bi bi-heart"></i></button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> معاينة</button>
+                            </div>
+                            <div class="pv2-digital-icon">
+                                <i class="bi bi-file-earmark-pdf"></i>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">الكتب والمطبوعات</span>
-                            <h3 class="product-title">كتاب القيادة الفعالة</h3>
-                            <p class="product-description">كتاب متخصص في مهارات القيادة للقطاع غير الربحي</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
-                                </div>
-                                <span class="rating-count">(12)</span>
+                        <div class="pv2-content">
+                            <span class="pv2-category pv2-cat-digital">ملفات وأدلة</span>
+                            <h3 class="pv2-title">دليل العمل التطوعي</h3>
+                            <p class="pv2-desc">دليل شامل يحتوي على أساسيات وأفضل ممارسات التطوع</p>
+                            <div class="pv2-digital-meta">
+                                <span><i class="bi bi-file-earmark"></i> PDF</span>
+                                <span><i class="bi bi-hdd"></i> 4.5 MB</span>
+                                <span><i class="bi bi-download"></i> 156 تحميل</span>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price">85 ر.س</span>
+                            <div class="pv2-footer">
+                                <div class="pv2-price-row">
+                                    <span class="pv2-price pv2-price-digital">45 <small>ر.س</small></span>
                                 </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
+                                <button class="pv2-buy-digital">
+                                    <i class="bi bi-bag-check"></i>
+                                    شراء وتحميل
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 6 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=400&fit=crop" alt="مجموعة أدوات مكتبية" class="product-image">
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                <!-- ===== منتج رقمي 2 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="digital">
+                    <div class="product-card-v2 type-digital">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?w=400&h=400&fit=crop" alt="حقيبة تدريبية" class="pv2-image">
+                            <div class="pv2-type-ribbon type-ribbon-digital">
+                                <i class="bi bi-cloud-download"></i> منتج رقمي
+                            </div>
+                            <button class="pv2-wishlist"><i class="bi bi-heart"></i></button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> معاينة</button>
+                            </div>
+                            <div class="pv2-digital-icon">
+                                <i class="bi bi-file-earmark-zip"></i>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">منتجات إبداعية</span>
-                            <h3 class="product-title">مجموعة أدوات مكتبية</h3>
-                            <p class="product-description">طقم أدوات مكتبية أنيق يحمل شعار الجمعية</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star"></i>
-                                </div>
-                                <span class="rating-count">(8)</span>
+                        <div class="pv2-content">
+                            <span class="pv2-category pv2-cat-digital">حقائب تدريبية</span>
+                            <h3 class="pv2-title">حقيبة تدريبية متكاملة</h3>
+                            <p class="pv2-desc">حقيبة تدريبية شاملة جاهزة للاستخدام المباشر</p>
+                            <div class="pv2-digital-meta">
+                                <span><i class="bi bi-file-earmark"></i> ZIP</span>
+                                <span><i class="bi bi-hdd"></i> 28 MB</span>
+                                <span><i class="bi bi-download"></i> 89 تحميل</span>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price">55 ر.س</span>
+                            <div class="pv2-footer">
+                                <div class="pv2-price-row">
+                                    <span class="pv2-price pv2-price-digital">250 <small>ر.س</small></span>
                                 </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
+                                <button class="pv2-buy-digital">
+                                    <i class="bi bi-bag-check"></i>
+                                    شراء وتحميل
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 7 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop" alt="ساعة يد كلاسيكية" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-sale">خصم 20%</span>
+                <!-- ===== تبرع 1 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="donation">
+                    <div class="product-card-v2 type-donation">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=400&fit=crop" alt="كفالة يتيم" class="pv2-image">
+                            <div class="pv2-type-ribbon type-ribbon-donation">
+                                <i class="bi bi-heart-pulse"></i> تبرع
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> تفاصيل المشروع</button>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">هدايا تعريفية</span>
-                            <h3 class="product-title">ساعة يد كلاسيكية</h3>
-                            <p class="product-description">ساعة يد أنيقة مع شعار الجمعية المحفور</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
+                        <div class="pv2-content">
+                            <span class="pv2-category pv2-cat-donation">رعاية أيتام</span>
+                            <h3 class="pv2-title">كفالة يتيم لمدة سنة</h3>
+                            <p class="pv2-desc">ساهم في كفالة يتيم وتوفير احتياجاته الأساسية والتعليمية</p>
+                            <div class="pv2-donation-progress">
+                                <div class="pv2-progress-bar">
+                                    <div class="pv2-progress-fill" style="width: 68%"></div>
                                 </div>
-                                <span class="rating-count">(56)</span>
+                                <div class="pv2-progress-info">
+                                    <span>تم جمع <strong>34,000</strong> ر.س</span>
+                                    <span>الهدف <strong>50,000</strong> ر.س</span>
+                                </div>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price-old">200 ر.س</span>
-                                    <span class="product-price">160 ر.س</span>
+                            <div class="pv2-footer">
+                                <div class="pv2-donation-amounts">
+                                    <button class="pv2-amount-btn">50</button>
+                                    <button class="pv2-amount-btn active">100</button>
+                                    <button class="pv2-amount-btn">200</button>
+                                    <input type="number" placeholder="مبلغ آخر" class="pv2-amount-input">
                                 </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
+                                <button class="pv2-donate-btn">
+                                    <i class="bi bi-heart-fill"></i>
+                                    تبرع الآن
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product 8 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop" alt="حقيبة جلدية فاخرة" class="product-image">
-                            <div class="product-badges">
-                                <span class="badge badge-limited"><i class="bi bi-clock-fill"></i> محدود</span>
+                <!-- ===== تبرع 2 ===== -->
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-type="donation">
+                    <div class="product-card-v2 type-donation">
+                        <div class="pv2-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=400&fit=crop" alt="بناء مدرسة" class="pv2-image">
+                            <div class="pv2-type-ribbon type-ribbon-donation">
+                                <i class="bi bi-heart-pulse"></i> تبرع
                             </div>
-                            <button class="btn-wishlist" title="أضف للمفضلة">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                            <div class="product-quick-actions">
-                                <button class="btn-quick-view" title="معاينة سريعة">
-                                    <i class="bi bi-eye"></i>
-                                </button>
+                            <div class="pv2-overlay">
+                                <button class="pv2-quick-view"><i class="bi bi-eye"></i> تفاصيل المشروع</button>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <span class="product-category">منتجات إبداعية</span>
-                            <h3 class="product-title">حقيبة جلدية فاخرة</h3>
-                            <p class="product-description">حقيبة جلدية فاخرة بتصميم عصري وأنيق</p>
-                            <div class="product-rating">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-half"></i>
+                        <div class="pv2-content">
+                            <span class="pv2-category pv2-cat-donation">تعليم</span>
+                            <h3 class="pv2-title">بناء مدرسة في منطقة نائية</h3>
+                            <p class="pv2-desc">ساهم في بناء مدرسة لتوفير التعليم للأطفال في المناطق النائية</p>
+                            <div class="pv2-donation-progress">
+                                <div class="pv2-progress-bar">
+                                    <div class="pv2-progress-fill" style="width: 42%"></div>
                                 </div>
-                                <span class="rating-count">(29)</span>
+                                <div class="pv2-progress-info">
+                                    <span>تم جمع <strong>210,000</strong> ر.س</span>
+                                    <span>الهدف <strong>500,000</strong> ر.س</span>
+                                </div>
                             </div>
-                            <div class="product-footer">
-                                <div class="product-price-wrapper">
-                                    <span class="product-price">320 ر.س</span>
+                            <div class="pv2-footer">
+                                <div class="pv2-donation-amounts">
+                                    <button class="pv2-amount-btn">100</button>
+                                    <button class="pv2-amount-btn active">500</button>
+                                    <button class="pv2-amount-btn">1000</button>
+                                    <input type="number" placeholder="مبلغ آخر" class="pv2-amount-input">
                                 </div>
-                                <div class="product-actions">
-                                    <div class="quantity-control">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="qty-input" value="1" min="1">
-                                        <button class="btn-qty" type="button">
-                                            <i class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                    <button class="btn btn-add-cart">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
-                                </div>
+                                <button class="pv2-donate-btn">
+                                    <i class="bi bi-heart-fill"></i>
+                                    تبرع الآن
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="section-footer">
-                <a href="#" class="btn btn-view-all">
-                    عرض جميع المنتجات
+                <a href="#" class="btn btn-view-all-v2">
+                    عرض جميع المنتجات والخدمات
                     <i class="bi bi-arrow-left"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">خدماتنا</h2>
-                <p class="section-subtitle">خدمات احترافية تلبي احتياجاتكم</p>
-            </div>
-            <div class="row g-4">
-                <!-- Service 1 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-person-workspace"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">استشارات إدارية</h3>
-                            <p class="service-description">
-                                استشارات متخصصة في تطوير المنظمات غير الربحية
-                            </p>
-                            <div class="service-price">500 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <script>
+    // Type Filter Logic
+    document.querySelectorAll('.type-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.type-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const filter = this.dataset.filter;
+            document.querySelectorAll('.product-item').forEach(item => {
+                if (filter === 'all' || item.dataset.type === filter) {
+                    item.style.display = '';
+                    item.style.animation = 'fadeInUp 0.4s ease forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
 
-                <!-- Service 2 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-mortarboard"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">دورات تدريبية</h3>
-                            <p class="service-description">
-                                برامج تدريبية متخصصة للعاملين في القطاع غير الربحي
-                            </p>
-                            <div class="service-price">750 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    // Quantity Controls
+    document.querySelectorAll('.pv2-qty-plus').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('.pv2-qty-input');
+            input.value = parseInt(input.value) + 1;
+        });
+    });
+    document.querySelectorAll('.pv2-qty-minus').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('.pv2-qty-input');
+            if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+        });
+    });
 
-                <!-- Service 3 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-calendar-event"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">تنظيم فعاليات</h3>
-                            <p class="service-description">
-                                تنظيم وإدارة الفعاليات والمؤتمرات بشكل احترافي
-                            </p>
-                            <div class="service-price">1,200 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    // Donation Amount Buttons
+    document.querySelectorAll('.pv2-donation-amounts').forEach(group => {
+        group.querySelectorAll('.pv2-amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                group.querySelectorAll('.pv2-amount-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const input = group.querySelector('.pv2-amount-input');
+                if (input) input.value = '';
+            });
+        });
+    });
 
-                <!-- Service 4 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-palette2"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">تصميم الهوية البصرية</h3>
-                            <p class="service-description">
-                                تصميم هوية بصرية متكاملة للمنظمات والمبادرات
-                            </p>
-                            <div class="service-price">2,500 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-clipboard-data"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">دراسات وأبحاث</h3>
-                            <p class="service-description">
-                                إعداد الدراسات والأبحاث المتخصصة في القطاع
-                            </p>
-                            <div class="service-price">3,000 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-megaphone"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">التسويق والإعلام</h3>
-                            <p class="service-description">
-                                حملات تسويقية وإعلامية للجمعيات والمبادرات
-                            </p>
-                            <div class="service-price">1,800 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 7 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-code-slash"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">تطوير المواقع</h3>
-                            <p class="service-description">
-                                تصميم وتطوير مواقع إلكترونية احترافية
-                            </p>
-                            <div class="service-price">4,500 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 8 -->
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="bi bi-camera-video"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="service-badge">خدمة</span>
-                            <h3 class="service-title">إنتاج الفيديو</h3>
-                            <p class="service-description">
-                                إنتاج مقاطع فيديو احترافية للتوثيق والتسويق
-                            </p>
-                            <div class="service-price">2,000 ر.س</div>
-                            <button class="btn btn-request-service">
-                                اطلب الخدمة
-                                <i class="bi bi-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-footer">
-                <a href="#" class="btn btn-view-all">
-                    عرض جميع الخدمات
-                    <i class="bi bi-arrow-left"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    // Wishlist Toggle
+    document.querySelectorAll('.pv2-wishlist').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('bi-heart');
+            icon.classList.toggle('bi-heart-fill');
+        });
+    });
+    </script>
 
     <!-- Statistics Section -->
     <section class="statistics-section">
