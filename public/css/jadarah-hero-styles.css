@@ -3131,12 +3131,58 @@ body {
     }
 }
 
-/* ==================== Platform Overview Section ==================== */
+/* ==================== Platform Overview Section V2 ==================== */
 .platform-overview-section {
-    padding: 100px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 100px 0 80px;
+    background: #f8faff;
     position: relative;
     overflow: hidden;
+}
+
+.platform-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,153,204,0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+}
+
+.platform-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.platform-bg-glow-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary-color);
+    top: -100px;
+    left: -100px;
+}
+
+.platform-bg-glow-2 {
+    width: 350px;
+    height: 350px;
+    background: var(--accent-color);
+    bottom: -80px;
+    right: -80px;
+}
+
+.platform-section-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3.5rem;
+}
+
+.platform-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
 }
 
 .platform-content {
@@ -3174,10 +3220,10 @@ body {
 }
 
 .platform-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2.8rem;
+    font-weight: 800;
     color: var(--secondary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.3;
 }
 
@@ -3188,42 +3234,120 @@ body {
     background-clip: text;
 }
 
-.platform-text {
-    font-size: 1rem;
-    color: var(--text-light);
-    line-height: 1.9;
-    margin-bottom: 1.25rem;
+/* Features Mini Cards */
+.platform-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
 }
 
-.platform-text-highlight {
-    background: linear-gradient(135deg, rgba(232, 108, 79, 0.08), rgba(0, 153, 204, 0.08));
-    padding: 1.25rem;
+.platform-mini-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.platform-mini-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border-color: rgba(232, 108, 79, 0.2);
+}
+
+.platform-mini-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     border-radius: 12px;
-    border-right: 4px solid var(--primary-color);
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
 }
 
-.platform-text-highlight i {
+.platform-mini-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 6px;
+}
+
+.platform-mini-info p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CTA Buttons */
+.platform-cta-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.platform-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--primary-color), #d45a3a);
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(232, 108, 79, 0.3);
+}
+
+.platform-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(232, 108, 79, 0.4);
+    color: #ffffff;
+}
+
+.platform-cta-btn i {
+    transition: transform 0.3s ease;
+}
+
+.platform-cta-btn:hover i {
+    transform: translateX(-4px);
+}
+
+.platform-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.platform-cta-secondary:hover {
     color: var(--primary-color);
 }
 
-.platform-text-footer {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    font-weight: 500;
-    line-height: 1.8;
-}
-
-/* Devices Mockup Styles */
-.devices-wrapper {
+/* Devices Mockup V2 */
+.devices-wrapper-v2 {
     position: relative;
     padding: 2rem;
 }
 
-.decorative-shapes {
+.devices-wrapper-v2 .decorative-shapes {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -3232,7 +3356,7 @@ body {
 .shape {
     position: absolute;
     border-radius: 20px;
-    opacity: 0.15;
+    opacity: 0.12;
 }
 
 .shape-1 {
@@ -4097,9 +4221,19 @@ body {
         font-size: 2rem;
     }
     
-    .devices-wrapper {
+    .devices-wrapper,
+    .devices-wrapper-v2 {
         padding: 1rem;
         margin-bottom: 2rem;
+    }
+    
+    .platform-features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .platform-cta-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .laptop-mockup {
