@@ -24,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/raneen-style.css" />
+    <link rel="stylesheet" href="css/raneen-projects.css" />
   </head>
   <body>
     <header class="site-header">
@@ -588,102 +589,215 @@
         </div>
       </section>
 
-      <!-- Projects Section -->
-      <section class="projects-section" id="projects" aria-label="مشاريعنا">
+      <!-- Projects Section — New Professional -->
+      <section class="raneen-projects" id="projects" aria-label="مشاريعنا">
         <div class="container">
-          <div class="projects-header">
+          <div class="rp-header">
             <span class="section-badge">مشاريعنا</span>
             <h2 class="section-title">أبرز المشاريع</h2>
-            <p class="projects-subtitle">نفتخر بشراكاتنا مع العديد من المنظمات والجهات الحكومية</p>
+            <p class="rp-subtitle">نفتخر بشراكاتنا مع العديد من المنظمات والجهات الحكومية في تنفيذ مشاريع تنموية ذات أثر مستدام</p>
           </div>
 
-          <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-              <div class="project-images">
-                <img src="images/raneen/project-1-main.jpg" alt="مشروع التخطيط الاستراتيجي" class="project-main-img" />
-                <img src="images/raneen/project-1-alt.jpg" alt="مشروع التخطيط الاستراتيجي" class="project-alt-img" />
-              </div>
-              <div class="project-content">
-                <span class="project-category">استشارات</span>
-                <h3 class="project-title">التخطيط الاستراتيجي للجمعيات</h3>
-                <p class="project-desc">وضع خطط استراتيجية متكاملة لأكثر من 50 جمعية أهلية</p>
-                <a href="#" class="project-link">عرض التفاصيل</a>
+          <div class="rp-slider-wrap">
+            <button class="rp-slider-btn rp-slider-prev" aria-label="السابق">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <div class="rp-slider-viewport">
+              <div class="rp-slider-track" id="rpSliderTrack">
+
+                <!-- Project 1: منصة ديم -->
+                <div class="rp-card" data-project="1">
+                  <div class="rp-card-img">
+                    <img src="images/raneen/project-1-main.jpg" alt="مشروع منصة ديم" loading="lazy" />
+                    <span class="rp-card-badge">منصات</span>
+                    <div class="rp-card-overlay">
+                      <button class="rp-card-overlay-btn" data-project="1">
+                        <span>عرض التفاصيل</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rp-card-body">
+                    <div class="rp-card-client">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                      مجلس الجمعيات الأهلية
+                    </div>
+                    <h3 class="rp-card-title">مشروع منصة ديم</h3>
+                    <p class="rp-card-desc">منصة تربط بين الجمعيات الأهلية والجهات المانحة في بيئة تقنية موحدة لإدارة المنح والمشاريع</p>
+                  </div>
+                </div>
+
+                <!-- Project 2: منصة شطر -->
+                <div class="rp-card" data-project="2">
+                  <div class="rp-card-img">
+                    <img src="images/raneen/project-2-main.jpg" alt="تفعيل منصة شطر" loading="lazy" />
+                    <span class="rp-card-badge">ابتكار</span>
+                    <div class="rp-card-overlay">
+                      <button class="rp-card-overlay-btn" data-project="2">
+                        <span>عرض التفاصيل</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rp-card-body">
+                    <div class="rp-card-client">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                      مجلس الجمعيات الأهلية
+                    </div>
+                    <h3 class="rp-card-title">تفعيل منصة شطر للابتكار الاجتماعي</h3>
+                    <p class="rp-card-desc">منصة وطنية تفاعلية تُعنى بتصميم وتفعيل منظومة الابتكار الاجتماعي في القطاع غير الربحي</p>
+                  </div>
+                </div>
+
+                <!-- Project 3: تطوير أعمال الإدارة العامة -->
+                <div class="rp-card" data-project="3">
+                  <div class="rp-card-img">
+                    <img src="images/raneen/project-3-main.jpg" alt="تطوير أعمال الإدارة العامة" loading="lazy" />
+                    <span class="rp-card-badge">تطوير</span>
+                    <div class="rp-card-overlay">
+                      <button class="rp-card-overlay-btn" data-project="3">
+                        <span>عرض التفاصيل</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rp-card-body">
+                    <div class="rp-card-client">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                      وزارة البيئة والمياه والزراعة
+                    </div>
+                    <h3 class="rp-card-title">تطوير أعمال الإدارة العامة ومنظمات القطاع</h3>
+                    <p class="rp-card-desc">رفع مستوى نضج منظمات القطاع غير الربحي ووضع استراتيجية واضحة وخارطة طريق</p>
+                  </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="rp-card" data-project="4">
+                  <div class="rp-card-img">
+                    <img src="images/raneen/project-4-main.jpg" alt="مشروع الحوكمة" loading="lazy" />
+                    <span class="rp-card-badge">حوكمة</span>
+                    <div class="rp-card-overlay">
+                      <button class="rp-card-overlay-btn" data-project="4">
+                        <span>عرض التفاصيل</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rp-card-body">
+                    <div class="rp-card-client">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                      مجلس الجمعيات الأهلية
+                    </div>
+                    <h3 class="rp-card-title">تطبيق معايير الحوكمة</h3>
+                    <p class="rp-card-desc">تطبيق أفضل معايير الحوكمة والشفافية في المنظمات غير الربحية</p>
+                  </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="rp-card" data-project="5">
+                  <div class="rp-card-img">
+                    <img src="images/raneen/project-5-main.jpg" alt="مشروع الشراكات" loading="lazy" />
+                    <span class="rp-card-badge">شراكات</span>
+                    <div class="rp-card-overlay">
+                      <button class="rp-card-overlay-btn" data-project="5">
+                        <span>عرض التفاصيل</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rp-card-body">
+                    <div class="rp-card-client">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                      جهات متعددة
+                    </div>
+                    <h3 class="rp-card-title">بناء الشراكات الاستراتيجية</h3>
+                    <p class="rp-card-desc">إنشاء شراكات فاعلة مع القطاعات المختلفة لتعزيز الأثر التنموي</p>
+                  </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="rp-card" data-project="6">
+                  <div class="rp-card-img">
+                    <img src="images/raneen/project-6-main.jpg" alt="تمكين الشباب" loading="lazy" />
+                    <span class="rp-card-badge">تمكين</span>
+                    <div class="rp-card-overlay">
+                      <button class="rp-card-overlay-btn" data-project="6">
+                        <span>عرض التفاصيل</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="rp-card-body">
+                    <div class="rp-card-client">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                      وزارة الموارد البشرية
+                    </div>
+                    <h3 class="rp-card-title">تمكين الشباب السعودي</h3>
+                    <p class="rp-card-desc">برامج تمكين وتأهيل الشباب في مجالات العمل التنموي والاجتماعي</p>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="project-card">
-              <div class="project-images">
-                <img src="images/raneen/project-2-main.jpg" alt="مشروع بناء القدرات" class="project-main-img" />
-                <img src="images/raneen/project-2-alt.jpg" alt="مشروع بناء القدرات" class="project-alt-img" />
-              </div>
-              <div class="project-content">
-                <span class="project-category">تدريب</span>
-                <h3 class="project-title">برنامج بناء القدرات المؤسسية</h3>
-                <p class="project-desc">تدريب وتأهيل أكثر من 1000 موظف في القطاع غير الربحي</p>
-                <a href="#" class="project-link">عرض التفاصيل</a>
-              </div>
+            <button class="rp-slider-btn rp-slider-next" aria-label="التالي">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <div class="rp-dots" id="rpDots"></div>
+        </div>
+      </section>
+
+      <!-- Projects Modal -->
+      <div class="rp-modal" id="rpModal">
+        <div class="rp-modal-overlay"></div>
+        <div class="rp-modal-container">
+          <button class="rp-modal-close" id="rpModalClose" aria-label="إغلاق">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+
+          <!-- Logos -->
+          <div class="rp-modal-logos">
+            <img src="images/raneen/raneen-logo.svg" alt="رنين" />
+            <img id="rpModalClientLogo" src="images/ccj-logo.svg" alt="شعار الجهة" />
+          </div>
+
+          <!-- Top Bar -->
+          <div class="rp-modal-topbar">
+            <div class="rp-modal-topbar-item">
+              <span class="rp-modal-topbar-label project-label">المشروع</span>
+              <span class="rp-modal-topbar-value" id="rpModalTitle">—</span>
+            </div>
+            <div class="rp-modal-topbar-item">
+              <span class="rp-modal-topbar-label client-label">الجهة</span>
+              <span class="rp-modal-topbar-value" id="rpModalClient">—</span>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="rp-modal-body">
+            <!-- Challenge -->
+            <div class="rp-modal-challenge">
+              <div class="rp-modal-section-title">التحدي <span></span></div>
+              <ul id="rpModalChallenge"></ul>
             </div>
 
-            <!-- Project 3 -->
-            <div class="project-card">
-              <div class="project-images">
-                <img src="images/raneen/project-3-main.jpg" alt="مشروع التحول الرقمي" class="project-main-img" />
-                <img src="images/raneen/project-3-alt.jpg" alt="مشروع التحول الرقمي" class="project-alt-img" />
+            <!-- Solution & Results -->
+            <div class="rp-modal-grid">
+              <div class="rp-modal-col solution-col">
+                <div class="rp-modal-col-header">الحل</div>
+                <ul id="rpModalSolution"></ul>
               </div>
-              <div class="project-content">
-                <span class="project-category">تقنية</span>
-                <h3 class="project-title">التحول الرقمي للمنظمات</h3>
-                <p class="project-desc">مساعدة المنظمات في تبني أحدث الحلول التقنية</p>
-                <a href="#" class="project-link">عرض التفاصيل</a>
-              </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-              <div class="project-images">
-                <img src="images/raneen/project-4-main.jpg" alt="مشروع الحوكمة" class="project-main-img" />
-                <img src="images/raneen/project-4-alt.jpg" alt="مشروع الحوكمة" class="project-alt-img" />
-              </div>
-              <div class="project-content">
-                <span class="project-category">حوكمة</span>
-                <h3 class="project-title">تطبيق معايير الحوكمة</h3>
-                <p class="project-desc">تطبيق أفضل معايير الحوكمة والشفافية في المنظمات</p>
-                <a href="#" class="project-link">عرض التفاصيل</a>
-              </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card">
-              <div class="project-images">
-                <img src="images/raneen/project-5-main.jpg" alt="مشروع الشراكات" class="project-main-img" />
-                <img src="images/raneen/project-5-alt.jpg" alt="مشروع الشراكات" class="project-alt-img" />
-              </div>
-              <div class="project-content">
-                <span class="project-category">شراكات</span>
-                <h3 class="project-title">بناء الشراكات الاستراتيجية</h3>
-                <p class="project-desc">إنشاء شراكات فاعلة مع القطاعات المختلفة</p>
-                <a href="#" class="project-link">عرض التفاصيل</a>
-              </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="project-card">
-              <div class="project-images">
-                <img src="images/raneen/project-6-main.jpg" alt="مشروع التمكين" class="project-main-img" />
-                <img src="images/raneen/project-6-alt.jpg" alt="مشروع التمكين" class="project-alt-img" />
-              </div>
-              <div class="project-content">
-                <span class="project-category">تمكين</span>
-                <h3 class="project-title">تمكين الشباب السعودي</h3>
-                <p class="project-desc">برامج تمكين وتأهيل الشباب في مجالات العمل التنموي</p>
-                <a href="#" class="project-link">عرض التفاصيل</a>
+              <div class="rp-modal-col results-col">
+                <div class="rp-modal-col-header">النتائج</div>
+                <ul id="rpModalResults"></ul>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- Jobs Section -->
       <section class="jobs-section" id="jobs" aria-label="الوظائف">
@@ -902,6 +1016,261 @@
       if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
       }
+
+      // ===== Projects Slider & Modal =====
+      const projectsData = {
+        1: {
+          title: 'مشروع منصة ديم',
+          client: 'مجلس الجمعيات الأهلية',
+          clientLogo: 'images/ccj-logo.svg',
+          challenge: [
+            'ضعف قدرة الجمعيات الأهلية على تصميم وإدارة المشاريع بكفاءة.',
+            'صعوبة وصول الجمعيات الناشئة إلى الجهات المانحة واستعراض الفرص المتاحة.',
+            'غياب أدوات احترافية لإدارة المنح، إعداد التقارير وقياس الأثر.',
+            'حاجة المانحين إلى وسائل فعالة لعرض فرص المنح ومتابعة المشاريع.',
+            'ضعف المعرفة المتخصصة المتاحة للعاملين في القطاع غير الربحي.'
+          ],
+          solution: [
+            'إنشاء منصة ديم التي تربط بين الجمعيات الأهلية والجهات المانحة في بيئة تقنية موحدة تقديم أدوات احترافية للجمعيات لتشمل:',
+            'كتابة مقترحات المشاريع.',
+            'استعراض الفرص المتاحة.',
+            'إدارة المنح ورفع التقارير.',
+            'تزويد الجهات المانحة بأدوات لعرض فرص المنح، إدارتها ومتابعة الأداء.'
+          ],
+          results: [
+            'رفع كفاءة إدارة المشاريع التنموية لدى الجمعيات الأهلية.',
+            'تحسين جودة المشاريع لتكون ذات عائد اجتماعي واقتصادي أعلى.',
+            'تمكين المانحين من متابعة الأداء وقياس الأثر بدقة.',
+            'زيادة فرص التعاون بين الجمعيات والمانحين.',
+            'تسهيل وصول الجمعيات الناشئة إلى فرص تمويل جديدة.'
+          ]
+        },
+        2: {
+          title: 'تفعيل منصة شطر للابتكار الاجتماعي',
+          client: 'مجلس الجمعيات الأهلية',
+          clientLogo: 'images/ccj-logo.svg',
+          challenge: [
+            'وجود تحديات متزايدة تواجه الجمعيات الأهلية والجهات التنموية في تحويل أفكارها ومبادراتها إلى حلول ابتكارية ذات أثر مستدام.',
+            'غياب البيئة الممكّنة للابتكار الاجتماعي، وضعف أدوات التصميم والتجريب والتطوير داخل القطاع غير الربحي.',
+            'تكرار المبادرات التقليدية وضعف استثمار الطاقات الإبداعية لدى الأفراد والكيانات التنموية.'
+          ],
+          solution: [
+            'إطلاق مشروع تفعيل منصة شطر للابتكار الاجتماعي كمنصة وطنية تفاعلية تُعنى بتصميم وتفعيل منظومة الابتكار الاجتماعي في القطاع غير الربحي، من خلال:',
+            'بناء وتشغيل منصة رقمية تجمع المبتكرين والجمعيات والممارسين في بيئة واحدة لتصميم الحلول.',
+            'تصميم رحلات تفاعلية وفق منهجية الماسة المزدوجة ومنهجية التصميم المرتكز على الإنسان.',
+            'إطلاق برامج تحفيزية وتفاعلية للممارسين والمبتكرين (مسارات – تحديات – مختبرات ابتكار).',
+            'تطوير الأدوات والمنهجيات والمعايير الوطنية لتصميم الحلول المبتكرة وتقييم أثرها.'
+          ],
+          results: [
+            'إعداد دليل منهجي للابتكار الاجتماعي وأدواته لتطبيق منهجية التصميم الإنساني في بيئة الجمعيات الأهلية.',
+            'تصميم النموذج التشغيلي المعتمد للمنصة الذي يوضح دورة التحديات والابتكار وآليات تسكين الحلول.',
+            'تشغيل المنصة فعليًا وإطلاق النسخة التقنية المكتملة وتجربة المستخدم.',
+            'تنفيذ أكثر من 40 ورشة ابتكارية تفاعلية ولقاءات تخصصية لتوليد الحلول التطويرية.',
+            'استقطاب أكثر من 700 مشارك من الجمعيات الأهلية والممارسين عبر المنصة الرقمية.',
+            'تسكين مجموعة من الحلول الفائزة وتحويلها إلى مشاريع قابلة للتنفيذ داخل الجمعيات.'
+          ]
+        },
+        3: {
+          title: 'تطوير أعمال الإدارة العامة ومنظمات القطاع غير الربحي',
+          client: 'وزارة البيئة والمياه والزراعة',
+          clientLogo: 'images/cooperative-logo.svg',
+          challenge: [
+            'ضعف نضج الجمعيات الأهلية وغياب خارطة طريق واضحة للإشراف الفعّال عليها.',
+            'ضعف قدرة المنظمات في تحقيق أهداف الوزارة والمساهمة في التنمية المستدامة.'
+          ],
+          solution: [
+            'وضع استراتيجية واضحة وخارطة طريق لرفع مستوى نضج منظمات القطاع غير الربحي، تشمل:',
+            'دراسة الواقع الحالي.',
+            'تحديد الاحتياجات.',
+            'بناء استراتيجية المسؤولية الاجتماعية.',
+            'تطوير الأداء المالي والإداري.',
+            'تأسيس روابط خضراء.',
+            'تأهيل الكوادر.',
+            'تعزيز الاستدامة.',
+            'تطوير آليات الإشراف والمتابعة.'
+          ],
+          results: [
+            'تقييم واقع 115 منظمة غير ربحية للتعرف على وضعها الحالي وتحديد فرص التطوير.',
+            'دعم تأسيس 13 جمعية نوعية متخصصة (الروابط الخضراء) لتعزيز التنمية.',
+            'إصدار 10 أدلة عمل نوعية لتكون مرجعاً إجرائياً للمنظمات في القطاع.',
+            'إعداد 9 تقارير ودراسات متخصصة تقدم رؤى وتحليلات لدعم اتخاذ القرار.',
+            '96 زيارة ميدانية للجمعيات الأهلية.',
+            'إقامة 17 ورشة عمل.'
+          ]
+        },
+        4: {
+          title: 'تطبيق معايير الحوكمة',
+          client: 'مجلس الجمعيات الأهلية',
+          clientLogo: 'images/ccj-logo.svg',
+          challenge: [
+            'ضعف تطبيق معايير الحوكمة في الجمعيات الأهلية.',
+            'غياب الشفافية والمساءلة في كثير من المنظمات غير الربحية.',
+            'حاجة القطاع لأطر تنظيمية واضحة ومعتمدة.'
+          ],
+          solution: [
+            'تطوير إطار شامل لمعايير الحوكمة المؤسسية في القطاع غير الربحي.',
+            'تصميم أدوات تقييم ذاتي للمنظمات.',
+            'إعداد أدلة إرشادية لتطبيق معايير الحوكمة.',
+            'تنفيذ برامج تدريبية متخصصة لأعضاء مجالس الإدارات.'
+          ],
+          results: [
+            'تطبيق معايير الحوكمة في أكثر من 80 جمعية أهلية.',
+            'رفع مستوى الشفافية والمساءلة.',
+            'تدريب أكثر من 300 عضو مجلس إدارة.',
+            'إصدار 5 أدلة إرشادية معتمدة.'
+          ]
+        },
+        5: {
+          title: 'بناء الشراكات الاستراتيجية',
+          client: 'جهات متعددة',
+          clientLogo: 'images/ccj-logo.svg',
+          challenge: [
+            'ضعف التنسيق بين القطاعات المختلفة في المجال التنموي.',
+            'محدودية الشراكات الفاعلة بين القطاع الحكومي والخاص وغير الربحي.',
+            'غياب أطر مؤسسية لإدارة الشراكات الاستراتيجية.'
+          ],
+          solution: [
+            'بناء منظومة شراكات استراتيجية متكاملة تربط بين مكونات القطاع التنموي.',
+            'تصميم نماذج تشغيلية للشراكات المستدامة.',
+            'تطوير آليات قياس أثر الشراكات وتقييم فعاليتها.',
+            'إنشاء منصة لتسهيل التواصل بين الشركاء.'
+          ],
+          results: [
+            'تأسيس أكثر من 25 شراكة استراتيجية فاعلة.',
+            'إطلاق 10 مبادرات مشتركة بين القطاعات.',
+            'تحقيق زيادة 40% في كفاءة المشاريع المشتركة.',
+            'بناء قاعدة بيانات شاملة للشركاء التنمويين.'
+          ]
+        },
+        6: {
+          title: 'تمكين الشباب السعودي',
+          client: 'وزارة الموارد البشرية',
+          clientLogo: 'images/cooperative-logo.svg',
+          challenge: [
+            'محدودية فرص التطوير المتاحة للشباب في القطاع غير الربحي.',
+            'ضعف المهارات القيادية والإدارية لدى الشباب المتطوعين.',
+            'حاجة القطاع لاستقطاب كفاءات شابة مؤهلة.'
+          ],
+          solution: [
+            'تصميم وتنفيذ برنامج شامل لتمكين الشباب السعودي في مجال العمل التنموي.',
+            'إعداد مسارات تدريبية متخصصة في القيادة وإدارة المشاريع.',
+            'توفير فرص إرشاد مهني مع خبراء القطاع.',
+            'إنشاء مجتمع ممارسة للشباب التنمويين.'
+          ],
+          results: [
+            'تأهيل أكثر من 500 شاب وشابة في المهارات التنموية.',
+            'تنفيذ 30 ورشة تدريبية متخصصة.',
+            'إطلاق 15 مبادرة شبابية مجتمعية.',
+            'توظيف 60% من المتدربين في القطاع غير الربحي.'
+          ]
+        }
+      };
+
+      // Slider Logic
+      (function() {
+        const track = document.getElementById('rpSliderTrack');
+        const dotsContainer = document.getElementById('rpDots');
+        const prevBtn = document.querySelector('.rp-slider-prev');
+        const nextBtn = document.querySelector('.rp-slider-next');
+        if (!track) return;
+
+        const cards = track.querySelectorAll('.rp-card');
+        let currentSlide = 0;
+        let cardsPerView = 3;
+
+        function updateCardsPerView() {
+          if (window.innerWidth <= 480) cardsPerView = 1;
+          else if (window.innerWidth <= 1024) cardsPerView = 2;
+          else cardsPerView = 3;
+        }
+
+        function getTotalSlides() {
+          return Math.max(1, cards.length - cardsPerView + 1);
+        }
+
+        function buildDots() {
+          dotsContainer.innerHTML = '';
+          const total = getTotalSlides();
+          for (let i = 0; i < total; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'rp-dot' + (i === currentSlide ? ' active' : '');
+            dot.addEventListener('click', () => goTo(i));
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        function goTo(idx) {
+          const total = getTotalSlides();
+          currentSlide = Math.max(0, Math.min(idx, total - 1));
+          const gap = 28;
+          const cardWidth = cards[0].offsetWidth + gap;
+          track.style.transform = `translateX(${currentSlide * cardWidth}px)`;
+          dotsContainer.querySelectorAll('.rp-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        }
+
+        prevBtn.addEventListener('click', () => goTo(currentSlide - 1));
+        nextBtn.addEventListener('click', () => goTo(currentSlide + 1));
+
+        updateCardsPerView();
+        buildDots();
+
+        window.addEventListener('resize', () => {
+          updateCardsPerView();
+          buildDots();
+          goTo(Math.min(currentSlide, getTotalSlides() - 1));
+        });
+      })();
+
+      // Modal Logic
+      (function() {
+        const modal = document.getElementById('rpModal');
+        const closeBtn = document.getElementById('rpModalClose');
+        const overlay = modal.querySelector('.rp-modal-overlay');
+
+        function openModal(projectId) {
+          const data = projectsData[projectId];
+          if (!data) return;
+
+          document.getElementById('rpModalTitle').textContent = data.title;
+          document.getElementById('rpModalClient').textContent = data.client;
+          document.getElementById('rpModalClientLogo').src = data.clientLogo;
+
+          const challengeList = document.getElementById('rpModalChallenge');
+          challengeList.innerHTML = data.challenge.map(t => '<li>' + t + '</li>').join('');
+
+          const solutionList = document.getElementById('rpModalSolution');
+          solutionList.innerHTML = data.solution.map(t => '<li>' + t + '</li>').join('');
+
+          const resultsList = document.getElementById('rpModalResults');
+          resultsList.innerHTML = data.results.map(t => '<li>' + t + '</li>').join('');
+
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        // Bind card clicks
+        document.querySelectorAll('.rp-card').forEach(card => {
+          card.addEventListener('click', (e) => {
+            if (e.target.closest('.rp-card-overlay-btn')) return;
+            openModal(card.dataset.project);
+          });
+        });
+
+        document.querySelectorAll('.rp-card-overlay-btn').forEach(btn => {
+          btn.addEventListener('click', () => openModal(btn.dataset.project));
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeModal();
+        });
+      })();
     </script>
   </body>
 </html>
