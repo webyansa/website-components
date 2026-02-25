@@ -459,6 +459,18 @@ const TemplateCard = ({ template }: { template: Template }) => {
         templateFiles = [
           "index.html", "en.html",
           "css/one-page.css", "css/one-page-ltr.css",
+          "favicon.svg",
+          "images/main-logo.svg",
+          "images/raneen/hero-image.jpg",
+          "images/raneen/project-1-main.jpg", "images/raneen/project-2-main.jpg",
+          "images/raneen/project-3-main.jpg", "images/raneen/project-4-main.jpg",
+          "images/raneen/project-5-main.jpg",
+          "images/raneen/jadarah-logo.png", "images/raneen/jazeel-logo.png",
+          "images/raneen/webyan-logo.svg",
+          "images/jadarah-logo.jpg", "images/cooperative-logo.svg", "images/deem-logo.jpg",
+          "images/team/member-1.jpg", "images/team/member-2.jpg", "images/team/member-3.jpg",
+          "images/team/member-4.jpg", "images/team/member-5.jpg", "images/team/member-6.jpg",
+          "images/team/member-7.jpg",
         ];
       } else {
         templateFiles = [
@@ -477,8 +489,14 @@ const TemplateCard = ({ template }: { template: Template }) => {
         try {
           const response = await fetch(`${import.meta.env.BASE_URL}${basePath}/${file}`);
           if (response.ok) {
-            const content = await response.text();
-            zip.file(file, content);
+            const isImage = /\.(jpg|jpeg|png|gif|svg|webp|ico)$/i.test(file);
+            if (isImage && !file.endsWith('.svg')) {
+              const blob = await response.blob();
+              zip.file(file, blob);
+            } else {
+              const content = await response.text();
+              zip.file(file, content);
+            }
           }
         } catch (err) {
           console.warn(`Could not fetch ${file}:`, err);
