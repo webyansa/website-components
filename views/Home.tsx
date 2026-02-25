@@ -27,6 +27,17 @@ type Template = {
 
 const templates: Template[] = [
   {
+    id: "one-page",
+    name: "قالب صفحة واحدة — الجمعيات",
+    description: "قالب احترافي لصفحة واحدة يعرض جميع أقسام الجمعية بشكل انسيابي — يدعم العربية والإنجليزية والوضع الداكن",
+    previewPath: "one-page/index.html",
+    folderPath: "one-page",
+    thumbnail: "images/main-logo.svg",
+    features: ["صفحة واحدة", "عربي + إنجليزي", "وضع داكن", "10 أقسام"],
+    pages: 2,
+    isNew: true,
+  },
+  {
     id: "theme-1",
     name: "قالب الجمعية الأول",
     description: "قالب احترافي متكامل للجمعيات الخيرية والمنظمات غير الربحية يدعم العربية RTL بتصميم عصري",
@@ -442,16 +453,25 @@ const TemplateCard = ({ template }: { template: Template }) => {
       const basePath = template.folderPath;
       
       // Template files to download
-      const templateFiles = [
-        "index.html", "about.html", "projects.html", "services.html",
-        "governance.html", "join.html", "contact.html",
-        "css/main.css", "css/components.css", "css/pages.css", "css/rtl.css",
-        "js/main.js", "js/components.js",
-        "assets/img/logo.svg", "assets/icons/favicon.svg",
-        "posters/poster-1-impact.html", "posters/poster-2-project.html",
-        "posters/poster-3-governance.html", "posters/poster-4-volunteer.html",
-        "posters/poster-5-partners.html",
-      ];
+      let templateFiles: string[] = [];
+      
+      if (template.id === "one-page") {
+        templateFiles = [
+          "index.html", "en.html",
+          "css/one-page.css", "css/one-page-ltr.css",
+        ];
+      } else {
+        templateFiles = [
+          "index.html", "about.html", "projects.html", "services.html",
+          "governance.html", "join.html", "contact.html",
+          "css/main.css", "css/components.css", "css/pages.css", "css/rtl.css",
+          "js/main.js", "js/components.js",
+          "assets/img/logo.svg", "assets/icons/favicon.svg",
+          "posters/poster-1-impact.html", "posters/poster-2-project.html",
+          "posters/poster-3-governance.html", "posters/poster-4-volunteer.html",
+          "posters/poster-5-partners.html",
+        ];
+      }
 
       for (const file of templateFiles) {
         try {

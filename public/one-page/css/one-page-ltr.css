@@ -1,0 +1,227 @@
+/*
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    One-Page LTR Overrides (English)                         ║
+║           Direction-specific adjustments for Left-to-Right layout           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+*/
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE DIRECTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.op-page {
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER / NAV
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-nav {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Mobile Nav — slide from left */
+@media (max-width: 991px) {
+  .op-nav {
+    right: auto;
+    left: -100%;
+  }
+  .op-nav.open {
+    left: 0;
+    right: auto;
+  }
+}
+
+/* Hamburger — move to right */
+.op-hamburger {
+  margin-left: 0;
+  margin-right: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-hero-slide-content {
+  text-align: left;
+}
+
+/* Flip hero arrow icons back for LTR */
+.op-hero-btn svg {
+  transform: scaleX(-1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION HEADS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-section-head {
+  text-align: center; /* already center, kept for safety */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-about-desc {
+  border-left: none;
+  border-right: 3px solid var(--secondary, #0fbfae);
+  padding-left: 0;
+  padding-right: 18px;
+}
+
+.op-about-gallery-secondary {
+  right: auto;
+  left: -24px;
+}
+
+.op-about-badge {
+  left: auto;
+  right: -16px;
+}
+
+.op-about-gallery-frame {
+  right: auto;
+  left: -12px;
+}
+
+/* About cards icon margin */
+.op-about-card-icon {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+/* Stats divider */
+.op-about-stat:not(:last-child)::after {
+  right: auto;
+  left: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VALUES
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-value-card {
+  text-align: left;
+}
+
+.op-value-num {
+  right: auto;
+  left: 16px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GOALS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-goal-card {
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ENABLERS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.enabler-number {
+  right: auto;
+  left: 20px;
+}
+
+.enabler-accent {
+  right: auto;
+  left: 0;
+}
+
+.enabler-content {
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEAM SLIDER
+   ═══════════════════════════════════════════════════════════════════════════ */
+.team-slider-track {
+  direction: ltr;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GOVERNANCE
+   ═══════════════════════════════════════════════════════════════════════════ */
+.gov-card-title {
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   JOIN US
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-joinus-card {
+  text-align: left;
+}
+
+.op-joinus-btn svg {
+  transform: scaleX(-1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-contact-info {
+  text-align: left;
+}
+
+.op-contact-icon {
+  margin-right: 0;
+  margin-left: 14px;
+}
+
+.op-contact-form input,
+.op-contact-form select,
+.op-contact-form textarea {
+  text-align: left;
+}
+
+.op-submit-btn svg {
+  transform: scaleX(-1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════════════════ */
+.op-footer-brand,
+.op-footer-links {
+  text-align: left;
+}
+
+.op-footer-social {
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ICON FLIPPING — Arrows should point correctly in LTR
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* Hero prev/next already use correct SVG direction */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODALS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.vol-modal-container,
+.cv-modal-container,
+.gov-modal-container {
+  text-align: left;
+}
+
+.vol-modal-close {
+  right: 20px;
+  left: auto;
+}
+
+.cv-modal-close {
+  right: 20px;
+  left: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .op-about-gallery-secondary,
+  .op-about-badge,
+  .op-about-gallery-frame {
+    right: auto;
+    left: auto;
+  }
+}
