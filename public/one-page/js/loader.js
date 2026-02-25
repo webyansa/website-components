@@ -1,17 +1,20 @@
 /**
- * One-Page Template — Page Loader & Transition Controller
+ * One-Page Template — Page Loader & Section Reveal Controller
  */
 (function() {
     'use strict';
 
     function hideLoader() {
         var body = document.body;
-        if (!body) return;
+        if (!body || body.classList.contains('is-loaded')) return;
         body.classList.remove('is-loading');
         body.classList.add('is-loaded');
+
+        // Start section reveals after loader fades
+        setTimeout(revealSections, 500);
     }
 
-    // Wait for DOM
+    // DOM ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(hideLoader, 800);
@@ -32,6 +35,31 @@
 
     // Hard fallback
     setTimeout(hideLoader, 3500);
+
+    // --- Section Fade-Up Reveal ---
+    function revealSections() {
+        var sections = document.querySelectorAll('.op-section-reveal');
+        if (!sections.length) return;
+
+        // Use IntersectionObserver for scroll-triggered reveals
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            sections.forEach(function(section) {
+                observer.observe(section);
+            });
+        } else {
+            // Fallback: reveal all
+            sections.forEach(function(s) { s.classList.add('revealed'); });
+        }
+    }
 
     // --- Page Transition for language switch ---
     document.addEventListener('DOMContentLoaded', function() {
