@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الحوكمة — وثائق ولوائح الجمعية</title>
+  <meta name="description" content="صفحة الحوكمة تعرض جميع وثائق ولوائح وسياسات الجمعية بشكل احترافي ومنظم" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/governance.css" />
+</head>
+<body class="gov-page">
+
+  <!-- Top Navigation -->
+  <nav class="gov-topnav">
+    <div class="container">
+      <a href="raneen-index.html" class="gov-back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        العودة للرئيسية
+      </a>
+      <img src="images/raneen/raneen-logo.svg" alt="رنين" class="gov-logo-small" />
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="gov-hero">
+    <div class="gov-hero-content">
+      <div class="gov-hero-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h6"/></svg>
+        مركز الوثائق الرسمية
+      </div>
+      <h1 class="gov-hero-title">الحوكمة</h1>
+      <div class="gov-hero-line">
+        <span></span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span></span>
+      </div>
+      <p class="gov-hero-desc">جميع الوثائق واللوائح والسياسات الرسمية للجمعية — منظمة ومتاحة بتنسيق احترافي للاطلاع والتحميل</p>
+    </div>
+  </section>
+
+  <!-- Tabs & Content -->
+  <section class="gov-tabs-section">
+    <div class="container">
+      <div class="gov-tabs" id="govTabs">
+        <button class="gov-tab active" data-tab="policies">السياسات واللوائح</button>
+        <button class="gov-tab" data-tab="plans">الخطط</button>
+        <button class="gov-tab" data-tab="minutes">محاضر الاجتماعات</button>
+        <button class="gov-tab" data-tab="reports">التقارير</button>
+        <button class="gov-tab" data-tab="ethics">الميثاق الأخلاقي</button>
+      </div>
+
+      <!-- Tab: السياسات واللوائح -->
+      <div class="gov-tab-panel active" data-panel="policies">
+        <div class="gov-grid" id="govGridPolicies"></div>
+      </div>
+
+      <!-- Tab: الخطط -->
+      <div class="gov-tab-panel" data-panel="plans">
+        <div class="gov-grid" id="govGridPlans"></div>
+      </div>
+
+      <!-- Tab: محاضر الاجتماعات -->
+      <div class="gov-tab-panel" data-panel="minutes">
+        <div class="gov-grid" id="govGridMinutes"></div>
+      </div>
+
+      <!-- Tab: التقارير -->
+      <div class="gov-tab-panel" data-panel="reports">
+        <div class="gov-grid" id="govGridReports"></div>
+      </div>
+
+      <!-- Tab: الميثاق الأخلاقي -->
+      <div class="gov-tab-panel" data-panel="ethics">
+        <div class="gov-grid" id="govGridEthics"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PDF Preview Modal -->
+  <div class="gov-modal" id="govModal">
+    <div class="gov-modal-overlay" id="govModalOverlay"></div>
+    <div class="gov-modal-container">
+      <div class="gov-modal-header">
+        <div class="gov-modal-header-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+          <span id="govModalTitle">عنوان الوثيقة</span>
+        </div>
+        <div class="gov-modal-header-actions">
+          <a class="gov-modal-btn gov-modal-btn-download" id="govModalDownload" href="#" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            تحميل
+          </a>
+          <a class="gov-modal-btn gov-modal-btn-newtab" id="govModalNewTab" href="#" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            فتح في تبويب جديد
+          </a>
+          <button class="gov-modal-close" id="govModalClose">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="gov-modal-body">
+        <iframe id="govModalIframe" src="" title="عرض الوثيقة"></iframe>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function() {
+  /* ===== Documents Data ===== */
+  const documents = {
+    policies: [
+      { title: 'لائحة وإجراءات اختيار المستفيدين', date: '2024-01-15', pages: 24, url: 'https://drive.google.com/file/d/EXAMPLE1/preview' },
+      { title: 'لائحة الشؤون الإدارية الداخلية', date: '2024-02-10', pages: 32, url: 'https://drive.google.com/file/d/EXAMPLE2/preview' },
+      { title: 'دليل آلية التعيين والتوظيف', date: '2023-11-20', pages: 18, url: 'https://drive.google.com/file/d/EXAMPLE3/preview' },
+      { title: 'لائحة الشؤون المالية', date: '2024-03-05', pages: 40, url: 'https://drive.google.com/file/d/EXAMPLE4/preview' },
+      { title: 'دليل آلية التطوع', date: '2023-09-12', pages: 15, url: 'https://drive.google.com/file/d/EXAMPLE5/preview' },
+      { title: 'سياسة حماية البيانات والخصوصية', date: '2024-04-01', pages: 22, url: 'https://drive.google.com/file/d/EXAMPLE6/preview' },
+    ],
+    plans: [
+      { title: 'الخطة الاستراتيجية 2024-2028', date: '2024-01-01', pages: 56, url: 'https://drive.google.com/file/d/EXAMPLE7/preview' },
+      { title: 'الخطة التشغيلية 2024', date: '2024-01-10', pages: 34, url: 'https://drive.google.com/file/d/EXAMPLE8/preview' },
+      { title: 'خطة إدارة المخاطر', date: '2023-12-15', pages: 28, url: 'https://drive.google.com/file/d/EXAMPLE9/preview' },
+    ],
+    minutes: [
+      { title: 'محضر اجتماع مجلس الإدارة - يناير 2024', date: '2024-01-28', pages: 8, url: 'https://drive.google.com/file/d/EXAMPLE10/preview' },
+      { title: 'محضر اجتماع الجمعية العمومية', date: '2024-03-15', pages: 12, url: 'https://drive.google.com/file/d/EXAMPLE11/preview' },
+      { title: 'محضر اجتماع لجنة المراجعة الداخلية', date: '2024-02-20', pages: 6, url: 'https://drive.google.com/file/d/EXAMPLE12/preview' },
+    ],
+    reports: [
+      { title: 'التقرير السنوي 2023', date: '2024-02-28', pages: 64, url: 'https://drive.google.com/file/d/EXAMPLE13/preview' },
+      { title: 'تقرير الأداء المالي - الربع الأول 2024', date: '2024-04-10', pages: 20, url: 'https://drive.google.com/file/d/EXAMPLE14/preview' },
+      { title: 'تقرير الأثر الاجتماعي', date: '2023-12-30', pages: 44, url: 'https://drive.google.com/file/d/EXAMPLE15/preview' },
+    ],
+    ethics: [
+      { title: 'الميثاق الأخلاقي للجمعية', date: '2023-06-01', pages: 16, url: 'https://drive.google.com/file/d/EXAMPLE16/preview' },
+      { title: 'مدونة السلوك الوظيفي', date: '2023-08-15', pages: 12, url: 'https://drive.google.com/file/d/EXAMPLE17/preview' },
+    ]
+  };
+
+  const catLabels = {
+    policies: 'السياسات واللوائح',
+    plans: 'الخطط',
+    minutes: 'محاضر الاجتماعات',
+    reports: 'التقارير',
+    ethics: 'الميثاق الأخلاقي'
+  };
+
+  /* ===== Render Cards ===== */
+  function renderCards(category, containerId) {
+    const grid = document.getElementById(containerId);
+    if (!grid) return;
+    const docs = documents[category] || [];
+    if (!docs.length) {
+      grid.innerHTML = '<div class="gov-empty"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg><p>لا توجد وثائق في هذا القسم حالياً</p></div>';
+      return;
+    }
+    grid.innerHTML = docs.map(function(doc, i) {
+      var formattedDate = new Date(doc.date).toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+      return '<div class="gov-card" style="animation-delay:' + (i * 0.08) + 's">' +
+        '<div class="gov-card-thumb">' +
+          '<div class="gov-pdf-icon">' +
+            '<div class="gov-pdf-page"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h6"/></svg></div>' +
+            '<span class="gov-pdf-label">PDF</span>' +
+          '</div>' +
+          '<span class="gov-card-cat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>' + catLabels[category] + '</span>' +
+        '</div>' +
+        '<div class="gov-card-body">' +
+          '<h3 class="gov-card-title">' + doc.title + '</h3>' +
+          '<div class="gov-card-meta">' +
+            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>' + formattedDate + '</span>' +
+            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>' + doc.pages + ' صفحة</span>' +
+          '</div>' +
+          '<div class="gov-card-actions">' +
+            '<button class="gov-btn gov-btn-primary" onclick="openGovModal(\'' + doc.title.replace(/'/g, "\\'") + '\', \'' + doc.url + '\')">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>' +
+              'عرض الملف' +
+            '</button>' +
+            '<a class="gov-btn gov-btn-secondary" href="' + doc.url.replace('/preview', '/view') + '" download>' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
+              'تحميل' +
+            '</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  /* Initial render */
+  renderCards('policies', 'govGridPolicies');
+  renderCards('plans', 'govGridPlans');
+  renderCards('minutes', 'govGridMinutes');
+  renderCards('reports', 'govGridReports');
+  renderCards('ethics', 'govGridEthics');
+
+  /* ===== Tabs Logic ===== */
+  var tabs = document.querySelectorAll('.gov-tab');
+  var panels = document.querySelectorAll('.gov-tab-panel');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      var target = tab.getAttribute('data-tab');
+      document.querySelector('[data-panel="' + target + '"]').classList.add('active');
+    });
+  });
+
+  /* ===== Modal Logic ===== */
+  var modal = document.getElementById('govModal');
+  var modalIframe = document.getElementById('govModalIframe');
+  var modalTitle = document.getElementById('govModalTitle');
+  var modalDownload = document.getElementById('govModalDownload');
+  var modalNewTab = document.getElementById('govModalNewTab');
+
+  window.openGovModal = function(title, url) {
+    modalTitle.textContent = title;
+    modalIframe.src = url;
+    modalDownload.href = url.replace('/preview', '/view');
+    modalNewTab.href = url.replace('/preview', '/view');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(function() { modalIframe.src = ''; }, 400);
+  }
+
+  document.getElementById('govModalClose').addEventListener('click', closeModal);
+  document.getElementById('govModalOverlay').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+})();
+</script>
+
+</body>
+</html>
