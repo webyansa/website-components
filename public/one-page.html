@@ -105,6 +105,7 @@
         <span class="op-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h10M9 12h10M9 16h10M5 8h.01M5 12h.01M5 16h.01"/></svg> <span data-en="About Us">من نحن</span></span>
         <h2 data-en="About the Association">نبذة عن الجمعية</h2>
         <div class="op-head-line"><span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/></svg><span></span></div>
+        <p class="op-section-sub" data-en="More than 15 years of community service, building capacities and empowering individuals">أكثر من 15 عامًا من العمل المجتمعي، نبني القدرات ونمكّن الإنسان</p>
       </div>
       <div class="op-about-grid">
         <!-- Gallery Side -->
@@ -148,20 +149,24 @@
       </div>
       <!-- Stats Bar -->
       <div class="op-about-stats">
-        <div class="op-about-stat">
-          <span class="op-about-stat-num" style="--stat-color:#0fbfae">+5,000</span>
+        <div class="op-about-stat" style="--stat-color:#0fbfae">
+          <div class="op-about-stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <span class="op-about-stat-num">+5,000</span>
           <span class="op-about-stat-label" data-en="Beneficiaries">مستفيد</span>
         </div>
-        <div class="op-about-stat">
-          <span class="op-about-stat-num" style="--stat-color:#53687a">+200</span>
+        <div class="op-about-stat" style="--stat-color:#53687a">
+          <div class="op-about-stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg></div>
+          <span class="op-about-stat-num">+200</span>
           <span class="op-about-stat-label" data-en="Volunteers">متطوع</span>
         </div>
-        <div class="op-about-stat">
-          <span class="op-about-stat-num" style="--stat-color:#e8a87c">+50</span>
+        <div class="op-about-stat" style="--stat-color:#e8a87c">
+          <div class="op-about-stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <span class="op-about-stat-num">+50</span>
           <span class="op-about-stat-label" data-en="Programs">برنامج</span>
         </div>
-        <div class="op-about-stat">
-          <span class="op-about-stat-num" style="--stat-color:#2ec4a5">+30</span>
+        <div class="op-about-stat" style="--stat-color:#2ec4a5">
+          <div class="op-about-stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <span class="op-about-stat-num">+30</span>
           <span class="op-about-stat-label" data-en="Partners">شريك</span>
         </div>
       </div>
@@ -442,7 +447,20 @@
             <div class="op-form-group"><label data-en="Full Name">الاسم الكامل</label><input type="text" placeholder="أدخل اسمك" required /></div>
             <div class="op-form-group"><label data-en="Email">البريد الإلكتروني</label><input type="email" placeholder="example@email.com" required /></div>
           </div>
-          <div class="op-form-group"><label data-en="Subject">الموضوع</label><input type="text" placeholder="موضوع الرسالة" /></div>
+          <div class="op-form-row">
+            <div class="op-form-group"><label data-en="Subject">الموضوع</label><input type="text" placeholder="موضوع الرسالة" /></div>
+            <div class="op-form-group">
+              <label data-en="Contact Type">نوع التواصل</label>
+              <select required>
+                <option value="" disabled selected>اختر نوع التواصل</option>
+                <option value="inquiry" data-en="Inquiry">استفسار</option>
+                <option value="complaint" data-en="Complaint">شكوى</option>
+                <option value="report" data-en="Report">بلاغ</option>
+                <option value="suggestion" data-en="Suggestion">اقتراح</option>
+                <option value="other" data-en="Other">أخرى</option>
+              </select>
+            </div>
+          </div>
           <div class="op-form-group"><label data-en="Message">الرسالة</label><textarea rows="5" placeholder="اكتب رسالتك هنا..." required></textarea></div>
           <button type="submit" class="op-submit-btn"><span data-en="Send Message">إرسال الرسالة</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7Z"/></svg></button>
         </form>
