@@ -14,11 +14,20 @@ body.op-page {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HEADER / NAV
+   HEADER / NAV — Flip entire header for LTR
    ═══════════════════════════════════════════════════════════════════════════ */
+.op-header .container {
+  flex-direction: row-reverse;
+}
+
 .op-nav {
-  margin-left: auto;
-  margin-right: 0;
+  margin-left: 0;
+  margin-right: auto;
+  direction: ltr;
+}
+
+.op-header-utils {
+  order: 0;
 }
 
 /* Mobile Nav — slide from left */
@@ -33,10 +42,11 @@ body.op-page {
   }
 }
 
-/* Hamburger — move to right */
+/* Hamburger — move to left side */
 .op-hamburger {
-  margin-left: 0;
-  margin-right: 12px;
+  margin-left: 12px;
+  margin-right: 0;
+  order: -1;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -163,9 +173,13 @@ body.op-page {
   text-align: left;
 }
 
+.op-contact-item {
+  flex-direction: row-reverse;
+}
+
 .op-contact-icon {
-  margin-right: 0;
-  margin-left: 14px;
+  margin-right: 14px;
+  margin-left: 0;
 }
 
 .op-contact-form input,
@@ -179,8 +193,17 @@ body.op-page {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   FOOTER
+   FOOTER — Reverse grid order for LTR
    ═══════════════════════════════════════════════════════════════════════════ */
+.op-footer-top {
+  direction: rtl;
+}
+
+.op-footer-top > * {
+  direction: ltr;
+  text-align: left;
+}
+
 .op-footer-brand,
 .op-footer-links {
   text-align: left;
@@ -188,6 +211,10 @@ body.op-page {
 
 .op-footer-social {
   text-align: left;
+}
+
+.op-footer-bottom {
+  flex-direction: row-reverse;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
