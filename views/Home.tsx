@@ -458,7 +458,8 @@ const TemplateCard = ({ template }: { template: Template }) => {
       if (template.id === "one-page") {
         templateFiles = [
           "index.html", "en.html",
-          "css/one-page.css", "css/one-page-ltr.css",
+          "css/one-page.css", "css/one-page-ltr.css", "css/loader.css",
+          "js/loader.js",
           "favicon.svg",
           "images/main-logo.svg",
           "images/raneen/hero-image.jpg",
