@@ -766,11 +766,20 @@
       if (w <= 480) return 1;
       if (w <= 768) return 2;
       if (w <= 1024) return 3;
-      return 4;
+      if (w <= 1280) return 4;
+      return 5;
     }
 
     function getTotalPages() {
       return Math.ceil(cards.length / getCardsPerView());
+    }
+
+    function setCardWidths() {
+      var perView = getCardsPerView();
+      var viewportW = viewport.offsetWidth;
+      var gap = 24;
+      var cardW = (viewportW - gap * (perView - 1)) / perView;
+      cards.forEach(function(c) { c.style.width = cardW + 'px'; });
     }
 
     function renderDots() {
@@ -828,11 +837,13 @@
       startTeamAutoplay();
     }, { passive: true });
 
+    setCardWidths();
     renderDots();
     startTeamAutoplay();
 
     window.addEventListener('resize', function() {
       currentPage = 0;
+      setCardWidths();
       renderDots();
       goToPage(0);
     });
