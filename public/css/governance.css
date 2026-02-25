@@ -790,14 +790,214 @@
   background: linear-gradient(135deg, #005965, #2bbfb0);
 }
 
+/* ========================================
+   ENABLERS SECTION
+   ======================================== */
+.enablers-section {
+  padding: 80px 0 100px;
+  background: #f1f5f8;
+  border-top: 1px solid rgba(0,0,0,.04);
+}
+.enablers-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.enablers-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  background: rgba(0,89,101,.04);
+  border: 1px solid rgba(0,89,101,.08);
+  border-radius: 999px;
+  color: #005965;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.enablers-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 14px;
+}
+.enablers-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.enablers-title-line span { width: 36px; height: 2px; background: linear-gradient(90deg, #005965, #2bbfb0); border-radius: 4px; }
+.enablers-title-line svg { color: #005965; }
+.enablers-desc {
+  font-size: 15px;
+  color: #64748b;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Enablers Grid */
+.enablers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* Enabler Card */
+.enabler-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  height: 380px;
+  cursor: default;
+  animation: govCardIn .5s ease both;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  transition: all .5s cubic-bezier(.25,.46,.45,.94);
+}
+.enabler-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,40,50,.18);
+}
+
+/* Background Image */
+.enabler-card-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94), filter .5s;
+  filter: brightness(.92);
+}
+.enabler-card:hover .enabler-card-img {
+  transform: scale(1.08);
+  filter: brightness(.85);
+}
+
+/* Overlay */
+.enabler-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,30,40,.92) 0%,
+    rgba(0,40,55,.7) 35%,
+    rgba(0,50,65,.35) 60%,
+    rgba(0,60,75,.1) 100%
+  );
+  transition: background .5s;
+}
+.enabler-card:hover .enabler-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0,30,40,.95) 0%,
+    rgba(0,40,55,.75) 40%,
+    rgba(0,50,65,.4) 65%,
+    rgba(0,60,75,.15) 100%
+  );
+}
+
+/* Side Accent Line */
+.enabler-accent {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 3px;
+  height: 40px;
+  background: var(--accent, #2bbfb0);
+  border-radius: 3px 0 0 3px;
+  transition: height .4s ease;
+  z-index: 3;
+}
+.enabler-card:hover .enabler-accent { height: 70px; }
+
+/* Floating Number */
+.enabler-number {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  font-size: 52px;
+  font-weight: 800;
+  color: rgba(255,255,255,.06);
+  z-index: 2;
+  line-height: 1;
+  transition: color .4s;
+  pointer-events: none;
+}
+.enabler-card:hover .enabler-number { color: rgba(255,255,255,.1); }
+
+/* Icon */
+.enabler-icon-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  border: 1.5px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 3;
+  transition: all .5s cubic-bezier(.25,.46,.45,.94);
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+}
+.enabler-card:hover .enabler-icon-wrap {
+  transform: translate(-50%, -90%) scale(1.1);
+  background: var(--accent, #2bbfb0);
+  border-color: var(--accent, #2bbfb0);
+  box-shadow: 0 6px 24px rgba(0,0,0,.2);
+}
+
+/* Content */
+.enabler-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0 22px 28px;
+  z-index: 3;
+  text-align: center;
+}
+.enabler-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+  transition: transform .4s ease;
+}
+.enabler-card:hover .enabler-content h3 { transform: translateY(-4px); }
+.enabler-content p {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.6);
+  margin: 0;
+  line-height: 1.8;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all .5s cubic-bezier(.25,.46,.45,.94);
+}
+.enabler-card:hover .enabler-content p {
+  max-height: 80px;
+  opacity: 1;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1280px) {
   .gov-grid { grid-template-columns: repeat(4, 1fr); }
+  .enablers-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 1024px) {
   .gov-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .team-grid { grid-template-columns: repeat(4, 1fr); }
   .cv-columns { grid-template-columns: 1fr; }
+  .enablers-grid { grid-template-columns: repeat(3, 1fr); }
+  .enabler-card { height: 340px; }
 }
 @media (max-width: 768px) {
   .gov-hero { padding: 56px 0 72px; }
@@ -812,10 +1012,16 @@
   .cv-modal-container { padding: 28px 20px; }
   .cv-header { flex-direction: column; text-align: center; }
   .cv-contact-row { justify-content: center; }
+  .enablers-grid { grid-template-columns: repeat(2, 1fr); }
+  .enablers-title { font-size: 28px; }
+  .enabler-card { height: 320px; }
+  .enabler-content p { max-height: 80px; opacity: 1; }
 }
 @media (max-width: 480px) {
   .gov-hero-title { font-size: 26px; }
   .gov-grid { grid-template-columns: 1fr; }
   .gov-card-thumb { height: 120px; }
   .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .enablers-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .enabler-card { height: 300px; }
 }
