@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+  <!-- Custom CSS (after Bootstrap to override) -->
   <link rel="stylesheet" href="css/one-page.css" />
 </head>
 <body class="op-page">
@@ -287,7 +290,7 @@
     </div>
   </section>
 
-  <!-- ========== TEAM ========== -->
+  <!-- ========== TEAM (Slider) ========== -->
   <section class="op-team" id="team">
     <div class="container">
       <div class="op-section-head">
@@ -296,7 +299,19 @@
         <div class="op-head-line"><span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/></svg><span></span></div>
         <p>نخبة من الكفاءات المتميزة تعمل بتفانٍ لتحقيق رؤية الجمعية</p>
       </div>
-      <div class="team-grid" id="teamGrid"></div>
+      <!-- Team Slider -->
+      <div class="team-slider-wrapper">
+        <button class="team-slider-arrow team-slider-prev" id="teamPrev">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="team-slider-viewport" id="teamViewport">
+          <div class="team-slider-track" id="teamGrid"></div>
+        </div>
+        <button class="team-slider-arrow team-slider-next" id="teamNext">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="team-slider-dots" id="teamDots"></div>
     </div>
   </section>
 
@@ -328,7 +343,7 @@
     </div>
   </section>
 
-  <!-- ========== PARTNERS ========== -->
+  <!-- ========== PARTNERS (Infinite Slider) ========== -->
   <section class="op-partners" id="partners">
     <div class="container">
       <div class="op-section-head">
@@ -336,13 +351,23 @@
         <div class="op-head-line"><span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span></span></div>
         <p>نفخر بشراكاتنا مع مختلف القطاعات</p>
       </div>
-      <div class="op-partners-grid">
-        <div class="op-partner-card"><img src="images/raneen/jadarah-logo.png" alt="جدارة" /><span>جدارة</span></div>
-        <div class="op-partner-card"><img src="images/raneen/jazeel-logo.png" alt="جزيل" /><span>جزيل</span></div>
-        <div class="op-partner-card"><img src="images/raneen/webyan-logo.svg" alt="ويبيان" /><span>ويبيان</span></div>
-        <div class="op-partner-card"><img src="images/jadarah-logo.jpg" alt="منصة جدارة" /><span>منصة جدارة</span></div>
-        <div class="op-partner-card"><img src="images/cooperative-logo.svg" alt="تعاوني" /><span>تعاوني</span></div>
-        <div class="op-partner-card"><img src="images/deem-logo.jpg" alt="ديم" /><span>ديم</span></div>
+      <div class="partners-slider">
+        <div class="partners-slider-track">
+          <!-- Original items -->
+          <div class="op-partner-card"><img src="images/raneen/jadarah-logo.png" alt="جدارة" /><span>جدارة</span></div>
+          <div class="op-partner-card"><img src="images/raneen/jazeel-logo.png" alt="جزيل" /><span>جزيل</span></div>
+          <div class="op-partner-card"><img src="images/raneen/webyan-logo.svg" alt="ويبيان" /><span>ويبيان</span></div>
+          <div class="op-partner-card"><img src="images/jadarah-logo.jpg" alt="منصة جدارة" /><span>منصة جدارة</span></div>
+          <div class="op-partner-card"><img src="images/cooperative-logo.svg" alt="تعاوني" /><span>تعاوني</span></div>
+          <div class="op-partner-card"><img src="images/deem-logo.jpg" alt="ديم" /><span>ديم</span></div>
+          <!-- Duplicated for infinite loop -->
+          <div class="op-partner-card"><img src="images/raneen/jadarah-logo.png" alt="جدارة" /><span>جدارة</span></div>
+          <div class="op-partner-card"><img src="images/raneen/jazeel-logo.png" alt="جزيل" /><span>جزيل</span></div>
+          <div class="op-partner-card"><img src="images/raneen/webyan-logo.svg" alt="ويبيان" /><span>ويبيان</span></div>
+          <div class="op-partner-card"><img src="images/jadarah-logo.jpg" alt="منصة جدارة" /><span>منصة جدارة</span></div>
+          <div class="op-partner-card"><img src="images/cooperative-logo.svg" alt="تعاوني" /><span>تعاوني</span></div>
+          <div class="op-partner-card"><img src="images/deem-logo.jpg" alt="ديم" /><span>ديم</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -356,22 +381,26 @@
         <div class="op-head-line"><span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5Z"/></svg><span></span></div>
         <p>نؤمن بأن الفرد هو الركيزة الأساسية في بناء المجتمع، انضم لفريقنا أو تطوّع معنا</p>
       </div>
-      <div class="op-joinus-grid">
-        <div class="op-joinus-card">
-          <div class="op-joinus-card-icon" style="--jc:#005965">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <div class="row g-4 op-joinus-grid">
+        <div class="col-md-6">
+          <div class="op-joinus-card">
+            <div class="op-joinus-card-icon" style="--jc:#005965">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3>انضم لفريقنا</h3>
+            <p>نبحث دائمًا عن كفاءات متميزة تشاركنا رؤيتنا في خدمة المجتمع وتحقيق التنمية المستدامة</p>
+            <a href="#" class="op-joinus-btn op-joinus-btn--primary">قدّم الآن <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></a>
           </div>
-          <h3>انضم لفريقنا</h3>
-          <p>نبحث دائمًا عن كفاءات متميزة تشاركنا رؤيتنا في خدمة المجتمع وتحقيق التنمية المستدامة</p>
-          <a href="#" class="op-joinus-btn op-joinus-btn--primary">قدّم الآن <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></a>
         </div>
-        <div class="op-joinus-card">
-          <div class="op-joinus-card-icon" style="--jc:#2bbfb0">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="col-md-6">
+          <div class="op-joinus-card">
+            <div class="op-joinus-card-icon" style="--jc:#2bbfb0">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>تطوّع معنا</h3>
+            <p>ساهم بوقتك ومهاراتك في إحداث أثر إيجابي حقيقي في مجتمعنا عبر برامج تطوعية متنوعة</p>
+            <button class="op-joinus-btn op-joinus-btn--secondary" onclick="document.getElementById('volunteerModal').classList.add('active'); document.body.style.overflow='hidden'">سجّل الآن <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button>
           </div>
-          <h3>تطوّع معنا</h3>
-          <p>ساهم بوقتك ومهاراتك في إحداث أثر إيجابي حقيقي في مجتمعنا عبر برامج تطوعية متنوعة</p>
-          <button class="op-joinus-btn op-joinus-btn--secondary" onclick="document.getElementById('volunteerModal').classList.add('active'); document.body.style.overflow='hidden'">سجّل الآن <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button>
         </div>
       </div>
     </div>
@@ -543,7 +572,6 @@
         var offset = document.querySelector('.op-header').offsetHeight;
         window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
       }
-      // Close mobile nav
       document.getElementById('opNav').classList.remove('open');
       document.getElementById('opHamburger').classList.remove('open');
     });
@@ -710,7 +738,7 @@
   var teamGrid = document.getElementById('teamGrid');
   teamGrid.innerHTML = teamMembers.map(function(m, i) {
     var crown = m.isManager ? '<div class="team-crown"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 19h19v2h-19zM22.17 6.35l-4.67 4.97L12 4l-5.5 7.32L1.83 6.35 4 18h16l2.17-11.65z"/></svg></div>' : '';
-    return '<div class="team-card' + (m.isManager ? ' team-card--manager' : '') + '" style="animation-delay:' + (i * 0.08) + 's" data-index="' + i + '">' +
+    return '<div class="team-card' + (m.isManager ? ' team-card--manager' : '') + '" data-index="' + i + '">' +
       '<div class="team-card-img-wrap">' + crown +
         '<img src="' + m.image + '" alt="' + m.name + '" class="team-card-img" />' +
         '<div class="team-card-overlay"><div class="team-social-links">' +
@@ -721,6 +749,94 @@
       '</div>' +
       '<div class="team-card-info"><h3 class="team-card-name">' + m.name + '</h3><p class="team-card-role">' + m.role + '</p></div></div>';
   }).join('');
+
+  /* ===== Team Slider ===== */
+  (function() {
+    var viewport = document.getElementById('teamViewport');
+    var track = document.getElementById('teamGrid');
+    var prevBtn = document.getElementById('teamPrev');
+    var nextBtn = document.getElementById('teamNext');
+    var dotsContainer = document.getElementById('teamDots');
+    var cards = track.querySelectorAll('.team-card');
+    var currentPage = 0;
+    var autoplayTimer;
+
+    function getCardsPerView() {
+      var w = window.innerWidth;
+      if (w <= 480) return 1;
+      if (w <= 768) return 2;
+      if (w <= 1024) return 3;
+      return 4;
+    }
+
+    function getTotalPages() {
+      return Math.ceil(cards.length / getCardsPerView());
+    }
+
+    function renderDots() {
+      var total = getTotalPages();
+      dotsContainer.innerHTML = '';
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'team-slider-dot' + (i === currentPage ? ' active' : '');
+        dot.dataset.page = i;
+        dot.addEventListener('click', function() {
+          goToPage(parseInt(this.dataset.page));
+          resetTeamAutoplay();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function goToPage(page) {
+      var total = getTotalPages();
+      currentPage = ((page % total) + total) % total;
+      var perView = getCardsPerView();
+      var cardW = cards[0].offsetWidth;
+      var gap = 24;
+      var offset = currentPage * perView * (cardW + gap);
+      track.style.transform = 'translateX(' + offset + 'px)';
+      var allDots = dotsContainer.querySelectorAll('.team-slider-dot');
+      allDots.forEach(function(d) { d.classList.remove('active'); });
+      if (allDots[currentPage]) allDots[currentPage].classList.add('active');
+    }
+
+    function startTeamAutoplay() {
+      autoplayTimer = setInterval(function() { goToPage(currentPage + 1); }, 4000);
+    }
+    function resetTeamAutoplay() {
+      clearInterval(autoplayTimer);
+      startTeamAutoplay();
+    }
+
+    prevBtn.addEventListener('click', function() { goToPage(currentPage + 1); resetTeamAutoplay(); });
+    nextBtn.addEventListener('click', function() { goToPage(currentPage - 1); resetTeamAutoplay(); });
+
+    viewport.addEventListener('mouseenter', function() { clearInterval(autoplayTimer); });
+    viewport.addEventListener('mouseleave', function() { startTeamAutoplay(); });
+
+    /* Touch support */
+    var touchStartX = 0, touchEndX = 0;
+    viewport.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; clearInterval(autoplayTimer); }, { passive: true });
+    viewport.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goToPage(currentPage - 1);
+        else goToPage(currentPage + 1);
+      }
+      startTeamAutoplay();
+    }, { passive: true });
+
+    renderDots();
+    startTeamAutoplay();
+
+    window.addEventListener('resize', function() {
+      currentPage = 0;
+      renderDots();
+      goToPage(0);
+    });
+  })();
 
   /* CV Modal */
   var cvModal = document.getElementById('cvModal');
@@ -752,6 +868,9 @@
   });
 })();
 </script>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
