@@ -2,8 +2,18 @@
    ONE PAGE — قالب صفحة واحدة احترافي
    ============================================= */
 
+/* ===== Bootstrap Overrides (prevent Bootstrap from breaking custom design) ===== */
+.op-page *,
+.op-page *::before,
+.op-page *::after { box-sizing: border-box; }
+.op-page .container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+.op-page .row { --bs-gutter-x: 1.5rem; }
+.op-page h1, .op-page h2, .op-page h3, .op-page h4, .op-page h5, .op-page h6 { margin-bottom: 0; }
+.op-page p { margin-bottom: 0; }
+.op-page label { margin-bottom: 0; }
+.op-page button:focus, .op-page input:focus, .op-page select:focus, .op-page textarea:focus { box-shadow: none; }
+
 /* ===== Base ===== */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 .op-page {
   min-height: 100vh;
   background: #f8f9fb;
@@ -12,7 +22,6 @@
   color: #334155;
   scroll-behavior: smooth;
 }
-.op-page .container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Scroll Reveal ===== */
 .op-about,.op-values,.op-goals,.op-enablers,.op-team,.op-governance,.op-partners,.op-joinus,.op-contact {
@@ -126,7 +135,7 @@
   transition: all .3s;
   box-shadow: 0 6px 24px rgba(0,89,101,.3);
 }
-.op-hero-btn:hover { background: #007a8a; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,89,101,.4); }
+.op-hero-btn:hover { background: #007a8a; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,89,101,.4); }
 .op-hero-btn svg { transition: transform .3s; }
 .op-hero-btn:hover svg { transform: translateX(-4px); }
 
@@ -324,7 +333,7 @@
 .op-goal-card p { font-size: 14px; color: #64748b; line-height: 1.9; margin: 0; }
 
 /* ========================================
-   ENABLERS (reuse from governance)
+   ENABLERS
    ======================================== */
 .op-enablers { padding: 100px 0; background: #f1f5f8; }
 .enablers-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
@@ -347,12 +356,79 @@
 .enabler-card:hover .enabler-content p { max-height: 80px; opacity: 1; }
 
 /* ========================================
-   TEAM (reuse styles)
+   TEAM SLIDER
    ======================================== */
 .op-team { padding: 100px 0; background: #fff; }
-.team-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+
+/* Slider wrapper */
+.team-slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.team-slider-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+.team-slider-track {
+  display: flex;
+  gap: 24px;
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+}
+
+.team-slider-track .team-card {
+  min-width: calc((100% - 72px) / 4); /* 4 cards with 3 gaps */
+  flex-shrink: 0;
+}
+
+/* Slider Arrows */
+.team-slider-arrow {
+  width: 48px; height: 48px; min-width: 48px;
+  background: #fff;
+  border: 1.5px solid rgba(0,89,101,.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #005965;
+  cursor: pointer;
+  transition: all .3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  z-index: 5;
+}
+.team-slider-arrow:hover {
+  background: #005965; color: #fff;
+  border-color: #005965;
+  box-shadow: 0 6px 20px rgba(0,89,101,.25);
+}
+
+/* Slider Dots */
+.team-slider-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+.team-slider-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(0,89,101,.15);
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+  padding: 0;
+}
+.team-slider-dot.active {
+  background: #005965;
+  transform: scale(1.3);
+  box-shadow: 0 2px 8px rgba(0,89,101,.3);
+}
+
+/* Team Card */
 @keyframes govCardIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-.team-card { text-align: center; animation: govCardIn .5s ease both; background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid rgba(0,0,0,.05); box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: all .4s; position: relative; }
+.team-card { text-align: center; background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid rgba(0,0,0,.05); box-shadow: 0 2px 8px rgba(0,0,0,.04); transition: all .4s; position: relative; }
 .team-card::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2.5px; background: linear-gradient(90deg, #005965, #2bbfb0); border-radius: 3px 3px 0 0; transition: width .4s; }
 .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,89,101,.1), 0 2px 8px rgba(0,0,0,.04); }
 .team-card:hover::after { width: 50%; }
@@ -415,14 +491,37 @@
 .gov-empty p { font-size: 15px; font-weight: 500; color: #94a3b8; }
 
 /* ========================================
-   PARTNERS
+   PARTNERS — Infinite Slider
    ======================================== */
-.op-partners { padding: 100px 0; background: #fff; }
-.op-partners-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+.op-partners { padding: 100px 0; background: #fff; overflow: hidden; }
+
+.partners-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.partners-slider-track {
+  display: flex;
+  gap: 32px;
+  animation: partnersScroll 30s linear infinite;
+  width: max-content;
+}
+
+.partners-slider:hover .partners-slider-track {
+  animation-play-state: paused;
+}
+
+@keyframes partnersScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 16px)); }
+}
+
 .op-partner-card {
-  background: #f8fafb; border-radius: 16px; padding: 32px 16px;
+  background: #f8fafb; border-radius: 16px; padding: 32px 24px;
   display: flex; flex-direction: column; align-items: center; gap: 14px;
   border: 1px solid rgba(0,0,0,.04); transition: all .4s;
+  min-width: 180px; flex-shrink: 0;
 }
 .op-partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.06); border-color: rgba(0,89,101,.1); }
 .op-partner-card img { height: 56px; object-fit: contain; filter: grayscale(40%); transition: filter .4s; }
@@ -554,12 +653,13 @@
   background: linear-gradient(160deg, #f0f9f8 0%, #f8fafb 50%, #f5f0eb 100%);
   position: relative;
 }
-.op-joinus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
+.op-joinus-grid { max-width: none; }
 .op-joinus-card {
   background: #fff; border-radius: 24px; padding: 48px 36px; text-align: center;
   border: 1px solid rgba(0,0,0,.05);
   box-shadow: 0 4px 16px rgba(0,0,0,.04);
   transition: all .4s; position: relative; overflow: hidden;
+  height: 100%;
 }
 .op-joinus-card::before {
   content: ''; position: absolute; bottom: 0; right: 0; left: 0; height: 4px;
@@ -587,9 +687,9 @@
 .op-joinus-btn svg { transition: transform .3s; }
 .op-joinus-btn:hover svg { transform: translateX(-4px); }
 .op-joinus-btn--primary { background: #005965; color: #fff; box-shadow: 0 6px 20px rgba(0,89,101,.25); }
-.op-joinus-btn--primary:hover { background: #007a8a; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,89,101,.35); }
+.op-joinus-btn--primary:hover { background: #007a8a; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,89,101,.35); }
 .op-joinus-btn--secondary { background: #2bbfb0; color: #fff; box-shadow: 0 6px 20px rgba(43,191,176,.25); }
-.op-joinus-btn--secondary:hover { background: #26a99c; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(43,191,176,.35); }
+.op-joinus-btn--secondary:hover { background: #26a99c; color: #fff; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(43,191,176,.35); }
 
 /* ========================================
    VOLUNTEER MODAL
@@ -660,7 +760,6 @@
 @media (max-width: 1280px) {
   .gov-grid { grid-template-columns: repeat(4, 1fr); }
   .enablers-grid { grid-template-columns: repeat(4, 1fr); }
-  .op-partners-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 1024px) {
   .op-nav { display: none; position: fixed; top: 0; right: 0; bottom: 0; width: 280px; background: #fff; flex-direction: column; padding: 80px 24px 24px; box-shadow: -4px 0 20px rgba(0,0,0,.1); z-index: 999; }
@@ -674,11 +773,10 @@
   .op-about-stats { grid-template-columns: repeat(2, 1fr); }
   .op-values-grid { grid-template-columns: repeat(2, 1fr); }
   .op-goals-grid { grid-template-columns: repeat(2, 1fr); }
-  .team-grid { grid-template-columns: repeat(4, 1fr); }
+  .team-slider-track .team-card { min-width: calc((100% - 48px) / 3); }
   .gov-grid { grid-template-columns: repeat(3, 1fr); }
   .enablers-grid { grid-template-columns: repeat(3, 1fr); }
   .enabler-card { height: 340px; }
-  .op-joinus-grid { grid-template-columns: 1fr 1fr; }
   .op-contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .op-footer-top { grid-template-columns: repeat(2, 1fr); }
   .cv-columns { grid-template-columns: 1fr; }
@@ -689,16 +787,15 @@
   .op-about-content h2 { font-size: 28px; }
   .op-values-grid { grid-template-columns: 1fr 1fr; }
   .op-goals-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .team-slider-track .team-card { min-width: calc((100% - 24px) / 2); }
+  .team-slider-arrow { width: 40px; height: 40px; min-width: 40px; }
   .gov-grid { grid-template-columns: repeat(2, 1fr); }
   .gov-tab { padding: 9px 18px; font-size: 13px; }
   .enablers-grid { grid-template-columns: repeat(2, 1fr); }
   .enabler-card { height: 320px; }
   .enabler-content p { max-height: 80px; opacity: 1; }
-  .op-partners-grid { grid-template-columns: repeat(3, 1fr); }
   .op-form-row { grid-template-columns: 1fr; }
   .vol-form-row { grid-template-columns: 1fr; }
-  .op-joinus-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
   .op-contact-info h2 { font-size: 28px; }
   .op-footer-top { grid-template-columns: 1fr; gap: 30px; }
   .op-footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -708,13 +805,15 @@
   .cv-header { flex-direction: column; text-align: center; }
   .op-about-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .op-about-stat-num { font-size: 28px; }
+  .op-partner-card { min-width: 150px; padding: 24px 16px; }
 }
 @media (max-width: 480px) {
   .op-hero-slide-content h1 { font-size: 26px; }
   .op-values-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .team-slider-track .team-card { min-width: 100%; }
+  .team-slider-arrow { display: none; }
   .gov-grid { grid-template-columns: 1fr; }
   .enablers-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
   .enabler-card { height: 300px; }
-  .op-partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .op-partner-card { min-width: 130px; }
 }
