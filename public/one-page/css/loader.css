@@ -1,6 +1,6 @@
 /*
- * One-Page Template — Minimal Elegant Loader
- * Three-dot pulse + sliding progress line
+ * One-Page Template — Minimal Spinner Loader
+ * Clean circular spinner with brand teal color
  */
 
 body.is-loading {
@@ -12,7 +12,6 @@ body.is-loading {
     inset: 0;
     z-index: 9999;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #ffffff;
@@ -21,7 +20,7 @@ body.is-loading {
 }
 
 body.dark-mode .page-loader {
-    background: #0f172a;
+    background: #0f1923;
 }
 
 body.is-loaded .page-loader {
@@ -30,76 +29,33 @@ body.is-loaded .page-loader {
     pointer-events: none;
 }
 
-/* Loader inner */
-.loader-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.8rem;
-}
-
-/* Three dots */
-.loader-dots {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.loader-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--op-primary, #815ea7);
-    opacity: 0.3;
-    animation: dotPulse 1.4s ease-in-out infinite;
-}
-
-.loader-dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.loader-dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-@keyframes dotPulse {
-    0%, 80%, 100% {
-        opacity: 0.2;
-        transform: scale(0.8);
-    }
-    40% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-}
-
-/* Progress line */
-.loader-line {
+/* Spinner */
+.loader-spinner {
     position: relative;
-    width: 100px;
-    height: 2px;
-    background: rgba(0, 0, 0, 0.06);
-    border-radius: 2px;
-    overflow: hidden;
+    width: 40px;
+    height: 40px;
 }
 
-body.dark-mode .loader-line {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.loader-line::after {
+.loader-spinner::before {
     content: '';
     position: absolute;
     inset: 0;
-    width: 40%;
-    background: var(--op-primary, #815ea7);
-    border-radius: 2px;
-    animation: lineSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    border-radius: 50%;
+    border: 3px solid rgba(15, 191, 174, 0.15);
 }
 
-@keyframes lineSlide {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(350%); }
+.loader-spinner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #0fbfae;
+    animation: loaderSpin 0.8s linear infinite;
+}
+
+@keyframes loaderSpin {
+    to { transform: rotate(360deg); }
 }
 
 /* Page transition overlay */
@@ -115,7 +71,7 @@ body.dark-mode .loader-line {
 }
 
 body.dark-mode .page-transition {
-    background: #0f172a;
+    background: #0f1923;
 }
 
 .page-transition.active {
@@ -124,22 +80,39 @@ body.dark-mode .page-transition {
     pointer-events: auto;
 }
 
+/* ========================================
+   Fade-Up Reveal for Sections
+   ======================================== */
+.op-section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.op-section-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .loader-dot {
-        width: 8px;
-        height: 8px;
-    }
-    .loader-line {
-        width: 80px;
+    .loader-spinner {
+        width: 34px;
+        height: 34px;
     }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .loader-dot,
-    .loader-line::after {
+    .loader-spinner::after {
         animation: none;
-        opacity: 0.6;
+        border-top-color: #0fbfae;
+        border-right-color: #0fbfae;
+    }
+    .op-section-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
