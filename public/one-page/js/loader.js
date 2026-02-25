@@ -4,26 +4,25 @@
 (function() {
     'use strict';
 
-    // Add loading state
-    document.body.classList.add('is-loading');
-
     function hideLoader() {
-        document.body.classList.remove('is-loading');
-        document.body.classList.add('is-loaded');
+        var body = document.body;
+        if (!body) return;
+        body.classList.remove('is-loading');
+        body.classList.add('is-loaded');
     }
 
-    // DOM ready
+    // Wait for DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(hideLoader, 700);
+            setTimeout(hideLoader, 800);
         });
     } else {
-        setTimeout(hideLoader, 700);
+        setTimeout(hideLoader, 800);
     }
 
-    // Backup
+    // Backup on full load
     window.addEventListener('load', function() {
-        setTimeout(hideLoader, 900);
+        setTimeout(hideLoader, 1000);
     });
 
     // bfcache
@@ -32,14 +31,13 @@
     });
 
     // Hard fallback
-    setTimeout(hideLoader, 3000);
+    setTimeout(hideLoader, 3500);
 
     // --- Page Transition for language switch ---
     document.addEventListener('DOMContentLoaded', function() {
         var transition = document.querySelector('.page-transition');
         if (!transition) return;
 
-        // Intercept language switch links
         var langLinks = document.querySelectorAll('.op-lang-switch a.op-lang-btn');
         langLinks.forEach(function(link) {
             link.addEventListener('click', function(e) {
