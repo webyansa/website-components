@@ -501,6 +501,12 @@
             });
         }
 
+        // Tax refund toggle
+        function toggleTaxField(show) {
+            document.getElementById('taxRefundField').style.display = show ? 'block' : 'none';
+            if (!show) document.getElementById('taxRefundNumber').value = '';
+        }
+
         // Payment method selection
         function selectPayment(el, type) {
             document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
