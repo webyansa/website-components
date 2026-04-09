@@ -255,24 +255,66 @@ body.wb-page {
 .form-input,
 .form-select {
     width: 100%;
-    padding: 12px 14px;
+    padding: 14px 44px 14px 16px;
     border: 1.5px solid var(--wb-border);
-    border-radius: 10px;
+    border-radius: 12px;
     font-family: var(--wb-font);
     font-size: .9rem;
     color: var(--wb-text);
-    background: var(--wb-white);
-    transition: border-color var(--wb-transition), box-shadow var(--wb-transition);
+    background: var(--wb-bg);
+    transition: border-color var(--wb-transition), box-shadow var(--wb-transition), background var(--wb-transition);
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .form-input:focus,
 .form-select:focus {
     border-color: var(--wb-primary);
+    background: var(--wb-white);
     box-shadow: 0 0 0 3px rgba(15,191,174,.12);
 }
 
-.form-input::placeholder { color: #cbd5e0; }
+.form-input::placeholder { color: #b8c4d0; }
+
+/* Icon wrapper for inputs */
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper .form-input,
+.input-icon-wrapper .form-select {
+    padding-right: 44px;
+}
+
+.input-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--wb-primary);
+    opacity: .7;
+    transition: opacity var(--wb-transition);
+}
+
+.input-icon-wrapper .form-input:focus ~ .input-icon svg,
+.input-icon-wrapper .form-select:focus ~ .input-icon svg {
+    opacity: 1;
+}
+
+/* Select arrow hide native */
+.form-select {
+    cursor: pointer;
+}
 
 /* Phone field with flag */
 .phone-input-wrapper {
