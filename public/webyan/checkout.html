@@ -69,38 +69,121 @@
                             البيانات الشخصية
                         </h3>
 
+                        <!-- Row 1: Entity Name & Responsible Person -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label"><span class="required">*</span> الاسم الكامل</label>
-                                <input type="text" class="form-input" placeholder="أدخل اسمك الكامل" id="fullName">
+                                <label class="form-label"><span class="required">*</span> اسم الكيان</label>
+                                <div class="input-icon-wrapper">
+                                    <input type="text" class="form-input" placeholder="أدخل اسم الكيان" id="orgName">
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label"><span class="required">*</span> البريد الإلكتروني</label>
-                                <input type="email" class="form-input" placeholder="example@email.com" dir="ltr" id="email">
+                                <label class="form-label"><span class="required">*</span> الموظف المسؤول</label>
+                                <div class="input-icon-wrapper">
+                                    <input type="text" class="form-input" placeholder="أدخل اسم المسؤول" id="fullName">
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                                </div>
                             </div>
                         </div>
 
+                        <!-- Row 2: Phone & Email -->
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label"><span class="required">*</span> رقم الجوال</label>
                                 <div class="phone-input-wrapper">
                                     <div class="phone-prefix">
-                                        <span>+966</span>
                                         <span>🇸🇦</span>
+                                        <span>+966</span>
                                     </div>
-                                    <input type="tel" placeholder="5XXXXXXXX" dir="ltr" id="phone">
+                                    <input type="tel" placeholder="51 234 5678" dir="ltr" id="phone">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">اسم المنشأة / الجمعية</label>
-                                <input type="text" class="form-input" placeholder="اسم المنشأة (اختياري)" id="orgName">
+                                <label class="form-label"><span class="required">*</span> البريد الإلكتروني</label>
+                                <div class="input-icon-wrapper">
+                                    <input type="email" class="form-input" placeholder="example@email.com" dir="ltr" id="email">
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                                </div>
                             </div>
                         </div>
 
+                        <!-- Row 3: Entity Type & Entity Classification -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> نوع الكيان</label>
+                                <div class="input-icon-wrapper">
+                                    <select class="form-input form-select" id="entityType">
+                                        <option value="" disabled selected>اختر نوع الكيان</option>
+                                        <option value="غير ربحي">غير ربحي</option>
+                                        <option value="حكومي">حكومي</option>
+                                        <option value="خاص">خاص</option>
+                                        <option value="شبه حكومي">شبه حكومي</option>
+                                        <option value="دولي">دولي</option>
+                                    </select>
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> تصنيف الكيان</label>
+                                <div class="input-icon-wrapper">
+                                    <select class="form-input form-select" id="entityClass">
+                                        <option value="" disabled selected>اختر تصنيف الكيان</option>
+                                        <option value="جمعية أهلية">جمعية أهلية</option>
+                                        <option value="مؤسسة أهلية">مؤسسة أهلية</option>
+                                        <option value="جمعية تعاونية">جمعية تعاونية</option>
+                                        <option value="لجنة تنمية">لجنة تنمية اجتماعية</option>
+                                        <option value="وقف خيري">وقف خيري</option>
+                                        <option value="فريق تطوعي">فريق تطوعي</option>
+                                        <option value="منشأة تجارية">منشأة تجارية</option>
+                                        <option value="أخرى">أخرى</option>
+                                    </select>
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4: Region & Address -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> المنطقة</label>
+                                <div class="input-icon-wrapper">
+                                    <select class="form-input form-select" id="region">
+                                        <option value="" disabled selected>اختر المنطقة</option>
+                                        <option value="الرياض">منطقة الرياض</option>
+                                        <option value="مكة المكرمة">منطقة مكة المكرمة</option>
+                                        <option value="المدينة المنورة">منطقة المدينة المنورة</option>
+                                        <option value="القصيم">منطقة القصيم</option>
+                                        <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+                                        <option value="عسير">منطقة عسير</option>
+                                        <option value="تبوك">منطقة تبوك</option>
+                                        <option value="حائل">منطقة حائل</option>
+                                        <option value="الحدود الشمالية">منطقة الحدود الشمالية</option>
+                                        <option value="جازان">منطقة جازان</option>
+                                        <option value="نجران">منطقة نجران</option>
+                                        <option value="الباحة">منطقة الباحة</option>
+                                        <option value="الجوف">منطقة الجوف</option>
+                                    </select>
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">العنوان</label>
+                                <div class="input-icon-wrapper">
+                                    <input type="text" class="form-input" placeholder="أدخل العنوان" id="address">
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 5: Notes -->
                         <div class="form-row">
                             <div class="form-group full-width">
                                 <label class="form-label">ملاحظات إضافية</label>
-                                <input type="text" class="form-input" placeholder="أي ملاحظات أو متطلبات خاصة" id="notes">
+                                <div class="input-icon-wrapper">
+                                    <input type="text" class="form-input" placeholder="أي ملاحظات أو متطلبات خاصة" id="notes">
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                                </div>
                             </div>
                         </div>
                     </div>

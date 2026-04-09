@@ -89,7 +89,7 @@ body.wb-page {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--wb-primary);
+    background: linear-gradient(135deg, var(--wb-primary), var(--wb-primary-dark));
     color: #fff;
     padding: 10px 24px;
     border-radius: 50px;
@@ -102,9 +102,9 @@ body.wb-page {
 }
 
 .wb-btn-subscribe:hover {
-    background: var(--wb-primary-dark);
+    background: linear-gradient(135deg, var(--wb-primary-dark), #088a7d);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(15,191,174,.3);
+    box-shadow: 0 4px 16px rgba(15,191,174,.35);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -255,24 +255,66 @@ body.wb-page {
 .form-input,
 .form-select {
     width: 100%;
-    padding: 12px 14px;
+    padding: 14px 44px 14px 16px;
     border: 1.5px solid var(--wb-border);
-    border-radius: 10px;
+    border-radius: 12px;
     font-family: var(--wb-font);
     font-size: .9rem;
     color: var(--wb-text);
-    background: var(--wb-white);
-    transition: border-color var(--wb-transition), box-shadow var(--wb-transition);
+    background: var(--wb-bg);
+    transition: border-color var(--wb-transition), box-shadow var(--wb-transition), background var(--wb-transition);
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .form-input:focus,
 .form-select:focus {
     border-color: var(--wb-primary);
+    background: var(--wb-white);
     box-shadow: 0 0 0 3px rgba(15,191,174,.12);
 }
 
-.form-input::placeholder { color: #cbd5e0; }
+.form-input::placeholder { color: #b8c4d0; }
+
+/* Icon wrapper for inputs */
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper .form-input,
+.input-icon-wrapper .form-select {
+    padding-right: 44px;
+}
+
+.input-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--wb-primary);
+    opacity: .7;
+    transition: opacity var(--wb-transition);
+}
+
+.input-icon-wrapper .form-input:focus ~ .input-icon svg,
+.input-icon-wrapper .form-select:focus ~ .input-icon svg {
+    opacity: 1;
+}
+
+/* Select arrow hide native */
+.form-select {
+    cursor: pointer;
+}
 
 /* Phone field with flag */
 .phone-input-wrapper {
@@ -586,13 +628,13 @@ body.wb-page {
 /* Submit button */
 .btn-checkout {
     width: 100%;
-    padding: 14px;
-    background: var(--wb-primary);
+    padding: 15px;
+    background: linear-gradient(135deg, var(--wb-primary), var(--wb-primary-dark));
     color: #fff;
     border: none;
     border-radius: var(--wb-radius);
     font-family: var(--wb-font);
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     cursor: pointer;
     margin-top: 20px;
@@ -601,12 +643,13 @@ body.wb-page {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    letter-spacing: .3px;
 }
 
 .btn-checkout:hover {
-    background: var(--wb-primary-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(15,191,174,.3);
+    background: linear-gradient(135deg, var(--wb-primary-dark), #088a7d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(15,191,174,.35);
 }
 
 .btn-checkout:active { transform: translateY(0); }
@@ -745,8 +788,8 @@ body.wb-page {
 
 .pg-btn-pay {
     width: 100%;
-    padding: 14px;
-    background: var(--wb-primary);
+    padding: 15px;
+    background: linear-gradient(135deg, var(--wb-primary), var(--wb-primary-dark));
     color: #fff;
     border: none;
     border-radius: var(--wb-radius);
@@ -757,7 +800,10 @@ body.wb-page {
     transition: all var(--wb-transition);
 }
 
-.pg-btn-pay:hover { background: var(--wb-primary-dark); }
+.pg-btn-pay:hover {
+    background: linear-gradient(135deg, var(--wb-primary-dark), #088a7d);
+    box-shadow: 0 6px 20px rgba(15,191,174,.3);
+}
 
 .pg-close {
     position: absolute;
