@@ -913,8 +913,8 @@ body.wb-page {
 }
 
 .bank-info-box {
-    background: linear-gradient(135deg, var(--wb-primary-light), #f0faf9);
-    border: 1px solid rgba(15,191,174,.15);
+    background: linear-gradient(135deg, var(--wb-primary-light), #eef6fc);
+    border: 1px solid rgba(36,194,236,.15);
     border-radius: var(--wb-radius);
     padding: 16px;
     margin-bottom: 16px;
@@ -938,15 +938,46 @@ body.wb-page {
 
 .bank-info-row {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
     padding: 6px 0;
     font-size: .85rem;
-    border-bottom: 1px dashed rgba(15,191,174,.15);
+    border-bottom: 1px dashed rgba(36,194,236,.15);
 }
 
 .bank-info-row:last-child { border-bottom: none; }
-.bank-info-label { color: var(--wb-text-muted); }
-.bank-info-value { color: var(--wb-text); font-weight: 600; }
+.bank-info-label { color: var(--wb-text-muted); white-space: nowrap; }
+.bank-info-value { color: var(--wb-text); font-weight: 600; flex: 1; }
+
+/* Copy button */
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--wb-border);
+    border-radius: 8px;
+    background: var(--wb-white);
+    cursor: pointer;
+    transition: all var(--wb-transition);
+    flex-shrink: 0;
+    color: var(--wb-secondary);
+}
+
+.copy-btn:hover {
+    border-color: var(--wb-primary);
+    background: var(--wb-primary-light);
+    color: var(--wb-primary);
+}
+
+.copy-btn.copied {
+    border-color: var(--wb-success);
+    background: #f0fdf4;
+    color: var(--wb-success);
+}
+
+.copy-btn svg { stroke: currentColor; }
 
 /* File upload zone */
 .file-upload-zone {
