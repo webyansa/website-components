@@ -897,6 +897,258 @@ body.wb-page {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   BANK TRANSFER SECTION
+   ═══════════════════════════════════════════════════════════ */
+.bank-transfer-section {
+    display: none;
+    padding: 16px 16px 4px 44px;
+    animation: fadeSlideDown .3s ease;
+}
+
+.bank-transfer-section.visible { display: block; }
+
+@keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bank-info-box {
+    background: linear-gradient(135deg, var(--wb-primary-light), #f0faf9);
+    border: 1px solid rgba(15,191,174,.15);
+    border-radius: var(--wb-radius);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.bank-info-title {
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--wb-primary-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bank-info-title svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--wb-primary);
+}
+
+.bank-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: .85rem;
+    border-bottom: 1px dashed rgba(15,191,174,.15);
+}
+
+.bank-info-row:last-child { border-bottom: none; }
+.bank-info-label { color: var(--wb-text-muted); }
+.bank-info-value { color: var(--wb-text); font-weight: 600; }
+
+/* File upload zone */
+.file-upload-zone {
+    border: 2px dashed var(--wb-border);
+    border-radius: var(--wb-radius);
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--wb-transition);
+    background: var(--wb-bg);
+}
+
+.file-upload-zone:hover,
+.file-upload-zone.dragover {
+    border-color: var(--wb-primary);
+    background: var(--wb-primary-light);
+}
+
+.file-upload-icon {
+    margin-bottom: 10px;
+}
+
+.file-upload-icon svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--wb-primary);
+    opacity: .6;
+}
+
+.file-upload-text {
+    font-size: .88rem;
+    color: var(--wb-text-muted);
+}
+
+.file-upload-text span {
+    color: var(--wb-primary);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.file-upload-hint {
+    font-size: .75rem;
+    color: #b0bec5;
+    margin-top: 6px;
+}
+
+/* File preview */
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--wb-primary-light);
+    border: 1px solid rgba(15,191,174,.2);
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: .85rem;
+    color: var(--wb-text);
+    font-weight: 500;
+}
+
+.file-preview svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--wb-primary);
+    flex-shrink: 0;
+}
+
+.file-preview span { flex: 1; }
+
+.file-remove-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(229,62,62,.1);
+    color: var(--wb-danger);
+    cursor: pointer;
+    font-size: .75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--wb-transition);
+}
+
+.file-remove-btn:hover { background: rgba(229,62,62,.2); }
+
+/* Payment method icon */
+.payment-method-icon {
+    width: 22px;
+    height: 22px;
+    stroke: var(--wb-text-muted);
+    flex-shrink: 0;
+    opacity: .5;
+    transition: all var(--wb-transition);
+}
+
+.payment-method:hover .payment-method-icon,
+.payment-method.selected .payment-method-icon {
+    stroke: var(--wb-primary);
+    opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COUPON SECTION
+   ═══════════════════════════════════════════════════════════ */
+.coupon-section {
+    margin: 4px 0;
+}
+
+.coupon-input-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.coupon-input {
+    flex: 1;
+    padding: 10px 14px !important;
+    font-size: .85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.coupon-apply-btn {
+    padding: 10px 20px;
+    background: var(--wb-secondary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--wb-font);
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--wb-transition);
+    white-space: nowrap;
+}
+
+.coupon-apply-btn:hover {
+    background: var(--wb-secondary-dark);
+    transform: translateY(-1px);
+}
+
+.coupon-message {
+    font-size: .8rem;
+    margin-top: 6px;
+    font-weight: 500;
+    min-height: 20px;
+}
+
+.coupon-message.success { color: var(--wb-success); }
+.coupon-message.error { color: var(--wb-danger); }
+
+/* Discount row */
+.summary-discount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.discount-label {
+    font-size: .9rem;
+    color: var(--wb-success);
+    font-weight: 600;
+}
+
+.discount-amount {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--wb-success);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TRUST BADGES
+   ═══════════════════════════════════════════════════════════ */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--wb-border-light);
+}
+
+.trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: .72rem;
+    color: var(--wb-text-muted);
+    text-align: center;
+}
+
+.trust-badge svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--wb-primary);
+    opacity: .5;
+}
+
+/* ═══════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -918,4 +1170,11 @@ body.wb-page {
     }
 
     .wb-nav { display: none; }
+
+    .bank-transfer-section {
+        padding-left: 16px;
+    }
+
+    .trust-badges { gap: 10px; }
+}
 }
