@@ -460,10 +460,11 @@
     </div>
 
     <script>
-        // Base price
         let basePrice = 1450;
         let addonsTotal = 0;
+        let discountAmount = 0;
         let selectedPayment = 'electronic';
+        let uploadedFile = null;
 
         // Payment method selection
         function selectPayment(el, type) {
@@ -471,95 +472,185 @@
             el.classList.add('selected');
             selectedPayment = type;
 
-            const subOpts = document.getElementById('electronicOptions');
-            if (type === 'electronic') {
-                subOpts.classList.add('visible');
-            } else {
-                subOpts.classList.remove('visible');
-            }
+            document.getElementById('electronicOptions').classList.toggle('visible', type === 'electronic');
+            document.getElementById('bankTransferSection').classList.toggle('visible', type === 'bank');
         }
 
-        // Pay chip selection
         function selectChip(el) {
             el.parentElement.querySelectorAll('.pay-chip').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
         }
 
-        // Toggle addon
         function toggleAddon(el, price) {
             el.classList.toggle('checked');
-            if (el.classList.contains('checked')) {
-                addonsTotal += price;
-            } else {
-                addonsTotal -= price;
-            }
+            addonsTotal += el.classList.contains('checked') ? price : -price;
             updateTotal();
         }
 
         function updateTotal() {
-            const total = basePrice + addonsTotal;
+            const total = Math.max(0, basePrice + addonsTotal - discountAmount);
             document.getElementById('totalAmount').textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2 });
         }
+
+        // Coupon system
+        const validCoupons = {
+            'WEBYAN20': { type: 'percent', value: 20 },
+            'WELCOME50': { type: 'fixed', value: 50 },
+            'VIP100': { type: 'fixed', value: 100 }
+        };
+
+        function applyCoupon() {
+            const code = document.getElementById('couponCode').value.trim().toUpperCase();
+            const msg = document.getElementById('couponMessage');
+            const row = document.getElementById('discountRow');
+
+            if (!code) { msg.textContent = 'يرجى إدخال كود الخصم'; msg.className = 'coupon-message error'; return; }
+
+            const coupon = validCoupons[code];
+            if (!coupon) {
+                msg.textContent = 'كود الخصم غير صالح';
+                msg.className = 'coupon-message error';
+                discountAmount = 0;
+                row.style.display = 'none';
+                updateTotal();
+                return;
+            }
+
+            if (coupon.type === 'percent') {
+                discountAmount = Math.round((basePrice + addonsTotal) * coupon.value / 100);
+                msg.textContent = 'تم تطبيق خصم ' + coupon.value + '% بنجاح! ✓';
+            } else {
+                discountAmount = coupon.value;
+                msg.textContent = 'تم تطبيق خصم ' + coupon.value + ' ﷼ بنجاح! ✓';
+            }
+            msg.className = 'coupon-message success';
+            row.style.display = 'flex';
+            document.getElementById('discountAmount').textContent = discountAmount.toLocaleString();
+            updateTotal();
+        }
+
+        // File upload
+        function handleFileUpload(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                if (file.size > 5 * 1024 * 1024) { alert('حجم الملف يتجاوز 5MB'); input.value = ''; return; }
+                uploadedFile = file;
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('filePreview').style.display = 'flex';
+                document.getElementById('fileUploadZone').style.display = 'none';
+            }
+        }
+
+        function removeFile(e) {
+            e.stopPropagation();
+            uploadedFile = null;
+            document.getElementById('transferReceipt').value = '';
+            document.getElementById('filePreview').style.display = 'none';
+            document.getElementById('fileUploadZone').style.display = '';
+        }
+
+        // Drag & drop
+        (function() {
+            const zone = document.getElementById('fileUploadZone');
+            if (!zone) return;
+            ['dragenter','dragover'].forEach(ev => zone.addEventListener(ev, e => { e.preventDefault(); zone.classList.add('dragover'); }));
+            ['dragleave','drop'].forEach(ev => zone.addEventListener(ev, e => { e.preventDefault(); zone.classList.remove('dragover'); }));
+            zone.addEventListener('drop', e => {
+                const dt = e.dataTransfer;
+                if (dt.files.length) { document.getElementById('transferReceipt').files = dt.files; handleFileUpload(document.getElementById('transferReceipt')); }
+            });
+        })();
 
         // Submit order
         function submitOrder() {
             const name = document.getElementById('fullName').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
+            const org = document.getElementById('orgName').value.trim();
+            const entityType = document.getElementById('entityType').value;
+            const region = document.getElementById('region').value;
 
-            if (!name || !email || !phone) {
-                alert('يرجى تعبئة جميع الحقول المطلوبة');
-                return;
-            }
+            if (!org || !name || !email || !phone) { highlightEmpty(['orgName','fullName','email','phone']); return; }
+            if (!entityType) { highlightEmpty(['entityType']); return; }
+            if (!region) { highlightEmpty(['region']); return; }
 
             if (selectedPayment === 'electronic') {
-                // Show payment gateway
-                const total = basePrice + addonsTotal;
+                const total = Math.max(0, basePrice + addonsTotal - discountAmount);
                 document.getElementById('pgAmount').textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' ﷼';
                 document.getElementById('pgOverlay').classList.add('active');
                 document.body.style.overflow = 'hidden';
             } else if (selectedPayment === 'bank') {
-                alert('سيتم إرسال تفاصيل الحساب البنكي إلى بريدك الإلكتروني. يرجى التحويل خلال 48 ساعة.');
+                const amt = document.getElementById('bankAmount').value.trim();
+                if (!amt) { highlightEmpty(['bankAmount']); return; }
+                if (!uploadedFile) { alert('يرجى إرفاق إيصال التحويل'); return; }
+                showBankSuccess();
             } else {
-                alert('تم حجز الباقة بنجاح! يرجى إتمام الدفع خلال 48 ساعة لتفعيل الاشتراك.');
+                showLaterSuccess();
             }
+        }
+
+        function highlightEmpty(ids) {
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el.value || el.value === '') {
+                    el.style.borderColor = '#e53e3e';
+                    el.style.boxShadow = '0 0 0 3px rgba(229,62,62,.12)';
+                    setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2500);
+                }
+            });
+            const firstEmpty = ids.find(id => !document.getElementById(id).value);
+            if (firstEmpty) document.getElementById(firstEmpty).focus();
+        }
+
+        function showBankSuccess() {
+            document.getElementById('pgForm').style.display = 'none';
+            document.getElementById('pgSuccess').querySelector('h3').textContent = 'تم استلام طلبك! 🎉';
+            document.getElementById('pgSuccess').querySelector('p').textContent = 'سيتم مراجعة إيصال التحويل وتفعيل اشتراكك خلال 24 ساعة.';
+            document.getElementById('pgSuccess').classList.add('active');
+            document.getElementById('pgOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showLaterSuccess() {
+            document.getElementById('pgForm').style.display = 'none';
+            document.getElementById('pgSuccess').querySelector('h3').textContent = 'تم حجز الباقة! ⏰';
+            document.getElementById('pgSuccess').querySelector('p').textContent = 'يرجى إتمام الدفع خلال 48 ساعة لتفعيل الاشتراك. ستصلك تفاصيل الدفع على بريدك.';
+            document.getElementById('pgSuccess').classList.add('active');
+            document.getElementById('pgOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closePG() {
             document.getElementById('pgOverlay').classList.remove('active');
             document.body.style.overflow = '';
-            // Reset success
             setTimeout(() => {
                 document.getElementById('pgForm').style.display = '';
                 document.getElementById('pgSuccess').classList.remove('active');
+                // Reset texts
+                document.getElementById('pgSuccess').querySelector('h3').textContent = 'تمّ الدفع بنجاح! 🎉';
+                document.getElementById('pgSuccess').querySelector('p').textContent = 'تم تفعيل اشتراكك. ستصلك رسالة تأكيد على بريدك الإلكتروني.';
             }, 300);
         }
 
         function processPayment() {
-            // Simulate payment
             document.getElementById('pgForm').style.display = 'none';
             document.getElementById('pgSuccess').classList.add('active');
         }
 
-        // Card number formatter
         function formatCard(input) {
             let v = input.value.replace(/\D/g, '').substring(0, 16);
             input.value = v.replace(/(.{4})/g, '$1 ').trim();
         }
 
-        // Expiry formatter
         function formatExpiry(input) {
             let v = input.value.replace(/\D/g, '').substring(0, 4);
             if (v.length > 2) v = v.substring(0, 2) + '/' + v.substring(2);
             input.value = v;
         }
 
-        // Close on ESC
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closePG();
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePG(); });
 
-        // Parse URL params to set plan
+        // Parse URL params
         (function() {
             const params = new URLSearchParams(window.location.search);
             const plan = params.get('plan');
