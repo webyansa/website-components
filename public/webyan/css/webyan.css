@@ -241,6 +241,37 @@ body.wb-page {
 
 .form-group.full-width { grid-column: 1 / -1; }
 
+/* Tax refund radio toggle */
+.tax-refund-toggle {
+    display: flex;
+    gap: 20px;
+    margin-top: 6px;
+}
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: .9rem;
+    color: var(--wb-secondary);
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: 1.5px solid var(--wb-border);
+    background: var(--wb-light);
+    transition: all .2s;
+}
+.radio-option:has(input:checked) {
+    border-color: var(--wb-primary);
+    background: rgba(36,194,236,.08);
+    color: var(--wb-primary-dark);
+    font-weight: 600;
+}
+.radio-option input[type="radio"] {
+    accent-color: var(--wb-primary);
+    width: 16px;
+    height: 16px;
+}
+
 .form-label {
     font-size: .85rem;
     font-weight: 600;
