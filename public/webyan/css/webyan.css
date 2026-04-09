@@ -4,11 +4,11 @@
 
 /* --- CSS Variables --- */
 :root {
-    --wb-primary: #0fbfae;
-    --wb-primary-dark: #0a9e8f;
-    --wb-primary-light: #e8faf8;
-    --wb-secondary: #53687a;
-    --wb-secondary-dark: #3d4f5f;
+    --wb-primary: #24c2ec;
+    --wb-primary-dark: #1a9fd4;
+    --wb-primary-light: #e8f7fc;
+    --wb-secondary: #263c84;
+    --wb-secondary-dark: #1b2c63;
     --wb-text: #2d3748;
     --wb-text-muted: #718096;
     --wb-bg: #f7f9fc;
@@ -102,9 +102,9 @@ body.wb-page {
 }
 
 .wb-btn-subscribe:hover {
-    background: linear-gradient(135deg, var(--wb-primary-dark), #088a7d);
+    background: linear-gradient(135deg, var(--wb-primary-dark), #1588b8);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(15,191,174,.35);
+    box-shadow: 0 4px 16px rgba(36,194,236,.35);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -273,7 +273,7 @@ body.wb-page {
 .form-select:focus {
     border-color: var(--wb-primary);
     background: var(--wb-white);
-    box-shadow: 0 0 0 3px rgba(15,191,174,.12);
+    box-shadow: 0 0 0 3px rgba(36,194,236,.12);
 }
 
 .form-input::placeholder { color: #b8c4d0; }
@@ -328,7 +328,7 @@ body.wb-page {
 
 .phone-input-wrapper:focus-within {
     border-color: var(--wb-primary);
-    box-shadow: 0 0 0 3px rgba(15,191,174,.12);
+    box-shadow: 0 0 0 3px rgba(36,194,236,.12);
 }
 
 .phone-prefix {
@@ -377,7 +377,7 @@ body.wb-page {
 }
 
 .payment-method:hover {
-    border-color: rgba(15,191,174,.3);
+    border-color: rgba(36,194,236,.3);
     background: var(--wb-primary-light);
 }
 
@@ -647,9 +647,9 @@ body.wb-page {
 }
 
 .btn-checkout:hover {
-    background: linear-gradient(135deg, var(--wb-primary-dark), #088a7d);
+    background: linear-gradient(135deg, var(--wb-primary-dark), #1588b8);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(15,191,174,.35);
+    box-shadow: 0 8px 24px rgba(36,194,236,.35);
 }
 
 .btn-checkout:active { transform: translateY(0); }
@@ -773,7 +773,7 @@ body.wb-page {
 
 .pg-field input:focus {
     border-color: var(--wb-primary);
-    box-shadow: 0 0 0 3px rgba(15,191,174,.12);
+    box-shadow: 0 0 0 3px rgba(36,194,236,.12);
 }
 
 .pg-row {
@@ -801,8 +801,8 @@ body.wb-page {
 }
 
 .pg-btn-pay:hover {
-    background: linear-gradient(135deg, var(--wb-primary-dark), #088a7d);
-    box-shadow: 0 6px 20px rgba(15,191,174,.3);
+    background: linear-gradient(135deg, var(--wb-primary-dark), #1588b8);
+    box-shadow: 0 6px 20px rgba(36,194,236,.3);
 }
 
 .pg-close {
@@ -913,8 +913,8 @@ body.wb-page {
 }
 
 .bank-info-box {
-    background: linear-gradient(135deg, var(--wb-primary-light), #f0faf9);
-    border: 1px solid rgba(15,191,174,.15);
+    background: linear-gradient(135deg, var(--wb-primary-light), #eef6fc);
+    border: 1px solid rgba(36,194,236,.15);
     border-radius: var(--wb-radius);
     padding: 16px;
     margin-bottom: 16px;
@@ -938,15 +938,46 @@ body.wb-page {
 
 .bank-info-row {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
     padding: 6px 0;
     font-size: .85rem;
-    border-bottom: 1px dashed rgba(15,191,174,.15);
+    border-bottom: 1px dashed rgba(36,194,236,.15);
 }
 
 .bank-info-row:last-child { border-bottom: none; }
-.bank-info-label { color: var(--wb-text-muted); }
-.bank-info-value { color: var(--wb-text); font-weight: 600; }
+.bank-info-label { color: var(--wb-text-muted); white-space: nowrap; }
+.bank-info-value { color: var(--wb-text); font-weight: 600; flex: 1; }
+
+/* Copy button */
+.copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--wb-border);
+    border-radius: 8px;
+    background: var(--wb-white);
+    cursor: pointer;
+    transition: all var(--wb-transition);
+    flex-shrink: 0;
+    color: var(--wb-secondary);
+}
+
+.copy-btn:hover {
+    border-color: var(--wb-primary);
+    background: var(--wb-primary-light);
+    color: var(--wb-primary);
+}
+
+.copy-btn.copied {
+    border-color: var(--wb-success);
+    background: #f0fdf4;
+    color: var(--wb-success);
+}
+
+.copy-btn svg { stroke: currentColor; }
 
 /* File upload zone */
 .file-upload-zone {
@@ -1000,7 +1031,7 @@ body.wb-page {
     gap: 10px;
     padding: 12px 14px;
     background: var(--wb-primary-light);
-    border: 1px solid rgba(15,191,174,.2);
+    border: 1px solid rgba(36,194,236,.2);
     border-radius: 10px;
     margin-top: 10px;
     font-size: .85rem;
