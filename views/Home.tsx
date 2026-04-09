@@ -484,6 +484,11 @@ const TemplateCard = ({ template }: { template: Template }) => {
           "images/team/member-4.jpg", "images/team/member-5.jpg", "images/team/member-6.jpg",
           "images/team/member-7.jpg",
         ];
+      } else if (template.id === "webyan") {
+        templateFiles = [
+          "checkout.html",
+          "css/webyan.css",
+        ];
       } else {
         templateFiles = [
           "index.html", "about.html", "projects.html", "services.html",
