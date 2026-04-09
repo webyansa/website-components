@@ -108,27 +108,13 @@
                             </div>
                         </div>
 
-                        <!-- Row 3: Entity Type & Entity Classification -->
+                        <!-- Row 3: Entity Type & License Number -->
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label"><span class="required">*</span> نوع الكيان</label>
                                 <div class="input-icon-wrapper">
                                     <select class="form-input form-select" id="entityType">
                                         <option value="" disabled selected>اختر نوع الكيان</option>
-                                        <option value="غير ربحي">غير ربحي</option>
-                                        <option value="حكومي">حكومي</option>
-                                        <option value="خاص">خاص</option>
-                                        <option value="شبه حكومي">شبه حكومي</option>
-                                        <option value="دولي">دولي</option>
-                                    </select>
-                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label"><span class="required">*</span> تصنيف الكيان</label>
-                                <div class="input-icon-wrapper">
-                                    <select class="form-input form-select" id="entityClass">
-                                        <option value="" disabled selected>اختر تصنيف الكيان</option>
                                         <option value="جمعية أهلية">جمعية أهلية</option>
                                         <option value="مؤسسة أهلية">مؤسسة أهلية</option>
                                         <option value="جمعية تعاونية">جمعية تعاونية</option>
@@ -136,9 +122,40 @@
                                         <option value="وقف خيري">وقف خيري</option>
                                         <option value="فريق تطوعي">فريق تطوعي</option>
                                         <option value="منشأة تجارية">منشأة تجارية</option>
+                                        <option value="حكومي">حكومي</option>
+                                        <option value="شبه حكومي">شبه حكومي</option>
+                                        <option value="دولي">دولي</option>
                                         <option value="أخرى">أخرى</option>
                                     </select>
                                     <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> رقم ترخيص الكيان</label>
+                                <div class="input-icon-wrapper">
+                                    <input type="text" class="form-input" placeholder="أدخل رقم الترخيص (حتى 10 أرقام)" id="licenseNumber" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                                    <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3.5: Tax Refund -->
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label class="form-label">هل يوجد رقم استرداد ضريبي؟</label>
+                                <div class="tax-refund-toggle">
+                                    <label class="radio-option" onclick="toggleTaxField(true)">
+                                        <input type="radio" name="hasTaxRefund" value="yes"> <span>نعم</span>
+                                    </label>
+                                    <label class="radio-option" onclick="toggleTaxField(false)">
+                                        <input type="radio" name="hasTaxRefund" value="no" checked> <span>لا</span>
+                                    </label>
+                                </div>
+                                <div id="taxRefundField" style="display:none; margin-top:12px;">
+                                    <div class="input-icon-wrapper">
+                                        <input type="text" class="form-input" placeholder="أدخل رقم الاسترداد الضريبي" id="taxRefundNumber">
+                                        <span class="input-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="19" cy="17" r="2"/></svg></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
