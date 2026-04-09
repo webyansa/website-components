@@ -48,6 +48,17 @@ const templates: Template[] = [
     pages: 12,
     isNew: true,
   },
+  {
+    id: "webyan",
+    name: "موقع ويبيان",
+    description: "قالب موقع ويبيان الرسمي — صفحة اشتراكات احترافية مع بوابة دفع وتجربة مستخدم سلسة",
+    previewPath: "webyan/checkout.html",
+    folderPath: "webyan",
+    thumbnail: "images/raneen/webyan-logo.svg",
+    features: ["صفحة اشتراك", "بوابة دفع", "تصميم احترافي", "متجاوب"],
+    pages: 1,
+    isNew: true,
+  },
 ];
 
 type Category = {
@@ -472,6 +483,11 @@ const TemplateCard = ({ template }: { template: Template }) => {
           "images/team/member-1.jpg", "images/team/member-2.jpg", "images/team/member-3.jpg",
           "images/team/member-4.jpg", "images/team/member-5.jpg", "images/team/member-6.jpg",
           "images/team/member-7.jpg",
+        ];
+      } else if (template.id === "webyan") {
+        templateFiles = [
+          "checkout.html",
+          "css/webyan.css",
         ];
       } else {
         templateFiles = [

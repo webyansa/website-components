@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الاشتراك — ويبيان</title>
+    <meta name="description" content="صفحة إتمام الاشتراك في باقات ويبيان مع خيارات دفع متعددة.">
+    <link rel="icon" href="../images/raneen/webyan-logo.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/webyan.css">
+</head>
+<body class="wb-page">
+
+    <!-- Header -->
+    <header class="wb-header">
+        <div class="wb-container">
+            <a href="#" class="wb-logo">
+                <img src="../images/raneen/webyan-logo.svg" alt="ويبيان">
+            </a>
+            <nav>
+                <ul class="wb-nav">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">باقات الأسعار</a></li>
+                    <li><a href="#">مدونة ويبيان</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="wb-btn-subscribe">اشترك الآن</a>
+        </div>
+    </header>
+
+    <!-- Checkout Content -->
+    <main class="checkout-wrapper">
+        <div class="wb-container">
+
+            <h1 class="checkout-title">إتمام الاشتراك</h1>
+            <p class="checkout-subtitle">أكمل بياناتك لتفعيل باقتك فوراً</p>
+
+            <!-- Steps -->
+            <div class="checkout-steps">
+                <div class="step-item done">
+                    <div class="step-circle">✓</div>
+                    <span class="step-label">اختيار الباقة</span>
+                </div>
+                <div class="step-connector done"></div>
+                <div class="step-item active">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">بيانات الاشتراك</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">الدفع والتأكيد</span>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="checkout-grid">
+
+                <!-- LEFT: Form -->
+                <div>
+                    <!-- Personal Info -->
+                    <div class="checkout-card" style="margin-bottom: 24px;">
+                        <h3 class="checkout-card-title">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            البيانات الشخصية
+                        </h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> الاسم الكامل</label>
+                                <input type="text" class="form-input" placeholder="أدخل اسمك الكامل" id="fullName">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> البريد الإلكتروني</label>
+                                <input type="email" class="form-input" placeholder="example@email.com" dir="ltr" id="email">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label"><span class="required">*</span> رقم الجوال</label>
+                                <div class="phone-input-wrapper">
+                                    <div class="phone-prefix">
+                                        <span>+966</span>
+                                        <span>🇸🇦</span>
+                                    </div>
+                                    <input type="tel" placeholder="5XXXXXXXX" dir="ltr" id="phone">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">اسم المنشأة / الجمعية</label>
+                                <input type="text" class="form-input" placeholder="اسم المنشأة (اختياري)" id="orgName">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label class="form-label">ملاحظات إضافية</label>
+                                <input type="text" class="form-input" placeholder="أي ملاحظات أو متطلبات خاصة" id="notes">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="checkout-card">
+                        <h3 class="checkout-card-title">
+                            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            طريقة الدفع
+                        </h3>
+
+                        <div class="payment-methods">
+                            <!-- Electronic Payment -->
+                            <div class="payment-method selected" onclick="selectPayment(this, 'electronic')">
+                                <div class="payment-radio"></div>
+                                <div class="payment-info">
+                                    <div class="payment-title">دفع إلكتروني</div>
+                                    <div class="payment-desc">ادفع فوراً عبر بطاقتك أو محفظتك الإلكترونية</div>
+                                </div>
+                                <div class="payment-icons">
+                                    <img src="../images/pay-option-mada.svg" alt="مدى">
+                                    <img src="../images/pay-option-stcpay.svg" alt="STC Pay">
+                                </div>
+                            </div>
+
+                            <!-- Sub options for electronic -->
+                            <div class="payment-sub-options visible" id="electronicOptions">
+                                <div class="pay-chip selected" onclick="selectChip(this)">
+                                    <img src="../images/pay-option-mada.svg" alt="مدى"> مدى
+                                </div>
+                                <div class="pay-chip" onclick="selectChip(this)">
+                                    فيزا / ماستركارد
+                                </div>
+                                <div class="pay-chip" onclick="selectChip(this)">
+                                    <img src="../images/pay-option-stcpay.svg" alt="STC Pay"> STC Pay
+                                </div>
+                                <div class="pay-chip" onclick="selectChip(this)">
+                                    Apple Pay
+                                </div>
+                            </div>
+
+                            <!-- Bank Transfer -->
+                            <div class="payment-method" onclick="selectPayment(this, 'bank')">
+                                <div class="payment-radio"></div>
+                                <div class="payment-info">
+                                    <div class="payment-title">تحويل بنكي</div>
+                                    <div class="payment-desc">حوّل المبلغ وأرفق إيصال التحويل</div>
+                                </div>
+                            </div>
+
+                            <!-- Pay Later -->
+                            <div class="payment-method" onclick="selectPayment(this, 'later')">
+                                <div class="payment-radio"></div>
+                                <div class="payment-info">
+                                    <div class="payment-title">الدفع لاحقاً</div>
+                                    <div class="payment-desc">احجز باقتك الآن وادفع خلال 48 ساعة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Order Summary -->
+                <div class="checkout-card order-summary">
+                    <div class="summary-plan-badge">⭐ الباقة المختارة</div>
+                    <h3 class="summary-plan-name" id="planName">خطة بلس</h3>
+                    <div class="summary-price">
+                        <span class="summary-price-amount" id="planPrice">1,450</span>
+                        <span class="summary-price-currency">﷼</span>
+                        <span class="summary-price-period">/ سنوي</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-addons-title">خدمات إضافية</div>
+
+                    <div class="addon-item">
+                        <div class="addon-check" onclick="toggleAddon(this, 100)">
+                            <div class="addon-checkbox"></div>
+                            <span class="addon-name">خدمة تسجيل و ربط الدومين</span>
+                        </div>
+                        <span class="addon-price">100 ﷼</span>
+                    </div>
+
+                    <div class="addon-item">
+                        <div class="addon-check" onclick="toggleAddon(this, 350)">
+                            <div class="addon-checkbox"></div>
+                            <span class="addon-name">تهيئة محتوى الموقع أول مرة</span>
+                        </div>
+                        <span class="addon-price">350 ﷼</span>
+                    </div>
+
+                    <div class="addon-item">
+                        <div class="addon-check" onclick="toggleAddon(this, 100)">
+                            <div class="addon-checkbox"></div>
+                            <span class="addon-name">دومين</span>
+                        </div>
+                        <span class="addon-price">100 ﷼</span>
+                    </div>
+
+                    <div class="addon-item">
+                        <div class="addon-check" onclick="toggleAddon(this, 100)">
+                            <div class="addon-checkbox"></div>
+                            <span class="addon-name">خدمة حجز دومين</span>
+                        </div>
+                        <span class="addon-price">100 ﷼</span>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-total">
+                        <span class="total-label">الإجمالي</span>
+                        <span class="total-amount"><span class="currency">﷼</span> <span id="totalAmount">1,450.00</span></span>
+                    </div>
+
+                    <button class="btn-checkout" onclick="submitOrder()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        إكمال الطلب
+                    </button>
+
+                    <p class="checkout-note">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        دفع آمن ومشفّر بالكامل
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Gateway Modal -->
+    <div class="pg-overlay" id="pgOverlay" onclick="closePG()">
+        <div class="pg-modal" onclick="event.stopPropagation()" style="position: relative;">
+            <button class="pg-close" onclick="closePG()">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <!-- Payment Form -->
+            <div id="pgForm">
+                <div class="pg-header">
+                    <div class="pg-header-icon">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    </div>
+                    <div class="pg-title">بوابة الدفع الآمنة</div>
+                    <div class="pg-amount" id="pgAmount">1,450.00 ﷼</div>
+                </div>
+
+                <div class="pg-body">
+                    <div class="pg-field">
+                        <label>اسم حامل البطاقة</label>
+                        <input type="text" placeholder="الاسم كما يظهر على البطاقة">
+                    </div>
+                    <div class="pg-field">
+                        <label>رقم البطاقة</label>
+                        <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" id="cardNumber" oninput="formatCard(this)">
+                    </div>
+                    <div class="pg-row">
+                        <div class="pg-field">
+                            <label>تاريخ الانتهاء</label>
+                            <input type="text" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+                        </div>
+                        <div class="pg-field">
+                            <label>CVV</label>
+                            <input type="text" placeholder="***" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pg-footer">
+                    <button class="pg-btn-pay" onclick="processPayment()">
+                        ادفع الآن
+                    </button>
+                    <div class="pg-secure">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        معاملة مشفّرة وآمنة 100%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div class="pg-success" id="pgSuccess">
+                <div class="pg-success-icon">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>تمّ الدفع بنجاح! 🎉</h3>
+                <p>تم تفعيل اشتراكك. ستصلك رسالة تأكيد على بريدك الإلكتروني.</p>
+                <button class="pg-btn-pay" style="margin-top: 20px;" onclick="closePG()">تم</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Base price
+        let basePrice = 1450;
+        let addonsTotal = 0;
+        let selectedPayment = 'electronic';
+
+        // Payment method selection
+        function selectPayment(el, type) {
+            document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedPayment = type;
+
+            const subOpts = document.getElementById('electronicOptions');
+            if (type === 'electronic') {
+                subOpts.classList.add('visible');
+            } else {
+                subOpts.classList.remove('visible');
+            }
+        }
+
+        // Pay chip selection
+        function selectChip(el) {
+            el.parentElement.querySelectorAll('.pay-chip').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        // Toggle addon
+        function toggleAddon(el, price) {
+            el.classList.toggle('checked');
+            if (el.classList.contains('checked')) {
+                addonsTotal += price;
+            } else {
+                addonsTotal -= price;
+            }
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const total = basePrice + addonsTotal;
+            document.getElementById('totalAmount').textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2 });
+        }
+
+        // Submit order
+        function submitOrder() {
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (!name || !email || !phone) {
+                alert('يرجى تعبئة جميع الحقول المطلوبة');
+                return;
+            }
+
+            if (selectedPayment === 'electronic') {
+                // Show payment gateway
+                const total = basePrice + addonsTotal;
+                document.getElementById('pgAmount').textContent = total.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' ﷼';
+                document.getElementById('pgOverlay').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else if (selectedPayment === 'bank') {
+                alert('سيتم إرسال تفاصيل الحساب البنكي إلى بريدك الإلكتروني. يرجى التحويل خلال 48 ساعة.');
+            } else {
+                alert('تم حجز الباقة بنجاح! يرجى إتمام الدفع خلال 48 ساعة لتفعيل الاشتراك.');
+            }
+        }
+
+        function closePG() {
+            document.getElementById('pgOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset success
+            setTimeout(() => {
+                document.getElementById('pgForm').style.display = '';
+                document.getElementById('pgSuccess').classList.remove('active');
+            }, 300);
+        }
+
+        function processPayment() {
+            // Simulate payment
+            document.getElementById('pgForm').style.display = 'none';
+            document.getElementById('pgSuccess').classList.add('active');
+        }
+
+        // Card number formatter
+        function formatCard(input) {
+            let v = input.value.replace(/\D/g, '').substring(0, 16);
+            input.value = v.replace(/(.{4})/g, '$1 ').trim();
+        }
+
+        // Expiry formatter
+        function formatExpiry(input) {
+            let v = input.value.replace(/\D/g, '').substring(0, 4);
+            if (v.length > 2) v = v.substring(0, 2) + '/' + v.substring(2);
+            input.value = v;
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closePG();
+        });
+
+        // Parse URL params to set plan
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const plan = params.get('plan');
+            const price = params.get('price');
+            if (plan) document.getElementById('planName').textContent = plan;
+            if (price) {
+                basePrice = parseInt(price) || 1450;
+                document.getElementById('planPrice').textContent = basePrice.toLocaleString();
+                updateTotal();
+            }
+        })();
+    </script>
+</body>
+</html>
