@@ -61,7 +61,7 @@
       padding: 6px 18px; border-radius: var(--radius-pill);
       font-size: 0.8rem; font-weight: 600; font-family: var(--font-body);
     }
-    .section-padding { padding: 120px 0; }
+    .section-padding { padding: 100px 0; }
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-header .badge-pill {
       background: var(--brand-cyan-pale); color: var(--brand-navy);
@@ -70,22 +70,30 @@
     .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--brand-navy); margin-bottom: 16px; }
     .section-header p { font-size: 1.05rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto; line-height: 1.8; }
 
+    /* ===== نظام الأزرار الموحد ===== */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 14px 36px; border-radius: var(--radius-md);
+      padding: 14px 32px; border-radius: var(--radius-md);
       font-family: var(--font-heading); font-weight: 600; font-size: 1rem;
       cursor: pointer; border: 2px solid transparent;
       transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
     }
-    .btn-primary { background: var(--gradient-cta); color: white; box-shadow: 0 6px 20px rgba(36,194,236,0.3); }
+    .btn-primary {
+      background: linear-gradient(135deg, #24c2ec 0%, #263c84 100%);
+      color: white; border: none;
+      box-shadow: 0 4px 15px rgba(36,194,236,0.3);
+    }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(36,194,236,0.4); }
-    .btn-outline { background: transparent; border-color: var(--brand-navy); color: var(--brand-navy); }
-    .btn-outline:hover { background: var(--brand-navy); color: white; }
-    .btn-white { background: white; color: var(--brand-navy); font-weight: 700; }
+    .btn-outline {
+      background: transparent; border: 2px solid #263c84; color: #263c84;
+    }
+    .btn-outline:hover { background: #263c84; color: white; }
+    .btn-white { background: white; color: var(--brand-navy); font-weight: 700; border: none; }
     .btn-white:hover { background: var(--brand-cyan-pale); transform: translateY(-2px); }
-    .btn-white-outline { background: transparent; border-color: rgba(255,255,255,0.5); color: white; }
+    .btn-white-outline { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: white; }
     .btn-white-outline:hover { background: rgba(255,255,255,0.15); border-color: white; }
 
+    /* ===== أنيماشن الظهور ===== */
     .reveal {
       opacity: 0; transform: translateY(30px);
       transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
@@ -197,22 +205,69 @@
     .hero-trust-text { font-size: 0.82rem; color: var(--text-muted); }
     .hero-trust-text .star { color: var(--accent-gold); }
 
-    .dashboard-mockup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 420px; }
-    .dash-main { background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); overflow: hidden; position: relative; z-index: 2; }
+    /* ===== Dashboard Carousel ===== */
+    .dashboard-carousel { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 460px; }
+    .carousel-viewport { position: relative; overflow: hidden; border-radius: var(--radius-xl); box-shadow: 0 25px 80px rgba(38,60,132,0.15); background: white; }
+    .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .carousel-slide { min-width: 100%; }
     .dash-topbar { background: var(--gradient-brand); height: 40px; display: flex; align-items: center; padding: 0 16px; gap: 8px; }
     .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); }
     .dash-topbar-title { color: white; font-size: 0.72rem; font-weight: 500; margin-right: auto; opacity: 0.9; }
+    .dash-topbar-icon { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
     .dash-body { padding: 16px; }
-    .dash-stats-row { display: flex; gap: 10px; margin-bottom: 14px; }
-    .dash-stat { flex: 1; background: var(--surface-gray); border-radius: var(--radius-sm); padding: 12px 10px; text-align: center; }
-    .dash-stat-num { font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: var(--brand-navy); }
-    .dash-stat-label { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
-    .dash-stat-icon { width: 22px; height: 22px; border-radius: 6px; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
-    .dash-chart { display: flex; align-items: flex-end; gap: 6px; height: 60px; margin-bottom: 14px; }
-    .dash-bar { flex: 1; border-radius: 4px 4px 0 0; min-height: 8px; }
-    .dash-rows { display: flex; flex-direction: column; gap: 8px; }
-    .dash-row { height: 10px; background: var(--surface-gray); border-radius: 5px; }
 
+    /* شاشة إدارة المحتوى */
+    .cms-layout { display: flex; gap: 12px; }
+    .cms-sidebar { width: 100px; flex-shrink: 0; }
+    .cms-sidebar-item { padding: 7px 10px; font-size: 0.65rem; color: var(--text-secondary); border-radius: 6px; margin-bottom: 4px; cursor: default; transition: background 0.2s; display: flex; align-items: center; gap: 6px; }
+    .cms-sidebar-item.active { background: var(--brand-cyan-pale); color: var(--brand-navy); font-weight: 600; }
+    .cms-sidebar-icon { width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
+    .cms-main { flex: 1; }
+    .cms-stats-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+    .cms-stat-chip { flex: 1; background: var(--surface-gray); border-radius: 6px; padding: 6px 8px; text-align: center; font-size: 0.6rem; color: var(--text-muted); }
+    .cms-stat-chip strong { display: block; font-size: 0.8rem; color: var(--brand-navy); font-weight: 700; }
+    .cms-card-item { display: flex; gap: 10px; padding: 10px; border: 1px solid var(--border-light); border-radius: 8px; margin-bottom: 8px; }
+    .cms-card-thumb { width: 50px; height: 40px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+    .cms-card-info { flex: 1; }
+    .cms-card-title { font-size: 0.7rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+    .cms-card-meta { font-size: 0.58rem; color: var(--text-muted); }
+
+    /* شاشة التبرعات */
+    .donate-stats { display: flex; gap: 8px; margin-bottom: 12px; }
+    .donate-stat { flex: 1; background: var(--surface-gray); border-radius: 8px; padding: 8px; text-align: center; }
+    .donate-stat-num { font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); font-family: var(--font-heading); }
+    .donate-stat-label { font-size: 0.58rem; color: var(--text-muted); }
+    .donate-opportunity { border: 1px solid var(--border-light); border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+    .donate-opp-title { font-size: 0.75rem; font-weight: 600; color: var(--brand-navy); margin-bottom: 6px; }
+    .donate-opp-amount { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 8px; }
+    .donate-progress { height: 6px; background: var(--surface-gray); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+    .donate-progress-fill { height: 100%; background: var(--gradient-brand); border-radius: 3px; }
+    .donate-btn-sm { padding: 6px 14px; background: var(--gradient-cta); color: white; border: none; border-radius: 6px; font-size: 0.65rem; font-weight: 600; font-family: var(--font-heading); cursor: pointer; }
+    .donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .donate-mini { background: var(--surface-gray); border-radius: 8px; padding: 10px; text-align: center; }
+    .donate-mini-icon { font-size: 1.1rem; margin-bottom: 4px; }
+    .donate-mini-name { font-size: 0.6rem; font-weight: 600; color: var(--text-primary); }
+    .donate-mini-amt { font-size: 0.55rem; color: var(--text-muted); }
+
+    /* شاشة المتجر */
+    .store-stats { display: flex; gap: 8px; margin-bottom: 12px; }
+    .store-stat { flex: 1; background: var(--surface-gray); border-radius: 8px; padding: 8px; text-align: center; }
+    .store-stat-num { font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); font-family: var(--font-heading); }
+    .store-stat-label { font-size: 0.58rem; color: var(--text-muted); }
+    .store-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .store-product { border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; }
+    .store-product-img { height: 60px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; position: relative; }
+    .store-product-badge { position: absolute; top: 4px; right: 4px; background: var(--brand-cyan); color: white; font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+    .store-product-body { padding: 8px; }
+    .store-product-name { font-size: 0.6rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .store-product-price { font-size: 0.7rem; font-weight: 700; color: var(--brand-cyan); }
+
+    /* Carousel dots */
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+    .carousel-dot-btn { width: 10px; height: 10px; border-radius: 50%; border: none; cursor: pointer; transition: all 0.3s; background: rgba(38,60,132,0.15); }
+    .carousel-dot-btn.active { background: var(--brand-cyan); transform: scale(1.2); }
+
+    /* Floating badges */
     .dash-float-trust {
       position: absolute; top: -10px; right: -30px; background: white; border-radius: var(--radius-md);
       box-shadow: var(--shadow-lg); padding: 10px 16px; z-index: 4;
@@ -250,45 +305,53 @@
     .marquee-chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 24px; border-radius: var(--radius-pill); border: 1px solid var(--border-light); background: white; white-space: nowrap; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); flex-shrink: 0; }
     .marquee-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
-    /* ===== ماذا نقدم ===== */
+    /* ===== ماذا نقدم — 3 أعمدة ===== */
     .offerings { background: var(--surface-gray); }
-    .offering-showcase { display: flex; flex-direction: column; gap: 32px; }
-    .offering-card { background: white; border-radius: var(--radius-xl); border: 1px solid rgba(38,60,132,0.06); padding: 48px; display: flex; align-items: center; gap: 48px; transition: all 0.35s ease; }
+    .offering-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .offering-card {
+      background: white; border-radius: var(--radius-xl);
+      border: 1px solid rgba(38,60,132,0.06); padding: 36px 28px;
+      transition: all 0.35s ease; display: flex; flex-direction: column;
+    }
     .offering-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .offering-card.reverse { flex-direction: row-reverse; }
-    .offering-content { flex: 1; }
-    .offering-visual { flex: 0 0 340px; max-width: 340px; }
-    .offering-icon { width: 64px; height: 64px; border-radius: 18px; background: var(--gradient-brand); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; color: white; }
-    .offering-content h3 { font-size: 1.5rem; color: var(--brand-navy); margin-bottom: 14px; }
-    .offering-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px; }
-    .offering-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .offering-tag { background: var(--brand-cyan-pale); color: var(--brand-navy); padding: 5px 14px; border-radius: var(--radius-pill); font-size: 0.78rem; font-weight: 500; }
+    .offering-icon {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: var(--gradient-brand); display: flex; align-items: center;
+      justify-content: center; font-size: 1.6rem; margin-bottom: 20px; color: white;
+    }
+    .offering-card h3 { font-size: 1.25rem; color: var(--brand-navy); margin-bottom: 12px; }
+    .offering-card > p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+    .offering-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .offering-tag { background: var(--brand-cyan-pale); color: var(--brand-navy); padding: 4px 12px; border-radius: var(--radius-pill); font-size: 0.72rem; font-weight: 500; }
+    .offering-mini-visual { margin-top: auto; }
 
-    .mini-mockup { background: var(--surface-gray); border-radius: var(--radius-lg); padding: 16px; border: 1px solid var(--border-light); }
-    .mini-site-header { background: var(--brand-navy); border-radius: var(--radius-sm); height: 28px; margin-bottom: 10px; display: flex; align-items: center; padding: 0 12px; }
-    .mini-logo-shape { width: 14px; height: 14px; background: var(--brand-cyan); border-radius: 3px; margin-left: 8px; }
-    .mini-nav-lines { display: flex; gap: 6px; margin-right: auto; }
-    .mini-nav-line { width: 20px; height: 3px; background: rgba(255,255,255,0.3); border-radius: 2px; }
-    .mini-hero-block { background: linear-gradient(135deg, rgba(38,60,132,0.08), rgba(36,194,236,0.08)); border-radius: var(--radius-sm); height: 80px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; }
-    .mini-hero-text { text-align: center; }
-    .mini-hero-text .line1 { width: 100px; height: 6px; background: var(--brand-navy); opacity: 0.2; border-radius: 3px; margin: 0 auto 6px; }
-    .mini-hero-text .line2 { width: 60px; height: 4px; background: var(--brand-cyan); opacity: 0.3; border-radius: 2px; margin: 0 auto; }
-    .mini-cards-row { display: flex; gap: 8px; }
-    .mini-card-block { flex: 1; background: white; border-radius: 6px; height: 50px; border: 1px solid var(--border-light); }
+    /* Mini mockups inside offering cards */
+    .mini-mockup { background: var(--surface-gray); border-radius: var(--radius-lg); padding: 12px; border: 1px solid var(--border-light); }
+    .mini-site-header { background: var(--brand-navy); border-radius: var(--radius-sm); height: 24px; margin-bottom: 8px; display: flex; align-items: center; padding: 0 10px; }
+    .mini-logo-shape { width: 12px; height: 12px; background: var(--brand-cyan); border-radius: 3px; margin-left: 6px; }
+    .mini-nav-lines { display: flex; gap: 5px; margin-right: auto; }
+    .mini-nav-line { width: 16px; height: 2.5px; background: rgba(255,255,255,0.3); border-radius: 2px; }
+    .mini-hero-block { background: linear-gradient(135deg, rgba(38,60,132,0.08), rgba(36,194,236,0.08)); border-radius: var(--radius-sm); height: 60px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; }
+    .mini-hero-text .line1 { width: 80px; height: 5px; background: var(--brand-navy); opacity: 0.2; border-radius: 3px; margin: 0 auto 4px; }
+    .mini-hero-text .line2 { width: 50px; height: 3px; background: var(--brand-cyan); opacity: 0.3; border-radius: 2px; margin: 0 auto; }
+    .mini-cards-row { display: flex; gap: 6px; }
+    .mini-card-block { flex: 1; background: white; border-radius: 5px; height: 36px; border: 1px solid var(--border-light); }
 
-    .mini-donate-card { background: white; border-radius: var(--radius-md); padding: 16px; border: 1px solid var(--border-light); }
-    .mini-donate-title { font-size: 0.82rem; font-weight: 600; color: var(--brand-navy); margin-bottom: 8px; }
-    .mini-donate-amount { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px; }
-    .mini-progress-bar { height: 6px; background: var(--surface-gray); border-radius: 3px; margin-bottom: 12px; overflow: hidden; }
+    .mini-donate-card { background: white; border-radius: var(--radius-md); padding: 14px; border: 1px solid var(--border-light); }
+    .mini-donate-title { font-size: 0.78rem; font-weight: 600; color: var(--brand-navy); margin-bottom: 6px; }
+    .mini-donate-amount { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; }
+    .mini-progress-bar { height: 5px; background: var(--surface-gray); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
     .mini-progress-fill { height: 100%; background: var(--gradient-brand); border-radius: 3px; }
-    .mini-donate-btn { width: 100%; padding: 8px; background: var(--gradient-cta); color: white; border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading); }
+    .mini-donate-btn { width: 100%; padding: 7px; background: var(--gradient-cta); color: white; border: none; border-radius: var(--radius-sm); font-size: 0.7rem; font-weight: 600; font-family: var(--font-heading); }
 
     .mini-product-card { background: white; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
-    .mini-product-img { height: 100px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-    .mini-product-body { padding: 14px; }
-    .mini-product-name { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-    .mini-product-price { font-size: 0.85rem; font-weight: 700; color: var(--brand-cyan); margin-bottom: 10px; }
-    .mini-product-btn { width: 100%; padding: 8px; background: var(--brand-navy); color: white; border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading); }
+    .mini-product-img { height: 70px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+    .mini-product-body { padding: 10px; }
+    .mini-product-name { font-size: 0.75rem; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+    .mini-product-price { font-size: 0.8rem; font-weight: 700; color: var(--brand-cyan); margin-bottom: 8px; }
+    .mini-product-btn { width: 100%; padding: 7px; background: var(--brand-navy); color: white; border: none; border-radius: var(--radius-sm); font-size: 0.7rem; font-weight: 600; font-family: var(--font-heading); }
 
     /* ===== الأنظمة التشغيلية ===== */
     .systems { background: white; }
@@ -309,93 +372,137 @@
     .why-card h3 { font-size: 0.95rem; color: var(--brand-navy); margin-bottom: 8px; font-weight: 600; }
     .why-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
 
-    /* ===== الخطوات ===== */
+    /* ===== الخطوات — 4 خطوات ===== */
     .how-it-works { background: white; }
-    .steps-timeline { display: flex; align-items: flex-start; justify-content: center; gap: 0; position: relative; max-width: 900px; margin: 0 auto; }
-    .step-item { flex: 1; text-align: center; position: relative; padding: 0 20px; }
-    .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-brand); color: white; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; position: relative; z-index: 2; box-shadow: 0 6px 20px rgba(38,60,132,0.2); }
-    .step-connector { position: absolute; top: 32px; left: -50%; right: 50%; height: 2px; background: var(--border-light); z-index: 1; }
-    .step-item:first-child .step-connector { display: none; }
-    .step-item h3 { font-size: 1.1rem; color: var(--brand-navy); margin-bottom: 8px; }
-    .step-item p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+    .steps-timeline { display: flex; align-items: flex-start; justify-content: center; gap: 0; position: relative; max-width: 1000px; margin: 0 auto; }
+    .step-item { flex: 1; text-align: center; position: relative; padding: 0 16px; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--gradient-brand); color: white;
+      font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px; position: relative; z-index: 2;
+      box-shadow: 0 6px 20px rgba(38,60,132,0.2);
+    }
+    .step-connector {
+      position: absolute; top: 28px; right: 100%; width: 100%; height: 2px;
+      background: var(--border-light); z-index: 1;
+    }
+    .step-connector-fill { height: 100%; background: var(--brand-cyan); width: 60%; }
+    .step-item h3 { font-size: 0.95rem; color: var(--text-primary); margin-bottom: 8px; font-weight: 600; }
+    .step-item p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+    .step-icon { font-size: 1.2rem; margin-bottom: 8px; display: block; }
+    .step-badge { display: inline-block; background: var(--brand-cyan-pale); color: var(--brand-navy); font-size: 0.65rem; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-pill); margin-top: 8px; }
 
     /* ===== الأسعار ===== */
     .pricing { background: var(--surface-gray); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
-    .pricing-card { background: white; border-radius: var(--radius-xl); padding: 40px 32px; border: 1px solid var(--border-light); position: relative; transition: all 0.3s ease; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-card { background: white; border-radius: var(--radius-xl); padding: 36px 28px; border: 1px solid var(--border-light); position: relative; transition: all 0.3s; }
     .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .pricing-card.popular { border-color: var(--brand-cyan); box-shadow: 0 12px 40px rgba(36,194,236,0.15); transform: scale(1.03); }
+    .pricing-card.popular { border-color: var(--brand-cyan); transform: scale(1.03); box-shadow: var(--shadow-lg); }
     .pricing-card.popular:hover { transform: scale(1.03) translateY(-4px); }
-    .pricing-popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-cta); color: white; padding: 5px 20px; border-radius: var(--radius-pill); font-size: 0.78rem; font-weight: 600; white-space: nowrap; }
-    .pricing-plan { font-size: 1.1rem; font-weight: 600; color: var(--brand-navy); margin-bottom: 6px; }
+    .pricing-popular-badge { position: absolute; top: -14px; right: 24px; background: var(--gradient-cta); color: white; font-size: 0.75rem; font-weight: 600; padding: 5px 16px; border-radius: var(--radius-pill); }
+    .pricing-plan { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px; }
     .pricing-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; }
-    .pricing-price { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 4px; }
-    .pricing-price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
-    .pricing-period { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 28px; }
-    .pricing-features { list-style: none; margin-bottom: 32px; }
-    .pricing-features li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
-    .pricing-features li svg { width: 18px; height: 18px; color: var(--brand-cyan); flex-shrink: 0; margin-top: 2px; }
-    .pricing-card .btn { width: 100%; }
-    .pricing-note { text-align: center; margin-top: 48px; padding: 32px; background: white; border-radius: var(--radius-lg); border: 1px solid var(--border-light); }
-    .pricing-note p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px; }
+    .pricing-price { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: var(--brand-navy); }
+    .pricing-price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+    .pricing-period { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+    .pricing-features { list-style: none; margin-bottom: 28px; }
+    .pricing-features li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.88rem; color: var(--text-secondary); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .pricing-features li svg { width: 18px; height: 18px; color: var(--brand-cyan); flex-shrink: 0; }
+    .pricing-note { text-align: center; margin-top: 48px; padding: 32px; background: white; border-radius: var(--radius-xl); border: 1px solid var(--border-light); }
+    .pricing-note p { color: var(--text-secondary); margin-bottom: 16px; }
 
     /* ===== شهادات العملاء ===== */
-    .testimonials { background: var(--brand-navy); color: white; }
-    .testimonials .section-header .badge-pill { background: rgba(36,194,236,0.15); color: var(--brand-cyan-light); border-color: rgba(36,194,236,0.25); }
+    .testimonials { background: #263c84; color: white; }
     .testimonials .section-header h2 { color: white; }
-    .testimonials .section-header p { color: rgba(255,255,255,0.65); }
+    .testimonials .section-header p { color: rgba(255,255,255,0.7); }
+    .testimonials .section-header .badge-pill { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.15); }
     .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 32px; }
-    .testimonial-stars { color: var(--accent-gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
-    .testimonial-text { font-size: 0.92rem; line-height: 1.8; color: rgba(255,255,255,0.85); margin-bottom: 24px; }
+    .testimonial-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-xl); padding: 32px; }
+    .testimonial-stars { color: var(--accent-gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 24px; }
     .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; }
-    .testimonial-name { font-weight: 600; font-size: 0.9rem; }
-    .testimonial-role { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .testimonial-name { font-weight: 600; font-size: 0.88rem; }
+    .testimonial-role { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
 
-    /* ===== الأرقام ===== */
-    .stats-section { background: white; }
-    .stats-row { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
-    .stat-item { text-align: center; }
-    .stat-number { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: var(--brand-navy); line-height: 1; margin-bottom: 4px; }
-    .stat-deco { width: 40px; height: 3px; background: var(--brand-cyan); border-radius: 2px; margin: 8px auto 10px; }
-    .stat-label { font-size: 0.88rem; color: var(--text-secondary); }
+    /* ===== الأرقام — خلفية داكنة ===== */
+    .stats-section {
+      background: linear-gradient(135deg, #263c84 0%, #1a2a5e 50%, #263c84 100%);
+      position: relative; overflow: hidden;
+    }
+    .stats-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 24px 24px; opacity: 0.5;
+    }
+    .stats-section .section-header h2 { color: white; }
+    .stats-section .section-header .badge-pill { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.15); }
+    .stats-row {
+      display: flex; justify-content: center; align-items: center; gap: 0;
+      position: relative; z-index: 2;
+    }
+    .stat-item {
+      flex: 1; text-align: center; padding: 20px 24px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item:last-child { border-left: none; }
+    .stat-number {
+      font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700; color: white; margin-bottom: 10px;
+    }
+    .stat-deco { width: 50px; height: 3px; background: #24c2ec; box-shadow: 0 0 10px rgba(36,194,236,0.5); border-radius: 2px; margin: 0 auto 12px; }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
 
     /* ===== الأسئلة الشائعة ===== */
-    .faq { background: var(--surface-gray); }
-    .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item { background: white; border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; border: 1px solid var(--border-light); }
-    .faq-question { width: 100%; background: none; border: none; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); text-align: right; }
-    .faq-chevron { width: 20px; height: 20px; transition: transform 0.3s ease; color: var(--text-muted); flex-shrink: 0; }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq { background: white; }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border-light); }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 22px 0; font-size: 1rem; font-weight: 600; color: var(--text-primary);
+      font-family: var(--font-heading); text-align: right;
+    }
+    .faq-chevron { width: 20px; height: 20px; color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--brand-cyan); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
     .faq-item.open .faq-answer { max-height: 300px; }
-    .faq-answer-inner { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+    .faq-answer-inner { padding: 0 0 22px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
 
     /* ===== CTA النهائي ===== */
-    .final-cta { background: var(--gradient-brand); padding: 100px 0; text-align: center; color: white; position: relative; overflow: hidden; }
-    .final-cta::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; }
-    .final-cta h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: white; margin-bottom: 16px; position: relative; }
-    .final-cta p { font-size: 1.05rem; opacity: 0.85; max-width: 560px; margin: 0 auto 36px; position: relative; }
-    .final-cta-btns { display: flex; gap: 14px; justify-content: center; position: relative; }
+    .final-cta { background: linear-gradient(135deg, #263c84 0%, #24c2ec 100%); padding: 100px 0; text-align: center; }
+    .final-cta h2 { color: white; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px; }
+    .final-cta p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     /* ===== التذييل ===== */
-    .site-footer { background: var(--brand-navy-deep); color: white; padding: 64px 0 0; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-top: 16px; margin-bottom: 20px; }
-    .footer-social { display: flex; gap: 12px; }
-    .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); transition: all 0.25s; }
-    .footer-social a:hover { background: var(--brand-cyan); border-color: var(--brand-cyan); color: white; }
-    .footer-col h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 20px; color: white; }
+    .site-footer { background: #1a2a5e; color: rgba(255,255,255,0.8); padding: 64px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; margin-top: 16px; color: rgba(255,255,255,0.6); }
+    .footer-brand svg { height: 30px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: rgba(255,255,255,0.6); transition: all 0.25s; }
+    .footer-social a:hover { border-color: var(--brand-cyan); color: var(--brand-cyan); background: rgba(36,194,236,0.1); }
+    .footer-col h4 { color: white; font-size: 0.95rem; margin-bottom: 18px; font-weight: 600; }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 10px; }
-    .footer-col a { font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col a { color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: color 0.2s; }
     .footer-col a:hover { color: var(--brand-cyan); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
-    /* ===== زر معاينة عائم ===== */
-    .preview-fab { position: fixed; bottom: 28px; right: 28px; z-index: 80; display: flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--brand-navy); color: white; border: none; border-radius: var(--radius-pill); font-family: var(--font-heading); font-weight: 600; font-size: 0.88rem; cursor: pointer; box-shadow: 0 8px 30px rgba(38,60,132,0.3); transition: all 0.3s ease; }
-    .preview-fab:hover { background: var(--brand-cyan); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(36,194,236,0.35); }
+    /* ===== زر المعاينة ===== */
+    .preview-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 80;
+      background: var(--gradient-cta); color: white; border: none;
+      border-radius: var(--radius-pill); padding: 12px 24px;
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; box-shadow: 0 8px 25px rgba(36,194,236,0.4);
+      transition: all 0.3s;
+    }
+    .preview-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(36,194,236,0.5); }
     .preview-fab svg { width: 18px; height: 18px; }
 
     /* ===== استجابة ===== */
@@ -408,15 +515,16 @@
       .hero-checks { justify-content: center; }
       .hero-btns { justify-content: center; }
       .hero-trust { justify-content: center; }
-      .offering-card { flex-direction: column !important; }
-      .offering-visual { flex: none; max-width: 100%; width: 100%; }
+      .offering-grid { grid-template-columns: repeat(2, 1fr); }
       .systems-grid { grid-template-columns: repeat(2, 1fr); }
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .pricing-card.popular { transform: none; }
       .pricing-card.popular:hover { transform: translateY(-4px); }
       .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .dashboard-mockup { position: relative; top: auto; left: auto; transform: none; width: 100%; max-width: 400px; margin: 0 auto; }
+      .dashboard-carousel { position: relative; top: auto; left: auto; transform: none; width: 100%; max-width: 440px; margin: 0 auto; }
+      .steps-timeline { flex-wrap: wrap; gap: 32px; }
+      .step-connector { display: none !important; }
     }
     @media (max-width: 768px) {
       .section-padding { padding: 80px 0; }
@@ -425,17 +533,24 @@
       .hero { padding: 60px 0; }
       .hero h1 { font-size: 2rem; }
       .hero-btns .btn { width: 100%; justify-content: center; }
+      .offering-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
       .systems-grid { grid-template-columns: 1fr; }
       .steps-timeline { flex-direction: column; gap: 32px; }
-      .step-connector { display: none !important; }
-      .stats-row { gap: 32px; }
+      .stats-row { flex-wrap: wrap; gap: 0; }
+      .stat-item { flex: 0 0 50%; border-left: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 24px 16px; }
+      .stat-item:nth-child(odd) { border-left: 1px solid rgba(255,255,255,0.08); }
       .final-cta-btns { flex-direction: column; align-items: center; }
       .footer-grid { grid-template-columns: 1fr; }
       .dash-float-trust { right: -10px; }
       .dash-float-compliance { left: -10px; }
+      .store-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 640px) { .container, .container-wide { padding: 0 16px; } .offering-card { padding: 28px 20px; } .hero h1 { font-size: 1.75rem; } }
+    @media (max-width: 640px) {
+      .container, .container-wide { padding: 0 16px; }
+      .hero h1 { font-size: 1.75rem; }
+      .dashboard-carousel { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -508,29 +623,96 @@
               <span class="hero-trust-text"><span class="star">★</span> يثق بنا أكثر من 100 كيان سعودي</span>
             </div>
           </div>
+
+          <!-- ===== Dashboard Carousel — 3 شاشات متبدلة ===== -->
           <div class="hero-visual reveal reveal-delay-3">
-            <div class="dashboard-mockup">
+            <div class="dashboard-carousel" id="dashCarousel">
               <div class="dash-float-trust"><span class="star-icon">★</span><span>4.9 موثوق من المستخدمين</span></div>
-              <div class="dash-main">
-                <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">لوحة تحكم ويبيان</span></div>
-                <div class="dash-body">
-                  <div class="dash-stats-row">
-                    <div class="dash-stat"><div class="dash-stat-icon" style="background:var(--brand-cyan-pale);color:var(--brand-cyan)">👥</div><div class="dash-stat-num">١٢٤</div><div class="dash-stat-label">مستفيد</div></div>
-                    <div class="dash-stat"><div class="dash-stat-icon" style="background:#e8fdf5;color:#10b981">✓</div><div class="dash-stat-num">٩٩%</div><div class="dash-stat-label">الامتثال</div></div>
-                    <div class="dash-stat"><div class="dash-stat-icon" style="background:#fff4e5;color:var(--accent-gold)">⚡</div><div class="dash-stat-num">١٨</div><div class="dash-stat-label">خدمة نشطة</div></div>
+
+              <div class="carousel-viewport">
+                <div class="carousel-track" id="carouselTrack">
+
+                  <!-- الشاشة 1: إدارة المحتوى -->
+                  <div class="carousel-slide">
+                    <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">إدارة المحتوى</span><span class="dash-topbar-icon">☰</span></div>
+                    <div class="dash-body">
+                      <div class="cms-stats-bar">
+                        <div class="cms-stat-chip"><strong>12</strong>صفحة</div>
+                        <div class="cms-stat-chip"><strong>8</strong>مقالات</div>
+                        <div class="cms-stat-chip"><strong>5</strong>أخبار</div>
+                      </div>
+                      <div class="cms-layout">
+                        <div class="cms-sidebar">
+                          <div class="cms-sidebar-item active"><span class="cms-sidebar-icon">📄</span>الصفحات</div>
+                          <div class="cms-sidebar-item"><span class="cms-sidebar-icon">✏️</span>المقالات</div>
+                          <div class="cms-sidebar-item"><span class="cms-sidebar-icon">📰</span>الأخبار</div>
+                          <div class="cms-sidebar-item"><span class="cms-sidebar-icon">🖼️</span>الصور</div>
+                        </div>
+                        <div class="cms-main">
+                          <div class="cms-card-item">
+                            <div class="cms-card-thumb">📄</div>
+                            <div class="cms-card-info"><div class="cms-card-title">تقرير الأثر السنوي 2025</div><div class="cms-card-meta">مقال • منشور • 12 يناير</div></div>
+                          </div>
+                          <div class="cms-card-item">
+                            <div class="cms-card-thumb">📰</div>
+                            <div class="cms-card-info"><div class="cms-card-title">إطلاق مبادرة التمكين الرقمي</div><div class="cms-card-meta">خبر • مسودة • 8 يناير</div></div>
+                          </div>
+                          <div class="cms-card-item">
+                            <div class="cms-card-thumb">📄</div>
+                            <div class="cms-card-info"><div class="cms-card-title">ورشة الحوكمة المؤسسية</div><div class="cms-card-meta">مقال • منشور • 3 يناير</div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="dash-chart">
-                    <div class="dash-bar" style="height:45%;background:var(--brand-cyan-pale)"></div>
-                    <div class="dash-bar" style="height:70%;background:rgba(36,194,236,0.3)"></div>
-                    <div class="dash-bar" style="height:55%;background:rgba(36,194,236,0.45)"></div>
-                    <div class="dash-bar" style="height:90%;background:var(--brand-cyan)"></div>
-                    <div class="dash-bar" style="height:60%;background:rgba(38,60,132,0.3)"></div>
-                    <div class="dash-bar" style="height:80%;background:rgba(38,60,132,0.5)"></div>
-                    <div class="dash-bar" style="height:50%;background:var(--brand-navy)"></div>
+
+                  <!-- الشاشة 2: بوابة التبرعات -->
+                  <div class="carousel-slide">
+                    <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">بوابة التبرعات</span><span class="dash-topbar-icon">💙</span></div>
+                    <div class="dash-body">
+                      <div class="donate-stats">
+                        <div class="donate-stat"><div class="donate-stat-num">12</div><div class="donate-stat-label">فرصة نشطة</div></div>
+                        <div class="donate-stat"><div class="donate-stat-num">45,000</div><div class="donate-stat-label">ر.س محصّلة</div></div>
+                      </div>
+                      <div class="donate-opportunity">
+                        <div class="donate-opp-title">🕌 كفالة يتيم — شهرية</div>
+                        <div class="donate-opp-amount">المحصّل: 4,500 من 6,000 ر.س</div>
+                        <div class="donate-progress"><div class="donate-progress-fill" style="width:75%"></div></div>
+                        <button class="donate-btn-sm">تبرّع الآن 💙</button>
+                      </div>
+                      <div class="donate-grid">
+                        <div class="donate-mini"><div class="donate-mini-icon">📚</div><div class="donate-mini-name">كفالة طالب</div><div class="donate-mini-amt">2,100 ر.س</div></div>
+                        <div class="donate-mini"><div class="donate-mini-icon">🏠</div><div class="donate-mini-name">سقيا ماء</div><div class="donate-mini-amt">800 ر.س</div></div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="dash-rows"><div class="dash-row" style="width:100%"></div><div class="dash-row" style="width:80%"></div><div class="dash-row" style="width:60%"></div></div>
+
+                  <!-- الشاشة 3: المتجر الإلكتروني -->
+                  <div class="carousel-slide">
+                    <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">المتجر الإلكتروني</span><span class="dash-topbar-icon">🛒</span></div>
+                    <div class="dash-body">
+                      <div class="store-stats">
+                        <div class="store-stat"><div class="store-stat-num">23</div><div class="store-stat-label">إجمالي الطلبات</div></div>
+                        <div class="store-stat"><div class="store-stat-num">8,500</div><div class="store-stat-label">ر.س الإيرادات</div></div>
+                      </div>
+                      <div class="store-grid">
+                        <div class="store-product"><div class="store-product-img">📖<span class="store-product-badge">جديد</span></div><div class="store-product-body"><div class="store-product-name">دورة إدارة المشاريع</div><div class="store-product-price">150 ر.س</div></div></div>
+                        <div class="store-product"><div class="store-product-img">📕</div><div class="store-product-body"><div class="store-product-name">كتاب إلكتروني</div><div class="store-product-price">45 ر.س</div></div></div>
+                        <div class="store-product"><div class="store-product-img">🎫<span class="store-product-badge">جديد</span></div><div class="store-product-body"><div class="store-product-name">تذكرة فعالية</div><div class="store-product-price">75 ر.س</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
+
+              <!-- نقاط التنقل -->
+              <div class="carousel-dots" id="carouselDots">
+                <button class="carousel-dot-btn active" data-index="0"></button>
+                <button class="carousel-dot-btn" data-index="1"></button>
+                <button class="carousel-dot-btn" data-index="2"></button>
+              </div>
+
               <div class="dash-float-compliance"><div class="compliance-top"><div class="compliance-circle"><span>٩٩%</span></div><div><div class="compliance-label">الامتثال ٩٩%</div><div class="compliance-sub">الشفافية | السلامة المالية</div></div></div></div>
             </div>
           </div>
@@ -568,41 +750,38 @@
       </div>
     </section>
 
-    <!-- ===== ماذا نقدم في ويبيان ===== -->
+    <!-- ===== ماذا نقدم في ويبيان — 3 أعمدة ===== -->
     <section class="offerings section-padding" id="offerings">
       <div class="container">
         <div class="section-header reveal"><div class="badge-pill">⭐ القسم الأهم</div><h2>ماذا نقدم في ويبيان</h2><p>منظومة رقمية متكاملة صُممت خصيصًا لتناسب طبيعة عمل الجمعيات والكيانات غير الربحية في المملكة العربية السعودية</p></div>
-        <div class="offering-showcase">
-          <div class="offering-card featured reveal">
-            <div class="offering-content">
-              <div class="offering-icon">🌐</div>
-              <h3>الموقع الإلكتروني المؤسسي</h3>
-              <p>موقع احترافي متكامل يعرض هوية جمعيتك وبرامجها ومشاريعها ويلبّي متطلبات الحوكمة والشفافية أمام الجهات الإشرافية</p>
-              <div class="offering-tags"><span class="offering-tag">الصفحة الرئيسية</span><span class="offering-tag">من نحن</span><span class="offering-tag">البرامج والمشاريع</span><span class="offering-tag">المركز الإعلامي</span><span class="offering-tag">الحوكمة</span><span class="offering-tag">الوظائف</span><span class="offering-tag">اتصل بنا</span></div>
-            </div>
-            <div class="offering-visual">
+        <div class="offering-grid">
+          <!-- الموقع المؤسسي -->
+          <div class="offering-card reveal reveal-delay-1">
+            <div class="offering-icon">🌐</div>
+            <h3>الموقع الإلكتروني المؤسسي</h3>
+            <p>موقع احترافي متكامل يعرض هوية جمعيتك وبرامجها ومشاريعها ويلبّي متطلبات الحوكمة والشفافية أمام الجهات الإشرافية</p>
+            <div class="offering-tags"><span class="offering-tag">الصفحة الرئيسية</span><span class="offering-tag">من نحن</span><span class="offering-tag">البرامج والمشاريع</span><span class="offering-tag">المركز الإعلامي</span><span class="offering-tag">الحوكمة</span><span class="offering-tag">الوظائف</span><span class="offering-tag">اتصل بنا</span></div>
+            <div class="offering-mini-visual">
               <div class="mini-mockup"><div class="mini-site-header"><div class="mini-logo-shape"></div><div class="mini-nav-lines"><div class="mini-nav-line"></div><div class="mini-nav-line"></div><div class="mini-nav-line"></div></div></div><div class="mini-hero-block"><div class="mini-hero-text"><div class="line1"></div><div class="line2"></div></div></div><div class="mini-cards-row"><div class="mini-card-block"></div><div class="mini-card-block"></div><div class="mini-card-block"></div></div></div>
             </div>
           </div>
-          <div class="offering-card reverse reveal">
-            <div class="offering-content">
-              <div class="offering-icon" style="background:linear-gradient(135deg,#263c84,#3a56a8)">💙</div>
-              <h3>بوابة التبرعات</h3>
-              <p>استقبل التبرعات الإلكترونية وأنشئ فرص تبرع متعددة مرتبطة بمشاريعك وبرامجك لزيادة إيرادات جمعيتك</p>
-              <div class="offering-tags"><span class="offering-tag">زكاة</span><span class="offering-tag">صدقة</span><span class="offering-tag">وقف</span><span class="offering-tag">كفالة</span><span class="offering-tag">بوابات الدفع</span><span class="offering-tag">سلة التبرعات</span></div>
-            </div>
-            <div class="offering-visual">
+          <!-- بوابة التبرعات -->
+          <div class="offering-card reveal reveal-delay-2">
+            <div class="offering-icon" style="background:linear-gradient(135deg,#263c84,#3a56a8)">💙</div>
+            <h3>بوابة التبرعات</h3>
+            <p>استقبل التبرعات الإلكترونية وأنشئ فرص تبرع متعددة مرتبطة بمشاريعك وبرامجك لزيادة إيرادات جمعيتك</p>
+            <div class="offering-tags"><span class="offering-tag">زكاة</span><span class="offering-tag">صدقة</span><span class="offering-tag">وقف</span><span class="offering-tag">كفالة</span><span class="offering-tag">بوابات الدفع</span><span class="offering-tag">سلة التبرعات</span></div>
+            <div class="offering-mini-visual">
               <div class="mini-donate-card"><div class="mini-donate-title">🕌 كفالة يتيم — شهرية</div><div class="mini-donate-amount">المحصّل: ٤٥,٠٠٠ ر.س من ٦٠,٠٠٠ ر.س</div><div class="mini-progress-bar"><div class="mini-progress-fill" style="width:75%"></div></div><button class="mini-donate-btn">تبرّع الآن 💙</button></div>
             </div>
           </div>
-          <div class="offering-card reveal">
-            <div class="offering-content">
-              <div class="offering-icon" style="background:linear-gradient(135deg,#24c2ec,#263c84)">🛒</div>
-              <h3>المتجر الإلكتروني</h3>
-              <p>عزز الاستدامة المالية لجمعيتك ببيع المنتجات والخدمات والدورات التدريبية والمواد الرقمية عبر متجر متكامل</p>
-              <div class="offering-tags"><span class="offering-tag">منتجات خيرية</span><span class="offering-tag">دورات تدريبية</span><span class="offering-tag">تذاكر فعاليات</span><span class="offering-tag">خدمات</span></div>
-            </div>
-            <div class="offering-visual">
+          <!-- المتجر الإلكتروني -->
+          <div class="offering-card reveal reveal-delay-3">
+            <div class="offering-icon" style="background:linear-gradient(135deg,#24c2ec,#263c84)">🛒</div>
+            <h3>المتجر الإلكتروني</h3>
+            <p>عزز الاستدامة المالية لجمعيتك ببيع المنتجات والخدمات والدورات التدريبية والمواد الرقمية عبر متجر متكامل</p>
+            <div class="offering-tags"><span class="offering-tag">منتجات خيرية</span><span class="offering-tag">دورات تدريبية</span><span class="offering-tag">تذاكر فعاليات</span><span class="offering-tag">خدمات</span></div>
+            <div class="offering-mini-visual">
               <div class="mini-product-card"><div class="mini-product-img">📦</div><div class="mini-product-body"><div class="mini-product-name">دورة إدارة المشاريع التنموية</div><div class="mini-product-price">١٥٠ ر.س</div><button class="mini-product-btn">أضف للسلة</button></div></div>
             </div>
           </div>
@@ -642,14 +821,39 @@
       </div>
     </section>
 
-    <!-- ===== ابدأ في 3 خطوات ===== -->
+    <!-- ===== موقعك جاهز خلال أيام — 4 خطوات ===== -->
     <section class="how-it-works section-padding" id="how">
       <div class="container">
-        <div class="section-header reveal"><div class="badge-pill">🚀 ابدأ بسهولة</div><h2>ابدأ في 3 خطوات بسيطة</h2></div>
+        <div class="section-header reveal"><div class="badge-pill">🚀 ابدأ بسهولة</div><h2>موقعك جاهز خلال أيام</h2><p>عملية بسيطة ومباشرة — من الاشتراك إلى الإطلاق</p></div>
         <div class="steps-timeline reveal">
-          <div class="step-item"><div class="step-num">١</div><h3>اختر خطتك</h3><p>اختر الخطة المناسبة لاحتياجات جمعيتك — بيسك أو بلس أو برو</p></div>
-          <div class="step-item"><div class="step-connector"></div><div class="step-num">٢</div><h3>خصّص موقعك</h3><p>أضف محتواك وبرامجك ومشاريعك عبر لوحة تحكم سهلة الاستخدام</p></div>
-          <div class="step-item"><div class="step-connector"></div><div class="step-num">٣</div><h3>انطلق وتميّز</h3><p>موقعك جاهز للعالم مع الاستضافة والحماية والدعم الفني</p></div>
+          <div class="step-item">
+            <span class="step-icon">💳</span>
+            <div class="step-num">١</div>
+            <h3>اختر خطتك واشترك</h3>
+            <p>اختر الخطة التي تناسب احتياجات جمعيتك وأكمل عملية الاشتراك بسهولة عبر الدفع الإلكتروني أو التحويل البنكي</p>
+          </div>
+          <div class="step-item">
+            <div class="step-connector"><div class="step-connector-fill"></div></div>
+            <span class="step-icon">⚙️</span>
+            <div class="step-num">٢</div>
+            <h3>نجهّز موقعك</h3>
+            <p>فور استلام طلبك، يبدأ فريقنا في تجهيز استضافة موقعك وإعداده بمحتوى افتراضي احترافي جاهز يعكس طبيعة عمل جمعيتك</p>
+          </div>
+          <div class="step-item">
+            <div class="step-connector"><div class="step-connector-fill"></div></div>
+            <span class="step-icon">🚀</span>
+            <div class="step-num">٣</div>
+            <h3>نسلّمك موقعًا جاهزًا</h3>
+            <p>خلال 2-3 أيام عمل، نسلّمك موقعًا إلكترونيًا مكتملًا مع لوحة تحكم وبيانات الدخول — جاهز للتعديل والنشر فورًا</p>
+            <span class="step-badge">خلال 2-3 أيام ⚡</span>
+          </div>
+          <div class="step-item">
+            <div class="step-connector"><div class="step-connector-fill"></div></div>
+            <span class="step-icon">🌍</span>
+            <div class="step-num">٤</div>
+            <h3>أضف محتواك وانطلق</h3>
+            <p>ادخل لوحة التحكم وعدّل المحتوى الافتراضي بمعلومات جمعيتك الحقيقية — برامجك ومشاريعك وأخبارك — وانشر موقعك للعالم</p>
+          </div>
         </div>
       </div>
     </section>
@@ -717,15 +921,15 @@
       </div>
     </section>
 
-    <!-- ===== الأرقام ===== -->
+    <!-- ===== الأرقام — خلفية داكنة ===== -->
     <section class="stats-section section-padding" id="stats">
       <div class="container">
         <div class="section-header reveal"><div class="badge-pill">📊 إنجازاتنا</div><h2>أرقام تتحدث</h2></div>
         <div class="stats-row reveal">
-          <div class="stat-item"><div class="stat-number" data-target="100">0</div><div class="stat-deco"></div><div class="stat-label">كيان غير ربحي</div></div>
-          <div class="stat-item"><div class="stat-number" data-target="18">0</div><div class="stat-deco"></div><div class="stat-label">خدمة نشطة</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="100" data-prefix="+">0</div><div class="stat-deco"></div><div class="stat-label">كيان غير ربحي</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="18" data-prefix="+">0</div><div class="stat-deco"></div><div class="stat-label">خدمة نشطة</div></div>
           <div class="stat-item"><div class="stat-number" data-target="99" data-suffix="%">0</div><div class="stat-deco"></div><div class="stat-label">نسبة الامتثال</div></div>
-          <div class="stat-item"><div class="stat-number" data-target="124">0</div><div class="stat-deco"></div><div class="stat-label">مستفيد</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="124" data-prefix="+">0</div><div class="stat-deco"></div><div class="stat-label">مستفيد</div></div>
           <div class="stat-item"><div class="stat-number" data-target="4.9" data-decimal="true">0</div><div class="stat-deco"></div><div class="stat-label">تقييم المستخدمين</div></div>
         </div>
       </div>
@@ -782,20 +986,64 @@
   </button>
 
   <script>
+    /* ===== Header scroll ===== */
     var header=document.getElementById('siteHeader');
     window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>10)});
+
+    /* ===== Mobile drawer ===== */
     var toggle=document.getElementById('mobileToggle'),drawer=document.getElementById('mobileDrawer'),overlay=document.getElementById('mobileOverlay'),closeBtn=document.getElementById('drawerClose');
     function openD(){drawer.classList.add('open');overlay.classList.add('open')}
     function closeD(){drawer.classList.remove('open');overlay.classList.remove('open')}
     toggle.addEventListener('click',openD);closeBtn.addEventListener('click',closeD);overlay.addEventListener('click',closeD);
     drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeD)});
+
+    /* ===== Scroll reveal ===== */
     var ro=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target)}})},{threshold:0.1});
     document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+
+    /* ===== Counter animation ===== */
     var ca=false;
-    var so=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting&&!ca){ca=true;document.querySelectorAll('.stat-number').forEach(function(el){var t=parseFloat(el.dataset.target),d=el.dataset.decimal==='true',s=el.dataset.suffix||'',p=t>=10&&!d&&!s?'+':'',dur=1800,st=performance.now();function u(n){var pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,3),c=d?(t*ea).toFixed(1):Math.floor(t*ea);el.textContent=p+c+s;if(pr<1)requestAnimationFrame(u)}requestAnimationFrame(u)})}})},{threshold:0.3});
+    var so=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting&&!ca){ca=true;document.querySelectorAll('.stat-number').forEach(function(el){
+      var t=parseFloat(el.dataset.target),d=el.dataset.decimal==='true',s=el.dataset.suffix||'',p=el.dataset.prefix||'',dur=1800,st=performance.now();
+      function u(n){var pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,3),c=d?(t*ea).toFixed(1):Math.floor(t*ea);el.textContent=p+c+s;if(pr<1)requestAnimationFrame(u)}
+      requestAnimationFrame(u)
+    })}})},{threshold:0.3});
     var ss=document.getElementById('stats');if(ss)so.observe(ss);
+
+    /* ===== FAQ accordion ===== */
     document.querySelectorAll('.faq-question').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,w=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open')});if(!w)i.classList.add('open')})});
+
+    /* ===== Smooth scroll ===== */
     document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+
+    /* ===== Dashboard Carousel — تبديل تلقائي كل 4 ثواني ===== */
+    (function(){
+      var track=document.getElementById('carouselTrack');
+      var dots=document.querySelectorAll('#carouselDots .carousel-dot-btn');
+      var current=0, total=3, timer;
+
+      function goTo(idx){
+        current=idx;
+        // في RTL ننقل بالاتجاه المعاكس
+        track.style.transform='translateX('+current*100+'%)';
+        dots.forEach(function(d,i){d.classList.toggle('active',i===current)});
+      }
+
+      function next(){ goTo((current+1)%total); }
+
+      function startTimer(){ timer=setInterval(next,4000); }
+      function stopTimer(){ clearInterval(timer); }
+
+      dots.forEach(function(d){
+        d.addEventListener('click',function(){
+          stopTimer();
+          goTo(parseInt(d.dataset.index));
+          startTimer();
+        });
+      });
+
+      startTimer();
+    })();
   </script>
 </body>
 </html>
