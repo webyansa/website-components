@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ويبيان — منصة رقمية متكاملة للكيانات غير الربحية</title>
+<meta name="description" content="ويبيان منصة رقمية سعودية تُمكّن الجمعيات والكيانات غير الربحية من إنشاء وإدارة حضورها الرقمي باحترافية">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A5C;--navy-deep:#0F2640;--cyan:#2B9FD9;--cyan-light:#E8F4FD;--teal:#17B5A0;--teal-light:#E6F7F5;--white:#FFF;--bg-light:#F7F9FC;--gold:#F5A623;--gold-light:#FEF7E8;--text-dark:#1A2B3D;--text-body:#4A5568;--text-muted:#8896A6;--border:#E2E8F0;--border-light:#EDF2F7;--shadow-sm:0 1px 3px rgba(27,58,92,.06);--shadow-md:0 4px 16px rgba(27,58,92,.08);--shadow-lg:0 12px 40px rgba(27,58,92,.1);--shadow-xl:0 20px 60px rgba(27,58,92,.12);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:50px;--transition:.3s cubic-bezier(.4,0,.2,1);--font-heading:'IBM Plex Sans Arabic',sans-serif;--font-body:'Cairo',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text-body);background:var(--white);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);color:var(--text-dark);line-height:1.35}
+a{text-decoration:none;color:inherit;transition:color var(--transition)}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section-header{text-align:center;margin-bottom:64px}
+.section-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:var(--radius-full);font-size:13px;font-weight:600;margin-bottom:16px}
+.section-title{font-size:36px;font-weight:700;margin-bottom:16px}
+.section-subtitle{font-size:17px;color:var(--text-muted);max-width:640px;margin:0 auto;line-height:1.8}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* 1. Announcement */
+.announcement-bar{background:linear-gradient(135deg,var(--navy-deep),var(--navy));color:#fff;text-align:center;padding:11px 48px 11px 24px;font-size:14px;font-weight:500;position:relative;z-index:1001;transition:transform .35s ease,opacity .35s ease}
+.announcement-bar.hidden{transform:translateY(-100%);opacity:0;pointer-events:none;position:absolute;width:100%}
+.announcement-bar .highlight{color:var(--gold)}
+.announcement-close{position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background var(--transition)}
+.announcement-close:hover{background:rgba(255,255,255,.3)}
+
+/* 2. Navbar */
+.navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:box-shadow var(--transition),border-color var(--transition);height:72px}
+.navbar.scrolled{box-shadow:0 1px 20px rgba(27,58,92,.08);border-bottom-color:var(--border-light)}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:100%}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.logo-icon::before{content:'';width:20px;height:20px;border:3px solid #fff;border-radius:4px;transform:rotate(45deg);position:absolute}
+.logo-icon::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%;position:absolute}
+.logo-text .logo-ar{font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--navy);display:block;line-height:1.2}
+.logo-text .logo-en{font-size:12px;color:var(--cyan);font-weight:500;letter-spacing:1px}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:15px;font-weight:500;color:var(--text-dark);position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;right:0;width:0;height:2px;background:var(--cyan);border-radius:2px;transition:width var(--transition)}
+.nav-links a:hover{color:var(--cyan)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--cyan)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-lang{width:40px;height:40px;border-radius:10px;border:1.5px solid var(--border);background:transparent;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all var(--transition)}
+.btn-lang:hover{border-color:var(--cyan);background:var(--cyan-light)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 28px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;transition:all var(--transition)}
+.btn-primary:hover{background:linear-gradient(135deg,var(--cyan),var(--teal));box-shadow:0 4px 20px rgba(43,159,217,.35);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:all var(--transition)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-drawer{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:#fff;z-index:2000;transition:right .35s cubic-bezier(.4,0,.2,1);box-shadow:-5px 0 30px rgba(0,0,0,.1);display:flex;flex-direction:column}
+.mobile-drawer.open{right:0}
+.drawer-header{padding:20px 24px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:flex;justify-content:space-between;align-items:center}
+.drawer-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:10px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.drawer-links{padding:24px;display:flex;flex-direction:column;gap:4px;flex:1}
+.drawer-links a{padding:12px 16px;border-radius:var(--radius-sm);font-size:15px;font-weight:500;color:var(--text-dark);transition:all var(--transition)}
+.drawer-links a:hover{background:var(--bg-light);color:var(--cyan)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1999;opacity:0;pointer-events:none;transition:opacity var(--transition)}
+.drawer-overlay.active{opacity:1;pointer-events:all}
+
+/* 3. Hero */
+.hero{padding:100px 0 80px;position:relative;overflow:hidden;background:linear-gradient(180deg,#EDF3FA,var(--white))}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--navy) .8px,transparent .8px);background-size:28px 28px;opacity:.03}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-content{max-width:560px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:var(--cyan-light);border:1px solid rgba(43,159,217,.2);border-radius:var(--radius-full);margin-bottom:24px;font-size:13px;font-weight:600;color:var(--cyan)}
+.hero-badge .dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-size:48px;font-weight:700;line-height:1.3;margin-bottom:24px;color:var(--navy)}
+.hero h1 .accent{color:var(--cyan);position:relative;display:inline-block}
+.hero h1 .accent::after{content:'';position:absolute;bottom:-4px;right:0;width:100%;height:8px;background:url("data:image/svg+xml,%3Csvg width='120' height='8' viewBox='0 0 120 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.5C20 1 40 1 60 5.5C80 10 100 1 119 5.5' stroke='%232B9FD9' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center;background-size:120px 8px}
+.hero-desc{font-size:17px;line-height:1.9;color:var(--text-body);margin-bottom:36px}
+.hero-features{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;list-style:none}
+.hero-features li{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:var(--text-dark)}
+.hero-features .check{width:24px;height:24px;background:var(--teal-light);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.hero-cta{display:flex;gap:14px;align-items:center;margin-bottom:32px;flex-wrap:wrap}
+.btn-hero-primary{display:inline-flex;align-items:center;gap:8px;padding:15px 40px;background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;border:none;border-radius:var(--radius-md);font-family:var(--font-body);font-size:16px;font-weight:700;cursor:pointer;transition:all var(--transition);box-shadow:0 8px 25px rgba(43,159,217,.35)}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(43,159,217,.45)}
+.btn-hero-primary:active{transform:scale(.97)}
+.btn-hero-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:var(--navy);border:2px solid var(--navy);border-radius:var(--radius-md);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer;transition:all var(--transition)}
+.btn-hero-secondary:hover{background:var(--navy);color:#fff}
+.trust-badge{display:flex;align-items:center;gap:12px}
+.avatars{display:flex}
+.avatar-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;border:2.5px solid #fff;margin-left:-10px}
+.avatar-circle:first-child{margin-left:0}
+.trust-badge .trust-text{font-size:13px;color:var(--text-muted)}
+.trust-badge .star{color:var(--gold)}
+.hero-visual{position:relative}
+.dashboard-card{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);overflow:hidden;animation:float-main 5s ease-in-out infinite}
+@keyframes float-main{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.dashboard-topbar{height:44px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:flex;align-items:center;padding:0 16px;gap:8px}
+.topbar-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4)}
+.topbar-text{color:#fff;font-size:13px;font-weight:600;margin-right:auto;margin-left:8px}
+.dashboard-body{padding:20px}
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.mini-stat{background:var(--bg-light);border-radius:var(--radius-md);padding:14px;text-align:center}
+.mini-stat-icon{width:32px;height:32px;border-radius:8px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.mini-stat .number{font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--text-dark)}
+.mini-stat .label{font-size:12px;color:var(--text-muted);margin-top:2px}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:60px;margin-bottom:16px}
+.chart-bar{flex:1;border-radius:4px 4px 0 0}
+.placeholder-lines{display:flex;flex-direction:column;gap:10px}
+.ph-line{height:10px;border-radius:5px;background:var(--border-light)}
+.floating-badge{position:absolute;background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);padding:10px 16px;z-index:5}
+.badge-trust{top:-10px;right:-10px;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;animation:fb1 3s ease-in-out infinite}
+@keyframes fb1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.badge-compliance{bottom:30px;left:-20px;display:flex;align-items:center;gap:10px;animation:fb2 4s ease-in-out infinite}
+@keyframes fb2{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.compliance-ring{width:48px;height:48px;border-radius:50%;background:conic-gradient(var(--teal) 0% 99%,var(--border-light) 99% 100%);display:flex;align-items:center;justify-content:center;position:relative}
+.compliance-ring::after{content:'';width:36px;height:36px;background:#fff;border-radius:50%;position:absolute}
+.compliance-ring .ring-text{position:relative;z-index:1;font-size:11px;font-weight:700;color:var(--teal)}
+.badge-compliance .badge-info{font-size:12px}
+.badge-compliance .badge-info strong{color:var(--text-dark);display:block}
+.badge-compliance .badge-info span{color:var(--text-muted);font-size:11px}
+.hero-decor-1{position:absolute;width:200px;height:200px;border-radius:50%;background:var(--cyan);opacity:.05;top:-40px;left:-60px}
+.hero-decor-2{position:absolute;width:140px;height:140px;border-radius:50%;background:var(--navy);opacity:.04;bottom:-30px;right:-30px}
+
+/* 4. Trust bar */
+.trust-bar{padding:60px 0;background:#fff;border-top:1px solid var(--border-light)}
+.trust-bar .section-header{margin-bottom:40px}
+.marquee-wrapper{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%)}
+.marquee-track{display:flex;gap:16px;width:max-content;animation:marquee 40s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(50%)}}
+.marquee-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:var(--radius-full);border:1px solid;font-size:14px;font-weight:500;white-space:nowrap;transition:transform var(--transition)}
+.marquee-pill:hover{transform:scale(1.05)}
+.marquee-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* 5. What we offer */
+.what-we-offer{background:var(--bg-light)}
+.offer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.offer-card{background:#fff;border-radius:var(--radius-lg);padding:36px 32px;border:1px solid var(--border-light);transition:all var(--transition);position:relative;overflow:hidden}
+.offer-card::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%}
+.offer-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:transparent}
+.offer-icon{width:56px;height:56px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px}
+.offer-card h3{font-size:20px;font-weight:700;margin-bottom:12px}
+.offer-card p{font-size:15px;color:var(--text-body);line-height:1.8;margin-bottom:16px}
+.offer-tags{display:flex;flex-wrap:wrap;gap:8px}
+.offer-tag{padding:4px 12px;background:var(--bg-light);border-radius:var(--radius-full);font-size:12px;color:var(--text-muted);font-weight:500}
+.offer-card.card-cyan::before{background:var(--cyan)}.offer-card.card-cyan .offer-icon{background:var(--cyan-light);color:var(--cyan)}
+.offer-card.card-navy::before{background:var(--navy)}.offer-card.card-navy .offer-icon{background:rgba(27,58,92,.08);color:var(--navy)}
+.offer-card.card-teal::before{background:var(--teal)}.offer-card.card-teal .offer-icon{background:var(--teal-light);color:var(--teal)}
+.offer-card.card-gold::before{background:var(--gold)}.offer-card.card-gold .offer-icon{background:var(--gold-light);color:var(--gold)}
+
+/* 6. Ops */
+.ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ops-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;transition:all var(--transition);text-align:center}
+.ops-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);border-color:var(--cyan)}
+.ops-icon{width:52px;height:52px;border-radius:var(--radius-md);background:var(--bg-light);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}
+.ops-card h4{font-size:16px;font-weight:700;margin-bottom:8px}
+.ops-card p{font-size:13px;color:var(--text-muted);line-height:1.7}
+
+/* 7. Why */
+.why-section{background:var(--bg-light)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why-card{background:#fff;border-radius:var(--radius-lg);padding:28px 24px;border:1px solid var(--border-light);text-align:center;transition:all var(--transition)}
+.why-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.why-icon{width:52px;height:52px;border-radius:50%;background:var(--cyan-light);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px}
+.why-card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+.why-card p{font-size:13px;color:var(--text-muted);line-height:1.7}
+
+/* 8. Timeline */
+.how-it-works{background:#fff}
+.timeline{display:flex;justify-content:center;gap:40px;position:relative;max-width:900px;margin:0 auto}
+.timeline::before{content:'';position:absolute;top:40px;right:80px;left:80px;height:3px;background:var(--border)}
+.timeline-step{flex:1;text-align:center;position:relative;z-index:1}
+.step-number{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:28px;font-weight:700;margin:0 auto 20px;box-shadow:0 6px 20px rgba(43,159,217,.3)}
+.timeline-step h4{font-size:18px;font-weight:700;margin-bottom:8px}
+.timeline-step p{font-size:14px;color:var(--text-muted);line-height:1.7}
+
+/* 9. Pricing */
+.pricing{background:var(--bg-light)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+.pricing-card{background:#fff;border-radius:var(--radius-xl);padding:36px 28px;border:1px solid var(--border-light);transition:all var(--transition);position:relative;text-align:center}
+.pricing-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.pricing-card.featured{border:2px solid var(--cyan);box-shadow:var(--shadow-lg);transform:scale(1.04)}
+.pricing-card.featured:hover{transform:scale(1.06)}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;padding:5px 20px;border-radius:var(--radius-full);font-size:12px;font-weight:700;white-space:nowrap}
+.pricing-card h3{font-size:22px;font-weight:700;margin-bottom:8px;color:var(--navy)}
+.pricing-price{margin:20px 0}
+.pricing-price .amount{font-family:var(--font-heading);font-size:40px;font-weight:700;color:var(--navy)}
+.pricing-price .period{font-size:14px;color:var(--text-muted)}
+.pricing-desc{font-size:13px;color:var(--text-muted);margin-bottom:24px}
+.pricing-features{list-style:none;text-align:right;margin-bottom:28px}
+.pricing-features li{padding:8px 0;font-size:14px;color:var(--text-body);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border-light)}
+.pricing-features li:last-child{border:none}
+.pricing-features .pf-check{color:var(--teal);font-weight:700}
+.btn-pricing{display:block;width:100%;padding:14px;border-radius:var(--radius-md);font-family:var(--font-body);font-size:15px;font-weight:700;border:2px solid var(--navy);background:transparent;color:var(--navy);cursor:pointer;transition:all var(--transition)}
+.btn-pricing:hover{background:var(--navy);color:#fff}
+.btn-pricing.primary{background:linear-gradient(135deg,var(--cyan),var(--teal));border-color:transparent;color:#fff}
+.btn-pricing.primary:hover{box-shadow:0 6px 20px rgba(43,159,217,.4);transform:translateY(-2px)}
+.pricing-note{text-align:center;margin-top:48px;padding:28px;background:#fff;border-radius:var(--radius-lg);border:1px dashed var(--border)}
+.pricing-note p{color:var(--text-muted);font-size:15px;margin-bottom:16px}
+
+/* 10. Testimonials */
+.testimonials{background:linear-gradient(135deg,var(--navy-deep),var(--navy));color:#fff}
+.testimonials .section-title{color:#fff}
+.testimonials .section-subtitle{color:rgba(255,255,255,.6)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:28px 24px;backdrop-filter:blur(10px);transition:all var(--transition)}
+.testimonial-card:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
+.t-stars{color:var(--gold);font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.t-text{font-size:15px;line-height:1.9;color:rgba(255,255,255,.85);margin-bottom:20px}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:16px}
+.t-name{font-weight:700;color:#fff;font-size:14px}
+.t-role{font-size:12px;color:rgba(255,255,255,.5)}
+
+/* 11. Stats */
+.stats{background:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.stat-item{text-align:center;padding:24px 16px}
+.stat-number{font-family:var(--font-heading);font-size:42px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.stat-number .counter-prefix{color:var(--cyan)}
+.stat-label{font-size:14px;color:var(--text-muted);font-weight:500}
+.stat-divider{width:40px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--teal));border-radius:3px;margin:8px auto 0}
+
+/* 12. FAQ */
+.faq{background:var(--bg-light)}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:var(--radius-md);border:1px solid var(--border-light);overflow:hidden;transition:box-shadow var(--transition)}
+.faq-item:hover{box-shadow:var(--shadow-sm)}
+.faq-item.active{border-color:var(--cyan);box-shadow:0 2px 12px rgba(43,159,217,.1)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;cursor:pointer;font-size:15px;font-weight:600;color:var(--text-dark);background:none;border:none;width:100%;text-align:right;font-family:var(--font-body);transition:color var(--transition)}
+.faq-question:hover{color:var(--cyan)}
+.faq-arrow{width:28px;height:28px;border-radius:50%;background:var(--bg-light);display:flex;align-items:center;justify-content:center;transition:all var(--transition);flex-shrink:0;font-size:14px;color:var(--text-muted)}
+.faq-item.active .faq-arrow{background:var(--cyan);color:#fff;transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.active .faq-answer{max-height:200px}
+.faq-answer p{padding:0 24px 20px;font-size:14px;line-height:1.9;color:var(--text-body)}
+
+/* 13. Final CTA */
+.final-cta{background:linear-gradient(135deg,var(--navy),#1a4a6e,var(--teal));padding:100px 0;text-align:center;color:#fff;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px}
+.final-cta h2{font-size:36px;font-weight:700;color:#fff;margin-bottom:16px;position:relative}
+.final-cta .section-subtitle{color:rgba(255,255,255,.75);margin-bottom:40px}
+.cta-buttons{display:flex;justify-content:center;gap:16px;position:relative;flex-wrap:wrap}
+.btn-cta-primary{padding:15px 44px;background:#fff;color:var(--navy);border:none;border-radius:var(--radius-md);font-family:var(--font-body);font-size:16px;font-weight:700;cursor:pointer;transition:all var(--transition)}
+.btn-cta-primary:hover{box-shadow:0 8px 25px rgba(255,255,255,.25);transform:translateY(-2px)}
+.btn-cta-secondary{padding:14px 36px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);border-radius:var(--radius-md);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer;transition:all var(--transition)}
+.btn-cta-secondary:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* 14. Footer */
+.site-footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:64px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand .logo{margin-bottom:16px}
+.footer-brand .logo-ar{color:#fff}
+.footer-brand .logo-en{color:var(--cyan)}
+.footer-brand p{font-size:14px;line-height:1.8;margin-bottom:20px}
+.footer-social{display:flex;gap:10px}
+.social-icon{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:16px;transition:all var(--transition)}
+.social-icon:hover{background:var(--cyan);color:#fff}
+.footer-col h4{color:#fff;font-size:16px;font-weight:700;margin-bottom:20px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:rgba(255,255,255,.6);transition:color var(--transition)}
+.footer-col a:hover{color:var(--cyan)}
+.footer-bottom{padding:20px 0;text-align:center;font-size:13px;color:rgba(255,255,255,.4)}
+
+/* Responsive */
+@media(max-width:1024px){
+.hero .container{grid-template-columns:1fr;gap:50px}.hero-content{max-width:100%}.hero-visual{max-width:500px;margin:0 auto}.hero h1{font-size:38px}
+.offer-grid{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(3,1fr)}
+.pricing-grid{grid-template-columns:1fr;max-width:420px}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-4px)}
+.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+.section{padding:64px 0}.section-title{font-size:28px}.nav-links,.nav-actions{display:none}.hamburger{display:flex}
+.hero{padding:60px 0 40px}.hero h1{font-size:30px}.hero-desc{font-size:15px}.hero-cta{flex-direction:column}
+.btn-hero-primary,.btn-hero-secondary{width:100%;justify-content:center}.hero-visual{max-width:100%}
+.offer-grid{grid-template-columns:1fr}.ops-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}
+.timeline{flex-direction:column;gap:32px}.timeline::before{display:none}.stats-grid{grid-template-columns:repeat(2,1fr)}
+.final-cta h2{font-size:26px}.cta-buttons{flex-direction:column;align-items:center}.footer-grid{grid-template-columns:1fr;gap:32px}
+.navbar .container{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<!-- ===== 1. شريط الإعلان ===== -->
+<div class="announcement-bar" id="announcementBar">
+<span>شفافية وحوكمة تقود خطاكم نحو غدٍ مستدام – <span class="highlight">خصم 20% للجمعيات الناشئة ✨</span></span>
+<button class="announcement-close" onclick="document.getElementById('announcementBar').classList.add('hidden')" aria-label="إغلاق">×</button>
+</div>
+
+<!-- ===== 2. الهيدر ===== -->
+<header class="navbar" id="navbar">
+<div class="container">
+<a href="#" class="logo"><div class="logo-icon"></div><div class="logo-text"><span class="logo-ar">ويبيان</span><span class="logo-en">webyan</span></div></a>
+<nav><ul class="nav-links"><li><a href="#" class="active">الرئيسية</a></li><li><a href="#offer">ماذا نقدم</a></li><li><a href="#pricing">باقات الأسعار</a></li><li><a href="#faq">مدونة ويبيان</a></li><li><a href="#contact">اتصل بنا</a></li></ul></nav>
+<div class="nav-actions"><button class="btn-lang" title="English">🌐</button><a href="/webyan/checkout.html" class="btn-primary">ابدأ الآن</a></div>
+<button class="hamburger" id="hamburgerBtn" aria-label="القائمة"><span></span><span></span><span></span></button>
+</div>
+</header>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+<div class="drawer-header"><div class="logo-text"><span class="logo-ar" style="color:#fff;font-family:var(--font-heading);font-size:20px;font-weight:700">ويبيان</span><span class="logo-en" style="color:rgba(255,255,255,.8);font-size:12px">webyan</span></div><button class="drawer-close" id="drawerClose">×</button></div>
+<div class="drawer-links"><a href="#">الرئيسية</a><a href="#offer">ماذا نقدم</a><a href="#pricing">باقات الأسعار</a><a href="#faq">مدونة ويبيان</a><a href="#contact">اتصل بنا</a><a href="/webyan/checkout.html" class="btn-primary" style="margin-top:16px;justify-content:center">ابدأ الآن</a></div>
+</div>
+
+<!-- ===== 3. الهيرو ===== -->
+<main>
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<div class="hero-badge reveal"><span class="dot"></span> عن منصة ويبيان</div>
+<h1 class="reveal">منصة <span class="accent">رقمية</span> متكاملة<br>للكيانات غير الربحية</h1>
+<p class="hero-desc reveal">ويبيان منصة رقمية سعودية تُمكّن الجمعيات والكيانات غير الربحية من إنشاء وإدارة حضورها الرقمي وخدماتها الإلكترونية باحترافية — من الموقع المؤسسي وبوابة التبرعات والمتجر الإلكتروني إلى إدارة المستفيدين. كل ذلك من منصة واحدة سهلة الإدارة.</p>
+<ul class="hero-features reveal"><li><span class="check">✓</span> موقع إلكتروني مع لوحة تحكم احترافية</li><li><span class="check">✓</span> استضافة آمنة وسريعة على السحابة</li><li><span class="check">✓</span> امتثال لمتطلبات الحوكمة والشفافية</li></ul>
+<div class="hero-cta reveal"><a href="/webyan/checkout.html" class="btn-hero-primary">ابدأ الآن</a><button class="btn-hero-secondary">▶ اطلب عرضًا توضيحيًا</button></div>
+<div class="trust-badge reveal"><div class="avatars"><div class="avatar-circle" style="background:var(--cyan)">ع</div><div class="avatar-circle" style="background:var(--teal)">م</div><div class="avatar-circle" style="background:var(--gold)">ف</div></div><span class="trust-text"><span class="star">★ 4.9</span> — يثق بنا أكثر من 100 كيان سعودي</span></div>
+</div>
+<div class="hero-visual reveal">
+<div class="hero-decor-1"></div><div class="hero-decor-2"></div>
+<div class="floating-badge badge-trust"><span style="color:var(--gold)">★ 4.9</span><span style="color:var(--text-dark);font-size:12px">موثوق من المستخدمين</span></div>
+<div class="dashboard-card">
+<div class="dashboard-topbar"><span class="topbar-dot"></span><span class="topbar-dot"></span><span class="topbar-dot"></span><span class="topbar-text">لوحة تحكم ويبيان</span></div>
+<div class="dashboard-body">
+<div class="stat-row">
+<div class="mini-stat"><div class="mini-stat-icon" style="background:var(--cyan-light);color:var(--cyan)">👥</div><div class="number">١٢٤</div><div class="label">مستفيد</div></div>
+<div class="mini-stat"><div class="mini-stat-icon" style="background:var(--teal-light);color:var(--teal)">✓</div><div class="number">٩٩%</div><div class="label">الامتثال</div></div>
+<div class="mini-stat"><div class="mini-stat-icon" style="background:var(--gold-light);color:var(--gold)">⚡</div><div class="number">١٨</div><div class="label">خدمة نشطة</div></div>
+</div>
+<div class="chart-bars"><div class="chart-bar" style="height:45%;background:var(--cyan);opacity:.3"></div><div class="chart-bar" style="height:70%;background:var(--cyan);opacity:.5"></div><div class="chart-bar" style="height:55%;background:var(--cyan);opacity:.4"></div><div class="chart-bar" style="height:90%;background:linear-gradient(to top,var(--cyan),var(--teal))"></div><div class="chart-bar" style="height:60%;background:var(--cyan);opacity:.5"></div><div class="chart-bar" style="height:80%;background:var(--cyan);opacity:.6"></div><div class="chart-bar" style="height:40%;background:var(--cyan);opacity:.3"></div></div>
+<div class="placeholder-lines"><div class="ph-line" style="width:100%"></div><div class="ph-line" style="width:75%"></div><div class="ph-line" style="width:88%"></div></div>
+</div></div>
+<div class="floating-badge badge-compliance"><div class="compliance-ring"><span class="ring-text">99%</span></div><div class="badge-info"><strong>الامتثال ٩٩%</strong><span>الشفافية | السلامة المالية</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- ===== 4. شريط الشركاء ===== -->
+<section class="trust-bar">
+<div class="container"><div class="section-header"><h2 style="font-size:20px"><span style="color:var(--navy)">كيانات</span> <span style="color:var(--cyan)">تثق بنا</span></h2><p style="font-size:14px;color:var(--text-muted);margin-top:8px">أكثر من 100 كيان غير ربحي يديرون حضورهم الرقمي عبر ويبيان</p></div></div>
+<div class="marquee-wrapper"><div class="marquee-track">
+<span class="marquee-pill" style="border-color:var(--cyan);background:rgba(43,159,217,.07);color:var(--navy)"><span class="marquee-dot" style="background:var(--cyan)"></span>جمعية حياة البيئة</span>
+<span class="marquee-pill" style="border-color:var(--navy);background:rgba(27,58,92,.06);color:var(--navy)"><span class="marquee-dot" style="background:var(--navy)"></span>نماء للتنمية</span>
+<span class="marquee-pill" style="border-color:#7B5EA7;background:rgba(123,94,167,.07);color:#5B3E87"><span class="marquee-dot" style="background:#7B5EA7"></span>جمعية بدن الرياضية</span>
+<span class="marquee-pill" style="border-color:#E91E8C;background:rgba(233,30,140,.07);color:#C4167A"><span class="marquee-dot" style="background:#E91E8C"></span>فنار للمرأة</span>
+<span class="marquee-pill" style="border-color:var(--cyan);background:rgba(43,159,217,.07);color:var(--navy)"><span class="marquee-dot" style="background:var(--cyan)"></span>عزم</span>
+<span class="marquee-pill" style="border-color:#F97316;background:rgba(249,115,22,.07);color:#C85A0E"><span class="marquee-dot" style="background:#F97316"></span>أجيال الشباب بالباحة</span>
+<span class="marquee-pill" style="border-color:#EF4444;background:rgba(239,68,68,.07);color:#DC2626"><span class="marquee-dot" style="background:#EF4444"></span>براعم</span>
+<span class="marquee-pill" style="border-color:var(--cyan);background:rgba(43,159,217,.07);color:var(--navy)"><span class="marquee-dot" style="background:var(--cyan)"></span>جمعية حياة البيئة</span>
+<span class="marquee-pill" style="border-color:var(--navy);background:rgba(27,58,92,.06);color:var(--navy)"><span class="marquee-dot" style="background:var(--navy)"></span>نماء للتنمية</span>
+<span class="marquee-pill" style="border-color:#7B5EA7;background:rgba(123,94,167,.07);color:#5B3E87"><span class="marquee-dot" style="background:#7B5EA7"></span>جمعية بدن الرياضية</span>
+<span class="marquee-pill" style="border-color:#E91E8C;background:rgba(233,30,140,.07);color:#C4167A"><span class="marquee-dot" style="background:#E91E8C"></span>فنار للمرأة</span>
+<span class="marquee-pill" style="border-color:var(--cyan);background:rgba(43,159,217,.07);color:var(--navy)"><span class="marquee-dot" style="background:var(--cyan)"></span>عزم</span>
+<span class="marquee-pill" style="border-color:#F97316;background:rgba(249,115,22,.07);color:#C85A0E"><span class="marquee-dot" style="background:#F97316"></span>أجيال الشباب بالباحة</span>
+<span class="marquee-pill" style="border-color:#EF4444;background:rgba(239,68,68,.07);color:#DC2626"><span class="marquee-dot" style="background:#EF4444"></span>براعم</span>
+</div></div>
+</section>
+
+<!-- ===== 5. ماذا نقدم ===== -->
+<section class="section what-we-offer" id="offer">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:var(--cyan-light);color:var(--cyan)">⭐ القسم الأهم</div><h2 class="section-title">ماذا نقدم في ويبيان</h2><p class="section-subtitle">منظومة رقمية متكاملة صُممت خصيصًا لتناسب طبيعة عمل الجمعيات والكيانات غير الربحية في المملكة العربية السعودية</p></div>
+<div class="offer-grid">
+<div class="offer-card card-cyan reveal"><div class="offer-icon">🌐</div><h3>الموقع الإلكتروني المؤسسي</h3><p>موقع احترافي متكامل يعرض هوية جمعيتك وبرامجها ومشاريعها ويلبّي متطلبات الحوكمة والشفافية أمام الجهات الإشرافية</p><div class="offer-tags"><span class="offer-tag">الصفحة الرئيسية</span><span class="offer-tag">من نحن</span><span class="offer-tag">البرامج والمشاريع</span><span class="offer-tag">المركز الإعلامي</span><span class="offer-tag">الحوكمة</span><span class="offer-tag">الوظائف</span><span class="offer-tag">اتصل بنا</span></div></div>
+<div class="offer-card card-navy reveal"><div class="offer-icon">💙</div><h3>بوابة التبرعات</h3><p>استقبل التبرعات الإلكترونية وأنشئ فرص تبرع متعددة مرتبطة بمشاريعك وبرامجك لزيادة إيرادات جمعيتك</p><div class="offer-tags"><span class="offer-tag">زكاة</span><span class="offer-tag">صدقة</span><span class="offer-tag">وقف</span><span class="offer-tag">كفالة</span><span class="offer-tag">بوابات الدفع</span><span class="offer-tag">سلة التبرعات</span></div></div>
+<div class="offer-card card-teal reveal"><div class="offer-icon">🛒</div><h3>المتجر الإلكتروني</h3><p>عزز الاستدامة المالية لجمعيتك ببيع المنتجات والخدمات والدورات التدريبية والمواد الرقمية عبر متجر متكامل</p><div class="offer-tags"><span class="offer-tag">منتجات خيرية</span><span class="offer-tag">دورات تدريبية</span><span class="offer-tag">تذاكر فعاليات</span><span class="offer-tag">خدمات</span></div></div>
+<div class="offer-card card-gold reveal"><div class="offer-icon">👥</div><h3>نظام إدارة المستفيدين</h3><p>نظّم بيانات المستفيدين وتتبّع الخدمات والطلبات وادعم العمل الاجتماعي داخل جمعيتك بكفاءة عالية</p><div class="offer-tags"><span class="offer-tag">تسجيل البيانات</span><span class="offer-tag">إدارة الطلبات</span><span class="offer-tag">متابعة الحالات</span><span class="offer-tag">ربط بالخدمات</span></div></div>
+</div></div>
+</section>
+
+<!-- ===== 6. الأنظمة التشغيلية ===== -->
+<section class="section" id="operations">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:rgba(27,58,92,.06);color:var(--navy)">⚙️ أنظمة تشغيلية</div><h2 class="section-title">أنظمة تدير أعمال جمعيتك</h2><p class="section-subtitle">وحدات متكاملة تعمل معًا لتغطي كل جوانب عمل الجمعية</p></div>
+<div class="ops-grid">
+<div class="ops-card reveal"><div class="ops-icon">📊</div><h4>إدارة المشاريع</h4><p>أنشئ وصنّف مشاريعك التنموية وحدد أهدافها والفئات المستهدفة ووثّق مخرجاتها</p></div>
+<div class="ops-card reveal"><div class="ops-icon">📅</div><h4>الأنشطة والفعاليات</h4><p>نظّم فعالياتك ومبادراتك وحملاتك وورش العمل واستقبل التسجيلات</p></div>
+<div class="ops-card reveal"><div class="ops-icon">🎯</div><h4>إدارة الخدمات</h4><p>اعرض خدمات جمعيتك الاستشارية والتدريبية والمجتمعية والإلكترونية</p></div>
+<div class="ops-card reveal"><div class="ops-icon">📰</div><h4>المركز الإعلامي</h4><p>انشر المقالات والأخبار وأدر مكتبة الصور والفيديو لجمعيتك</p></div>
+<div class="ops-card reveal"><div class="ops-icon">👤</div><h4>الموارد البشرية</h4><p>أدر بيانات الموظفين وأعلن عن الوظائف واستقبل المتقدمين ونظّم فرص التطوع</p></div>
+<div class="ops-card reveal"><div class="ops-icon">✏️</div><h4>إدارة المحتوى</h4><p>أنشئ وعدّل وانشر محتوى موقعك بسهولة عبر منشئ الصفحات المرن</p></div>
+</div></div>
+</section>
+
+<!-- ===== 7. لماذا ويبيان ===== -->
+<section class="section why-section" id="why">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:var(--teal-light);color:var(--teal)">💡 مميزاتنا</div><h2 class="section-title">لماذا تختار ويبيان؟</h2></div>
+<div class="why-grid">
+<div class="why-card reveal"><div class="why-icon">🏛️</div><h4>متخصصة في القطاع غير الربحي</h4><p>ليست منصة عامة، بل صُممت خصيصًا لطبيعة عمل الجمعيات السعودية</p></div>
+<div class="why-card reveal"><div class="why-icon">🖥️</div><h4>لوحة تحكم موحدة</h4><p>أدر موقعك ومتجرك وتبرعاتك ومحتواك من مكان واحد</p></div>
+<div class="why-card reveal"><div class="why-icon">🔒</div><h4>الحوكمة والشفافية</h4><p>أبرز الهيكل التنظيمي ومجلس الإدارة والتقارير المالية</p></div>
+<div class="why-card reveal"><div class="why-icon">🤖</div><h4>ذكاء اصطناعي مدمج</h4><p>ساعد في كتابة المقالات والأخبار ووصف المشاريع وتحسين النصوص</p></div>
+<div class="why-card reveal"><div class="why-icon">👆</div><h4>لا تحتاج فريق تقني</h4><p>لوحة تحكم سهلة صُممت للمستخدمين غير التقنيين</p></div>
+<div class="why-card reveal"><div class="why-icon">☁️</div><h4>منصة SaaS سحابية</h4><p>لا حاجة لتثبيت برامج، تشمل الاستضافة والحماية والتحديثات</p></div>
+<div class="why-card reveal"><div class="why-icon">💳</div><h4>تكامل بوابات الدفع</h4><p>استقبل التبرعات والمدفوعات إلكترونيًا بسهولة وأمان</p></div>
+<div class="why-card reveal"><div class="why-icon">🌍</div><h4>دعم تعدد اللغات</h4><p>موقع بالعربية والإنجليزية أو أي لغة أخرى</p></div>
+</div></div>
+</section>
+
+<!-- ===== 8. كيف يعمل ===== -->
+<section class="section how-it-works">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:var(--gold-light);color:var(--gold)">🚀 ابدأ بسهولة</div><h2 class="section-title">ابدأ في 3 خطوات بسيطة</h2></div>
+<div class="timeline reveal">
+<div class="timeline-step"><div class="step-number">1</div><h4>اختر خطتك</h4><p>اختر الخطة المناسبة لاحتياجات جمعيتك — بيسك أو بلس أو برو</p></div>
+<div class="timeline-step"><div class="step-number">2</div><h4>خصّص موقعك</h4><p>أضف محتواك وبرامجك ومشاريعك عبر لوحة تحكم سهلة الاستخدام</p></div>
+<div class="timeline-step"><div class="step-number">3</div><h4>انطلق وتميّز</h4><p>موقعك جاهز للعالم مع الاستضافة والحماية والدعم الفني</p></div>
+</div></div>
+</section>
+
+<!-- ===== 9. الأسعار ===== -->
+<section class="section pricing" id="pricing">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:var(--cyan-light);color:var(--cyan)">💰 الأسعار</div><h2 class="section-title">خطط اشتراك تناسب كل جمعية</h2><p class="section-subtitle">اختر الخطة المناسبة لحجم واحتياجات جمعيتك</p></div>
+<div class="pricing-grid reveal">
+<div class="pricing-card"><h3>بيسك</h3><div class="pricing-price"><span class="amount">695</span><br><span class="period">ريال / سنويًا</span></div><p class="pricing-desc">مناسبة للجمعيات الجديدة والصغيرة</p><ul class="pricing-features"><li><span class="pf-check">✓</span> موقع احترافي بصفحة واحدة</li><li><span class="pf-check">✓</span> تصميم متجاوب مع الجوال</li><li><span class="pf-check">✓</span> لوحة تحكم لإدارة المحتوى</li><li><span class="pf-check">✓</span> دعم تعدد اللغات</li><li><span class="pf-check">✓</span> شهادة أمان SSL</li><li><span class="pf-check">✓</span> دومين رسمي لمدة سنة</li><li><span class="pf-check">✓</span> استضافة + حماية</li></ul><a href="/webyan/checkout.html" class="btn-pricing">اشترك الآن</a></div>
+<div class="pricing-card featured"><div class="pricing-badge">⭐ الأكثر طلبًا</div><h3>بلس</h3><div class="pricing-price"><span class="amount">1,450</span><br><span class="period">ريال / سنويًا</span></div><p class="pricing-desc">مناسبة للجمعيات النشطة إعلاميًا</p><ul class="pricing-features"><li><span class="pf-check">✓</span> كل مميزات بيسك</li><li><span class="pf-check">✓</span> موقع متعدد الصفحات</li><li><span class="pf-check">✓</span> إدارة البرامج والمشاريع</li><li><span class="pf-check">✓</span> إدارة الأنشطة والفعاليات</li><li><span class="pf-check">✓</span> المركز الإعلامي الكامل</li><li><span class="pf-check">✓</span> ذكاء اصطناعي متوسط</li></ul><a href="/webyan/checkout.html" class="btn-pricing primary">اشترك الآن</a></div>
+<div class="pricing-card"><h3>برو</h3><div class="pricing-price"><span class="amount">2,650</span><br><span class="period">ريال / سنويًا</span></div><p class="pricing-desc">مناسبة للجمعيات التي تحتاج نظامًا متكاملًا</p><ul class="pricing-features"><li><span class="pf-check">✓</span> كل مميزات بلس</li><li><span class="pf-check">✓</span> المتجر الإلكتروني</li><li><span class="pf-check">✓</span> بوابة التبرعات</li><li><span class="pf-check">✓</span> تكامل بوابات الدفع</li><li><span class="pf-check">✓</span> إدارة المستفيدين</li><li><span class="pf-check">✓</span> ذكاء اصطناعي متقدم</li></ul><a href="/webyan/checkout.html" class="btn-pricing">اشترك الآن</a></div>
+</div>
+<div class="pricing-note reveal"><p>تحتاج منصة مخصصة؟ نطوّر حلولًا رقمية مخصصة حسب احتياجات جهتك</p><a href="#contact" class="btn-primary">تواصل معنا</a></div>
+</div>
+</section>
+
+<!-- ===== 10. شهادات العملاء ===== -->
+<section class="section testimonials">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)">💬 آراء العملاء</div><h2 class="section-title">ماذا يقول عملاؤنا</h2><p class="section-subtitle">تجارب حقيقية من كيانات غير ربحية تعتمد على ويبيان</p></div>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"ويبيان سهّلت علينا إنشاء موقع احترافي يعكس هوية جمعيتنا ويلبي متطلبات الحوكمة. الآن نستقبل التبرعات إلكترونيًا بكل سهولة."</p><div class="t-author"><div class="t-avatar" style="background:var(--cyan)">أ</div><div><div class="t-name">أحمد الشمري</div><div class="t-role">مدير تنفيذي — جمعية حياة البيئة</div></div></div></div>
+<div class="testimonial-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"لوحة التحكم سهلة جدًا ولا نحتاج أي خبرة تقنية. فريقنا الإداري يدير المحتوى والأنشطة بكفاءة عالية."</p><div class="t-author"><div class="t-avatar" style="background:var(--teal)">ن</div><div><div class="t-name">نورة العتيبي</div><div class="t-role">مسؤولة الاتصالات — جمعية فنار للمرأة</div></div></div></div>
+<div class="testimonial-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"المتجر الإلكتروني ساعدنا نحقق استدامة مالية حقيقية من خلال بيع الدورات والمنتجات. منصة متكاملة فعلًا."</p><div class="t-author"><div class="t-avatar" style="background:var(--gold)">ف</div><div><div class="t-name">فهد القحطاني</div><div class="t-role">رئيس مجلس الإدارة — جمعية عزم</div></div></div></div>
+</div></div>
+</section>
+
+<!-- ===== 11. الإحصائيات ===== -->
+<section class="section stats">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:var(--cyan-light);color:var(--cyan)">📈 إنجازاتنا</div><h2 class="section-title">أرقام تتحدث</h2></div>
+<div class="stats-grid reveal">
+<div class="stat-item"><div class="stat-number"><span class="counter-prefix">+</span><span class="counter" data-target="100">0</span></div><div class="stat-label">كيان غير ربحي</div><div class="stat-divider"></div></div>
+<div class="stat-item"><div class="stat-number"><span class="counter-prefix">+</span><span class="counter" data-target="18">0</span></div><div class="stat-label">خدمة نشطة</div><div class="stat-divider"></div></div>
+<div class="stat-item"><div class="stat-number"><span class="counter" data-target="99">0</span><span class="counter-prefix">%</span></div><div class="stat-label">نسبة الامتثال</div><div class="stat-divider"></div></div>
+<div class="stat-item"><div class="stat-number"><span class="counter-prefix">+</span><span class="counter" data-target="124">0</span></div><div class="stat-label">مستفيد</div><div class="stat-divider"></div></div>
+<div class="stat-item"><div class="stat-number"><span class="counter" data-target="4.9" data-decimal="true">0</span></div><div class="stat-label">تقييم المستخدمين</div><div class="stat-divider"></div></div>
+</div></div>
+</section>
+
+<!-- ===== 12. الأسئلة الشائعة ===== -->
+<section class="section faq" id="faq">
+<div class="container">
+<div class="section-header reveal"><div class="section-badge" style="background:rgba(27,58,92,.06);color:var(--navy)">❓ أسئلة شائعة</div><h2 class="section-title">أسئلة شائعة</h2></div>
+<div class="faq-list">
+<div class="faq-item reveal"><button class="faq-question">ما هي منصة ويبيان؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>ويبيان منصة رقمية سعودية متخصصة في تمكين الجمعيات والكيانات غير الربحية من إنشاء مواقعها الإلكترونية وإدارة خدماتها الرقمية بسهولة واحترافية دون الحاجة لفريق تقني.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">هل ويبيان مناسبة لجمعيتي؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>نعم، ويبيان صُممت خصيصًا للجمعيات الأهلية والكيانات غير الربحية في السعودية بمختلف أحجامها — من الجمعيات الناشئة إلى المنظمات الكبرى.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">هل أحتاج فريق تقني لاستخدام المنصة؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>لا، لوحة التحكم مصممة لتكون سهلة الاستخدام ولا تتطلب أي خبرة تقنية. يمكن لأي موظف إداري إدارة المحتوى والخدمات.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">ما الفرق بين الخطط الثلاث؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>خطة بيسك تمنحك موقعًا بصفحة واحدة. خطة بلس تضيف صفحات متعددة وإدارة المشاريع والمركز الإعلامي. خطة برو تشمل المتجر الإلكتروني وبوابة التبرعات وإدارة المستفيدين.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">هل يمكنني ترقية خطتي لاحقًا؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>بالتأكيد، يمكنك الترقية في أي وقت ومن لوحة التحكم مباشرة. سيتم احتساب الفرق فقط للفترة المتبقية من اشتراكك.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">هل تدعم المنصة التبرعات الإلكترونية؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>نعم، في خطة برو يمكنك إنشاء فرص تبرع متنوعة واستقبال التبرعات إلكترونيًا عبر بوابات الدفع المعتمدة في السعودية.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">كيف يعمل الذكاء الاصطناعي في ويبيان؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>الذكاء الاصطناعي في ويبيان يساعدك في كتابة المقالات والأخبار ووصف المشاريع وتحسين النصوص التسويقية — كل ذلك باللغة العربية.</p></div></div>
+<div class="faq-item reveal"><button class="faq-question">هل تشمل الخطط الاستضافة والدومين؟<span class="faq-arrow">▼</span></button><div class="faq-answer"><p>نعم، جميع الخطط تشمل الاستضافة السحابية الآمنة وشهادة SSL ودومين رسمي لمدة سنة كاملة مع التحديثات والدعم الفني.</p></div></div>
+</div></div>
+</section>
+
+<!-- ===== 13. CTA النهائي ===== -->
+<section class="final-cta" id="contact">
+<div class="container reveal">
+<h2>جمعيتك تستحق حضورًا رقميًا يعكس أثرها</h2>
+<p class="section-subtitle">انضم لأكثر من 100 جمعية وكيان غير ربحي يثقون بويبيان لإدارة حضورهم الرقمي</p>
+<div class="cta-buttons"><a href="/webyan/checkout.html" class="btn-cta-primary">ابدأ الآن</a><button class="btn-cta-secondary">تواصل معنا</button></div>
+</div>
+</section>
+</main>
+
+<!-- ===== 14. التذييل ===== -->
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><div class="logo"><div class="logo-icon"></div><div class="logo-text"><span class="logo-ar">ويبيان</span><span class="logo-en">webyan</span></div></div><p>منصة رقمية سعودية متخصصة في تمكين الجمعيات والكيانات غير الربحية من إنشاء وإدارة حضورها الرقمي باحترافية.</p><div class="footer-social"><a href="#" class="social-icon" aria-label="تويتر">𝕏</a><a href="#" class="social-icon" aria-label="لينكدإن">in</a><a href="#" class="social-icon" aria-label="يوتيوب">▶</a></div></div>
+<div class="footer-col"><h4>روابط سريعة</h4><ul><li><a href="#">الرئيسية</a></li><li><a href="#offer">ماذا نقدم</a></li><li><a href="#pricing">باقات الأسعار</a></li><li><a href="#">المدونة</a></li></ul></div>
+<div class="footer-col"><h4>الدعم</h4><ul><li><a href="#">مركز المساعدة</a></li><li><a href="#contact">اتصل بنا</a></li><li><a href="mailto:hala@webyan.sa">hala@webyan.sa</a></li></ul></div>
+<div class="footer-col"><h4>الشركة</h4><ul><li><a href="#">عن ويبيان</a></li><li><a href="#">سياسة الخصوصية</a></li><li><a href="#">الشروط والأحكام</a></li></ul></div>
+</div>
+<div class="footer-bottom">© 2026 ويبيان | شركة رنين التنمية لخدمات الأعمال | جميع الحقوق محفوظة</div>
+</div>
+</footer>
+
+<script>
+(function(){'use strict';
+var nb=document.getElementById('navbar');
+window.addEventListener('scroll',function(){nb.classList.toggle('scrolled',window.scrollY>10)});
+var hb=document.getElementById('hamburgerBtn'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay'),dc=document.getElementById('drawerClose');
+function oD(){dr.classList.add('open');ov.classList.add('active');hb.classList.add('active');document.body.style.overflow='hidden'}
+function cD(){dr.classList.remove('open');ov.classList.remove('active');hb.classList.remove('active');document.body.style.overflow=''}
+hb.addEventListener('click',oD);dc.addEventListener('click',cD);ov.addEventListener('click',cD);
+dr.querySelectorAll('a').forEach(function(l){l.addEventListener('click',cD)});
+var rv=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});rv.forEach(function(el){obs.observe(el)})}else{rv.forEach(function(el){el.classList.add('visible')})}
+document.querySelectorAll('.faq-question').forEach(function(b){b.addEventListener('click',function(){var i=this.parentElement;var w=i.classList.contains('active');document.querySelectorAll('.faq-item.active').forEach(function(x){x.classList.remove('active')});if(!w)i.classList.add('active')})});
+var cd=false;function ac(){if(cd)return;document.querySelectorAll('.counter').forEach(function(c){var t=parseFloat(c.getAttribute('data-target')),d=c.getAttribute('data-decimal')==='true',st=null;function s(ts){if(!st)st=ts;var p=Math.min((ts-st)/2000,1);var e=1-Math.pow(1-p,3);c.textContent=d?(t*e).toFixed(1):Math.floor(t*e);if(p<1)requestAnimationFrame(s)}requestAnimationFrame(s)});cd=true}
+var ss=document.querySelector('.stats');if(ss&&'IntersectionObserver' in window){var so=new IntersectionObserver(function(e){if(e[0].isIntersecting){ac();so.unobserve(ss)}},{threshold:.3});so.observe(ss)}
+})();
+</script>
+</body>
+</html>
