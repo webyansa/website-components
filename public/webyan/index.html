@@ -1,1024 +1,718 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ويبيان — حلول رقمية للكيانات غير الربحية</title>
-  <meta name="description" content="ويبيان منصة سعودية متخصصة في بناء المواقع الإلكترونية للجمعيات الأهلية والكيانات غير الربحية. حوكمة وشفافية مدمجة.">
-  <link rel="icon" href="/images/raneen/webyan-logo.svg" type="image/svg+xml">
-  <!-- ===== الخطوط ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ويبيان — منصة رقمية متكاملة للكيانات غير الربحية</title>
+    <meta name="description" content="ويبيان منصة رقمية سعودية تُمكّن الجمعيات والكيانات غير الربحية من إنشاء مواقعها وإدارة خدماتها الرقمية باحترافية.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
 
-  <style>
-    /* ===== المتغيرات الأساسية ===== */
-    :root {
-      --webyan-navy:      #1B2B8C;
-      --webyan-cyan:      #00BFEF;
-      --webyan-cyan-dark: #0077C8;
-      --webyan-gradient:  linear-gradient(135deg, #00BFEF 0%, #0077C8 100%);
-      --webyan-white:     #FFFFFF;
-      --webyan-bg-light:  #F0F6FF;
-      --webyan-bg-section:#F7FAFF;
-      --webyan-text-dark: #0D1B5E;
-      --webyan-text-muted:#6B7A99;
-      --webyan-border:    #E2EAF8;
-    }
+        /* ═══════════════════════════════════════════════════════════════
+           نظام الألوان الرسمي لويبيان
+           ═══════════════════════════════════════════════════════════════ */
+        :root {
+            --navy:        #1B2B8C;
+            --cyan:        #00BFEF;
+            --cyan-dark:   #0077C8;
+            --gradient:    linear-gradient(135deg, #00BFEF 0%, #0077C8 100%);
+            --white:       #FFFFFF;
+            --bg-light:    #F0F6FF;
+            --bg-section:  #F7FAFF;
+            --text-dark:   #0D1B5E;
+            --text-muted:  #6B7A99;
+            --border:      #E2EAF8;
+            --success:     #10B981;
+        }
 
-    /* ===== إعادة التهيئة ===== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Tajawal', sans-serif;
-      direction: rtl;
-      background: var(--webyan-white);
-      color: var(--webyan-text-dark);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { text-decoration: none; color: inherit; }
-    ul, ol { list-style: none; }
-    img { max-width: 100%; display: block; }
+        /* ═══════════════════════════════════════════════════════════════
+           إعادة التعيين والأساسيات
+           ═══════════════════════════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ===== أنيماشن عامة ===== */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(60px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes floatUp {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-12px); }
-    }
-    @keyframes floatDown {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(10px); }
-    }
-    @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255,165,0,0.5); }
-      50%      { box-shadow: 0 0 0 6px rgba(255,165,0,0); }
-    }
-    @keyframes slideUp {
-      to { transform: translateY(-100%); opacity: 0; }
-    }
-    @keyframes marquee-rtl {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(50%); }
-    }
-    @keyframes spin-slow {
-      0%   { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .anim-item { opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
-    .anim-d1 { animation-delay: 0.1s; }
-    .anim-d2 { animation-delay: 0.22s; }
-    .anim-d3 { animation-delay: 0.34s; }
-    .anim-d4 { animation-delay: 0.46s; }
-    .anim-d5 { animation-delay: 0.58s; }
-    .anim-d6 { animation-delay: 0.7s; }
-    .anim-d7 { animation-delay: 0.82s; }
-    .anim-right { opacity: 0; animation: fadeInRight 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+        a { text-decoration: none; color: inherit; }
+        ul, ol { list-style: none; }
 
-    /* ===== شريط الإعلان العلوي ===== */
-    .top-bar {
-      background: var(--webyan-gradient);
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1000;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .top-bar.hidden {
-      animation: slideUp 0.3s ease forwards;
-      pointer-events: none;
-    }
-    .top-bar p {
-      color: #fff;
-      font-size: 14px;
-      font-weight: 500;
-      text-align: center;
-    }
-    .top-bar-close {
-      position: absolute;
-      left: 20px;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.8);
-      font-size: 20px;
-      cursor: pointer;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: 0.2s;
-    }
-    .top-bar-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+        /* ═══════════════════════════════════════════════════════════════
+           أنيماشن عام
+           ═══════════════════════════════════════════════════════════════ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideUp {
+            to { height: 0; padding: 0; opacity: 0; overflow: hidden; }
+        }
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50%      { transform: scale(1.6); opacity: 0.4; }
+        }
+        @keyframes float-1 {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-14px); }
+        }
+        @keyframes float-2 {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(10px); }
+        }
+        @keyframes marquee-rtl {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
 
-    /* ===== الهيدر الثابت ===== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: var(--webyan-white);
-      height: 72px;
-      display: flex;
-      align-items: center;
-      padding: 0 80px;
-      transition: box-shadow 0.3s ease;
-    }
-    .site-header.scrolled {
-      box-shadow: 0 2px 20px rgba(27,43,140,0.1);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1320px;
-      margin: 0 auto;
-    }
+        .anim-item {
+            opacity: 0;
+            animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .anim-item:nth-child(1) { animation-delay: 0.05s; }
+        .anim-item:nth-child(2) { animation-delay: 0.17s; }
+        .anim-item:nth-child(3) { animation-delay: 0.29s; }
+        .anim-item:nth-child(4) { animation-delay: 0.41s; }
+        .anim-item:nth-child(5) { animation-delay: 0.53s; }
+        .anim-item:nth-child(6) { animation-delay: 0.65s; }
+        .anim-item:nth-child(7) { animation-delay: 0.77s; }
 
-    /* الشعار */
-    .logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .logo-icon {
-      width: 48px; height: 48px;
-      background: var(--webyan-gradient);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .logo-icon::before {
-      content: '';
-      position: absolute;
-      width: 22px; height: 22px;
-      border: 3px solid #fff;
-      border-radius: 50% 50% 50% 0;
-      top: 8px; right: 8px;
-    }
-    .logo-icon::after {
-      content: '';
-      position: absolute;
-      width: 12px; height: 12px;
-      background: #fff;
-      border-radius: 3px;
-      bottom: 10px; left: 10px;
-      transform: rotate(45deg);
-    }
-    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .logo-text .ar { font-size: 22px; font-weight: 800; color: var(--webyan-navy); }
-    .logo-text .en { font-size: 13px; font-weight: 400; color: var(--webyan-cyan); letter-spacing: 0.5px; }
+        /* ═══════════════════════════════════════════════════════════════
+           شريط الإعلان العلوي
+           ═══════════════════════════════════════════════════════════════ */
+        .announcement-bar {
+            background: var(--gradient);
+            color: var(--white);
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            z-index: 100;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .announcement-bar.hidden { animation: slideUp 0.3s ease forwards; }
+        .announcement-close {
+            position: absolute;
+            left: 20px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+        }
+        .announcement-close:hover { opacity: 1; background: rgba(255,255,255,0.15); }
 
-    /* القائمة */
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--webyan-text-dark);
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.3s;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 0;
-      height: 2px;
-      background: var(--webyan-cyan);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover { color: var(--webyan-cyan); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a.active { color: var(--webyan-cyan); }
-    .nav-links a.active::after { width: 100%; }
-    .nav-links a.active::before {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      right: 50%;
-      transform: translateX(50%);
-      width: 5px; height: 5px;
-      background: var(--webyan-cyan);
-      border-radius: 50%;
-    }
+        /* ═══════════════════════════════════════════════════════════════
+           الهيدر الثابت
+           ═══════════════════════════════════════════════════════════════ */
+        .site-header {
+            position: sticky; top: 0; z-index: 90;
+            background: var(--white);
+            height: 72px;
+            display: flex; align-items: center;
+            padding: 0 80px;
+            transition: box-shadow 0.3s ease;
+        }
+        .site-header.scrolled { box-shadow: 0 2px 24px rgba(27,43,140,0.09); }
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; max-width: 1320px; margin: 0 auto;
+        }
 
-    /* أزرار الهيدر */
-    .header-actions { display: flex; align-items: center; gap: 12px; }
-    .btn-globe {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--webyan-cyan);
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 20px;
-      transition: 0.3s;
-      color: var(--webyan-cyan);
-    }
-    .btn-globe:hover { background: rgba(0,191,239,0.1); }
-    .btn-cta {
-      background: var(--webyan-navy);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      font-family: 'Tajawal', sans-serif;
-      padding: 10px 28px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn-cta:hover {
-      background: var(--webyan-gradient);
-      box-shadow: 0 4px 15px rgba(0,191,239,0.3);
-    }
+        /* الشعار */
+        .logo-wrap { display: flex; align-items: center; gap: 12px; }
+        .logo-icon {
+            width: 48px; height: 48px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; flex-shrink: 0;
+        }
+        .logo-icon::before {
+            content: ''; width: 22px; height: 22px;
+            border: 3px solid var(--white); border-radius: 4px;
+            position: absolute; top: 8px; right: 8px;
+        }
+        .logo-icon::after {
+            content: ''; width: 16px; height: 16px;
+            background: var(--white); border-radius: 50%;
+            position: absolute; bottom: 6px; left: 6px;
+        }
+        .logo-text-group { display: flex; flex-direction: column; line-height: 1.2; }
+        .logo-ar { font-size: 22px; font-weight: 800; color: var(--navy); }
+        .logo-en { font-size: 13px; font-weight: 400; color: var(--cyan); letter-spacing: 0.5px; }
 
-    /* زر الهامبرغر */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 8px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2.5px;
-      background: var(--webyan-navy);
-      border-radius: 2px;
-      transition: 0.3s;
-    }
+        /* القائمة */
+        .nav-links { display: flex; align-items: center; gap: 36px; }
+        .nav-link {
+            font-size: 15px; font-weight: 500; color: var(--text-dark);
+            position: relative; padding-bottom: 4px; transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; right: 0;
+            width: 0; height: 2px; background: var(--cyan);
+            border-radius: 2px; transition: width 0.3s ease;
+        }
+        .nav-link:hover { color: var(--cyan); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active { color: var(--cyan); }
+        .nav-link.active::after {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--cyan); bottom: -10px;
+            right: 50%; transform: translateX(50%);
+        }
 
-    /* الدرج الجانبي */
-    .mobile-drawer-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 2000;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .mobile-drawer-overlay.show { display: block; opacity: 1; }
-    .mobile-drawer {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: 300px;
-      height: 100vh;
-      background: #fff;
-      z-index: 2001;
-      transition: right 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .mobile-drawer.open { right: 0; }
-    .drawer-top {
-      height: 56px;
-      background: var(--webyan-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-    }
-    .drawer-top span { color: #fff; font-weight: 700; font-size: 16px; }
-    .drawer-close {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 24px;
-      cursor: pointer;
-    }
-    .drawer-links { padding: 20px; display: flex; flex-direction: column; gap: 0; }
-    .drawer-links a {
-      padding: 14px 0;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--webyan-text-dark);
-      border-bottom: 1px solid var(--webyan-border);
-      transition: 0.2s;
-    }
-    .drawer-links a:hover { color: var(--webyan-cyan); padding-right: 8px; }
-    .drawer-cta {
-      margin: 20px;
-      padding: 14px;
-      border-radius: 10px;
-      background: var(--webyan-gradient);
-      color: #fff;
-      text-align: center;
-      font-weight: 700;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      font-family: 'Tajawal', sans-serif;
-    }
+        /* أزرار الهيدر */
+        .header-actions { display: flex; align-items: center; gap: 14px; }
+        .btn-globe {
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 1.5px solid var(--cyan); background: transparent;
+            color: var(--cyan); font-size: 18px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+        }
+        .btn-globe:hover { background: rgba(0,191,239,0.08); }
+        .btn-cta {
+            background: var(--navy); color: var(--white); border: none;
+            padding: 10px 28px; border-radius: 10px;
+            font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 600;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .btn-cta:hover {
+            background: linear-gradient(135deg, #00BFEF 0%, #0077C8 100%);
+            box-shadow: 0 4px 15px rgba(0,191,239,0.35);
+        }
 
-    /* ===== قسم الهيرو ===== */
-    .hero {
-      background: linear-gradient(180deg, #EBF4FF 0%, #FFFFFF 100%);
-      position: relative;
-      padding: 120px 80px 80px;
-      overflow: hidden;
-    }
-    /* نقاط شبكية */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, var(--webyan-navy) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.04;
-      pointer-events: none;
-    }
-    /* فقاعات هندسية */
-    .hero-bubble {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero-bubble-1 {
-      width: 220px; height: 220px;
-      background: var(--webyan-cyan);
-      opacity: 0.06;
-      top: -40px; left: 60px;
-    }
-    .hero-bubble-2 {
-      width: 140px; height: 140px;
-      background: var(--webyan-navy);
-      opacity: 0.05;
-      bottom: 40px; right: 80px;
-    }
-    .hero-bubble-3 {
-      width: 8px; height: 8px;
-      background: var(--webyan-cyan);
-      opacity: 0.2;
-      top: 30%; left: 15%;
-    }
-    .hero-bubble-4 {
-      width: 6px; height: 6px;
-      background: var(--webyan-cyan);
-      opacity: 0.15;
-      top: 60%; left: 40%;
-    }
-    .hero-bubble-5 {
-      width: 10px; height: 10px;
-      background: var(--webyan-navy);
-      opacity: 0.08;
-      top: 20%; left: 55%;
-    }
+        /* الهامبرغر */
+        .hamburger {
+            display: none; background: none; border: none;
+            cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2.5px;
+            background: var(--navy); border-radius: 2px; transition: all 0.3s;
+        }
 
-    .hero-inner {
-      max-width: 1320px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 60px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-content { flex: 0 0 55%; max-width: 55%; }
-    .hero-visual  { flex: 0 0 45%; max-width: 45%; position: relative; }
+        /* درج الجوال */
+        .mobile-drawer {
+            position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+            background: var(--white); z-index: 200;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -4px 0 30px rgba(0,0,0,0.12);
+            display: flex; flex-direction: column;
+        }
+        .mobile-drawer.open { right: 0; }
+        .drawer-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+            z-index: 199; opacity: 0; visibility: hidden; transition: all 0.3s;
+        }
+        .drawer-overlay.open { opacity: 1; visibility: visible; }
+        .drawer-head {
+            background: var(--gradient); padding: 24px 20px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .drawer-head .logo-ar { color: var(--white); font-size: 20px; }
+        .drawer-close {
+            background: rgba(255,255,255,0.2); border: none; color: var(--white);
+            width: 36px; height: 36px; border-radius: 8px; font-size: 20px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .drawer-links { padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; }
+        .drawer-links a {
+            font-size: 16px; font-weight: 500; color: var(--text-dark);
+            padding: 12px 16px; border-radius: 10px; transition: all 0.2s;
+        }
+        .drawer-links a:hover, .drawer-links a.active { background: rgba(0,191,239,0.08); color: var(--cyan); }
+        .drawer-cta {
+            margin: 0 20px; padding: 14px; background: var(--navy); color: var(--white);
+            border: none; border-radius: 10px; font-family: 'Tajawal', sans-serif;
+            font-size: 16px; font-weight: 600; cursor: pointer; text-align: center;
+        }
 
-    /* وسم تعريفي */
-    .tag-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1.5px solid var(--webyan-cyan);
-      background: rgba(0,191,239,0.08);
-      border-radius: 50px;
-      padding: 6px 18px;
-      margin-bottom: 20px;
-    }
-    .tag-dot {
-      width: 8px; height: 8px;
-      background: #F59E0B;
-      border-radius: 50%;
-      animation: pulse-dot 2s infinite;
-    }
-    .tag-pill span {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--webyan-cyan);
-    }
+        /* ═══════════════════════════════════════════════════════════════
+           قسم الهيرو
+           ═══════════════════════════════════════════════════════════════ */
+        .hero {
+            padding: 120px 80px 80px;
+            background: linear-gradient(180deg, #EBF4FF 0%, var(--white) 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle, var(--navy) 1px, transparent 1px);
+            background-size: 28px 28px; opacity: 0.04; pointer-events: none;
+        }
+        .hero-inner {
+            display: flex; align-items: center; gap: 60px;
+            max-width: 1320px; margin: 0 auto; position: relative; z-index: 1;
+        }
+        .hero-content { flex: 0 0 55%; max-width: 55%; }
+        .hero-visual { flex: 1; position: relative; min-height: 480px; }
 
-    /* العنوان */
-    .hero h1 {
-      font-size: 56px;
-      font-weight: 900;
-      line-height: 1.3;
-      color: var(--webyan-navy);
-      margin-bottom: 24px;
-    }
-    .hero h1 .highlight {
-      color: var(--webyan-cyan);
-      position: relative;
-      display: inline-block;
-    }
-    .hero h1 .highlight::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      right: 0;
-      width: 100%;
-      height: 8px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 Q50 2 100 8 Q150 14 198 6' stroke='%2300BFEF' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
-    }
+        /* الكبسولة */
+        .hero-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0,191,239,0.08); border: 1px solid var(--cyan);
+            border-radius: 50px; padding: 6px 18px; margin-bottom: 20px;
+            font-size: 13px; font-weight: 500; color: var(--cyan);
+        }
+        .pill-dot {
+            width: 8px; height: 8px; background: #F97316;
+            border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite;
+        }
 
-    /* الوصف */
-    .hero-desc {
-      font-size: 17px;
-      color: var(--webyan-text-muted);
-      line-height: 1.9;
-      font-weight: 400;
-      margin-bottom: 32px;
-    }
+        /* العنوان */
+        .hero h1 {
+            font-size: 54px; font-weight: 900; color: var(--navy);
+            line-height: 1.3; margin-bottom: 24px;
+        }
+        .text-cyan { color: var(--cyan); position: relative; display: inline-block; }
+        .text-cyan svg {
+            position: absolute; bottom: -6px; right: 0; width: 100%; height: 10px;
+        }
 
-    /* قائمة المميزات */
-    .hero-features { margin-bottom: 40px; display: flex; flex-direction: column; gap: 12px; }
-    .hero-feat {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--webyan-text-dark);
-    }
-    .feat-check {
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: rgba(0,191,239,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .feat-check svg { width: 12px; height: 12px; }
+        .hero-desc {
+            font-size: 17px; color: var(--text-muted); line-height: 1.9;
+            margin-bottom: 32px; max-width: 560px;
+        }
 
-    /* أزرار الهيرو */
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
-    .btn-primary {
-      background: var(--webyan-gradient);
-      color: #fff;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 16px 40px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0,191,239,0.35);
-      transition: 0.3s;
-      font-family: 'Tajawal', sans-serif;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0,191,239,0.5);
-    }
-    .btn-primary:active { transform: scale(0.97); }
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--webyan-navy);
-      color: var(--webyan-navy);
-      font-weight: 600;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Tajawal', sans-serif;
-    }
-    .btn-secondary:hover {
-      background: var(--webyan-navy);
-      color: #fff;
-    }
+        /* بطاقات المكونات */
+        .feature-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; }
+        .feature-card {
+            background: var(--white); border-radius: 14px; padding: 20px 16px;
+            border: 1px solid var(--border); transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .feature-card::before {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 100%; height: 3px; border-radius: 14px 14px 0 0;
+        }
+        .feature-card:nth-child(1)::before { background: var(--cyan); }
+        .feature-card:nth-child(2)::before { background: var(--navy); }
+        .feature-card:nth-child(3)::before { background: var(--cyan-dark); }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(27,43,140,0.1); }
+        .fc-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; margin-bottom: 12px;
+        }
+        .feature-card:nth-child(1) .fc-icon { background: rgba(0,191,239,0.1); }
+        .feature-card:nth-child(2) .fc-icon { background: rgba(27,43,140,0.08); }
+        .feature-card:nth-child(3) .fc-icon { background: rgba(0,119,200,0.1); }
+        .fc-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+        .fc-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
 
-    /* شارة الثقة */
-    .trust-badge { display: flex; align-items: center; gap: 12px; }
-    .avatars { display: flex; direction: ltr; }
-    .avatar-circle {
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-      border: 2px solid #fff;
-      margin-right: -8px;
-    }
-    .trust-badge .trust-text {
-      font-size: 13px;
-      color: var(--webyan-text-muted);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .star { color: #F59E0B; }
+        /* أزرار CTA */
+        .hero-buttons { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+        .btn-primary {
+            background: linear-gradient(135deg, #00BFEF 0%, #0077C8 100%);
+            color: var(--white); border: none; padding: 16px 44px; border-radius: 12px;
+            font-family: 'Tajawal', sans-serif; font-size: 16px; font-weight: 700;
+            cursor: pointer; box-shadow: 0 8px 25px rgba(0,191,239,0.4); transition: all 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(0,191,239,0.5); }
+        .btn-primary:active { transform: scale(0.97); }
+        .btn-secondary {
+            background: transparent; color: var(--navy); border: 2px solid var(--navy);
+            padding: 14px 32px; border-radius: 12px;
+            font-family: 'Tajawal', sans-serif; font-size: 16px; font-weight: 600;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--navy); color: var(--white); }
 
-    /* ===== المرئيات / الموكاب ===== */
-    .dashboard-card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(27,43,140,0.12);
-      overflow: hidden;
-      position: relative;
-    }
-    .dash-topbar {
-      background: var(--webyan-gradient);
-      height: 40px;
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-      gap: 8px;
-    }
-    .dot-w { width: 10px; height: 10px; background: rgba(255,255,255,0.5); border-radius: 50%; }
-    .dot-w:first-child { background: rgba(255,255,255,0.9); }
-    .dash-topbar span {
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      margin-right: auto;
-      margin-left: 8px;
-    }
-    .dash-body { padding: 20px; }
-    .stat-row { display: flex; gap: 12px; margin-bottom: 16px; }
-    .stat-card {
-      flex: 1;
-      background: var(--webyan-bg-light);
-      border-radius: 12px;
-      padding: 14px 10px;
-      text-align: center;
-    }
-    .stat-card .s-icon {
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      margin: 0 auto 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-    .stat-card .s-num { font-size: 22px; font-weight: 800; color: var(--webyan-navy); }
-    .stat-card .s-label { font-size: 11px; color: var(--webyan-text-muted); font-weight: 500; }
-    .dash-bars { display: flex; gap: 6px; align-items: flex-end; height: 48px; margin-bottom: 14px; }
-    .dash-bars .bar {
-      flex: 1;
-      border-radius: 4px 4px 0 0;
-      min-width: 0;
-    }
-    .dash-lines { display: flex; flex-direction: column; gap: 8px; }
-    .dash-line {
-      height: 8px;
-      border-radius: 4px;
-      background: var(--webyan-border);
-    }
+        /* شارة الثقة */
+        .trust-badge { display: flex; align-items: center; gap: 12px; }
+        .avatars { display: flex; align-items: center; }
+        .avatar-circle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 2.5px solid var(--white);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700; color: var(--white);
+            margin-left: -10px;
+        }
+        .avatar-circle:first-child { margin-left: 0; }
+        .trust-text { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+        .star-gold { color: #F59E0B; }
 
-    /* بادجات عائمة */
-    .float-badge {
-      position: absolute;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 8px 30px rgba(27,43,140,0.12);
-      padding: 10px 16px;
-      z-index: 2;
-    }
-    .badge-rating {
-      top: -16px;
-      right: -20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: floatUp 3s ease-in-out infinite;
-    }
-    .badge-rating .rating-stars { display: flex; gap: 1px; }
-    .badge-rating .rating-stars span { color: #F59E0B; font-size: 13px; }
-    .badge-rating .rating-score {
-      background: #22C55E;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-    .badge-rating .rating-text { font-size: 11px; color: var(--webyan-text-muted); text-align: center; }
-    .badge-rating .rating-text strong { display: block; color: var(--webyan-text-dark); font-size: 13px; }
+        /* ═══════════════════════════════════════════════════════════════
+           موكاب لوحة التحكم
+           ═══════════════════════════════════════════════════════════════ */
+        .mockup-card {
+            background: var(--white); border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(27,43,140,0.12);
+            overflow: hidden; width: 100%; max-width: 480px;
+            margin-right: auto;
+            animation: fadeInRight 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            opacity: 0;
+        }
+        .mockup-bar {
+            background: linear-gradient(135deg, #00BFEF 0%, #0077C8 100%);
+            height: 44px; display: flex; align-items: center;
+            padding: 0 16px; gap: 8px;
+        }
+        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+        .mockup-bar-text { color: var(--white); font-size: 13px; font-weight: 600; margin-right: 8px; }
+        .mockup-body { padding: 20px; }
+        .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-card { background: var(--bg-light); border-radius: 12px; padding: 14px 12px; text-align: center; }
+        .stat-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;
+            font-size: 14px;
+        }
+        .stat-card:nth-child(1) .stat-icon { background: rgba(0,191,239,0.15); color: var(--cyan); }
+        .stat-card:nth-child(2) .stat-icon { background: rgba(16,185,129,0.15); color: var(--success); }
+        .stat-card:nth-child(3) .stat-icon { background: rgba(249,115,22,0.15); color: #F97316; }
+        .stat-num { font-size: 22px; font-weight: 800; color: var(--text-dark); line-height: 1; }
+        .stat-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+        .mock-bars { display: flex; align-items: flex-end; gap: 8px; height: 50px; margin-bottom: 16px; }
+        .mock-bar { border-radius: 4px 4px 0 0; flex: 1; }
+        .mock-bar:nth-child(1) { height: 60%; background: var(--cyan); opacity: 0.7; }
+        .mock-bar:nth-child(2) { height: 90%; background: var(--cyan); }
+        .mock-bar:nth-child(3) { height: 45%; background: var(--cyan-dark); opacity: 0.5; }
+        .mock-bar:nth-child(4) { height: 75%; background: var(--cyan-dark); opacity: 0.8; }
+        .mock-bar:nth-child(5) { height: 55%; background: var(--navy); opacity: 0.4; }
+        .mock-bar:nth-child(6) { height: 85%; background: var(--navy); opacity: 0.7; }
+        .mock-lines { display: flex; flex-direction: column; gap: 10px; }
+        .mock-line { height: 8px; border-radius: 4px; background: var(--border); }
+        .mock-line:nth-child(1) { width: 100%; }
+        .mock-line:nth-child(2) { width: 75%; }
+        .mock-line:nth-child(3) { width: 60%; }
 
-    .badge-compliance {
-      bottom: 20px;
-      left: -30px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: floatDown 4s ease-in-out infinite;
-    }
-    .compliance-ring {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: conic-gradient(var(--webyan-cyan) 0% 99%, var(--webyan-border) 99% 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .compliance-ring::after {
-      content: '';
-      width: 40px; height: 40px;
-      background: #fff;
-      border-radius: 50%;
-      position: absolute;
-    }
-    .compliance-ring .ring-val {
-      position: relative;
-      z-index: 1;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--webyan-cyan);
-    }
-    .badge-compliance .b-text { font-size: 12px; }
-    .badge-compliance .b-text strong { display: block; color: var(--webyan-text-dark); font-weight: 700; }
-    .badge-compliance .b-text small { color: var(--webyan-text-muted); font-size: 10px; }
+        /* البادجات العائمة */
+        .float-badge {
+            position: absolute; background: var(--white); border-radius: 14px;
+            box-shadow: 0 8px 30px rgba(27,43,140,0.12); padding: 10px 16px; z-index: 2;
+        }
+        .badge-trust {
+            top: 10px; right: -20px; animation: float-1 3s ease-in-out infinite;
+            display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600;
+        }
+        .badge-trust .star { color: #F59E0B; font-size: 16px; }
+        .badge-trust .num { color: var(--text-dark); }
+        .badge-trust .label { color: var(--text-muted); font-size: 11px; }
 
-    /* ===== شريط الثقة ===== */
-    .trust-section {
-      background: var(--webyan-white);
-      padding: 60px 80px;
-      border-top: 1px solid var(--webyan-border);
-      overflow: hidden;
-    }
-    .trust-title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
-    .trust-title .t-navy { color: var(--webyan-navy); }
-    .trust-title .t-cyan { color: var(--webyan-cyan); }
+        .badge-compliance {
+            bottom: 40px; left: -10px; animation: float-2 4.5s ease-in-out infinite;
+            display: flex; align-items: center; gap: 12px; padding: 12px 18px;
+        }
+        .compliance-circle {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: conic-gradient(var(--cyan) 0deg, var(--cyan) 356deg, var(--border) 356deg, var(--border) 360deg);
+            display: flex; align-items: center; justify-content: center; position: relative;
+        }
+        .compliance-circle::after {
+            content: ''; width: 38px; height: 38px; background: var(--white);
+            border-radius: 50%; position: absolute;
+        }
+        .compliance-circle span {
+            position: relative; z-index: 1; font-size: 12px; font-weight: 800; color: var(--cyan);
+        }
+        .compliance-text .ct-title { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+        .compliance-text .ct-sub { font-size: 10px; color: var(--text-muted); }
 
-    .marquee-wrap {
-      position: relative;
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    }
-    .marquee-track {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      animation: marquee-rtl 35s linear infinite;
-    }
-    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-    .org-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 50px;
-      padding: 10px 24px;
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-    .org-badge:hover { transform: scale(1.05); }
-    .org-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+        /* فقاعات خلفية */
+        .hero-visual::before {
+            content: ''; position: absolute; width: 200px; height: 200px;
+            background: var(--cyan); border-radius: 50%; opacity: 0.06;
+            top: -40px; left: -60px; pointer-events: none;
+        }
+        .hero-visual::after {
+            content: ''; position: absolute; width: 130px; height: 130px;
+            background: var(--navy); border-radius: 50%; opacity: 0.05;
+            bottom: -20px; right: -30px; pointer-events: none;
+        }
 
-    .org-1 { border: 1.5px solid var(--webyan-cyan); background: rgba(0,191,239,0.08); color: var(--webyan-navy); }
-    .org-1 .org-dot { background: var(--webyan-cyan); }
-    .org-2 { border: 1.5px solid var(--webyan-navy); background: rgba(27,43,140,0.06); color: var(--webyan-navy); }
-    .org-2 .org-dot { background: var(--webyan-navy); }
-    .org-3 { border: 1.5px solid #7B5EA7; background: rgba(123,94,167,0.08); color: #5B3E87; }
-    .org-3 .org-dot { background: #7B5EA7; }
-    .org-4 { border: 1.5px solid #E91E8C; background: rgba(233,30,140,0.08); color: #C0176F; }
-    .org-4 .org-dot { background: #E91E8C; }
-    .org-5 { border: 1.5px solid var(--webyan-cyan-dark); background: rgba(0,119,200,0.08); color: var(--webyan-navy); }
-    .org-5 .org-dot { background: var(--webyan-cyan-dark); }
-    .org-6 { border: 1.5px solid #F97316; background: rgba(249,115,22,0.08); color: #C2590C; }
-    .org-6 .org-dot { background: #F97316; }
-    .org-7 { border: 1.5px solid #EF4444; background: rgba(239,68,68,0.08); color: #B91C1C; }
-    .org-7 .org-dot { background: #EF4444; }
+        /* ═══════════════════════════════════════════════════════════════
+           شريط الجمعيات الموثوقة
+           ═══════════════════════════════════════════════════════════════ */
+        .trust-section {
+            background: var(--white); padding: 60px 40px;
+            border-top: 1px solid var(--border); text-align: center;
+        }
+        .trust-title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+        .trust-title .cyan { color: var(--cyan); }
+        .trust-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 40px; }
+        .marquee-wrap {
+            overflow: hidden; position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+        .marquee-track {
+            display: flex; gap: 16px; width: max-content;
+            animation: marquee-rtl 35s linear infinite;
+        }
+        .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+        .entity-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 24px; border-radius: 50px; border: 1px solid;
+            white-space: nowrap; font-size: 14px; font-weight: 500;
+            transition: transform 0.2s; flex-shrink: 0;
+        }
+        .entity-badge:hover { transform: scale(1.04); }
+        .entity-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-    /* ===== استجابة الأجهزة ===== */
-    @media (max-width: 1024px) {
-      .hero { padding: 80px 40px 60px; }
-      .hero-inner { flex-direction: column; text-align: center; }
-      .hero-content, .hero-visual { flex: 0 0 100%; max-width: 100%; }
-      .hero h1 { font-size: 42px; }
-      .hero-features { align-items: center; }
-      .hero-btns { justify-content: center; }
-      .trust-badge { justify-content: center; }
-      .hero-visual { margin-top: 40px; }
-      .badge-rating { right: 0; top: -12px; }
-      .badge-compliance { left: 0; }
-      .site-header { padding: 0 30px; }
-      .trust-section { padding: 50px 30px; }
-    }
+        /* ═══════════════════════════════════════════════════════════════
+           الاستجابة — لوحي
+           ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero { padding: 80px 40px 60px; }
+            .hero-inner { flex-direction: column; gap: 50px; }
+            .hero-content { flex: unset; max-width: 100%; }
+            .hero-visual { min-height: 380px; width: 100%; display: flex; justify-content: center; }
+            .mockup-card { max-width: 420px; margin: 0 auto; }
+            .hero h1 { font-size: 40px; }
+            .feature-cards { grid-template-columns: repeat(2, 1fr); }
+            .feature-card:nth-child(3) { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+            .site-header { padding: 0 30px; }
+        }
 
-    @media (max-width: 768px) {
-      .nav-links, .header-actions { display: none !important; }
-      .hamburger { display: flex; }
-      .site-header { padding: 0 20px; }
-      .hero { padding: 60px 20px 50px; }
-      .hero h1 { font-size: 32px; }
-      .hero-desc { font-size: 15px; }
-      .hero-btns { flex-direction: column; }
-      .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
-      .hero-visual { max-width: 90%; margin: 30px auto 0; }
-      .badge-rating { display: none; }
-      .badge-compliance { display: none; }
-      .trust-section { padding: 40px 16px; }
-      .trust-title { font-size: 18px; }
-    }
-  </style>
+        /* ═══════════════════════════════════════════════════════════════
+           الاستجابة — جوال
+           ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .nav-links, .header-actions { display: none; }
+            .hamburger { display: flex; }
+            .site-header { padding: 0 20px; }
+            .hero { padding: 60px 20px 50px; }
+            .hero h1 { font-size: 30px; }
+            .hero-desc { font-size: 15px; }
+            .feature-cards { grid-template-columns: 1fr; }
+            .feature-card:nth-child(3) { grid-column: unset; max-width: unset; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+            .hero-visual { min-height: 320px; }
+            .mockup-card { max-width: 340px; }
+            .badge-trust { right: 0; top: -10px; }
+            .badge-compliance { left: 0; bottom: 10px; }
+            .trust-section { padding: 40px 20px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 26px; }
+            .mockup-card { max-width: 290px; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ===== شريط الإعلان العلوي ===== -->
-  <div class="top-bar" id="topBar">
-    <p>شفافية وحوكمة تقود خطاكم نحو غد مستدام ✨ خصم 20% للجمعيات الناشئة</p>
-    <button class="top-bar-close" onclick="document.getElementById('topBar').classList.add('hidden')" aria-label="إغلاق">×</button>
-  </div>
+<!-- ===== شريط الإعلان العلوي ===== -->
+<div class="announcement-bar" id="announcementBar">
+    <span>شفافية وحوكمة تقود خطاكم نحو غد مستدام — خصم 20% للجمعيات الناشئة ✨</span>
+    <button class="announcement-close" onclick="document.getElementById('announcementBar').classList.add('hidden')" aria-label="إغلاق">×</button>
+</div>
 
-  <!-- ===== الهيدر ===== -->
-  <header class="site-header" id="siteHeader">
+<!-- ===== الهيدر الثابت ===== -->
+<header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <!-- الشعار -->
-      <a href="#" class="logo-wrap">
-        <div class="logo-icon" aria-hidden="true"></div>
-        <div class="logo-text">
-          <span class="ar">ويبيان</span>
-          <span class="en">webyan</span>
+        <a href="#" class="logo-wrap">
+            <div class="logo-icon"></div>
+            <div class="logo-text-group">
+                <span class="logo-ar">ويبيان</span>
+                <span class="logo-en">webyan</span>
+            </div>
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="nav-link active">الرئيسية</a>
+            <a href="#" class="nav-link">باقات الأسعار</a>
+            <a href="#" class="nav-link">مدونة ويبيان</a>
+            <a href="#" class="nav-link">اتصل بنا</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-globe" aria-label="تغيير اللغة">🌐</button>
+            <button class="btn-cta">اشترك الآن</button>
         </div>
-      </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="القائمة">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
 
-      <!-- القائمة -->
-      <nav class="nav-links">
+<!-- درج الجوال -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-head">
+        <span class="logo-ar">ويبيان</span>
+        <button class="drawer-close" id="drawerClose" aria-label="إغلاق">×</button>
+    </div>
+    <div class="drawer-links">
         <a href="#" class="active">الرئيسية</a>
         <a href="#">باقات الأسعار</a>
         <a href="#">مدونة ويبيان</a>
         <a href="#">اتصل بنا</a>
-      </nav>
-
-      <!-- أزرار الهيدر -->
-      <div class="header-actions">
-        <button class="btn-globe" aria-label="تبديل اللغة">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
-        </button>
-        <button class="btn-cta">اشترك الآن</button>
-      </div>
-
-      <!-- هامبرغر -->
-      <button class="hamburger" id="menuBtn" aria-label="القائمة">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ===== الدرج الجانبي ===== -->
-  <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
-  <aside class="mobile-drawer" id="mobileDrawer">
-    <div class="drawer-top">
-      <span>ويبيان</span>
-      <button class="drawer-close" id="drawerClose">×</button>
-    </div>
-    <div class="drawer-links">
-      <a href="#">الرئيسية</a>
-      <a href="#">باقات الأسعار</a>
-      <a href="#">مدونة ويبيان</a>
-      <a href="#">اتصل بنا</a>
     </div>
     <button class="drawer-cta">اشترك الآن</button>
-  </aside>
+</div>
 
-  <!-- ===== قسم الهيرو ===== -->
-  <main>
+<!-- ===== قسم الهيرو ===== -->
+<main>
     <section class="hero">
-      <!-- فقاعات -->
-      <div class="hero-bubble hero-bubble-1"></div>
-      <div class="hero-bubble hero-bubble-2"></div>
-      <div class="hero-bubble hero-bubble-3"></div>
-      <div class="hero-bubble hero-bubble-4"></div>
-      <div class="hero-bubble hero-bubble-5"></div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-pill anim-item">
+                    <span class="pill-dot"></span>
+                    عن منصة ويبيان
+                </div>
 
-      <div class="hero-inner">
-        <!-- العمود الأيمن: المحتوى -->
-        <div class="hero-content">
-          <div class="tag-pill anim-item anim-d1">
-            <div class="tag-dot"></div>
-            <span>عن منصة ويبيان</span>
-          </div>
+                <h1 class="anim-item">
+                    منصة <span class="text-cyan">رقمية
+                        <svg viewBox="0 0 60 10" preserveAspectRatio="none" fill="none"><path d="M0,8 Q15,0 30,8 T60,8" stroke="var(--cyan)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+                    </span> متكاملة<br>للكيانات غير الربحية
+                </h1>
 
-          <h1 class="anim-item anim-d2">
-            حلول <span class="highlight">رقمية</span> للكيانات<br>غير الربحية
-          </h1>
+                <p class="hero-desc anim-item">
+                    ويبيان منصة رقمية سعودية تُمكِّن الجمعيات والكيانات غير الربحية
+                    من إنشاء وإدارة حضورها الرقمي وخدماتها الإلكترونية باحترافية —
+                    من الموقع المؤسسي وبوابة التبرعات والمتجر الإلكتروني إلى إدارة
+                    المستفيدين، كل ذلك من منصة واحدة سهلة الإدارة.
+                </p>
 
-          <p class="hero-desc anim-item anim-d3">
-            ويبيان تُمكِّنك من تشغيل كيانك غير الربحي رقمياً عبر موقع احترافي، متجر إلكتروني، وأنظمة لإدارة المستفيدين والخدمات والطلبات، ضمن منظومة واحدة تعزز الحوكمة والشفافية وتحقق الاستدامة وتوسّع الأثر المجتمعي.
-          </p>
+                <div class="feature-cards anim-item">
+                    <div class="feature-card">
+                        <div class="fc-icon">🌐</div>
+                        <div class="fc-title">الموقع المؤسسي</div>
+                        <div class="fc-desc">موقع احترافي متكامل يعرض هوية جمعيتك وبرامجها ومشاريعها ويلبي متطلبات الحوكمة والشفافية</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-icon">💙</div>
+                        <div class="fc-title">بوابة التبرعات</div>
+                        <div class="fc-desc">استقبل التبرعات الإلكترونية وأنشئ فرص تبرع متعددة مرتبطة بمشاريعك لزيادة إيرادات جمعيتك</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-icon">🛍️</div>
+                        <div class="fc-title">المتجر الإلكتروني</div>
+                        <div class="fc-desc">عزز الاستدامة المالية لجمعيتك ببيع المنتجات والخدمات والدورات التدريبية عبر متجر متكامل</div>
+                    </div>
+                </div>
 
-          <div class="hero-features anim-item anim-d4">
-            <div class="hero-feat">
-              <div class="feat-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--webyan-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              </div>
-              موقع إلكتروني مع لوحة تحكم احترافية
+                <div class="hero-buttons anim-item">
+                    <button class="btn-primary">ابدأ الآن</button>
+                    <button class="btn-secondary">▶ اطلب عرضاً توضيحياً</button>
+                </div>
+
+                <div class="trust-badge anim-item">
+                    <div class="avatars">
+                        <div class="avatar-circle" style="background:var(--cyan);">ع</div>
+                        <div class="avatar-circle" style="background:var(--navy);">م</div>
+                        <div class="avatar-circle" style="background:var(--cyan-dark);">ف</div>
+                    </div>
+                    <span class="trust-text"><span class="star-gold">★</span> يثق بنا أكثر من 100 كيان سعودي</span>
+                </div>
             </div>
-            <div class="hero-feat">
-              <div class="feat-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--webyan-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              </div>
-              استضافة آمنة وسريعة على السحابة
-            </div>
-            <div class="hero-feat">
-              <div class="feat-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--webyan-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              </div>
-              امتثال لمتطلبات الحوكمة والشفافية
-            </div>
-          </div>
 
-          <div class="hero-btns anim-item anim-d5">
-            <button class="btn-primary">ابدأ الآن</button>
-            <button class="btn-secondary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              طلب عرض توضيحي
-            </button>
-          </div>
-
-          <div class="trust-badge anim-item anim-d6">
-            <div class="avatars">
-              <div class="avatar-circle" style="background:#00BFEF;">ع</div>
-              <div class="avatar-circle" style="background:#1B2B8C;">م</div>
-              <div class="avatar-circle" style="background:#F59E0B;">ف</div>
+            <!-- العمود الأيسر — موكاب لوحة التحكم -->
+            <div class="hero-visual">
+                <div class="mockup-card">
+                    <div class="mockup-bar">
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <div class="mockup-dot"></div>
+                        <span class="mockup-bar-text">لوحة تحكم ويبيان</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="stat-row">
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-num">١٢٤</div>
+                                <div class="stat-label">مستفيد</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">✓</div>
+                                <div class="stat-num">٩٩%</div>
+                                <div class="stat-label">الامتثال</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⚡</div>
+                                <div class="stat-num">١٨</div>
+                                <div class="stat-label">خدمة نشطة</div>
+                            </div>
+                        </div>
+                        <div class="mock-bars">
+                            <div class="mock-bar"></div><div class="mock-bar"></div>
+                            <div class="mock-bar"></div><div class="mock-bar"></div>
+                            <div class="mock-bar"></div><div class="mock-bar"></div>
+                        </div>
+                        <div class="mock-lines">
+                            <div class="mock-line"></div><div class="mock-line"></div><div class="mock-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-badge badge-trust">
+                    <span class="star">★</span>
+                    <span class="num">4.9</span>
+                    <span class="label">موثوق من المستثمرين</span>
+                </div>
+                <div class="float-badge badge-compliance">
+                    <div class="compliance-circle"><span>٩٩%</span></div>
+                    <div class="compliance-text">
+                        <div class="ct-title">الامتثال ٩٩%</div>
+                        <div class="ct-sub">الشفافية | السلامة المالية</div>
+                    </div>
+                </div>
             </div>
-            <div class="trust-text">
-              <span class="star">★</span> يثق بنا +100 كيان سعودي
-            </div>
-          </div>
         </div>
-
-        <!-- العمود الأيسر: المرئيات -->
-        <div class="hero-visual anim-right">
-          <!-- بادج التقييم -->
-          <div class="float-badge badge-rating">
-            <div>
-              <div class="rating-score">4.9 ★</div>
-            </div>
-            <div>
-              <div class="rating-stars">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-              </div>
-              <div class="rating-text">
-                <strong>موثوق من المستشارين</strong>
-              </div>
-            </div>
-          </div>
-
-          <!-- بطاقة لوحة التحكم -->
-          <div class="dashboard-card">
-            <div class="dash-topbar">
-              <div class="dot-w"></div>
-              <div class="dot-w"></div>
-              <div class="dot-w"></div>
-              <span>لوحة تحكم ويبيان</span>
-            </div>
-            <div class="dash-body">
-              <div class="stat-row">
-                <div class="stat-card">
-                  <div class="s-icon" style="background:rgba(0,191,239,0.12);color:var(--webyan-cyan);">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  </div>
-                  <div class="s-num">١٢٤</div>
-                  <div class="s-label">مستفيد</div>
-                </div>
-                <div class="stat-card">
-                  <div class="s-icon" style="background:rgba(34,197,94,0.12);color:#22C55E;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  </div>
-                  <div class="s-num">٩٩%</div>
-                  <div class="s-label">الامتثال</div>
-                </div>
-                <div class="stat-card">
-                  <div class="s-icon" style="background:rgba(249,115,22,0.12);color:#F97316;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                  </div>
-                  <div class="s-num">١٨</div>
-                  <div class="s-label">خدمة نشطة</div>
-                </div>
-              </div>
-              <div class="dash-bars">
-                <div class="bar" style="height:65%;background:var(--webyan-cyan);"></div>
-                <div class="bar" style="height:85%;background:var(--webyan-navy);"></div>
-                <div class="bar" style="height:50%;background:#F59E0B;"></div>
-                <div class="bar" style="height:75%;background:var(--webyan-cyan);"></div>
-                <div class="bar" style="height:90%;background:var(--webyan-navy);"></div>
-                <div class="bar" style="height:40%;background:#22C55E;"></div>
-                <div class="bar" style="height:60%;background:var(--webyan-cyan);"></div>
-                <div class="bar" style="height:70%;background:var(--webyan-navy);"></div>
-              </div>
-              <div class="dash-lines">
-                <div class="dash-line" style="width:100%;"></div>
-                <div class="dash-line" style="width:80%;"></div>
-                <div class="dash-line" style="width:60%;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- بادج الامتثال -->
-          <div class="float-badge badge-compliance">
-            <div class="compliance-ring">
-              <span class="ring-val">٩٩%</span>
-            </div>
-            <div class="b-text">
-              <strong>الامتثال ٩٩%</strong>
-              <small>الشفافية | السلامة المالية</small>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- ===== شريط الجمعيات الموثوقة ===== -->
     <section class="trust-section">
-      <h2 class="trust-title">
-        <span class="t-navy">كيانات</span> <span class="t-cyan">تثق بنا</span>
-      </h2>
-      <div class="marquee-wrap">
-        <div class="marquee-track">
-          <!-- المجموعة الأولى -->
-          <span class="org-badge org-1"><span class="org-dot"></span>جمعية حياة البيئة</span>
-          <span class="org-badge org-2"><span class="org-dot"></span>نهام للتنمية الشبابية</span>
-          <span class="org-badge org-3"><span class="org-dot"></span>جمعية بدن الرياضية</span>
-          <span class="org-badge org-4"><span class="org-dot"></span>فنار للمرأة</span>
-          <span class="org-badge org-5"><span class="org-dot"></span>عزم</span>
-          <span class="org-badge org-6"><span class="org-dot"></span>جمعية أجيال الشباب بالباحة</span>
-          <span class="org-badge org-7"><span class="org-dot"></span>براعم</span>
-          <!-- المجموعة الثانية (للتكرار) -->
-          <span class="org-badge org-1"><span class="org-dot"></span>جمعية حياة البيئة</span>
-          <span class="org-badge org-2"><span class="org-dot"></span>نهام للتنمية الشبابية</span>
-          <span class="org-badge org-3"><span class="org-dot"></span>جمعية بدن الرياضية</span>
-          <span class="org-badge org-4"><span class="org-dot"></span>فنار للمرأة</span>
-          <span class="org-badge org-5"><span class="org-dot"></span>عزم</span>
-          <span class="org-badge org-6"><span class="org-dot"></span>جمعية أجيال الشباب بالباحة</span>
-          <span class="org-badge org-7"><span class="org-dot"></span>براعم</span>
+        <div class="trust-title">كيانات <span class="cyan">تثق بنا</span></div>
+        <p class="trust-subtitle">أكثر من 100 كيان غير ربحي يديرون حضورهم الرقمي عبر ويبيان</p>
+        <div class="marquee-wrap">
+            <div class="marquee-track">
+                <span class="entity-badge" style="border-color:var(--cyan);background:rgba(0,191,239,0.07);color:var(--navy);"><span class="entity-dot" style="background:var(--cyan);"></span>جمعية حياة البيئة</span>
+                <span class="entity-badge" style="border-color:var(--navy);background:rgba(27,43,140,0.06);color:var(--navy);"><span class="entity-dot" style="background:var(--navy);"></span>نهام للتنمية</span>
+                <span class="entity-badge" style="border-color:#7B5EA7;background:rgba(123,94,167,0.07);color:#5B3E87;"><span class="entity-dot" style="background:#7B5EA7;"></span>جمعية بدن الرياضية</span>
+                <span class="entity-badge" style="border-color:#E91E8C;background:rgba(233,30,140,0.07);color:#C0106E;"><span class="entity-dot" style="background:#E91E8C;"></span>فنار للمرأة</span>
+                <span class="entity-badge" style="border-color:var(--cyan-dark);background:rgba(0,119,200,0.07);color:var(--navy);"><span class="entity-dot" style="background:var(--cyan-dark);"></span>عزم</span>
+                <span class="entity-badge" style="border-color:#F97316;background:rgba(249,115,22,0.07);color:#C85A00;"><span class="entity-dot" style="background:#F97316;"></span>جمعية أجيال الشباب بالباحة</span>
+                <span class="entity-badge" style="border-color:#EF4444;background:rgba(239,68,68,0.07);color:#B91C1C;"><span class="entity-dot" style="background:#EF4444;"></span>براعم</span>
+                <!-- المجموعة المكررة -->
+                <span class="entity-badge" style="border-color:var(--cyan);background:rgba(0,191,239,0.07);color:var(--navy);"><span class="entity-dot" style="background:var(--cyan);"></span>جمعية حياة البيئة</span>
+                <span class="entity-badge" style="border-color:var(--navy);background:rgba(27,43,140,0.06);color:var(--navy);"><span class="entity-dot" style="background:var(--navy);"></span>نهام للتنمية</span>
+                <span class="entity-badge" style="border-color:#7B5EA7;background:rgba(123,94,167,0.07);color:#5B3E87;"><span class="entity-dot" style="background:#7B5EA7;"></span>جمعية بدن الرياضية</span>
+                <span class="entity-badge" style="border-color:#E91E8C;background:rgba(233,30,140,0.07);color:#C0106E;"><span class="entity-dot" style="background:#E91E8C;"></span>فنار للمرأة</span>
+                <span class="entity-badge" style="border-color:var(--cyan-dark);background:rgba(0,119,200,0.07);color:var(--navy);"><span class="entity-dot" style="background:var(--cyan-dark);"></span>عزم</span>
+                <span class="entity-badge" style="border-color:#F97316;background:rgba(249,115,22,0.07);color:#C85A00;"><span class="entity-dot" style="background:#F97316;"></span>جمعية أجيال الشباب بالباحة</span>
+                <span class="entity-badge" style="border-color:#EF4444;background:rgba(239,68,68,0.07);color:#B91C1C;"><span class="entity-dot" style="background:#EF4444;"></span>براعم</span>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
+</main>
 
-  <!-- ===== JavaScript ===== -->
-  <script>
-    // تأثير الظل عند التمرير
-    const header = document.getElementById('siteHeader');
+<script>
+    // ===== ظل الهيدر عند التمرير =====
     window.addEventListener('scroll', function() {
-      header.classList.toggle('scrolled', window.scrollY > 10);
+        document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 10);
     });
 
-    // الدرج الجانبي
-    const menuBtn = document.getElementById('menuBtn');
-    const drawer = document.getElementById('mobileDrawer');
-    const overlay = document.getElementById('drawerOverlay');
-    const closeBtn = document.getElementById('drawerClose');
+    // ===== درج الجوال =====
+    var hamburger = document.getElementById('hamburgerBtn');
+    var drawer = document.getElementById('mobileDrawer');
+    var overlay = document.getElementById('drawerOverlay');
+    var closeBtn = document.getElementById('drawerClose');
 
-    function openDrawer() {
-      drawer.classList.add('open');
-      overlay.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      overlay.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-    menuBtn.addEventListener('click', openDrawer);
+    function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+    hamburger.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
-  </script>
+</script>
 
 </body>
 </html>
