@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ويبيان — حلول رقمية للكيانات غير الربحية</title>
+  <meta name="description" content="ويبيان منصة سعودية متخصصة في بناء المواقع الإلكترونية للجمعيات الأهلية والكيانات غير الربحية. حوكمة وشفافية مدمجة.">
+  <link rel="icon" href="/images/raneen/webyan-logo.svg" type="image/svg+xml">
+  <!-- ===== الخطوط ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== المتغيرات الأساسية ===== */
+    :root {
+      --webyan-navy:      #1B2B8C;
+      --webyan-cyan:      #00BFEF;
+      --webyan-cyan-dark: #0077C8;
+      --webyan-gradient:  linear-gradient(135deg, #00BFEF 0%, #0077C8 100%);
+      --webyan-white:     #FFFFFF;
+      --webyan-bg-light:  #F0F6FF;
+      --webyan-bg-section:#F7FAFF;
+      --webyan-text-dark: #0D1B5E;
+      --webyan-text-muted:#6B7A99;
+      --webyan-border:    #E2EAF8;
+    }
+
+    /* ===== إعادة التهيئة ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      direction: rtl;
+      background: var(--webyan-white);
+      color: var(--webyan-text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== أنيماشن عامة ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    @keyframes floatDown {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(10px); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,165,0,0.5); }
+      50%      { box-shadow: 0 0 0 6px rgba(255,165,0,0); }
+    }
+    @keyframes slideUp {
+      to { transform: translateY(-100%); opacity: 0; }
+    }
+    @keyframes marquee-rtl {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+    @keyframes spin-slow {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .anim-item { opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .anim-d1 { animation-delay: 0.1s; }
+    .anim-d2 { animation-delay: 0.22s; }
+    .anim-d3 { animation-delay: 0.34s; }
+    .anim-d4 { animation-delay: 0.46s; }
+    .anim-d5 { animation-delay: 0.58s; }
+    .anim-d6 { animation-delay: 0.7s; }
+    .anim-d7 { animation-delay: 0.82s; }
+    .anim-right { opacity: 0; animation: fadeInRight 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+
+    /* ===== شريط الإعلان العلوي ===== */
+    .top-bar {
+      background: var(--webyan-gradient);
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .top-bar.hidden {
+      animation: slideUp 0.3s ease forwards;
+      pointer-events: none;
+    }
+    .top-bar p {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .top-bar-close {
+      position: absolute;
+      left: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+    .top-bar-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+    /* ===== الهيدر الثابت ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--webyan-white);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 80px;
+      transition: box-shadow 0.3s ease;
+    }
+    .site-header.scrolled {
+      box-shadow: 0 2px 20px rgba(27,43,140,0.1);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    /* الشعار */
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 48px; height: 48px;
+      background: var(--webyan-gradient);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      width: 22px; height: 22px;
+      border: 3px solid #fff;
+      border-radius: 50% 50% 50% 0;
+      top: 8px; right: 8px;
+    }
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      width: 12px; height: 12px;
+      background: #fff;
+      border-radius: 3px;
+      bottom: 10px; left: 10px;
+      transform: rotate(45deg);
+    }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-text .ar { font-size: 22px; font-weight: 800; color: var(--webyan-navy); }
+    .logo-text .en { font-size: 13px; font-weight: 400; color: var(--webyan-cyan); letter-spacing: 0.5px; }
+
+    /* القائمة */
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--webyan-text-dark);
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--webyan-cyan);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--webyan-cyan); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--webyan-cyan); }
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a.active::before {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 5px; height: 5px;
+      background: var(--webyan-cyan);
+      border-radius: 50%;
+    }
+
+    /* أزرار الهيدر */
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-globe {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--webyan-cyan);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: 0.3s;
+      color: var(--webyan-cyan);
+    }
+    .btn-globe:hover { background: rgba(0,191,239,0.1); }
+    .btn-cta {
+      background: var(--webyan-navy);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Tajawal', sans-serif;
+      padding: 10px 28px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-cta:hover {
+      background: var(--webyan-gradient);
+      box-shadow: 0 4px 15px rgba(0,191,239,0.3);
+    }
+
+    /* زر الهامبرغر */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: var(--webyan-navy);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* الدرج الجانبي */
+    .mobile-drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer-overlay.show { display: block; opacity: 1; }
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      z-index: 2001;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .mobile-drawer.open { right: 0; }
+    .drawer-top {
+      height: 56px;
+      background: var(--webyan-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .drawer-top span { color: #fff; font-weight: 700; font-size: 16px; }
+    .drawer-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .drawer-links { padding: 20px; display: flex; flex-direction: column; gap: 0; }
+    .drawer-links a {
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--webyan-text-dark);
+      border-bottom: 1px solid var(--webyan-border);
+      transition: 0.2s;
+    }
+    .drawer-links a:hover { color: var(--webyan-cyan); padding-right: 8px; }
+    .drawer-cta {
+      margin: 20px;
+      padding: 14px;
+      border-radius: 10px;
+      background: var(--webyan-gradient);
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    /* ===== قسم الهيرو ===== */
+    .hero {
+      background: linear-gradient(180deg, #EBF4FF 0%, #FFFFFF 100%);
+      position: relative;
+      padding: 120px 80px 80px;
+      overflow: hidden;
+    }
+    /* نقاط شبكية */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, var(--webyan-navy) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    /* فقاعات هندسية */
+    .hero-bubble {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-bubble-1 {
+      width: 220px; height: 220px;
+      background: var(--webyan-cyan);
+      opacity: 0.06;
+      top: -40px; left: 60px;
+    }
+    .hero-bubble-2 {
+      width: 140px; height: 140px;
+      background: var(--webyan-navy);
+      opacity: 0.05;
+      bottom: 40px; right: 80px;
+    }
+    .hero-bubble-3 {
+      width: 8px; height: 8px;
+      background: var(--webyan-cyan);
+      opacity: 0.2;
+      top: 30%; left: 15%;
+    }
+    .hero-bubble-4 {
+      width: 6px; height: 6px;
+      background: var(--webyan-cyan);
+      opacity: 0.15;
+      top: 60%; left: 40%;
+    }
+    .hero-bubble-5 {
+      width: 10px; height: 10px;
+      background: var(--webyan-navy);
+      opacity: 0.08;
+      top: 20%; left: 55%;
+    }
+
+    .hero-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content { flex: 0 0 55%; max-width: 55%; }
+    .hero-visual  { flex: 0 0 45%; max-width: 45%; position: relative; }
+
+    /* وسم تعريفي */
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--webyan-cyan);
+      background: rgba(0,191,239,0.08);
+      border-radius: 50px;
+      padding: 6px 18px;
+      margin-bottom: 20px;
+    }
+    .tag-dot {
+      width: 8px; height: 8px;
+      background: #F59E0B;
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    .tag-pill span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--webyan-cyan);
+    }
+
+    /* العنوان */
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--webyan-navy);
+      margin-bottom: 24px;
+    }
+    .hero h1 .highlight {
+      color: var(--webyan-cyan);
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 100%;
+      height: 8px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 Q50 2 100 8 Q150 14 198 6' stroke='%2300BFEF' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+    }
+
+    /* الوصف */
+    .hero-desc {
+      font-size: 17px;
+      color: var(--webyan-text-muted);
+      line-height: 1.9;
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    /* قائمة المميزات */
+    .hero-features { margin-bottom: 40px; display: flex; flex-direction: column; gap: 12px; }
+    .hero-feat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--webyan-text-dark);
+    }
+    .feat-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(0,191,239,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .feat-check svg { width: 12px; height: 12px; }
+
+    /* أزرار الهيرو */
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    .btn-primary {
+      background: var(--webyan-gradient);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 40px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,191,239,0.35);
+      transition: 0.3s;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,191,239,0.5);
+    }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--webyan-navy);
+      color: var(--webyan-navy);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .btn-secondary:hover {
+      background: var(--webyan-navy);
+      color: #fff;
+    }
+
+    /* شارة الثقة */
+    .trust-badge { display: flex; align-items: center; gap: 12px; }
+    .avatars { display: flex; direction: ltr; }
+    .avatar-circle {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      border: 2px solid #fff;
+      margin-right: -8px;
+    }
+    .trust-badge .trust-text {
+      font-size: 13px;
+      color: var(--webyan-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .star { color: #F59E0B; }
+
+    /* ===== المرئيات / الموكاب ===== */
+    .dashboard-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(27,43,140,0.12);
+      overflow: hidden;
+      position: relative;
+    }
+    .dash-topbar {
+      background: var(--webyan-gradient);
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+    }
+    .dot-w { width: 10px; height: 10px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+    .dot-w:first-child { background: rgba(255,255,255,0.9); }
+    .dash-topbar span {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: auto;
+      margin-left: 8px;
+    }
+    .dash-body { padding: 20px; }
+    .stat-row { display: flex; gap: 12px; margin-bottom: 16px; }
+    .stat-card {
+      flex: 1;
+      background: var(--webyan-bg-light);
+      border-radius: 12px;
+      padding: 14px 10px;
+      text-align: center;
+    }
+    .stat-card .s-icon {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .stat-card .s-num { font-size: 22px; font-weight: 800; color: var(--webyan-navy); }
+    .stat-card .s-label { font-size: 11px; color: var(--webyan-text-muted); font-weight: 500; }
+    .dash-bars { display: flex; gap: 6px; align-items: flex-end; height: 48px; margin-bottom: 14px; }
+    .dash-bars .bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      min-width: 0;
+    }
+    .dash-lines { display: flex; flex-direction: column; gap: 8px; }
+    .dash-line {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--webyan-border);
+    }
+
+    /* بادجات عائمة */
+    .float-badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(27,43,140,0.12);
+      padding: 10px 16px;
+      z-index: 2;
+    }
+    .badge-rating {
+      top: -16px;
+      right: -20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: floatUp 3s ease-in-out infinite;
+    }
+    .badge-rating .rating-stars { display: flex; gap: 1px; }
+    .badge-rating .rating-stars span { color: #F59E0B; font-size: 13px; }
+    .badge-rating .rating-score {
+      background: #22C55E;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .badge-rating .rating-text { font-size: 11px; color: var(--webyan-text-muted); text-align: center; }
+    .badge-rating .rating-text strong { display: block; color: var(--webyan-text-dark); font-size: 13px; }
+
+    .badge-compliance {
+      bottom: 20px;
+      left: -30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: floatDown 4s ease-in-out infinite;
+    }
+    .compliance-ring {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: conic-gradient(var(--webyan-cyan) 0% 99%, var(--webyan-border) 99% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .compliance-ring::after {
+      content: '';
+      width: 40px; height: 40px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .compliance-ring .ring-val {
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--webyan-cyan);
+    }
+    .badge-compliance .b-text { font-size: 12px; }
+    .badge-compliance .b-text strong { display: block; color: var(--webyan-text-dark); font-weight: 700; }
+    .badge-compliance .b-text small { color: var(--webyan-text-muted); font-size: 10px; }
+
+    /* ===== شريط الثقة ===== */
+    .trust-section {
+      background: var(--webyan-white);
+      padding: 60px 80px;
+      border-top: 1px solid var(--webyan-border);
+      overflow: hidden;
+    }
+    .trust-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .trust-title .t-navy { color: var(--webyan-navy); }
+    .trust-title .t-cyan { color: var(--webyan-cyan); }
+
+    .marquee-wrap {
+      position: relative;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marquee-rtl 35s linear infinite;
+    }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .org-badge:hover { transform: scale(1.05); }
+    .org-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .org-1 { border: 1.5px solid var(--webyan-cyan); background: rgba(0,191,239,0.08); color: var(--webyan-navy); }
+    .org-1 .org-dot { background: var(--webyan-cyan); }
+    .org-2 { border: 1.5px solid var(--webyan-navy); background: rgba(27,43,140,0.06); color: var(--webyan-navy); }
+    .org-2 .org-dot { background: var(--webyan-navy); }
+    .org-3 { border: 1.5px solid #7B5EA7; background: rgba(123,94,167,0.08); color: #5B3E87; }
+    .org-3 .org-dot { background: #7B5EA7; }
+    .org-4 { border: 1.5px solid #E91E8C; background: rgba(233,30,140,0.08); color: #C0176F; }
+    .org-4 .org-dot { background: #E91E8C; }
+    .org-5 { border: 1.5px solid var(--webyan-cyan-dark); background: rgba(0,119,200,0.08); color: var(--webyan-navy); }
+    .org-5 .org-dot { background: var(--webyan-cyan-dark); }
+    .org-6 { border: 1.5px solid #F97316; background: rgba(249,115,22,0.08); color: #C2590C; }
+    .org-6 .org-dot { background: #F97316; }
+    .org-7 { border: 1.5px solid #EF4444; background: rgba(239,68,68,0.08); color: #B91C1C; }
+    .org-7 .org-dot { background: #EF4444; }
+
+    /* ===== استجابة الأجهزة ===== */
+    @media (max-width: 1024px) {
+      .hero { padding: 80px 40px 60px; }
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-content, .hero-visual { flex: 0 0 100%; max-width: 100%; }
+      .hero h1 { font-size: 42px; }
+      .hero-features { align-items: center; }
+      .hero-btns { justify-content: center; }
+      .trust-badge { justify-content: center; }
+      .hero-visual { margin-top: 40px; }
+      .badge-rating { right: 0; top: -12px; }
+      .badge-compliance { left: 0; }
+      .site-header { padding: 0 30px; }
+      .trust-section { padding: 50px 30px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .header-actions { display: none !important; }
+      .hamburger { display: flex; }
+      .site-header { padding: 0 20px; }
+      .hero { padding: 60px 20px 50px; }
+      .hero h1 { font-size: 32px; }
+      .hero-desc { font-size: 15px; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
+      .hero-visual { max-width: 90%; margin: 30px auto 0; }
+      .badge-rating { display: none; }
+      .badge-compliance { display: none; }
+      .trust-section { padding: 40px 16px; }
+      .trust-title { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== شريط الإعلان العلوي ===== -->
+  <div class="top-bar" id="topBar">
+    <p>شفافية وحوكمة تقود خطاكم نحو غد مستدام ✨ خصم 20% للجمعيات الناشئة</p>
+    <button class="top-bar-close" onclick="document.getElementById('topBar').classList.add('hidden')" aria-label="إغلاق">×</button>
+  </div>
+
+  <!-- ===== الهيدر ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <!-- الشعار -->
+      <a href="#" class="logo-wrap">
+        <div class="logo-icon" aria-hidden="true"></div>
+        <div class="logo-text">
+          <span class="ar">ويبيان</span>
+          <span class="en">webyan</span>
+        </div>
+      </a>
+
+      <!-- القائمة -->
+      <nav class="nav-links">
+        <a href="#" class="active">الرئيسية</a>
+        <a href="#">باقات الأسعار</a>
+        <a href="#">مدونة ويبيان</a>
+        <a href="#">اتصل بنا</a>
+      </nav>
+
+      <!-- أزرار الهيدر -->
+      <div class="header-actions">
+        <button class="btn-globe" aria-label="تبديل اللغة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+        </button>
+        <button class="btn-cta">اشترك الآن</button>
+      </div>
+
+      <!-- هامبرغر -->
+      <button class="hamburger" id="menuBtn" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== الدرج الجانبي ===== -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-top">
+      <span>ويبيان</span>
+      <button class="drawer-close" id="drawerClose">×</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#">الرئيسية</a>
+      <a href="#">باقات الأسعار</a>
+      <a href="#">مدونة ويبيان</a>
+      <a href="#">اتصل بنا</a>
+    </div>
+    <button class="drawer-cta">اشترك الآن</button>
+  </aside>
+
+  <!-- ===== قسم الهيرو ===== -->
+  <main>
+    <section class="hero">
+      <!-- فقاعات -->
+      <div class="hero-bubble hero-bubble-1"></div>
+      <div class="hero-bubble hero-bubble-2"></div>
+      <div class="hero-bubble hero-bubble-3"></div>
+      <div class="hero-bubble hero-bubble-4"></div>
+      <div class="hero-bubble hero-bubble-5"></div>
+
+      <div class="hero-inner">
+        <!-- العمود الأيمن: المحتوى -->
+        <div class="hero-content">
+          <div class="tag-pill anim-item anim-d1">
+            <div class="tag-dot"></div>
+            <span>عن منصة ويبيان</span>
+          </div>
+
+          <h1 class="anim-item anim-d2">
+            حلول <span class="highlight">رقمية</span> للكيانات<br>غير الربحية
+          </h1>
+
+          <p class="hero-desc anim-item anim-d3">
+            ويبيان تُمكِّنك من تشغيل كيانك غير الربحي رقمياً عبر موقع احترافي، متجر إلكتروني، وأنظمة لإدارة المستفيدين والخدمات والطلبات، ضمن منظومة واحدة تعزز الحوكمة والشفافية وتحقق الاستدامة وتوسّع الأثر المجتمعي.
+          </p>
+
+          <div class="hero-features anim-item anim-d4">
+            <div class="hero-feat">
+              <div class="feat-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--webyan-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              موقع إلكتروني مع لوحة تحكم احترافية
+            </div>
+            <div class="hero-feat">
+              <div class="feat-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--webyan-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              استضافة آمنة وسريعة على السحابة
+            </div>
+            <div class="hero-feat">
+              <div class="feat-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--webyan-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              امتثال لمتطلبات الحوكمة والشفافية
+            </div>
+          </div>
+
+          <div class="hero-btns anim-item anim-d5">
+            <button class="btn-primary">ابدأ الآن</button>
+            <button class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              طلب عرض توضيحي
+            </button>
+          </div>
+
+          <div class="trust-badge anim-item anim-d6">
+            <div class="avatars">
+              <div class="avatar-circle" style="background:#00BFEF;">ع</div>
+              <div class="avatar-circle" style="background:#1B2B8C;">م</div>
+              <div class="avatar-circle" style="background:#F59E0B;">ف</div>
+            </div>
+            <div class="trust-text">
+              <span class="star">★</span> يثق بنا +100 كيان سعودي
+            </div>
+          </div>
+        </div>
+
+        <!-- العمود الأيسر: المرئيات -->
+        <div class="hero-visual anim-right">
+          <!-- بادج التقييم -->
+          <div class="float-badge badge-rating">
+            <div>
+              <div class="rating-score">4.9 ★</div>
+            </div>
+            <div>
+              <div class="rating-stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="rating-text">
+                <strong>موثوق من المستشارين</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- بطاقة لوحة التحكم -->
+          <div class="dashboard-card">
+            <div class="dash-topbar">
+              <div class="dot-w"></div>
+              <div class="dot-w"></div>
+              <div class="dot-w"></div>
+              <span>لوحة تحكم ويبيان</span>
+            </div>
+            <div class="dash-body">
+              <div class="stat-row">
+                <div class="stat-card">
+                  <div class="s-icon" style="background:rgba(0,191,239,0.12);color:var(--webyan-cyan);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div class="s-num">١٢٤</div>
+                  <div class="s-label">مستفيد</div>
+                </div>
+                <div class="stat-card">
+                  <div class="s-icon" style="background:rgba(34,197,94,0.12);color:#22C55E;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  </div>
+                  <div class="s-num">٩٩%</div>
+                  <div class="s-label">الامتثال</div>
+                </div>
+                <div class="stat-card">
+                  <div class="s-icon" style="background:rgba(249,115,22,0.12);color:#F97316;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  </div>
+                  <div class="s-num">١٨</div>
+                  <div class="s-label">خدمة نشطة</div>
+                </div>
+              </div>
+              <div class="dash-bars">
+                <div class="bar" style="height:65%;background:var(--webyan-cyan);"></div>
+                <div class="bar" style="height:85%;background:var(--webyan-navy);"></div>
+                <div class="bar" style="height:50%;background:#F59E0B;"></div>
+                <div class="bar" style="height:75%;background:var(--webyan-cyan);"></div>
+                <div class="bar" style="height:90%;background:var(--webyan-navy);"></div>
+                <div class="bar" style="height:40%;background:#22C55E;"></div>
+                <div class="bar" style="height:60%;background:var(--webyan-cyan);"></div>
+                <div class="bar" style="height:70%;background:var(--webyan-navy);"></div>
+              </div>
+              <div class="dash-lines">
+                <div class="dash-line" style="width:100%;"></div>
+                <div class="dash-line" style="width:80%;"></div>
+                <div class="dash-line" style="width:60%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- بادج الامتثال -->
+          <div class="float-badge badge-compliance">
+            <div class="compliance-ring">
+              <span class="ring-val">٩٩%</span>
+            </div>
+            <div class="b-text">
+              <strong>الامتثال ٩٩%</strong>
+              <small>الشفافية | السلامة المالية</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== شريط الجمعيات الموثوقة ===== -->
+    <section class="trust-section">
+      <h2 class="trust-title">
+        <span class="t-navy">كيانات</span> <span class="t-cyan">تثق بنا</span>
+      </h2>
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <!-- المجموعة الأولى -->
+          <span class="org-badge org-1"><span class="org-dot"></span>جمعية حياة البيئة</span>
+          <span class="org-badge org-2"><span class="org-dot"></span>نهام للتنمية الشبابية</span>
+          <span class="org-badge org-3"><span class="org-dot"></span>جمعية بدن الرياضية</span>
+          <span class="org-badge org-4"><span class="org-dot"></span>فنار للمرأة</span>
+          <span class="org-badge org-5"><span class="org-dot"></span>عزم</span>
+          <span class="org-badge org-6"><span class="org-dot"></span>جمعية أجيال الشباب بالباحة</span>
+          <span class="org-badge org-7"><span class="org-dot"></span>براعم</span>
+          <!-- المجموعة الثانية (للتكرار) -->
+          <span class="org-badge org-1"><span class="org-dot"></span>جمعية حياة البيئة</span>
+          <span class="org-badge org-2"><span class="org-dot"></span>نهام للتنمية الشبابية</span>
+          <span class="org-badge org-3"><span class="org-dot"></span>جمعية بدن الرياضية</span>
+          <span class="org-badge org-4"><span class="org-dot"></span>فنار للمرأة</span>
+          <span class="org-badge org-5"><span class="org-dot"></span>عزم</span>
+          <span class="org-badge org-6"><span class="org-dot"></span>جمعية أجيال الشباب بالباحة</span>
+          <span class="org-badge org-7"><span class="org-dot"></span>براعم</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    // تأثير الظل عند التمرير
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // الدرج الجانبي
+    const menuBtn = document.getElementById('menuBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const closeBtn = document.getElementById('drawerClose');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    menuBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  </script>
+
+</body>
+</html>
