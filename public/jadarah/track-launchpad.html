@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مسار الانطلاقة - منصة جدارة</title>
-    <meta name="description" content="مسار الانطلاقة في منصة جدارة — البداية الصحيحة لتأسيس جمعيتك وبناء هويتها المؤسسية">
+    <meta name="description" content="أسّس جمعيتك على قاعدة صلبة نحو أثر مستدام — مسار الانطلاقة من منصة جدارة">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,316 +12,747 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --track: #E86C4F; --track-light: #ff8a6b; --track-pale: rgba(232,108,79,0.07);
-            --secondary: #1A2B49; --white: #FFFFFF; --light-bg: #F8FAFB;
-            --text-dark: #1a1f36; --text-body: #4a5578; --text-muted: #8892a8;
-            --border: rgba(0,0,0,0.06); --radius: 20px; --radius-lg: 28px;
-            --shadow-sm: 0 2px 12px rgba(0,0,0,0.04); --shadow-md: 0 8px 30px rgba(0,0,0,0.06); --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+            --track: #E86C4F;
+            --track-light: #ff8a6b;
+            --track-dark: #d45a3f;
+            --track-pale: rgba(232,108,79,0.06);
+            --track-glow: rgba(232,108,79,0.15);
+            --secondary: #1A2B49;
+            --secondary-light: #2a3d5f;
+            --white: #FFFFFF;
+            --off-white: #FAFBFC;
+            --light-bg: #F5F7FA;
+            --warm-bg: #faf5f3;
+            --text-dark: #1a1f36;
+            --text-body: #4a5578;
+            --text-muted: #8892a8;
+            --border: rgba(0,0,0,0.06);
+            --border-hover: rgba(232,108,79,0.18);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --shadow-xs: 0 1px 3px rgba(0,0,0,0.03);
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Cairo', sans-serif; color: var(--text-dark); overflow-x: hidden; background: var(--white); }
-        img { max-width: 100%; } a { text-decoration: none; }
+        body { font-family: 'Cairo', sans-serif; color: var(--text-dark); overflow-x: hidden; background: var(--white); line-height: 1.7; }
+        img { max-width: 100%; } a { text-decoration: none; color: inherit; }
 
-        /* Navbar */
-        .navbar { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); padding: 0.75rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .navbar-brand img { height: 48px; }
-        .navbar-nav .nav-link { color: var(--text-dark); font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s; }
-        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--track); }
-        .btn-cta-nav { background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(232,108,79,0.25); }
-        .btn-cta-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232,108,79,0.35); color: white; }
+        /* ═══════════════════════════════════════
+           NAVBAR
+           ═══════════════════════════════════════ */
+        .navbar { background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); padding: 0.7rem 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; transition: box-shadow 0.3s; }
+        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .navbar-brand img { height: 44px; }
+        .nav-link { color: var(--text-dark) !important; font-weight: 600; font-size: 0.88rem; padding: 0.5rem 1rem !important; border-radius: 8px; transition: all 0.3s; }
+        .nav-link:hover, .nav-link.active { color: var(--track) !important; }
+        .btn-cta-nav { background: linear-gradient(135deg, var(--track), var(--track-light)); color: white !important; border: none; padding: 0.55rem 1.4rem; border-radius: 50px; font-weight: 700; font-size: 0.82rem; box-shadow: 0 4px 15px var(--track-glow); transition: all 0.3s; }
+        .btn-cta-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232,108,79,0.3); }
 
-        /* Track Hero */
+        /* ═══════════════════════════════════════
+           HERO — Outcome-Focused
+           ═══════════════════════════════════════ */
         .track-hero {
-            padding: 8rem 0 4rem;
-            background: linear-gradient(160deg, #faf6f4 0%, #f8f0ed 40%, #f8f9fc 100%);
+            padding: 7rem 0 4rem;
+            background: linear-gradient(165deg, var(--warm-bg) 0%, #f8f0ed 35%, var(--off-white) 100%);
             position: relative; overflow: hidden;
         }
-        .track-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(232,108,79,0.02) 1px, transparent 0); background-size: 40px 40px; }
-        .track-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
-        .track-hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--track-pale); border: 1px solid rgba(232,108,79,0.15); color: var(--track); font-size: 0.82rem; font-weight: 700; padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1.25rem; }
-        .track-hero h1 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--secondary); line-height: 1.4; margin-bottom: 1.25rem; }
+        .track-hero::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle at 1px 1px, rgba(232,108,79,0.015) 1px, transparent 0); background-size:48px 48px; }
+        .hero-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center; position: relative; z-index: 2; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); border: 1px solid var(--border-hover); color: var(--track); font-size: 0.78rem; font-weight: 700; padding: 0.4rem 1.1rem; border-radius: 100px; margin-bottom: 1.25rem; box-shadow: var(--shadow-xs); }
+        .hero-badge i { font-size: 0.7rem; }
+        .track-hero h1 { font-size: clamp(1.85rem, 3.2vw, 2.6rem); font-weight: 900; color: var(--secondary); line-height: 1.45; margin-bottom: 1rem; letter-spacing: -0.01em; }
         .track-hero h1 span { color: var(--track); }
-        .track-hero-desc { font-size: 1.05rem; line-height: 2; color: var(--text-body); margin-bottom: 2rem; }
-        .track-hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-        .meta-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-body); }
-        .meta-item i { color: var(--track); }
-        .btn-track { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; padding: 0.85rem 2rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 25px rgba(232,108,79,0.3); transition: all 0.4s; }
-        .btn-track:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(232,108,79,0.4); color: white; }
-        .track-hero-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 4px solid var(--white); }
-        .track-hero-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
+        .hero-desc { font-size: 0.98rem; line-height: 2; color: var(--text-body); margin-bottom: 1.75rem; max-width: 520px; }
 
-        /* Section Common */
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--track-pale); color: var(--track); font-size: 0.82rem; font-weight: 700; padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1rem; }
-        .section-title { font-size: clamp(1.75rem, 3vw, 2.2rem); font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
-        .section-title span { color: var(--track); }
-        .section-divider { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin: 1rem auto 1.25rem; }
-        .section-divider-line { width: 60px; height: 1.5px; background: linear-gradient(90deg, transparent, #cbd5e1, transparent); }
-        .section-divider-diamond { width: 10px; height: 10px; border: 2px solid var(--track); transform: rotate(45deg); }
-        .section-subtitle { font-size: 1rem; color: var(--text-body); max-width: 600px; margin: 0 auto; line-height: 1.9; }
+        /* Hero Results Badges */
+        .hero-results { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .hero-result-item { display: flex; align-items: center; gap: 0.5rem; background: var(--white); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.82rem; font-weight: 600; color: var(--text-dark); box-shadow: var(--shadow-xs); }
+        .hero-result-item i { color: var(--track); font-size: 0.75rem; }
 
-        /* Description */
-        .desc-section { padding: 5rem 0; background: var(--white); }
-        .desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .desc-content h2 { font-size: 1.75rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; line-height: 1.5; }
-        .desc-content h2 span { color: var(--track); }
-        .desc-content p { font-size: 0.95rem; line-height: 2; color: var(--text-body); margin-bottom: 1rem; }
-        .desc-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
-        .desc-img img { width: 100%; height: 350px; object-fit: cover; display: block; }
+        /* Hero CTAs */
+        .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .btn-primary-track { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--track), var(--track-dark)); color: white; padding: 0.75rem 1.75rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 6px 20px var(--track-glow); transition: all 0.3s; border: none; }
+        .btn-primary-track:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,108,79,0.3); color: white; }
+        .btn-secondary-track { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); color: var(--text-dark); padding: 0.75rem 1.75rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; border: 1.5px solid var(--border); transition: all 0.3s; }
+        .btn-secondary-track:hover { border-color: var(--track); color: var(--track); }
 
-        /* Target Audience */
-        .audience-section { padding: 5rem 0; background: var(--light-bg); }
-        .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .audience-card { background: var(--white); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; border: 1px solid var(--border); transition: all 0.4s; }
-        .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .audience-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--track-pale); color: var(--track); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.2rem; }
-        .audience-card h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem; }
-        .audience-card p { font-size: 0.85rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+        /* Hero Meta Strip */
+        .hero-meta { display: flex; gap: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); }
+        .hero-meta-item { text-align: center; }
+        .hero-meta-value { font-size: 1.15rem; font-weight: 800; color: var(--track); display: block; }
+        .hero-meta-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
 
-        /* Offerings */
-        .offerings-section { padding: 5rem 0; background: var(--white); }
-        .offerings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        .offering-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--light-bg); border-radius: 16px; border: 1px solid var(--border); transition: all 0.3s; }
-        .offering-card:hover { border-color: rgba(232,108,79,0.2); box-shadow: var(--shadow-sm); transform: translateX(-3px); }
-        .offering-num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; flex-shrink: 0; }
-        .offering-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem; }
-        .offering-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+        /* Hero Visual */
+        .hero-visual { position: relative; }
+        .hero-img-wrap { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); border: 3px solid rgba(255,255,255,0.8); }
+        .hero-img-wrap img { width: 100%; height: 420px; object-fit: cover; display: block; }
+        .hero-float-card { position: absolute; background: var(--white); border-radius: 14px; padding: 0.75rem 1rem; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
+        .hero-float-card.card-1 { bottom: -16px; right: 20px; display: flex; align-items: center; gap: 0.6rem; }
+        .hero-float-card.card-2 { top: 20px; left: -20px; }
+        .float-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+        .float-icon.orange { background: var(--track-pale); color: var(--track); }
+        .float-icon.green { background: rgba(16,185,129,0.08); color: #10b981; }
+        .hero-float-card .float-text { font-size: 0.75rem; font-weight: 700; color: var(--text-dark); }
+        .hero-float-card .float-sub { font-size: 0.65rem; color: var(--text-muted); }
 
-        /* Outcomes */
-        .outcomes-section { padding: 5rem 0; background: var(--light-bg); }
-        .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .outcome-card { background: var(--white); border-radius: var(--radius); padding: 1.75rem; border: 1px solid var(--border); text-align: center; transition: all 0.4s; position: relative; overflow: hidden; }
-        .outcome-card::before { content: ''; position: absolute; bottom: 0; right: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--track), var(--track-light)); transform: scaleX(0); transition: transform 0.4s; transform-origin: right; }
-        .outcome-card:hover::before { transform: scaleX(1); }
-        .outcome-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-        .outcome-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--track-pale); color: var(--track); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.1rem; }
-        .outcome-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.4rem; }
-        .outcome-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+        /* ═══════════════════════════════════════
+           CHALLENGES — "هل تواجه هذه التحديات؟"
+           ═══════════════════════════════════════ */
+        .challenges-section { padding: 4.5rem 0; background: var(--secondary); color: white; position: relative; overflow: hidden; }
+        .challenges-section::before { content:''; position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(232,108,79,0.08), transparent 70%); border-radius: 50%; }
+        .challenges-header { text-align: center; margin-bottom: 2.5rem; }
+        .challenges-header h2 { font-size: 1.75rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+        .challenges-header p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+        .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .challenge-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.5rem; transition: all 0.3s; display: flex; align-items: flex-start; gap: 1rem; }
+        .challenge-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(232,108,79,0.3); transform: translateY(-2px); }
+        .challenge-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(232,108,79,0.12); color: var(--track-light); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+        .challenge-card h4 { font-size: 0.88rem; font-weight: 700; color: white; margin-bottom: 0.3rem; }
+        .challenge-card p { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin: 0; line-height: 1.7; }
+        .challenges-cta { text-align: center; margin-top: 2.5rem; }
+        .challenges-cta p { font-size: 0.95rem; color: var(--track-light); font-weight: 700; }
+        .challenges-cta span { color: rgba(255,255,255,0.5); font-size: 0.85rem; font-weight: 400; display: block; margin-top: 0.25rem; }
 
-        /* Journey Steps */
+        /* ═══════════════════════════════════════
+           SECTION COMMON
+           ═══════════════════════════════════════ */
+        .section-pad { padding: 5rem 0; }
+        .sec-header { text-align: center; margin-bottom: 3.5rem; }
+        .sec-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--track-pale); border: 1px solid rgba(232,108,79,0.1); color: var(--track); font-size: 0.75rem; font-weight: 700; padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 0.75rem; }
+        .sec-title { font-size: clamp(1.6rem, 2.8vw, 2.1rem); font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; line-height: 1.4; }
+        .sec-title span { color: var(--track); }
+        .sec-sub { font-size: 0.92rem; color: var(--text-body); max-width: 560px; margin: 0 auto; line-height: 1.9; }
+
+        /* ═══════════════════════════════════════
+           "هل هذا المسار مناسب لك؟" — Use Cases
+           ═══════════════════════════════════════ */
+        .fit-section { padding: 5rem 0; background: var(--off-white); }
+        .fit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .fit-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 1.5rem; transition: all 0.35s; position: relative; }
+        .fit-card::after { content:''; position: absolute; bottom: 0; right: 0; left: 0; height: 3px; background: var(--track); border-radius: 0 0 var(--radius) var(--radius); transform: scaleX(0); transition: transform 0.4s; }
+        .fit-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-hover); }
+        .fit-card:hover::after { transform: scaleX(1); }
+        .fit-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--track-pale); color: var(--track); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 1rem; }
+        .fit-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.4rem; }
+        .fit-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        /* ═══════════════════════════════════════
+           JOURNEY — Core Section 🔥
+           ═══════════════════════════════════════ */
         .journey-section { padding: 5rem 0; background: var(--white); }
-        .journey-timeline { max-width: 700px; margin: 0 auto; position: relative; }
-        .journey-timeline::before { content: ''; position: absolute; top: 0; bottom: 0; right: 24px; width: 3px; background: linear-gradient(180deg, var(--track), var(--track-light), rgba(232,108,79,0.1)); border-radius: 3px; }
-        .journey-step { display: flex; gap: 1.5rem; margin-bottom: 2rem; position: relative; }
-        .journey-step:last-child { margin-bottom: 0; }
-        .journey-dot { width: 50px; height: 50px; border-radius: 50%; background: var(--white); border: 3px solid var(--track); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--track); flex-shrink: 0; z-index: 2; }
-        .journey-step-content { background: var(--light-bg); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); flex: 1; }
-        .journey-step-content h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.4rem; }
-        .journey-step-content p { font-size: 0.85rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+        .journey-path { max-width: 780px; margin: 0 auto; position: relative; }
+        .journey-path::before { content:''; position: absolute; top: 0; bottom: 0; right: 32px; width: 3px; background: linear-gradient(180deg, var(--track) 0%, var(--track-light) 50%, rgba(232,108,79,0.15) 100%); border-radius: 3px; }
+        .j-step { display: flex; gap: 1.75rem; margin-bottom: 0; position: relative; padding-bottom: 2.5rem; }
+        .j-step:last-child { padding-bottom: 0; }
+        .j-dot { width: 64px; height: 64px; border-radius: 50%; background: var(--white); border: 3px solid var(--track); display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 2; transition: all 0.4s; }
+        .j-dot-inner { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; }
+        .j-step:hover .j-dot { border-color: var(--track-dark); box-shadow: 0 0 0 6px var(--track-pale); }
+        .j-content { flex: 1; background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: all 0.35s; }
+        .j-step:hover .j-content { border-color: var(--border-hover); box-shadow: var(--shadow-sm); }
+        .j-content .j-phase { font-size: 0.7rem; font-weight: 700; color: var(--track); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+        .j-content h4 { font-size: 1.05rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
+        .j-content p { font-size: 0.85rem; line-height: 1.9; color: var(--text-body); margin-bottom: 0.75rem; }
+        .j-output { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.12); color: #059669; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 8px; }
+        .j-output i { font-size: 0.65rem; }
 
-        /* CTA */
-        .cta-section { padding: 5rem 0; background: linear-gradient(160deg, #faf6f4, #f8f9fc); }
-        .cta-card { background: var(--white); border-radius: var(--radius-lg); padding: 4rem; text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
-        .cta-card h2 { font-size: 1.8rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; }
-        .cta-card h2 span { color: var(--track); }
-        .cta-card p { font-size: 1rem; line-height: 1.9; color: var(--text-body); max-width: 550px; margin: 0 auto 2rem; }
-        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-outline-track { display: inline-flex; align-items: center; gap: 0.5rem; border: 2px solid var(--track); color: var(--track); padding: 0.8rem 1.75rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
-        .btn-outline-track:hover { background: var(--track); color: white; }
+        /* ═══════════════════════════════════════
+           OUTCOMES — "ماذا ستحصل عليه؟"
+           ═══════════════════════════════════════ */
+        .outcomes-section { padding: 5rem 0; background: var(--off-white); }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .outcome-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; transition: all 0.35s; }
+        .outcome-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--border-hover); }
+        .outcome-check { width: 32px; height: 32px; border-radius: 10px; background: rgba(16,185,129,0.08); color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+        .outcome-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem; }
+        .outcome-card p { font-size: 0.78rem; line-height: 1.7; color: var(--text-body); margin: 0; }
+
+        /* ═══════════════════════════════════════
+           HOW IT WORKS — "كيف يتم تنفيذ المسار؟"
+           ═══════════════════════════════════════ */
+        .how-section { padding: 5rem 0; background: var(--white); }
+        .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .how-card { text-align: center; padding: 2rem 1.25rem; background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.35s; }
+        .how-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .how-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--track-pale); color: var(--track); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem; }
+        .how-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.4rem; }
+        .how-card p { font-size: 0.78rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        /* ═══════════════════════════════════════
+           MODULES — "مكونات المسار"
+           ═══════════════════════════════════════ */
+        .modules-section { padding: 5rem 0; background: var(--off-white); }
+        .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto; }
+        .module-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--white); border: 1px solid var(--border); border-radius: 14px; transition: all 0.3s; }
+        .module-card:hover { border-color: var(--border-hover); transform: translateX(-3px); box-shadow: var(--shadow-xs); }
+        .module-num { width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; flex-shrink: 0; }
+        .module-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.2rem; }
+        .module-card p { font-size: 0.78rem; line-height: 1.7; color: var(--text-body); margin: 0; }
+
+        /* ═══════════════════════════════════════
+           TESTIMONIALS
+           ═══════════════════════════════════════ */
+        .testimonials-section { padding: 5rem 0; background: var(--white); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+        .testimonial-card { background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; position: relative; }
+        .testimonial-stars { color: #f59e0b; font-size: 0.75rem; margin-bottom: 0.75rem; letter-spacing: 2px; }
+        .testimonial-card blockquote { font-size: 0.88rem; line-height: 1.9; color: var(--text-body); margin: 0 0 1.25rem; font-style: normal; }
+        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--track-pale), rgba(232,108,79,0.12)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--track); font-size: 0.85rem; }
+        .testimonial-author h5 { font-size: 0.82rem; font-weight: 700; color: var(--secondary); margin: 0; }
+        .testimonial-author span { font-size: 0.72rem; color: var(--text-muted); }
+
+        /* ═══════════════════════════════════════
+           PRICING
+           ═══════════════════════════════════════ */
+        .pricing-section { padding: 5rem 0; background: var(--off-white); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 720px; margin: 0 auto; }
+        .pricing-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; transition: all 0.4s; position: relative; }
+        .pricing-card.recommended { border-color: var(--track); box-shadow: 0 8px 40px var(--track-glow); }
+        .pricing-card.recommended::before { content: 'الأكثر طلباً'; position: absolute; top: -12px; right: 50%; transform: translateX(50%); background: var(--track); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.25rem 1rem; border-radius: 100px; }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .pricing-name { font-size: 1.1rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
+        .pricing-price { margin-bottom: 1.5rem; }
+        .pricing-price .amount { font-size: 2.5rem; font-weight: 900; color: var(--track); }
+        .pricing-price .currency { font-size: 0.85rem; color: var(--text-muted); margin-right: 0.25rem; }
+        .pricing-features { list-style: none; text-align: right; margin-bottom: 2rem; }
+        .pricing-features li { font-size: 0.82rem; color: var(--text-body); padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.03); display: flex; align-items: center; gap: 0.5rem; }
+        .pricing-features li i { color: #10b981; font-size: 0.7rem; }
+        .btn-pricing { display: block; width: 100%; padding: 0.75rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-pricing.primary { background: linear-gradient(135deg, var(--track), var(--track-dark)); color: white; box-shadow: 0 4px 15px var(--track-glow); }
+        .btn-pricing.primary:hover { box-shadow: 0 8px 25px rgba(232,108,79,0.3); transform: translateY(-1px); }
+        .btn-pricing.outline { background: var(--white); color: var(--track); border: 2px solid var(--track); }
+        .btn-pricing.outline:hover { background: var(--track); color: white; }
+
+        /* ═══════════════════════════════════════
+           FAQ
+           ═══════════════════════════════════════ */
+        .faq-section { padding: 5rem 0; background: var(--white); }
+        .faq-list { max-width: 700px; margin: 0 auto; }
+        .faq-item { border: 1px solid var(--border); border-radius: 14px; margin-bottom: 0.75rem; overflow: hidden; background: var(--off-white); transition: all 0.3s; }
+        .faq-item.active { border-color: var(--border-hover); box-shadow: var(--shadow-xs); }
+        .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1.15rem 1.5rem; cursor: pointer; font-size: 0.92rem; font-weight: 700; color: var(--secondary); transition: color 0.3s; }
+        .faq-q:hover { color: var(--track); }
+        .faq-q i { font-size: 0.75rem; color: var(--text-muted); transition: transform 0.3s; }
+        .faq-item.active .faq-q i { transform: rotate(180deg); color: var(--track); }
+        .faq-a { padding: 0 1.5rem 1.25rem; font-size: 0.85rem; line-height: 1.9; color: var(--text-body); display: none; }
+        .faq-item.active .faq-a { display: block; }
+
+        /* ═══════════════════════════════════════
+           FINAL CTA
+           ═══════════════════════════════════════ */
+        .final-cta { padding: 5rem 0; background: linear-gradient(160deg, var(--secondary), var(--secondary-light)); color: white; text-align: center; position: relative; overflow: hidden; }
+        .final-cta::before { content:''; position: absolute; bottom: -60px; left: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(232,108,79,0.1), transparent 70%); border-radius: 50%; }
+        .final-cta h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 800; margin-bottom: 0.75rem; }
+        .final-cta h2 span { color: var(--track-light); }
+        .final-cta p { font-size: 0.92rem; color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 2rem; line-height: 1.8; }
+        .final-cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .btn-white { display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: var(--secondary); padding: 0.75rem 1.75rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); color: var(--secondary); }
+        .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.25); padding: 0.75rem 1.75rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); color: white; }
 
         /* Next Track */
-        .next-track { padding: 3rem 0; background: var(--white); }
-        .next-track-card { display: flex; align-items: center; justify-content: space-between; background: rgba(0,153,204,0.04); border: 1px solid rgba(0,153,204,0.12); border-radius: var(--radius); padding: 1.5rem 2rem; }
+        .next-track { padding: 2.5rem 0; background: var(--white); }
+        .next-track-card { display: flex; align-items: center; justify-content: space-between; background: rgba(0,153,204,0.04); border: 1px solid rgba(0,153,204,0.12); border-radius: var(--radius); padding: 1.25rem 1.75rem; transition: all 0.3s; }
+        .next-track-card:hover { box-shadow: var(--shadow-sm); }
         .next-track-info { display: flex; align-items: center; gap: 1rem; }
-        .next-track-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #0099CC, #00b8d4); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; }
-        .next-track-info h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin: 0; }
-        .next-track-info span { font-size: 0.8rem; color: var(--text-muted); }
-        .next-track-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #0099CC; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .next-track-badge { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #0099CC, #00b8d4); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+        .next-track-info h4 { font-size: 0.92rem; font-weight: 700; color: var(--secondary); margin: 0 0 0.15rem; }
+        .next-track-info span { font-size: 0.78rem; color: var(--text-muted); }
+        .next-track-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #0099CC; font-weight: 700; font-size: 0.85rem; }
         .next-track-link:hover { transform: translateX(-4px); color: #0099CC; }
 
         /* Footer */
-        .footer { background: var(--secondary); color: rgba(255,255,255,0.8); padding: 3rem 0 1.5rem; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+        .footer { background: var(--secondary); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .footer h5 { font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 0.75rem; }
+        .footer p, .footer a { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 2; }
+        .footer a:hover { color: var(--track-light); }
+        .footer-brand p { font-size: 0.8rem; line-height: 1.9; }
+        .footer-brand img { height: 36px; margin-bottom: 0.75rem; filter: brightness(10); }
+        .footer-links { list-style: none; }
+        .footer-links li a { display: block; padding: 0.15rem 0; }
+        .footer-social { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+        .footer-social a { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: rgba(255,255,255,0.5); transition: all 0.3s; }
+        .footer-social a:hover { background: var(--track); color: white; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.25rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.3); }
 
-        /* Reveal */
-        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
 
-        /* Responsive */
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
         @media (max-width: 991px) {
-            .track-hero-grid, .desc-grid { grid-template-columns: 1fr; }
-            .track-hero-img { order: -1; }
-            .audience-grid, .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
-            .offerings-grid { grid-template-columns: 1fr; }
+            .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero-visual { order: -1; }
+            .challenges-grid { grid-template-columns: repeat(2, 1fr); }
+            .fit-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-grid { grid-template-columns: repeat(2, 1fr); }
+            .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 767px) {
-            .track-hero { padding: 6rem 0 3rem; }
-            .track-hero-img img { height: 260px; }
-            .audience-grid, .outcomes-grid { grid-template-columns: 1fr; }
-            .cta-card { padding: 2.5rem 1.5rem; }
-            .next-track-card { flex-direction: column; gap: 1rem; text-align: center; }
+            .track-hero { padding: 5.5rem 0 3rem; }
+            .hero-img-wrap img { height: 280px; }
+            .hero-meta { gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
+            .challenges-grid, .fit-grid, .outcomes-grid { grid-template-columns: 1fr; }
+            .how-grid { grid-template-columns: 1fr 1fr; }
+            .modules-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 380px; }
+            .hero-float-card.card-2 { display: none; }
+            .next-track-card { flex-direction: column; text-align: center; gap: 1rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-social { justify-content: center; }
         }
     </style>
 </head>
 <body>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
+    <nav class="navbar" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="jadarah-hero.html"><img src="images/jadarah-logo-hero.png" alt="جدارة"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="jadarah-hero.html">الرئيسية</a></li>
-                    <li class="nav-item"><a class="nav-link" href="interactive-platform.html">الرحلات التفاعلية</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">مسار الانطلاقة</a></li>
-                    <li class="nav-item"><a class="nav-link" href="jadarah-services.html">مركز الخدمات</a></li>
-                </ul>
-                <a href="#" class="btn btn-cta-nav"><i class="fas fa-laptop-code ms-2"></i> الدخول للمنصة</a>
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <a class="navbar-brand" href="jadarah-hero.html"><img src="images/jadarah-logo-hero.png" alt="جدارة"></a>
+                <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="jadarah-hero.html">الرئيسية</a></li>
+                        <li class="nav-item"><a class="nav-link" href="interactive-platform.html">الرحلات التفاعلية</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">مسار الانطلاقة</a></li>
+                        <li class="nav-item"><a class="nav-link" href="jadarah-services.html">مركز الخدمات</a></li>
+                    </ul>
+                    <a href="#" class="btn btn-cta-nav"><i class="fas fa-laptop-code ms-2"></i> الدخول للمنصة</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ═══════════════ HERO ═══════════════ -->
     <section class="track-hero">
         <div class="container">
-            <div class="track-hero-grid">
+            <div class="hero-layout">
                 <div>
-                    <span class="track-hero-badge"><i class="fas fa-rocket"></i> المرحلة الأولى</span>
-                    <h1>مسار <span>الانطلاقة</span><br>البداية الصحيحة لجمعيتك</h1>
-                    <p class="track-hero-desc">أول خطوة في رحلة التمكين المؤسسي — نساعدك في بناء الأساس المتين لجمعيتك من خلال تأسيس الهوية، وإعداد الحوكمة، ووضع الخطة الاستراتيجية الأولى بأسلوب علمي ومنهجي.</p>
-                    <div class="track-hero-meta">
-                        <div class="meta-item"><i class="fas fa-clock"></i> 12 أسبوع</div>
-                        <div class="meta-item"><i class="fas fa-book-open"></i> 8 وحدات تعليمية</div>
-                        <div class="meta-item"><i class="fas fa-user-tie"></i> ميسّر متخصص</div>
+                    <span class="hero-badge"><i class="fas fa-rocket"></i> طور الانطلاقة — المرحلة الأولى</span>
+                    <h1>أسّس جمعيتك على قاعدة صلبة<br>نحو <span>أثر مستدام</span></h1>
+                    <p class="hero-desc">رحلة تأسيسية متكاملة تأخذك من الفكرة إلى كيان مؤسسي جاهز — بهوية واضحة، وحوكمة سليمة، وخطة تشغيل قابلة للتنفيذ، مع إشراف مباشر من خبراء متخصصين.</p>
+
+                    <div class="hero-results">
+                        <div class="hero-result-item"><i class="fas fa-check-circle"></i> خطة تشغيل جاهزة</div>
+                        <div class="hero-result-item"><i class="fas fa-check-circle"></i> هوية مؤسسية كاملة</div>
+                        <div class="hero-result-item"><i class="fas fa-check-circle"></i> نظام حوكمة معتمد</div>
                     </div>
-                    <a href="#" class="btn-track"><span>سجّل في هذا المسار</span><i class="fas fa-arrow-left"></i></a>
+
+                    <div class="hero-ctas">
+                        <a href="#pricing" class="btn-primary-track"><span>ابدأ رحلتك الآن</span><i class="fas fa-arrow-left"></i></a>
+                        <a href="#journey" class="btn-secondary-track"><i class="fas fa-route"></i><span>استكشف الرحلة</span></a>
+                    </div>
+
+                    <div class="hero-meta">
+                        <div class="hero-meta-item">
+                            <span class="hero-meta-value">3 أشهر</span>
+                            <span class="hero-meta-label">مدة المسار</span>
+                        </div>
+                        <div class="hero-meta-item">
+                            <span class="hero-meta-value">%93</span>
+                            <span class="hero-meta-label">نسبة رضا المتدربين</span>
+                        </div>
+                        <div class="hero-meta-item">
+                            <span class="hero-meta-value">+4000</span>
+                            <span class="hero-meta-label">مستفيد تدرب وتطوّر</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="track-hero-img reveal">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=450&fit=crop" alt="فريق يبدأ رحلة تأسيسية">
+
+                <div class="hero-visual reveal">
+                    <div class="hero-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=480&fit=crop&q=80" alt="فريق يبدأ رحلة التأسيس">
+                    </div>
+                    <div class="hero-float-card card-1">
+                        <div class="float-icon orange"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <div class="float-text">نمو مؤسسي حقيقي</div>
+                            <div class="float-sub">من التأسيس إلى التمكين</div>
+                        </div>
+                    </div>
+                    <div class="hero-float-card card-2">
+                        <div class="float-icon green"><i class="fas fa-award"></i></div>
+                        <div>
+                            <div class="float-text">شهادة معتمدة</div>
+                            <div class="float-sub">عند إتمام المسار</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Description -->
-    <section class="desc-section">
+    <!-- ═══════════════ CHALLENGES ═══════════════ -->
+    <section class="challenges-section">
         <div class="container">
-            <div class="desc-grid">
-                <div class="desc-content reveal">
-                    <h2>ماذا يقدم لك<br>مسار <span>الانطلاقة</span>؟</h2>
-                    <p>يركز هذا المسار على تأسيس البنية الأساسية للجمعية بشكل سليم ومنهجي. ستتعلم كيف تبني هوية مؤسسية واضحة، وتضع أنظمة حوكمة فعالة، وتصمم خطتك الاستراتيجية الأولى التي تضمن لك انطلاقة قوية ومستدامة.</p>
-                    <p>يشمل المسار ورش عمل تفاعلية، ونماذج عملية جاهزة للتطبيق، وإشراف مباشر من ميسّر متخصص يرافقك خطوة بخطوة حتى إتمام جميع المخرجات.</p>
+            <div class="challenges-header reveal">
+                <h2>هل تواجه هذه التحديات؟</h2>
+                <p>أنت لست وحدك — هذه أبرز التحديات التي تواجهها الجمعيات في طور التأسيس</p>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-card reveal">
+                    <div class="challenge-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <div>
+                        <h4>غياب الهوية المؤسسية</h4>
+                        <p>لا رؤية واضحة ولا رسالة محددة تعكس توجه الجمعية.</p>
+                    </div>
                 </div>
-                <div class="desc-img reveal" style="transition-delay:0.15s;">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop" alt="ورشة تأسيس">
+                <div class="challenge-card reveal reveal-delay-1">
+                    <div class="challenge-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div>
+                        <h4>ضعف أنظمة الحوكمة</h4>
+                        <p>عدم وجود لوائح أو سياسات تنظم العمل الداخلي.</p>
+                    </div>
                 </div>
+                <div class="challenge-card reveal reveal-delay-2">
+                    <div class="challenge-icon"><i class="fas fa-compass"></i></div>
+                    <div>
+                        <h4>بدون خطة واضحة</h4>
+                        <p>عمل عشوائي بلا أهداف استراتيجية أو مؤشرات قياس.</p>
+                    </div>
+                </div>
+                <div class="challenge-card reveal reveal-delay-1">
+                    <div class="challenge-icon"><i class="fas fa-users-slash"></i></div>
+                    <div>
+                        <h4>فريق غير مهيكل</h4>
+                        <p>أدوار غير واضحة ومسؤوليات متداخلة بين الأعضاء.</p>
+                    </div>
+                </div>
+                <div class="challenge-card reveal reveal-delay-2">
+                    <div class="challenge-icon"><i class="fas fa-file-contract"></i></div>
+                    <div>
+                        <h4>متطلبات نظامية معقدة</h4>
+                        <p>صعوبة فهم اللوائح والمتطلبات القانونية للتأسيس.</p>
+                    </div>
+                </div>
+                <div class="challenge-card reveal reveal-delay-3">
+                    <div class="challenge-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div>
+                        <h4>صعوبة الاستدامة المالية</h4>
+                        <p>غياب نموذج تشغيلي ومالي واضح ومستدام.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="challenges-cta reveal">
+                <p>جدارة لديها الحل → رحلات تفاعلية مصمّمة خصيصاً لهذه التحديات</p>
+                <span>مسار الانطلاقة يعالج كل هذه التحديات بشكل منهجي ومتدرّج</span>
             </div>
         </div>
     </section>
 
-    <!-- Target Audience -->
-    <section class="audience-section">
+    <!-- ═══════════════ FIT — "هل هذا المسار مناسب لك؟" ═══════════════ -->
+    <section class="fit-section">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-users"></i> لمن هذا المسار</span>
-                <h2 class="section-title">الفئة <span>المستهدفة</span></h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-user-check"></i> تحقق أولاً</span>
+                <h2 class="sec-title">هل هذا المسار <span>مناسب لك</span>؟</h2>
+                <p class="sec-sub">تعرّف على الحالات التي يخدمها مسار الانطلاقة بشكل مباشر</p>
             </div>
-            <div class="audience-grid reveal" style="transition-delay:0.15s;">
-                <div class="audience-card">
-                    <div class="audience-icon"><i class="fas fa-building"></i></div>
-                    <h4>الجمعيات الناشئة</h4>
-                    <p>جمعيات حديثة التأسيس تحتاج إلى بناء أساس مؤسسي متين من البداية.</p>
+            <div class="fit-grid">
+                <div class="fit-card reveal">
+                    <div class="fit-icon"><i class="fas fa-building"></i></div>
+                    <h4>جمعية حديثة التأسيس</h4>
+                    <p>تحتاج لبناء أساس مؤسسي متين من الصفر بشكل صحيح ومنهجي.</p>
                 </div>
-                <div class="audience-card">
-                    <div class="audience-icon"><i class="fas fa-tools"></i></div>
-                    <h4>الجمعيات قيد إعادة الهيكلة</h4>
-                    <p>جمعيات تسعى لإعادة تنظيم بنيتها وتحديث أنظمتها الداخلية.</p>
+                <div class="fit-card reveal reveal-delay-1">
+                    <div class="fit-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h4>مبادرة تتحول لكيان</h4>
+                    <p>مبادرة مجتمعية ناجحة تريد التحوّل إلى جمعية مسجّلة رسمياً.</p>
                 </div>
-                <div class="audience-card">
-                    <div class="audience-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h4>المبادرات الريادية</h4>
-                    <p>مبادرات مجتمعية تتحول إلى كيانات مؤسسية وتحتاج لتأسيس صحيح.</p>
+                <div class="fit-card reveal reveal-delay-2">
+                    <div class="fit-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h4>جمعية تحتاج إعادة هيكلة</h4>
+                    <p>كيان قائم يعاني من فوضى تنظيمية ويحتاج إعادة تأسيس صحيحة.</p>
+                </div>
+                <div class="fit-card reveal">
+                    <div class="fit-icon"><i class="fas fa-user-tie"></i></div>
+                    <h4>قيادي يستعد لتأسيس جمعية</h4>
+                    <p>شخص لديه خبرة ويريد تأسيس جمعية بشكل احترافي من البداية.</p>
+                </div>
+                <div class="fit-card reveal reveal-delay-1">
+                    <div class="fit-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h4>جمعية بدون هوية واضحة</h4>
+                    <p>جمعية قائمة لكن ليس لديها رؤية أو رسالة أو قيم محددة.</p>
+                </div>
+                <div class="fit-card reveal reveal-delay-2">
+                    <div class="fit-icon"><i class="fas fa-gavel"></i></div>
+                    <h4>جمعية بدون حوكمة</h4>
+                    <p>تعمل بدون لوائح داخلية أو سياسات تنظيمية واضحة.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Offerings -->
-    <section class="offerings-section">
+    <!-- ═══════════════ JOURNEY — Core Section 🔥 ═══════════════ -->
+    <section class="journey-section section-pad" id="journey">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-clipboard-list"></i> محتوى المسار</span>
-                <h2 class="section-title">ما الذي <span>ستتعلمه</span>؟</h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-route"></i> رحلة المسار</span>
+                <h2 class="sec-title">رحلتك داخل <span>مسار الانطلاقة</span></h2>
+                <p class="sec-sub">أربع مراحل مترابطة تأخذك من التشخيص إلى الإطلاق بشكل منهجي ومتدرّج</p>
             </div>
-            <div class="offerings-grid reveal" style="transition-delay:0.15s;">
-                <div class="offering-card">
-                    <div class="offering-num">1</div>
-                    <div><h4>بناء الهوية المؤسسية</h4><p>تصميم رؤية ورسالة وقيم واضحة تعكس هوية الجمعية وتوجهها.</p></div>
+            <div class="journey-path">
+                <div class="j-step reveal">
+                    <div class="j-dot"><div class="j-dot-inner">١</div></div>
+                    <div class="j-content">
+                        <div class="j-phase">المرحلة الأولى</div>
+                        <h4>التشخيص والتقييم</h4>
+                        <p>نبدأ بتقييم شامل لوضع الجمعية الحالي — نحدد نقاط القوة، ونكتشف الفجوات، ونضع خارطة طريق مخصّصة بناءً على واقعك الفعلي.</p>
+                        <span class="j-output"><i class="fas fa-check"></i> تقرير تشخيصي شامل + خارطة الطريق</span>
+                    </div>
                 </div>
-                <div class="offering-card">
-                    <div class="offering-num">2</div>
-                    <div><h4>تأسيس نظام الحوكمة</h4><p>إعداد لوائح وأنظمة داخلية تضمن الشفافية والمساءلة.</p></div>
+                <div class="j-step reveal reveal-delay-1">
+                    <div class="j-dot"><div class="j-dot-inner">٢</div></div>
+                    <div class="j-content">
+                        <div class="j-phase">المرحلة الثانية</div>
+                        <h4>التأسيس والبناء</h4>
+                        <p>نبني معاً الهوية المؤسسية الكاملة — الرؤية، الرسالة، القيم، الهيكل التنظيمي، وأنظمة الحوكمة الأساسية من خلال ورش تفاعلية مع خبراء.</p>
+                        <span class="j-output"><i class="fas fa-check"></i> وثائق الهوية + دليل الحوكمة</span>
+                    </div>
                 </div>
-                <div class="offering-card">
-                    <div class="offering-num">3</div>
-                    <div><h4>التخطيط الاستراتيجي الأولي</h4><p>وضع خطة استراتيجية واقعية ومحددة الأهداف والمعالم.</p></div>
+                <div class="j-step reveal reveal-delay-2">
+                    <div class="j-dot"><div class="j-dot-inner">٣</div></div>
+                    <div class="j-content">
+                        <div class="j-phase">المرحلة الثالثة</div>
+                        <h4>التطبيق والمحاكاة</h4>
+                        <p>نحوّل المعرفة إلى واقع — تطبّق ما تعلمته على جمعيتك مباشرة، مع مراجعة دورية وتغذية راجعة مستمرة من الميسّر المتخصص.</p>
+                        <span class="j-output"><i class="fas fa-check"></i> مخرجات تطبيقية جاهزة للاعتماد</span>
+                    </div>
                 </div>
-                <div class="offering-card">
-                    <div class="offering-num">4</div>
-                    <div><h4>الإطار القانوني والتنظيمي</h4><p>فهم المتطلبات النظامية والتنظيمية للعمل المؤسسي.</p></div>
-                </div>
-                <div class="offering-card">
-                    <div class="offering-num">5</div>
-                    <div><h4>بناء الفريق التأسيسي</h4><p>تحديد الأدوار الأساسية واستقطاب الكفاءات المناسبة.</p></div>
-                </div>
-                <div class="offering-card">
-                    <div class="offering-num">6</div>
-                    <div><h4>التقييم الذاتي المؤسسي</h4><p>أدوات تقييم لمعرفة نقاط القوة وفرص التحسين.</p></div>
+                <div class="j-step reveal reveal-delay-3">
+                    <div class="j-dot"><div class="j-dot-inner">٤</div></div>
+                    <div class="j-content">
+                        <div class="j-phase">المرحلة الرابعة</div>
+                        <h4>الإطلاق والاعتماد</h4>
+                        <p>نراجع كل المخرجات معاً، نعتمدها رسمياً، ونجهّزك للانتقال للمرحلة التالية مع شهادة إتمام وخطة استمرارية واضحة.</p>
+                        <span class="j-output"><i class="fas fa-check"></i> اعتماد رسمي + شهادة إتمام</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Outcomes -->
+    <!-- ═══════════════ OUTCOMES ═══════════════ -->
     <section class="outcomes-section">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-award"></i> المخرجات</span>
-                <h2 class="section-title">مخرجات مسار <span>الانطلاقة</span></h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
-                <p class="section-subtitle">مخرجات عملية ملموسة تخرج بها الجمعية بعد إتمام المسار</p>
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-gift"></i> المخرجات</span>
+                <h2 class="sec-title">ماذا <span>ستحصل عليه</span>؟</h2>
+                <p class="sec-sub">مخرجات عملية ملموسة وقابلة للتنفيذ فوراً — وليست مجرد معرفة نظرية</p>
             </div>
-            <div class="outcomes-grid reveal" style="transition-delay:0.15s;">
-                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-file-alt"></i></div><h4>وثيقة الهوية المؤسسية</h4><p>رؤية ورسالة وقيم مكتوبة ومعتمدة.</p></div>
-                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-gavel"></i></div><h4>دليل الحوكمة</h4><p>لوائح وسياسات داخلية معتمدة.</p></div>
-                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-map"></i></div><h4>الخطة الاستراتيجية</h4><p>خطة مبدئية بأهداف ومؤشرات واضحة.</p></div>
-                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-sitemap"></i></div><h4>الهيكل التنظيمي</h4><p>هيكل أولي بتوصيف وظيفي واضح.</p></div>
-                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-chart-pie"></i></div><h4>تقرير التقييم الذاتي</h4><p>تقرير شامل عن الوضع المؤسسي الراهن.</p></div>
-                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-certificate"></i></div><h4>شهادة إتمام المسار</h4><p>شهادة معتمدة من منصة جدارة.</p></div>
+            <div class="outcomes-grid">
+                <div class="outcome-card reveal">
+                    <div class="outcome-check"><i class="fas fa-check"></i></div>
+                    <div><h4>خطة تشغيل جاهزة</h4><p>خطة تشغيلية واقعية بأهداف ومؤشرات قابلة للقياس.</p></div>
+                </div>
+                <div class="outcome-card reveal reveal-delay-1">
+                    <div class="outcome-check"><i class="fas fa-check"></i></div>
+                    <div><h4>هوية مؤسسية كاملة</h4><p>رؤية ورسالة وقيم مكتوبة ومعتمدة رسمياً.</p></div>
+                </div>
+                <div class="outcome-card reveal reveal-delay-2">
+                    <div class="outcome-check"><i class="fas fa-check"></i></div>
+                    <div><h4>نظام حوكمة متكامل</h4><p>لوائح وسياسات داخلية تضمن الشفافية والمساءلة.</p></div>
+                </div>
+                <div class="outcome-card reveal">
+                    <div class="outcome-check"><i class="fas fa-check"></i></div>
+                    <div><h4>هيكل تنظيمي واضح</h4><p>هيكل مؤسسي بتوصيف وظيفي دقيق لكل دور.</p></div>
+                </div>
+                <div class="outcome-card reveal reveal-delay-1">
+                    <div class="outcome-check"><i class="fas fa-check"></i></div>
+                    <div><h4>تقرير تقييم ذاتي</h4><p>تقييم شامل يكشف نقاط القوة وفرص التحسين.</p></div>
+                </div>
+                <div class="outcome-card reveal reveal-delay-2">
+                    <div class="outcome-check"><i class="fas fa-check"></i></div>
+                    <div><h4>شهادة إتمام معتمدة</h4><p>شهادة رسمية من منصة جدارة تثبت إتمام المسار.</p></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Journey Steps -->
-    <section class="journey-section">
+    <!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+    <section class="how-section">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-route"></i> مراحل التنفيذ</span>
-                <h2 class="section-title">رحلتك داخل <span>مسار الانطلاقة</span></h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-cogs"></i> آلية العمل</span>
+                <h2 class="sec-title">كيف يتم <span>تنفيذ المسار</span>؟</h2>
+                <p class="sec-sub">نجمع بين التعلم النظري والتطبيق العملي في بيئة تفاعلية داعمة</p>
             </div>
-            <div class="journey-timeline reveal" style="transition-delay:0.15s;">
-                <div class="journey-step"><div class="journey-dot">1</div><div class="journey-step-content"><h4>التسجيل والتقييم المبدئي</h4><p>تسجيل الجمعية وإجراء تقييم أولي لتحديد نقطة البداية المناسبة.</p></div></div>
-                <div class="journey-step"><div class="journey-dot">2</div><div class="journey-step-content"><h4>ورش العمل التأسيسية</h4><p>حضور ورش تفاعلية مع خبراء في التأسيس المؤسسي والحوكمة.</p></div></div>
-                <div class="journey-step"><div class="journey-dot">3</div><div class="journey-step-content"><h4>التطبيق العملي والمحاكاة</h4><p>تطبيق ما تعلمته على واقع جمعيتك بإشراف الميسّر المتخصص.</p></div></div>
-                <div class="journey-step"><div class="journey-dot">4</div><div class="journey-step-content"><h4>مراجعة المخرجات</h4><p>مراجعة شاملة لجميع المخرجات والتأكد من جودتها واكتمالها.</p></div></div>
-                <div class="journey-step"><div class="journey-dot">5</div><div class="journey-step-content"><h4>الاعتماد والانتقال</h4><p>اعتماد المخرجات النهائية والتجهيز للانتقال إلى مسار التشكيل.</p></div></div>
+            <div class="how-grid">
+                <div class="how-card reveal">
+                    <div class="how-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h4>جلسات تفاعلية</h4>
+                    <p>جلسات مباشرة مع خبراء متخصصين في بناء المؤسسات غير الربحية.</p>
+                </div>
+                <div class="how-card reveal reveal-delay-1">
+                    <div class="how-icon"><i class="fas fa-tools"></i></div>
+                    <h4>ورش عمل تطبيقية</h4>
+                    <p>ورش عملية تبني فيها مخرجات جمعيتك بشكل فعلي خطوة بخطوة.</p>
+                </div>
+                <div class="how-card reveal reveal-delay-2">
+                    <div class="how-icon"><i class="fas fa-tasks"></i></div>
+                    <h4>مهام ومشاريع</h4>
+                    <p>تكليفات تطبيقية بين الجلسات لضمان التعلم العميق والمستمر.</p>
+                </div>
+                <div class="how-card reveal reveal-delay-3">
+                    <div class="how-icon"><i class="fas fa-headset"></i></div>
+                    <h4>متابعة مستمرة</h4>
+                    <p>إشراف ومتابعة دورية من الميسّر لضمان تحقيق الأهداف المطلوبة.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
+    <!-- ═══════════════ MODULES ═══════════════ -->
+    <section class="modules-section">
         <div class="container">
-            <div class="cta-card reveal">
-                <h2>هل جمعيتك جاهزة<br>لبدء مسار <span>الانطلاقة</span>؟</h2>
-                <p>ابدأ الآن وكن جزءاً من منظومة جدارة التي ساعدت عشرات الجمعيات في بناء أساس مؤسسي قوي ومستدام.</p>
-                <div class="cta-actions">
-                    <a href="#" class="btn-track"><span>سجّل في المسار</span><i class="fas fa-arrow-left"></i></a>
-                    <a href="interactive-platform.html" class="btn-outline-track"><i class="fas fa-th-large"></i><span>جميع المسارات</span></a>
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-th-large"></i> الوحدات</span>
+                <h2 class="sec-title">مكونات <span>المسار</span></h2>
+                <p class="sec-sub">ثمان وحدات تعليمية مترابطة تغطي كل جوانب التأسيس المؤسسي</p>
+            </div>
+            <div class="modules-grid">
+                <div class="module-card reveal"><div class="module-num">1</div><div><h4>التحليل المؤسسي</h4><p>تشخيص الوضع الحالي وتحديد الاحتياجات.</p></div></div>
+                <div class="module-card reveal reveal-delay-1"><div class="module-num">2</div><div><h4>بناء الرؤية والرسالة</h4><p>صياغة هوية مؤسسية واضحة ومتماسكة.</p></div></div>
+                <div class="module-card reveal"><div class="module-num">3</div><div><h4>تصميم الحوكمة</h4><p>إعداد اللوائح والسياسات الداخلية.</p></div></div>
+                <div class="module-card reveal reveal-delay-1"><div class="module-num">4</div><div><h4>الهيكل التنظيمي</h4><p>بناء هيكل مؤسسي بأدوار واضحة.</p></div></div>
+                <div class="module-card reveal"><div class="module-num">5</div><div><h4>التخطيط الاستراتيجي</h4><p>وضع خطة بأهداف ومؤشرات قابلة للقياس.</p></div></div>
+                <div class="module-card reveal reveal-delay-1"><div class="module-num">6</div><div><h4>الإطار القانوني</h4><p>فهم المتطلبات النظامية والتنظيمية.</p></div></div>
+                <div class="module-card reveal"><div class="module-num">7</div><div><h4>بناء الفريق</h4><p>استقطاب الكفاءات وتوزيع المسؤوليات.</p></div></div>
+                <div class="module-card reveal reveal-delay-1"><div class="module-num">8</div><div><h4>التقييم والاعتماد</h4><p>مراجعة المخرجات واعتمادها رسمياً.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-quote-right"></i> آراء المتدربين</span>
+                <h2 class="sec-title">ماذا قالوا عن <span>تجربتهم</span>؟</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <blockquote>مسار الانطلاقة غيّر نظرتنا لتأسيس الجمعية — لم نكن نعرف أن هناك هذا الكم من التفاصيل التي يجب مراعاتها. الميسّر كان ممتازاً والمخرجات عملية ومباشرة.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">خ</div>
+                        <div><h5>م. خالد العتيبي</h5><span>رئيس مجلس إدارة — جمعية ناشئة</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <blockquote>أنا سعيدة بالتجربة — كنت أشعر بالضياع قبل المسار، والآن لدينا رؤية واضحة وخطة تشغيل متكاملة. أنصح به بشدة لكل جمعية جديدة.</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ن</div>
+                        <div><h5>أ. نوال المالكي</h5><span>المدير التنفيذي — جمعية مجتمعية</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PRICING ═══════════════ -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-tag"></i> الباقات</span>
+                <h2 class="sec-title">اختر الباقة <span>المناسبة لجمعيتك</span></h2>
+                <p class="sec-sub">باقات مرنة تناسب احتياجات الجمعيات في طور الانطلاقة وميزانياتها</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <div class="pricing-name">الباقة الأساسية</div>
+                    <div class="pricing-price">
+                        <span class="amount">2,500</span>
+                        <span class="currency">ر.س</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 8 جلسات تفاعلية مباشرة</li>
+                        <li><i class="fas fa-check-circle"></i> مخرجات عملية جاهزة</li>
+                        <li><i class="fas fa-check-circle"></i> نماذج وقوالب قابلة للتعديل</li>
+                        <li><i class="fas fa-check-circle"></i> شهادة إتمام معتمدة</li>
+                        <li><i class="fas fa-check-circle"></i> دعم فني لمدة شهر</li>
+                    </ul>
+                    <button class="btn-pricing outline">ابدأ بالباقة الأساسية</button>
+                </div>
+                <div class="pricing-card recommended reveal reveal-delay-1">
+                    <div class="pricing-name">الباقة المتقدمة</div>
+                    <div class="pricing-price">
+                        <span class="amount">4,500</span>
+                        <span class="currency">ر.س</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> كل مزايا الباقة الأساسية</li>
+                        <li><i class="fas fa-check-circle"></i> ميسّر متخصص مخصص لجمعيتك</li>
+                        <li><i class="fas fa-check-circle"></i> ورش عمل إضافية تطبيقية</li>
+                        <li><i class="fas fa-check-circle"></i> مراجعة ومتابعة دورية</li>
+                        <li><i class="fas fa-check-circle"></i> دعم مستمر لمدة 3 أشهر</li>
+                        <li><i class="fas fa-check-circle"></i> تقرير تقييم ذاتي شامل</li>
+                    </ul>
+                    <button class="btn-pricing primary">اختر الباقة المتقدمة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FAQ ═══════════════ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="sec-header reveal">
+                <span class="sec-badge"><i class="fas fa-question-circle"></i> أسئلة شائعة</span>
+                <h2 class="sec-title">الأسئلة <span>الشائعة</span></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item active reveal">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                        <span>ما الفرق بين الباقة الأساسية والباقة المتقدمة؟</span><i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">الباقة الأساسية تشمل الجلسات والمخرجات الأساسية، بينما الباقة المتقدمة تضيف ميسّر مخصص ومتابعة مستمرة وورش إضافية تطبيقية مع دعم ممتد لـ 3 أشهر.</div>
+                </div>
+                <div class="faq-item reveal reveal-delay-1">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                        <span>هل يناسب المسار جمعيتي إن كانت موجودة من فترة ولكن بدون هيكلة؟</span><i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">نعم تماماً. مسار الانطلاقة مصمّم للجمعيات الناشئة والقائمة التي تحتاج إعادة تأسيس صحيح. سنبدأ بتشخيص وضعك الحالي ثم نبني على ما لديك.</div>
+                </div>
+                <div class="faq-item reveal reveal-delay-2">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                        <span>كيف تتم الجلسات؟ هل هي حضورية أم عن بُعد؟</span><i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">الجلسات تتم عن بُعد عبر منصة تفاعلية مخصصة، مع إمكانية تنظيم ورش حضورية حسب الاتفاق والموقع الجغرافي.</div>
+                </div>
+                <div class="faq-item reveal reveal-delay-3">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                        <span>ما المدى الزمني لإتمام المسار؟</span><i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">المسار مصمّم ليُنجز خلال 3 أشهر بمعدل جلسة واحدة أسبوعياً، مع مرونة في التنسيق حسب ظروف الجمعية.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FINAL CTA ═══════════════ -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="reveal">
+                <h2>جاهز لبدء رحلتك في طور <span>الانطلاقة</span>؟</h2>
+                <p>لا تنتظر أكثر — ابدأ رحلتك اليوم مع جلسة استشارية مجانية في جدارة</p>
+                <div class="final-cta-btns">
+                    <a href="#" class="btn-white"><span>ابدأ باقتك الآن</span><i class="fas fa-arrow-left"></i></a>
+                    <a href="#" class="btn-ghost"><i class="fas fa-phone-alt"></i><span>لا، تحدث إلى فريقنا</span></a>
                 </div>
             </div>
         </div>
@@ -333,7 +764,7 @@
             <div class="next-track-card">
                 <div class="next-track-info">
                     <div class="next-track-badge">٢</div>
-                    <div><h4>المسار التالي: مسار التشكيل</h4><span>بناء الهيكل التنظيمي وتشكيل الفرق</span></div>
+                    <div><h4>المسار التالي: مسار التشكيل</h4><span>بناء الهيكل التنظيمي وتشكيل فرق العمل الفعالة</span></div>
                 </div>
                 <a href="track-formation.html" class="next-track-link"><span>استكشف المسار التالي</span><i class="fas fa-arrow-left"></i></a>
             </div>
@@ -343,15 +774,59 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-bottom">جميع الحقوق محفوظة © 2025 منصة جدارة للأعمال الاجتماعية</div>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/jadarah-logo-hero.png" alt="جدارة">
+                    <p>منصة جدارة هي منظومة متكاملة لتمكين الجمعيات من خلال رحلات تفاعلية مصمّمة بمنهجية علمية لبناء قدرات مؤسسية حقيقية ومستدامة.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5>منصة جدارة</h5>
+                    <ul class="footer-links">
+                        <li><a href="jadarah-hero.html">الرئيسية</a></li>
+                        <li><a href="interactive-platform.html">الرحلات التفاعلية</a></li>
+                        <li><a href="jadarah-services.html">مركز الخدمات</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>المسارات</h5>
+                    <ul class="footer-links">
+                        <li><a href="track-launchpad.html">مسار الانطلاقة</a></li>
+                        <li><a href="track-formation.html">مسار التشكيل</a></li>
+                        <li><a href="track-growth.html">مسار النمو</a></li>
+                        <li><a href="track-expansion.html">مسار التوسع</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>تواصل معنا</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@jadarah.sa"><i class="fas fa-envelope ms-1"></i> info@jadarah.sa</a></li>
+                        <li><a href="tel:+966500000000"><i class="fas fa-phone ms-1"></i> 00 000 0000 966+</a></li>
+                        <li><a href="#">شاركنا في حلقة نقاشية</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2024 منصة جدارة — جميع الحقوق محفوظة</div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        window.addEventListener('scroll', () => { document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 50); });
-        const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 30);
+        });
     </script>
 </body>
 </html>
