@@ -55,8 +55,8 @@ const templates: Template[] = [
     previewPath: "jadarah/jadarah-hero.html",
     folderPath: "jadarah",
     thumbnail: "images/jadarah-logo.jpg",
-    features: ["صفحة هيرو", "صفحة خدمات", "تصميم متقدم", "أنيميشن احترافي"],
-    pages: 2,
+    features: ["صفحة هيرو", "صفحة خدمات", "رحلات تفاعلية", "أنيميشن احترافي"],
+    pages: 3,
     isNew: true,
   },
   {
