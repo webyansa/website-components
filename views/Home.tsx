@@ -51,12 +51,12 @@ const templates: Template[] = [
   {
     id: "jadarah",
     name: "قالب جدارة",
-    description: "قالب منصة جدارة للأعمال الاجتماعية — تصميم احترافي مع صفحة هيرو متقدمة وصفحة خدمات تفاعلية",
+    description: "منصة جدارة للأعمال الاجتماعية — منظومة تطوير متكاملة بأربع مسارات تدريبية وصفحات مستقلة لكل مسار",
     previewPath: "jadarah/jadarah-hero.html",
     folderPath: "jadarah",
     thumbnail: "images/jadarah-logo.jpg",
-    features: ["صفحة هيرو", "صفحة خدمات", "رحلات تفاعلية", "أنيميشن احترافي"],
-    pages: 3,
+    features: ["صفحة هيرو", "رحلات تفاعلية", "4 مسارات", "خدمات", "أنيميشن"],
+    pages: 7,
     isNew: true,
   },
   {
