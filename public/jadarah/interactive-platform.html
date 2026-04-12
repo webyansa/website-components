@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الرحلات التفاعلية - منصة جدارة</title>
-    <meta name="description" content="الرحلات التفاعلية في منصة جدارة - رحلات تدريبية تفاعلية لتمكين الجمعيات والكيانات غير الربحية">
-    
+    <title>الرحلات التفاعلية - منصة جدارة للأعمال الاجتماعية</title>
+    <meta name="description" content="اكتشف رحلات جدارة التفاعلية الأربع: الانطلاقة، التشكيل، النمو، والتوسع — منظومة تطوير متكاملة لتمكين الجمعيات غير الربحية">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* ==================== Root Variables ==================== */
         :root {
             --primary: #E86C4F;
             --primary-light: #ff8a6b;
-            --primary-pale: rgba(232, 108, 79, 0.08);
+            --primary-pale: rgba(232,108,79,0.07);
             --secondary: #1A2B49;
             --accent: #0099CC;
-            --accent-light: #00b8d4;
             --success: #00CBA9;
             --amber: #E9A94F;
             --white: #FFFFFF;
-            --light-bg: #F8F9FA;
-            --surface: #f0f3f8;
+            --light-bg: #F8FAFB;
+            --surface: #f2f4f8;
             --text-dark: #1a1f36;
             --text-body: #4a5578;
             --text-muted: #8892a8;
@@ -36,22 +34,13 @@
             --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
             --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Cairo', sans-serif;
-            color: var(--text-dark);
-            overflow-x: hidden;
-            background: var(--white);
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; color: var(--text-dark); overflow-x: hidden; background: var(--white); }
+        img { max-width: 100%; }
+        a { text-decoration: none; }
 
         /* ==================== Top Bar ==================== */
-        .top-bar {
-            background: var(--secondary);
-            padding: 0.5rem 0;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.8);
-        }
+        .top-bar { background: var(--secondary); padding: 0.5rem 0; font-size: 0.8rem; color: rgba(255,255,255,0.8); }
         .top-bar a { color: rgba(255,255,255,0.9); text-decoration: none; transition: color 0.3s; }
         .top-bar a:hover { color: var(--primary); }
         .top-bar-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
@@ -59,604 +48,394 @@
         .top-bar-links i { margin-left: 0.35rem; color: var(--primary); }
 
         /* ==================== Navbar ==================== */
-        .navbar {
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(12px);
-            padding: 0.75rem 0;
-            transition: all 0.3s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
+        .navbar { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); padding: 0.75rem 0; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .navbar-brand img { height: 48px; transition: all 0.3s; }
-        .navbar-nav .nav-link {
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active { color: var(--primary); }
-        .btn-cta-nav {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(232,108,79,0.25);
-        }
-        .btn-cta-nav:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(232,108,79,0.35);
-            color: white;
-        }
+        .navbar-brand img { height: 48px; }
+        .navbar-nav .nav-link { color: var(--text-dark); font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--primary); }
+        .btn-cta-nav { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(232,108,79,0.25); }
+        .btn-cta-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232,108,79,0.35); color: white; }
 
-        /* ==================== Page Hero ==================== */
-        .page-hero {
-            background: linear-gradient(135deg, #f7f8fc 0%, #edf0f7 100%);
-            padding: 7rem 0 3rem;
+        /* ==================== HERO ==================== */
+        .hero {
             position: relative;
+            padding: 8rem 0 5rem;
+            background: linear-gradient(160deg, #f8f9fc 0%, #eef1f8 40%, #faf6f4 100%);
             overflow: hidden;
         }
-        .page-hero::before {
+        .hero::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle at 1px 1px, rgba(26,43,73,0.02) 1px, transparent 0);
-            background-size: 32px 32px;
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(26,43,73,0.025) 1px, transparent 0);
+            background-size: 40px 40px;
         }
-        .breadcrumb-custom {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            justify-content: center;
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(232,108,79,0.06); border: 1px solid rgba(232,108,79,0.15);
+            color: var(--primary); font-size: 0.82rem; font-weight: 700;
+            padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1.25rem;
         }
-        .breadcrumb-custom a { color: var(--text-body); text-decoration: none; transition: color 0.3s; }
-        .breadcrumb-custom a:hover { color: var(--primary); }
-        .breadcrumb-custom i { font-size: 0.6rem; }
-        .page-hero-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            color: var(--secondary);
-            text-align: center;
-            margin: 0;
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900;
+            color: var(--secondary); line-height: 1.35; margin-bottom: 1.5rem;
         }
-
-        /* ==================== Platform Intro Section ==================== */
-        .platform-intro {
-            padding: 5rem 0;
-            background: var(--white);
-            position: relative;
+        .hero h1 span { color: var(--primary); position: relative; }
+        .hero-desc {
+            font-size: 1.1rem; line-height: 2; color: var(--text-body);
+            margin-bottom: 2rem; max-width: 520px;
         }
-        .intro-card {
-            background: linear-gradient(135deg, #faf5f3 0%, #f5f8fc 100%);
-            border-radius: var(--radius-lg);
-            padding: 3.5rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(232,108,79,0.08);
-        }
-        .intro-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 5px; height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--accent));
-            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-        }
-        .intro-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary-pale);
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.5rem 1.25rem;
-            border-radius: 100px;
-            margin-bottom: 1.25rem;
-        }
-        .intro-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .intro-content h2 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: var(--secondary);
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-        }
-        .intro-content h2 span { color: var(--primary); }
-        .intro-content p {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: var(--text-body);
-            margin-bottom: 1.5rem;
-        }
-        .intro-tracks {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-        .intro-track-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--white);
-            padding: 0.6rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--secondary);
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-        .intro-track-pill:hover { border-color: var(--primary); transform: translateY(-2px); }
-        .intro-track-pill .pill-dot {
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .intro-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .btn-hero-primary {
+            display: inline-flex; align-items: center; gap: 0.6rem;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.4s;
+            color: white; padding: 0.85rem 2rem; border-radius: 50px;
+            font-weight: 700; font-size: 0.95rem;
             box-shadow: 0 8px 25px rgba(232,108,79,0.3);
+            transition: all 0.4s;
         }
-        .intro-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(232,108,79,0.4);
-            color: white;
-        }
-        /* Intro Visual */
-        .intro-visual { position: relative; }
-        .intro-image-frame {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        .intro-image-frame img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            display: block;
-        }
-        .intro-float-badge {
-            position: absolute;
-            top: -16px;
-            left: 20px;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 0.75rem 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            box-shadow: var(--shadow-md);
-            z-index: 2;
-        }
-        .intro-float-badge .badge-icon {
-            width: 40px; height: 40px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1rem;
-        }
-        .intro-float-badge strong { font-size: 1.1rem; color: var(--secondary); }
-        .intro-float-badge span { font-size: 0.75rem; color: var(--text-muted); display: block; }
-        .intro-video-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: var(--white);
-            padding: 0.75rem 1.25rem;
-            border-radius: 60px;
-            cursor: pointer;
+        .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(232,108,79,0.4); color: white; }
+        .btn-hero-secondary {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: var(--white); color: var(--secondary);
+            padding: 0.85rem 2rem; border-radius: 50px;
+            font-weight: 700; font-size: 0.95rem;
+            border: 1.5px solid var(--border);
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-            margin-top: 1.25rem;
-            text-decoration: none;
-            color: var(--text-dark);
+            transition: all 0.4s;
         }
-        .intro-video-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); color: var(--text-dark); }
-        .intro-video-icon {
-            width: 36px; height: 36px;
-            background: linear-gradient(135deg, #FF0000, #CC0000);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 0.9rem;
-            position: relative;
-        }
-        .intro-video-icon::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,0,0,0.2);
-            animation: vid-pulse 2s ease-in-out infinite;
-        }
-        @keyframes vid-pulse { 0%,100%{transform:scale(1);opacity:0.6} 50%{transform:scale(1.3);opacity:0} }
+        .btn-hero-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .hero-trust { display: flex; gap: 2rem; align-items: center; }
+        .trust-item { display: flex; align-items: center; gap: 0.6rem; }
+        .trust-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .trust-icon.t1 { background: var(--primary-pale); color: var(--primary); }
+        .trust-icon.t2 { background: rgba(0,153,204,0.07); color: var(--accent); }
+        .trust-icon.t3 { background: rgba(0,203,169,0.07); color: var(--success); }
+        .trust-num { font-size: 1.25rem; font-weight: 800; color: var(--secondary); }
+        .trust-label { font-size: 0.75rem; color: var(--text-muted); }
 
-        /* ==================== Features Section ==================== */
-        .features-section {
-            padding: 5rem 0;
-            background: var(--light-bg);
+        /* Hero Visual */
+        .hero-visual { position: relative; }
+        .hero-img-main {
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: 0 30px 80px rgba(26,43,73,0.12);
+            border: 4px solid var(--white);
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
+        .hero-img-main img { width: 100%; height: 420px; object-fit: cover; display: block; }
+        .hero-float-card {
+            position: absolute; background: var(--white); border-radius: 16px;
+            padding: 0.8rem 1.2rem; display: flex; align-items: center; gap: 0.75rem;
+            box-shadow: var(--shadow-md); z-index: 3; border: 1px solid var(--border);
         }
+        .hero-float-card.card-1 { bottom: -20px; right: 24px; }
+        .hero-float-card.card-2 { top: -16px; left: 16px; }
+        .hf-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; }
+        .hf-icon.orange { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .hf-icon.blue { background: linear-gradient(135deg, var(--accent), #00b8d4); }
+        .hf-num { font-size: 1.1rem; font-weight: 800; color: var(--secondary); }
+        .hf-label { font-size: 0.7rem; color: var(--text-muted); }
+
+        /* ==================== Section Globals ==================== */
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
         .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary-pale);
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.5rem 1.25rem;
-            border-radius: 100px;
-            margin-bottom: 1rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--primary-pale); color: var(--primary);
+            font-size: 0.82rem; font-weight: 700;
+            padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1rem;
         }
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
+        .section-title { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
         .section-title span { color: var(--primary); }
-        .section-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin: 1rem auto 1.25rem;
+        .section-divider { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin: 1rem auto 1.25rem; }
+        .section-divider-line { width: 60px; height: 1.5px; background: linear-gradient(90deg, transparent, #cbd5e1, transparent); }
+        .section-divider-diamond { width: 10px; height: 10px; border: 2px solid var(--primary); transform: rotate(45deg); }
+        .section-subtitle { font-size: 1rem; color: var(--text-body); max-width: 600px; margin: 0 auto; line-height: 1.9; }
+
+        /* ==================== About Platform ==================== */
+        .about-platform { padding: 5rem 0; background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-visual { position: relative; }
+        .about-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+        .about-img img { width: 100%; height: 400px; object-fit: cover; display: block; }
+        .about-accent {
+            position: absolute; bottom: -16px; left: -16px;
+            width: 80px; height: 80px; border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            opacity: 0.15; z-index: -1;
         }
-        .section-divider-line {
-            width: 60px; height: 1.5px;
-            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+        .about-content h2 { font-size: 2rem; font-weight: 800; color: var(--secondary); line-height: 1.5; margin-bottom: 1.25rem; }
+        .about-content h2 span { color: var(--primary); }
+        .about-content p { font-size: 1rem; line-height: 2; color: var(--text-body); margin-bottom: 1rem; }
+        .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .highlight-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 1rem; background: var(--light-bg);
+            border-radius: 14px; border: 1px solid var(--border);
         }
-        .section-divider-diamond {
-            width: 10px; height: 10px;
-            border: 2px solid var(--primary);
-            transform: rotate(45deg);
+        .highlight-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; }
+        .highlight-text { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); line-height: 1.6; }
+
+        /* ==================== Value Proposition ==================== */
+        .value-section { padding: 5rem 0; background: var(--light-bg); }
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .value-card {
+            background: var(--white); border-radius: var(--radius); padding: 2rem 1.75rem;
+            border: 1px solid var(--border); transition: all 0.4s;
+            position: relative; overflow: hidden;
         }
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--text-body);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
+        .value-card::before {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 4px; height: 0; transition: height 0.4s;
         }
-        .features-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+        .value-card:hover::before { height: 100%; }
+        .value-card:nth-child(1)::before { background: var(--primary); }
+        .value-card:nth-child(2)::before { background: var(--accent); }
+        .value-card:nth-child(3)::before { background: var(--success); }
+        .value-card:nth-child(4)::before { background: var(--amber); }
+        .value-card:nth-child(5)::before { background: #6366f1; }
+        .value-card:nth-child(6)::before { background: var(--secondary); }
+        .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .value-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; margin-bottom: 1.25rem;
         }
-        .features-list { display: flex; flex-direction: column; gap: 1rem; }
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.25rem;
-            background: var(--white);
-            border-radius: 16px;
+        .value-card:nth-child(1) .value-icon { background: var(--primary-pale); color: var(--primary); }
+        .value-card:nth-child(2) .value-icon { background: rgba(0,153,204,0.07); color: var(--accent); }
+        .value-card:nth-child(3) .value-icon { background: rgba(0,203,169,0.07); color: var(--success); }
+        .value-card:nth-child(4) .value-icon { background: rgba(233,169,79,0.07); color: var(--amber); }
+        .value-card:nth-child(5) .value-icon { background: rgba(99,102,241,0.07); color: #6366f1; }
+        .value-card:nth-child(6) .value-icon { background: rgba(26,43,73,0.05); color: var(--secondary); }
+        .value-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.6rem; }
+        .value-card p { font-size: 0.88rem; line-height: 1.85; color: var(--text-body); margin: 0; }
+
+        /* ==================== TRACKS JOURNEY ==================== */
+        .tracks-section { padding: 6rem 0; background: var(--white); position: relative; }
+        .tracks-journey {
+            position: relative; max-width: 900px; margin: 0 auto;
+        }
+        /* The connecting line */
+        .journey-line {
+            position: absolute; top: 0; bottom: 0;
+            right: 50%; width: 3px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 35%, var(--amber) 65%, var(--success) 100%);
+            border-radius: 3px;
+            transform: translateX(50%);
+        }
+        .track-card-wrapper {
+            display: flex; align-items: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .track-card-wrapper:last-child { margin-bottom: 0; }
+        .track-card-wrapper:nth-child(odd) { flex-direction: row-reverse; }
+        .track-card-wrapper:nth-child(odd) .track-card { margin-left: auto; margin-right: calc(50% + 2rem); }
+        .track-card-wrapper:nth-child(even) .track-card { margin-right: auto; margin-left: calc(50% + 2rem); }
+
+        .track-node {
+            position: absolute; right: 50%; transform: translateX(50%);
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 800; color: white; z-index: 3;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .track-card-wrapper:nth-child(1) .track-node { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .track-card-wrapper:nth-child(2) .track-node { background: linear-gradient(135deg, var(--accent), #00b8d4); }
+        .track-card-wrapper:nth-child(3) .track-node { background: linear-gradient(135deg, var(--amber), #f0b85e); }
+        .track-card-wrapper:nth-child(4) .track-node { background: linear-gradient(135deg, var(--success), #2dd4a8); }
+
+        .track-card {
+            background: var(--white); border-radius: var(--radius);
+            padding: 2rem; width: calc(50% - 3rem);
             border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s;
+            position: relative;
+        }
+        .track-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .track-card-step {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            font-size: 0.75rem; font-weight: 700; margin-bottom: 0.75rem;
+            padding: 0.3rem 0.9rem; border-radius: 50px;
+        }
+        .track-card-wrapper:nth-child(1) .track-card-step { background: var(--primary-pale); color: var(--primary); }
+        .track-card-wrapper:nth-child(2) .track-card-step { background: rgba(0,153,204,0.07); color: var(--accent); }
+        .track-card-wrapper:nth-child(3) .track-card-step { background: rgba(233,169,79,0.07); color: var(--amber); }
+        .track-card-wrapper:nth-child(4) .track-card-step { background: rgba(0,203,169,0.07); color: var(--success); }
+        .track-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.6rem; }
+        .track-card p { font-size: 0.88rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1rem; }
+        .track-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+        .track-tag {
+            font-size: 0.72rem; font-weight: 600;
+            padding: 0.3rem 0.75rem; border-radius: 50px;
+            background: var(--light-bg); color: var(--text-body);
+            border: 1px solid var(--border);
+        }
+        .track-card-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; font-weight: 700;
             transition: all 0.3s;
         }
-        .feature-item:hover {
-            border-color: rgba(232,108,79,0.15);
-            box-shadow: var(--shadow-sm);
-            transform: translateX(-4px);
-        }
-        .feature-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1rem;
-            flex-shrink: 0;
-        }
-        .feature-item:nth-child(2) .feature-icon { background: linear-gradient(135deg, var(--accent), var(--accent-light)); }
-        .feature-item:nth-child(3) .feature-icon { background: linear-gradient(135deg, var(--success), #2dd4a8); }
-        .feature-item:nth-child(4) .feature-icon { background: linear-gradient(135deg, #6366f1, #818cf8); }
-        .feature-item:nth-child(5) .feature-icon { background: linear-gradient(135deg, var(--amber), #f0b85e); }
-        .feature-item:nth-child(6) .feature-icon { background: linear-gradient(135deg, var(--secondary), #2a3f6a); }
-        .feature-text { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin: 0; }
-        .features-image {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        .features-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
-        }
+        .track-card-link i { transition: transform 0.3s; }
+        .track-card-link:hover i { transform: translateX(-4px); }
+        .track-card-wrapper:nth-child(1) .track-card-link { color: var(--primary); }
+        .track-card-wrapper:nth-child(2) .track-card-link { color: var(--accent); }
+        .track-card-wrapper:nth-child(3) .track-card-link { color: var(--amber); }
+        .track-card-wrapper:nth-child(4) .track-card-link { color: var(--success); }
 
         /* ==================== Workflow Section ==================== */
-        .workflow-section {
-            padding: 5rem 0;
-            background: var(--white);
-            position: relative;
-        }
+        .workflow-section { padding: 5rem 0; background: var(--light-bg); position: relative; }
         .workflow-grid {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 0;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: start;
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 0; max-width: 960px; margin: 0 auto; align-items: start;
         }
         .workflow-col { display: flex; flex-direction: column; gap: 1rem; }
-        .workflow-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
-            position: relative;
-        }
+        .workflow-center { display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; position: relative; }
         .workflow-logo-wrap {
-            width: 120px; height: 120px;
-            background: linear-gradient(135deg, var(--primary-pale), rgba(0,153,204,0.08));
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-            z-index: 2;
-            border: 3px solid var(--white);
-            box-shadow: var(--shadow-lg);
+            width: 110px; height: 110px;
+            background: linear-gradient(135deg, var(--primary-pale), rgba(0,153,204,0.06));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            position: relative; z-index: 2;
+            border: 3px solid var(--white); box-shadow: var(--shadow-lg);
         }
-        .workflow-logo-wrap img { height: 60px; width: auto; }
+        .workflow-logo-wrap img { height: 55px; width: auto; }
         .workflow-logo-wrap::before {
-            content: '';
-            position: absolute;
-            inset: -12px;
-            border-radius: 50%;
-            border: 2px dashed rgba(232,108,79,0.15);
-            animation: spin-slow 30s linear infinite;
+            content: ''; position: absolute; inset: -10px; border-radius: 50%;
+            border: 2px dashed rgba(232,108,79,0.12); animation: spin-slow 30s linear infinite;
         }
         @keyframes spin-slow { to { transform: rotate(360deg); } }
         .wf-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1rem 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            transition: all 0.3s;
-            position: relative;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 14px; padding: 0.9rem 1.1rem;
+            display: flex; align-items: center; gap: 0.75rem;
+            transition: all 0.3s; position: relative;
         }
-        .wf-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-sm);
-            transform: translateY(-2px);
-        }
+        .wf-card:hover { border-color: var(--primary); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
         .wf-card-icon {
-            width: 40px; height: 40px;
-            border-radius: 12px;
+            width: 38px; height: 38px; border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem;
-            flex-shrink: 0;
+            font-size: 0.85rem; flex-shrink: 0;
         }
         .wf-card-icon.orange { background: var(--primary-pale); color: var(--primary); }
-        .wf-card-icon.blue { background: rgba(0,153,204,0.08); color: var(--accent); }
-        .wf-card-icon.green { background: rgba(0,203,169,0.08); color: var(--success); }
-        .wf-card-icon.amber { background: rgba(233,169,79,0.08); color: var(--amber); }
-        .wf-card-icon.navy { background: rgba(26,43,73,0.06); color: var(--secondary); }
-        .wf-card h4 {
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.5;
-        }
+        .wf-card-icon.blue { background: rgba(0,153,204,0.07); color: var(--accent); }
+        .wf-card-icon.green { background: rgba(0,203,169,0.07); color: var(--success); }
+        .wf-card-icon.amber { background: rgba(233,169,79,0.07); color: var(--amber); }
+        .wf-card-icon.navy { background: rgba(26,43,73,0.05); color: var(--secondary); }
+        .wf-card h4 { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); margin: 0; line-height: 1.5; }
         .wf-step-num {
-            position: absolute;
-            top: -8px;
-            width: 22px; height: 22px;
-            border-radius: 50%;
-            font-size: 0.65rem;
-            font-weight: 800;
-            display: flex; align-items: center; justify-content: center;
-            color: white;
+            position: absolute; top: -7px; width: 20px; height: 20px;
+            border-radius: 50%; font-size: 0.6rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center; color: white;
         }
-        .workflow-col-right .wf-step-num { left: -8px; background: var(--primary); }
-        .workflow-col-left .wf-step-num { right: -8px; background: var(--accent); }
+        .workflow-col-right .wf-step-num { left: -7px; background: var(--primary); }
+        .workflow-col-left .wf-step-num { right: -7px; background: var(--accent); }
 
-        /* ==================== Stats Section ==================== */
-        .stats-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, var(--light-bg) 0%, #edf0f7 100%);
+        /* ==================== How To Start ==================== */
+        .how-start { padding: 5rem 0; background: var(--white); }
+        .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .how-card {
+            text-align: center; padding: 2rem 1.5rem;
+            background: var(--light-bg); border-radius: var(--radius);
+            border: 1px solid var(--border); position: relative;
+            transition: all 0.4s;
         }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .stat-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-        .stat-icon-wrap {
-            width: 56px; height: 56px;
-            border-radius: 16px;
+        .how-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); background: var(--white); }
+        .how-num {
+            position: absolute; top: -14px; right: 50%; transform: translateX(50%);
+            width: 28px; height: 28px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white; font-size: 0.7rem; font-weight: 800;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.25rem;
         }
-        .stat-card:nth-child(1) .stat-icon-wrap { background: var(--primary-pale); color: var(--primary); }
-        .stat-card:nth-child(2) .stat-icon-wrap { background: rgba(232,108,79,0.12); color: var(--primary); }
-        .stat-card:nth-child(3) .stat-icon-wrap { background: rgba(0,153,204,0.08); color: var(--accent); }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 0.25rem;
+        .how-icon {
+            width: 56px; height: 56px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem; font-size: 1.2rem;
         }
-        .stat-card:nth-child(1) .stat-number { color: var(--primary); }
-        .stat-card:nth-child(2) .stat-number { color: var(--primary); }
-        .stat-card:nth-child(3) .stat-number { color: var(--accent); }
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        .how-card:nth-child(1) .how-icon { background: var(--primary-pale); color: var(--primary); }
+        .how-card:nth-child(2) .how-icon { background: rgba(0,153,204,0.07); color: var(--accent); }
+        .how-card:nth-child(3) .how-icon { background: rgba(233,169,79,0.07); color: var(--amber); }
+        .how-card:nth-child(4) .how-icon { background: rgba(0,203,169,0.07); color: var(--success); }
+        .how-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem; }
+        .how-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        /* ==================== Stats ==================== */
+        .stats-section { padding: 4rem 0; background: linear-gradient(135deg, var(--secondary) 0%, #243556 100%); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
+        .stat-card { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--primary-light); margin-bottom: 0.25rem; }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+
+        /* ==================== CTA ==================== */
+        .cta-section { padding: 5rem 0; background: var(--light-bg); }
+        .cta-card {
+            background: linear-gradient(135deg, #faf5f3 0%, #f0f4fb 100%);
+            border-radius: var(--radius-lg); padding: 4rem;
+            text-align: center; position: relative; overflow: hidden;
+            border: 1px solid rgba(232,108,79,0.08);
         }
+        .cta-card h2 { font-size: 2rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; }
+        .cta-card h2 span { color: var(--primary); }
+        .cta-card p { font-size: 1.05rem; line-height: 1.9; color: var(--text-body); max-width: 600px; margin: 0 auto 2rem; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
         /* ==================== Footer ==================== */
-        .footer {
-            background: var(--secondary);
-            color: rgba(255,255,255,0.8);
-            padding: 4rem 0 1.5rem;
-        }
+        .footer { background: var(--secondary); color: rgba(255,255,255,0.8); padding: 4rem 0 1.5rem; }
         .footer-logo { height: 50px; margin-bottom: 1rem; }
-        .footer-text { font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.25rem; max-width: 280px; }
-        .footer-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.25rem;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0; right: 0;
-            width: 40px; height: 2px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
+        .footer-text { font-size: 0.88rem; line-height: 1.8; margin-bottom: 1rem; max-width: 280px; }
+        .footer-title { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 1.25rem; position: relative; padding-bottom: 0.75rem; }
+        .footer-title::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 2px; background: var(--primary); border-radius: 2px; }
         .footer-links { list-style: none; padding: 0; margin: 0; }
-        .footer-links li { margin-bottom: 0.6rem; }
-        .footer-links a {
-            color: rgba(255,255,255,0.65);
-            text-decoration: none;
-            font-size: 0.88rem;
-            transition: all 0.3s;
-            display: flex; align-items: center; gap: 0.5rem;
-        }
-        .footer-links a:hover { color: var(--primary); transform: translateX(-4px); }
-        .footer-links a i { font-size: 0.6rem; color: var(--primary); }
-        .footer-contact-item {
-            display: flex; align-items: center; gap: 0.6rem;
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-bottom: 0.6rem;
-            transition: color 0.3s;
-        }
-        .footer-contact-item:hover { color: var(--primary); }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: all 0.3s; display: flex; align-items: center; gap: 0.4rem; }
+        .footer-links a:hover { color: var(--primary); transform: translateX(-3px); }
+        .footer-links a i { font-size: 0.55rem; color: var(--primary); }
+        .footer-contact-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.65); font-size: 0.83rem; margin-bottom: 0.5rem; }
         .footer-contact-item i { color: var(--primary); width: 16px; text-align: center; }
-        .footer-social { display: flex; gap: 0.6rem; margin-top: 1rem; }
-        .footer-social a {
-            width: 36px; height: 36px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.06);
-            display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.6);
-            transition: all 0.3s;
-            text-decoration: none;
-        }
+        .footer-social { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+        .footer-social a { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.55); transition: all 0.3s; }
         .footer-social a:hover { background: var(--primary); color: white; transform: translateY(-2px); }
-        .newsletter-input {
-            width: 100%;
-            padding: 0.7rem 1rem;
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.05);
-            color: white;
-            font-family: inherit;
-            font-size: 0.85rem;
-            margin-bottom: 0.75rem;
-            transition: border-color 0.3s;
-        }
-        .newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
-        .newsletter-input:focus { outline: none; border-color: var(--primary); }
-        .newsletter-btn {
-            width: 100%;
-            padding: 0.65rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .newsletter-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,108,79,0.3); }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            margin-top: 2.5rem;
-            padding-top: 1.25rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.4);
-        }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 2.5rem; padding-top: 1.25rem; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
 
         /* ==================== Scroll Reveal ==================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* ==================== Responsive ==================== */
         @media (max-width: 991px) {
-            .intro-layout,
-            .features-layout { grid-template-columns: 1fr; }
-            .intro-visual { order: -1; }
-            .workflow-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .workflow-center { padding: 1.5rem 0; }
-            .workflow-col-right .wf-step-num,
-            .workflow-col-left .wf-step-num { left: -8px; right: auto; }
+            .hero-grid, .about-grid { grid-template-columns: 1fr; }
+            .hero-visual { order: -1; }
+            .about-visual { order: -1; }
+            .value-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .workflow-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+            .workflow-center { padding: 1.25rem 0; }
+            .track-card-wrapper,
+            .track-card-wrapper:nth-child(odd) { flex-direction: column; }
+            .track-card-wrapper:nth-child(odd) .track-card,
+            .track-card-wrapper:nth-child(even) .track-card { width: 100%; margin: 0; }
+            .journey-line { display: none; }
+            .track-node { position: static; transform: none; margin-bottom: 1rem; }
             .top-bar-inner { justify-content: center; text-align: center; }
-            .top-bar-links { display: none; }
+            .top-bar-links:first-child { display: none; }
         }
         @media (max-width: 767px) {
-            .intro-card { padding: 2rem 1.5rem; }
-            .intro-content h2 { font-size: 1.75rem; }
-            .section-title { font-size: 1.75rem; }
-            .stats-grid { grid-template-columns: 1fr; max-width: 320px; }
-            .intro-image-frame img { height: 280px; }
-            .features-image img { height: 300px; }
+            .hero { padding: 6rem 0 3rem; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero-img-main img { height: 280px; }
+            .hero-trust { flex-direction: column; gap: 1rem; }
+            .value-grid, .how-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .cta-card { padding: 2.5rem 1.5rem; }
+            .track-card { padding: 1.5rem; }
+            .workflow-col-right .wf-step-num,
+            .workflow-col-left .wf-step-num { left: -7px; right: auto; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== Top Bar ==================== -->
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-inner">
@@ -666,13 +445,12 @@
                 </div>
                 <div class="top-bar-links">
                     <a href="#"><i class="fas fa-map-marker-alt"></i> جدة، المملكة العربية السعودية</a>
-                    <a href="#">العربية | En</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ==================== Navbar ==================== -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="jadarah-hero.html">
@@ -694,59 +472,227 @@
         </div>
     </nav>
 
-    <!-- ==================== Page Hero ==================== -->
-    <section class="page-hero">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
         <div class="container">
-            <div class="breadcrumb-custom">
-                <a href="jadarah-hero.html"><i class="fas fa-home"></i> الرئيسية</a>
-                <i class="fas fa-chevron-left"></i>
-                <span>الرحلات التفاعلية</span>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fas fa-rocket"></i> منصة جدارة التفاعلية</span>
+                    <h1>رحلة تطوير حقيقية<br>تبدأ من <span>التأسيس</span><br>وصولاً إلى <span>التمكين</span></h1>
+                    <p class="hero-desc">منظومة تفاعلية متكاملة صُممت لتمكين الجمعيات غير الربحية عبر أربع رحلات تدريبية متدرجة، تجمع بين التعلم الذاتي والمحاكاة والتطبيق العملي.</p>
+                    <div class="hero-actions">
+                        <a href="#tracks" class="btn-hero-primary">
+                            <span>استكشف المسارات</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <a href="#" class="btn-hero-secondary">
+                            <i class="fas fa-play-circle"></i>
+                            <span>شاهد الفيديو التعريفي</span>
+                        </a>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="trust-item">
+                            <div class="trust-icon t1"><i class="fas fa-building"></i></div>
+                            <div><div class="trust-num">+130</div><div class="trust-label">جمعية مستفيدة</div></div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon t2"><i class="fas fa-route"></i></div>
+                            <div><div class="trust-num">4</div><div class="trust-label">مسارات تطويرية</div></div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon t3"><i class="fas fa-user-graduate"></i></div>
+                            <div><div class="trust-num">+850</div><div class="trust-label">متدرب ومتدربة</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="hero-float-card card-2">
+                        <div class="hf-icon blue"><i class="fas fa-chart-line"></i></div>
+                        <div><div class="hf-num">95%</div><div class="hf-label">نسبة رضا المستفيدين</div></div>
+                    </div>
+                    <div class="hero-img-main">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=700&h=500&fit=crop" alt="فريق عمل تطوعي يتعاون في ورشة عمل تفاعلية">
+                    </div>
+                    <div class="hero-float-card card-1">
+                        <div class="hf-icon orange"><i class="fas fa-award"></i></div>
+                        <div><div class="hf-num">+40</div><div class="hf-label">رحلة تدريبية مكتملة</div></div>
+                    </div>
+                </div>
             </div>
-            <h1 class="page-hero-title">الرحلات التفاعلية</h1>
         </div>
     </section>
 
-    <!-- ==================== Platform Intro ==================== -->
-    <section class="platform-intro">
+    <!-- ==================== About Platform ==================== -->
+    <section class="about-platform">
         <div class="container">
-            <div class="intro-card reveal">
-                <div class="intro-layout">
-                    <!-- Content -->
-                    <div class="intro-content">
-                        <span class="intro-badge"><i class="fas fa-star"></i> منصة تفاعلية متكاملة</span>
-                        <h2>منصة جدارة <span>التفاعلية</span></h2>
-                        <p>تتيح المنصة تجربة تفاعلية شاملة تهدف إلى تشجيع التعلم الذاتي، وتعتبر بيئة مجهزة تدمج بين التعلم ومنهج المحاكاة التعليمية والتدريب وخبراتهما في المقام الأول، وذلك عكس الأنظمة التقليدية التي تركز بشكل رئيسي على الإدارة وتقديم الدورات والمواد الدراسية.</p>
-                        <p>تركز المنصة أيضاً على التحليل الذكي للمعلومات، ما يمكّن من تقديم تقارير تحليلية دقيقة للأداء والمشاركة، كما تتيح للميسّر متابعة إنجازات المتعلمين، التفاعل معهم، وتوجيههم بشكل مباشر.</p>
-                        
-                        <div class="intro-tracks">
-                            <span class="intro-track-pill"><span class="pill-dot" style="background:#E86C4F"></span> الانطلاقة</span>
-                            <span class="intro-track-pill"><span class="pill-dot" style="background:#0099CC"></span> التشكيل</span>
-                            <span class="intro-track-pill"><span class="pill-dot" style="background:#E9A94F"></span> النمو</span>
-                            <span class="intro-track-pill"><span class="pill-dot" style="background:#00CBA9"></span> التوسع</span>
+            <div class="about-grid">
+                <div class="about-visual reveal">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop" alt="ورشة عمل تفاعلية">
+                    </div>
+                    <div class="about-accent"></div>
+                </div>
+                <div class="about-content reveal" style="transition-delay:0.15s;">
+                    <span class="section-badge"><i class="fas fa-info-circle"></i> تعرّف على المنصة</span>
+                    <h2>بيئة تعليمية تفاعلية<br>تتجاوز <span>الطرق التقليدية</span></h2>
+                    <p>منصة جدارة التفاعلية ليست مجرد نظام تعليمي — بل بيئة محاكاة حقيقية تدمج بين التعلّم الذاتي والتدريب العملي وإشراف المختصين. تركز على تحويل المعرفة إلى ممارسة فعلية، مع تحليل ذكي لأداء كل جمعية مشاركة.</p>
+                    <p>يرافق كل جمعية ميسّر متخصص يقدم الدعم المستمر ويتابع تقدم المخرجات، مما يضمن تجربة تطوير متكاملة وموجهة.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon" style="background:var(--primary-pale);color:var(--primary);"><i class="fas fa-brain"></i></div>
+                            <span class="highlight-text">تعلّم ذاتي ومحاكاة</span>
                         </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon" style="background:rgba(0,153,204,0.07);color:var(--accent);"><i class="fas fa-chart-bar"></i></div>
+                            <span class="highlight-text">تحليل ذكي للأداء</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon" style="background:rgba(0,203,169,0.07);color:var(--success);"><i class="fas fa-user-tie"></i></div>
+                            <span class="highlight-text">ميسّرون متخصصون</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon" style="background:rgba(233,169,79,0.07);color:var(--amber);"><i class="fas fa-sync-alt"></i></div>
+                            <span class="highlight-text">تطوير مستمر</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <a href="#" class="intro-cta">
-                            <i class="fas fa-laptop-code"></i>
-                            <span>الانتقال إلى المنصة</span>
+    <!-- ==================== Value Props ==================== -->
+    <section class="value-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge"><i class="fas fa-gem"></i> لماذا جدارة</span>
+                <h2 class="section-title">ما الذي يميز <span>منصة جدارة</span>؟</h2>
+                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+                <p class="section-subtitle">مزايا مصممة لتلبي احتياجات الجمعيات غير الربحية وتدعم رحلتها نحو التميز المؤسسي</p>
+            </div>
+            <div class="value-grid reveal" style="transition-delay:0.15s;">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-users-cog"></i></div>
+                    <h4>تعلّم تفاعلي وتشاركي</h4>
+                    <p>بيئة تعلّم ذاتي تتيح للجمعيات الوصول إلى المحتوى التعليمي في أي وقت ومن أي مكان، مع إمكانية التفاعل المباشر.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-user-check"></i></div>
+                    <h4>ميسّرون مؤهلون</h4>
+                    <p>فريق من الميسّرين المتخصصين يقدمون الدعم والمساندة المستمرة لكل جمعية خلال تنفيذ رحلتها التفاعلية.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h4>مراجعة المخرجات</h4>
+                    <p>فريق استشاري متخصص يراجع مخرجات كل جمعية ويتحقق من استيفاء متطلبات إنجاز الرحلة بالجودة المطلوبة.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h4>سهولة الاستخدام</h4>
+                    <p>واجهة مبسطة وسهلة التنقل صُممت خصيصاً لتناسب احتياجات الجمعيات والكيانات غير الربحية.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h4>تطوير مستمر</h4>
+                    <p>نطوّر المنصة باستمرار بناءً على التغذية الراجعة من الجمعيات المشاركة لضمان تقديم أفضل تجربة.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-bullseye"></i></div>
+                    <h4>تحقيق الأهداف</h4>
+                    <p>رحلة متكاملة تجمع بين التعلّم والتطبيق العملي بهدف تحقيق أهداف الجمعية وتعزيز أثرها المجتمعي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TRACKS JOURNEY ==================== -->
+    <section class="tracks-section" id="tracks">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge"><i class="fas fa-route"></i> رحلة التطوير</span>
+                <h2 class="section-title">أربع مسارات نحو <span>التميز المؤسسي</span></h2>
+                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+                <p class="section-subtitle">رحلة متدرجة ومترابطة تأخذ الجمعية من مرحلة التأسيس الصحيح وصولاً إلى التوسع والانتشار، كل مسار يبني على ما قبله ويجهّز لما بعده</p>
+            </div>
+
+            <div class="tracks-journey reveal" style="transition-delay:0.15s;">
+                <div class="journey-line"></div>
+
+                <!-- Track 1: الانطلاقة -->
+                <div class="track-card-wrapper">
+                    <div class="track-node">١</div>
+                    <div class="track-card">
+                        <span class="track-card-step"><i class="fas fa-rocket"></i> المرحلة الأولى</span>
+                        <h3>مسار الانطلاقة</h3>
+                        <p>البداية الصحيحة لكل جمعية — تأسيس الهوية المؤسسية، وبناء الحوكمة، وتحديد الأهداف الاستراتيجية الأولى بأسلوب علمي ومنهجي.</p>
+                        <div class="track-card-tags">
+                            <span class="track-tag">الهوية المؤسسية</span>
+                            <span class="track-tag">الحوكمة</span>
+                            <span class="track-tag">التخطيط الأولي</span>
+                            <span class="track-tag">اللوائح والأنظمة</span>
+                        </div>
+                        <a href="track-launchpad.html" class="track-card-link">
+                            <span>استكشف المسار</span>
                             <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
+                </div>
 
-                    <!-- Visual -->
-                    <div class="intro-visual">
-                        <div class="intro-float-badge">
-                            <div class="badge-icon"><i class="fas fa-users"></i></div>
-                            <div>
-                                <strong>+130</strong>
-                                <span>جمعية مستفيدة</span>
-                            </div>
+                <!-- Track 2: التشكيل -->
+                <div class="track-card-wrapper">
+                    <div class="track-node">٢</div>
+                    <div class="track-card">
+                        <span class="track-card-step"><i class="fas fa-cubes"></i> المرحلة الثانية</span>
+                        <h3>مسار التشكيل</h3>
+                        <p>بناء الهيكل التنظيمي المتين — تشكيل الفرق، وتوزيع الأدوار، وتأسيس العمليات الداخلية التي تضمن كفاءة العمل المؤسسي.</p>
+                        <div class="track-card-tags">
+                            <span class="track-tag">الهيكل التنظيمي</span>
+                            <span class="track-tag">بناء الفرق</span>
+                            <span class="track-tag">العمليات الداخلية</span>
+                            <span class="track-tag">إدارة الموارد</span>
                         </div>
-                        <div class="intro-image-frame">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=500&fit=crop" alt="منصة جدارة التفاعلية">
+                        <a href="track-formation.html" class="track-card-link">
+                            <span>استكشف المسار</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Track 3: النمو -->
+                <div class="track-card-wrapper">
+                    <div class="track-node">٣</div>
+                    <div class="track-card">
+                        <span class="track-card-step"><i class="fas fa-chart-line"></i> المرحلة الثالثة</span>
+                        <h3>مسار النمو</h3>
+                        <p>تسريع الأداء وتوسيع الأثر — تطوير البرامج والمشاريع، وتعزيز الشراكات، وبناء قدرات الفريق لمضاعفة النتائج.</p>
+                        <div class="track-card-tags">
+                            <span class="track-tag">تطوير البرامج</span>
+                            <span class="track-tag">الشراكات</span>
+                            <span class="track-tag">بناء القدرات</span>
+                            <span class="track-tag">قياس الأثر</span>
                         </div>
-                        <a href="#" class="intro-video-btn">
-                            <span class="intro-video-icon"><i class="fab fa-youtube"></i></span>
-                            <span style="font-weight:600; font-size:0.88rem;">فيديو جدارة</span>
+                        <a href="track-growth.html" class="track-card-link">
+                            <span>استكشف المسار</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Track 4: التوسع -->
+                <div class="track-card-wrapper">
+                    <div class="track-node">٤</div>
+                    <div class="track-card">
+                        <span class="track-card-step"><i class="fas fa-expand-arrows-alt"></i> المرحلة الرابعة</span>
+                        <h3>مسار التوسع</h3>
+                        <p>الانتقال إلى مرحلة النضج المؤسسي — استدامة مالية، وتوسع جغرافي وبرامجي، وبناء نموذج قابل للتكرار والانتشار.</p>
+                        <div class="track-card-tags">
+                            <span class="track-tag">الاستدامة المالية</span>
+                            <span class="track-tag">التوسع الجغرافي</span>
+                            <span class="track-tag">النضج المؤسسي</span>
+                            <span class="track-tag">نماذج قابلة للتكرار</span>
+                        </div>
+                        <a href="track-expansion.html" class="track-card-link">
+                            <span>استكشف المسار</span>
+                            <i class="fas fa-arrow-left"></i>
                         </a>
                     </div>
                 </div>
@@ -754,167 +700,110 @@
         </div>
     </section>
 
-    <!-- ==================== Features Section ==================== -->
-    <section class="features-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-gem"></i> المميزات</span>
-                <h2 class="section-title">مميزات منصة جدارة <span>التفاعلية</span></h2>
-                <div class="section-divider">
-                    <span class="section-divider-line"></span>
-                    <span class="section-divider-diamond"></span>
-                    <span class="section-divider-line"></span>
-                </div>
-                <p class="section-subtitle">آلية العمل في رحلات المنصة التفاعلية والتي من خلالها سنعمل بهدف تحقيق النتائج المرغوبة من الخدمات التي توفرها المنصة</p>
-            </div>
-
-            <div class="features-layout">
-                <div class="features-list reveal">
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
-                        <p class="feature-text">منصة تفاعلية تتيح التعلم الذاتي والتشاركي للجمعيات حيث يمكنهم الوصول إلى المحتوى التعليمي في أي وقت وفي أي مكان.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-user-check"></i></div>
-                        <p class="feature-text">وجود ميسرين مؤهلين في المنصة التفاعلية حيث يتيح للجمعية اختيار ميسر لتقديم الدعم والمساندة عند تنفيذ أعمالها.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-clipboard-check"></i></div>
-                        <p class="feature-text">مراجعة مخرجات الجمعية المشاركة في الرحلة والتحقق من متطلبات انجاز الرحلة من قبل فريق استشاري.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-code"></i></div>
-                        <p class="feature-text">سهولة استخدام المنصة التفاعلية على الجمعية المشاركة.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-                        <p class="feature-text">التطوير المستمر للمنصة من خلال التغذية الراجعة التي تم رصدها خلال أنشطة الرحلة من قبل الجمعية المشاركة.</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-                        <p class="feature-text">التعلم والتطبيق العملي وصولاً لتحقيق أهداف الجمعية المشاركة.</p>
-                    </div>
-                </div>
-
-                <div class="features-image reveal" style="transition-delay: 0.2s;">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=700&fit=crop" alt="مميزات المنصة">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== Workflow Section ==================== -->
+    <!-- ==================== Workflow ==================== -->
     <section class="workflow-section">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-badge"><i class="fas fa-sitemap"></i> آلية العمل</span>
                 <h2 class="section-title">آلية سير الجمعية في <span>منصة جدارة</span></h2>
-                <div class="section-divider">
-                    <span class="section-divider-line"></span>
-                    <span class="section-divider-diamond"></span>
-                    <span class="section-divider-line"></span>
-                </div>
+                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
                 <p class="section-subtitle">رحلة متكاملة من التسجيل وحتى إنهاء الرحلة بنجاح</p>
             </div>
-
-            <div class="workflow-grid reveal">
-                <!-- Right Column (Steps 1-5) -->
+            <div class="workflow-grid reveal" style="transition-delay:0.15s;">
                 <div class="workflow-col workflow-col-right">
-                    <div class="wf-card">
-                        <span class="wf-step-num">1</span>
-                        <div class="wf-card-icon orange"><i class="fas fa-user-plus"></i></div>
-                        <h4>تسجيل الجمعية في المنصة التفاعلية</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">2</span>
-                        <div class="wf-card-icon blue"><i class="fas fa-graduation-cap"></i></div>
-                        <h4>الحصول على رحلة تدريبية</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">3</span>
-                        <div class="wf-card-icon green"><i class="fas fa-clipboard-check"></i></div>
-                        <h4>التقييم المؤسسي</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">4</span>
-                        <div class="wf-card-icon amber"><i class="fas fa-route"></i></div>
-                        <h4>اختيار الرحلة المناسبة</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">5</span>
-                        <div class="wf-card-icon navy"><i class="fas fa-chalkboard-teacher"></i></div>
-                        <h4>التدريب على أنشطة الرحلة</h4>
-                    </div>
+                    <div class="wf-card"><span class="wf-step-num">1</span><div class="wf-card-icon orange"><i class="fas fa-user-plus"></i></div><h4>تسجيل الجمعية في المنصة التفاعلية</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">2</span><div class="wf-card-icon blue"><i class="fas fa-graduation-cap"></i></div><h4>الحصول على رحلة تدريبية</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">3</span><div class="wf-card-icon green"><i class="fas fa-clipboard-check"></i></div><h4>التقييم المؤسسي</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">4</span><div class="wf-card-icon amber"><i class="fas fa-project-diagram"></i></div><h4>اختيار الرحلة المناسبة</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">5</span><div class="wf-card-icon navy"><i class="fas fa-tasks"></i></div><h4>التدريب على أنشطة الرحلة</h4></div>
                 </div>
-
-                <!-- Center Logo -->
                 <div class="workflow-center">
                     <div class="workflow-logo-wrap">
                         <img src="images/jadarah-logo-hero.png" alt="جدارة">
                     </div>
                 </div>
-
-                <!-- Left Column (Steps 6-10) -->
                 <div class="workflow-col workflow-col-left">
-                    <div class="wf-card">
-                        <span class="wf-step-num">6</span>
-                        <div class="wf-card-icon orange"><i class="fas fa-tasks"></i></div>
-                        <h4>بناء مخرجات الرحلة مع أخصائي المسار</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">7</span>
-                        <div class="wf-card-icon blue"><i class="fas fa-search"></i></div>
-                        <h4>مراجعة المخرجات من قبل الجمعية</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">8</span>
-                        <div class="wf-card-icon green"><i class="fas fa-check-double"></i></div>
-                        <h4>اعتماد المخرجات من قبل الجمعية</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num">9</span>
-                        <div class="wf-card-icon amber"><i class="fas fa-sync-alt"></i></div>
-                        <h4>التغذية الراجعة وتطوير النسخة القادمة</h4>
-                    </div>
-                    <div class="wf-card">
-                        <span class="wf-step-num" style="background: linear-gradient(135deg, var(--success), var(--accent));">10</span>
-                        <div class="wf-card-icon green"><i class="fas fa-flag-checkered"></i></div>
-                        <h4>إنهاء الرحلة</h4>
-                    </div>
+                    <div class="wf-card"><span class="wf-step-num">6</span><div class="wf-card-icon blue"><i class="fas fa-list-check"></i></div><h4>بناء مخرجات الرحلة مع أخصائي المسار</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">7</span><div class="wf-card-icon orange"><i class="fas fa-search"></i></div><h4>مراجعة المخرجات من قبل الجمعية</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">8</span><div class="wf-card-icon green"><i class="fas fa-check-double"></i></div><h4>اعتماد المخرجات من قبل الجمعية</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">9</span><div class="wf-card-icon amber"><i class="fas fa-arrows-rotate"></i></div><h4>التغذية الراجعة وتطوير النسخة القادمة</h4></div>
+                    <div class="wf-card"><span class="wf-step-num">10</span><div class="wf-card-icon navy"><i class="fas fa-flag-checkered"></i></div><h4>إنهاء الرحلة</h4></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== Stats Section ==================== -->
-    <section class="stats-section">
+    <!-- ==================== How to Start ==================== -->
+    <section class="how-start">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-chart-bar"></i> بالأرقام</span>
-                <h2 class="section-title">المنصة التفاعلية في <span>أرقام</span></h2>
-                <div class="section-divider">
-                    <span class="section-divider-line"></span>
-                    <span class="section-divider-diamond"></span>
-                    <span class="section-divider-line"></span>
-                </div>
-                <p class="section-subtitle">إنجازات نفخر بها</p>
+                <span class="section-badge"><i class="fas fa-play-circle"></i> ابدأ الآن</span>
+                <h2 class="section-title">كيف تبدأ جمعيتك <span>رحلتها في جدارة</span>؟</h2>
+                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
+                <p class="section-subtitle">أربع خطوات بسيطة تفصلك عن الانضمام لمنظومة التطوير</p>
             </div>
+            <div class="how-grid reveal" style="transition-delay:0.15s;">
+                <div class="how-card">
+                    <div class="how-num">1</div>
+                    <div class="how-icon"><i class="fas fa-user-plus"></i></div>
+                    <h4>التسجيل في المنصة</h4>
+                    <p>أنشئ حسابًا لجمعيتك عبر المنصة التفاعلية بخطوات سريعة وسهلة.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-num">2</div>
+                    <div class="how-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h4>التقييم المؤسسي</h4>
+                    <p>اجتز التقييم الأولي لتحديد المستوى الحالي لجمعيتك والمسار الأنسب.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-num">3</div>
+                    <div class="how-icon"><i class="fas fa-route"></i></div>
+                    <h4>اختيار المسار</h4>
+                    <p>اختر المسار المناسب من بين المسارات الأربعة بناءً على نتائج التقييم.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-num">4</div>
+                    <div class="how-icon"><i class="fas fa-rocket"></i></div>
+                    <h4>بدء الرحلة</h4>
+                    <p>ابدأ رحلتك التفاعلية مع ميسّر متخصص يرافقك حتى تحقيق أهدافك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ==================== Stats ==================== -->
+    <section class="stats-section">
+        <div class="container">
             <div class="stats-grid reveal">
                 <div class="stat-card">
-                    <div class="stat-icon-wrap"><i class="fas fa-book-open"></i></div>
-                    <div class="stat-number" data-target="29">0</div>
-                    <div class="stat-label">محتوى تعليمي</div>
+                    <div class="stat-number" data-target="130">0</div>
+                    <div class="stat-label">جمعية مستفيدة</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon-wrap"><i class="fas fa-route"></i></div>
-                    <div class="stat-number" data-target="233">0</div>
-                    <div class="stat-label">رحلة تفاعلية</div>
+                    <div class="stat-number" data-target="40">0</div>
+                    <div class="stat-label">رحلة تدريبية</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon-wrap"><i class="fas fa-users"></i></div>
-                    <div class="stat-number" data-target="100">0</div>
-                    <div class="stat-label">جمعية مشاركة</div>
+                    <div class="stat-number" data-target="850">0</div>
+                    <div class="stat-label">متدرب ومتدربة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">% نسبة الرضا</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card reveal">
+                <h2>هل جمعيتك جاهزة<br>لبدء <span>رحلة التطوير</span>؟</h2>
+                <p>انضم لأكثر من 130 جمعية بدأت رحلتها مع جدارة وحققت نقلة نوعية في أدائها المؤسسي وأثرها المجتمعي.</p>
+                <div class="cta-actions">
+                    <a href="#" class="btn-hero-primary"><span>سجّل جمعيتك الآن</span><i class="fas fa-arrow-left"></i></a>
+                    <a href="#" class="btn-hero-secondary"><i class="fas fa-phone"></i><span>تواصل معنا</span></a>
                 </div>
             </div>
         </div>
@@ -924,91 +813,77 @@
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4">
                     <img src="images/jadarah-logo-hero.png" alt="جدارة" class="footer-logo">
-                    <p class="footer-text">للأعمال الاجتماعية</p>
-                    <a href="mailto:Jadarh@majlis-ngos.org.sa" class="footer-contact-item"><i class="fas fa-envelope"></i> Jadarh@majlis-ngos.org.sa</a>
-                    <a href="tel:+966556962208" class="footer-contact-item"><i class="fas fa-phone"></i> +966556962208</a>
+                    <p class="footer-text">منصة جدارة للأعمال الاجتماعية — منظومة تطوير متكاملة لتمكين الجمعيات والكيانات غير الربحية نحو التميز المؤسسي.</p>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-snapchat"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">وصول سريع</h3>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">روابط سريعة</h5>
                     <ul class="footer-links">
                         <li><a href="jadarah-hero.html"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
                         <li><a href="#"><i class="fas fa-chevron-left"></i> الرحلات التفاعلية</a></li>
                         <li><a href="jadarah-services.html"><i class="fas fa-chevron-left"></i> مركز الخدمات</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                        <li><a href="jadarah-hero.html#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">مواقع مهمة</h3>
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="footer-title">المسارات</h5>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> المركز الوطني لتنمية القطاع غير الربحي</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> صندوق دعم الجمعيات</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> مجلس الجمعيات الأهلية</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> الهيئة العامة للأوقاف</a></li>
+                        <li><a href="track-launchpad.html"><i class="fas fa-chevron-left"></i> مسار الانطلاقة</a></li>
+                        <li><a href="track-formation.html"><i class="fas fa-chevron-left"></i> مسار التشكيل</a></li>
+                        <li><a href="track-growth.html"><i class="fas fa-chevron-left"></i> مسار النمو</a></li>
+                        <li><a href="track-expansion.html"><i class="fas fa-chevron-left"></i> مسار التوسع</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">النشرة الإخبارية</h3>
-                    <p style="font-size:0.85rem; margin-bottom:1rem; color:rgba(255,255,255,0.5);">اشترك للحصول على آخر أخبارنا والعروض التعريفية</p>
-                    <form>
-                        <input type="email" class="newsletter-input" placeholder="أدخل بريدك الإلكتروني...">
-                        <button type="submit" class="newsletter-btn">إرسال</button>
-                    </form>
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="footer-title">تواصل معنا</h5>
+                    <a href="mailto:Jadarh@majlis-ngos.org.sa" class="footer-contact-item"><i class="fas fa-envelope"></i> Jadarh@majlis-ngos.org.sa</a>
+                    <a href="tel:+966556962208" class="footer-contact-item"><i class="fas fa-phone"></i> +966556962208</a>
+                    <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> جدة، المملكة العربية السعودية</div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 جدارة — جميع الحقوق محفوظة | مجلس الجمعيات الأهلية</p>
-            </div>
+            <div class="footer-bottom">جميع الحقوق محفوظة © 2025 منصة جدارة للأعمال الاجتماعية</div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Navbar scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', () => {
             document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
         }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-        // Counter animation
-        let countersAnimated = false;
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !countersAnimated) {
-                    countersAnimated = true;
-                    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-                        const target = parseInt(el.dataset.target);
-                        const duration = 1500;
-                        const start = performance.now();
-                        function update(now) {
-                            const progress = Math.min((now - start) / duration, 1);
-                            const eased = 1 - Math.pow(1 - progress, 3);
-                            el.textContent = Math.floor(target * eased);
-                            if (progress < 1) requestAnimationFrame(update);
-                            else el.textContent = target;
-                        }
-                        requestAnimationFrame(update);
+        // Stats counter
+        const statsObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.stat-number[data-target]').forEach(num => {
+                        const target = +num.dataset.target;
+                        const inc = target / 60;
+                        let current = 0;
+                        const timer = setInterval(() => {
+                            current += inc;
+                            if (current >= target) { num.textContent = '+' + target; clearInterval(timer); }
+                            else { num.textContent = Math.floor(current); }
+                        }, 25);
                     });
+                    statsObs.unobserve(e.target);
                 }
             });
         }, { threshold: 0.3 });
-        document.querySelectorAll('.stats-section').forEach(el => statsObserver.observe(el));
+        document.querySelectorAll('.stats-grid').forEach(el => statsObs.observe(el));
     </script>
 </body>
 </html>
