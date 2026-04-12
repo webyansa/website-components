@@ -49,6 +49,17 @@ const templates: Template[] = [
     isNew: true,
   },
   {
+    id: "jadarah",
+    name: "قالب جدارة",
+    description: "قالب منصة جدارة للأعمال الاجتماعية — تصميم احترافي مع صفحة هيرو متقدمة وصفحة خدمات تفاعلية",
+    previewPath: "jadarah/jadarah-hero.html",
+    folderPath: "jadarah",
+    thumbnail: "images/jadarah-logo.jpg",
+    features: ["صفحة هيرو", "صفحة خدمات", "تصميم متقدم", "أنيميشن احترافي"],
+    pages: 2,
+    isNew: true,
+  },
+  {
     id: "webyan",
     name: "موقع ويبيان",
     description: "قالب موقع ويبيان الرسمي — صفحة اشتراكات احترافية مع بوابة دفع وتجربة مستخدم سلسة",
