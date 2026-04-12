@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسار النمو - منصة جدارة</title>
+    <meta name="description" content="مسار النمو في منصة جدارة — تسريع الأداء وتوسيع الأثر المجتمعي">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --track: #E9A94F; --track-light: #f0b85e; --track-pale: rgba(233,169,79,0.07);
+            --secondary: #1A2B49; --white: #FFFFFF; --light-bg: #F8FAFB;
+            --text-dark: #1a1f36; --text-body: #4a5578; --text-muted: #8892a8;
+            --border: rgba(0,0,0,0.06); --radius: 20px; --radius-lg: 28px;
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.04); --shadow-md: 0 8px 30px rgba(0,0,0,0.06); --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; color: var(--text-dark); overflow-x: hidden; background: var(--white); }
+        img { max-width: 100%; } a { text-decoration: none; }
+        .navbar { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); padding: 0.75rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .navbar-brand img { height: 48px; }
+        .navbar-nav .nav-link { color: var(--text-dark); font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--track); }
+        .btn-cta-nav { background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(233,169,79,0.25); }
+        .btn-cta-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(233,169,79,0.35); color: white; }
+
+        .track-hero { padding: 8rem 0 4rem; background: linear-gradient(160deg, #fdf8ef 0%, #faf3e4 40%, #f8f9fc 100%); position: relative; overflow: hidden; }
+        .track-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(233,169,79,0.02) 1px, transparent 0); background-size: 40px 40px; }
+        .track-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .track-hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--track-pale); border: 1px solid rgba(233,169,79,0.15); color: var(--track); font-size: 0.82rem; font-weight: 700; padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1.25rem; }
+        .track-hero h1 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--secondary); line-height: 1.4; margin-bottom: 1.25rem; }
+        .track-hero h1 span { color: var(--track); }
+        .track-hero-desc { font-size: 1.05rem; line-height: 2; color: var(--text-body); margin-bottom: 2rem; }
+        .track-hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .meta-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-body); }
+        .meta-item i { color: var(--track); }
+        .btn-track { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; padding: 0.85rem 2rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 25px rgba(233,169,79,0.3); transition: all 0.4s; }
+        .btn-track:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(233,169,79,0.4); color: white; }
+        .track-hero-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 4px solid var(--white); }
+        .track-hero-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
+
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--track-pale); color: var(--track); font-size: 0.82rem; font-weight: 700; padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1rem; }
+        .section-title { font-size: clamp(1.75rem, 3vw, 2.2rem); font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
+        .section-title span { color: var(--track); }
+        .section-divider { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin: 1rem auto 1.25rem; }
+        .section-divider-line { width: 60px; height: 1.5px; background: linear-gradient(90deg, transparent, #cbd5e1, transparent); }
+        .section-divider-diamond { width: 10px; height: 10px; border: 2px solid var(--track); transform: rotate(45deg); }
+        .section-subtitle { font-size: 1rem; color: var(--text-body); max-width: 600px; margin: 0 auto; line-height: 1.9; }
+
+        .desc-section { padding: 5rem 0; background: var(--white); }
+        .desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .desc-content h2 { font-size: 1.75rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; line-height: 1.5; }
+        .desc-content h2 span { color: var(--track); }
+        .desc-content p { font-size: 0.95rem; line-height: 2; color: var(--text-body); margin-bottom: 1rem; }
+        .desc-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+        .desc-img img { width: 100%; height: 350px; object-fit: cover; display: block; }
+
+        .audience-section { padding: 5rem 0; background: var(--light-bg); }
+        .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .audience-card { background: var(--white); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; border: 1px solid var(--border); transition: all 0.4s; }
+        .audience-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .audience-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--track-pale); color: var(--track); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.2rem; }
+        .audience-card h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem; }
+        .audience-card p { font-size: 0.85rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        .offerings-section { padding: 5rem 0; background: var(--white); }
+        .offerings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .offering-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; background: var(--light-bg); border-radius: 16px; border: 1px solid var(--border); transition: all 0.3s; }
+        .offering-card:hover { border-color: rgba(233,169,79,0.2); box-shadow: var(--shadow-sm); transform: translateX(-3px); }
+        .offering-num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--track), var(--track-light)); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; flex-shrink: 0; }
+        .offering-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem; }
+        .offering-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        .outcomes-section { padding: 5rem 0; background: var(--light-bg); }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .outcome-card { background: var(--white); border-radius: var(--radius); padding: 1.75rem; border: 1px solid var(--border); text-align: center; transition: all 0.4s; position: relative; overflow: hidden; }
+        .outcome-card::before { content: ''; position: absolute; bottom: 0; right: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--track), var(--track-light)); transform: scaleX(0); transition: transform 0.4s; transform-origin: right; }
+        .outcome-card:hover::before { transform: scaleX(1); }
+        .outcome-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+        .outcome-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--track-pale); color: var(--track); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.1rem; }
+        .outcome-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.4rem; }
+        .outcome-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        .journey-section { padding: 5rem 0; background: var(--white); }
+        .journey-timeline { max-width: 700px; margin: 0 auto; position: relative; }
+        .journey-timeline::before { content: ''; position: absolute; top: 0; bottom: 0; right: 24px; width: 3px; background: linear-gradient(180deg, var(--track), var(--track-light), rgba(233,169,79,0.1)); border-radius: 3px; }
+        .journey-step { display: flex; gap: 1.5rem; margin-bottom: 2rem; position: relative; }
+        .journey-step:last-child { margin-bottom: 0; }
+        .journey-dot { width: 50px; height: 50px; border-radius: 50%; background: var(--white); border: 3px solid var(--track); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--track); flex-shrink: 0; z-index: 2; }
+        .journey-step-content { background: var(--light-bg); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); flex: 1; }
+        .journey-step-content h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.4rem; }
+        .journey-step-content p { font-size: 0.85rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        .cta-section { padding: 5rem 0; background: linear-gradient(160deg, #fdf8ef, #f8f9fc); }
+        .cta-card { background: var(--white); border-radius: var(--radius-lg); padding: 4rem; text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
+        .cta-card h2 { font-size: 1.8rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; }
+        .cta-card h2 span { color: var(--track); }
+        .cta-card p { font-size: 1rem; line-height: 1.9; color: var(--text-body); max-width: 550px; margin: 0 auto 2rem; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-outline-track { display: inline-flex; align-items: center; gap: 0.5rem; border: 2px solid var(--track); color: var(--track); padding: 0.8rem 1.75rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .btn-outline-track:hover { background: var(--track); color: white; }
+
+        .next-track { padding: 3rem 0; background: var(--white); }
+        .next-track-card { display: flex; align-items: center; justify-content: space-between; background: rgba(0,203,169,0.04); border: 1px solid rgba(0,203,169,0.12); border-radius: var(--radius); padding: 1.5rem 2rem; }
+        .next-track-info { display: flex; align-items: center; gap: 1rem; }
+        .next-track-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #00CBA9, #2dd4a8); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; }
+        .next-track-info h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin: 0; }
+        .next-track-info span { font-size: 0.8rem; color: var(--text-muted); }
+        .next-track-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #00CBA9; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .next-track-link:hover { transform: translateX(-4px); color: #00CBA9; }
+        .prev-track { padding: 0 0 3rem; background: var(--white); }
+        .prev-track-card { display: flex; align-items: center; justify-content: space-between; background: rgba(0,153,204,0.04); border: 1px solid rgba(0,153,204,0.12); border-radius: var(--radius); padding: 1.5rem 2rem; }
+        .prev-track-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #0099CC; font-weight: 700; font-size: 0.9rem; transition: all 0.3s; }
+        .prev-track-link:hover { transform: translateX(4px); color: #0099CC; }
+
+        .footer { background: var(--secondary); color: rgba(255,255,255,0.8); padding: 3rem 0 1.5rem; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 991px) { .track-hero-grid, .desc-grid { grid-template-columns: 1fr; } .track-hero-img { order: -1; } .audience-grid, .outcomes-grid { grid-template-columns: repeat(2, 1fr); } .offerings-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 767px) { .track-hero { padding: 6rem 0 3rem; } .track-hero-img img { height: 260px; } .audience-grid, .outcomes-grid { grid-template-columns: 1fr; } .cta-card { padding: 2.5rem 1.5rem; } .next-track-card, .prev-track-card { flex-direction: column; gap: 1rem; text-align: center; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="jadarah-hero.html"><img src="images/jadarah-logo-hero.png" alt="جدارة"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="jadarah-hero.html">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="interactive-platform.html">الرحلات التفاعلية</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">مسار النمو</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jadarah-services.html">مركز الخدمات</a></li>
+                </ul>
+                <a href="#" class="btn btn-cta-nav"><i class="fas fa-laptop-code ms-2"></i> الدخول للمنصة</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="track-hero">
+        <div class="container">
+            <div class="track-hero-grid">
+                <div>
+                    <span class="track-hero-badge"><i class="fas fa-chart-line"></i> المرحلة الثالثة</span>
+                    <h1>مسار <span>النمو</span><br>تسريع الأداء وتوسيع الأثر</h1>
+                    <p class="track-hero-desc">المرحلة التي تنتقل فيها جمعيتك من الاستقرار إلى التطور — نساعدك في تطوير البرامج والمشاريع، وتعزيز الشراكات الاستراتيجية، وبناء قدرات الفريق لمضاعفة النتائج والأثر المجتمعي.</p>
+                    <div class="track-hero-meta">
+                        <div class="meta-item"><i class="fas fa-clock"></i> 16 أسبوع</div>
+                        <div class="meta-item"><i class="fas fa-book-open"></i> 12 وحدة تعليمية</div>
+                        <div class="meta-item"><i class="fas fa-user-tie"></i> ميسّر متخصص</div>
+                    </div>
+                    <a href="#" class="btn-track"><span>سجّل في هذا المسار</span><i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="track-hero-img reveal">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700&h=450&fit=crop" alt="نمو وتطور">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="desc-section">
+        <div class="container">
+            <div class="desc-grid">
+                <div class="desc-content reveal">
+                    <h2>من الاستقرار<br>إلى <span>التأثير الحقيقي</span></h2>
+                    <p>بعد بناء الأساس وتشكيل الهيكل، حان وقت النمو الحقيقي. يركز هذا المسار على تطوير البرامج والمبادرات، وبناء شراكات استراتيجية قوية، وتعزيز قدرات الفريق لتحقيق نتائج أكبر وأثر مجتمعي أعمق.</p>
+                    <p>ستتعلم كيف تقيس الأثر، وتطور أساليب جمع التبرعات، وتبني علاقات مستدامة مع الشركاء والداعمين.</p>
+                </div>
+                <div class="desc-img reveal" style="transition-delay:0.15s;">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop" alt="شراكات ونمو">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="audience-section">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-badge"><i class="fas fa-users"></i> لمن هذا المسار</span><h2 class="section-title">الفئة <span>المستهدفة</span></h2><div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div></div>
+            <div class="audience-grid reveal" style="transition-delay:0.15s;">
+                <div class="audience-card"><div class="audience-icon"><i class="fas fa-chart-bar"></i></div><h4>جمعيات أتمت مسار التشكيل</h4><p>جمعيات لديها هيكل مستقر وتسعى للتوسع والنمو.</p></div>
+                <div class="audience-card"><div class="audience-icon"><i class="fas fa-handshake"></i></div><h4>جمعيات تبحث عن شراكات</h4><p>جمعيات ترغب في بناء تحالفات وشراكات استراتيجية.</p></div>
+                <div class="audience-card"><div class="audience-icon"><i class="fas fa-trophy"></i></div><h4>جمعيات تسعى للتميز</h4><p>جمعيات تريد رفع مستوى أدائها وتحقيق نتائج استثنائية.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offerings-section">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-badge"><i class="fas fa-clipboard-list"></i> محتوى المسار</span><h2 class="section-title">ما الذي <span>ستتعلمه</span>؟</h2><div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div></div>
+            <div class="offerings-grid reveal" style="transition-delay:0.15s;">
+                <div class="offering-card"><div class="offering-num">1</div><div><h4>تطوير البرامج والمشاريع</h4><p>تصميم برامج مؤثرة ومبتكرة تلبي احتياجات المجتمع.</p></div></div>
+                <div class="offering-card"><div class="offering-num">2</div><div><h4>بناء الشراكات الاستراتيجية</h4><p>أدوات وأساليب بناء شراكات فعالة ومستدامة.</p></div></div>
+                <div class="offering-card"><div class="offering-num">3</div><div><h4>قياس الأثر المجتمعي</h4><p>منهجيات قياس الأثر وإعداد تقارير الأداء.</p></div></div>
+                <div class="offering-card"><div class="offering-num">4</div><div><h4>تطوير مصادر التمويل</h4><p>استراتيجيات تنويع مصادر الدخل وجمع التبرعات.</p></div></div>
+                <div class="offering-card"><div class="offering-num">5</div><div><h4>بناء القدرات المتقدمة</h4><p>برامج تدريبية متقدمة لتطوير مهارات الفريق.</p></div></div>
+                <div class="offering-card"><div class="offering-num">6</div><div><h4>التسويق المؤسسي</h4><p>استراتيجيات تسويق فعالة لإبراز أثر الجمعية.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="outcomes-section">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-badge"><i class="fas fa-award"></i> المخرجات</span><h2 class="section-title">مخرجات مسار <span>النمو</span></h2><div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div></div>
+            <div class="outcomes-grid reveal" style="transition-delay:0.15s;">
+                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-project-diagram"></i></div><h4>خطة تطوير البرامج</h4><p>خارطة طريق لتطوير وتوسيع البرامج.</p></div>
+                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-handshake"></i></div><h4>استراتيجية الشراكات</h4><p>خطة شراكات مع جهات محددة.</p></div>
+                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-chart-line"></i></div><h4>إطار قياس الأثر</h4><p>نموذج متكامل لقياس ورصد الأثر.</p></div>
+                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-coins"></i></div><h4>خطة التمويل المتنوع</h4><p>استراتيجية لتنويع مصادر الدخل.</p></div>
+                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-bullhorn"></i></div><h4>خطة التسويق المؤسسي</h4><p>استراتيجية تسويقية شاملة ومتكاملة.</p></div>
+                <div class="outcome-card"><div class="outcome-icon"><i class="fas fa-certificate"></i></div><h4>شهادة إتمام المسار</h4><p>شهادة معتمدة من منصة جدارة.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="journey-section">
+        <div class="container">
+            <div class="section-header reveal"><span class="section-badge"><i class="fas fa-route"></i> مراحل التنفيذ</span><h2 class="section-title">رحلتك داخل <span>مسار النمو</span></h2><div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div></div>
+            <div class="journey-timeline reveal" style="transition-delay:0.15s;">
+                <div class="journey-step"><div class="journey-dot">1</div><div class="journey-step-content"><h4>تحليل فرص النمو</h4><p>تقييم شامل لفرص التطوير والنمو المتاحة للجمعية.</p></div></div>
+                <div class="journey-step"><div class="journey-dot">2</div><div class="journey-step-content"><h4>تصميم البرامج والمبادرات</h4><p>تطوير برامج مبتكرة تستجيب لاحتياجات المجتمع.</p></div></div>
+                <div class="journey-step"><div class="journey-dot">3</div><div class="journey-step-content"><h4>بناء الشراكات والتحالفات</h4><p>تأسيس شراكات استراتيجية مع جهات داعمة ومؤثرة.</p></div></div>
+                <div class="journey-step"><div class="journey-dot">4</div><div class="journey-step-content"><h4>التنفيذ وقياس الأثر</h4><p>تنفيذ البرامج وقياس النتائج وتحليل الأثر المحقق.</p></div></div>
+                <div class="journey-step"><div class="journey-dot">5</div><div class="journey-step-content"><h4>التقييم والانتقال</h4><p>تقييم شامل للنتائج والتجهيز للانتقال إلى مسار التوسع.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card reveal">
+                <h2>هل جمعيتك جاهزة<br>لمرحلة <span>النمو والتوسع</span>؟</h2>
+                <p>انضم لمسار النمو وضاعف أثر جمعيتك المجتمعي من خلال برامج قوية وشراكات استراتيجية.</p>
+                <div class="cta-actions">
+                    <a href="#" class="btn-track"><span>سجّل في المسار</span><i class="fas fa-arrow-left"></i></a>
+                    <a href="interactive-platform.html" class="btn-outline-track"><i class="fas fa-th-large"></i><span>جميع المسارات</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="next-track">
+        <div class="container">
+            <div class="next-track-card">
+                <div class="next-track-info"><div class="next-track-badge">٤</div><div><h4>المسار التالي: مسار التوسع</h4><span>الاستدامة والنضج المؤسسي</span></div></div>
+                <a href="track-expansion.html" class="next-track-link"><span>استكشف المسار التالي</span><i class="fas fa-arrow-left"></i></a>
+            </div>
+        </div>
+    </section>
+    <section class="prev-track">
+        <div class="container">
+            <div class="prev-track-card">
+                <div class="next-track-info"><div class="next-track-badge" style="background:linear-gradient(135deg,#0099CC,#00b8d4);">٢</div><div><h4>المسار السابق: مسار التشكيل</h4><span>بناء الهيكل التنظيمي</span></div></div>
+                <a href="track-formation.html" class="prev-track-link"><i class="fas fa-arrow-right"></i><span>العودة للمسار السابق</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="container"><div class="footer-bottom">جميع الحقوق محفوظة © 2025 منصة جدارة للأعمال الاجتماعية</div></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', () => { document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 50); });
+        const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+</html>
