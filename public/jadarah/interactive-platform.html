@@ -16,11 +16,16 @@
         :root {
             --primary: #E86C4F;
             --primary-light: #ff8a6b;
+            --primary-dark: #d4563c;
             --primary-pale: rgba(232,108,79,0.07);
             --secondary: #1A2B49;
+            --secondary-light: #243a5e;
             --accent: #0099CC;
+            --accent-pale: rgba(0,153,204,0.07);
             --success: #00CBA9;
+            --success-pale: rgba(0,203,169,0.07);
             --amber: #E9A94F;
+            --amber-pale: rgba(233,169,79,0.07);
             --white: #FFFFFF;
             --light-bg: #F8FAFB;
             --surface: #f2f4f8;
@@ -33,7 +38,9 @@
             --shadow-sm: 0 2px 12px rgba(0,0,0,0.04);
             --shadow-md: 0 8px 30px rgba(0,0,0,0.06);
             --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+            --shadow-xl: 0 32px 80px rgba(0,0,0,0.1);
         }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Cairo', sans-serif; color: var(--text-dark); overflow-x: hidden; background: var(--white); }
         img { max-width: 100%; }
@@ -59,81 +66,131 @@
         /* ==================== HERO ==================== */
         .hero {
             position: relative;
-            padding: 8rem 0 5rem;
-            background: linear-gradient(160deg, #f8f9fc 0%, #eef1f8 40%, #faf6f4 100%);
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(165deg, #0f1c32 0%, #162847 35%, #1a3358 60%, #0f1c32 100%);
             overflow: hidden;
+            padding: 7rem 0 4rem;
         }
         .hero::before {
             content: '';
             position: absolute; inset: 0;
-            background-image: radial-gradient(circle at 1px 1px, rgba(26,43,73,0.025) 1px, transparent 0);
-            background-size: 40px 40px;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(232,108,79,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0,153,204,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0,203,169,0.04) 0%, transparent 60%);
         }
-        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 48px 48px;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .hero-content { position: relative; }
         .hero-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(232,108,79,0.06); border: 1px solid rgba(232,108,79,0.15);
-            color: var(--primary); font-size: 0.82rem; font-weight: 700;
-            padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1.25rem;
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: rgba(232,108,79,0.12); border: 1px solid rgba(232,108,79,0.2);
+            color: var(--primary-light); font-size: 0.82rem; font-weight: 700;
+            padding: 0.5rem 1.4rem; border-radius: 100px; margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
         }
+        .hero-badge i { font-size: 0.75rem; }
         .hero h1 {
             font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900;
-            color: var(--secondary); line-height: 1.35; margin-bottom: 1.5rem;
+            color: var(--white); line-height: 1.4; margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
-        .hero h1 span { color: var(--primary); position: relative; }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .hero-desc {
-            font-size: 1.1rem; line-height: 2; color: var(--text-body);
-            margin-bottom: 2rem; max-width: 520px;
+            font-size: 1.08rem; line-height: 2; color: rgba(255,255,255,0.65);
+            margin-bottom: 2.5rem; max-width: 540px;
         }
-        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
         .btn-hero-primary {
             display: inline-flex; align-items: center; gap: 0.6rem;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white; padding: 0.85rem 2rem; border-radius: 50px;
+            color: white; padding: 0.9rem 2.2rem; border-radius: 14px;
             font-weight: 700; font-size: 0.95rem;
-            box-shadow: 0 8px 25px rgba(232,108,79,0.3);
+            box-shadow: 0 8px 30px rgba(232,108,79,0.35);
             transition: all 0.4s;
         }
-        .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(232,108,79,0.4); color: white; }
+        .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(232,108,79,0.45); color: white; }
         .btn-hero-secondary {
             display: inline-flex; align-items: center; gap: 0.6rem;
-            background: var(--white); color: var(--secondary);
-            padding: 0.85rem 2rem; border-radius: 50px;
+            background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9);
+            padding: 0.9rem 2.2rem; border-radius: 14px;
             font-weight: 700; font-size: 0.95rem;
-            border: 1.5px solid var(--border);
-            box-shadow: var(--shadow-sm);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
             transition: all 0.4s;
         }
-        .btn-hero-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-        .hero-trust { display: flex; gap: 2rem; align-items: center; }
-        .trust-item { display: flex; align-items: center; gap: 0.6rem; }
-        .trust-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-        .trust-icon.t1 { background: var(--primary-pale); color: var(--primary); }
-        .trust-icon.t2 { background: rgba(0,153,204,0.07); color: var(--accent); }
-        .trust-icon.t3 { background: rgba(0,203,169,0.07); color: var(--success); }
-        .trust-num { font-size: 1.25rem; font-weight: 800; color: var(--secondary); }
-        .trust-label { font-size: 0.75rem; color: var(--text-muted); }
+        .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: white; transform: translateY(-2px); }
+
+        .hero-metrics { display: flex; gap: 2.5rem; }
+        .metric-item { text-align: center; }
+        .metric-value { font-size: 2rem; font-weight: 900; color: var(--white); display: block; line-height: 1; }
+        .metric-value .plus { color: var(--primary-light); font-size: 1.2rem; }
+        .metric-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 500; margin-top: 0.35rem; display: block; }
+        .metric-divider { width: 1px; background: rgba(255,255,255,0.1); }
 
         /* Hero Visual */
         .hero-visual { position: relative; }
-        .hero-img-main {
-            border-radius: var(--radius-lg); overflow: hidden;
-            box-shadow: 0 30px 80px rgba(26,43,73,0.12);
-            border: 4px solid var(--white);
+        .hero-visual-inner {
+            position: relative;
+            background: linear-gradient(145deg, rgba(232,108,79,0.1), rgba(0,153,204,0.08));
+            border-radius: 24px; padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
         }
-        .hero-img-main img { width: 100%; height: 420px; object-fit: cover; display: block; }
-        .hero-float-card {
-            position: absolute; background: var(--white); border-radius: 16px;
-            padding: 0.8rem 1.2rem; display: flex; align-items: center; gap: 0.75rem;
-            box-shadow: var(--shadow-md); z-index: 3; border: 1px solid var(--border);
+        .hero-journey-preview {
+            display: flex; flex-direction: column; gap: 0.75rem;
         }
-        .hero-float-card.card-1 { bottom: -20px; right: 24px; }
-        .hero-float-card.card-2 { top: -16px; left: 16px; }
-        .hf-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; }
-        .hf-icon.orange { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
-        .hf-icon.blue { background: linear-gradient(135deg, var(--accent), #00b8d4); }
-        .hf-num { font-size: 1.1rem; font-weight: 800; color: var(--secondary); }
-        .hf-label { font-size: 0.7rem; color: var(--text-muted); }
+        .journey-preview-item {
+            display: flex; align-items: center; gap: 1rem;
+            background: rgba(255,255,255,0.04); border-radius: 14px;
+            padding: 1rem 1.25rem; border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s;
+        }
+        .journey-preview-item:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.12); }
+        .jp-step {
+            width: 42px; height: 42px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; font-weight: 800; color: white; flex-shrink: 0;
+        }
+        .jp-step.s1 { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .jp-step.s2 { background: linear-gradient(135deg, var(--accent), #00b8d4); }
+        .jp-step.s3 { background: linear-gradient(135deg, var(--amber), #f0b85e); }
+        .jp-step.s4 { background: linear-gradient(135deg, var(--success), #2dd4a8); }
+        .jp-info h4 { font-size: 0.9rem; font-weight: 700; color: white; margin: 0 0 0.15rem; }
+        .jp-info p { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin: 0; }
+        .jp-arrow { margin-right: auto; color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+        .hero-glow {
+            position: absolute; width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(232,108,79,0.15) 0%, transparent 70%);
+            top: -100px; left: -100px; z-index: -1; animation: glow-pulse 6s ease-in-out infinite;
+        }
+        @keyframes glow-pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+        .scroll-indicator {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            color: rgba(255,255,255,0.3); font-size: 0.7rem; z-index: 5; cursor: pointer;
+            transition: color 0.3s;
+        }
+        .scroll-indicator:hover { color: rgba(255,255,255,0.6); }
+        .scroll-mouse { width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; position: relative; }
+        .scroll-mouse::after {
+            content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+            width: 3px; height: 8px; background: var(--primary-light); border-radius: 3px;
+            animation: scroll-dot 2s ease-in-out infinite;
+        }
+        @keyframes scroll-dot { 0%, 100% { opacity: 1; top: 6px; } 50% { opacity: 0.3; top: 18px; } }
 
         /* ==================== Section Globals ==================== */
         .section-header { text-align: center; margin-bottom: 3.5rem; }
@@ -143,240 +200,358 @@
             font-size: 0.82rem; font-weight: 700;
             padding: 0.45rem 1.25rem; border-radius: 100px; margin-bottom: 1rem;
         }
-        .section-title { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
+        .section-title { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 800; color: var(--secondary); margin-bottom: 0.75rem; }
         .section-title span { color: var(--primary); }
-        .section-divider { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin: 1rem auto 1.25rem; }
-        .section-divider-line { width: 60px; height: 1.5px; background: linear-gradient(90deg, transparent, #cbd5e1, transparent); }
-        .section-divider-diamond { width: 10px; height: 10px; border: 2px solid var(--primary); transform: rotate(45deg); }
-        .section-subtitle { font-size: 1rem; color: var(--text-body); max-width: 600px; margin: 0 auto; line-height: 1.9; }
+        .section-subtitle { font-size: 1rem; color: var(--text-body); max-width: 620px; margin: 0 auto; line-height: 1.9; }
 
         /* ==================== About Platform ==================== */
-        .about-platform { padding: 5rem 0; background: var(--white); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-platform { padding: 6rem 0; background: var(--white); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
         .about-visual { position: relative; }
-        .about-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
-        .about-img img { width: 100%; height: 400px; object-fit: cover; display: block; }
-        .about-accent {
-            position: absolute; bottom: -16px; left: -16px;
-            width: 80px; height: 80px; border-radius: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            opacity: 0.15; z-index: -1;
+        .about-img {
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+        .about-img img { width: 100%; height: 420px; object-fit: cover; display: block; }
+        .about-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(26,43,73,0.4) 100%);
+        }
+        .about-accent-shape {
+            position: absolute; bottom: -20px; left: -20px;
+            width: 100px; height: 100px; border-radius: 24px;
+            background: linear-gradient(135deg, var(--primary-pale), rgba(232,108,79,0.12));
+            border: 2px dashed rgba(232,108,79,0.15);
+            z-index: -1; transform: rotate(12deg);
         }
         .about-content h2 { font-size: 2rem; font-weight: 800; color: var(--secondary); line-height: 1.5; margin-bottom: 1.25rem; }
         .about-content h2 span { color: var(--primary); }
-        .about-content p { font-size: 1rem; line-height: 2; color: var(--text-body); margin-bottom: 1rem; }
-        .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .about-content > p { font-size: 1rem; line-height: 2; color: var(--text-body); margin-bottom: 1.25rem; }
+        .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
         .highlight-item {
-            display: flex; align-items: flex-start; gap: 0.75rem;
-            padding: 1rem; background: var(--light-bg);
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.85rem 1rem; background: var(--light-bg);
             border-radius: 14px; border: 1px solid var(--border);
+            transition: all 0.3s;
         }
+        .highlight-item:hover { border-color: rgba(232,108,79,0.15); transform: translateY(-2px); }
         .highlight-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; }
-        .highlight-text { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); line-height: 1.6; }
+        .highlight-text { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); }
 
-        /* ==================== Value Proposition ==================== */
-        .value-section { padding: 5rem 0; background: var(--light-bg); }
-        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .value-card {
-            background: var(--white); border-radius: var(--radius); padding: 2rem 1.75rem;
-            border: 1px solid var(--border); transition: all 0.4s;
-            position: relative; overflow: hidden;
-        }
-        .value-card::before {
-            content: ''; position: absolute; top: 0; right: 0;
-            width: 4px; height: 0; transition: height 0.4s;
-        }
-        .value-card:hover::before { height: 100%; }
-        .value-card:nth-child(1)::before { background: var(--primary); }
-        .value-card:nth-child(2)::before { background: var(--accent); }
-        .value-card:nth-child(3)::before { background: var(--success); }
-        .value-card:nth-child(4)::before { background: var(--amber); }
-        .value-card:nth-child(5)::before { background: #6366f1; }
-        .value-card:nth-child(6)::before { background: var(--secondary); }
-        .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .value-icon {
-            width: 52px; height: 52px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; margin-bottom: 1.25rem;
-        }
-        .value-card:nth-child(1) .value-icon { background: var(--primary-pale); color: var(--primary); }
-        .value-card:nth-child(2) .value-icon { background: rgba(0,153,204,0.07); color: var(--accent); }
-        .value-card:nth-child(3) .value-icon { background: rgba(0,203,169,0.07); color: var(--success); }
-        .value-card:nth-child(4) .value-icon { background: rgba(233,169,79,0.07); color: var(--amber); }
-        .value-card:nth-child(5) .value-icon { background: rgba(99,102,241,0.07); color: #6366f1; }
-        .value-card:nth-child(6) .value-icon { background: rgba(26,43,73,0.05); color: var(--secondary); }
-        .value-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.6rem; }
-        .value-card p { font-size: 0.88rem; line-height: 1.85; color: var(--text-body); margin: 0; }
-
-        /* ==================== TRACKS JOURNEY ==================== */
-        .tracks-section { padding: 6rem 0; background: var(--white); position: relative; }
-        .tracks-journey {
-            position: relative; max-width: 900px; margin: 0 auto;
-        }
-        /* The connecting line */
-        .journey-line {
-            position: absolute; top: 0; bottom: 0;
-            right: 50%; width: 3px;
-            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 35%, var(--amber) 65%, var(--success) 100%);
-            border-radius: 3px;
-            transform: translateX(50%);
-        }
-        .track-card-wrapper {
-            display: flex; align-items: center;
-            position: relative;
-            margin-bottom: 3rem;
-        }
-        .track-card-wrapper:last-child { margin-bottom: 0; }
-        .track-card-wrapper:nth-child(odd) { flex-direction: row-reverse; }
-        .track-card-wrapper:nth-child(odd) .track-card { margin-left: auto; margin-right: calc(50% + 2rem); }
-        .track-card-wrapper:nth-child(even) .track-card { margin-right: auto; margin-left: calc(50% + 2rem); }
-
-        .track-node {
-            position: absolute; right: 50%; transform: translateX(50%);
-            width: 48px; height: 48px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; font-weight: 800; color: white; z-index: 3;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .track-card-wrapper:nth-child(1) .track-node { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
-        .track-card-wrapper:nth-child(2) .track-node { background: linear-gradient(135deg, var(--accent), #00b8d4); }
-        .track-card-wrapper:nth-child(3) .track-node { background: linear-gradient(135deg, var(--amber), #f0b85e); }
-        .track-card-wrapper:nth-child(4) .track-node { background: linear-gradient(135deg, var(--success), #2dd4a8); }
+        /* ==================== TRACKS SECTION (Core) ==================== */
+        .tracks-section { padding: 6rem 0; background: var(--light-bg); position: relative; }
+        .tracks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
 
         .track-card {
             background: var(--white); border-radius: var(--radius);
-            padding: 2rem; width: calc(50% - 3rem);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.4s;
-            position: relative;
+            padding: 2rem 1.5rem; border: 1.5px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; overflow: hidden; cursor: pointer;
         }
-        .track-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .track-card-step {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            font-size: 0.75rem; font-weight: 700; margin-bottom: 0.75rem;
-            padding: 0.3rem 0.9rem; border-radius: 50px;
+        .track-card::before {
+            content: ''; position: absolute; top: 0; right: 0; left: 0; height: 4px;
+            transition: height 0.4s;
         }
-        .track-card-wrapper:nth-child(1) .track-card-step { background: var(--primary-pale); color: var(--primary); }
-        .track-card-wrapper:nth-child(2) .track-card-step { background: rgba(0,153,204,0.07); color: var(--accent); }
-        .track-card-wrapper:nth-child(3) .track-card-step { background: rgba(233,169,79,0.07); color: var(--amber); }
-        .track-card-wrapper:nth-child(4) .track-card-step { background: rgba(0,203,169,0.07); color: var(--success); }
-        .track-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.6rem; }
-        .track-card p { font-size: 0.88rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1rem; }
-        .track-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-        .track-tag {
-            font-size: 0.72rem; font-weight: 600;
-            padding: 0.3rem 0.75rem; border-radius: 50px;
-            background: var(--light-bg); color: var(--text-body);
-            border: 1px solid var(--border);
-        }
-        .track-card-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            font-size: 0.85rem; font-weight: 700;
-            transition: all 0.3s;
-        }
-        .track-card-link i { transition: transform 0.3s; }
-        .track-card-link:hover i { transform: translateX(-4px); }
-        .track-card-wrapper:nth-child(1) .track-card-link { color: var(--primary); }
-        .track-card-wrapper:nth-child(2) .track-card-link { color: var(--accent); }
-        .track-card-wrapper:nth-child(3) .track-card-link { color: var(--amber); }
-        .track-card-wrapper:nth-child(4) .track-card-link { color: var(--success); }
+        .track-card.t1::before { background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
+        .track-card.t2::before { background: linear-gradient(90deg, var(--accent), #00b8d4); }
+        .track-card.t3::before { background: linear-gradient(90deg, var(--amber), #f0b85e); }
+        .track-card.t4::before { background: linear-gradient(90deg, var(--success), #2dd4a8); }
+        .track-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .track-card:hover::before { height: 5px; }
+        .track-card.active { border-color: transparent; box-shadow: var(--shadow-lg); }
+        .track-card.active.t1 { border-color: rgba(232,108,79,0.2); }
+        .track-card.active.t2 { border-color: rgba(0,153,204,0.2); }
+        .track-card.active.t3 { border-color: rgba(233,169,79,0.2); }
+        .track-card.active.t4 { border-color: rgba(0,203,169,0.2); }
 
-        /* ==================== Workflow Section ==================== */
-        .workflow-section { padding: 5rem 0; background: var(--light-bg); position: relative; }
-        .workflow-grid {
-            display: grid; grid-template-columns: 1fr auto 1fr;
-            gap: 0; max-width: 960px; margin: 0 auto; align-items: start;
-        }
-        .workflow-col { display: flex; flex-direction: column; gap: 1rem; }
-        .workflow-center { display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; position: relative; }
-        .workflow-logo-wrap {
-            width: 110px; height: 110px;
-            background: linear-gradient(135deg, var(--primary-pale), rgba(0,153,204,0.06));
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            position: relative; z-index: 2;
-            border: 3px solid var(--white); box-shadow: var(--shadow-lg);
-        }
-        .workflow-logo-wrap img { height: 55px; width: auto; }
-        .workflow-logo-wrap::before {
-            content: ''; position: absolute; inset: -10px; border-radius: 50%;
-            border: 2px dashed rgba(232,108,79,0.12); animation: spin-slow 30s linear infinite;
-        }
-        @keyframes spin-slow { to { transform: rotate(360deg); } }
-        .wf-card {
-            background: var(--white); border: 1px solid var(--border);
-            border-radius: 14px; padding: 0.9rem 1.1rem;
-            display: flex; align-items: center; gap: 0.75rem;
-            transition: all 0.3s; position: relative;
-        }
-        .wf-card:hover { border-color: var(--primary); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
-        .wf-card-icon {
-            width: 38px; height: 38px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.85rem; flex-shrink: 0;
-        }
-        .wf-card-icon.orange { background: var(--primary-pale); color: var(--primary); }
-        .wf-card-icon.blue { background: rgba(0,153,204,0.07); color: var(--accent); }
-        .wf-card-icon.green { background: rgba(0,203,169,0.07); color: var(--success); }
-        .wf-card-icon.amber { background: rgba(233,169,79,0.07); color: var(--amber); }
-        .wf-card-icon.navy { background: rgba(26,43,73,0.05); color: var(--secondary); }
-        .wf-card h4 { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); margin: 0; line-height: 1.5; }
-        .wf-step-num {
-            position: absolute; top: -7px; width: 20px; height: 20px;
-            border-radius: 50%; font-size: 0.6rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center; color: white;
-        }
-        .workflow-col-right .wf-step-num { left: -7px; background: var(--primary); }
-        .workflow-col-left .wf-step-num { right: -7px; background: var(--accent); }
-
-        /* ==================== How To Start ==================== */
-        .how-start { padding: 5rem 0; background: var(--white); }
-        .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-        .how-card {
-            text-align: center; padding: 2rem 1.5rem;
-            background: var(--light-bg); border-radius: var(--radius);
-            border: 1px solid var(--border); position: relative;
-            transition: all 0.4s;
-        }
-        .how-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); background: var(--white); }
-        .how-num {
-            position: absolute; top: -14px; right: 50%; transform: translateX(50%);
-            width: 28px; height: 28px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white; font-size: 0.7rem; font-weight: 800;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .how-icon {
+        .track-icon {
             width: 56px; height: 56px; border-radius: 16px;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1.25rem; font-size: 1.2rem;
+            font-size: 1.2rem; margin-bottom: 1.25rem;
+        }
+        .t1 .track-icon { background: var(--primary-pale); color: var(--primary); }
+        .t2 .track-icon { background: var(--accent-pale); color: var(--accent); }
+        .t3 .track-icon { background: var(--amber-pale); color: var(--amber); }
+        .t4 .track-icon { background: var(--success-pale); color: var(--success); }
+        .track-step-label {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em;
+            margin-bottom: 0.5rem; display: block;
+        }
+        .t1 .track-step-label { color: var(--primary); }
+        .t2 .track-step-label { color: var(--accent); }
+        .t3 .track-step-label { color: var(--amber); }
+        .t4 .track-step-label { color: var(--success); }
+        .track-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.6rem; }
+        .track-card > p { font-size: 0.85rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1.25rem; }
+        .track-expand-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: none; border: none; cursor: pointer;
+            font-family: inherit; font-size: 0.85rem; font-weight: 700;
+            padding: 0; transition: all 0.3s;
+        }
+        .track-expand-btn i { transition: transform 0.4s; font-size: 0.7rem; }
+        .track-card.active .track-expand-btn i { transform: rotate(180deg); }
+        .t1 .track-expand-btn { color: var(--primary); }
+        .t2 .track-expand-btn { color: var(--accent); }
+        .t3 .track-expand-btn { color: var(--amber); }
+        .t4 .track-expand-btn { color: var(--success); }
+
+        /* Expanded Panel */
+        .track-expanded-panel {
+            grid-column: 1 / -1;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1.5px solid var(--border);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s, opacity 0.4s;
+            opacity: 0;
+        }
+        .track-expanded-panel.open {
+            max-height: 800px;
+            padding: 2.5rem;
+            opacity: 1;
+        }
+        .panel-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 2rem; padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .panel-header-info { display: flex; align-items: center; gap: 1rem; }
+        .panel-header-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: white;
+        }
+        .panel-header-icon.ph1 { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .panel-header-icon.ph2 { background: linear-gradient(135deg, var(--accent), #00b8d4); }
+        .panel-header-icon.ph3 { background: linear-gradient(135deg, var(--amber), #f0b85e); }
+        .panel-header-icon.ph4 { background: linear-gradient(135deg, var(--success), #2dd4a8); }
+        .panel-header h4 { font-size: 1.15rem; font-weight: 800; color: var(--secondary); margin: 0 0 0.15rem; }
+        .panel-header .panel-sub { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+        .panel-detail-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.65rem 1.5rem; border-radius: 12px; font-weight: 700;
+            font-size: 0.85rem; color: white; transition: all 0.3s;
+        }
+        .panel-detail-link:hover { transform: translateY(-2px); color: white; }
+        .panel-detail-link.pdl1 { background: linear-gradient(135deg, var(--primary), var(--primary-light)); box-shadow: 0 4px 15px rgba(232,108,79,0.25); }
+        .panel-detail-link.pdl2 { background: linear-gradient(135deg, var(--accent), #00b8d4); box-shadow: 0 4px 15px rgba(0,153,204,0.25); }
+        .panel-detail-link.pdl3 { background: linear-gradient(135deg, var(--amber), #f0b85e); box-shadow: 0 4px 15px rgba(233,169,79,0.25); }
+        .panel-detail-link.pdl4 { background: linear-gradient(135deg, var(--success), #2dd4a8); box-shadow: 0 4px 15px rgba(0,203,169,0.25); }
+
+        .sub-tracks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .sub-track-card {
+            background: var(--light-bg); border-radius: 14px;
+            padding: 1.25rem; border: 1px solid var(--border);
+            transition: all 0.3s; text-align: center;
+        }
+        .sub-track-card:hover { background: var(--white); border-color: rgba(232,108,79,0.12); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+        .stc-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem; margin: 0 auto 0.85rem;
+        }
+        .sub-track-card h5 { font-size: 0.88rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.35rem; }
+        .sub-track-card p { font-size: 0.78rem; line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+        /* Connecting line between tracks */
+        .tracks-connector {
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 2rem; margin: -0.5rem 0;
+        }
+        .connector-line {
+            flex: 1; height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--amber), var(--success));
+            border-radius: 2px; position: relative;
+        }
+
+        /* ==================== Why Section ==================== */
+        .why-section { padding: 6rem 0; background: var(--white); }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .why-content {}
+        .why-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+        .why-item {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1.25rem 1.5rem; background: var(--light-bg);
+            border-radius: 16px; border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .why-item:hover { background: var(--white); box-shadow: var(--shadow-md); border-color: transparent; transform: translateX(4px); }
+        .why-icon {
+            width: 46px; height: 46px; border-radius: 13px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+        .why-item:nth-child(1) .why-icon { background: var(--primary-pale); color: var(--primary); }
+        .why-item:nth-child(2) .why-icon { background: var(--accent-pale); color: var(--accent); }
+        .why-item:nth-child(3) .why-icon { background: var(--amber-pale); color: var(--amber); }
+        .why-item:nth-child(4) .why-icon { background: var(--success-pale); color: var(--success); }
+        .why-item-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem; }
+        .why-item-text p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        .why-visual {
+            position: relative;
+        }
+        .why-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+        .why-img img { width: 100%; height: 450px; object-fit: cover; display: block; }
+
+        /* ==================== Stats ==================== */
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 50%, #1e3a5c 100%);
+            position: relative; overflow: hidden;
+        }
+        .stats-section::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 950px; margin: 0 auto; position: relative; z-index: 2; }
+        .stat-card { text-align: center; padding: 1.5rem; position: relative; }
+        .stat-card::after {
+            content: ''; position: absolute; top: 15%; left: 0; width: 1px; height: 70%;
+            background: rgba(255,255,255,0.08);
+        }
+        .stat-card:last-child::after { display: none; }
+        .stat-icon-wrap {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem; font-size: 1.1rem;
+        }
+        .stat-card:nth-child(1) .stat-icon-wrap { background: rgba(232,108,79,0.15); color: var(--primary-light); }
+        .stat-card:nth-child(2) .stat-icon-wrap { background: rgba(0,153,204,0.15); color: #66d4ef; }
+        .stat-card:nth-child(3) .stat-icon-wrap { background: rgba(233,169,79,0.15); color: #f0c87a; }
+        .stat-card:nth-child(4) .stat-icon-wrap { background: rgba(0,203,169,0.15); color: #66e6d0; }
+        .stat-number { font-size: 2.75rem; font-weight: 900; color: var(--white); margin-bottom: 0.25rem; line-height: 1; }
+        .stat-number .stat-plus { color: var(--primary-light); font-size: 1.6rem; }
+        .stat-number .stat-pct { color: var(--primary-light); font-size: 1.4rem; }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); font-weight: 500; }
+
+        /* ==================== Outcomes ==================== */
+        .outcomes-section { padding: 6rem 0; background: var(--light-bg); }
+        .outcomes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .outcome-card {
+            background: var(--white); border-radius: var(--radius);
+            padding: 2rem 1.5rem; text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.4s; position: relative; overflow: hidden;
+        }
+        .outcome-card::before {
+            content: ''; position: absolute; bottom: 0; right: 0; left: 0;
+            height: 3px; opacity: 0; transition: opacity 0.4s;
+        }
+        .outcome-card:nth-child(1)::before { background: var(--primary); }
+        .outcome-card:nth-child(2)::before { background: var(--accent); }
+        .outcome-card:nth-child(3)::before { background: var(--amber); }
+        .outcome-card:nth-child(4)::before { background: var(--success); }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .outcome-card:hover::before { opacity: 1; }
+        .outcome-icon {
+            width: 60px; height: 60px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin: 0 auto 1.25rem;
+        }
+        .outcome-card:nth-child(1) .outcome-icon { background: var(--primary-pale); color: var(--primary); }
+        .outcome-card:nth-child(2) .outcome-icon { background: var(--accent-pale); color: var(--accent); }
+        .outcome-card:nth-child(3) .outcome-icon { background: var(--amber-pale); color: var(--amber); }
+        .outcome-card:nth-child(4) .outcome-icon { background: var(--success-pale); color: var(--success); }
+        .outcome-card h4 { font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem; }
+        .outcome-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
+
+        /* ==================== Beneficiaries ==================== */
+        .beneficiaries-section { padding: 6rem 0; background: var(--white); }
+        .beneficiaries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .beneficiary-card {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1.25rem 1.5rem; background: var(--light-bg);
+            border-radius: 16px; border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .beneficiary-card:hover { background: var(--white); box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-3px); }
+        .bf-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+        .beneficiary-card:nth-child(1) .bf-icon { background: var(--primary-pale); color: var(--primary); }
+        .beneficiary-card:nth-child(2) .bf-icon { background: var(--accent-pale); color: var(--accent); }
+        .beneficiary-card:nth-child(3) .bf-icon { background: var(--amber-pale); color: var(--amber); }
+        .beneficiary-card:nth-child(4) .bf-icon { background: var(--success-pale); color: var(--success); }
+        .bf-text h4 { font-size: 0.92rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.15rem; }
+        .bf-text p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+
+        /* ==================== How to Start ==================== */
+        .how-start { padding: 6rem 0; background: var(--light-bg); }
+        .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; position: relative; }
+        .how-grid::before {
+            content: ''; position: absolute; top: 40px;
+            right: calc(12.5% + 10px); left: calc(12.5% + 10px);
+            height: 2px; background: linear-gradient(90deg, var(--primary), var(--accent), var(--amber), var(--success));
+            border-radius: 2px; z-index: 0;
+        }
+        .how-card {
+            text-align: center; padding: 2.5rem 1.5rem 2rem;
+            background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--border); position: relative; z-index: 1;
+            transition: all 0.4s;
+        }
+        .how-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        .how-num {
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 800; color: white;
+            margin: 0 auto 1.25rem; position: relative; z-index: 2;
+        }
+        .how-card:nth-child(1) .how-num { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .how-card:nth-child(2) .how-num { background: linear-gradient(135deg, var(--accent), #00b8d4); }
+        .how-card:nth-child(3) .how-num { background: linear-gradient(135deg, var(--amber), #f0b85e); }
+        .how-card:nth-child(4) .how-num { background: linear-gradient(135deg, var(--success), #2dd4a8); }
+        .how-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem; font-size: 1.1rem;
         }
         .how-card:nth-child(1) .how-icon { background: var(--primary-pale); color: var(--primary); }
-        .how-card:nth-child(2) .how-icon { background: rgba(0,153,204,0.07); color: var(--accent); }
-        .how-card:nth-child(3) .how-icon { background: rgba(233,169,79,0.07); color: var(--amber); }
-        .how-card:nth-child(4) .how-icon { background: rgba(0,203,169,0.07); color: var(--success); }
+        .how-card:nth-child(2) .how-icon { background: var(--accent-pale); color: var(--accent); }
+        .how-card:nth-child(3) .how-icon { background: var(--amber-pale); color: var(--amber); }
+        .how-card:nth-child(4) .how-icon { background: var(--success-pale); color: var(--success); }
         .how-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem; }
         .how-card p { font-size: 0.82rem; line-height: 1.8; color: var(--text-body); margin: 0; }
 
-        /* ==================== Stats ==================== */
-        .stats-section { padding: 4rem 0; background: linear-gradient(135deg, var(--secondary) 0%, #243556 100%); }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
-        .stat-card { text-align: center; }
-        .stat-number { font-size: 2.5rem; font-weight: 900; color: var(--primary-light); margin-bottom: 0.25rem; }
-        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.65); font-weight: 500; }
-
         /* ==================== CTA ==================== */
-        .cta-section { padding: 5rem 0; background: var(--light-bg); }
+        .cta-section { padding: 6rem 0; background: var(--white); }
         .cta-card {
-            background: linear-gradient(135deg, #faf5f3 0%, #f0f4fb 100%);
-            border-radius: var(--radius-lg); padding: 4rem;
+            background: linear-gradient(145deg, #faf5f3 0%, #eef3fc 100%);
+            border-radius: var(--radius-lg); padding: 5rem 4rem;
             text-align: center; position: relative; overflow: hidden;
-            border: 1px solid rgba(232,108,79,0.08);
+            border: 1px solid rgba(232,108,79,0.06);
         }
-        .cta-card h2 { font-size: 2rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; }
+        .cta-card::before {
+            content: ''; position: absolute; top: -60px; left: -60px;
+            width: 200px; height: 200px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(232,108,79,0.08) 0%, transparent 70%);
+        }
+        .cta-card::after {
+            content: ''; position: absolute; bottom: -80px; right: -80px;
+            width: 250px; height: 250px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,153,204,0.06) 0%, transparent 70%);
+        }
+        .cta-card h2 { font-size: 2.2rem; font-weight: 900; color: var(--secondary); margin-bottom: 1rem; position: relative; z-index: 2; }
         .cta-card h2 span { color: var(--primary); }
-        .cta-card p { font-size: 1.05rem; line-height: 1.9; color: var(--text-body); max-width: 600px; margin: 0 auto 2rem; }
-        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .cta-card > p { font-size: 1.05rem; line-height: 1.9; color: var(--text-body); max-width: 600px; margin: 0 auto 2.5rem; position: relative; z-index: 2; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+        .btn-cta {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.9rem 2.2rem; border-radius: 14px;
+            font-weight: 700; font-size: 0.95rem; transition: all 0.4s;
+        }
+        .btn-cta.primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 8px 25px rgba(232,108,79,0.3); }
+        .btn-cta.primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(232,108,79,0.4); color: white; }
+        .btn-cta.secondary { background: var(--white); color: var(--secondary); border: 1.5px solid var(--border); box-shadow: var(--shadow-sm); }
+        .btn-cta.secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
         /* ==================== Footer ==================== */
         .footer { background: var(--secondary); color: rgba(255,255,255,0.8); padding: 4rem 0 1.5rem; }
@@ -389,7 +564,7 @@
         .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: all 0.3s; display: flex; align-items: center; gap: 0.4rem; }
         .footer-links a:hover { color: var(--primary); transform: translateX(-3px); }
         .footer-links a i { font-size: 0.55rem; color: var(--primary); }
-        .footer-contact-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.65); font-size: 0.83rem; margin-bottom: 0.5rem; }
+        .footer-contact-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.65); font-size: 0.83rem; margin-bottom: 0.5rem; text-decoration: none; }
         .footer-contact-item i { color: var(--primary); width: 16px; text-align: center; }
         .footer-social { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
         .footer-social a { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.55); transition: all 0.3s; }
@@ -397,39 +572,39 @@
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 2.5rem; padding-top: 1.25rem; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
 
         /* ==================== Scroll Reveal ==================== */
-        .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* ==================== Responsive ==================== */
+        @media (max-width: 1199px) {
+            .tracks-grid { grid-template-columns: repeat(2, 1fr); }
+            .sub-tracks-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 991px) {
-            .hero-grid, .about-grid { grid-template-columns: 1fr; }
+            .hero-grid, .about-grid, .why-grid { grid-template-columns: 1fr; }
+            .hero { min-height: auto; padding: 6rem 0 3rem; }
             .hero-visual { order: -1; }
-            .about-visual { order: -1; }
-            .value-grid { grid-template-columns: repeat(2, 1fr); }
-            .how-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-metrics { justify-content: center; }
+            .about-visual, .why-visual { order: -1; }
+            .outcomes-grid, .how-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-grid::before { display: none; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .workflow-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-            .workflow-center { padding: 1.25rem 0; }
-            .track-card-wrapper,
-            .track-card-wrapper:nth-child(odd) { flex-direction: column; }
-            .track-card-wrapper:nth-child(odd) .track-card,
-            .track-card-wrapper:nth-child(even) .track-card { width: 100%; margin: 0; }
-            .journey-line { display: none; }
-            .track-node { position: static; transform: none; margin-bottom: 1rem; }
+            .beneficiaries-grid { grid-template-columns: repeat(2, 1fr); }
             .top-bar-inner { justify-content: center; text-align: center; }
             .top-bar-links:first-child { display: none; }
         }
         @media (max-width: 767px) {
-            .hero { padding: 6rem 0 3rem; }
-            .hero h1 { font-size: 1.85rem; }
-            .hero-img-main img { height: 280px; }
-            .hero-trust { flex-direction: column; gap: 1rem; }
-            .value-grid, .how-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-metrics { gap: 1.5rem; }
+            .metric-value { font-size: 1.5rem; }
+            .tracks-grid { grid-template-columns: 1fr; }
+            .sub-tracks-grid { grid-template-columns: 1fr 1fr; }
+            .outcomes-grid, .how-grid, .beneficiaries-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .cta-card { padding: 2.5rem 1.5rem; }
-            .track-card { padding: 1.5rem; }
-            .workflow-col-right .wf-step-num,
-            .workflow-col-left .wf-step-num { left: -7px; right: auto; }
+            .stat-card::after { display: none; }
+            .cta-card { padding: 3rem 1.5rem; }
+            .cta-card h2 { font-size: 1.6rem; }
+            .panel-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
         }
     </style>
 </head>
@@ -473,85 +648,105 @@
     </nav>
 
     <!-- ==================== HERO ==================== -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-grid">
-                <div class="hero-content">
-                    <span class="hero-badge"><i class="fas fa-rocket"></i> منصة جدارة التفاعلية</span>
-                    <h1>رحلة تطوير حقيقية<br>تبدأ من <span>التأسيس</span><br>وصولاً إلى <span>التمكين</span></h1>
-                    <p class="hero-desc">منظومة تفاعلية متكاملة صُممت لتمكين الجمعيات غير الربحية عبر أربع رحلات تدريبية متدرجة، تجمع بين التعلم الذاتي والمحاكاة والتطبيق العملي.</p>
+                <div class="hero-content reveal">
+                    <span class="hero-badge"><i class="fas fa-route"></i> الرحلات التفاعلية</span>
+                    <h1>رحلات تطوير تقود جمعيتك<br>من <span>الانطلاقة</span> إلى <span>التوسع</span></h1>
+                    <p class="hero-desc">منظومة تفاعلية متكاملة من أربعة أطوار، صُممت لتأخذ كل جمعية في رحلة تطوير حقيقية — تجمع بين التعلّم الذاتي والمحاكاة والإشراف المتخصص.</p>
                     <div class="hero-actions">
                         <a href="#tracks" class="btn-hero-primary">
-                            <span>استكشف المسارات</span>
-                            <i class="fas fa-arrow-left"></i>
+                            <span>استكشف الرحلات</span>
+                            <i class="fas fa-arrow-down"></i>
                         </a>
                         <a href="#" class="btn-hero-secondary">
                             <i class="fas fa-play-circle"></i>
-                            <span>شاهد الفيديو التعريفي</span>
+                            <span>ابدأ الآن</span>
                         </a>
                     </div>
-                    <div class="hero-trust">
-                        <div class="trust-item">
-                            <div class="trust-icon t1"><i class="fas fa-building"></i></div>
-                            <div><div class="trust-num">+130</div><div class="trust-label">جمعية مستفيدة</div></div>
+                    <div class="hero-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">130<span class="plus">+</span></span>
+                            <span class="metric-label">جمعية مستفيدة</span>
                         </div>
-                        <div class="trust-item">
-                            <div class="trust-icon t2"><i class="fas fa-route"></i></div>
-                            <div><div class="trust-num">4</div><div class="trust-label">مسارات تطويرية</div></div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-value">4</span>
+                            <span class="metric-label">أطوار تطويرية</span>
                         </div>
-                        <div class="trust-item">
-                            <div class="trust-icon t3"><i class="fas fa-user-graduate"></i></div>
-                            <div><div class="trust-num">+850</div><div class="trust-label">متدرب ومتدربة</div></div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-value">95<span class="plus">%</span></span>
+                            <span class="metric-label">نسبة الرضا</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero-visual reveal">
-                    <div class="hero-float-card card-2">
-                        <div class="hf-icon blue"><i class="fas fa-chart-line"></i></div>
-                        <div><div class="hf-num">95%</div><div class="hf-label">نسبة رضا المستفيدين</div></div>
-                    </div>
-                    <div class="hero-img-main">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=700&h=500&fit=crop" alt="فريق عمل تطوعي يتعاون في ورشة عمل تفاعلية">
-                    </div>
-                    <div class="hero-float-card card-1">
-                        <div class="hf-icon orange"><i class="fas fa-award"></i></div>
-                        <div><div class="hf-num">+40</div><div class="hf-label">رحلة تدريبية مكتملة</div></div>
+                <div class="hero-visual reveal" style="transition-delay: 0.2s;">
+                    <div class="hero-glow"></div>
+                    <div class="hero-visual-inner">
+                        <div class="hero-journey-preview">
+                            <div class="journey-preview-item">
+                                <div class="jp-step s1">١</div>
+                                <div class="jp-info"><h4>طور الانطلاقة</h4><p>تأسيس الهوية والحوكمة المؤسسية</p></div>
+                                <i class="fas fa-chevron-left jp-arrow"></i>
+                            </div>
+                            <div class="journey-preview-item">
+                                <div class="jp-step s2">٢</div>
+                                <div class="jp-info"><h4>طور التشكيل</h4><p>بناء الهيكل والعمليات التنظيمية</p></div>
+                                <i class="fas fa-chevron-left jp-arrow"></i>
+                            </div>
+                            <div class="journey-preview-item">
+                                <div class="jp-step s3">٣</div>
+                                <div class="jp-info"><h4>طور النمو</h4><p>تسريع الأداء وتوسيع الأثر</p></div>
+                                <i class="fas fa-chevron-left jp-arrow"></i>
+                            </div>
+                            <div class="journey-preview-item">
+                                <div class="jp-step s4">٤</div>
+                                <div class="jp-info"><h4>طور التوسع</h4><p>الاستدامة والنضج المؤسسي</p></div>
+                                <i class="fas fa-chevron-left jp-arrow"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="#about" class="scroll-indicator">
+            <div class="scroll-mouse"></div>
+            <span>اكتشف المزيد</span>
+        </a>
     </section>
 
     <!-- ==================== About Platform ==================== -->
-    <section class="about-platform">
+    <section class="about-platform" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-visual reveal">
                     <div class="about-img">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop" alt="ورشة عمل تفاعلية">
                     </div>
-                    <div class="about-accent"></div>
+                    <div class="about-accent-shape"></div>
                 </div>
                 <div class="about-content reveal" style="transition-delay:0.15s;">
                     <span class="section-badge"><i class="fas fa-info-circle"></i> تعرّف على المنصة</span>
                     <h2>بيئة تعليمية تفاعلية<br>تتجاوز <span>الطرق التقليدية</span></h2>
-                    <p>منصة جدارة التفاعلية ليست مجرد نظام تعليمي — بل بيئة محاكاة حقيقية تدمج بين التعلّم الذاتي والتدريب العملي وإشراف المختصين. تركز على تحويل المعرفة إلى ممارسة فعلية، مع تحليل ذكي لأداء كل جمعية مشاركة.</p>
-                    <p>يرافق كل جمعية ميسّر متخصص يقدم الدعم المستمر ويتابع تقدم المخرجات، مما يضمن تجربة تطوير متكاملة وموجهة.</p>
+                    <p>منصة جدارة ليست مجرد نظام تعليمي — بل بيئة محاكاة حقيقية تدمج بين التعلّم الذاتي والتدريب العملي وإشراف المختصين. تركز على تحويل المعرفة إلى ممارسة فعلية.</p>
+                    <p>يرافق كل جمعية ميسّر متخصص يقدم الدعم المستمر ويتابع تقدم المخرجات، مما يضمن تجربة تطوير متكاملة وموجّهة بنتائج ملموسة.</p>
                     <div class="about-highlights">
                         <div class="highlight-item">
                             <div class="highlight-icon" style="background:var(--primary-pale);color:var(--primary);"><i class="fas fa-brain"></i></div>
                             <span class="highlight-text">تعلّم ذاتي ومحاكاة</span>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-icon" style="background:rgba(0,153,204,0.07);color:var(--accent);"><i class="fas fa-chart-bar"></i></div>
+                            <div class="highlight-icon" style="background:var(--accent-pale);color:var(--accent);"><i class="fas fa-chart-bar"></i></div>
                             <span class="highlight-text">تحليل ذكي للأداء</span>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-icon" style="background:rgba(0,203,169,0.07);color:var(--success);"><i class="fas fa-user-tie"></i></div>
+                            <div class="highlight-icon" style="background:var(--success-pale);color:var(--success);"><i class="fas fa-user-tie"></i></div>
                             <span class="highlight-text">ميسّرون متخصصون</span>
                         </div>
                         <div class="highlight-item">
-                            <div class="highlight-icon" style="background:rgba(233,169,79,0.07);color:var(--amber);"><i class="fas fa-sync-alt"></i></div>
+                            <div class="highlight-icon" style="background:var(--amber-pale);color:var(--amber);"><i class="fas fa-sync-alt"></i></div>
                             <span class="highlight-text">تطوير مستمر</span>
                         </div>
                     </div>
@@ -560,174 +755,253 @@
         </div>
     </section>
 
-    <!-- ==================== Value Props ==================== -->
-    <section class="value-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-gem"></i> لماذا جدارة</span>
-                <h2 class="section-title">ما الذي يميز <span>منصة جدارة</span>؟</h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
-                <p class="section-subtitle">مزايا مصممة لتلبي احتياجات الجمعيات غير الربحية وتدعم رحلتها نحو التميز المؤسسي</p>
-            </div>
-            <div class="value-grid reveal" style="transition-delay:0.15s;">
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-users-cog"></i></div>
-                    <h4>تعلّم تفاعلي وتشاركي</h4>
-                    <p>بيئة تعلّم ذاتي تتيح للجمعيات الوصول إلى المحتوى التعليمي في أي وقت ومن أي مكان، مع إمكانية التفاعل المباشر.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-user-check"></i></div>
-                    <h4>ميسّرون مؤهلون</h4>
-                    <p>فريق من الميسّرين المتخصصين يقدمون الدعم والمساندة المستمرة لكل جمعية خلال تنفيذ رحلتها التفاعلية.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h4>مراجعة المخرجات</h4>
-                    <p>فريق استشاري متخصص يراجع مخرجات كل جمعية ويتحقق من استيفاء متطلبات إنجاز الرحلة بالجودة المطلوبة.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h4>سهولة الاستخدام</h4>
-                    <p>واجهة مبسطة وسهلة التنقل صُممت خصيصاً لتناسب احتياجات الجمعيات والكيانات غير الربحية.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-sync-alt"></i></div>
-                    <h4>تطوير مستمر</h4>
-                    <p>نطوّر المنصة باستمرار بناءً على التغذية الراجعة من الجمعيات المشاركة لضمان تقديم أفضل تجربة.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-bullseye"></i></div>
-                    <h4>تحقيق الأهداف</h4>
-                    <p>رحلة متكاملة تجمع بين التعلّم والتطبيق العملي بهدف تحقيق أهداف الجمعية وتعزيز أثرها المجتمعي.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== TRACKS JOURNEY ==================== -->
+    <!-- ==================== TRACKS (Core Interactive Section) ==================== -->
     <section class="tracks-section" id="tracks">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-route"></i> رحلة التطوير</span>
-                <h2 class="section-title">أربع مسارات نحو <span>التميز المؤسسي</span></h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
-                <p class="section-subtitle">رحلة متدرجة ومترابطة تأخذ الجمعية من مرحلة التأسيس الصحيح وصولاً إلى التوسع والانتشار، كل مسار يبني على ما قبله ويجهّز لما بعده</p>
+                <span class="section-badge"><i class="fas fa-layer-group"></i> أطوار النمو</span>
+                <h2 class="section-title">أطوار نمو المنظمات <span>الأربعة</span></h2>
+                <p class="section-subtitle">رحلة متدرجة ومترابطة تأخذ جمعيتك من مرحلة التأسيس وصولاً إلى التوسع — كل طور يبني على ما قبله ويجهّز لما بعده</p>
             </div>
 
-            <div class="tracks-journey reveal" style="transition-delay:0.15s;">
-                <div class="journey-line"></div>
-
-                <!-- Track 1: الانطلاقة -->
-                <div class="track-card-wrapper">
-                    <div class="track-node">١</div>
-                    <div class="track-card">
-                        <span class="track-card-step"><i class="fas fa-rocket"></i> المرحلة الأولى</span>
-                        <h3>مسار الانطلاقة</h3>
-                        <p>البداية الصحيحة لكل جمعية — تأسيس الهوية المؤسسية، وبناء الحوكمة، وتحديد الأهداف الاستراتيجية الأولى بأسلوب علمي ومنهجي.</p>
-                        <div class="track-card-tags">
-                            <span class="track-tag">الهوية المؤسسية</span>
-                            <span class="track-tag">الحوكمة</span>
-                            <span class="track-tag">التخطيط الأولي</span>
-                            <span class="track-tag">اللوائح والأنظمة</span>
-                        </div>
-                        <a href="track-launchpad.html" class="track-card-link">
-                            <span>استكشف المسار</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
+            <div class="tracks-grid reveal" style="transition-delay:0.1s;" id="tracksGrid">
+                <!-- Track 1 -->
+                <div class="track-card t1" data-track="1" onclick="toggleTrack(1)">
+                    <div class="track-icon"><i class="fas fa-rocket"></i></div>
+                    <span class="track-step-label">الطور الأول</span>
+                    <h3>الانطلاقة</h3>
+                    <p>البداية الصحيحة — تأسيس الهوية المؤسسية وبناء الحوكمة وتحديد الأهداف الاستراتيجية الأولى.</p>
+                    <button class="track-expand-btn"><span>اكتشف المزيد</span> <i class="fas fa-chevron-down"></i></button>
                 </div>
 
-                <!-- Track 2: التشكيل -->
-                <div class="track-card-wrapper">
-                    <div class="track-node">٢</div>
-                    <div class="track-card">
-                        <span class="track-card-step"><i class="fas fa-cubes"></i> المرحلة الثانية</span>
-                        <h3>مسار التشكيل</h3>
-                        <p>بناء الهيكل التنظيمي المتين — تشكيل الفرق، وتوزيع الأدوار، وتأسيس العمليات الداخلية التي تضمن كفاءة العمل المؤسسي.</p>
-                        <div class="track-card-tags">
-                            <span class="track-tag">الهيكل التنظيمي</span>
-                            <span class="track-tag">بناء الفرق</span>
-                            <span class="track-tag">العمليات الداخلية</span>
-                            <span class="track-tag">إدارة الموارد</span>
-                        </div>
-                        <a href="track-formation.html" class="track-card-link">
-                            <span>استكشف المسار</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
+                <!-- Track 2 -->
+                <div class="track-card t2" data-track="2" onclick="toggleTrack(2)">
+                    <div class="track-icon"><i class="fas fa-cubes"></i></div>
+                    <span class="track-step-label">الطور الثاني</span>
+                    <h3>التشكيل</h3>
+                    <p>بناء الهيكل التنظيمي المتين — تشكيل الفرق وتوزيع الأدوار وتأسيس العمليات الداخلية.</p>
+                    <button class="track-expand-btn"><span>اكتشف المزيد</span> <i class="fas fa-chevron-down"></i></button>
                 </div>
 
-                <!-- Track 3: النمو -->
-                <div class="track-card-wrapper">
-                    <div class="track-node">٣</div>
-                    <div class="track-card">
-                        <span class="track-card-step"><i class="fas fa-chart-line"></i> المرحلة الثالثة</span>
-                        <h3>مسار النمو</h3>
-                        <p>تسريع الأداء وتوسيع الأثر — تطوير البرامج والمشاريع، وتعزيز الشراكات، وبناء قدرات الفريق لمضاعفة النتائج.</p>
-                        <div class="track-card-tags">
-                            <span class="track-tag">تطوير البرامج</span>
-                            <span class="track-tag">الشراكات</span>
-                            <span class="track-tag">بناء القدرات</span>
-                            <span class="track-tag">قياس الأثر</span>
-                        </div>
-                        <a href="track-growth.html" class="track-card-link">
-                            <span>استكشف المسار</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
+                <!-- Track 3 -->
+                <div class="track-card t3" data-track="3" onclick="toggleTrack(3)">
+                    <div class="track-icon"><i class="fas fa-chart-line"></i></div>
+                    <span class="track-step-label">الطور الثالث</span>
+                    <h3>النمو</h3>
+                    <p>تسريع الأداء وتوسيع الأثر — تطوير البرامج وتعزيز الشراكات وبناء قدرات الفريق.</p>
+                    <button class="track-expand-btn"><span>اكتشف المزيد</span> <i class="fas fa-chevron-down"></i></button>
                 </div>
 
-                <!-- Track 4: التوسع -->
-                <div class="track-card-wrapper">
-                    <div class="track-node">٤</div>
-                    <div class="track-card">
-                        <span class="track-card-step"><i class="fas fa-expand-arrows-alt"></i> المرحلة الرابعة</span>
-                        <h3>مسار التوسع</h3>
-                        <p>الانتقال إلى مرحلة النضج المؤسسي — استدامة مالية، وتوسع جغرافي وبرامجي، وبناء نموذج قابل للتكرار والانتشار.</p>
-                        <div class="track-card-tags">
-                            <span class="track-tag">الاستدامة المالية</span>
-                            <span class="track-tag">التوسع الجغرافي</span>
-                            <span class="track-tag">النضج المؤسسي</span>
-                            <span class="track-tag">نماذج قابلة للتكرار</span>
+                <!-- Track 4 -->
+                <div class="track-card t4" data-track="4" onclick="toggleTrack(4)">
+                    <div class="track-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                    <span class="track-step-label">الطور الرابع</span>
+                    <h3>التوسع</h3>
+                    <p>النضج المؤسسي — استدامة مالية وتوسع جغرافي وبرامجي ونموذج قابل للتكرار.</p>
+                    <button class="track-expand-btn"><span>اكتشف المزيد</span> <i class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <!-- Expanded Panels -->
+            <div class="track-expanded-panel" id="panel-1">
+                <div class="panel-header">
+                    <div class="panel-header-info">
+                        <div class="panel-header-icon ph1"><i class="fas fa-rocket"></i></div>
+                        <div><h4>طور الانطلاقة</h4><p class="panel-sub">4 مسارات تأسيسية · المرحلة الأولى</p></div>
+                    </div>
+                    <a href="track-launchpad.html" class="panel-detail-link pdl1"><span>عرض تفاصيل الطور</span> <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="sub-tracks-grid">
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--primary-pale);color:var(--primary);"><i class="fas fa-compass"></i></div><h5>الاستكشاف</h5><p>فهم البيئة المؤسسية وتحليل الوضع الراهن للجمعية</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--primary-pale);color:var(--primary);"><i class="fas fa-fingerprint"></i></div><h5>التعريف</h5><p>بناء الهوية المؤسسية وصياغة الرؤية والرسالة</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--primary-pale);color:var(--primary);"><i class="fas fa-balance-scale"></i></div><h5>التنظيم</h5><p>تأسيس الحوكمة ووضع اللوائح والسياسات الأولى</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--primary-pale);color:var(--primary);"><i class="fas fa-flag-checkered"></i></div><h5>الإطلاق</h5><p>إعداد خطة العمل الأولى والانطلاق الفعلي للجمعية</p></div>
+                </div>
+            </div>
+
+            <div class="track-expanded-panel" id="panel-2">
+                <div class="panel-header">
+                    <div class="panel-header-info">
+                        <div class="panel-header-icon ph2"><i class="fas fa-cubes"></i></div>
+                        <div><h4>طور التشكيل</h4><p class="panel-sub">4 مسارات تنظيمية · المرحلة الثانية</p></div>
+                    </div>
+                    <a href="track-formation.html" class="panel-detail-link pdl2"><span>عرض تفاصيل الطور</span> <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="sub-tracks-grid">
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--accent-pale);color:var(--accent);"><i class="fas fa-sitemap"></i></div><h5>الهيكلة</h5><p>تصميم الهيكل التنظيمي وتوزيع المسؤوليات</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--accent-pale);color:var(--accent);"><i class="fas fa-users-cog"></i></div><h5>بناء الفريق</h5><p>استقطاب الكفاءات وتشكيل فرق العمل الفعّالة</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--accent-pale);color:var(--accent);"><i class="fas fa-cogs"></i></div><h5>العمليات</h5><p>تصميم الإجراءات التشغيلية والعمليات الداخلية</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--accent-pale);color:var(--accent);"><i class="fas fa-wallet"></i></div><h5>الموارد</h5><p>تنظيم الموارد المالية والبشرية بكفاءة</p></div>
+                </div>
+            </div>
+
+            <div class="track-expanded-panel" id="panel-3">
+                <div class="panel-header">
+                    <div class="panel-header-info">
+                        <div class="panel-header-icon ph3"><i class="fas fa-chart-line"></i></div>
+                        <div><h4>طور النمو</h4><p class="panel-sub">4 مسارات تطويرية · المرحلة الثالثة</p></div>
+                    </div>
+                    <a href="track-growth.html" class="panel-detail-link pdl3"><span>عرض تفاصيل الطور</span> <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="sub-tracks-grid">
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--amber-pale);color:var(--amber);"><i class="fas fa-search"></i></div><h5>الاستكشاف</h5><p>تحليل فرص النمو وتحديد مجالات التوسع</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--amber-pale);color:var(--amber);"><i class="fas fa-lightbulb"></i></div><h5>الابتكار</h5><p>تطوير أفكار ومبادرات جديدة لتوسيع الأثر</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--amber-pale);color:var(--amber);"><i class="fas fa-handshake"></i></div><h5>الشراكات</h5><p>بناء تحالفات استراتيجية مع شركاء فاعلين</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--amber-pale);color:var(--amber);"><i class="fas fa-bullseye"></i></div><h5>قياس الأثر</h5><p>قياس النتائج وتقييم الأثر المجتمعي</p></div>
+                </div>
+            </div>
+
+            <div class="track-expanded-panel" id="panel-4">
+                <div class="panel-header">
+                    <div class="panel-header-info">
+                        <div class="panel-header-icon ph4"><i class="fas fa-expand-arrows-alt"></i></div>
+                        <div><h4>طور التوسع</h4><p class="panel-sub">4 مسارات استراتيجية · المرحلة الرابعة</p></div>
+                    </div>
+                    <a href="track-expansion.html" class="panel-detail-link pdl4"><span>عرض تفاصيل الطور</span> <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="sub-tracks-grid">
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--success-pale);color:var(--success);"><i class="fas fa-coins"></i></div><h5>الاستدامة</h5><p>بناء نموذج مالي مستدام ومتنوع المصادر</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--success-pale);color:var(--success);"><i class="fas fa-globe-americas"></i></div><h5>التوسع الجغرافي</h5><p>نقل النموذج إلى مناطق ومجتمعات جديدة</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--success-pale);color:var(--success);"><i class="fas fa-copy"></i></div><h5>التكرار</h5><p>بناء نموذج قابل للتكرار والنقل</p></div>
+                    <div class="sub-track-card"><div class="stc-icon" style="background:var(--success-pale);color:var(--success);"><i class="fas fa-award"></i></div><h5>النضج</h5><p>الوصول إلى مستوى التميز المؤسسي الكامل</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Why Section ==================== -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-content reveal">
+                    <span class="section-badge"><i class="fas fa-gem"></i> لماذا جدارة</span>
+                    <h2 class="section-title" style="text-align:right;">ما الذي يميّز <span>الرحلات التفاعلية</span>؟</h2>
+                    <p class="section-subtitle" style="text-align:right; margin:0;">ليست مجرد محتوى تدريبي — بل تجربة تطوير متكاملة مصممة لتحقيق نتائج حقيقية وقابلة للقياس.</p>
+                    <div class="why-list">
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-hands-helping"></i></div>
+                            <div class="why-item-text">
+                                <h4>تعلّم بالتطبيق</h4>
+                                <p>كل نشاط مرتبط بمخرج عملي حقيقي تطبقه الجمعية مباشرة في بيئتها.</p>
+                            </div>
                         </div>
-                        <a href="track-expansion.html" class="track-card-link">
-                            <span>استكشف المسار</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-route"></i></div>
+                            <div class="why-item-text">
+                                <h4>مسارات واضحة ومتدرجة</h4>
+                                <p>رحلة منهجية من التأسيس إلى التوسع — كل خطوة مبنية على سابقتها.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-chart-pie"></i></div>
+                            <div class="why-item-text">
+                                <h4>نتائج قابلة للقياس</h4>
+                                <p>مخرجات محددة وملموسة لكل مرحلة — وليس مجرد معرفة نظرية.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fas fa-user-check"></i></div>
+                            <div class="why-item-text">
+                                <h4>تجربة موجّهة ومدعومة</h4>
+                                <p>ميسّر متخصص يرافق الجمعية طوال الرحلة ويضمن جودة المخرجات.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-visual reveal" style="transition-delay:0.15s;">
+                    <div class="why-img">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=500&fit=crop" alt="فريق عمل يتعاون في رحلة تطوير">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== Workflow ==================== -->
-    <section class="workflow-section">
+    <!-- ==================== Stats ==================== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-icon-wrap"><i class="fas fa-building"></i></div>
+                    <div class="stat-number" data-target="130">0<span class="stat-plus">+</span></div>
+                    <div class="stat-label">جمعية مستفيدة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrap"><i class="fas fa-route"></i></div>
+                    <div class="stat-number" data-target="40">0<span class="stat-plus">+</span></div>
+                    <div class="stat-label">رحلة تدريبية</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrap"><i class="fas fa-user-graduate"></i></div>
+                    <div class="stat-number" data-target="850">0<span class="stat-plus">+</span></div>
+                    <div class="stat-label">متدرب ومتدربة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon-wrap"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-number" data-target="95">0<span class="stat-pct">%</span></div>
+                    <div class="stat-label">نسبة رضا المستفيدين</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Outcomes ==================== -->
+    <section class="outcomes-section">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-badge"><i class="fas fa-sitemap"></i> آلية العمل</span>
-                <h2 class="section-title">آلية سير الجمعية في <span>منصة جدارة</span></h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
-                <p class="section-subtitle">رحلة متكاملة من التسجيل وحتى إنهاء الرحلة بنجاح</p>
+                <span class="section-badge"><i class="fas fa-trophy"></i> نتائج الرحلة</span>
+                <h2 class="section-title">ماذا ستحقق جمعيتك <span>بعد الرحلة</span>؟</h2>
+                <p class="section-subtitle">نتائج حقيقية وملموسة — وليس مجرد وعود. كل رحلة مصممة لتحقيق تحول مؤسسي واضح وقابل للقياس.</p>
             </div>
-            <div class="workflow-grid reveal" style="transition-delay:0.15s;">
-                <div class="workflow-col workflow-col-right">
-                    <div class="wf-card"><span class="wf-step-num">1</span><div class="wf-card-icon orange"><i class="fas fa-user-plus"></i></div><h4>تسجيل الجمعية في المنصة التفاعلية</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">2</span><div class="wf-card-icon blue"><i class="fas fa-graduation-cap"></i></div><h4>الحصول على رحلة تدريبية</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">3</span><div class="wf-card-icon green"><i class="fas fa-clipboard-check"></i></div><h4>التقييم المؤسسي</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">4</span><div class="wf-card-icon amber"><i class="fas fa-project-diagram"></i></div><h4>اختيار الرحلة المناسبة</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">5</span><div class="wf-card-icon navy"><i class="fas fa-tasks"></i></div><h4>التدريب على أنشطة الرحلة</h4></div>
+            <div class="outcomes-grid reveal" style="transition-delay:0.1s;">
+                <div class="outcome-card">
+                    <div class="outcome-icon"><i class="fas fa-bullseye"></i></div>
+                    <h4>رفع كفاءة المؤسسة</h4>
+                    <p>تحسين العمليات والإجراءات الداخلية بشكل منهجي ومقاس.</p>
                 </div>
-                <div class="workflow-center">
-                    <div class="workflow-logo-wrap">
-                        <img src="images/jadarah-logo-hero.png" alt="جدارة">
-                    </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon"><i class="fas fa-compass"></i></div>
+                    <h4>وضوح التوجه الاستراتيجي</h4>
+                    <p>رؤية واضحة وخطة عمل محددة تقود الجمعية نحو أهدافها.</p>
                 </div>
-                <div class="workflow-col workflow-col-left">
-                    <div class="wf-card"><span class="wf-step-num">6</span><div class="wf-card-icon blue"><i class="fas fa-list-check"></i></div><h4>بناء مخرجات الرحلة مع أخصائي المسار</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">7</span><div class="wf-card-icon orange"><i class="fas fa-search"></i></div><h4>مراجعة المخرجات من قبل الجمعية</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">8</span><div class="wf-card-icon green"><i class="fas fa-check-double"></i></div><h4>اعتماد المخرجات من قبل الجمعية</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">9</span><div class="wf-card-icon amber"><i class="fas fa-arrows-rotate"></i></div><h4>التغذية الراجعة وتطوير النسخة القادمة</h4></div>
-                    <div class="wf-card"><span class="wf-step-num">10</span><div class="wf-card-icon navy"><i class="fas fa-flag-checkered"></i></div><h4>إنهاء الرحلة</h4></div>
+                <div class="outcome-card">
+                    <div class="outcome-icon"><i class="fas fa-cogs"></i></div>
+                    <h4>تحسين العمليات التشغيلية</h4>
+                    <p>إجراءات منظمة وسياسات واضحة ترفع من جودة الأداء اليومي.</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon"><i class="fas fa-seedling"></i></div>
+                    <h4>جاهزية للنمو والتوسع</h4>
+                    <p>بنية مؤسسية قوية تؤهل الجمعية للانتقال إلى المرحلة التالية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Beneficiaries ==================== -->
+    <section class="beneficiaries-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-badge"><i class="fas fa-users"></i> الفئات المستفيدة</span>
+                <h2 class="section-title">لمن صُممت <span>الرحلات التفاعلية</span>؟</h2>
+                <p class="section-subtitle">مهما كان مستوى جمعيتك الحالي — هناك رحلة مصممة خصيصًا لمرحلتك.</p>
+            </div>
+            <div class="beneficiaries-grid reveal" style="transition-delay:0.1s;">
+                <div class="beneficiary-card">
+                    <div class="bf-icon"><i class="fas fa-seedling"></i></div>
+                    <div class="bf-text"><h4>الجمعيات الناشئة</h4><p>تحتاج تأسيسًا صحيحًا من البداية</p></div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="bf-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="bf-text"><h4>الجمعيات المتعثرة</h4><p>تحتاج إعادة هيكلة وتنظيم</p></div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="bf-icon"><i class="fas fa-arrow-up"></i></div>
+                    <div class="bf-text"><h4>الجمعيات الطموحة</h4><p>تريد النمو والتوسع بشكل منهجي</p></div>
+                </div>
+                <div class="beneficiary-card">
+                    <div class="bf-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="bf-text"><h4>القيادات التنفيذية</h4><p>تسعى لتطوير مهاراتها القيادية</p></div>
                 </div>
             </div>
         </div>
@@ -739,57 +1013,32 @@
             <div class="section-header reveal">
                 <span class="section-badge"><i class="fas fa-play-circle"></i> ابدأ الآن</span>
                 <h2 class="section-title">كيف تبدأ جمعيتك <span>رحلتها في جدارة</span>؟</h2>
-                <div class="section-divider"><span class="section-divider-line"></span><span class="section-divider-diamond"></span><span class="section-divider-line"></span></div>
                 <p class="section-subtitle">أربع خطوات بسيطة تفصلك عن الانضمام لمنظومة التطوير</p>
             </div>
-            <div class="how-grid reveal" style="transition-delay:0.15s;">
+            <div class="how-grid reveal" style="transition-delay:0.1s;">
                 <div class="how-card">
                     <div class="how-num">1</div>
                     <div class="how-icon"><i class="fas fa-user-plus"></i></div>
                     <h4>التسجيل في المنصة</h4>
-                    <p>أنشئ حسابًا لجمعيتك عبر المنصة التفاعلية بخطوات سريعة وسهلة.</p>
+                    <p>أنشئ حسابًا لجمعيتك عبر المنصة التفاعلية بخطوات سريعة.</p>
                 </div>
                 <div class="how-card">
                     <div class="how-num">2</div>
                     <div class="how-icon"><i class="fas fa-clipboard-list"></i></div>
                     <h4>التقييم المؤسسي</h4>
-                    <p>اجتز التقييم الأولي لتحديد المستوى الحالي لجمعيتك والمسار الأنسب.</p>
+                    <p>اجتز التقييم الأولي لتحديد المستوى الحالي والمسار الأنسب.</p>
                 </div>
                 <div class="how-card">
                     <div class="how-num">3</div>
                     <div class="how-icon"><i class="fas fa-route"></i></div>
-                    <h4>اختيار المسار</h4>
-                    <p>اختر المسار المناسب من بين المسارات الأربعة بناءً على نتائج التقييم.</p>
+                    <h4>اختيار الطور</h4>
+                    <p>اختر الطور المناسب بناءً على نتائج التقييم واحتياجات الجمعية.</p>
                 </div>
                 <div class="how-card">
                     <div class="how-num">4</div>
                     <div class="how-icon"><i class="fas fa-rocket"></i></div>
                     <h4>بدء الرحلة</h4>
-                    <p>ابدأ رحلتك التفاعلية مع ميسّر متخصص يرافقك حتى تحقيق أهدافك.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== Stats ==================== -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid reveal">
-                <div class="stat-card">
-                    <div class="stat-number" data-target="130">0</div>
-                    <div class="stat-label">جمعية مستفيدة</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="40">0</div>
-                    <div class="stat-label">رحلة تدريبية</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="850">0</div>
-                    <div class="stat-label">متدرب ومتدربة</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="95">0</div>
-                    <div class="stat-label">% نسبة الرضا</div>
+                    <p>ابدأ رحلتك مع ميسّر متخصص يرافقك حتى تحقيق الأهداف.</p>
                 </div>
             </div>
         </div>
@@ -799,11 +1048,11 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-card reveal">
-                <h2>هل جمعيتك جاهزة<br>لبدء <span>رحلة التطوير</span>؟</h2>
+                <h2>هل جمعيتك جاهزة لبدء<br><span>رحلة التطوير</span>؟</h2>
                 <p>انضم لأكثر من 130 جمعية بدأت رحلتها مع جدارة وحققت نقلة نوعية في أدائها المؤسسي وأثرها المجتمعي.</p>
                 <div class="cta-actions">
-                    <a href="#" class="btn-hero-primary"><span>سجّل جمعيتك الآن</span><i class="fas fa-arrow-left"></i></a>
-                    <a href="#" class="btn-hero-secondary"><i class="fas fa-phone"></i><span>تواصل معنا</span></a>
+                    <a href="#" class="btn-cta primary"><span>سجّل جمعيتك الآن</span><i class="fas fa-arrow-left"></i></a>
+                    <a href="#" class="btn-cta secondary"><i class="fas fa-phone"></i><span>احجز استشارة مجانية</span></a>
                 </div>
             </div>
         </div>
@@ -833,12 +1082,12 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <h5 class="footer-title">المسارات</h5>
+                    <h5 class="footer-title">الأطوار</h5>
                     <ul class="footer-links">
-                        <li><a href="track-launchpad.html"><i class="fas fa-chevron-left"></i> مسار الانطلاقة</a></li>
-                        <li><a href="track-formation.html"><i class="fas fa-chevron-left"></i> مسار التشكيل</a></li>
-                        <li><a href="track-growth.html"><i class="fas fa-chevron-left"></i> مسار النمو</a></li>
-                        <li><a href="track-expansion.html"><i class="fas fa-chevron-left"></i> مسار التوسع</a></li>
+                        <li><a href="track-launchpad.html"><i class="fas fa-chevron-left"></i> طور الانطلاقة</a></li>
+                        <li><a href="track-formation.html"><i class="fas fa-chevron-left"></i> طور التشكيل</a></li>
+                        <li><a href="track-growth.html"><i class="fas fa-chevron-left"></i> طور النمو</a></li>
+                        <li><a href="track-expansion.html"><i class="fas fa-chevron-left"></i> طور التوسع</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4">
@@ -854,36 +1103,97 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navbar scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             document.getElementById('mainNavbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // Scroll reveal
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-        // Stats counter
+        // Stats counter animation
+        function animateCounter(el, target, suffix) {
+            const duration = 2000;
+            const start = performance.now();
+            const update = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(eased * target);
+                el.innerHTML = current.toLocaleString('en-US') + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
+        }
+
         const statsObs = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) {
-                    e.target.querySelectorAll('.stat-number[data-target]').forEach(num => {
-                        const target = +num.dataset.target;
-                        const inc = target / 60;
-                        let current = 0;
-                        const timer = setInterval(() => {
-                            current += inc;
-                            if (current >= target) { num.textContent = '+' + target; clearInterval(timer); }
-                            else { num.textContent = Math.floor(current); }
-                        }, 25);
+                    e.target.querySelectorAll('.stat-number[data-target]').forEach((num, i) => {
+                        const target = parseInt(num.dataset.target);
+                        const suffix = num.querySelector('.stat-pct') ? '<span class="stat-pct">%</span>' : '<span class="stat-plus">+</span>';
+                        setTimeout(() => animateCounter(num, target, suffix), i * 150);
                     });
                     statsObs.unobserve(e.target);
                 }
             });
         }, { threshold: 0.3 });
         document.querySelectorAll('.stats-grid').forEach(el => statsObs.observe(el));
+
+        // Track expand/collapse
+        let activeTrack = null;
+
+        function toggleTrack(trackNum) {
+            const panel = document.getElementById('panel-' + trackNum);
+            const card = document.querySelector('.track-card[data-track="' + trackNum + '"]');
+            const allCards = document.querySelectorAll('.track-card');
+            const allPanels = document.querySelectorAll('.track-expanded-panel');
+
+            if (activeTrack === trackNum) {
+                // Close current
+                panel.classList.remove('open');
+                card.classList.remove('active');
+                activeTrack = null;
+                return;
+            }
+
+            // Close all first
+            allPanels.forEach(p => p.classList.remove('open'));
+            allCards.forEach(c => c.classList.remove('active'));
+
+            // Open selected
+            card.classList.add('active');
+            
+            // Position panel after the correct row
+            const grid = document.getElementById('tracksGrid');
+            // Insert panel after grid
+            grid.parentNode.insertBefore(panel, grid.nextSibling.nextSibling || null);
+            
+            setTimeout(() => {
+                panel.classList.add('open');
+                // Smooth scroll to panel
+                setTimeout(() => {
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }, 50);
+
+            activeTrack = trackNum;
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
