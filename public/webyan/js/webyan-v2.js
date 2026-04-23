@@ -81,3 +81,32 @@
     });
   });
 })();
+
+/* Hero Carousel — auto-rotate 3 slides */
+(function () {
+  var carousel = document.getElementById('heroCarousel');
+  if (!carousel) return;
+  var slides = carousel.querySelectorAll('.hero2-slide');
+  var dots = carousel.querySelectorAll('.hero2-dots .dot');
+  if (!slides.length) return;
+  var idx = 0, timer;
+
+  function go(i) {
+    idx = (i + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle('is-active', k === idx); });
+    dots.forEach(function (d, k) { d.classList.toggle('is-active', k === idx); });
+  }
+  function next() { go(idx + 1); }
+  function start() { stop(); timer = setInterval(next, 5000); }
+  function stop() { if (timer) clearInterval(timer); }
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () {
+      go(parseInt(d.dataset.go, 10) || 0);
+      start();
+    });
+  });
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  start();
+})();
