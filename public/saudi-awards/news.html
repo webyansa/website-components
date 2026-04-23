@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أخبار الجوائز - آخر المستجدات والأخبار حول الجوائز في المملكة العربية السعودية">
+    <title>جوائز السعودية | أخبار الجوائز</title>
+    
+    <!-- Google Fonts - Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon">
+                    <i class="bi bi-trophy-fill"></i>
+                </span>
+                <span class="brand-text">جوائز السعودية</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل القائمة">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="awards.html">دليل الجوائز</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="news.html">أخبار الجوائز</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">اتصل بنا</a>
+                    </li>
+                </ul>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAwardModal">
+                    <i class="bi bi-plus-lg"></i>
+                    إضافة جائزة
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== PAGE HEADER ==================== -->
+    <header class="page-header">
+        <div class="page-header__shapes">
+            <div class="page-header__shape page-header__shape--1"></div>
+            <div class="page-header__shape page-header__shape--2"></div>
+        </div>
+        <div class="container">
+            <div class="page-header__content">
+                <div class="page-header__badge">
+                    <i class="bi bi-newspaper"></i>
+                    <span>آخر المستجدات</span>
+                </div>
+                <h1 class="page-header__title">أخبار <span>الجوائز</span></h1>
+                <p class="page-header__subtitle">تابع آخر الأخبار والمستجدات حول الجوائز في المملكة العربية السعودية</p>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="main-wrapper">
+            <!-- News Filters -->
+            <section class="news-filters-section">
+                <div class="container">
+                    <div class="news-filters">
+                        <button class="news-filter-btn active" data-filter="all">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                            <span>جميع الأخبار</span>
+                        </button>
+                        <button class="news-filter-btn" data-filter="open">
+                            <i class="bi bi-door-open"></i>
+                            <span>فتح ترشيح</span>
+                        </button>
+                        <button class="news-filter-btn" data-filter="results">
+                            <i class="bi bi-trophy"></i>
+                            <span>نتائج</span>
+                        </button>
+                        <button class="news-filter-btn" data-filter="announcement">
+                            <i class="bi bi-megaphone"></i>
+                            <span>إعلانات</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured News -->
+            <section class="featured-news-section">
+                <div class="container">
+                    <article class="featured-news-card">
+                        <div class="featured-news-card__image">
+                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=1200&h=600&fit=crop" 
+                                 alt="افتتاح باب التقديم لجائزة الملك فيصل" loading="lazy">
+                            <span class="featured-news-card__badge">
+                                <i class="bi bi-star-fill"></i>
+                                خبر مميز
+                            </span>
+                        </div>
+                        <div class="featured-news-card__content">
+                            <div class="featured-news-card__meta">
+                                <span class="featured-news-card__category">
+                                    <i class="bi bi-door-open"></i>
+                                    فتح ترشيح
+                                </span>
+                                <span class="featured-news-card__date">
+                                    <i class="bi bi-calendar3"></i>
+                                    15 ديسمبر 2024
+                                </span>
+                            </div>
+                            <h2 class="featured-news-card__title">
+                                <a href="news-detail.html?id=1">افتتاح باب التقديم لجائزة الملك فيصل 2025</a>
+                            </h2>
+                            <p class="featured-news-card__excerpt">
+                                أعلنت مؤسسة الملك فيصل الخيرية عن فتح باب الترشيح للدورة الجديدة من جائزة الملك فيصل العالمية في مختلف الفروع العلمية والأدبية. تُعد هذه الجائزة من أعرق الجوائز العربية والعالمية التي تكرم الإنجازات المتميزة في مجالات خدمة الإسلام والدراسات الإسلامية واللغة العربية والآداب والطب والعلوم.
+                            </p>
+                            <a href="news-detail.html?id=1" class="btn btn-primary">
+                                قراءة المزيد
+                                <i class="bi bi-arrow-left"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- News Grid -->
+            <section class="news-grid-section">
+                <div class="container">
+                    <div class="news-grid">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop" 
+                                     alt="إعلان الفائزين بالجوائز الثقافية الوطنية" loading="lazy">
+                                <span class="news-card__badge news-card__badge--results">
+                                    <i class="bi bi-trophy"></i>
+                                    نتائج
+                                </span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__meta">
+                                    <span class="news-card__category">جوائز ثقافية</span>
+                                    <span class="news-card__date">10 ديسمبر 2024</span>
+                                </div>
+                                <h3 class="news-card__title">
+                                    <a href="news-detail.html?id=2">إعلان الفائزين بالجوائز الثقافية الوطنية لعام 2024</a>
+                                </h3>
+                                <p class="news-card__excerpt">
+                                    كرّمت وزارة الثقافة الفائزين بجوائز الدورة الرابعة من الجوائز الثقافية الوطنية في حفل بهيج أقيم في الرياض.
+                                </p>
+                                <a href="news-detail.html?id=2" class="news-card__link">
+                                    اقرأ المزيد
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="https://images.unsplash.com/photo-1559223607-a43c990c692c?w=600&h=400&fit=crop" 
+                                     alt="جائزة إرث تستقبل المشاركات" loading="lazy">
+                                <span class="news-card__badge news-card__badge--announcement">
+                                    <i class="bi bi-megaphone"></i>
+                                    إعلان
+                                </span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__meta">
+                                    <span class="news-card__category">مسابقات</span>
+                                    <span class="news-card__date">5 ديسمبر 2024</span>
+                                </div>
+                                <h3 class="news-card__title">
+                                    <a href="news-detail.html?id=3">جائزة إرث للتصوير تستقبل المشاركات حتى نهاية الشهر</a>
+                                </h3>
+                                <p class="news-card__excerpt">
+                                    تواصل جائزة إرث للتصوير استقبال مشاركات المصورين المحترفين والهواة للمنافسة على جوائز قيمة.
+                                </p>
+                                <a href="news-detail.html?id=3" class="news-card__link">
+                                    اقرأ المزيد
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=400&fit=crop" 
+                                     alt="إطلاق جائزة جديدة للابتكار" loading="lazy">
+                                <span class="news-card__badge news-card__badge--open">
+                                    <i class="bi bi-door-open"></i>
+                                    فتح ترشيح
+                                </span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__meta">
+                                    <span class="news-card__category">جوائز تقنية</span>
+                                    <span class="news-card__date">1 ديسمبر 2024</span>
+                                </div>
+                                <h3 class="news-card__title">
+                                    <a href="news-detail.html?id=4">إطلاق جائزة جديدة للابتكار في مجال الذكاء الاصطناعي</a>
+                                </h3>
+                                <p class="news-card__excerpt">
+                                    أعلنت الهيئة السعودية للبيانات والذكاء الاصطناعي عن إطلاق جائزة جديدة تستهدف المبتكرين.
+                                </p>
+                                <a href="news-detail.html?id=4" class="news-card__link">
+                                    اقرأ المزيد
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop" 
+                                     alt="ورشة عمل للمرشحين" loading="lazy">
+                                <span class="news-card__badge news-card__badge--announcement">
+                                    <i class="bi bi-megaphone"></i>
+                                    إعلان
+                                </span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__meta">
+                                    <span class="news-card__category">فعاليات</span>
+                                    <span class="news-card__date">28 نوفمبر 2024</span>
+                                </div>
+                                <h3 class="news-card__title">
+                                    <a href="news-detail.html?id=5">ورشة عمل تعريفية للمرشحين لجائزة الملك عبدالعزيز للجودة</a>
+                                </h3>
+                                <p class="news-card__excerpt">
+                                    تنظم الهيئة السعودية للمواصفات والمقاييس والجودة ورشة عمل تعريفية للمنظمات الراغبة في الترشح.
+                                </p>
+                                <a href="news-detail.html?id=5" class="news-card__link">
+                                    اقرأ المزيد
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop" 
+                                     alt="نتائج جائزة الأمير عبدالله الفيصل" loading="lazy">
+                                <span class="news-card__badge news-card__badge--results">
+                                    <i class="bi bi-trophy"></i>
+                                    نتائج
+                                </span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__meta">
+                                    <span class="news-card__category">جوائز أدبية</span>
+                                    <span class="news-card__date">20 نوفمبر 2024</span>
+                                </div>
+                                <h3 class="news-card__title">
+                                    <a href="news-detail.html?id=6">الإعلان عن الفائزين بجائزة الأمير عبدالله الفيصل للشعر العربي</a>
+                                </h3>
+                                <p class="news-card__excerpt">
+                                    أعلنت أكاديمية الشعر العربي عن أسماء الفائزين بجائزة الأمير عبدالله الفيصل للشعر العربي.
+                                </p>
+                                <a href="news-detail.html?id=6" class="news-card__link">
+                                    اقرأ المزيد
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop" 
+                                     alt="جائزة ريادة الأعمال" loading="lazy">
+                                <span class="news-card__badge news-card__badge--open">
+                                    <i class="bi bi-door-open"></i>
+                                    فتح ترشيح
+                                </span>
+                            </div>
+                            <div class="news-card__content">
+                                <div class="news-card__meta">
+                                    <span class="news-card__category">ريادة الأعمال</span>
+                                    <span class="news-card__date">15 نوفمبر 2024</span>
+                                </div>
+                                <h3 class="news-card__title">
+                                    <a href="news-detail.html?id=7">فتح باب التسجيل في جائزة ريادة الأعمال الاجتماعية</a>
+                                </h3>
+                                <p class="news-card__excerpt">
+                                    أعلنت مؤسسة الملك خالد عن فتح باب التسجيل في جائزة ريادة الأعمال الاجتماعية للعام الجديد.
+                                </p>
+                                <a href="news-detail.html?id=7" class="news-card__link">
+                                    اقرأ المزيد
+                                    <i class="bi bi-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="news-pagination" aria-label="التنقل بين الصفحات">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="newsletter-section">
+                <div class="container">
+                    <div class="newsletter-card">
+                        <div class="newsletter-card__icon">
+                            <i class="bi bi-envelope-paper"></i>
+                        </div>
+                        <div class="newsletter-card__content">
+                            <h3 class="newsletter-card__title">اشترك في نشرتنا البريدية</h3>
+                            <p class="newsletter-card__text">احصل على آخر أخبار الجوائز مباشرة في بريدك الإلكتروني</p>
+                        </div>
+                        <form class="newsletter-card__form">
+                            <div class="newsletter-input-group">
+                                <input type="email" class="form-control" placeholder="بريدك الإلكتروني" required>
+                                <button type="submit" class="btn btn-primary">
+                                    اشترك
+                                    <i class="bi bi-send"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer__brand">
+                        <i class="bi bi-trophy-fill"></i>
+                        <span>جوائز السعودية</span>
+                    </div>
+                    <p class="footer__desc">
+                        دليلك الشامل لاكتشاف الجوائز في المملكة العربية السعودية
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="footer__title">روابط سريعة</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="awards.html">دليل الجوائز</a></li>
+                        <li><a href="news.html">أخبار الجوائز</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="footer__title">تواصل معنا</h3>
+                    <div class="footer__social">
+                        <a href="#" aria-label="تويتر"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="لينكد إن"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="البريد الإلكتروني"><i class="bi bi-envelope-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>© 2024 جوائز السعودية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== ADD AWARD MODAL ==================== -->
+    <div class="modal fade" id="addAwardModal" tabindex="-1" aria-labelledby="addAwardModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="modal-title h4" id="addAwardModalLabel">
+                        <i class="bi bi-plus-circle text-primary me-2"></i>
+                        إضافة جائزة جديدة
+                    </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addAwardForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="awardName" class="form-label">اسم الجائزة <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="awardName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="awardSector" class="form-label">القطاع <span class="text-danger">*</span></label>
+                                <select class="form-select" id="awardSector" required>
+                                    <option value="">اختر القطاع</option>
+                                    <option value="قطاع الثقافة">قطاع الثقافة</option>
+                                    <option value="قطاع التعليم">قطاع التعليم</option>
+                                    <option value="قطاع الصحة">قطاع الصحة</option>
+                                    <option value="قطاع التقنية">قطاع التقنية</option>
+                                    <option value="قطاع الأعمال">قطاع الأعمال</option>
+                                    <option value="أخرى">أخرى</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="awardOwner" class="form-label">الجهة المالكة <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="awardOwner" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="awardScope" class="form-label">نطاق الجائزة <span class="text-danger">*</span></label>
+                                <select class="form-select" id="awardScope" required>
+                                    <option value="">اختر النطاق</option>
+                                    <option value="وطنيّة">وطنيّة</option>
+                                    <option value="عربيّة">عربيّة</option>
+                                    <option value="عالميّة">عالميّة</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="awardWebsite" class="form-label">موقع الجائزة (اختياري)</label>
+                                <input type="url" class="form-control" id="awardWebsite" placeholder="https://example.com">
+                            </div>
+                            <div class="col-12">
+                                <label for="awardDescription" class="form-label">وصف مختصر (اختياري)</label>
+                                <textarea class="form-control" id="awardDescription" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-primary" id="submitAwardBtn">
+                        <i class="bi bi-send me-1"></i>
+                        إرسال
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
