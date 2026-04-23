@@ -77,8 +77,8 @@ const templates: Template[] = [
     previewPath: "saudi-awards/index.html",
     folderPath: "saudi-awards",
     thumbnail: "images/saudi-awards-thumb.jpg",
-    features: ["6 صفحات", "دليل جوائز", "تصميم RTL", "Bootstrap 5"],
-    pages: 6,
+    features: ["7 صفحات", "دليل جوائز", "خدمات استشارية", "تصميم RTL"],
+    pages: 7,
     isNew: true,
   },
 ];
