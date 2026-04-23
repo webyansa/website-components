@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="جوائز السعودية - دليلك الشامل لاكتشاف الجوائز المناسبة لك في المملكة العربية السعودية"
+    />
+    <title>جوائز السعودية | الرئيسية</title>
+
+    <!-- Google Fonts - Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    
+    <!-- Awards Data -->
+    <script src="assets/js/awards-data.js"></script>
+  </head>
+  <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-icon">
+            <i class="bi bi-trophy-fill"></i>
+          </span>
+          <span class="brand-text">جوائز السعودية</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="تبديل القائمة"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">من نحن</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="awards.html">دليل الجوائز</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">أخبار الجوائز</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">اتصل بنا</a>
+            </li>
+          </ul>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAwardModal">
+            <i class="bi bi-plus-lg"></i>
+            إضافة جائزة
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <div class="hero-wrapper">
+      <header class="hero-section">
+        <!-- Floating Shapes -->
+        <div class="hero-shapes">
+          <div class="hero-shape hero-shape--1"></div>
+          <div class="hero-shape hero-shape--2"></div>
+          <div class="hero-shape hero-shape--3"></div>
+        </div>
+
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center hero-section__content">
+            <!-- Badge -->
+            <div class="hero-section__badge">
+              <i class="bi bi-stars"></i>
+              <span>+50 جائزة في انتظارك</span>
+            </div>
+
+            <h1 class="hero-section__title">اكتشف <span>الجوائز</span> المناسبة لك</h1>
+            <p class="hero-section__subtitle">
+              دليلك الشامل لجميع الجوائز في المملكة العربية السعودية. ابحث، استكشف، وتقدم للفرصة الأنسب لطموحاتك.
+            </p>
+
+            <!-- Search Form -->
+            <form class="hero-section__search" action="awards.html" method="get">
+              <div class="search-wrapper">
+                <input
+                  type="search"
+                  class="form-control"
+                  name="q"
+                  placeholder="ابحث عن جائزة، قطاع، أو جهة..."
+                  aria-label="ابحث عن جائزة"
+                />
+                <button class="btn btn-accent" type="submit">
+                  <i class="bi bi-search"></i>
+                  ابحث
+                </button>
+              </div>
+            </form>
+
+            <!-- Actions -->
+            <div class="hero-section__actions">
+              <a
+                href="awards.html"
+                class="btn btn-outline-primary"
+                style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;"
+              >
+                <i class="bi bi-grid-3x3-gap"></i>
+                تصفح الجوائز
+              </a>
+              <button
+                class="btn btn-secondary"
+                style="background: rgba(255,255,255,0.2); color: white; border: none;"
+                data-bs-toggle="modal"
+                data-bs-target="#addAwardModal"
+              >
+                <i class="bi bi-plus-circle"></i>
+                أضف جائزة جديدة
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <main id="main-content">
+      <!-- ==================== STATISTICS SECTION ==================== -->
+      <section class="stats-section">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-6 col-lg-3">
+              <div class="stat-card">
+                <div class="stat-card__icon">
+                  <i class="bi bi-trophy"></i>
+                </div>
+                <div class="stat-card__number">+50</div>
+                <div class="stat-card__label">جائزة مسجلة</div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="stat-card">
+                <div class="stat-card__icon">
+                  <i class="bi bi-grid-3x3"></i>
+                </div>
+                <div class="stat-card__number">12</div>
+                <div class="stat-card__label">قطاع مختلف</div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="stat-card">
+                <div class="stat-card__icon">
+                  <i class="bi bi-building"></i>
+                </div>
+                <div class="stat-card__number">+35</div>
+                <div class="stat-card__label">جهة مانحة</div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="stat-card">
+                <div class="stat-card__icon">
+                  <i class="bi bi-globe2"></i>
+                </div>
+                <div class="stat-card__number">3</div>
+                <div class="stat-card__label">نطاقات تغطية</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SECTORS SECTION ==================== -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-header__eyebrow">
+              <i class="bi bi-grid"></i>
+              القطاعات
+            </span>
+            <h2 class="section-header__title">استعرض حسب <span>القطاع</span></h2>
+            <p class="section-header__subtitle">اكتشف الجوائز المتاحة في مجال تخصصك واهتمامك</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-2">
+              <a href="awards.html?sector=culture" class="sector-card">
+                <div class="sector-card__icon">
+                  <i class="bi bi-palette2"></i>
+                </div>
+                <h3 class="sector-card__title">الثقافة</h3>
+                <span class="sector-card__count">15 جائزة</span>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <a href="awards.html?sector=education" class="sector-card">
+                <div class="sector-card__icon">
+                  <i class="bi bi-mortarboard"></i>
+                </div>
+                <h3 class="sector-card__title">التعليم</h3>
+                <span class="sector-card__count">12 جائزة</span>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <a href="awards.html?sector=tech" class="sector-card">
+                <div class="sector-card__icon">
+                  <i class="bi bi-cpu"></i>
+                </div>
+                <h3 class="sector-card__title">التقنية</h3>
+                <span class="sector-card__count">8 جوائز</span>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <a href="awards.html?sector=health" class="sector-card">
+                <div class="sector-card__icon">
+                  <i class="bi bi-heart-pulse"></i>
+                </div>
+                <h3 class="sector-card__title">الصحة</h3>
+                <span class="sector-card__count">6 جوائز</span>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <a href="awards.html?sector=business" class="sector-card">
+                <div class="sector-card__icon">
+                  <i class="bi bi-briefcase"></i>
+                </div>
+                <h3 class="sector-card__title">الأعمال</h3>
+                <span class="sector-card__count">5 جوائز</span>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+              <a href="awards.html?sector=environment" class="sector-card">
+                <div class="sector-card__icon">
+                  <i class="bi bi-tree"></i>
+                </div>
+                <h3 class="sector-card__title">البيئة</h3>
+                <span class="sector-card__count">4 جوائز</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== FEATURED AWARDS ==================== -->
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-header__eyebrow">
+              <i class="bi bi-award"></i>
+              الجوائز
+            </span>
+            <h2 class="section-header__title">أبرز <span>الجوائز</span></h2>
+            <p class="section-header__subtitle">تعرّف على أبرز الجوائز المتاحة في المملكة العربية السعودية</p>
+          </div>
+
+          <div class="awards-grid" id="featuredAwardsGrid">
+            <!-- Awards will be populated by JavaScript -->
+          </div>
+
+          <div class="text-center mt-5">
+            <a href="awards.html" class="btn btn-primary btn-lg">
+              عرض جميع الجوائز
+              <i class="bi bi-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== NEWS SECTION ==================== -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-header__eyebrow">
+              <i class="bi bi-newspaper"></i>
+              المستجدات
+            </span>
+            <h2 class="section-header__title">آخر <span>الأخبار</span></h2>
+            <p class="section-header__subtitle">تابع أحدث الأخبار والمستجدات في عالم الجوائز</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+              <article class="news-card">
+                <div class="news-card__image">
+                  <img
+                    src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=600&h=340&fit=crop"
+                    alt="افتتاح باب التقديم لجائزة الملك فيصل"
+                    loading="lazy"
+                  />
+                  <span class="news-card__badge">
+                    <i class="bi bi-door-open me-1"></i>
+                    فتح ترشيح
+                  </span>
+                  <span class="news-card__date">
+                    <i class="bi bi-calendar3"></i>
+                    15 ديسمبر 2024
+                  </span>
+                </div>
+                <div class="news-card__content">
+                  <span class="news-card__category">جوائز ثقافية</span>
+                  <h3 class="news-card__title">افتتاح باب التقديم لجائزة الملك فيصل 2025</h3>
+                  <p class="news-card__excerpt">
+                    أعلنت مؤسسة الملك فيصل الخيرية عن فتح باب الترشيح للدورة الجديدة من جائزة الملك فيصل العالمية في
+                    مختلف الفروع...
+                  </p>
+                  <a href="#" class="news-card__link">
+                    اقرأ المزيد
+                    <i class="bi bi-arrow-left"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <article class="news-card">
+                <div class="news-card__image">
+                  <img
+                    src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=340&fit=crop"
+                    alt="إعلان الفائزين بالجوائز الثقافية الوطنية"
+                    loading="lazy"
+                  />
+                  <span class="news-card__badge" style="background: linear-gradient(135deg, #F59E0B, #FBBF24);">
+                    <i class="bi bi-trophy me-1"></i>
+                    نتائج
+                  </span>
+                  <span class="news-card__date">
+                    <i class="bi bi-calendar3"></i>
+                    10 ديسمبر 2024
+                  </span>
+                </div>
+                <div class="news-card__content">
+                  <span class="news-card__category">إعلان نتائج</span>
+                  <h3 class="news-card__title">إعلان الفائزين بالجوائز الثقافية الوطنية</h3>
+                  <p class="news-card__excerpt">
+                    كرّمت وزارة الثقافة الفائزين بجوائز الدورة الرابعة من الجوائز الثقافية الوطنية في حفل بهيج أقيم في
+                    الرياض...
+                  </p>
+                  <a href="#" class="news-card__link">
+                    اقرأ المزيد
+                    <i class="bi bi-arrow-left"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <article class="news-card">
+                <div class="news-card__image">
+                  <img
+                    src="https://images.unsplash.com/photo-1559223607-a43c990c692c?w=600&h=340&fit=crop"
+                    alt="جائزة إرث تستقبل المشاركات"
+                    loading="lazy"
+                  />
+                  <span class="news-card__badge" style="background: linear-gradient(135deg, #8B5CF6, #A78BFA);">
+                    <i class="bi bi-megaphone me-1"></i>
+                    إعلان
+                  </span>
+                  <span class="news-card__date">
+                    <i class="bi bi-calendar3"></i>
+                    5 ديسمبر 2024
+                  </span>
+                </div>
+                <div class="news-card__content">
+                  <span class="news-card__category">مسابقات</span>
+                  <h3 class="news-card__title">جائزة إرث للتصوير تستقبل المشاركات</h3>
+                  <p class="news-card__excerpt">
+                    تواصل جائزة إرث للتصوير استقبال مشاركات المصورين المحترفين والهواة حتى نهاية الشهر الجاري للمنافسة
+                    على جوائز قيمة...
+                  </p>
+                  <a href="#" class="news-card__link">
+                    اقرأ المزيد
+                    <i class="bi bi-arrow-left"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CTA / HELP SECTION ==================== -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-card">
+            <div class="cta-card__content">
+              <div class="cta-card__icon">
+                <i class="bi bi-headset"></i>
+              </div>
+              <div class="cta-card__text">
+                <h2 class="cta-card__title">هل تحتاج مساعدة أو خدمة؟</h2>
+                <p class="cta-card__subtitle">فريقنا جاهز لمساعدتك في الاستشارات وإنشاء الجوائز والتقديم عليها</p>
+              </div>
+            </div>
+            <div class="cta-card__actions">
+              <button class="btn btn-accent btn-lg" data-bs-toggle="modal" data-bs-target="#serviceRequestModal">
+                <i class="bi bi-send-fill"></i>
+                طلب خدمة الآن
+              </button>
+              <a href="contact.html" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-chat-dots"></i>
+                تواصل معنا
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="footer__brand">
+              <div class="footer__brand-icon">
+                <i class="bi bi-trophy-fill"></i>
+              </div>
+              <span class="footer__brand-text">جوائز السعودية</span>
+            </div>
+            <p class="footer__description">
+              دليلك الشامل لاكتشاف الجوائز في المملكة العربية السعودية. نهدف لتسهيل وصولك إلى الفرص المناسبة لتحقيق
+              إنجازاتك وطموحاتك.
+            </p>
+            <div class="footer__social">
+              <a href="#" aria-label="تويتر"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="لينكدإن"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="انستقرام"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="يوتيوب"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4">
+            <h3 class="footer__title">روابط سريعة</h3>
+            <ul class="footer__links">
+              <li>
+                <a href="index.html"><i class="bi bi-chevron-left"></i> الرئيسية</a>
+              </li>
+              <li>
+                <a href="about.html"><i class="bi bi-chevron-left"></i> من نحن</a>
+              </li>
+              <li>
+                <a href="awards.html"><i class="bi bi-chevron-left"></i> دليل الجوائز</a>
+              </li>
+              <li>
+                <a href="contact.html"><i class="bi bi-chevron-left"></i> اتصل بنا</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <h3 class="footer__title">القطاعات</h3>
+            <ul class="footer__links">
+              <li>
+                <a href="awards.html?sector=culture"><i class="bi bi-chevron-left"></i> الثقافة</a>
+              </li>
+              <li>
+                <a href="awards.html?sector=education"><i class="bi bi-chevron-left"></i> التعليم</a>
+              </li>
+              <li>
+                <a href="awards.html?sector=tech"><i class="bi bi-chevron-left"></i> التقنية</a>
+              </li>
+              <li>
+                <a href="awards.html?sector=health"><i class="bi bi-chevron-left"></i> الصحة</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4">
+            <h3 class="footer__title">تواصل معنا</h3>
+            <div class="footer__contact">
+              <div class="footer__contact-item">
+                <i class="bi bi-envelope"></i>
+                <span>info@saudiawards.sa</span>
+              </div>
+              <div class="footer__contact-item">
+                <i class="bi bi-telephone"></i>
+                <span dir="ltr">+966 11 XXX XXXX</span>
+              </div>
+              <div class="footer__contact-item">
+                <i class="bi bi-geo-alt"></i>
+                <span>الرياض، المملكة العربية السعودية</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copyright">© 2024 جوائز السعودية. جميع الحقوق محفوظة.</p>
+          <div class="footer__legal">
+            <a href="#">سياسة الخصوصية</a>
+            <a href="#">الشروط والأحكام</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== AWARD DETAILS MODAL - Professional ==================== -->
+    <div
+      class="modal fade"
+      id="awardDetailsModal"
+      tabindex="-1"
+      aria-labelledby="awardDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content award-modal">
+          <div class="modal-header award-modal__header">
+            <div class="award-modal__header-content">
+              <div class="award-modal__icon" id="awardModalIcon">
+                <i class="bi bi-trophy"></i>
+              </div>
+              <div class="award-modal__header-info">
+                <h2 class="modal-title award-modal__title" id="awardDetailsModalLabel">تفاصيل الجائزة</h2>
+                <div class="award-modal__badges" id="awardModalBadges">
+                  <!-- Badges will be populated by JavaScript -->
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+          <div class="modal-body award-modal__body">
+            <div id="awardDetailsContent">
+              <!-- Content will be populated by JavaScript -->
+            </div>
+          </div>
+          <div class="modal-footer award-modal__footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="bi bi-x-lg"></i>
+              إغلاق
+            </button>
+            <a href="#" class="btn btn-primary d-none" id="visitAwardSite" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-box-arrow-up-left"></i>
+              زيارة موقع الجائزة
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== ADD AWARD MODAL - Professional ==================== -->
+    <div class="modal fade" id="addAwardModal" tabindex="-1" aria-labelledby="addAwardModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content add-modal">
+          <div class="modal-header add-modal__header">
+            <div class="add-modal__header-content">
+              <div class="add-modal__icon">
+                <i class="bi bi-plus-lg"></i>
+              </div>
+              <div>
+                <h2 class="modal-title add-modal__title" id="addAwardModalLabel">إضافة جائزة جديدة</h2>
+                <p class="add-modal__subtitle">ساهم في إثراء دليل الجوائز السعودية</p>
+              </div>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+          <div class="modal-body add-modal__body">
+            <div class="add-modal__intro">
+              <i class="bi bi-info-circle"></i>
+              <span>سيتم مراجعة المعلومات من قبل فريقنا قبل النشر</span>
+            </div>
+            <form id="addAwardForm" class="add-modal__form">
+              <div class="row g-4">
+                <!-- Award Name -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-trophy"></i>
+                      اسم الجائزة
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control form-control-custom"
+                      required
+                      placeholder="مثال: جائزة الملك فيصل"
+                    />
+                  </div>
+                </div>
+
+                <!-- Sector & Scope -->
+                <div class="col-md-6">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-grid"></i>
+                      القطاع
+                      <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select form-control-custom" required>
+                      <option value="">اختر القطاع</option>
+                      <option value="culture">الثقافة</option>
+                      <option value="education">التعليم</option>
+                      <option value="tech">التقنية</option>
+                      <option value="health">الصحة</option>
+                      <option value="business">الأعمال</option>
+                      <option value="environment">البيئة</option>
+                      <option value="other">أخرى</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-globe2"></i>
+                      نطاق الجائزة
+                      <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select form-control-custom" required>
+                      <option value="">اختر النطاق</option>
+                      <option value="national">وطنية</option>
+                      <option value="arab">عربية</option>
+                      <option value="international">عالمية</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Owner -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-building"></i>
+                      الجهة المالكة
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control form-control-custom"
+                      required
+                      placeholder="مثال: وزارة الثقافة"
+                    />
+                  </div>
+                </div>
+
+                <!-- Website -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-link-45deg"></i>
+                      موقع الجائزة
+                    </label>
+                    <input type="url" class="form-control form-control-custom" placeholder="https://example.com" />
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-card-text"></i>
+                      وصف مختصر
+                    </label>
+                    <textarea
+                      class="form-control form-control-custom"
+                      rows="3"
+                      placeholder="أضف وصفًا مختصرًا للجائزة وأهدافها..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer add-modal__footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="bi bi-x-lg"></i>
+              إلغاء
+            </button>
+            <button type="button" class="btn btn-primary" id="submitAwardBtn">
+              <i class="bi bi-send-fill"></i>
+              إرسال الاقتراح
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SERVICE REQUEST MODAL ==================== -->
+    <div
+      class="modal fade"
+      id="serviceRequestModal"
+      tabindex="-1"
+      aria-labelledby="serviceRequestModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content add-modal">
+          <div
+            class="modal-header add-modal__header"
+            style="background: linear-gradient(135deg, #0D9488 0%, #22C55E 100%);"
+          >
+            <div class="add-modal__header-content">
+              <div class="add-modal__icon">
+                <i class="bi bi-headset"></i>
+              </div>
+              <div>
+                <h2 class="modal-title add-modal__title" id="serviceRequestModalLabel">طلب خدمة</h2>
+                <p class="add-modal__subtitle">نحن هنا لمساعدتك في جميع خدماتنا</p>
+              </div>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+          <div class="modal-body add-modal__body">
+            <div class="add-modal__intro">
+              <i class="bi bi-info-circle"></i>
+              <span>سيتم التواصل معك خلال 24 ساعة</span>
+            </div>
+            <form id="serviceRequestForm" class="add-modal__form">
+              <div class="row g-4">
+                <!-- Name -->
+                <div class="col-md-6">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-person"></i>
+                      الاسم
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control form-control-custom"
+                      required
+                      placeholder="أدخل اسمك الكامل"
+                    />
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-6">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-envelope"></i>
+                      البريد الإلكتروني
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      class="form-control form-control-custom"
+                      required
+                      placeholder="example@email.com"
+                    />
+                  </div>
+                </div>
+
+                <!-- Service Type -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-list-check"></i>
+                      نوع الخدمة
+                      <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-select form-control-custom" required>
+                      <option value="">اختر نوع الخدمة</option>
+                      <option value="consultation">استشارة</option>
+                      <option value="create-award">إنشاء جائزة</option>
+                      <option value="apply-help">مساعدة في التقديم على جائزة</option>
+                      <option value="other">أخرى</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Subject -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-chat-left-text"></i>
+                      الموضوع
+                      <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control form-control-custom" required placeholder="موضوع الطلب" />
+                  </div>
+                </div>
+
+                <!-- Message -->
+                <div class="col-12">
+                  <div class="form-floating-custom">
+                    <label class="form-label-custom">
+                      <i class="bi bi-card-text"></i>
+                      تفاصيل الطلب
+                      <span class="text-danger">*</span>
+                    </label>
+                    <textarea
+                      class="form-control form-control-custom"
+                      rows="4"
+                      required
+                      placeholder="اشرح تفاصيل طلبك..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer add-modal__footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="bi bi-x-lg"></i>
+              إلغاء
+            </button>
+            <button type="button" class="btn btn-primary" id="submitServiceBtn">
+              <i class="bi bi-send-fill"></i>
+              إرسال الطلب
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SUCCESS TOAST ==================== -->
+    <div class="toast-container">
+      <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <i class="bi bi-check-circle-fill text-success"></i>
+          <strong class="me-auto">تم الإرسال</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="إغلاق"></button>
+        </div>
+        <div class="toast-body">تم استلام اقتراحك بنجاح. سيتم مراجعته وإضافته إلى الدليل.</div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- Initialize Featured Awards -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const featuredGrid = document.getElementById('featuredAwardsGrid');
+          if (featuredGrid && typeof awardsData !== 'undefined') {
+              // Display first 6 awards
+              const featuredAwards = awardsData.slice(0, 6);
+              featuredGrid.innerHTML = featuredAwards.map(award => createAwardCard(award)).join('');
+          }
+      });
+    </script>
+  </body>
+</html>
