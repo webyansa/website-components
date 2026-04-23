@@ -6314,3 +6314,46 @@ textarea.form-control {
     text-decoration: none;
 }
 .svc-cta-card .btn-light-pro:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.25); color: var(--color-primary-1); }
+
+/* ===== Services Intro: Pillars (replacing stats) ===== */
+.services-intro__pillars { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.services-intro__pillar {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px; background: #fff; border: 1px solid var(--color-border);
+    border-radius: 14px; transition: all 0.3s ease;
+}
+.services-intro__pillar:hover { transform: translateX(4px); border-color: var(--color-primary-2); box-shadow: 0 10px 28px rgba(13,148,136,0.10); }
+.services-intro__pillar-icon {
+    width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(13,148,136,0.12), rgba(34,197,94,0.12));
+    color: var(--color-primary-1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.services-intro__pillar h4 { font-size: 1rem; font-weight: 800; color: var(--color-text-primary); margin: 0 0 4px; }
+.services-intro__pillar p { font-size: 0.88rem; color: var(--color-text-muted); margin: 0; line-height: 1.7; }
+
+/* ===== Services Intro Visual: ensure white legibility ===== */
+.services-intro__visual { color: #fff; }
+.services-intro__icon-stack,
+.services-intro__icon-stack h3,
+.services-intro__icon-stack p,
+.services-intro__icon-stack i { color: #fff !important; }
+.services-intro__icon-stack h3 {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    letter-spacing: -0.3px;
+}
+.services-intro__icon-stack p {
+    color: rgba(255,255,255,0.92) !important;
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 320px;
+}
+
+/* ===== Service card CTA as button ===== */
+button.svc-card__cta {
+    background: transparent; border: none; padding: 0; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--color-primary-1); font-weight: 700; font-size: 0.95rem;
+    transition: gap 0.3s ease, color 0.35s ease;
+}
+button.svc-card__cta:hover { gap: 14px; }
+.svc-card:hover button.svc-card__cta { color: #fff; }
