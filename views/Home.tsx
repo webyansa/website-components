@@ -77,8 +77,8 @@ const templates: Template[] = [
     previewPath: "saudi-awards/index.html",
     folderPath: "saudi-awards",
     thumbnail: "images/saudi-awards-thumb.jpg",
-    features: ["6 صفحات", "دليل جوائز", "تصميم RTL", "Bootstrap 5"],
-    pages: 6,
+    features: ["7 صفحات", "دليل جوائز", "خدمات استشارية", "تصميم RTL"],
+    pages: 7,
     isNew: true,
   },
 ];
@@ -513,7 +513,7 @@ const TemplateCard = ({ template }: { template: Template }) => {
         ];
       } else if (template.id === "saudi-awards") {
         templateFiles = [
-          "index.html", "about.html", "awards.html",
+          "index.html", "about.html", "awards.html", "services.html",
           "news.html", "news-detail.html", "contact.html",
           "assets/css/styles.css",
           "assets/js/app.js", "assets/js/awards-data.js",
