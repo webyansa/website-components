@@ -511,6 +511,13 @@ const TemplateCard = ({ template }: { template: Template }) => {
           "checkout.html",
           "css/webyan.css",
         ];
+      } else if (template.id === "saudi-awards") {
+        templateFiles = [
+          "index.html", "about.html", "awards.html",
+          "news.html", "news-detail.html", "contact.html",
+          "assets/css/styles.css",
+          "assets/js/app.js", "assets/js/awards-data.js",
+        ];
       } else {
         templateFiles = [
           "index.html", "about.html", "projects.html", "services.html",
