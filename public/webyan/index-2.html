@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ويبيان — منصة رقمية متكاملة للكيانات غير الربحية</title>
+  <meta name="description" content="ويبيان منصة رقمية سعودية تُمكّن الجمعيات والكيانات غير الربحية من إنشاء وإدارة حضورها الرقمي باحترافية">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-navy: #263c84;
+      --brand-cyan: #24c2ec;
+      --brand-navy-deep: #1a2a5e;
+      --brand-navy-light: #3a56a8;
+      --brand-cyan-light: #5fd4f2;
+      --brand-cyan-pale: #e8f8fd;
+      --surface-white: #ffffff;
+      --surface-gray: #f5f7fb;
+      --surface-warm: #fafbfe;
+      --text-primary: #1a1f36;
+      --text-secondary: #4a5578;
+      --text-muted: #8892a8;
+      --accent-gold: #e8a838;
+      --border-light: #e2e8f0;
+      --gradient-brand: linear-gradient(135deg, #263c84 0%, #24c2ec 100%);
+      --gradient-cta: linear-gradient(135deg, #24c2ec 0%, #263c84 100%);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-pill: 50px;
+      --shadow-sm: 0 1px 3px rgba(38,60,132,0.06);
+      --shadow-md: 0 4px 16px rgba(38,60,132,0.08);
+      --shadow-lg: 0 12px 40px rgba(38,60,132,0.10);
+      --shadow-xl: 0 20px 60px rgba(38,60,132,0.12);
+      --font-heading: 'IBM Plex Sans Arabic', sans-serif;
+      --font-body: 'Cairo', 'Noto Sans Arabic', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: var(--surface-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; line-height: 1.3; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 18px; border-radius: var(--radius-pill);
+      font-size: 0.8rem; font-weight: 600; font-family: var(--font-body);
+    }
+    .section-padding { padding: 100px 0; }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header .badge-pill {
+      background: var(--brand-cyan-pale); color: var(--brand-navy);
+      border: 1px solid rgba(36,194,236,0.2); margin-bottom: 20px;
+    }
+    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--brand-navy); margin-bottom: 16px; }
+    .section-header p { font-size: 1.05rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto; line-height: 1.8; }
+
+    /* ===== نظام الأزرار الموحد ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 26px; border-radius: var(--radius-pill);
+      font-family: var(--font-heading); font-weight: 600; font-size: 0.9rem;
+      cursor: pointer; border: 2px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #24c2ec 0%, #263c84 100%);
+      color: white; border: none;
+      box-shadow: 0 4px 15px rgba(36,194,236,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(36,194,236,0.35); }
+    .btn-outline {
+      background: transparent; border: 1.5px solid #263c84; color: #263c84;
+    }
+    .btn-outline:hover { background: #263c84; color: white; }
+    .btn-white { background: white; color: var(--brand-navy); font-weight: 700; border: none; }
+    .btn-white:hover { background: var(--brand-cyan-pale); transform: translateY(-2px); }
+    .btn-white-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.5); color: white; }
+    .btn-white-outline:hover { background: rgba(255,255,255,0.15); border-color: white; }
+
+    /* ===== أنيماشن الظهور ===== */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ===== شريط الإعلان ===== */
+    .announcement-bar {
+      background: var(--gradient-brand); color: white; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; font-weight: 500; position: relative; z-index: 100;
+      transition: all 0.35s ease; overflow: hidden;
+    }
+    .announcement-bar.hidden { height: 0; opacity: 0; pointer-events: none; }
+    .announcement-close {
+      position: absolute; left: 20px; background: none; border: none; color: white;
+      font-size: 1.2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+    }
+    .announcement-close:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+
+    /* ===== الهيدر ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 90;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      height: 72px; display: flex; align-items: center; transition: box-shadow 0.3s ease;
+    }
+    .site-header.scrolled { box-shadow: 0 1px 3px rgba(38,60,132,0.08); }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 40px;
+    }
+    .header-logo { display: flex; align-items: center; gap: 12px; }
+    .header-logo svg { height: 36px; width: auto; }
+    .header-nav { display: flex; align-items: center; gap: 32px; }
+    .header-nav a {
+      font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+      position: relative; padding-bottom: 4px; transition: color 0.25s;
+    }
+    .header-nav a::after {
+      content: ''; position: absolute; bottom: -2px; right: 0; width: 0; height: 2px;
+      background: var(--brand-cyan); transition: width 0.3s ease; border-radius: 2px;
+    }
+    .header-nav a:hover, .header-nav a.active { color: var(--brand-navy); }
+    .header-nav a:hover::after, .header-nav a.active::after { width: 100%; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-lang {
+      width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border-light);
+      background: transparent; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; color: var(--text-secondary); transition: all 0.25s;
+    }
+    .btn-lang:hover { border-color: var(--brand-cyan); color: var(--brand-cyan); background: var(--brand-cyan-pale); }
+    .btn-header-cta {
+      padding: 9px 24px; font-size: 0.85rem; border-radius: var(--radius-pill);
+      background: var(--gradient-cta); color: white; border: none;
+      font-family: var(--font-heading); font-weight: 600; cursor: pointer;
+      transition: all 0.3s; box-shadow: 0 4px 12px rgba(36,194,236,0.2);
+    }
+    .btn-header-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(36,194,236,0.3); }
+    .mobile-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 40px; height: 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--brand-navy); border-radius: 2px; transition: all 0.3s; }
+    .mobile-drawer {
+      position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+      background: white; z-index: 200; box-shadow: -8px 0 30px rgba(0,0,0,0.12);
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 24px;
+    }
+    .mobile-drawer.open { right: 0; }
+    .mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light); }
+    .drawer-close { width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--surface-gray); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text-secondary); }
+    .drawer-nav { display: flex; flex-direction: column; gap: 4px; }
+    .drawer-nav a { padding: 14px 16px; border-radius: var(--radius-sm); font-size: 0.95rem; font-weight: 500; color: var(--text-primary); transition: background 0.2s; }
+    .drawer-nav a:hover { background: var(--surface-gray); }
+    .drawer-cta { margin-top: auto; padding: 14px; text-align: center; background: var(--gradient-cta); color: white; border-radius: var(--radius-md); font-weight: 600; font-family: var(--font-heading); }
+
+    /* ===== الهيرو ===== */
+    .hero { position: relative; padding: 100px 0 80px; overflow: hidden; background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 60%); }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, var(--brand-navy) 0.8px, transparent 0.8px); background-size: 28px 28px; opacity: 0.025; }
+    .hero-deco-1 { position: absolute; top: 8%; left: 5%; width: 180px; height: 180px; border-radius: 32px; border: 1.5px solid rgba(36,194,236,0.08); transform: rotate(15deg); }
+    .hero-deco-2 { position: absolute; bottom: 12%; right: 8%; width: 120px; height: 120px; border-radius: 24px; background: rgba(36,194,236,0.04); transform: rotate(-20deg); }
+    .hero-deco-3 { position: absolute; top: 20%; right: 50%; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(36,194,236,0.06) 0%, transparent 70%); }
+    .hero-inner { display: flex; align-items: center; gap: 60px; position: relative; z-index: 2; }
+    .hero-text { flex: 0 0 55%; max-width: 55%; }
+    .hero-visual { flex: 1; position: relative; min-height: 480px; }
+    .hero-badge { background: var(--brand-cyan-pale); border: 1px solid rgba(36,194,236,0.25); color: var(--brand-navy); margin-bottom: 24px; }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--brand-cyan); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+    .hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--brand-navy); margin-bottom: 24px; line-height: 1.25; }
+    .hero h1 .accent { color: var(--brand-cyan); }
+    .hero-desc { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.9; max-width: 540px; margin-bottom: 28px; }
+    .hero-checks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .hero-check { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-gray); padding: 8px 18px; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 500; color: var(--text-primary); }
+    .hero-check svg { width: 16px; height: 16px; color: var(--brand-cyan); }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .hero-trust { display: flex; align-items: center; gap: 12px; }
+    .hero-avatars { display: flex; }
+    .hero-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; border: 2.5px solid white; margin-left: -10px; }
+    .hero-avatar:first-child { margin-left: 0; }
+    .hero-trust-text { font-size: 0.82rem; color: var(--text-muted); }
+    .hero-trust-text .star { color: var(--accent-gold); }
+
+    /* ===== Dashboard Carousel ===== */
+    .dashboard-carousel { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 460px; }
+    .carousel-viewport { position: relative; overflow: hidden; border-radius: var(--radius-xl); box-shadow: 0 25px 80px rgba(38,60,132,0.15); background: white; }
+    .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .carousel-slide { min-width: 100%; }
+    .dash-topbar { background: var(--gradient-brand); height: 40px; display: flex; align-items: center; padding: 0 16px; gap: 8px; }
+    .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); }
+    .dash-topbar-title { color: white; font-size: 0.72rem; font-weight: 500; margin-right: auto; opacity: 0.9; }
+    .dash-topbar-icon { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+    .dash-body { padding: 16px; }
+
+    /* شاشة إدارة المحتوى */
+    .cms-layout { display: flex; gap: 12px; }
+    .cms-sidebar { width: 100px; flex-shrink: 0; }
+    .cms-sidebar-item { padding: 7px 10px; font-size: 0.65rem; color: var(--text-secondary); border-radius: 6px; margin-bottom: 4px; cursor: default; transition: background 0.2s; display: flex; align-items: center; gap: 6px; }
+    .cms-sidebar-item.active { background: var(--brand-cyan-pale); color: var(--brand-navy); font-weight: 600; }
+    .cms-sidebar-icon { width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
+    .cms-main { flex: 1; }
+    .cms-stats-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+    .cms-stat-chip { flex: 1; background: var(--surface-gray); border-radius: 6px; padding: 6px 8px; text-align: center; font-size: 0.6rem; color: var(--text-muted); }
+    .cms-stat-chip strong { display: block; font-size: 0.8rem; color: var(--brand-navy); font-weight: 700; }
+    .cms-card-item { display: flex; gap: 10px; padding: 10px; border: 1px solid var(--border-light); border-radius: 8px; margin-bottom: 8px; }
+    .cms-card-thumb { width: 50px; height: 40px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+    .cms-card-info { flex: 1; }
+    .cms-card-title { font-size: 0.7rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+    .cms-card-meta { font-size: 0.58rem; color: var(--text-muted); }
+
+    /* شاشة التبرعات */
+    .donate-stats { display: flex; gap: 8px; margin-bottom: 12px; }
+    .donate-stat { flex: 1; background: var(--surface-gray); border-radius: 8px; padding: 8px; text-align: center; }
+    .donate-stat-num { font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); font-family: var(--font-heading); }
+    .donate-stat-label { font-size: 0.58rem; color: var(--text-muted); }
+    .donate-opportunity { border: 1px solid var(--border-light); border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+    .donate-opp-title { font-size: 0.75rem; font-weight: 600; color: var(--brand-navy); margin-bottom: 6px; }
+    .donate-opp-amount { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 8px; }
+    .donate-progress { height: 6px; background: var(--surface-gray); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+    .donate-progress-fill { height: 100%; background: var(--gradient-brand); border-radius: 3px; }
+    .donate-btn-sm { padding: 6px 14px; background: var(--gradient-cta); color: white; border: none; border-radius: 6px; font-size: 0.65rem; font-weight: 600; font-family: var(--font-heading); cursor: pointer; }
+    .donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .donate-mini { background: var(--surface-gray); border-radius: 8px; padding: 10px; text-align: center; }
+    .donate-mini-icon { font-size: 1.1rem; margin-bottom: 4px; }
+    .donate-mini-name { font-size: 0.6rem; font-weight: 600; color: var(--text-primary); }
+    .donate-mini-amt { font-size: 0.55rem; color: var(--text-muted); }
+
+    /* شاشة المتجر */
+    .store-stats { display: flex; gap: 8px; margin-bottom: 12px; }
+    .store-stat { flex: 1; background: var(--surface-gray); border-radius: 8px; padding: 8px; text-align: center; }
+    .store-stat-num { font-size: 0.85rem; font-weight: 700; color: var(--brand-navy); font-family: var(--font-heading); }
+    .store-stat-label { font-size: 0.58rem; color: var(--text-muted); }
+    .store-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .store-product { border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; }
+    .store-product-img { height: 60px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; position: relative; }
+    .store-product-badge { position: absolute; top: 4px; right: 4px; background: var(--brand-cyan); color: white; font-size: 0.5rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+    .store-product-body { padding: 8px; }
+    .store-product-name { font-size: 0.6rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .store-product-price { font-size: 0.7rem; font-weight: 700; color: var(--brand-cyan); }
+
+    /* Carousel dots */
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+    .carousel-dot-btn { width: 10px; height: 10px; border-radius: 50%; border: none; cursor: pointer; transition: all 0.3s; background: rgba(38,60,132,0.15); }
+    .carousel-dot-btn.active { background: var(--brand-cyan); transform: scale(1.2); }
+
+    /* Floating badges */
+    .dash-float-trust {
+      position: absolute; top: -10px; right: -30px; background: white; border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg); padding: 10px 16px; z-index: 4;
+      display: flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 600; color: var(--text-primary);
+      animation: float-up 3.5s ease-in-out infinite;
+    }
+    .dash-float-trust .star-icon { color: var(--accent-gold); font-size: 1rem; }
+    .dash-float-compliance {
+      position: absolute; bottom: 20px; left: -40px; background: white; border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg); padding: 14px 18px; z-index: 4;
+      animation: float-down 4s ease-in-out infinite;
+    }
+    .compliance-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .compliance-circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: conic-gradient(var(--brand-cyan) 0% 99%, var(--surface-gray) 99% 100%);
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .compliance-circle::after { content: ''; width: 34px; height: 34px; background: white; border-radius: 50%; position: absolute; }
+    .compliance-circle span { position: relative; z-index: 2; font-size: 0.65rem; font-weight: 700; color: var(--brand-navy); }
+    .compliance-label { font-size: 0.78rem; font-weight: 600; color: var(--text-primary); }
+    .compliance-sub { font-size: 0.65rem; color: var(--text-muted); }
+    @keyframes float-up { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes float-down { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+
+    /* ===== شريط الثقة ===== */
+    .trust-bar { padding: 56px 0; border-top: 1px solid var(--border-light); background: white; overflow: hidden; }
+    .trust-bar .section-header { margin-bottom: 36px; }
+    .trust-bar .section-header h2 { font-size: 1.3rem; }
+    .trust-bar .section-header p { font-size: 0.9rem; }
+    .marquee-wrap { position: relative; mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); overflow: hidden; }
+    .marquee-track { display: flex; gap: 16px; animation: marquee 40s linear infinite; width: max-content; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(50%); } }
+    .marquee-chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 24px; border-radius: var(--radius-pill); border: 1px solid var(--border-light); background: white; white-space: nowrap; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); flex-shrink: 0; }
+    .marquee-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ===== ماذا نقدم — 3 أعمدة ===== */
+    .offerings { background: var(--surface-gray); }
+    .offering-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .offering-card {
+      background: white; border-radius: var(--radius-xl);
+      border: 1px solid rgba(38,60,132,0.06); padding: 36px 28px;
+      transition: all 0.35s ease; display: flex; flex-direction: column;
+    }
+    .offering-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .offering-icon {
+      width: 64px; height: 64px; border-radius: 18px;
+      background: var(--gradient-brand); display: flex; align-items: center;
+      justify-content: center; font-size: 1.6rem; margin-bottom: 20px; color: white;
+    }
+    .offering-card h3 { font-size: 1.25rem; color: var(--brand-navy); margin-bottom: 12px; }
+    .offering-card > p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+    .offering-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .offering-tag { background: var(--brand-cyan-pale); color: var(--brand-navy); padding: 4px 12px; border-radius: var(--radius-pill); font-size: 0.72rem; font-weight: 500; }
+    .offering-mini-visual { margin-top: auto; }
+
+    /* Mini mockups inside offering cards */
+    .mini-mockup { background: var(--surface-gray); border-radius: var(--radius-lg); padding: 12px; border: 1px solid var(--border-light); }
+    .mini-site-header { background: var(--brand-navy); border-radius: var(--radius-sm); height: 24px; margin-bottom: 8px; display: flex; align-items: center; padding: 0 10px; }
+    .mini-logo-shape { width: 12px; height: 12px; background: var(--brand-cyan); border-radius: 3px; margin-left: 6px; }
+    .mini-nav-lines { display: flex; gap: 5px; margin-right: auto; }
+    .mini-nav-line { width: 16px; height: 2.5px; background: rgba(255,255,255,0.3); border-radius: 2px; }
+    .mini-hero-block { background: linear-gradient(135deg, rgba(38,60,132,0.08), rgba(36,194,236,0.08)); border-radius: var(--radius-sm); height: 60px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; }
+    .mini-hero-text .line1 { width: 80px; height: 5px; background: var(--brand-navy); opacity: 0.2; border-radius: 3px; margin: 0 auto 4px; }
+    .mini-hero-text .line2 { width: 50px; height: 3px; background: var(--brand-cyan); opacity: 0.3; border-radius: 2px; margin: 0 auto; }
+    .mini-cards-row { display: flex; gap: 6px; }
+    .mini-card-block { flex: 1; background: white; border-radius: 5px; height: 36px; border: 1px solid var(--border-light); }
+
+    .mini-donate-card { background: white; border-radius: var(--radius-md); padding: 14px; border: 1px solid var(--border-light); }
+    .mini-donate-title { font-size: 0.78rem; font-weight: 600; color: var(--brand-navy); margin-bottom: 6px; }
+    .mini-donate-amount { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; }
+    .mini-progress-bar { height: 5px; background: var(--surface-gray); border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+    .mini-progress-fill { height: 100%; background: var(--gradient-brand); border-radius: 3px; }
+    .mini-donate-btn { width: 100%; padding: 7px; background: var(--gradient-cta); color: white; border: none; border-radius: var(--radius-sm); font-size: 0.7rem; font-weight: 600; font-family: var(--font-heading); }
+
+    .mini-product-card { background: white; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-light); }
+    .mini-product-img { height: 70px; background: linear-gradient(135deg, var(--brand-cyan-pale), var(--surface-gray)); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+    .mini-product-body { padding: 10px; }
+    .mini-product-name { font-size: 0.75rem; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+    .mini-product-price { font-size: 0.8rem; font-weight: 700; color: var(--brand-cyan); margin-bottom: 8px; }
+    .mini-product-btn { width: 100%; padding: 7px; background: var(--brand-navy); color: white; border: none; border-radius: var(--radius-sm); font-size: 0.7rem; font-weight: 600; font-family: var(--font-heading); }
+
+    /* ===== الأنظمة التشغيلية ===== */
+    .systems { background: white; }
+    .systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .system-card { background: white; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 32px; transition: all 0.3s ease; }
+    .system-card:hover { border-color: var(--brand-cyan); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .system-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); background: var(--brand-cyan-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .system-icon svg { width: 24px; height: 24px; color: var(--brand-cyan); }
+    .system-card h3 { font-size: 1.05rem; color: var(--text-primary); margin-bottom: 10px; font-weight: 600; }
+    .system-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ===== لماذا ويبيان ===== */
+    .why-webyan { background: var(--surface-gray); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .why-card { background: white; border-radius: var(--radius-lg); padding: 28px 24px; border: 1px solid transparent; transition: all 0.3s ease; }
+    .why-card:hover { border-color: rgba(36,194,236,0.2); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .why-card-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .why-card h3 { font-size: 0.95rem; color: var(--brand-navy); margin-bottom: 8px; font-weight: 600; }
+    .why-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ===== الخطوات — 4 خطوات ===== */
+    .how-it-works { background: white; }
+    .steps-timeline { display: flex; align-items: flex-start; justify-content: center; gap: 0; position: relative; max-width: 1000px; margin: 0 auto; direction: rtl; }
+    .step-item { flex: 1; text-align: center; position: relative; padding: 0 20px; }
+    .step-icon { font-size: 1.3rem; margin-bottom: 10px; display: block; }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--gradient-brand); color: white;
+      font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; position: relative; z-index: 2;
+      box-shadow: 0 6px 20px rgba(38,60,132,0.2);
+    }
+    .step-connector {
+      position: absolute; top: calc(1.3rem + 10px + 26px); left: 100%; width: 100%; height: 3px;
+      background: var(--border-light); z-index: 1;
+    }
+    .step-connector-fill { height: 100%; background: linear-gradient(90deg, var(--brand-cyan), var(--brand-navy)); border-radius: 2px; }
+    .step-item:first-child .step-connector { display: none; }
+    .step-item h3 { font-size: 0.92rem; color: var(--text-primary); margin-bottom: 8px; font-weight: 600; }
+    .step-item p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.7; }
+    .step-badge { display: inline-block; background: var(--brand-cyan-pale); color: var(--brand-navy); font-size: 0.65rem; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-pill); margin-top: 8px; }
+
+    /* ===== الأسعار ===== */
+    .pricing { background: var(--surface-gray); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-card { background: white; border-radius: var(--radius-xl); padding: 36px 28px; border: 1px solid var(--border-light); position: relative; transition: all 0.3s; }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pricing-card.popular { border-color: var(--brand-cyan); transform: scale(1.03); box-shadow: var(--shadow-lg); }
+    .pricing-card.popular:hover { transform: scale(1.03) translateY(-4px); }
+    .pricing-popular-badge { position: absolute; top: -14px; right: 24px; background: var(--gradient-cta); color: white; font-size: 0.75rem; font-weight: 600; padding: 5px 16px; border-radius: var(--radius-pill); }
+    .pricing-plan { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px; }
+    .pricing-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; }
+    .pricing-price { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: var(--brand-navy); }
+    .pricing-price span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+    .pricing-period { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 24px; }
+    .pricing-features { list-style: none; margin-bottom: 28px; }
+    .pricing-features li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.88rem; color: var(--text-secondary); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .pricing-features li svg { width: 18px; height: 18px; color: var(--brand-cyan); flex-shrink: 0; }
+    .pricing-note { text-align: center; margin-top: 48px; padding: 32px; background: white; border-radius: var(--radius-xl); border: 1px solid var(--border-light); }
+    .pricing-note p { color: var(--text-secondary); margin-bottom: 16px; }
+
+    /* ===== شهادات العملاء ===== */
+    .testimonials { background: #263c84; color: white; }
+    .testimonials .section-header h2 { color: white; }
+    .testimonials .section-header p { color: rgba(255,255,255,0.7); }
+    .testimonials .section-header .badge-pill { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.15); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-xl); padding: 32px; }
+    .testimonial-stars { color: var(--accent-gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 24px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .testimonial-name { font-weight: 600; font-size: 0.88rem; }
+    .testimonial-role { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+    /* ===== الأرقام — خلفية داكنة ===== */
+    .stats-section {
+      background: linear-gradient(135deg, #263c84 0%, #1a2a5e 50%, #263c84 100%);
+      position: relative; overflow: hidden;
+    }
+    .stats-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 24px 24px; opacity: 0.5;
+    }
+    .stats-section .section-header h2 { color: white; }
+    .stats-section .section-header .badge-pill { background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.15); }
+    .stats-row {
+      display: flex; justify-content: center; align-items: center; gap: 0;
+      position: relative; z-index: 2;
+    }
+    .stat-item {
+      flex: 1; text-align: center; padding: 20px 24px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item:last-child { border-left: none; }
+    .stat-number {
+      font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700; color: white; margin-bottom: 10px;
+    }
+    .stat-deco { width: 50px; height: 3px; background: #24c2ec; box-shadow: 0 0 10px rgba(36,194,236,0.5); border-radius: 2px; margin: 0 auto 12px; }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+
+    /* ===== الأسئلة الشائعة ===== */
+    .faq { background: white; }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border-light); }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 22px 0; font-size: 1rem; font-weight: 600; color: var(--text-primary);
+      font-family: var(--font-heading); text-align: right;
+    }
+    .faq-chevron { width: 20px; height: 20px; color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--brand-cyan); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer-inner { padding: 0 0 22px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+
+    /* ===== CTA النهائي ===== */
+    .final-cta { background: linear-gradient(135deg, #263c84 0%, #24c2ec 100%); padding: 100px 0; text-align: center; }
+    .final-cta h2 { color: white; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px; }
+    .final-cta p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== التذييل ===== */
+    .site-footer { background: #1a2a5e; color: rgba(255,255,255,0.8); padding: 64px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; margin-top: 16px; color: rgba(255,255,255,0.6); }
+    .footer-brand svg { height: 30px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: rgba(255,255,255,0.6); transition: all 0.25s; }
+    .footer-social a:hover { border-color: var(--brand-cyan); color: var(--brand-cyan); background: rgba(36,194,236,0.1); }
+    .footer-col h4 { color: white; font-size: 0.95rem; margin-bottom: 18px; font-weight: 600; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--brand-cyan); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ===== زر المعاينة ===== */
+    .preview-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 80;
+      background: var(--gradient-cta); color: white; border: none;
+      border-radius: var(--radius-pill); padding: 12px 24px;
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; box-shadow: 0 8px 25px rgba(36,194,236,0.4);
+      transition: all 0.3s;
+    }
+    .preview-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(36,194,236,0.5); }
+    .preview-fab svg { width: 18px; height: 18px; }
+
+    /* ===== استجابة ===== */
+    @media (max-width: 1280px) { .header-inner { padding: 0 24px; } .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 1024px) {
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-text { flex: none; max-width: 100%; }
+      .hero-visual { width: 100%; min-height: 380px; margin-top: 40px; }
+      .hero-desc { margin: 0 auto 28px; }
+      .hero-checks { justify-content: center; }
+      .hero-btns { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .offering-grid { grid-template-columns: repeat(2, 1fr); }
+      .systems-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .pricing-card.popular { transform: none; }
+      .pricing-card.popular:hover { transform: translateY(-4px); }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .dashboard-carousel { position: relative; top: auto; left: auto; transform: none; width: 100%; max-width: 440px; margin: 0 auto; }
+      .steps-timeline { flex-wrap: wrap; gap: 32px; }
+      .step-connector { display: none !important; }
+    }
+    @media (max-width: 768px) {
+      .section-padding { padding: 80px 0; }
+      .header-nav, .header-actions { display: none; }
+      .mobile-toggle { display: flex; }
+      .hero { padding: 60px 0; }
+      .hero h1 { font-size: 2rem; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .offering-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: 1fr; }
+      .steps-timeline { flex-direction: column; gap: 32px; }
+      .stats-row { flex-wrap: wrap; gap: 0; }
+      .stat-item { flex: 0 0 50%; border-left: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 24px 16px; }
+      .stat-item:nth-child(odd) { border-left: 1px solid rgba(255,255,255,0.08); }
+      .final-cta-btns { flex-direction: column; align-items: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .dash-float-trust { right: -10px; }
+      .dash-float-compliance { left: -10px; }
+      .store-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .container, .container-wide { padding: 0 16px; }
+      .hero h1 { font-size: 1.75rem; }
+      .dashboard-carousel { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== شريط الإعلان العلوي ===== -->
+  <div class="announcement-bar" id="announcementBar">
+    <span>شفافية وحوكمة تقود خطاكم نحو غدٍ مستدام — خصم 20% للجمعيات الناشئة ✨</span>
+    <button class="announcement-close" onclick="document.getElementById('announcementBar').classList.add('hidden')" aria-label="إغلاق">×</button>
+  </div>
+
+  <!-- ===== الهيدر الثابت ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="header-logo">
+        <svg viewBox="0 0 423.05 138.69" xmlns="http://www.w3.org/2000/svg" height="36"><g><path fill="#263c84" d="M44.8,118.2h-16.56v-26.55h-5.68v26.55h-7.7c-5.07,0-9.19-4.11-9.19-9.19v-17.36H0v16.93c0,8.19,6.64,14.82,14.82,14.82h35.65v-31.76h-5.67v26.55Z"/><path fill="#263c84" d="M244.18,91.65h-23.54v31.76h5.67v-26.55h17.88c5.07,0,9.19,4.11,9.19,9.19v17.36h5.63v-16.93c0-8.19-6.64-14.82-14.82-14.82Z"/><path fill="#263c84" d="M79.29,91.65h-23.14v18.49c0,7.32,5.94,13.26,13.26,13.26h16.61v-5.28h-16.61c-3.61,0-6.67-2.42-7.64-5.73h29.82v-8.42c0-6.79-5.51-12.3-12.3-12.3ZM86.01,106.66h-24.28v-9.43h17.55c3.72,0,6.74,3.02,6.74,6.73v2.7Z"/><path fill="#263c84" d="M102.9,102.68v-11.02h-5.62v31.75h23.14c6.79,0,12.3-5.51,12.3-12.3v-8.42h-29.82ZM120.41,117.83h-17.55v-9.43h24.28v2.7c0,3.72-3.01,6.73-6.73,6.73Z"/><path fill="#263c84" d="M168.26,91.65v15.02h-19.22c-2.79,0-5.06-2.26-5.06-5.06v-9.97h-5.58v10.45c0,5.65,4.62,10.28,10.28,10.28h19.55c-.97,3.31-4.02,5.73-7.64,5.73h-16.61v5.28h16.61c7.32,0,13.26-5.94,13.26-13.26v-18.5h-5.57Z"/><path fill="#263c84" d="M201.7,91.65h-16.61v5.28h16.62c3.61,0,6.67,2.42,7.64,5.73h-29.82v8.42c0,6.79,5.51,12.3,12.3,12.3h23.14v-18.49c0-7.32-5.94-13.26-13.26-13.26ZM209.38,117.82h-17.55c-3.72,0-6.73-3.02-6.73-6.73v-2.7h24.28v9.43Z"/><path fill="#263c84" d="M19.61,56.01h26.31V23.51h-8.74v23.76h-17.58c-5.99,0-10.87-4.88-10.87-10.87v-12.9H0v12.9C0,47.22,8.8,56.01,19.61,56.01Z"/><path fill="#263c84" d="M129.51,48.72c3.6,4.44,9.09,7.29,15.24,7.29s11.64-2.85,15.24-7.29c3.6,4.44,9.09,7.29,15.24,7.29h19.61V23.51h-8.74v23.76h-10.87c-5.99,0-10.87-4.88-10.87-10.87v-12.9h-8.74v12.9c0,5.99-4.88,10.87-10.87,10.87s-10.87-4.88-10.87-10.87v-12.9h-8.74v12.9c0,5.99-4.87,10.87-10.87,10.87h-53.89V12.38h-8.74v43.64h62.63c6.15,0,11.64-2.85,15.24-7.29Z"/><path fill="#263c84" d="M191.49,73.11c2.17-2.17,2.17-5.7,0-7.87s-5.7-2.17-7.87,0-2.17,5.7,0,7.87c2.17,2.17,5.7,2.17,7.87,0Z"/><path fill="#263c84" d="M180.25,73.11c2.17-2.17,2.17-5.7,0-7.87s-5.7-2.17-7.87,0-2.17,5.7,0,7.87c2.17,2.17,5.7,2.17,7.87,0Z"/><path fill="#263c84" d="M122.15,73.11c2.17-2.17,2.17-5.7,0-7.87s-5.7-2.17-7.87,0-2.17,5.7,0,7.87c2.17,2.17,5.7,2.17,7.87,0Z"/><path fill="#263c84" d="M110.91,73.11c2.17-2.17,2.17-5.7,0-7.87s-5.7-2.17-7.87,0-2.17,5.7,0,7.87c2.17,2.17,5.7,2.17,7.87,0Z"/><path fill="#263c84" d="M148.68,73.11c2.17-2.17,2.17-5.7,0-7.87s-5.7-2.17-7.87,0-2.17,5.7,0,7.87c2.17,2.17,5.7,2.17,7.87,0Z"/><circle fill="#263c84" cx="22.96" cy="17.94" r="5.57"/><path fill="#263c84" d="M249.7,55.98s.01,0,.01.02c-1.59,5.45-6.63,9.44-12.58,9.44h-27.38v8.71h27.37c12.07,0,21.85-9.78,21.85-21.85v-28.79h-38.13c-11.19,0-20.26,9.07-20.26,20.26v12.19h49.13ZM209.75,43.8c0-6.13,4.97-11.1,11.1-11.1h28.92v13.86h-40v-2.78Z"/></g><g><path fill="#24c2ec" d="M390.77,0h-74.13c-17.83,0-32.28,14.45-32.28,32.28v74.13c0,17.83,14.45,32.28,32.28,32.28h74.13c17.83,0,32.28-14.45,32.28-32.28V32.28c0-17.83-14.45-32.28-32.28-32.28ZM396.57,83.72h-18.99v.05c0,20.95-16.98,37.93-37.93,37.93l-.05-18.99c10.49,0,18.99-8.5,18.99-18.99h0s18.99,0,18.99,0v-18.99h-18.99v18.99h-47.74v-19.11c0-26.3,21.32-47.62,47.62-47.62h19.11v47.74h18.99v18.99Z"/><path fill="#24c2ec" d="M358.55,35.98c-15.86,0-28.72,12.86-28.72,28.72v.03h28.75v-28.75h-.03Z"/></g></svg>
+      </a>
+      <nav class="header-nav">
+        <a href="#" class="active">الرئيسية</a>
+        <a href="#offerings">ماذا نقدم</a>
+        <a href="#pricing">باقات الأسعار</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#contact">اتصل بنا</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-lang" aria-label="تبديل اللغة">🌐</button>
+        <button class="btn-header-cta" onclick="window.location.href='/webyan/checkout.html'">ابدأ الآن</button>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== قائمة الجوال ===== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <svg viewBox="0 0 423.05 138.69" xmlns="http://www.w3.org/2000/svg" height="28"><g><path fill="#263c84" d="M44.8,118.2h-16.56v-26.55h-5.68v26.55h-7.7c-5.07,0-9.19-4.11-9.19-9.19v-17.36H0v16.93c0,8.19,6.64,14.82,14.82,14.82h35.65v-31.76h-5.67v26.55Z"/><path fill="#263c84" d="M244.18,91.65h-23.54v31.76h5.67v-26.55h17.88c5.07,0,9.19,4.11,9.19,9.19v17.36h5.63v-16.93c0-8.19-6.64-14.82-14.82-14.82Z"/><circle fill="#263c84" cx="22.96" cy="17.94" r="5.57"/></g><g><path fill="#24c2ec" d="M390.77,0h-74.13c-17.83,0-32.28,14.45-32.28,32.28v74.13c0,17.83,14.45,32.28,32.28,32.28h74.13c17.83,0,32.28-14.45,32.28-32.28V32.28c0-17.83-14.45-32.28-32.28-32.28ZM396.57,83.72h-18.99v.05c0,20.95-16.98,37.93-37.93,37.93l-.05-18.99c10.49,0,18.99-8.5,18.99-18.99h0s18.99,0,18.99,0v-18.99h-18.99v18.99h-47.74v-19.11c0-26.3,21.32-47.62,47.62-47.62h19.11v47.74h18.99v18.99Z"/></g></svg>
+      <button class="drawer-close" id="drawerClose">×</button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#">الرئيسية</a><a href="#offerings">ماذا نقدم</a><a href="#pricing">باقات الأسعار</a><a href="#faq">الأسئلة الشائعة</a><a href="#contact">اتصل بنا</a>
+    </nav>
+    <a href="/webyan/checkout.html" class="drawer-cta">ابدأ الآن</a>
+  </div>
+
+  <main>
+    <!-- ===== قسم الهيرو ===== -->
+    <section class="hero">
+      <div class="hero-deco-1"></div><div class="hero-deco-2"></div><div class="hero-deco-3"></div>
+      <div class="container-wide">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="badge-pill hero-badge reveal"><span class="dot"></span><span>🔹 منصة رقمية للقطاع غير الربحي</span></div>
+            <h1 class="reveal reveal-delay-1">منصة رقمية <span class="accent">متكاملة</span><br>للكيانات غير الربحية</h1>
+            <p class="hero-desc reveal reveal-delay-2">ويبيان منصة رقمية سعودية تُمكّن الجمعيات والكيانات غير الربحية من إنشاء وإدارة حضورها الرقمي وخدماتها الإلكترونية باحترافية — من الموقع المؤسسي وبوابة التبرعات والمتجر الإلكتروني إلى إدارة المحتوى والبرامج. كل ذلك من منصة واحدة سهلة الإدارة.</p>
+            <div class="hero-checks reveal reveal-delay-3">
+              <span class="hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>موقع إلكتروني مع لوحة تحكم احترافية</span>
+              <span class="hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>استضافة آمنة وسريعة على السحابة</span>
+              <span class="hero-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>امتثال لمتطلبات الحوكمة والشفافية</span>
+            </div>
+            <div class="hero-btns reveal reveal-delay-4">
+              <a href="/webyan/checkout.html" class="btn btn-primary">ابدأ الآن</a>
+              <a href="#" class="btn btn-outline">▶ اطلب عرضًا توضيحيًا</a>
+            </div>
+            <div class="hero-trust reveal reveal-delay-5">
+              <div class="hero-avatars">
+                <div class="hero-avatar" style="background:var(--brand-navy)">ع</div>
+                <div class="hero-avatar" style="background:var(--brand-cyan)">م</div>
+                <div class="hero-avatar" style="background:var(--brand-navy-light)">ف</div>
+              </div>
+              <span class="hero-trust-text"><span class="star">★</span> يثق بنا أكثر من 100 كيان سعودي</span>
+            </div>
+          </div>
+
+          <!-- ===== Dashboard Carousel — 3 شاشات متبدلة ===== -->
+          <div class="hero-visual reveal reveal-delay-3">
+            <div class="dashboard-carousel" id="dashCarousel">
+              <div class="dash-float-trust"><span class="star-icon">★</span><span>4.9 موثوق من المستخدمين</span></div>
+
+              <div class="carousel-viewport">
+                <div class="carousel-track" id="carouselTrack">
+
+                  <!-- الشاشة 1: إدارة المحتوى -->
+                  <div class="carousel-slide">
+                    <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">إدارة المحتوى</span><span class="dash-topbar-icon">☰</span></div>
+                    <div class="dash-body">
+                      <div class="cms-stats-bar">
+                        <div class="cms-stat-chip"><strong>12</strong>صفحة</div>
+                        <div class="cms-stat-chip"><strong>8</strong>مقالات</div>
+                        <div class="cms-stat-chip"><strong>5</strong>أخبار</div>
+                      </div>
+                      <div class="cms-layout">
+                        <div class="cms-sidebar">
+                          <div class="cms-sidebar-item active"><span class="cms-sidebar-icon">📄</span>الصفحات</div>
+                          <div class="cms-sidebar-item"><span class="cms-sidebar-icon">✏️</span>المقالات</div>
+                          <div class="cms-sidebar-item"><span class="cms-sidebar-icon">📰</span>الأخبار</div>
+                          <div class="cms-sidebar-item"><span class="cms-sidebar-icon">🖼️</span>الصور</div>
+                        </div>
+                        <div class="cms-main">
+                          <div class="cms-card-item">
+                            <div class="cms-card-thumb">📄</div>
+                            <div class="cms-card-info"><div class="cms-card-title">تقرير الأثر السنوي 2025</div><div class="cms-card-meta">مقال • منشور • 12 يناير</div></div>
+                          </div>
+                          <div class="cms-card-item">
+                            <div class="cms-card-thumb">📰</div>
+                            <div class="cms-card-info"><div class="cms-card-title">إطلاق مبادرة التمكين الرقمي</div><div class="cms-card-meta">خبر • مسودة • 8 يناير</div></div>
+                          </div>
+                          <div class="cms-card-item">
+                            <div class="cms-card-thumb">📄</div>
+                            <div class="cms-card-info"><div class="cms-card-title">ورشة الحوكمة المؤسسية</div><div class="cms-card-meta">مقال • منشور • 3 يناير</div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- الشاشة 2: بوابة التبرعات -->
+                  <div class="carousel-slide">
+                    <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">بوابة التبرعات</span><span class="dash-topbar-icon">💙</span></div>
+                    <div class="dash-body">
+                      <div class="donate-stats">
+                        <div class="donate-stat"><div class="donate-stat-num">12</div><div class="donate-stat-label">فرصة نشطة</div></div>
+                        <div class="donate-stat"><div class="donate-stat-num">45,000</div><div class="donate-stat-label">ر.س محصّلة</div></div>
+                      </div>
+                      <div class="donate-opportunity">
+                        <div class="donate-opp-title">🕌 كفالة يتيم — شهرية</div>
+                        <div class="donate-opp-amount">المحصّل: 4,500 من 6,000 ر.س</div>
+                        <div class="donate-progress"><div class="donate-progress-fill" style="width:75%"></div></div>
+                        <button class="donate-btn-sm">تبرّع الآن 💙</button>
+                      </div>
+                      <div class="donate-grid">
+                        <div class="donate-mini"><div class="donate-mini-icon">📚</div><div class="donate-mini-name">كفالة طالب</div><div class="donate-mini-amt">2,100 ر.س</div></div>
+                        <div class="donate-mini"><div class="donate-mini-icon">🏠</div><div class="donate-mini-name">سقيا ماء</div><div class="donate-mini-amt">800 ر.س</div></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- الشاشة 3: المتجر الإلكتروني -->
+                  <div class="carousel-slide">
+                    <div class="dash-topbar"><div class="dash-dot"></div><div class="dash-dot"></div><div class="dash-dot"></div><span class="dash-topbar-title">المتجر الإلكتروني</span><span class="dash-topbar-icon">🛒</span></div>
+                    <div class="dash-body">
+                      <div class="store-stats">
+                        <div class="store-stat"><div class="store-stat-num">23</div><div class="store-stat-label">إجمالي الطلبات</div></div>
+                        <div class="store-stat"><div class="store-stat-num">8,500</div><div class="store-stat-label">ر.س الإيرادات</div></div>
+                      </div>
+                      <div class="store-grid">
+                        <div class="store-product"><div class="store-product-img">📖<span class="store-product-badge">جديد</span></div><div class="store-product-body"><div class="store-product-name">دورة إدارة المشاريع</div><div class="store-product-price">150 ر.س</div></div></div>
+                        <div class="store-product"><div class="store-product-img">📕</div><div class="store-product-body"><div class="store-product-name">كتاب إلكتروني</div><div class="store-product-price">45 ر.س</div></div></div>
+                        <div class="store-product"><div class="store-product-img">🎫<span class="store-product-badge">جديد</span></div><div class="store-product-body"><div class="store-product-name">تذكرة فعالية</div><div class="store-product-price">75 ر.س</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- نقاط التنقل -->
+              <div class="carousel-dots" id="carouselDots">
+                <button class="carousel-dot-btn active" data-index="0"></button>
+                <button class="carousel-dot-btn" data-index="1"></button>
+                <button class="carousel-dot-btn" data-index="2"></button>
+              </div>
+
+              <div class="dash-float-compliance"><div class="compliance-top"><div class="compliance-circle"><span>٩٩%</span></div><div><div class="compliance-label">الامتثال ٩٩%</div><div class="compliance-sub">الشفافية | السلامة المالية</div></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== شريط الثقة ===== -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="section-header">
+          <h2><span style="color:var(--brand-navy)">كيانات</span> <span style="color:var(--brand-cyan)">تثق بنا</span></h2>
+          <p>أكثر من 100 كيان غير ربحي يديرون حضورهم الرقمي عبر ويبيان</p>
+        </div>
+      </div>
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-cyan)"></span>جمعية حياة البيئة</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-navy)"></span>نماء للتنمية</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#7B5EA7"></span>جمعية بدن الرياضية</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#E91E8C"></span>فنار للمرأة</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-cyan)"></span>عزم</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#F97316"></span>أجيال الشباب بالباحة</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#EF4444"></span>براعم</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-navy-light)"></span>جمعية الوفاق</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-cyan)"></span>جمعية حياة البيئة</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-navy)"></span>نماء للتنمية</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#7B5EA7"></span>جمعية بدن الرياضية</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#E91E8C"></span>فنار للمرأة</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-cyan)"></span>عزم</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#F97316"></span>أجيال الشباب بالباحة</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:#EF4444"></span>براعم</span>
+          <span class="marquee-chip"><span class="marquee-dot" style="background:var(--brand-navy-light)"></span>جمعية الوفاق</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ماذا نقدم في ويبيان — 3 أعمدة ===== -->
+    <section class="offerings section-padding" id="offerings">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">⭐ القسم الأهم</div><h2>ماذا نقدم في ويبيان</h2><p>منظومة رقمية متكاملة صُممت خصيصًا لتناسب طبيعة عمل الجمعيات والكيانات غير الربحية في المملكة العربية السعودية</p></div>
+        <div class="offering-grid">
+          <!-- الموقع المؤسسي -->
+          <div class="offering-card reveal reveal-delay-1">
+            <div class="offering-icon">🌐</div>
+            <h3>الموقع الإلكتروني المؤسسي</h3>
+            <p>موقع احترافي متكامل يعرض هوية جمعيتك وبرامجها ومشاريعها ويلبّي متطلبات الحوكمة والشفافية أمام الجهات الإشرافية</p>
+            <div class="offering-tags"><span class="offering-tag">الصفحة الرئيسية</span><span class="offering-tag">من نحن</span><span class="offering-tag">البرامج والمشاريع</span><span class="offering-tag">المركز الإعلامي</span><span class="offering-tag">الحوكمة</span><span class="offering-tag">الوظائف</span><span class="offering-tag">اتصل بنا</span></div>
+            <div class="offering-mini-visual">
+              <div class="mini-mockup"><div class="mini-site-header"><div class="mini-logo-shape"></div><div class="mini-nav-lines"><div class="mini-nav-line"></div><div class="mini-nav-line"></div><div class="mini-nav-line"></div></div></div><div class="mini-hero-block"><div class="mini-hero-text"><div class="line1"></div><div class="line2"></div></div></div><div class="mini-cards-row"><div class="mini-card-block"></div><div class="mini-card-block"></div><div class="mini-card-block"></div></div></div>
+            </div>
+          </div>
+          <!-- بوابة التبرعات -->
+          <div class="offering-card reveal reveal-delay-2">
+            <div class="offering-icon" style="background:linear-gradient(135deg,#263c84,#3a56a8)">💙</div>
+            <h3>بوابة التبرعات</h3>
+            <p>استقبل التبرعات الإلكترونية وأنشئ فرص تبرع متعددة مرتبطة بمشاريعك وبرامجك لزيادة إيرادات جمعيتك</p>
+            <div class="offering-tags"><span class="offering-tag">زكاة</span><span class="offering-tag">صدقة</span><span class="offering-tag">وقف</span><span class="offering-tag">كفالة</span><span class="offering-tag">بوابات الدفع</span><span class="offering-tag">سلة التبرعات</span></div>
+            <div class="offering-mini-visual">
+              <div class="mini-donate-card"><div class="mini-donate-title">🕌 كفالة يتيم — شهرية</div><div class="mini-donate-amount">المحصّل: ٤٥,٠٠٠ ر.س من ٦٠,٠٠٠ ر.س</div><div class="mini-progress-bar"><div class="mini-progress-fill" style="width:75%"></div></div><button class="mini-donate-btn">تبرّع الآن 💙</button></div>
+            </div>
+          </div>
+          <!-- المتجر الإلكتروني -->
+          <div class="offering-card reveal reveal-delay-3">
+            <div class="offering-icon" style="background:linear-gradient(135deg,#24c2ec,#263c84)">🛒</div>
+            <h3>المتجر الإلكتروني</h3>
+            <p>عزز الاستدامة المالية لجمعيتك ببيع المنتجات والخدمات والدورات التدريبية والمواد الرقمية عبر متجر متكامل</p>
+            <div class="offering-tags"><span class="offering-tag">منتجات خيرية</span><span class="offering-tag">دورات تدريبية</span><span class="offering-tag">تذاكر فعاليات</span><span class="offering-tag">خدمات</span></div>
+            <div class="offering-mini-visual">
+              <div class="mini-product-card"><div class="mini-product-img">📦</div><div class="mini-product-body"><div class="mini-product-name">دورة إدارة المشاريع التنموية</div><div class="mini-product-price">١٥٠ ر.س</div><button class="mini-product-btn">أضف للسلة</button></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== الأنظمة التشغيلية ===== -->
+    <section class="systems section-padding" id="systems">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">⚙️ أنظمة تشغيلية</div><h2>أنظمة تدير أعمال جمعيتك</h2><p>وحدات متكاملة تعمل معًا لتغطي كل جوانب عمل الجمعية</p></div>
+        <div class="systems-grid">
+          <div class="system-card reveal reveal-delay-1"><div class="system-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg></div><h3>إدارة المشاريع</h3><p>أنشئ وصنّف مشاريعك التنموية وحدد أهدافها والفئات المستهدفة ووثّق مخرجاتها</p></div>
+          <div class="system-card reveal reveal-delay-2"><div class="system-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div><h3>الأنشطة والفعاليات</h3><p>نظّم فعالياتك ومبادراتك وحملاتك وورش العمل واستقبل التسجيلات</p></div>
+          <div class="system-card reveal reveal-delay-3"><div class="system-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div><h3>إدارة الخدمات</h3><p>اعرض خدمات جمعيتك الاستشارية والتدريبية والمجتمعية والإلكترونية</p></div>
+          <div class="system-card reveal reveal-delay-4"><div class="system-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><h3>المركز الإعلامي</h3><p>انشر المقالات والأخبار وأدر مكتبة الصور والفيديو لجمعيتك</p></div>
+          <div class="system-card reveal reveal-delay-5"><div class="system-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><h3>الموارد البشرية</h3><p>أدر بيانات الموظفين وأعلن عن الوظائف واستقبل المتقدمين ونظّم فرص التطوع</p></div>
+          <div class="system-card reveal reveal-delay-6"><div class="system-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></div><h3>إدارة المحتوى</h3><p>أنشئ وعدّل وانشر محتوى موقعك بسهولة عبر منشئ الصفحات المرن</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== لماذا ويبيان ===== -->
+    <section class="why-webyan section-padding" id="why">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">💎 مميزاتنا</div><h2>لماذا تختار ويبيان؟</h2></div>
+        <div class="why-grid">
+          <div class="why-card reveal reveal-delay-1"><div class="why-card-icon">🎯</div><h3>متخصصة في القطاع غير الربحي</h3><p>ليست منصة عامة — صُممت من الألف إلى الياء لتناسب طبيعة عمل الجمعيات السعودية ومتطلباتها النظامية</p></div>
+          <div class="why-card reveal reveal-delay-2"><div class="why-card-icon">🖥️</div><h3>لوحة تحكم عربية موحدة</h3><p>أدر موقعك ومتجرك وتبرعاتك ومحتواك وفريقك من لوحة تحكم واحدة مصممة بالعربية بالكامل</p></div>
+          <div class="why-card reveal reveal-delay-3"><div class="why-card-icon">📋</div><h3>الحوكمة والشفافية جاهزة</h3><p>صفحات مجلس الإدارة والجمعية العمومية والتقارير المالية والهيكل التنظيمي جاهزة للنشر مباشرة</p></div>
+          <div class="why-card reveal reveal-delay-4"><div class="why-card-icon">🤖</div><h3>ذكاء اصطناعي يفهم القطاع</h3><p>أدوات ذكاء اصطناعي متخصصة تساعدك في كتابة المقالات والأخبار ووصف المشاريع بأسلوب مؤسسي</p></div>
+          <div class="why-card reveal reveal-delay-1"><div class="why-card-icon">👨‍💻</div><h3>لا تحتاج مطوّر أو مصمم</h3><p>لوحة تحكم بصرية سهلة صُممت للمستخدمين غير التقنيين — عدّل موقعك بنفسك بدون سطر كود</p></div>
+          <div class="why-card reveal reveal-delay-2"><div class="why-card-icon">☁️</div><h3>سحابية بالكامل مع حماية</h3><p>استضافة سحابية آمنة + شهادة SSL + نسخ احتياطية + تحديثات تلقائية — لا حاجة لتثبيت أي شيء</p></div>
+          <div class="why-card reveal reveal-delay-3"><div class="why-card-icon">💳</div><h3>تكامل مع بوابات الدفع</h3><p>استقبل التبرعات والمدفوعات إلكترونيًا بسهولة عبر بوابات دفع موثوقة ومرخصة في السعودية</p></div>
+          <div class="why-card reveal reveal-delay-4"><div class="why-card-icon">🌍</div><h3>دعم كامل لتعدد اللغات</h3><p>موقع بالعربية والإنجليزية أو أي لغة أخرى — مع دعم RTL/LTR تلقائي</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== موقعك جاهز خلال أيام — 4 خطوات ===== -->
+    <section class="how-it-works section-padding" id="how">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">🚀 ابدأ بسهولة</div><h2>موقعك جاهز خلال أيام</h2><p>عملية بسيطة ومباشرة — من الاشتراك إلى الإطلاق</p></div>
+        <div class="steps-timeline reveal">
+          <div class="step-item">
+            <span class="step-icon">💳</span>
+            <div class="step-num">١</div>
+            <h3>اختر خطتك واشترك</h3>
+            <p>اختر الخطة التي تناسب احتياجات جمعيتك وأكمل عملية الاشتراك بسهولة عبر الدفع الإلكتروني أو التحويل البنكي</p>
+          </div>
+          <div class="step-item">
+            <div class="step-connector"><div class="step-connector-fill" style="width:100%"></div></div>
+            <span class="step-icon">⚙️</span>
+            <div class="step-num">٢</div>
+            <h3>نجهّز موقعك</h3>
+            <p>فور استلام طلبك، يبدأ فريقنا في تجهيز استضافة موقعك وإعداده بمحتوى افتراضي احترافي جاهز يعكس طبيعة عمل جمعيتك</p>
+          </div>
+          <div class="step-item">
+            <div class="step-connector"><div class="step-connector-fill" style="width:100%"></div></div>
+            <span class="step-icon">🚀</span>
+            <div class="step-num">٣</div>
+            <h3>نسلّمك موقعًا جاهزًا</h3>
+            <p>خلال 2-3 أيام عمل، نسلّمك موقعًا إلكترونيًا مكتملًا مع لوحة تحكم وبيانات الدخول — جاهز للتعديل والنشر فورًا</p>
+            <span class="step-badge">خلال 2-3 أيام ⚡</span>
+          </div>
+          <div class="step-item">
+            <div class="step-connector"><div class="step-connector-fill" style="width:100%"></div></div>
+            <span class="step-icon">🌍</span>
+            <div class="step-num">٤</div>
+            <h3>أضف محتواك وانطلق</h3>
+            <p>ادخل لوحة التحكم وعدّل المحتوى الافتراضي بمعلومات جمعيتك الحقيقية — برامجك ومشاريعك وأخبارك — وانشر موقعك للعالم</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== الأسعار ===== -->
+    <section class="pricing section-padding" id="pricing">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">💰 الأسعار</div><h2>خطط اشتراك تناسب كل جمعية</h2><p>اختر الخطة المناسبة لحجم واحتياجات جمعيتك</p></div>
+        <div class="pricing-grid">
+          <div class="pricing-card reveal reveal-delay-1">
+            <div class="pricing-plan">بيسك</div><div class="pricing-desc">مناسبة للجمعيات الجديدة والصغيرة</div>
+            <div class="pricing-price">٦٩٥ <span>ر.س</span></div><div class="pricing-period">سنويًا</div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>موقع احترافي بصفحة واحدة</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>تصميم متجاوب مع الجوال</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>لوحة تحكم لإدارة المحتوى</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>دعم تعدد اللغات</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>شهادة أمان SSL</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>دومين رسمي لمدة سنة</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>استضافة + حماية</li>
+            </ul>
+            <a href="/webyan/checkout.html" class="btn btn-outline" style="width:100%">اشترك الآن</a>
+          </div>
+          <div class="pricing-card popular reveal reveal-delay-2">
+            <div class="pricing-popular-badge">⭐ الأكثر طلبًا</div>
+            <div class="pricing-plan">بلس</div><div class="pricing-desc">مناسبة للجمعيات النشطة إعلاميًا</div>
+            <div class="pricing-price">١٬٤٥٠ <span>ر.س</span></div><div class="pricing-period">سنويًا</div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>كل مميزات بيسك</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>موقع متعدد الصفحات</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>إدارة البرامج والمشاريع</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>إدارة الأنشطة والفعاليات</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>المركز الإعلامي الكامل</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>ذكاء اصطناعي متوسط</li>
+            </ul>
+            <a href="/webyan/checkout.html" class="btn btn-primary" style="width:100%">اشترك الآن</a>
+          </div>
+          <div class="pricing-card reveal reveal-delay-3">
+            <div class="pricing-plan">برو</div><div class="pricing-desc">مناسبة للجمعيات التي تحتاج نظامًا متكاملًا</div>
+            <div class="pricing-price">٢٬٦٥٠ <span>ر.س</span></div><div class="pricing-period">سنويًا</div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>كل مميزات بلس</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>المتجر الإلكتروني</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>بوابة التبرعات</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>تكامل بوابات الدفع</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>إدارة المستفيدين</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>ذكاء اصطناعي متقدم</li>
+            </ul>
+            <a href="/webyan/checkout.html" class="btn btn-outline" style="width:100%">اشترك الآن</a>
+          </div>
+        </div>
+        <div class="pricing-note reveal"><p>تحتاج منصة مخصصة؟ نطوّر حلولًا رقمية مخصصة حسب احتياجات جهتك</p><a href="#contact" class="btn btn-outline">تواصل معنا</a></div>
+      </div>
+    </section>
+
+    <!-- ===== شهادات العملاء ===== -->
+    <section class="testimonials section-padding" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">💬 آراء العملاء</div><h2>ماذا يقول عملاؤنا</h2><p>تجارب حقيقية من كيانات غير ربحية تعتمد على ويبيان</p></div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"ويبيان سهّلت علينا إنشاء موقع احترافي يعكس هوية جمعيتنا ويلبّي متطلبات الحوكمة. الآن نستقبل التبرعات إلكترونيًا بكل سهولة"</p><div class="testimonial-author"><div class="testimonial-avatar" style="background:var(--brand-cyan)">أ</div><div><div class="testimonial-name">أحمد الشهري</div><div class="testimonial-role">مدير التطوير — جمعية حياة البيئة</div></div></div></div>
+          <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"لوحة التحكم سهلة جدًا ولا نحتاج أي خبرة تقنية. فريقنا الإداري يدير المحتوى والأنشطة بكفاءة عالية"</p><div class="testimonial-author"><div class="testimonial-avatar" style="background:var(--brand-navy-light)">ن</div><div><div class="testimonial-name">نورة العتيبي</div><div class="testimonial-role">مسؤولة الاتصالات — جمعية فنار للمرأة</div></div></div></div>
+          <div class="testimonial-card reveal reveal-delay-3"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"المتجر الإلكتروني ساعدنا نحقق استدامة مالية حقيقية من خلال بيع الدورات والمنتجات. منصة متكاملة فعلاً"</p><div class="testimonial-author"><div class="testimonial-avatar" style="background:var(--brand-navy)">ف</div><div><div class="testimonial-name">فهد القحطاني</div><div class="testimonial-role">رئيس مجلس الإدارة — جمعية عزم</div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== الأرقام — خلفية داكنة ===== -->
+    <section class="stats-section section-padding" id="stats">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">📊 إنجازاتنا</div><h2>أرقام تتحدث</h2></div>
+        <div class="stats-row reveal">
+          <div class="stat-item"><div class="stat-number" data-target="100" data-prefix="+">0</div><div class="stat-deco"></div><div class="stat-label">كيان غير ربحي</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="18" data-prefix="+">0</div><div class="stat-deco"></div><div class="stat-label">خدمة نشطة</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="99" data-suffix="%">0</div><div class="stat-deco"></div><div class="stat-label">نسبة الامتثال</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="124" data-prefix="+">0</div><div class="stat-deco"></div><div class="stat-label">مستفيد</div></div>
+          <div class="stat-item"><div class="stat-number" data-target="4.9" data-decimal="true">0</div><div class="stat-deco"></div><div class="stat-label">تقييم المستخدمين</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== الأسئلة الشائعة ===== -->
+    <section class="faq section-padding" id="faq">
+      <div class="container">
+        <div class="section-header reveal"><div class="badge-pill">❓ أسئلة شائعة</div><h2>أسئلة شائعة</h2></div>
+        <div class="faq-list">
+          <div class="faq-item reveal"><button class="faq-question"><span>ما هي منصة ويبيان؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">ويبيان منصة رقمية سعودية متخصصة (SaaS) تُمكّن الجمعيات والكيانات غير الربحية من إنشاء مواقعها الإلكترونية وإدارة خدماتها الرقمية بسهولة — بما في ذلك الموقع المؤسسي، بوابة التبرعات، والمتجر الإلكتروني.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>هل ويبيان مناسبة لجمعيتي؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">نعم! ويبيان صُممت خصيصًا للجمعيات الأهلية والكيانات غير الربحية في المملكة العربية السعودية بكل أحجامها — من الجمعيات الناشئة إلى الكبيرة. نقدم خططًا مرنة تناسب كل الاحتياجات.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>هل أحتاج فريق تقني لاستخدام المنصة؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">لا تحتاج! لوحة تحكم ويبيان صُممت للمستخدمين غير التقنيين. يمكنك إدارة موقعك ومحتواك وتبرعاتك بنفسك بدون أي خبرة برمجية أو تصميمية.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>ما الفرق بين الخطط الثلاث؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">خطة بيسك تناسب الجمعيات الجديدة وتوفر موقع بصفحة واحدة. خطة بلس تضيف صفحات متعددة وإدارة المشاريع والمركز الإعلامي. خطة برو تضيف المتجر الإلكتروني وبوابة التبرعات وتكامل بوابات الدفع.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>هل يمكنني ترقية خطتي لاحقًا؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">بالتأكيد! يمكنك الترقية من أي خطة إلى خطة أعلى في أي وقت. سيتم احتساب الفرق بالتناسب مع المدة المتبقية من اشتراكك الحالي.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>هل تدعم المنصة التبرعات الإلكترونية؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">نعم! خطة برو تتضمن بوابة تبرعات متكاملة مع دعم لأنواع التبرعات المختلفة (زكاة، صدقة، وقف، كفالة) وتكامل مع بوابات الدفع السعودية الموثوقة.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>كيف يعمل الذكاء الاصطناعي في ويبيان؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">يساعدك الذكاء الاصطناعي في كتابة المقالات والأخبار ووصف المشاريع والبرامج بأسلوب مؤسسي احترافي. متوفر بمستوى متوسط في خطة بلس ومتقدم في خطة برو.</div></div></div>
+          <div class="faq-item reveal"><button class="faq-question"><span>هل تشمل الخطط الاستضافة والدومين؟</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="faq-answer"><div class="faq-answer-inner">نعم! جميع الخطط تشمل استضافة سحابية سريعة وآمنة + دومين رسمي لمدة سنة + شهادة SSL + نسخ احتياطية + تحديثات تلقائية ودعم فني.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA النهائي ===== -->
+    <section class="final-cta" id="contact">
+      <div class="container reveal">
+        <h2>جمعيتك تستحق حضورًا رقميًا يعكس أثرها</h2>
+        <p>انضم لأكثر من 100 جمعية وكيان غير ربحي يثقون بويبيان لإدارة حضورهم الرقمي</p>
+        <div class="final-cta-btns"><a href="/webyan/checkout.html" class="btn btn-white">ابدأ الآن</a><a href="#" class="btn btn-white-outline">تواصل معنا</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== التذييل ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <svg viewBox="0 0 423.05 138.69" xmlns="http://www.w3.org/2000/svg" height="30"><g><path fill="#fff" d="M44.8,118.2h-16.56v-26.55h-5.68v26.55h-7.7c-5.07,0-9.19-4.11-9.19-9.19v-17.36H0v16.93c0,8.19,6.64,14.82,14.82,14.82h35.65v-31.76h-5.67v26.55Z"/><path fill="#fff" d="M244.18,91.65h-23.54v31.76h5.67v-26.55h17.88c5.07,0,9.19,4.11,9.19,9.19v17.36h5.63v-16.93c0-8.19-6.64-14.82-14.82-14.82Z"/><circle fill="#fff" cx="22.96" cy="17.94" r="5.57"/></g><g><path fill="#24c2ec" d="M390.77,0h-74.13c-17.83,0-32.28,14.45-32.28,32.28v74.13c0,17.83,14.45,32.28,32.28,32.28h74.13c17.83,0,32.28-14.45,32.28-32.28V32.28c0-17.83-14.45-32.28-32.28-32.28ZM396.57,83.72h-18.99v.05c0,20.95-16.98,37.93-37.93,37.93l-.05-18.99c10.49,0,18.99-8.5,18.99-18.99h0s18.99,0,18.99,0v-18.99h-18.99v18.99h-47.74v-19.11c0-26.3,21.32-47.62,47.62-47.62h19.11v47.74h18.99v18.99Z"/></g></svg>
+          <p>منصة رقمية سعودية متخصصة في تمكين الجمعيات والكيانات غير الربحية من إنشاء وإدارة حضورها الرقمي باحترافية</p>
+          <div class="footer-social"><a href="#" aria-label="X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div>
+        </div>
+        <div class="footer-col"><h4>روابط سريعة</h4><ul><li><a href="#">الرئيسية</a></li><li><a href="#offerings">ماذا نقدم</a></li><li><a href="#pricing">باقات الأسعار</a></li><li><a href="#">المدونة</a></li></ul></div>
+        <div class="footer-col"><h4>الدعم</h4><ul><li><a href="#">مركز المساعدة</a></li><li><a href="#contact">اتصل بنا</a></li><li><a href="mailto:hala@webyan.sa">hala@webyan.sa</a></li></ul></div>
+        <div class="footer-col"><h4>الشركة</h4><ul><li><a href="#">عن ويبيان</a></li><li><a href="#">سياسة الخصوصية</a></li><li><a href="#">الشروط والأحكام</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">© 2026 ويبيان | شركة رنين التنمية لخدمات الأعمال | جميع الحقوق محفوظة</div>
+    </div>
+  </footer>
+
+  <!-- ===== زر معاينة القالب ===== -->
+  <button class="preview-fab" onclick="window.open('/webyan/index.html','_blank')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    معاينة القالب
+  </button>
+
+  <script>
+    /* ===== Header scroll ===== */
+    var header=document.getElementById('siteHeader');
+    window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>10)});
+
+    /* ===== Mobile drawer ===== */
+    var toggle=document.getElementById('mobileToggle'),drawer=document.getElementById('mobileDrawer'),overlay=document.getElementById('mobileOverlay'),closeBtn=document.getElementById('drawerClose');
+    function openD(){drawer.classList.add('open');overlay.classList.add('open')}
+    function closeD(){drawer.classList.remove('open');overlay.classList.remove('open')}
+    toggle.addEventListener('click',openD);closeBtn.addEventListener('click',closeD);overlay.addEventListener('click',closeD);
+    drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeD)});
+
+    /* ===== Scroll reveal ===== */
+    var ro=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target)}})},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+
+    /* ===== Counter animation ===== */
+    var ca=false;
+    var so=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting&&!ca){ca=true;document.querySelectorAll('.stat-number').forEach(function(el){
+      var t=parseFloat(el.dataset.target),d=el.dataset.decimal==='true',s=el.dataset.suffix||'',p=el.dataset.prefix||'',dur=1800,st=performance.now();
+      function u(n){var pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,3),c=d?(t*ea).toFixed(1):Math.floor(t*ea);el.textContent=p+c+s;if(pr<1)requestAnimationFrame(u)}
+      requestAnimationFrame(u)
+    })}})},{threshold:0.3});
+    var ss=document.getElementById('stats');if(ss)so.observe(ss);
+
+    /* ===== FAQ accordion ===== */
+    document.querySelectorAll('.faq-question').forEach(function(b){b.addEventListener('click',function(){var i=b.parentElement,w=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open')});if(!w)i.classList.add('open')})});
+
+    /* ===== Smooth scroll ===== */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+
+    /* ===== Dashboard Carousel — تبديل تلقائي كل 4 ثواني ===== */
+    (function(){
+      var track=document.getElementById('carouselTrack');
+      var dots=document.querySelectorAll('#carouselDots .carousel-dot-btn');
+      var current=0, total=3, timer;
+
+      function goTo(idx){
+        current=idx;
+        // في RTL ننقل بالاتجاه المعاكس
+        track.style.transform='translateX('+current*100+'%)';
+        dots.forEach(function(d,i){d.classList.toggle('active',i===current)});
+      }
+
+      function next(){ goTo((current+1)%total); }
+
+      function startTimer(){ timer=setInterval(next,4000); }
+      function stopTimer(){ clearInterval(timer); }
+
+      dots.forEach(function(d){
+        d.addEventListener('click',function(){
+          stopTimer();
+          goTo(parseInt(d.dataset.index));
+          startTimer();
+        });
+      });
+
+      startTimer();
+    })();
+  </script>
+</body>
+</html>
