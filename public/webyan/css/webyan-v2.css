@@ -1043,28 +1043,37 @@ section { position: relative; }
 .dash-body { padding: 0 !important; gap: 0 !important; background: #f6f8fc; }
 .dash-shell { display: grid; grid-template-columns: 130px 1fr; min-height: 100%; }
 .dash-side {
-  background: linear-gradient(180deg, #1a2a5e 0%, #263c84 100%);
-  color: #fff; padding: 16px 12px; display: flex; flex-direction: column; gap: 14px;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
+  color: var(--brand-navy);
+  padding: 16px 12px; display: flex; flex-direction: column; gap: 14px;
+  border-left: 1px solid rgba(38,60,132,0.08);
 }
 .dash-brand {
   font-family: var(--font-heading); font-weight: 800; font-size: 1rem;
   letter-spacing: 0.5px; padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  color: var(--brand-navy);
+  border-bottom: 1px solid rgba(38,60,132,0.10);
 }
 .dash-menu { display: flex; flex-direction: column; gap: 4px; }
 .dash-menu .dm {
   display: flex; align-items: center; gap: 8px;
   font-size: 0.74rem; padding: 7px 9px; border-radius: 8px;
-  color: rgba(255,255,255,0.78); font-weight: 500;
+  color: #5a6786; font-weight: 600;
   transition: all 0.25s ease;
 }
 .dash-menu .dm i {
   font-style: normal; font-size: 0.85rem; width: 16px; text-align: center;
+  color: #8593b3;
+}
+.dash-menu .dm:hover {
+  background: rgba(36,194,236,0.08); color: var(--brand-navy);
 }
 .dash-menu .dm.active {
-  background: rgba(36,194,236,0.18); color: #fff;
+  background: linear-gradient(135deg, rgba(36,194,236,0.15), rgba(38,60,132,0.08));
+  color: var(--brand-navy);
   box-shadow: inset 2px 0 0 var(--brand-cyan);
 }
+.dash-menu .dm.active i { color: var(--brand-cyan); }
 .dash-main { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
 .dash-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
 .dash-greet .t { font-family: var(--font-heading); font-weight: 700; color: var(--brand-navy); font-size: 0.95rem; }
