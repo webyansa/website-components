@@ -63,7 +63,7 @@ const templates: Template[] = [
     id: "webyan",
     name: "موقع ويبيان",
     description: "قالب موقع ويبيان الرسمي — صفحة اشتراكات احترافية مع بوابة دفع وتجربة مستخدم سلسة",
-    previewPath: "webyan/checkout.html",
+    previewPath: "webyan/index.html",
     folderPath: "webyan",
     thumbnail: "images/raneen/webyan-logo.svg",
     features: ["صفحة اشتراك", "بوابة دفع", "تصميم احترافي", "متجاوب"],
