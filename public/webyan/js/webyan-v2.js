@@ -82,23 +82,27 @@
   });
 })();
 
-/* Hero Carousel — auto-rotate 3 slides */
+/* Hero Carousel — smooth cross-fade auto-rotate */
 (function () {
   var carousel = document.getElementById('heroCarousel');
   if (!carousel) return;
   var slides = carousel.querySelectorAll('.hero2-slide');
   var dots = carousel.querySelectorAll('.hero2-dots .dot');
   if (!slides.length) return;
-  var idx = 0, timer;
+  var idx = 0, timer = null, isAnimating = false;
 
   function go(i) {
-    idx = (i + slides.length) % slides.length;
-    slides.forEach(function (s, k) { s.classList.toggle('is-active', k === idx); });
-    dots.forEach(function (d, k) { d.classList.toggle('is-active', k === idx); });
+    if (isAnimating || i === idx) return;
+    isAnimating = true;
+    var next = (i + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle('is-active', k === next); });
+    dots.forEach(function (d, k) { d.classList.toggle('is-active', k === next); });
+    idx = next;
+    setTimeout(function () { isAnimating = false; }, 750);
   }
-  function next() { go(idx + 1); }
-  function start() { stop(); timer = setInterval(next, 5000); }
-  function stop() { if (timer) clearInterval(timer); }
+  function nextSlide() { go(idx + 1); }
+  function start() { stop(); timer = setInterval(nextSlide, 5500); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
   dots.forEach(function (d) {
     d.addEventListener('click', function () {
