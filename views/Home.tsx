@@ -70,6 +70,17 @@ const templates: Template[] = [
     pages: 1,
     isNew: true,
   },
+  {
+    id: "saudi-awards",
+    name: "قالب جوائز السعودية",
+    description: "قالب احترافي لاستعراض الجوائز في المملكة العربية السعودية — دليل شامل بتصميم عربي RTL أنيق",
+    previewPath: "saudi-awards/index.html",
+    folderPath: "saudi-awards",
+    thumbnail: "images/saudi-awards-thumb.jpg",
+    features: ["6 صفحات", "دليل جوائز", "تصميم RTL", "Bootstrap 5"],
+    pages: 6,
+    isNew: true,
+  },
 ];
 
 type Category = {
@@ -499,6 +510,13 @@ const TemplateCard = ({ template }: { template: Template }) => {
         templateFiles = [
           "checkout.html",
           "css/webyan.css",
+        ];
+      } else if (template.id === "saudi-awards") {
+        templateFiles = [
+          "index.html", "about.html", "awards.html",
+          "news.html", "news-detail.html", "contact.html",
+          "assets/css/styles.css",
+          "assets/js/app.js", "assets/js/awards-data.js",
         ];
       } else {
         templateFiles = [
