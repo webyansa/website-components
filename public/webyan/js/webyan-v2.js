@@ -201,3 +201,126 @@
     });
   }
 })();
+
+/* ============================================================
+   Global "Request Your Trial" Modal — اطلب تجربتك الآن
+   Auto-injects markup, binds any element with .js-trial
+   ============================================================ */
+(function () {
+  var isEN = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0;
+
+  var T = isEN ? {
+    title: "Let's prepare a trial that fits your nonprofit",
+    desc:  "We'll set up a custom trial based on your needs and send the link with a short walkthrough so you can start easily.",
+    name:  "Full name",
+    entity:"Organization name",
+    phone: "Mobile number",
+    email: "Email address",
+    submit:"Send request",
+    sending:"Sending...",
+    close: "Close",
+    successTitle: "Your request has been received 🙏",
+    successBody:  "Thanks for your interest in Webyan. Our team will prepare a trial that fits your needs, get in touch with you soon by phone or WhatsApp, and send the trial link to your email.\n\nWe're ready to help you build a digital presence that reflects your nonprofit."
+  } : {
+    title: "خلّنا نجهز لك تجربة تناسب جمعيتك",
+    desc:  "نجهز لك نسخة تجريبية مخصصة حسب احتياجك، ونرسل لك الرابط مع شرح مبسط يساعدك تبدأ بسهولة.",
+    name:  "الاسم",
+    entity:"اسم الجهة",
+    phone: "رقم الجوال",
+    email: "البريد الإلكتروني",
+    submit:"إرسال الطلب",
+    sending:"جارٍ الإرسال...",
+    close: "إغلاق",
+    successTitle: "تم استلام طلبك بنجاح 🙏",
+    successBody:  "سعيدين جدًا باهتمامك في ويبيان.\nفريقنا بيجهز لك نسخة تجريبية مناسبة لاحتياجك، وبيتم التواصل معك قريبًا عبر الجوال أو الواتساب، وكذلك إرسال رابط التجربة على بريدك.\n\nجاهزين نساعدك تبني حضور رقمي يليق بجمعيتك."
+  };
+
+  // Build markup
+  var html =
+    '<div class="cr-modal trial-modal" id="trialReqModal" aria-hidden="true" role="dialog" aria-labelledby="trialReqTitle">' +
+      '<div class="cr-overlay" data-trial-close></div>' +
+      '<div class="cr-dialog trial-dialog" role="document">' +
+        '<button type="button" class="cr-close" data-trial-close aria-label="' + T.close + '">&times;</button>' +
+        '<div class="cr-header trial-header">' +
+          '<h3 id="trialReqTitle">' + T.title + '</h3>' +
+          '<p>' + T.desc + '</p>' +
+        '</div>' +
+        '<form class="cr-form trial-form" id="trialReqForm" novalidate>' +
+          '<div class="cr-grid">' +
+            '<label class="cr-field"><span>' + T.name + '</span><input type="text" name="name" required maxlength="100" autocomplete="name"></label>' +
+            '<label class="cr-field"><span>' + T.entity + '</span><input type="text" name="entity" required maxlength="120" autocomplete="organization"></label>' +
+            '<label class="cr-field"><span>' + T.phone + '</span><input type="tel" name="phone" required maxlength="14" placeholder="05xxxxxxxx" autocomplete="tel"></label>' +
+            '<label class="cr-field"><span>' + T.email + '</span><input type="email" name="email" required maxlength="150" autocomplete="email"></label>' +
+          '</div>' +
+          '<div class="cr-actions">' +
+            '<button type="submit" class="btn btn-primary btn-lg">' + T.submit + '</button>' +
+          '</div>' +
+        '</form>' +
+        '<div class="trial-success" id="trialSuccess" hidden>' +
+          '<div class="trial-success-icon">' +
+            '<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>' +
+          '</div>' +
+          '<h4>' + T.successTitle + '</h4>' +
+          '<p>' + T.successBody.replace(/\n/g, '<br>') + '</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  var holder = document.createElement('div');
+  holder.innerHTML = html;
+  document.body.appendChild(holder.firstChild);
+
+  var modal   = document.getElementById('trialReqModal');
+  var form    = document.getElementById('trialReqForm');
+  var success = document.getElementById('trialSuccess');
+  var firstField = form.querySelector('input');
+
+  function open() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // reset state
+    form.hidden = false;
+    success.hidden = true;
+    form.reset();
+    form.querySelectorAll('input, button').forEach(function (el) { el.disabled = false; });
+    setTimeout(function () { firstField && firstField.focus(); }, 60);
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Bind triggers (delegated, so dynamically injected buttons also work)
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.js-trial, [data-open-trial]');
+    if (trigger) {
+      e.preventDefault();
+      open();
+      return;
+    }
+    if (e.target.closest('[data-trial-close]')) {
+      e.preventDefault();
+      close();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    var orig = btn.textContent;
+    btn.textContent = T.sending;
+    form.querySelectorAll('input, button').forEach(function (el) { el.disabled = true; });
+    setTimeout(function () {
+      form.hidden = true;
+      success.hidden = false;
+      btn.textContent = orig;
+    }, 700);
+  });
+})();
