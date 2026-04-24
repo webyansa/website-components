@@ -1901,6 +1901,9 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
   transition: transform 0.5s var(--easing), box-shadow 0.5s var(--easing), border-color 0.5s ease;
   position: relative; isolation: isolate;
 }
+.pillar-v2::before {
+  content: none;
+}
 .pillar-v2::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   border-radius: inherit;
@@ -1913,7 +1916,10 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
 }
 
 /* Featured middle pillar: identical neutral border at rest, accent only on hover */
-.pillar-v2.featured { border-color: var(--border-soft); }
+.pillar-v2.featured {
+  border-color: var(--border-soft);
+  box-shadow: none;
+}
 .pillar-v2.featured:hover {
   box-shadow: var(--accent-featured-shadow, var(--shadow-xl));
   border-color: var(--accent-deep, var(--border-soft));
