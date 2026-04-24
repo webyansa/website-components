@@ -1906,14 +1906,17 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
   border-radius: inherit;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
-.pillar-v2:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
-
-/* Featured middle pillar: match sibling cards at rest, glow only on hover */
-.pillar-v2.featured {
-  border-color: var(--accent-featured-border, rgba(36,194,236,0.32));
+.pillar-v2:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--accent-featured-shadow, var(--shadow-xl));
+  border-color: var(--accent-deep, var(--border-soft));
 }
+
+/* Featured middle pillar: identical neutral border at rest, accent only on hover */
+.pillar-v2.featured { border-color: var(--border-soft); }
 .pillar-v2.featured:hover {
   box-shadow: var(--accent-featured-shadow, var(--shadow-xl));
+  border-color: var(--accent-deep, var(--border-soft));
 }
 
 /* Mockup label inside visual */
