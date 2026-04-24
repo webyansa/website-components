@@ -1239,19 +1239,19 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
   border-color: rgba(14, 164, 204, 0.32);
 }
 
-/* Image frame: full image (contain), soft background, no crop */
+/* Image frame: matches 4:3 source images — full image, no crop, no side bars */
 .blog-card-img {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   width: 100%;
   background: #F1F8FD;
-  display: flex; align-items: center; justify-content: center;
+  display: block;
   overflow: hidden;
-  padding: 8px;
 }
 .blog-card-img > img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: contain; object-position: center;
+  object-fit: cover; object-position: center;
   display: block;
   transition: transform 0.5s var(--easing);
 }
