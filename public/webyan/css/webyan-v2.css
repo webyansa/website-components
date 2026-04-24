@@ -1940,21 +1940,16 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
   height: 230px; padding: 18px;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(165deg, var(--accent-mist, var(--brand-cyan-mist)) 0%, #ffffff 100%);
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 0;
   position: relative; overflow: hidden;
 }
 .pillar-v2 .pillar-visual::before {
   content: ""; position: absolute; inset: 0;
   background:
-    radial-gradient(circle at 18% 15%, var(--accent-glow, rgba(36,194,236,0.18)), transparent 55%),
-    radial-gradient(circle at 85% 85%, rgba(38,60,132,0.08), transparent 60%);
+    radial-gradient(circle at 18% 15%, var(--accent-glow, rgba(36,194,236,0.14)), transparent 55%);
   pointer-events: none;
 }
-.pillar-v2 .pillar-visual::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 3px; background: var(--accent-strip, var(--gradient-cta));
-  opacity: 0.85;
-}
+.pillar-v2 .pillar-visual::after { content: none; }
 .pillar-v2 .pillar-tag { color: var(--accent-deep, var(--brand-cyan-deep)); }
 
 /* Body — consistent rhythm + CTA pinned to bottom for equal-height cards */
