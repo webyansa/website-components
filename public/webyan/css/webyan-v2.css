@@ -2054,3 +2054,189 @@ section { position: relative; }
   .wt-lbl em { font-size: 0.66rem; }
   .wt-arr { display: none; }
 }
+
+/* ============================================
+   Journey Flow — مكونات ويبيان 2
+   ============================================ */
+.journey-section { background: #fbfcfe; }
+.journey-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  margin-top: 36px;
+}
+.journey-step {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--border-soft, #e6ebf2);
+  border-radius: 16px;
+  padding: 22px 18px;
+  box-shadow: 0 4px 16px -8px rgba(15,30,60,.08);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.journey-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -14px rgba(15,30,60,.18);
+  border-color: rgba(56, 178, 222, .35);
+}
+.js-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.js-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+  background: rgba(56, 178, 222, .12);
+  color: #0a2d52;
+}
+.js-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(10,45,82,.06), rgba(56,178,222,.10));
+  color: #0a2d52;
+}
+.js-icon svg { width: 22px; height: 22px; }
+.journey-step h4 {
+  font-size: 1.05rem; font-weight: 700; color: #0a2d52;
+  margin: 0 0 6px;
+}
+.journey-step > p {
+  color: #5a6677; font-size: 0.88rem; margin: 0 0 12px; line-height: 1.6;
+}
+.js-list {
+  list-style: none; padding: 0; margin: auto 0 0;
+  display: flex; flex-direction: column; gap: 6px;
+  border-top: 1px dashed #e6ebf2; padding-top: 12px;
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease, padding .25s ease;
+}
+.journey-step:hover .js-list,
+.journey-step:focus-within .js-list {
+  max-height: 200px; opacity: 1;
+}
+.js-list li {
+  font-size: 0.83rem; color: #3b4757;
+  padding-right: 14px; position: relative;
+}
+.js-list li::before {
+  content: ""; position: absolute; right: 0; top: 8px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #38b2de;
+}
+/* tints per stage */
+.js-1 .js-icon { background: linear-gradient(135deg, #eaf2fb, #d6e6f7); }
+.js-2 .js-icon { background: linear-gradient(135deg, #e6f6fb, #cdeaf3); }
+.js-3 .js-icon { background: linear-gradient(135deg, #eef6e9, #ddedd0); }
+.js-4 .js-icon { background: linear-gradient(135deg, #fff3df, #ffe4be); }
+.js-5 .js-icon { background: linear-gradient(135deg, #f1ebff, #e3d8fb); }
+
+.journey-arrow {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #b8c2d1;
+  align-self: center;
+  width: 24px;
+}
+.journey-arrow svg { width: 22px; height: 22px; }
+
+@media (max-width: 980px) {
+  .journey-flow { flex-direction: column; gap: 0; }
+  .journey-step { width: 100%; }
+  .journey-arrow { transform: rotate(-90deg); padding: 8px 0; }
+  .js-list { max-height: 200px; opacity: 1; }
+}
+
+/* ============================================
+   Custom CTA — حلول مخصصة
+   ============================================ */
+.custom-cta-section {
+  padding: 80px 0;
+  background: #fff;
+}
+.custom-cta-card {
+  max-width: 920px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #eaf2fb 0%, #e0f2fb 55%, #d6ecf8 100%);
+  border: 1px solid rgba(56,178,222,.25);
+  border-radius: 24px;
+  padding: 56px 48px;
+  text-align: center;
+  box-shadow: 0 20px 50px -25px rgba(10,45,82,.25);
+  position: relative;
+  overflow: hidden;
+}
+.custom-cta-card::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(56,178,222,.18), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(10,45,82,.10), transparent 50%);
+  pointer-events: none;
+}
+.custom-cta-card > * { position: relative; z-index: 1; }
+.cc-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; font-weight: 600; color: #0a2d52;
+  background: rgba(255,255,255,.7);
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid rgba(10,45,82,.08);
+  margin-bottom: 18px;
+}
+.cc-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #38b2de;
+}
+.custom-cta-card h2 {
+  font-size: 2rem; font-weight: 800; color: #0a2d52;
+  margin: 0 0 14px; line-height: 1.3;
+}
+.cc-desc {
+  color: #2f4259; font-size: 1rem; line-height: 1.85;
+  max-width: 680px; margin: 0 auto 28px;
+}
+.cc-points {
+  list-style: none; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 10px 18px;
+  max-width: 700px; margin: 0 auto 32px;
+  text-align: right;
+}
+.cc-points li {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(10,45,82,.06);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem; color: #1a3556; font-weight: 500;
+}
+.cc-ico {
+  width: 28px; height: 28px; flex: 0 0 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0a2d52, #38b2de);
+  color: #fff;
+}
+.cc-ico svg { width: 14px; height: 14px; }
+.cc-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.cc-trust {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; color: #4a5b73;
+  margin: 0;
+}
+.cc-trust svg { color: #2aa37a; }
+
+@media (max-width: 720px) {
+  .custom-cta-card { padding: 40px 22px; border-radius: 20px; }
+  .custom-cta-card h2 { font-size: 1.5rem; }
+  .cc-points { grid-template-columns: 1fr; }
+  .cc-actions .btn { width: 100%; }
+}
