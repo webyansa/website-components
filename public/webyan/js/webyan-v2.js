@@ -115,47 +115,26 @@
   start();
 })();
 
-/* Value Map — sync center hub on node hover/focus */
+/* Why Tabs — switch panels on click */
 (function () {
-  var hub = document.getElementById('vmHub');
-  if (!hub) return;
-  var titleEl = hub.querySelector('.vm-hub-title');
-  var descEl = hub.querySelector('.vm-hub-desc');
-  var defTitle = hub.dataset.defaultTitle || titleEl.textContent;
-  var defDesc = hub.dataset.defaultDesc || descEl.textContent;
-  var nodes = document.querySelectorAll('.vm-node');
+  var root = document.getElementById('whyTabs');
+  if (!root) return;
+  var tabs = root.querySelectorAll('.wt-tab');
+  var panels = root.querySelectorAll('.wt-panel');
 
-  function setHub(t, d) {
-    titleEl.style.opacity = '0';
-    descEl.style.opacity = '0';
-    setTimeout(function () {
-      titleEl.textContent = t;
-      descEl.textContent = d;
-      titleEl.style.opacity = '1';
-      descEl.style.opacity = '1';
-    }, 140);
+  function activate(id) {
+    tabs.forEach(function (t) {
+      var on = t.dataset.tab === id;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(function (p) {
+      if (p.id === id) { p.hidden = false; p.classList.add('is-active'); }
+      else { p.hidden = true; p.classList.remove('is-active'); }
+    });
   }
 
-  nodes.forEach(function (n) {
-    var t = n.dataset.title, d = n.dataset.desc;
-    if (!t) return;
-    n.setAttribute('tabindex', '0');
-    n.addEventListener('mouseenter', function () {
-      nodes.forEach(function (x) { x.classList.remove('is-active'); });
-      n.classList.add('is-active');
-      setHub(t, d);
-    });
-    n.addEventListener('focus', function () {
-      nodes.forEach(function (x) { x.classList.remove('is-active'); });
-      n.classList.add('is-active');
-      setHub(t, d);
-    });
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { activate(t.dataset.tab); });
   });
-  var wrap = document.querySelector('.value-map');
-  if (wrap) {
-    wrap.addEventListener('mouseleave', function () {
-      nodes.forEach(function (x) { x.classList.remove('is-active'); });
-      setHub(defTitle, defDesc);
-    });
-  }
 })();
