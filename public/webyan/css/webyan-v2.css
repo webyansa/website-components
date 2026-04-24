@@ -1539,19 +1539,11 @@ section { position: relative; }
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 .pillar-v2:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
-.pillar-v2.featured { box-shadow: var(--shadow-lg); }
 
-/* Featured badge */
-.pillar-v2 .pillar-badge {
-  position: absolute; top: 14px; inset-inline-start: 14px; z-index: 4;
-  font-size: 0.66rem; font-weight: 800; font-family: var(--font-heading);
-  background: var(--gradient-cta); color: #fff;
-  padding: 5px 12px; border-radius: 999px; letter-spacing: 0.2px;
-  box-shadow: 0 6px 14px rgba(36,194,236,0.32);
-}
+/* Subtle cyan ring for the middle pillar — non-marketing */
 .pillar-v2.featured {
-  border-color: rgba(36,194,236,0.45);
-  box-shadow: 0 12px 30px -14px rgba(36,194,236,0.28);
+  border-color: rgba(36,194,236,0.32);
+  box-shadow: 0 12px 28px -16px rgba(36,194,236,0.22);
 }
 
 /* Mockup label inside visual */
@@ -1570,9 +1562,9 @@ section { position: relative; }
   background: var(--accent-deep, var(--brand-cyan-deep));
 }
 
-/* Accent strip + tags color per pillar — compact visual area (~30-35%) */
+/* Visual area — slightly larger (~12%) but kept ≤ 40% of card height */
 .pillar-v2 .pillar-visual {
-  height: 170px; padding: 16px;
+  height: 200px; padding: 18px;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(165deg, var(--accent-mist, var(--brand-cyan-mist)) 0%, #ffffff 100%);
   border-bottom: 1px solid var(--border-soft);
@@ -1591,10 +1583,46 @@ section { position: relative; }
   opacity: 0.85;
 }
 .pillar-v2 .pillar-tag { color: var(--accent-deep, var(--brand-cyan-deep)); }
-.pillar-v2 .pillar-tags li {
-  background: var(--accent-mist, var(--brand-cyan-pale));
-  color: var(--accent-deep, var(--brand-navy));
+
+/* Body — consistent rhythm + CTA pinned to bottom for equal-height cards */
+.pillar-v2 .pillar-body {
+  display: flex; flex-direction: column;
+  padding: 26px 24px 24px;
+  gap: 12px; flex: 1;
 }
+.pillar-v2 .pillar-body h3 { margin: 0; }
+.pillar-v2 .pillar-body > p { margin: 0; color: var(--text-secondary); min-height: 3.2em; }
+
+/* Vertical mini check-list (replaces horizontal pill tags) */
+.pillar-checks {
+  list-style: none; padding: 0; margin: 4px 0 6px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.pillar-checks li {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface-snow, #f7f9fc);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-weight: 600; font-size: 0.88rem;
+  color: var(--brand-navy);
+  min-height: 40px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.pillar-checks li:hover {
+  background: var(--accent-mist, #eef5fb);
+  border-color: var(--accent-deep, var(--brand-cyan-deep));
+}
+.pillar-checks svg {
+  flex: none; width: 18px; height: 18px;
+  color: var(--accent-deep, var(--brand-cyan-deep));
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 50%; padding: 2px;
+}
+.pillar-checks span { line-height: 1.4; }
 
 .accent-navy {
   --accent-mist: #eef2fb;
