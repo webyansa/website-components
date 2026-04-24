@@ -1,364 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلبك تحت المراجعة — ويبيان</title>
-    <meta name="description" content="تم استلام طلبك بنجاح وجاري التحقق من التحويل البنكي.">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/webyan.css">
-    <style>
-        .pr-wrapper {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #f0fbff 0%, var(--wb-bg) 50%, #f0f4ff 100%);
-        }
-        .pr-card {
-            background: var(--wb-white);
-            border-radius: var(--wb-radius-lg);
-            box-shadow: var(--wb-shadow-lg);
-            max-width: 560px;
-            width: 100%;
-            overflow: hidden;
-            animation: prSlideUp .6s cubic-bezier(.4,0,.2,1);
-        }
-        @keyframes prSlideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hero - Amber/Warm tone for "pending" */
-        .pr-hero {
-            padding: 48px 32px 36px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-        .pr-hero::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            left: -30%;
-            width: 160%;
-            height: 160%;
-            background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 60%);
-        }
-
-        /* Animated clock/hourglass icon */
-        .pr-icon-wrap {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            animation: pendingPulse 2.5s ease-in-out infinite;
-        }
-        @keyframes pendingPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,.3); }
-            50% { transform: scale(1.06); box-shadow: 0 0 0 16px rgba(255,255,255,0); }
-        }
-        .pr-icon-wrap svg {
-            width: 44px;
-            height: 44px;
-            fill: none;
-            stroke: #fff;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        /* Rotating hourglass animation */
-        .hourglass-rotate {
-            animation: hourglassSpin 3s ease-in-out infinite;
-            transform-origin: center;
-        }
-        @keyframes hourglassSpin {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(180deg); }
-            50% { transform: rotate(180deg); }
-            75% { transform: rotate(360deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .pr-hero h1 {
-            color: #fff;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin: 0 0 8px;
-            position: relative;
-        }
-        .pr-hero p {
-            color: rgba(255,255,255,.9);
-            font-size: .95rem;
-            margin: 0;
-            position: relative;
-        }
-
-        /* Body */
-        .pr-body {
-            padding: 32px;
-        }
-
-        /* Status timeline */
-        .status-timeline {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            margin-bottom: 28px;
-        }
-        .timeline-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-        .timeline-dot {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: .85rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .timeline-dot.done {
-            background: var(--wb-success);
-            color: #fff;
-        }
-        .timeline-dot.current {
-            background: #f59e0b;
-            color: #fff;
-            animation: dotPulse 2s ease-in-out infinite;
-        }
-        @keyframes dotPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,.4); }
-            50% { box-shadow: 0 0 0 10px rgba(245,158,11,0); }
-        }
-        .timeline-dot.upcoming {
-            background: #e2e8f0;
-            color: #94a3b8;
-        }
-        .timeline-label {
-            font-size: .72rem;
-            color: var(--wb-text-muted);
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        .timeline-label.active {
-            color: #d97706;
-            font-weight: 700;
-        }
-        .timeline-line {
-            width: 48px;
-            height: 3px;
-            background: #e2e8f0;
-            margin-bottom: 20px;
-        }
-        .timeline-line.done {
-            background: var(--wb-success);
-        }
-        .timeline-line.pending {
-            background: repeating-linear-gradient(90deg, #f59e0b 0, #f59e0b 6px, transparent 6px, transparent 12px);
-        }
-
-        /* Info card */
-        .pending-info {
-            background: #fffbeb;
-            border: 1px solid #fde68a;
-            border-radius: var(--wb-radius);
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        .pending-info h3 {
-            font-size: .9rem;
-            font-weight: 700;
-            color: #92400e;
-            margin: 0 0 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .pending-info h3 svg {
-            width: 18px; height: 18px; stroke: #d97706; fill: none;
-            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-        }
-        .pending-info p {
-            font-size: .85rem;
-            color: #78350f;
-            margin: 0;
-            line-height: 1.7;
-        }
-
-        /* Receipt rows */
-        .receipt-rows {
-            margin-bottom: 24px;
-        }
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .receipt-row:last-child { border-bottom: none; }
-        .receipt-row .label {
-            font-size: .85rem;
-            color: var(--wb-text-muted);
-        }
-        .receipt-row .value {
-            font-size: .85rem;
-            font-weight: 600;
-            color: var(--wb-text);
-        }
-        .receipt-row .value.status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #fef3c7;
-            color: #92400e;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: .78rem;
-            font-weight: 700;
-        }
-        .receipt-row .value.status-badge svg {
-            width: 14px; height: 14px; stroke: #d97706; fill: none;
-            stroke-width: 2; stroke-linecap: round;
-        }
-
-        /* What's next section */
-        .next-steps {
-            background: #f8fafc;
-            border-radius: var(--wb-radius);
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        .next-steps h3 {
-            font-size: .9rem;
-            font-weight: 700;
-            color: var(--wb-text);
-            margin: 0 0 14px;
-        }
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .step-item:last-child { margin-bottom: 0; }
-        .step-num {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--wb-primary);
-            color: #fff;
-            font-size: .7rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .step-text {
-            font-size: .82rem;
-            color: var(--wb-text-muted);
-            line-height: 1.6;
-        }
-        .step-text strong {
-            color: var(--wb-text);
-        }
-
-        /* Buttons */
-        .pr-actions {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .pr-actions .btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: var(--wb-radius);
-            font-weight: 600;
-            font-size: .88rem;
-            font-family: 'Tajawal', sans-serif;
-            transition: all .3s;
-        }
-        .btn-primary-wb {
-            background: linear-gradient(135deg, var(--wb-primary), var(--wb-primary-dark));
-            color: #fff;
-            border: none;
-        }
-        .btn-primary-wb:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(36,194,236,.3);
-            color: #fff;
-        }
-        .btn-outline-wb {
-            background: transparent;
-            color: var(--wb-primary);
-            border: 2px solid var(--wb-primary);
-        }
-        .btn-outline-wb:hover {
-            background: var(--wb-primary);
-            color: #fff;
-        }
-
-        /* Footer note */
-        .pr-footer {
-            text-align: center;
-            padding: 0 32px 28px;
-        }
-        .pr-footer p {
-            font-size: .78rem;
-            color: var(--wb-text-muted);
-            margin: 0;
-            line-height: 1.7;
-        }
-        .pr-footer a {
-            color: var(--wb-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Floating particles */
-        .particle {
-            position: fixed;
-            border-radius: 50%;
-            opacity: .15;
-            pointer-events: none;
-            animation: particleFloat linear infinite;
-        }
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: .15; }
-            90% { opacity: .15; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        @media (max-width: 576px) {
-            .pr-hero { padding: 36px 20px 28px; }
-            .pr-hero h1 { font-size: 1.3rem; }
-            .pr-body { padding: 24px 20px; }
-            .pr-actions { flex-direction: column; }
-            .timeline-line { width: 28px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Pending — Webyan</title>
+  <meta name="description" content="Your payment is being verified." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/webyan-v2.css" />
   <link rel="stylesheet" href="../css/webyan-preloader.css" />
-
 </head>
 <body>
   <div class="wy-preloader" id="wyPreloader" aria-hidden="true">
@@ -368,106 +20,84 @@
       <span></span><span></span><span></span>
     </div>
   </div>
-
-                <!-- Pending Notice -->
-                <div class="pending-info">
-                    <h3>
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-                        طلبك تحت المراجعة
-                    </h3>
-                    <p>
-                        تم استلام إيصال التحويل البنكي بنجاح. سيقوم فريقنا بالتحقق من وصول المبلغ 
-                        خلال <strong>24 - 48 ساعة عمل</strong>. سيتم إشعارك عبر البريد الإلكتروني 
-                        أو الجوال فور تأكيد التحويل وتفعيل اشتراكك.
-                    </p>
-                </div>
-
-                <!-- Receipt Info -->
-                <div class="receipt-rows">
-                    <div class="receipt-row">
-                        <span class="label">رقم الطلب</span>
-                        <span class="value" id="orderNumber">ORD-2026-4837</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="label">الباقة</span>
-                        <span class="value" id="planName">الباقة الاحترافية</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="label">المبلغ</span>
-                        <span class="value" id="txnAmount">1,200 ر.س</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="label">طريقة الدفع</span>
-                        <span class="value">تحويل بنكي</span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="label">التاريخ</span>
-                        <span class="value" id="txnDate"></span>
-                    </div>
-                    <div class="receipt-row">
-                        <span class="label">حالة الطلب</span>
-                        <span class="value status-badge">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            تحت المراجعة
-                        </span>
-                    </div>
-                </div>
-
-                <!-- What's Next -->
-                <div class="next-steps">
-                    <h3>ماذا بعد؟</h3>
-                    <div class="step-item">
-                        <span class="step-num">1</span>
-                        <span class="step-text"><strong>التحقق من التحويل</strong> — فريقنا يراجع إيصال التحويل والتأكد من وصول المبلغ</span>
-                    </div>
-                    <div class="step-item">
-                        <span class="step-num">2</span>
-                        <span class="step-text"><strong>إشعار بالتأكيد</strong> — ستصلك رسالة تأكيد عبر البريد الإلكتروني أو الجوال</span>
-                    </div>
-                    <div class="step-item">
-                        <span class="step-num">3</span>
-                        <span class="step-text"><strong>تفعيل الاشتراك</strong> — سيتم تفعيل حسابك وباقتك تلقائياً فور التأكيد</span>
-                    </div>
-                </div>
-
-                <!-- Actions -->
-                <div class="pr-actions">
-                    <a href="checkout.html" class="btn btn-primary-wb">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-left:6px"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-                        متابعة طلباتي
-                    </a>
-                    <a href="../store-home.html" class="btn btn-outline-wb">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-left:6px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-                        الرئيسية
-                    </a>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="pr-footer">
-                <p>
-                    لأي استفسار تواصل معنا عبر 
-                    <a href="mailto:hala@webyan.sa">hala@webyan.sa</a>
-                    أو الاتصال على <a href="tel:+966500000000">0500000000</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Dynamic data from URL params
-        const params = new URLSearchParams(window.location.search);
-        const amount = params.get('amount') || '1,200';
-        const plan = params.get('plan') || 'الباقة الاحترافية';
-        const orderId = 'ORD-' + new Date().getFullYear() + '-' + Math.floor(Math.random()*9000+1000);
-
-        document.getElementById('txnAmount').textContent = amount + ' ر.س';
-        document.getElementById('planName').textContent = plan;
-        document.getElementById('orderNumber').textContent = orderId;
-        document.getElementById('txnDate').textContent = new Date().toLocaleDateString('ar-SA', {
-            year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'
-        });
-    </script>
   <script src="../js/webyan-preloader.js"></script>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo" aria-label="Webyan"><img src="../images/webyan-logo.svg" alt="Webyan" height="34" /></a>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="pricing.html" class="active">Plans</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../payment-pending.html" class="btn-lang" title="العربية">AR</a>
+        <a href="contact.html" class="btn-header-secondary">Request a Demo</a>
+        <a href="checkout.html" class="btn-header-cta">Get Started</a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header"><span style="font-family:var(--font-heading);font-weight:700;color:var(--brand-navy);font-size:1.1rem;">Webyan</span><button class="drawer-close" id="drawerClose">×</button></div>
+    <nav class="drawer-nav">
+      <a href="index.html">Home</a>
+      <a href="pricing.html" class="active">Plans</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="../payment-pending.html" class="drawer-lang">العربية AR</a>
+    <a href="checkout.html" class="drawer-cta">Get Started</a>
+  </aside>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow reveal"><span class="dot"></span>Payment Pending</span>
+        <h1 class="reveal reveal-d1">We're verifying your payment</h1>
+        <p class="reveal reveal-d2">Bank-transfer payments may take 1–3 business days to be confirmed by your bank.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container" style="max-width:880px;">
+        
+<div style="background:#fff;border:1px solid var(--border-soft);border-radius:18px;padding:48px 36px;text-align:center;">
+  <div style="width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:2.4rem;margin-bottom:18px;">⏳</div>
+  <h2 style="margin-bottom:10px;">Awaiting payment confirmation</h2>
+  <p style="color:var(--text-muted);max-width:520px;margin:0 auto 28px;line-height:1.7;">If you used a bank transfer, confirmation may take 1–3 business days. We'll email you as soon as your payment is verified and your account is activated.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="index.html" class="btn btn-primary btn-lg">Back to Home</a>
+    <a href="contact.html" class="btn btn-outline btn-lg">Contact Support</a>
+  </div>
+</div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link" aria-label="Webyan"><img src="../images/webyan-logo-white.svg" alt="Webyan" height="36" /></a>
+          <p>A specialized Saudi platform empowering charities and nonprofit entities.</p>
+          <div class="footer-social"><a href="#">𝕏</a><a href="#">in</a><a href="#">▶</a></div>
+        </div>
+        <div class="footer-col"><h4>Platform</h4><ul><li><a href="index.html">Home</a></li><li><a href="pricing.html">Plans</a></li><li><a href="checkout.html">Subscribe</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Webyan</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="contact.html">Request a Demo</a></li><li><a href="mailto:help@webyan.sa">help@webyan.sa</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul></div>
+        <div class="footer-newsletter"><h4 style="color:#fff;font-size:1rem;margin-bottom:14px;">Newsletter</h4><input type="email" placeholder="Your email" /><button>Subscribe</button></div>
+      </div>
+      <div class="footer-bottom">© 2026 Webyan | Raneen Development for Business Services | All rights reserved</div>
+    </div>
+  </footer>
+
+  <script src="../js/webyan-v2.js"></script>
 </body>
 </html>
