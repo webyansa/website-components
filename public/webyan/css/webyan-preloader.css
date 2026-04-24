@@ -1,4 +1,4 @@
-/* Webyan Preloader — Pixel 3x3 (sharp, calm) */
+/* Webyan Preloader — Pixel 3x3 with traveling pink active cell */
 .wy-preloader {
   position: fixed;
   inset: 0;
@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   background: #F7FCFF;
-  transition: opacity .6s ease, visibility .6s ease;
+  transition: opacity .55s ease, visibility .55s ease;
 }
 
 .wy-preloader.is-hidden {
@@ -17,48 +17,56 @@
 }
 
 .wy-pixel-grid {
+  width: max-content;
   display: grid;
-  grid-template-columns: repeat(3, 22px);
-  grid-template-rows: repeat(3, 22px);
-  gap: 7px;
+  grid-template-columns: repeat(3, 16px);
+  grid-template-rows: repeat(3, 16px);
+  gap: 6px;
 }
 
 .wy-pixel-grid span {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   border-radius: 0;
   display: block;
-  animation: wyPixelShift 1.45s ease-in-out infinite;
-  will-change: opacity, transform;
+  background: var(--base-color, #25B9DC);
+  animation: wyActivePixel 1.35s linear infinite;
+  will-change: opacity, transform, background-color;
 }
 
-/* Row 1 */
-.wy-pixel-grid span:nth-child(1) { background: #F66FA3; animation-delay: 0s; }
-.wy-pixel-grid span:nth-child(2) { background: #25B9DC; animation-delay: .08s; }
-.wy-pixel-grid span:nth-child(3) { background: #F66FA3; animation-delay: .16s; }
-/* Row 2 */
-.wy-pixel-grid span:nth-child(4) { background: #25B9DC; animation-delay: .24s; }
-.wy-pixel-grid span:nth-child(5) { background: #8ADAE8; animation-delay: .32s; }
-.wy-pixel-grid span:nth-child(6) { background: #8ADAE8; animation-delay: .40s; }
-/* Row 3 */
-.wy-pixel-grid span:nth-child(7) { background: #0978B8; animation-delay: .48s; }
-.wy-pixel-grid span:nth-child(8) { background: #25B9DC; animation-delay: .56s; }
-.wy-pixel-grid span:nth-child(9) { background: #25B9DC; animation-delay: .64s; }
+/* Base colors per cell + sequential delays so the pink pulse travels 1→9 */
+.wy-pixel-grid span:nth-child(1) { --base-color: #25B9DC; animation-delay: 0s;    }
+.wy-pixel-grid span:nth-child(2) { --base-color: #8ADAE8; animation-delay: .15s;  }
+.wy-pixel-grid span:nth-child(3) { --base-color: #25B9DC; animation-delay: .30s;  }
+.wy-pixel-grid span:nth-child(4) { --base-color: #8ADAE8; animation-delay: .45s;  }
+.wy-pixel-grid span:nth-child(5) { --base-color: #25B9DC; animation-delay: .60s;  }
+.wy-pixel-grid span:nth-child(6) { --base-color: #8ADAE8; animation-delay: .75s;  }
+.wy-pixel-grid span:nth-child(7) { --base-color: #0978B8; animation-delay: .90s;  }
+.wy-pixel-grid span:nth-child(8) { --base-color: #25B9DC; animation-delay: 1.05s; }
+.wy-pixel-grid span:nth-child(9) { --base-color: #0978B8; animation-delay: 1.20s; }
 
-@keyframes wyPixelShift {
-  0%, 100% { opacity: .75; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.04); filter: brightness(1.05); }
+@keyframes wyActivePixel {
+  0%, 11%, 100% {
+    background: var(--base-color, #25B9DC);
+    opacity: .72;
+    transform: scale(1);
+  }
+  5.5% {
+    background: #F66FA3;
+    opacity: 1;
+    transform: scale(1.08);
+  }
 }
 
 body.wy-preload-lock { overflow: hidden; }
 
 @media (max-width: 480px) {
   .wy-pixel-grid {
-    grid-template-columns: repeat(3, 18px);
-    grid-template-rows: repeat(3, 18px);
-    gap: 6px;
+    grid-template-columns: repeat(3, 14px);
+    grid-template-rows: repeat(3, 14px);
+    gap: 5px;
   }
-  .wy-pixel-grid span { width: 18px; height: 18px; }
+  .wy-pixel-grid span { width: 14px; height: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
