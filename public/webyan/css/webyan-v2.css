@@ -2411,3 +2411,63 @@ section { position: relative; }
   .ip-highlight h3 { font-size: 1.15rem; }
 }
 
+
+/* ===================== FINAL POLISH (v-final) ===================== */
+/* تطبيع عام: منع overflow أفقي + توحيد transitions */
+html, body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+
+/* توحيد spacing بين السكاشن */
+.section { padding: 96px 0; }
+.section + .section { padding-top: 88px; }
+.section-header { margin-bottom: 56px; }
+
+/* تنعيم الهوفر العام للكروت */
+.value-card, .module-card, .benefit-card, .showcase-card,
+.price-card, .blog-card, .ip-card, .timeline-step,
+.module-card2, .value-card2 {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* تحسينات تابلت */
+@media (max-width: 1024px) {
+  .section { padding: 72px 0; }
+  .section + .section { padding-top: 64px; }
+  .section-header { margin-bottom: 44px; }
+  .section-header h2 { font-size: 2rem; line-height: 1.35; }
+  .section-header p { font-size: 1rem; }
+}
+
+/* تحسينات جوال */
+@media (max-width: 640px) {
+  .section { padding: 56px 0; }
+  .section + .section { padding-top: 48px; }
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 { font-size: 1.55rem; line-height: 1.4; }
+  .section-header p { font-size: 0.95rem; line-height: 1.75; }
+  .container { padding-left: 18px; padding-right: 18px; }
+
+  /* تبويبات قابلة للتمرير الأفقي عند الازدحام */
+  .inside-tabs {
+    display: flex; gap: 10px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .inside-tabs::-webkit-scrollbar { display: none; }
+  .in-tab { flex: 0 0 80%; scroll-snap-align: start; }
+
+  /* أزرار CTA متوازنة على الجوال */
+  .final-cta2-btns { flex-direction: column; gap: 10px; }
+  .final-cta2-btns .btn { width: 100%; }
+
+  /* منع تكسر الكلمات المزعج */
+  h1, h2, h3, h4 { word-break: normal; overflow-wrap: break-word; }
+}
+
+/* شاشات صغيرة جدًا */
+@media (max-width: 380px) {
+  .container { padding-left: 14px; padding-right: 14px; }
+  .section-header h2 { font-size: 1.4rem; }
+}
