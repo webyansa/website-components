@@ -3022,10 +3022,17 @@ html[dir="ltr"] body { line-height: 1.6; }
 :root[data-theme="dark"] .hero2-dots .dot { background: rgba(255,255,255,0.2); }
 :root[data-theme="dark"] .hero2-dots .dot.is-active { background: var(--brand-cyan); }
 
-/* === Trust bar === */
+/* === Trust bar (dark) === */
 :root[data-theme="dark"] .trust-bar { background: transparent; }
 :root[data-theme="dark"] .trust-bar-label { color: var(--text-muted); }
-:root[data-theme="dark"] .trust-logo { color: var(--text-secondary); border-color: var(--border-soft); background: var(--surface-white); }
+:root[data-theme="dark"] .trust-logo-item {
+  background: rgba(255,255,255,0.96);
+  border-radius: 14px;
+  filter: grayscale(0%);
+  opacity: 0.92;
+}
+:root[data-theme="dark"] .trust-logo-item img { mix-blend-mode: normal; }
+:root[data-theme="dark"] .trust-logo-item:hover { opacity: 1; }
 
 /* === Pillar tag, badge === */
 :root[data-theme="dark"] .pillar-tag,
