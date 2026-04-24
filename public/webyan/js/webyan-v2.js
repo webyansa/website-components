@@ -138,3 +138,25 @@
     t.addEventListener('click', function () { activate(t.dataset.tab); });
   });
 })();
+
+/* Inside Webyan — Feature Showcase Tabs */
+(function () {
+  var root = document.getElementById('insideTabs');
+  if (!root) return;
+  var tabs = root.querySelectorAll('.in-tab');
+  var panels = root.querySelectorAll('.inside-panel');
+  function activate(id) {
+    tabs.forEach(function (t) {
+      var on = t.dataset.intab === id;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(function (p) {
+      if (p.id === id) { p.hidden = false; p.classList.add('is-active'); }
+      else { p.hidden = true; p.classList.remove('is-active'); }
+    });
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { activate(t.dataset.intab); });
+  });
+})();
