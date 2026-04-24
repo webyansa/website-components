@@ -114,3 +114,48 @@
   carousel.addEventListener('mouseleave', start);
   start();
 })();
+
+/* Value Map — sync center hub on node hover/focus */
+(function () {
+  var hub = document.getElementById('vmHub');
+  if (!hub) return;
+  var titleEl = hub.querySelector('.vm-hub-title');
+  var descEl = hub.querySelector('.vm-hub-desc');
+  var defTitle = hub.dataset.defaultTitle || titleEl.textContent;
+  var defDesc = hub.dataset.defaultDesc || descEl.textContent;
+  var nodes = document.querySelectorAll('.vm-node');
+
+  function setHub(t, d) {
+    titleEl.style.opacity = '0';
+    descEl.style.opacity = '0';
+    setTimeout(function () {
+      titleEl.textContent = t;
+      descEl.textContent = d;
+      titleEl.style.opacity = '1';
+      descEl.style.opacity = '1';
+    }, 140);
+  }
+
+  nodes.forEach(function (n) {
+    var t = n.dataset.title, d = n.dataset.desc;
+    if (!t) return;
+    n.setAttribute('tabindex', '0');
+    n.addEventListener('mouseenter', function () {
+      nodes.forEach(function (x) { x.classList.remove('is-active'); });
+      n.classList.add('is-active');
+      setHub(t, d);
+    });
+    n.addEventListener('focus', function () {
+      nodes.forEach(function (x) { x.classList.remove('is-active'); });
+      n.classList.add('is-active');
+      setHub(t, d);
+    });
+  });
+  var wrap = document.querySelector('.value-map');
+  if (wrap) {
+    wrap.addEventListener('mouseleave', function () {
+      nodes.forEach(function (x) { x.classList.remove('is-active'); });
+      setHub(defTitle, defDesc);
+    });
+  }
+})();
