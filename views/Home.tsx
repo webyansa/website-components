@@ -508,8 +508,23 @@ const TemplateCard = ({ template }: { template: Template }) => {
         ];
       } else if (template.id === "webyan") {
         templateFiles = [
-          "checkout.html",
-          "css/webyan.css",
+          "about.html", "article.html", "blog.html", "checkout.html", "contact.html",
+          "index.html", "index-2.html", "pricing.html", "privacy.html", "terms.html",
+          "payment-failed.html", "payment-pending.html", "payment-success.html",
+          "favicon.svg",
+          "css/webyan.css", "css/webyan-v2.css", "css/webyan-legal.css", "css/webyan-preloader.css",
+          "js/webyan-v2.js", "js/webyan-theme.js", "js/webyan-legal.js", "js/webyan-preloader.js",
+          "en/index.html", "en/about.html", "en/article.html", "en/blog.html",
+          "en/checkout.html", "en/contact.html", "en/pricing.html", "en/privacy.html",
+          "en/terms.html", "en/payment-failed.html", "en/payment-pending.html", "en/payment-success.html",
+          "images/webyan-logo.svg", "images/webyan-logo-white.svg",
+          "images/blog/post-1.jpg", "images/blog/post-2.jpg", "images/blog/post-3.jpg",
+          "images/blog/post-4.jpg", "images/blog/post-5.jpg", "images/blog/post-6.jpg",
+          "images/blog/post-7.jpg", "images/blog/post-8.jpg", "images/blog/post-9.jpg",
+          "images/blog/post-10.jpg",
+          "images/clients/athar.jpg", "images/clients/env-dawadmi.jpg", "images/clients/env-life.jpg",
+          "images/clients/green-jo.jpg", "images/clients/makin.jpg", "images/clients/nafa.jpg",
+          "images/clients/quran-abu-ajram.jpg", "images/clients/sufara.jpg",
         ];
       } else if (template.id === "saudi-awards") {
         templateFiles = [
