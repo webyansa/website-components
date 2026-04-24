@@ -46,12 +46,23 @@
     }, delay || 0);
   }
 
+  // Minimum on-screen time so the loader animation is visible (not a flash)
+  var MIN_DISPLAY_MS = 1400;
+  var startTime = Date.now();
+
+  function scheduleHideRespectingMin(reason, extraDelay) {
+    var elapsed = Date.now() - startTime;
+    var remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
+    var delay = Math.max(remaining, extraDelay || 0);
+    scheduleHide(reason, delay);
+  }
+
   function handleReadyState() {
     if (document.readyState === 'interactive') {
-      scheduleHide('readyState-interactive', 700);
+      scheduleHideRespectingMin('readyState-interactive', 200);
     }
     if (document.readyState === 'complete') {
-      scheduleHide('readyState-complete', 180);
+      scheduleHideRespectingMin('readyState-complete', 150);
     }
   }
 
@@ -60,11 +71,11 @@
   document.addEventListener('readystatechange', handleReadyState);
 
   document.addEventListener('DOMContentLoaded', function () {
-    scheduleHide('dom-content-loaded', 800);
+    scheduleHideRespectingMin('dom-content-loaded', 250);
   }, { once: true });
 
   window.addEventListener('load', function () {
-    scheduleHide('window-load', 220);
+    scheduleHideRespectingMin('window-load', 200);
   }, { once: true });
 
   window.addEventListener('pageshow', function (event) {
@@ -72,22 +83,17 @@
     var isBackForward = navEntry && navEntry.type === 'back_forward';
 
     if (event.persisted || isBackForward) {
-      hide('pageshow-cache');
+      // BFCache restore: short delay so the grid animation is briefly visible
+      scheduleHide('pageshow-cache', 600);
       return;
     }
 
     if (document.readyState === 'complete') {
-      scheduleHide('pageshow-complete', 80);
-    }
-  });
-
-  window.addEventListener('focus', function () {
-    if (document.readyState === 'complete') {
-      scheduleHide('window-focus-complete', 60);
+      scheduleHideRespectingMin('pageshow-complete', 150);
     }
   });
 
   setTimeout(function () {
     hide('safety-timeout');
-  }, 2200);
+  }, 3500);
 })();
