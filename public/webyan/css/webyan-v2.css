@@ -1541,9 +1541,39 @@ section { position: relative; }
 .pillar-v2:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
 .pillar-v2.featured { box-shadow: var(--shadow-lg); }
 
-/* Accent strip + tags color per pillar */
+/* Featured badge */
+.pillar-v2 .pillar-badge {
+  position: absolute; top: 14px; inset-inline-start: 14px; z-index: 4;
+  font-size: 0.66rem; font-weight: 800; font-family: var(--font-heading);
+  background: var(--gradient-cta); color: #fff;
+  padding: 5px 12px; border-radius: 999px; letter-spacing: 0.2px;
+  box-shadow: 0 6px 14px rgba(36,194,236,0.32);
+}
+.pillar-v2.featured {
+  border-color: rgba(36,194,236,0.45);
+  box-shadow: 0 12px 30px -14px rgba(36,194,236,0.28);
+}
+
+/* Mockup label inside visual */
+.pillar-v2 .pv-label {
+  position: absolute; top: 12px; inset-inline-end: 14px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-heading);
+  color: var(--accent-deep, var(--brand-navy));
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border-soft);
+  backdrop-filter: blur(6px);
+  padding: 4px 10px; border-radius: 999px;
+}
+.pillar-v2 .pv-label::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent-deep, var(--brand-cyan-deep));
+}
+
+/* Accent strip + tags color per pillar — compact visual area (~30-35%) */
 .pillar-v2 .pillar-visual {
-  height: 240px; padding: 22px;
+  height: 170px; padding: 16px;
+  display: flex; align-items: center; justify-content: center;
   background: linear-gradient(165deg, var(--accent-mist, var(--brand-cyan-mist)) 0%, #ffffff 100%);
   border-bottom: 1px solid var(--border-soft);
   position: relative; overflow: hidden;
