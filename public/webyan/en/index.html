@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webyan — The Integrated Digital Platform for Nonprofit Organizations</title>
+  <meta name="description" content="Webyan is a Saudi-built SaaS platform empowering nonprofit organizations to launch a corporate website, strengthen governance, manage projects and content, and grow resources — all from a single platform." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/webyan-v2.css" />
+  <link rel="stylesheet" href="../css/webyan-preloader.css" />
+</head>
+<body>
+  <div class="wy-preloader" id="wyPreloader" aria-hidden="true">
+    <div class="wy-pixel-grid" role="presentation">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <script src="../js/webyan-preloader.js"></script>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo" aria-label="Webyan"><img src="../images/webyan-logo.svg" alt="Webyan" height="34" /></a>
+      <nav class="header-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="pricing.html">Plans</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../index.html" class="btn-lang" title="العربية">AR</a>
+        <a href="contact.html" class="btn-header-secondary">Request a Demo</a>
+        <a href="pricing.html" class="btn-header-cta">Get Started</a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== Mobile Drawer ===== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span style="font-family:var(--font-heading);font-weight:700;color:var(--brand-navy);font-size:1.1rem;">Webyan</span>
+      <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="pricing.html">Plans</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="../index.html" class="drawer-lang">العربية AR</a>
+    <a href="pricing.html" class="drawer-cta">Get Started</a>
+  </aside>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero2">
+      <div class="container-wide">
+        <div class="hero2-grid">
+          <div class="hero2-text">
+            <span class="eyebrow reveal"><span class="dot"></span>A digital platform for the nonprofit sector</span>
+            <h1 class="reveal reveal-d1">An integrated digital platform <br/>that builds <span class="highlight">your nonprofit's presence</span> with confidence.</h1>
+            <p class="reveal reveal-d2">Webyan helps charities and nonprofit entities launch a modern corporate website, strengthen governance and transparency, and showcase their projects, services and media — with advanced options for donation portals and online stores, all from a single, easy-to-manage platform.</p>
+
+            <div class="hero2-checks reveal reveal-d3">
+              <div class="hero2-check"><span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>A corporate website that reflects your identity professionally</div>
+              <div class="hero2-check"><span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Governance and transparency tools aligned with sector standards</div>
+              <div class="hero2-check"><span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>An easy dashboard to manage content and programs</div>
+            </div>
+
+            <div class="hero2-cta reveal reveal-d4">
+              <a href="contact.html" class="btn btn-primary btn-lg">Request a Demo</a>
+              <a href="pricing.html" class="btn btn-ghost btn-lg">View Plans</a>
+            </div>
+
+            <div class="hero2-trust reveal reveal-d5">
+              <div class="hero2-avatars">
+                <div class="hero2-avatar" style="background:#263c84">A</div>
+                <div class="hero2-avatar" style="background:#24c2ec">B</div>
+                <div class="hero2-avatar" style="background:#3a56a8">C</div>
+                <div class="hero2-avatar" style="background:#0ea4cc">D</div>
+              </div>
+              <div class="hero2-trust-text">Trusted by more than <strong>100 nonprofit organizations</strong> across Saudi Arabia</div>
+            </div>
+          </div>
+
+          <div class="hero2-visual reveal reveal-d3">
+            <div class="hero2-carousel" id="heroCarousel" data-active="0">
+              <!-- Slide 1: Dashboard -->
+              <div class="hero2-slide is-active" data-slide="0">
+                <div class="hero2-mockup">
+                  <div class="mockup-bar">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span class="url">app.webyan.sa / Dashboard</span>
+                  </div>
+                  <div class="mockup-body dash-body">
+                    <div class="dash-shell">
+                      <aside class="dash-side">
+                        <div class="dash-brand">Webyan</div>
+                        <div class="dash-menu">
+                          <span class="dm active"><i>▦</i> Overview</span>
+                          <span class="dm"><i>🌐</i> Website</span>
+                          <span class="dm"><i>📰</i> Media Center</span>
+                          <span class="dm"><i>💛</i> Donations</span>
+                          <span class="dm"><i>🛒</i> Store</span>
+                          <span class="dm"><i>⚙</i> Settings</span>
+                        </div>
+                      </aside>
+                      <div class="dash-main">
+                        <div class="dash-top">
+                          <div class="dash-greet">
+                            <div class="t">Welcome back, Al-Birr Charity Team</div>
+                            <div class="s">This week's platform performance</div>
+                          </div>
+                          <span class="dash-pill">Active now</span>
+                        </div>
+                        <div class="dash-kpis">
+                          <div class="kpi">
+                            <div class="kpi-lbl">Website visitors</div>
+                            <div class="kpi-val">12,480</div>
+                            <div class="kpi-trend up">▲ 18%</div>
+                          </div>
+                          <div class="kpi accent">
+                            <div class="kpi-lbl">Donations</div>
+                            <div class="kpi-val">64,200 <span>SAR</span></div>
+                            <div class="kpi-trend up">▲ 24%</div>
+                          </div>
+                          <div class="kpi">
+                            <div class="kpi-lbl">Store orders</div>
+                            <div class="kpi-val">142</div>
+                            <div class="kpi-trend up">▲ 9%</div>
+                          </div>
+                        </div>
+                        <div class="dash-modules">
+                          <div class="dm-card">
+                            <div class="dm-row"><span class="dm-ico site">🌐</span><span class="dm-t">Website</span><span class="dm-st ok">Published</span></div>
+                            <div class="dm-bar"><span style="width:88%"></span></div>
+                          </div>
+                          <div class="dm-card">
+                            <div class="dm-row"><span class="dm-ico media">📰</span><span class="dm-t">Media Center</span><span class="dm-st">3 drafts</span></div>
+                            <div class="dm-bar"><span style="width:62%"></span></div>
+                          </div>
+                          <div class="dm-card">
+                            <div class="dm-row"><span class="dm-ico donate">💛</span><span class="dm-t">Donation Portal</span><span class="dm-st ok">4 campaigns</span></div>
+                            <div class="dm-bar"><span style="width:75%"></span></div>
+                          </div>
+                          <div class="dm-card">
+                            <div class="dm-row"><span class="dm-ico store">🛒</span><span class="dm-t">Store</span><span class="dm-st">24 products</span></div>
+                            <div class="dm-bar"><span style="width:54%"></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 2: Donation portal -->
+              <div class="hero2-slide" data-slide="1">
+                <div class="hero2-mockup">
+                  <div class="mockup-bar">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span class="url">albirr.org.sa/donate</span>
+                  </div>
+                  <div class="mockup-body donate-body">
+                    <div class="donate-head">
+                      <span class="eyebrow-mini">Live campaign</span>
+                      <h4>Sponsor 500 Orphans</h4>
+                      <div class="donate-progress"><span style="width:75%"></span></div>
+                      <div class="donate-stats"><span><b>375,000</b> SAR</span><span class="muted">of 500,000 SAR</span></div>
+                    </div>
+                    <div class="donate-amounts">
+                      <span class="amount-pill">50</span>
+                      <span class="amount-pill active">100</span>
+                      <span class="amount-pill">250</span>
+                      <span class="amount-pill">500</span>
+                      <span class="amount-pill outline">Other</span>
+                    </div>
+                    <div class="donate-pay">
+                      <div class="pay-row"><span class="pay-ico mada">mada</span><span class="pay-ico visa">VISA</span><span class="pay-ico apay">Pay</span></div>
+                      <button class="donate-btn">Donate now</button>
+                    </div>
+                    <div class="donate-trust"><span>🔒 Secure SSL payment</span><span>Certified Zakat receipt</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3: Store -->
+              <div class="hero2-slide" data-slide="2">
+                <div class="hero2-mockup">
+                  <div class="mockup-bar">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span class="url">albirr.org.sa/store</span>
+                  </div>
+                  <div class="mockup-body store-body">
+                    <div class="store-head">
+                      <h4>Productive Families Store</h4>
+                      <span class="store-count">24 products</span>
+                    </div>
+                    <div class="store-grid">
+                      <div class="store-item">
+                        <div class="store-img a"></div>
+                        <div class="store-name">Sidr Honey</div>
+                        <div class="store-price">120 <span>SAR</span></div>
+                      </div>
+                      <div class="store-item">
+                        <div class="store-img b"></div>
+                        <div class="store-name">Embroidered Bag</div>
+                        <div class="store-price">85 <span>SAR</span></div>
+                      </div>
+                      <div class="store-item">
+                        <div class="store-img c"></div>
+                        <div class="store-name">Premium Dates</div>
+                        <div class="store-price">60 <span>SAR</span></div>
+                      </div>
+                    </div>
+                    <div class="store-summary">
+                      <div><div class="lbl">Monthly sales</div><div class="val">18,400 <span>SAR</span></div></div>
+                      <div><div class="lbl">Orders</div><div class="val">142 <span>orders</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dots -->
+              <div class="hero2-dots" id="heroDots">
+                <button class="dot is-active" data-go="0" aria-label="Dashboard"></button>
+                <button class="dot" data-go="1" aria-label="Donation Portal"></button>
+                <button class="dot" data-go="2" aria-label="Online Store"></button>
+              </div>
+            </div>
+            <div class="hero2-float hero2-float-1"><span class="dot-green"></span>Platform live now</div>
+            <div class="hero2-float hero2-float-2"><span class="num-big">99%</span><div style="font-size:0.7rem;color:var(--text-muted);font-weight:500;">Governance compliance</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Trust Bar ===== -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-bar-inner reveal">
+          <div class="trust-bar-label">Nonprofits and entities trusting Webyan</div>
+          <div class="trust-logos">
+            <span class="trust-logo">Al-Birr Charity</span>
+            <span class="trust-logo">Raneen Development</span>
+            <span class="trust-logo">Specialized Council</span>
+            <span class="trust-logo">Naseej Social</span>
+            <span class="trust-logo">Iʿmar Charitable</span>
+            <span class="trust-logo">Afaq Development</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== What Webyan Offers ===== -->
+    <section class="section section-mist">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow"><span class="dot"></span>What Webyan offers</span>
+          <h2>Everything your nonprofit needs in <span class="gradient-text">a single platform</span></h2>
+          <p>Three integrated digital pillars that give your organization a corporate presence, effective resource-development channels, and an easy management experience from one dashboard.</p>
+        </div>
+
+        <div class="pillars-v2">
+          <div class="pillar-v2 reveal">
+            <div class="pillar-head">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/></svg></div>
+              <h3>Corporate Website</h3>
+            </div>
+            <div class="pillar-body">
+              <p>A modern, fully-managed website with sections built specifically for nonprofits: about us, governance, projects, media center, and contact.</p>
+              <ul class="pillar-list">
+                <li>Premium ready-made templates</li>
+                <li>Easy content management</li>
+                <li>Search-engine optimized (SEO)</li>
+                <li>Fast on every device</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pillar-v2 featured reveal reveal-d1">
+            <div class="pillar-tag">Most chosen</div>
+            <div class="pillar-head">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <h3>Donation Portal</h3>
+            </div>
+            <div class="pillar-body">
+              <p>Launch professional donation campaigns with secure payment gateways, certified Zakat receipts, and real-time impact dashboards.</p>
+              <ul class="pillar-list">
+                <li>Multiple payment methods</li>
+                <li>Automated tax-style receipts</li>
+                <li>Campaign and goal tracking</li>
+                <li>Reports and analytics</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pillar-v2 reveal reveal-d2">
+            <div class="pillar-head">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+              <h3>Online Store</h3>
+            </div>
+            <div class="pillar-body">
+              <p>Sell productive-family products, training programs, and services through an integrated store with inventory and order management.</p>
+              <ul class="pillar-list">
+                <li>Product and inventory management</li>
+                <li>Smart shopping cart</li>
+                <li>Direct checkout</li>
+                <li>Sales reports</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Why Webyan ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow"><span class="dot"></span>Why Webyan</span>
+          <h2>Built for the <span class="gradient-text">nonprofit sector</span> — not adapted from generic SaaS</h2>
+          <p>Every feature in Webyan is designed around the workflows, governance requirements, and cultural context of Saudi nonprofit organizations.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <div class="why-icon">🛡</div>
+            <h4>Governance-first</h4>
+            <p>Publish your bylaws, board members, financial reports, and meeting minutes in dedicated, auditable sections.</p>
+          </div>
+          <div class="why-card reveal reveal-d1">
+            <div class="why-icon">⚡</div>
+            <h4>Launch in days, not months</h4>
+            <p>Pre-built templates and a guided onboarding flow let your organization go live without a development team.</p>
+          </div>
+          <div class="why-card reveal reveal-d2">
+            <div class="why-icon">🇸🇦</div>
+            <h4>Built in Saudi Arabia</h4>
+            <p>Arabic-first design, mada and STC Pay support, and local data hosting that matches sector regulations.</p>
+          </div>
+          <div class="why-card reveal reveal-d3">
+            <div class="why-icon">🤝</div>
+            <h4>Dedicated support</h4>
+            <p>A specialized team helps with onboarding, content migration, and ongoing growth — not just a ticketing system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-final">
+      <div class="container">
+        <div class="cta-final-card reveal">
+          <h2>Ready to build your nonprofit's digital presence?</h2>
+          <p>Talk to our team and get a personalized demo built around your organization's goals.</p>
+          <div class="cta-final-actions">
+            <a href="contact.html" class="btn btn-primary btn-lg">Request a Demo</a>
+            <a href="pricing.html" class="btn btn-ghost btn-lg">View Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link" aria-label="Webyan"><img src="../images/webyan-logo-white.svg" alt="Webyan" height="36" /></a>
+          <p>A specialized Saudi platform empowering charities and nonprofit entities to build and manage a professional digital presence.</p>
+          <div class="footer-social"><a href="#" aria-label="X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div>
+        </div>
+        <div class="footer-col"><h4>Platform</h4><ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pricing.html">Plans</a></li>
+          <li><a href="checkout.html">Subscribe</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Company</h4><ul>
+          <li><a href="about.html">About Webyan</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Support</h4><ul>
+          <li><a href="contact.html">Request a Demo</a></li>
+          <li><a href="mailto:help@webyan.sa">help@webyan.sa</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        </ul></div>
+        <div class="footer-newsletter">
+          <h4 style="color:#fff;font-size:1rem;margin-bottom:14px;">Newsletter</h4>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-bottom:14px;">Nonprofit and digital-transformation insights, delivered to your inbox.</p>
+          <input type="email" placeholder="Your email address" />
+          <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Webyan | Raneen Development for Business Services | All rights reserved</div>
+    </div>
+  </footer>
+
+  <script src="../js/webyan-v2.js"></script>
+</body>
+</html>

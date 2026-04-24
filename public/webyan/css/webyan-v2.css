@@ -2605,3 +2605,56 @@ img, svg, video { max-width: 100%; height: auto; }
   .container { padding-left: 14px; padding-right: 14px; }
   .section-header h2 { font-size: 1.4rem; }
 }
+
+/* ===================== LANGUAGE SWITCH BUTTON ===================== */
+.btn-lang {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 38px; height: 36px; padding: 0 12px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--brand-cyan-pale);
+  background: #fff;
+  color: var(--brand-navy);
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em;
+  font-family: var(--font-heading);
+  transition: all 0.25s ease;
+}
+.btn-lang:hover {
+  border-color: var(--brand-cyan);
+  color: var(--brand-cyan-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(36,194,236,0.18);
+}
+.drawer-lang {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 10px; padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--brand-cyan-pale);
+  color: var(--brand-navy); font-weight: 700; font-size: 0.85rem;
+  font-family: var(--font-heading);
+  align-self: flex-start;
+}
+
+/* ===================== LTR (English pages) ===================== */
+html[dir="ltr"] body { font-family: 'Inter', 'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+html[dir="ltr"] h1,
+html[dir="ltr"] h2,
+html[dir="ltr"] h3,
+html[dir="ltr"] h4,
+html[dir="ltr"] h5,
+html[dir="ltr"] h6 { font-family: 'Inter', system-ui, sans-serif; letter-spacing: -0.01em; }
+
+/* Pricing toggle and any RTL-specific reversals */
+html[dir="ltr"] .footer-newsletter input { text-align: left; }
+html[dir="ltr"] .form-input,
+html[dir="ltr"] .form-select,
+html[dir="ltr"] textarea.form-input { text-align: left; }
+
+/* Drawer slides from the LEFT in LTR */
+html[dir="ltr"] .mobile-drawer { left: 0; right: auto; transform: translateX(-100%); }
+html[dir="ltr"] .mobile-drawer.active { transform: translateX(0); }
+
+/* Generic RTL-only icon flips kept neutral in LTR (arrows pointing forward) */
+html[dir="ltr"] .arrow-rtl { transform: scaleX(-1); }
+
+/* Make English pages slightly tighter line-height */
+html[dir="ltr"] body { line-height: 1.6; }
