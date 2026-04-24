@@ -2843,15 +2843,19 @@ html[dir="ltr"] body { line-height: 1.6; }
 :root[data-theme="dark"] h4, :root[data-theme="dark"] h5, :root[data-theme="dark"] h6 { color: var(--text-primary); }
 :root[data-theme="dark"] p { color: var(--text-secondary); }
 :root[data-theme="dark"] .section-header p { color: var(--text-secondary); }
-:root[data-theme="dark"] .gradient-text {
-  background: linear-gradient(135deg, #7ce0f7 0%, #b6c9ff 100%) !important;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent !important;
-}
+:root[data-theme="dark"] .gradient-text,
+:root[data-theme="dark"] .hero2-text h1 .highlight,
 :root[data-theme="dark"] .highlight {
+  display: inline !important;
   background: linear-gradient(135deg, #7ce0f7 0%, #b6c9ff 100%) !important;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 !important;
+  border-radius: 0 !important;
 }
 
 /* === Buttons === */
