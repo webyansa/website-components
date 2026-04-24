@@ -1908,10 +1908,12 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
 }
 .pillar-v2:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
 
-/* Subtle cyan ring for the middle pillar — non-marketing */
+/* Featured middle pillar: match sibling cards at rest, glow only on hover */
 .pillar-v2.featured {
   border-color: var(--accent-featured-border, rgba(36,194,236,0.32));
-  box-shadow: var(--accent-featured-shadow, 0 12px 28px -16px rgba(36,194,236,0.22));
+}
+.pillar-v2.featured:hover {
+  box-shadow: var(--accent-featured-shadow, var(--shadow-xl));
 }
 
 /* Mockup label inside visual */
