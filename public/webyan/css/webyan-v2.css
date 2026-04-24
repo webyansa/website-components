@@ -1664,9 +1664,11 @@ section { position: relative; }
 }
 .pillar-cta:hover span { transform: translateX(-4px); }
 
-/* ----- Pillar 1 visual: compact site mock ----- */
+/* ==========================================================
+   ----- Pillar 1 visual: site mock with nav + hero CTA -----
+   ========================================================== */
 .pv-site-window {
-  width: 100%; max-width: 270px; position: relative; z-index: 1;
+  width: 100%; max-width: 280px; position: relative; z-index: 1;
   background: #fff; border-radius: 10px; overflow: hidden;
   box-shadow: 0 14px 28px -14px rgba(38,60,132,0.32), var(--shadow-sm);
   border: 1px solid var(--border-soft);
@@ -1675,20 +1677,50 @@ section { position: relative; }
   display: flex; align-items: center; gap: 5px; padding: 6px 10px;
   background: var(--surface-snow); border-bottom: 1px solid var(--border-soft);
 }
-.pv-site-window .pv-bar i { width: 6px; height: 6px; border-radius: 50%; }
+.pv-site-window .pv-bar i { width: 6px; height: 6px; border-radius: 50%; flex: none; }
 .pv-site-window .pv-bar i:nth-child(1) { background: #ff6b6b; }
 .pv-site-window .pv-bar i:nth-child(2) { background: #ffd93d; }
 .pv-site-window .pv-bar i:nth-child(3) { background: #6bcf7f; }
 .pv-url {
   margin-inline-start: 6px; font-size: 0.55rem; color: var(--text-muted);
   background: #fff; border: 1px solid var(--border-soft);
-  padding: 1px 7px; border-radius: 999px; font-family: var(--font-heading);
+  padding: 2px 8px; border-radius: 999px; font-family: var(--font-heading);
+  display: inline-flex; align-items: center; gap: 4px;
+  flex: 1; min-width: 0; justify-content: center;
 }
+.pv-url svg { width: 9px; height: 9px; color: #6bcf7f; flex: none; }
+
+/* Site nav row */
+.pv-site-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px; background: #fff;
+  border-bottom: 1px solid var(--border-soft);
+}
+.pv-logo {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-heading); font-weight: 800; font-size: 0.6rem;
+  color: var(--brand-navy);
+}
+.pv-logo em {
+  display: inline-block; width: 12px; height: 12px; border-radius: 4px;
+  background: linear-gradient(135deg, #1a2a5e, #0ea4cc);
+}
+.pv-nav-links { display: inline-flex; gap: 6px; }
+.pv-nav-links b {
+  font-family: var(--font-heading); font-weight: 600;
+  font-size: 0.52rem; color: var(--text-secondary);
+  padding: 2px 6px; border-radius: 999px;
+}
+.pv-nav-links b.active {
+  background: var(--brand-cyan-pale); color: var(--brand-navy); font-weight: 800;
+}
+
 .pv-site-content { padding: 7px; display: grid; gap: 6px; }
 .pv-site-hero {
   background: linear-gradient(135deg, #1a2a5e 0%, #263c84 60%, #0ea4cc 100%);
-  color: #fff; border-radius: 7px; padding: 9px 10px;
+  color: #fff; border-radius: 7px; padding: 11px 11px;
   position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
 }
 .pv-site-hero::after {
   content: ""; position: absolute; inset: 0;
@@ -1696,7 +1728,13 @@ section { position: relative; }
 }
 .pv-site-hero b {
   display: block; font-size: 0.66rem; font-family: var(--font-heading);
-  position: relative; z-index: 1; line-height: 1.4;
+  position: relative; z-index: 1; line-height: 1.4; max-width: 60%;
+}
+.pv-hero-cta {
+  position: relative; z-index: 1;
+  background: #fff; color: var(--brand-navy);
+  font-family: var(--font-heading); font-weight: 800; font-size: 0.52rem;
+  padding: 4px 8px; border-radius: 999px; white-space: nowrap;
 }
 .pv-site-strip {
   display: flex; gap: 4px; padding: 4px;
@@ -1705,38 +1743,42 @@ section { position: relative; }
 .pv-site-strip span {
   flex: 1; display: flex; align-items: center; justify-content: center;
   gap: 3px; font-size: 0.55rem; color: var(--text-secondary);
-  background: #fff; padding: 3px; border-radius: 5px; font-weight: 600;
+  background: #fff; padding: 4px; border-radius: 5px; font-weight: 600;
 }
 .pv-site-strip .dotg {
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--brand-cyan); display: inline-block;
 }
-.pv-site-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-.pv-mini-card {
-  background: var(--surface-snow); border: 1px solid var(--border-soft);
-  border-radius: 6px; padding: 4px; text-align: center;
-}
-.pv-mini-card em {
-  display: block; height: 14px; border-radius: 4px;
-  background: linear-gradient(135deg, var(--brand-cyan-pale), #d2eef7);
-}
 
-/* ----- Pillar 2 visual: compact donate card ----- */
+/* ==========================================================
+   ----- Pillar 2 visual: donate card with heart + amounts -----
+   ========================================================== */
 .pv-donate-card-v2 {
-  width: 100%; max-width: 270px; position: relative; z-index: 1;
+  width: 100%; max-width: 280px; position: relative; z-index: 1;
   background: #fff; border-radius: 12px;
-  border: 1px solid var(--border-soft); padding: 11px 12px;
+  border: 1px solid var(--border-soft); padding: 12px;
   box-shadow: 0 14px 28px -14px rgba(36,194,236,0.38), var(--shadow-sm);
 }
-.pv-d-top { margin-bottom: 8px; }
-.pv-d-top b {
-  display: block; font-family: var(--font-heading); font-size: 0.78rem;
-  color: var(--brand-navy); margin-bottom: 2px;
+.pv-d-head {
+  display: flex; align-items: center; gap: 9px; margin-bottom: 9px;
 }
-.pv-d-top small { font-size: 0.6rem; color: var(--text-muted); }
+.pv-d-icon {
+  flex: none; width: 30px; height: 30px; border-radius: 9px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--brand-cyan-pale), #d4f1fb);
+  color: var(--brand-cyan-deep);
+}
+.pv-d-icon svg { width: 16px; height: 16px; }
+.pv-d-titles { min-width: 0; }
+.pv-d-titles b {
+  display: block; font-family: var(--font-heading); font-size: 0.78rem;
+  color: var(--brand-navy); margin-bottom: 1px;
+}
+.pv-d-titles small { font-size: 0.58rem; color: var(--text-muted); }
+
 .pv-d-prog {
   height: 6px; background: var(--surface-cloud);
-  border-radius: 999px; overflow: hidden; margin-bottom: 7px;
+  border-radius: 999px; overflow: hidden; margin-bottom: 6px;
 }
 .pv-d-prog span {
   display: block; height: 100%;
@@ -1745,18 +1787,34 @@ section { position: relative; }
 }
 .pv-d-meta {
   display: flex; align-items: center; justify-content: space-between;
-  font-size: 0.6rem; color: var(--text-muted); margin-bottom: 9px;
+  font-size: 0.6rem; color: var(--text-muted); margin-bottom: 8px;
 }
 .pv-d-meta b {
   font-family: var(--font-heading); font-weight: 800;
   color: var(--brand-navy); font-size: 0.72rem;
 }
-.pv-d-foot {
-  display: flex; align-items: center; gap: 8px;
+
+.pv-d-amounts {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+  margin-bottom: 9px;
 }
+.pv-d-amounts span {
+  text-align: center; font-family: var(--font-heading);
+  font-weight: 700; font-size: 0.6rem;
+  color: var(--text-secondary);
+  background: #fff; border: 1px solid var(--border-soft);
+  padding: 4px 0; border-radius: 6px;
+}
+.pv-d-amounts span.on {
+  background: var(--brand-cyan-pale);
+  border-color: var(--brand-cyan);
+  color: var(--brand-navy);
+}
+
+.pv-d-foot { display: flex; align-items: center; gap: 8px; }
 .pv-d-btn {
   background: var(--gradient-cta); color: #fff;
-  padding: 6px 10px; border-radius: 7px;
+  padding: 6px 11px; border-radius: 7px;
   font-family: var(--font-heading); font-weight: 700; font-size: 0.66rem;
   white-space: nowrap;
 }
@@ -1775,26 +1833,62 @@ section { position: relative; }
   100% { box-shadow: 0 0 0 0 rgba(36,194,236,0); }
 }
 
-/* ----- Pillar 3 visual: compact store ----- */
+/* ==========================================================
+   ----- Pillar 3 visual: store with cart + product icons -----
+   ========================================================== */
 .pv-store-window {
-  width: 100%; max-width: 270px; position: relative; z-index: 1;
+  width: 100%; max-width: 280px; position: relative; z-index: 1;
   background: #fff; border-radius: 10px; overflow: hidden;
   border: 1px solid var(--border-soft);
   box-shadow: 0 14px 28px -14px rgba(232,168,56,0.35), var(--shadow-sm);
 }
+.pv-store-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 10px; background: #fff;
+  border-bottom: 1px solid var(--border-soft);
+}
+.pv-store-brand {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-heading); font-weight: 800; font-size: 0.62rem;
+  color: var(--brand-navy);
+}
+.pv-store-brand em {
+  width: 12px; height: 12px; border-radius: 4px;
+  background: linear-gradient(135deg, #f7c873, #c47e1a);
+}
+.pv-cart {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 7px;
+  background: #fff8ec; color: #b97306; border: 1px solid #fde6c0;
+}
+.pv-cart svg { width: 14px; height: 14px; }
+.pv-cart-count {
+  position: absolute; top: -5px; inset-inline-start: -5px;
+  min-width: 14px; height: 14px; padding: 0 3px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #f0a44b, #c47e1a);
+  color: #fff; font-style: normal; font-family: var(--font-heading);
+  font-weight: 800; font-size: 0.52rem;
+  border-radius: 999px; border: 2px solid #fff;
+}
+
 .pv-store-products {
   padding: 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
 }
 .pv-prod-v2 {
   background: #fff; border: 1px solid var(--border-soft);
-  border-radius: 7px; padding: 5px; text-align: center;
+  border-radius: 8px; padding: 7px 5px 6px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
 }
 .pv-prod-v2 .pv-img {
-  display: block; height: 28px; border-radius: 5px; margin-bottom: 3px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; height: 38px; border-radius: 6px;
+  color: var(--brand-navy);
 }
-.pv-prod-v2.a .pv-img { background: linear-gradient(135deg, #fff4d6, #f7c873); }
-.pv-prod-v2.b .pv-img { background: linear-gradient(135deg, #e8d8f2, #b89ad9); }
-.pv-prod-v2.c .pv-img { background: linear-gradient(135deg, #fde2cf, #e8a06b); }
+.pv-prod-v2 .pv-img svg { width: 22px; height: 22px; }
+.pv-prod-v2.a .pv-img { background: linear-gradient(135deg, #fff4d6, #ffe2a3); color: #8a5a06; }
+.pv-prod-v2.b .pv-img { background: linear-gradient(135deg, #e8d8f2, #d3bce8); color: #6c3fa0; }
+.pv-prod-v2.c .pv-img { background: linear-gradient(135deg, #fde2cf, #f7c19a); color: #a65316; }
 .pv-prod-v2 i {
   display: block; font-size: 0.58rem; font-family: var(--font-heading);
   font-weight: 800; color: var(--brand-navy); font-style: normal;
@@ -1803,7 +1897,7 @@ section { position: relative; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 7px 12px; background: var(--surface-snow);
   border-top: 1px solid var(--border-soft);
-  font-size: 0.62rem; color: var(--text-secondary);
+  font-size: 0.6rem; color: var(--text-secondary);
 }
 .pv-store-summary b {
   font-family: var(--font-heading); font-weight: 800;
@@ -1811,8 +1905,8 @@ section { position: relative; }
 }
 
 @media (max-width: 768px) {
-  .pillar-v2 .pillar-visual { height: 190px; padding: 16px; }
-  .pv-site-window, .pv-donate-card-v2, .pv-store-window { max-width: 250px; }
+  .pillar-v2 .pillar-visual { height: 220px; padding: 16px; }
+  .pv-site-window, .pv-donate-card-v2, .pv-store-window { max-width: 260px; }
 }
 
 /* ==========================================================
