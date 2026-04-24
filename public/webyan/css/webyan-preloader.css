@@ -1,23 +1,13 @@
-/* ============================================
-   Webyan Preloader — Pixel Squares
-   ============================================ */
-
+/* Webyan Preloader — Pixel 3x3 (sharp, calm) */
 .wy-preloader {
   position: fixed;
   inset: 0;
   z-index: 99999;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(37, 185, 220, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(232, 91, 170, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at center, #F7FCFF 0%, #FFFFFF 75%);
-  transition: opacity 0.7s ease, visibility 0.7s ease;
-  -webkit-font-smoothing: antialiased;
-  overflow: hidden;
+  background: #F7FCFF;
+  transition: opacity .6s ease, visibility .6s ease;
 }
 
 .wy-preloader.is-hidden {
@@ -26,132 +16,51 @@
   pointer-events: none;
 }
 
-/* Lock body scroll while preloader is visible */
-body.wy-preload-lock {
-  overflow: hidden;
-}
-
 .wy-pixel-grid {
   display: grid;
-  grid-template-columns: repeat(5, 14px);
-  grid-template-rows: repeat(5, 14px);
-  gap: 8px;
-  padding: 4px;
+  grid-template-columns: repeat(3, 22px);
+  grid-template-rows: repeat(3, 22px);
+  gap: 7px;
 }
 
 .wy-pixel-grid span {
-  width: 14px;
-  height: 14px;
-  border-radius: 4px;
-  background: #25B9DC;
-  box-shadow: 0 6px 18px rgba(37, 185, 220, 0.25);
-  animation: wyPixelPulse 1.6s ease-in-out infinite;
-  will-change: transform, opacity;
+  width: 22px;
+  height: 22px;
+  border-radius: 0;
+  display: block;
+  animation: wyPixelShift 1.45s ease-in-out infinite;
+  will-change: opacity, transform;
 }
 
-/* Soft accent colors — distributed naturally */
-.wy-pixel-grid span:nth-child(7),
-.wy-pixel-grid span:nth-child(13),
-.wy-pixel-grid span:nth-child(19) {
-  background: #E85BAA;
-  box-shadow: 0 6px 18px rgba(232, 91, 170, 0.22);
+/* Row 1 */
+.wy-pixel-grid span:nth-child(1) { background: #F66FA3; animation-delay: 0s; }
+.wy-pixel-grid span:nth-child(2) { background: #25B9DC; animation-delay: .08s; }
+.wy-pixel-grid span:nth-child(3) { background: #F66FA3; animation-delay: .16s; }
+/* Row 2 */
+.wy-pixel-grid span:nth-child(4) { background: #25B9DC; animation-delay: .24s; }
+.wy-pixel-grid span:nth-child(5) { background: #8ADAE8; animation-delay: .32s; }
+.wy-pixel-grid span:nth-child(6) { background: #8ADAE8; animation-delay: .40s; }
+/* Row 3 */
+.wy-pixel-grid span:nth-child(7) { background: #0978B8; animation-delay: .48s; }
+.wy-pixel-grid span:nth-child(8) { background: #25B9DC; animation-delay: .56s; }
+.wy-pixel-grid span:nth-child(9) { background: #25B9DC; animation-delay: .64s; }
+
+@keyframes wyPixelShift {
+  0%, 100% { opacity: .75; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.04); filter: brightness(1.05); }
 }
 
-.wy-pixel-grid span:nth-child(9),
-.wy-pixel-grid span:nth-child(17),
-.wy-pixel-grid span:nth-child(23) {
-  background: #B56CFF;
-  box-shadow: 0 6px 18px rgba(181, 108, 255, 0.22);
-}
+body.wy-preload-lock { overflow: hidden; }
 
-.wy-pixel-grid span:nth-child(3),
-.wy-pixel-grid span:nth-child(11),
-.wy-pixel-grid span:nth-child(21) {
-  background: #173B7A;
-  box-shadow: 0 6px 18px rgba(23, 59, 122, 0.18);
-}
-
-/* Diagonal wave delays (5x5 grid) */
-.wy-pixel-grid span:nth-child(1)  { animation-delay: 0.00s; }
-.wy-pixel-grid span:nth-child(2)  { animation-delay: 0.08s; }
-.wy-pixel-grid span:nth-child(3)  { animation-delay: 0.16s; }
-.wy-pixel-grid span:nth-child(4)  { animation-delay: 0.24s; }
-.wy-pixel-grid span:nth-child(5)  { animation-delay: 0.32s; }
-.wy-pixel-grid span:nth-child(6)  { animation-delay: 0.08s; }
-.wy-pixel-grid span:nth-child(7)  { animation-delay: 0.16s; }
-.wy-pixel-grid span:nth-child(8)  { animation-delay: 0.24s; }
-.wy-pixel-grid span:nth-child(9)  { animation-delay: 0.32s; }
-.wy-pixel-grid span:nth-child(10) { animation-delay: 0.40s; }
-.wy-pixel-grid span:nth-child(11) { animation-delay: 0.16s; }
-.wy-pixel-grid span:nth-child(12) { animation-delay: 0.24s; }
-.wy-pixel-grid span:nth-child(13) { animation-delay: 0.32s; }
-.wy-pixel-grid span:nth-child(14) { animation-delay: 0.40s; }
-.wy-pixel-grid span:nth-child(15) { animation-delay: 0.48s; }
-.wy-pixel-grid span:nth-child(16) { animation-delay: 0.24s; }
-.wy-pixel-grid span:nth-child(17) { animation-delay: 0.32s; }
-.wy-pixel-grid span:nth-child(18) { animation-delay: 0.40s; }
-.wy-pixel-grid span:nth-child(19) { animation-delay: 0.48s; }
-.wy-pixel-grid span:nth-child(20) { animation-delay: 0.56s; }
-.wy-pixel-grid span:nth-child(21) { animation-delay: 0.32s; }
-.wy-pixel-grid span:nth-child(22) { animation-delay: 0.40s; }
-.wy-pixel-grid span:nth-child(23) { animation-delay: 0.48s; }
-.wy-pixel-grid span:nth-child(24) { animation-delay: 0.56s; }
-.wy-pixel-grid span:nth-child(25) { animation-delay: 0.64s; }
-
-@keyframes wyPixelPulse {
-  0%, 100% {
-    transform: scale(0.7);
-    opacity: 0.35;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-}
-
-.wy-preloader-text {
-  font-family: 'IBM Plex Sans Arabic', 'Cairo', system-ui, sans-serif;
-  font-size: 0.92rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #173B7A;
-  opacity: 0.75;
-  margin: 0;
-  animation: wyTextFade 2s ease-in-out infinite;
-}
-
-@keyframes wyTextFade {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 0.95; }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .wy-pixel-grid span,
-  .wy-preloader-text {
-    animation: none;
-  }
-  .wy-pixel-grid span {
-    opacity: 0.85;
-    transform: scale(1);
-  }
-  .wy-preloader {
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-}
-
-/* Mobile adjustments */
 @media (max-width: 480px) {
   .wy-pixel-grid {
-    grid-template-columns: repeat(5, 12px);
-    grid-template-rows: repeat(5, 12px);
-    gap: 7px;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(3, 18px);
+    gap: 6px;
   }
-  .wy-pixel-grid span {
-    width: 12px;
-    height: 12px;
-  }
-  .wy-preloader-text {
-    font-size: 0.85rem;
-  }
+  .wy-pixel-grid span { width: 18px; height: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wy-pixel-grid span { animation: none; }
 }
