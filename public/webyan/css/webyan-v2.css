@@ -3806,12 +3806,12 @@ html[dir="ltr"] body { line-height: 1.6; }
   align-items:center;
   gap:22px;
   width:max-content;
+  /* Force LTR layout inside the track so the duplicated set sits immediately
+     after the first set, guaranteeing a continuous, never-empty marquee
+     regardless of the page direction. */
+  direction:ltr;
   animation:partnersScroll 45s linear infinite;
   will-change:transform;
-}
-/* RTL: scroll right -> left visually (default keyframe). LTR: reverse direction */
-html[dir="ltr"] .partners-track{
-  animation-direction:reverse;
 }
 .partners-marquee:hover .partners-track,
 .partners-marquee:focus-within .partners-track{
