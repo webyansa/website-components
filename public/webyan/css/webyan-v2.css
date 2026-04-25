@@ -1854,6 +1854,62 @@ html[dir="rtl"] .trust-track { animation-name: trust-scroll-rtl; }
 .plan-card-head p {
   font-size: 0.88rem; color: var(--text-secondary); line-height: 1.75;
 }
+
+/* ===== Plan Pricing Block ===== */
+.plan-price {
+  display: flex; align-items: baseline; gap: 8px;
+  margin-top: 18px; flex-wrap: wrap;
+}
+.plan-price-amount {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: inherit; font-weight: 800;
+  color: var(--brand-navy); line-height: 1;
+}
+.plan-price-amount .num {
+  font-size: 2.6rem; letter-spacing: -1px;
+}
+.plan-price-period {
+  font-size: 0.92rem; color: var(--text-secondary); font-weight: 600;
+}
+.riyal-icon {
+  width: 28px; height: 28px; display: inline-block;
+  vertical-align: middle; object-fit: contain;
+  /* SVG fill is #231f20 (near-black). Tint to brand-navy via filter. */
+  filter: brightness(0) saturate(100%) invert(11%) sepia(34%) saturate(2200%) hue-rotate(196deg) brightness(95%) contrast(95%);
+}
+.riyal-icon-sm { width: 14px; height: 14px; }
+.plan-price-note {
+  font-size: 0.82rem; color: var(--text-muted); margin-top: 8px;
+  display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap;
+}
+.plan-price-note strong { color: var(--text-secondary); font-weight: 700; }
+.plan-billing-badge {
+  display: inline-block; margin-top: 12px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--brand-cyan-pale); color: var(--brand-cyan-deep);
+}
+.plan-card.featured .plan-price-amount { color: var(--brand-cyan-deep); }
+.plan-card.featured .plan-price-amount .num { font-size: 2.9rem; }
+
+.plans-disclaimer {
+  text-align: center; font-size: 0.85rem; color: var(--text-muted);
+  margin-top: 36px; max-width: 640px; margin-left: auto; margin-right: auto;
+}
+
+/* Dark mode adjustments */
+:root[data-theme="dark"] .plan-price-amount { color: #fff; }
+:root[data-theme="dark"] .plan-card.featured .plan-price-amount { color: var(--brand-cyan-light); }
+:root[data-theme="dark"] .riyal-icon {
+  filter: brightness(0) invert(1);
+}
+:root[data-theme="dark"] .plan-card.featured .riyal-icon {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(58%) saturate(380%) hue-rotate(140deg) brightness(95%) contrast(90%);
+}
+:root[data-theme="dark"] .plan-billing-badge {
+  background: rgba(15, 191, 174, 0.15); color: var(--brand-cyan-light);
+}
+:root[data-theme="dark"] .plans-disclaimer { color: var(--text-muted); }
 .plan-card-features {
   display: flex; flex-direction: column; gap: 12px;
   margin-bottom: 28px; flex: 1;
