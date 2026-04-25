@@ -4053,6 +4053,58 @@ html[dir="rtl"] .partners-track{
   margin-top: 38px;
 }
 
+/* Slider variant */
+.cases-slider {
+  position: relative;
+  margin-top: 38px;
+}
+.cases-viewport {
+  overflow: hidden;
+  padding: 6px 4px 14px;
+  margin: 0 -4px;
+}
+.cases-track {
+  display: flex;
+  gap: 22px;
+  transition: transform .55s var(--easing);
+  will-change: transform;
+}
+.cases-track > .case-card {
+  flex: 0 0 calc((100% - 22px * 3) / 4);
+  min-width: 0;
+}
+.cases-nav {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background: #fff;
+  color: var(--brand-navy);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(20,40,80,0.12);
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+  z-index: 3;
+}
+.cases-nav:hover { background: var(--brand-cyan-deep); color: #fff; transform: translateY(-50%) scale(1.06); }
+.cases-nav.prev { right: -10px; }
+.cases-nav.next { left: -10px; }
+.cases-nav svg { width: 18px; height: 18px; }
+.cases-dots {
+  display: flex; justify-content: center; gap: 8px;
+  margin-top: 18px;
+}
+.cases-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(20,40,80,0.18);
+  border: none; cursor: pointer; padding: 0;
+  transition: background .25s ease, width .25s ease;
+}
+.cases-dot.active { background: var(--brand-cyan-deep); width: 22px; border-radius: 999px; }
+
+
 .case-card {
   background: #fff;
   border: 1px solid var(--border-soft);
@@ -4171,9 +4223,14 @@ html[dir="rtl"] .partners-track{
 /* Responsive */
 @media (max-width: 1100px) {
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .cases-track > .case-card { flex: 0 0 calc((100% - 22px) / 2); }
 }
 @media (max-width: 640px) {
   .cases-grid { grid-template-columns: 1fr; gap: 18px; }
+  .cases-track { gap: 16px; }
+  .cases-track > .case-card { flex: 0 0 100%; }
+  .cases-nav.prev { right: 4px; }
+  .cases-nav.next { left: 4px; }
 }
 
 /* Dark mode */
