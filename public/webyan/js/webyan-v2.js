@@ -324,3 +324,86 @@
     }, 700);
   });
 })();
+
+/* ===== Cases Slider ===== */
+(function () {
+  var slider = document.querySelector('[data-cases-slider]');
+  if (!slider) return;
+  var track = slider.querySelector('[data-cases-track]');
+  var viewport = slider.querySelector('.cases-viewport');
+  var prevBtn = slider.querySelector('[data-cases-prev]');
+  var nextBtn = slider.querySelector('[data-cases-next]');
+  var dotsWrap = slider.querySelector('[data-cases-dots]');
+  var cards = Array.from(track.children);
+  var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+  var index = 0;
+  var perView = 4;
+
+  function calcPerView() {
+    var w = window.innerWidth;
+    if (w <= 640) return 1;
+    if (w <= 1100) return 2;
+    return 4;
+  }
+
+  function pages() {
+    return Math.max(1, cards.length - perView + 1);
+  }
+
+  function renderDots() {
+    dotsWrap.innerHTML = '';
+    var total = pages();
+    for (var i = 0; i < total; i++) {
+      var b = document.createElement('button');
+      b.className = 'cases-dot' + (i === index ? ' active' : '');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'الانتقال إلى ' + (i + 1));
+      (function (i) { b.addEventListener('click', function () { go(i); }); })(i);
+      dotsWrap.appendChild(b);
+    }
+  }
+
+  function update() {
+    var card = cards[0];
+    if (!card) return;
+    var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 22;
+    var step = card.getBoundingClientRect().width + gap;
+    var offset = index * step;
+    track.style.transform = 'translateX(' + (isRTL ? offset : -offset) + 'px)';
+    Array.from(dotsWrap.children).forEach(function (d, i) {
+      d.classList.toggle('active', i === index);
+    });
+  }
+
+  function go(i) {
+    var max = pages() - 1;
+    if (i < 0) i = max;
+    if (i > max) i = 0;
+    index = i;
+    update();
+  }
+
+  prevBtn.addEventListener('click', function () { go(index - 1); });
+  nextBtn.addEventListener('click', function () { go(index + 1); });
+
+  function refresh() {
+    var newPV = calcPerView();
+    if (newPV !== perView) {
+      perView = newPV;
+      index = 0;
+    }
+    renderDots();
+    update();
+  }
+
+  window.addEventListener('resize', function () {
+    clearTimeout(window.__casesResize);
+    window.__casesResize = setTimeout(refresh, 120);
+  });
+
+  refresh();
+
+  // autoplay
+  var timer = setInterval(function () { go(index + 1); }, 5500);
+  slider.addEventListener('mouseenter', function () { clearInterval(timer); });
+})();
