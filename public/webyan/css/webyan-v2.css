@@ -3808,8 +3808,11 @@ html[dir="ltr"] body { line-height: 1.6; }
   gap:0;
   width:max-content;
   direction:ltr;
-  animation:partnersScroll 34s linear infinite;
+  animation:partnersScrollLtr 34s linear infinite;
   will-change:transform;
+}
+html[dir="rtl"] .partners-track{
+  animation-name:partnersScrollRtl;
 }
 .partners-group{
   display:flex;
@@ -3854,9 +3857,13 @@ html[dir="ltr"] body { line-height: 1.6; }
   filter:grayscale(0) opacity(1);
   transform:scale(1.04);
 }
-@keyframes partnersScroll{
+@keyframes partnersScrollLtr{
   from{ transform:translateX(0); }
   to  { transform:translateX(calc(-100% / 3)); }
+}
+@keyframes partnersScrollRtl{
+  from{ transform:translateX(calc(-100% / 3)); }
+  to  { transform:translateX(0); }
 }
 @media (prefers-reduced-motion: reduce){
   .partners-track{ animation:none; }
