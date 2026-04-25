@@ -63,7 +63,12 @@
         else if (m) n.textContent = m;
       });
       document.querySelectorAll('.price-period').forEach(function (p) {
-        p.textContent = period === 'yearly' ? 'سنوياً • وفّر شهرين' : 'شهرياً';
+        p.textContent = period === 'yearly' ? 'سنوياً (إجمالي)' : 'شهرياً';
+      });
+      document.querySelectorAll('.price-billing-note').forEach(function (n) {
+        var m = n.dataset.monthly, y = n.dataset.yearly;
+        if (period === 'yearly' && y) n.textContent = y;
+        else if (m) n.textContent = m;
       });
     });
   });
