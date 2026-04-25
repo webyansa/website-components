@@ -3606,3 +3606,158 @@ html[dir="ltr"] body { line-height: 1.6; }
 }
 :root[data-theme="dark"] .showcase-card .label { color: var(--brand-cyan-light); }
 :root[data-theme="dark"] .showcase-card .name { color: var(--text-primary); }
+
+/* =====================================================
+   Value Pillars (لماذا تختار ويبيان — التصميم الجديد)
+   ===================================================== */
+.value-pillars-section { padding: 96px 0; }
+.vp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+@media (max-width: 820px) {
+  .vp-grid { grid-template-columns: 1fr; gap: 18px; }
+}
+
+.vp-card {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-xs);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  position: relative;
+}
+.vp-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(38,60,132,0.18);
+  box-shadow: 0 20px 40px -22px rgba(15,23,51,0.18);
+}
+
+.vp-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.vp-icon svg { width: 32px; height: 32px; }
+.vp-icon-navy  { background: rgba(38,60,132,0.08);  color: var(--brand-navy); }
+.vp-icon-pink  { background: rgba(236,72,127,0.10); color: #ec487f; }
+.vp-icon-cyan  { background: rgba(36,194,236,0.12); color: var(--brand-cyan-deep); }
+.vp-icon-amber { background: rgba(245,170,40,0.14); color: #d68a10; }
+
+.vp-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+.vp-card > p {
+  color: var(--text-secondary);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  margin: 0;
+}
+.vp-points {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.vp-points li {
+  position: relative;
+  padding-right: 20px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.vp-points li::before {
+  content: "";
+  position: absolute;
+  right: 0; top: 9px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--brand-cyan);
+}
+
+.vp-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--brand-navy);
+  text-decoration: none;
+  padding-top: 6px;
+  transition: color .2s ease, gap .2s ease;
+}
+.vp-link:hover { color: var(--brand-cyan-deep); gap: 10px; }
+
+.vp-highlight {
+  margin-top: 40px;
+  background: linear-gradient(135deg, rgba(38,60,132,0.04), rgba(36,194,236,0.06));
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 18px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+}
+.vp-hl-item { font-size: 0.95rem; color: var(--text-primary); }
+.vp-hl-item b { color: var(--brand-navy); font-weight: 800; }
+.vp-hl-sep {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--border-soft);
+  display: inline-block;
+}
+.vp-hl-link {
+  margin-inline-start: auto;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--brand-cyan-deep);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .2s ease;
+}
+.vp-hl-link:hover { gap: 10px; }
+@media (max-width: 720px) {
+  .vp-highlight { flex-direction: column; gap: 10px; }
+  .vp-hl-sep { display: none; }
+  .vp-hl-link { margin: 4px 0 0; }
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .vp-card {
+  background: linear-gradient(180deg, #161e36 0%, #131a2e 100%);
+  border-color: rgba(255,255,255,0.06);
+  box-shadow: 0 18px 40px -24px rgba(0,0,0,0.7);
+}
+:root[data-theme="dark"] .vp-card:hover {
+  border-color: rgba(56,208,245,0.40);
+  box-shadow: 0 22px 50px -22px rgba(56,208,245,0.18);
+}
+:root[data-theme="dark"] .vp-icon-navy  { background: rgba(77,106,214,0.18); color: var(--brand-navy-light); }
+:root[data-theme="dark"] .vp-icon-pink  { background: rgba(236,72,127,0.20); color: #ff6f9c; }
+:root[data-theme="dark"] .vp-icon-cyan  { background: rgba(56,208,245,0.18); color: var(--brand-cyan-light); }
+:root[data-theme="dark"] .vp-icon-amber { background: rgba(245,170,40,0.20); color: #f5c46a; }
+:root[data-theme="dark"] .vp-highlight {
+  background: linear-gradient(135deg, rgba(77,106,214,0.10), rgba(56,208,245,0.08));
+  border-color: rgba(255,255,255,0.06);
+}
