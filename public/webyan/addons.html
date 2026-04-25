@@ -167,176 +167,121 @@
     </section>
 
     <!-- ===== تجربة عرض التوفير داخل الباقات (Experimental) ===== -->
+    <!-- نفس تصميم باقات الصفحة الرئيسية/الأسعار تمامًا، مع إضافة ليبل وردي صغير للتوفير فقط. -->
     <style>
-      .savings-lab-section { padding: 80px 0; background: var(--bg-cloud, #f7f9fc); }
+      .savings-lab-section { padding: 80px 0; }
       .savings-lab-head { text-align:center; max-width: 720px; margin: 0 auto 48px; }
       .savings-lab-head .eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:.85rem; font-weight:700; color:#E85BAA; margin-bottom:14px; }
       .savings-lab-head .eyebrow .dot { width:8px; height:8px; border-radius:50%; background:#F66FA3; }
       .savings-lab-head h2 { font-family: var(--font-heading); color: var(--brand-navy, #0c2754); font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0 0 12px; }
       .savings-lab-head p { color: var(--text-muted, #5b6b85); font-size: 1.02rem; line-height: 1.8; margin: 0; }
+      [data-theme="dark"] .savings-lab-head h2 { color: #fff; }
 
-      .savings-lab-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-      @media (max-width: 900px){ .savings-lab-grid { grid-template-columns: 1fr; } }
-
-      .lab-plan-card {
-        position: relative;
-        background: #fff;
-        border: 1px solid rgba(15, 35, 80, 0.08);
-        border-radius: 20px;
-        padding: 32px 26px 28px;
-        box-shadow: 0 10px 30px rgba(15, 35, 80, 0.06);
-        transition: transform .25s ease, box-shadow .25s ease;
-      }
-      .lab-plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(15, 35, 80, 0.10); }
-
-      .lab-plan-badge-wrap { position:absolute; top:-14px; inset-inline-end: 22px; }
-
-      .plan-badge {
+      /* Pink savings label — الإضافة الوحيدة فوق الباقات الأصلية */
+      .price-card { position: relative; }
+      .savings-label {
+        position: absolute;
+        top: -12px;
+        inset-inline-start: 22px;
+        z-index: 3;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        height: 28px;
-        padding: 0 14px;
+        height: 26px;
+        padding: 0 12px;
         border-radius: 999px;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
         line-height: 1;
         white-space: nowrap;
+        color: #fff;
+        background: linear-gradient(135deg, #F66FA3 0%, #E85BAA 100%);
+        box-shadow: 0 8px 18px rgba(246, 111, 163, 0.28);
         font-family: var(--font-heading, inherit);
         letter-spacing: .2px;
       }
-      .badge-discount,
-      .badge-save {
-        color: #fff;
-        background: linear-gradient(135deg, #F66FA3 0%, #E85BAA 100%);
-        box-shadow: 0 10px 22px rgba(246, 111, 163, 0.22);
+      [data-theme="dark"] .savings-label {
+        background: linear-gradient(135deg, rgba(246,111,163,.92) 0%, rgba(232,91,170,.92) 100%);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.45);
       }
-      .badge-best-value {
-        color: #fff;
-        background: linear-gradient(135deg, #25B9DC 0%, #1F5A9F 100%);
-        box-shadow: 0 10px 22px rgba(37, 185, 220, 0.20);
-      }
-      .badge-launch-offer {
-        color: #173B7A;
-        background: #FFEAF3;
-        border: 1px solid rgba(246, 111, 163, 0.24);
-      }
-
-      .lab-plan-name { font-family: var(--font-heading); color: var(--brand-navy, #0c2754); font-size: 1.25rem; margin: 0 0 6px; }
-      .lab-plan-desc { color: var(--text-muted, #5b6b85); font-size: .92rem; margin: 0 0 20px; }
-
-      .lab-price-row { display:flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
-      .lab-price-amount { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: var(--brand-navy, #0c2754); line-height: 1; }
-      .lab-price-riyal { width: 22px; height: 22px; filter: brightness(0) saturate(100%) invert(11%) sepia(34%) saturate(2200%) hue-rotate(196deg) brightness(95%) contrast(95%); }
-      .lab-price-period { color: var(--text-muted, #5b6b85); font-size: .9rem; }
-
-      .lab-billing-note {
-        display: inline-block;
-        margin-top: 6px;
-        padding: 6px 12px;
-        background: rgba(246, 111, 163, 0.08);
-        color: #B83A82;
-        border-radius: 10px;
-        font-size: .82rem;
-        font-weight: 600;
-      }
-
-      .lab-features { list-style:none; padding: 18px 0 0; margin: 18px 0 0; border-top: 1px dashed rgba(15,35,80,.1); display:flex; flex-direction:column; gap:10px; }
-      .lab-features li { display:flex; align-items:center; gap:8px; color: var(--text-body, #1f2a44); font-size:.92rem; }
-      .lab-features li::before { content:"✓"; color:#25B9DC; font-weight:800; }
-
-      /* Dark mode */
-      [data-theme="dark"] .savings-lab-section { background: var(--bg-deep, #0a1530); }
-      [data-theme="dark"] .lab-plan-card { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); box-shadow: none; }
-      [data-theme="dark"] .lab-plan-name { color: #fff; }
-      [data-theme="dark"] .lab-price-amount { color: #fff; }
-      [data-theme="dark"] .lab-price-riyal { filter: brightness(0) invert(1); }
-      [data-theme="dark"] .savings-lab-head h2 { color: #fff; }
-      [data-theme="dark"] .badge-discount,
-      [data-theme="dark"] .badge-save {
-        background: linear-gradient(135deg, rgba(246,111,163,.85) 0%, rgba(232,91,170,.85) 100%);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
-      }
-      [data-theme="dark"] .badge-launch-offer {
-        background: rgba(246,111,163,0.12);
-        color: #FFC2DD;
-        border-color: rgba(246,111,163,0.35);
-      }
-      [data-theme="dark"] .lab-billing-note { background: rgba(246,111,163,0.12); color: #FFC2DD; }
-      [data-theme="dark"] .lab-features { border-top-color: rgba(255,255,255,.08); }
-      [data-theme="dark"] .lab-features li { color: rgba(255,255,255,.85); }
     </style>
 
     <section class="savings-lab-section" id="savings-lab">
       <div class="container">
         <div class="savings-lab-head reveal">
           <span class="eyebrow"><span class="dot"></span>تجربة تصميمية — Experimental</span>
-          <h2>تجربة عرض التوفير داخل الباقات</h2>
-          <p>نموذج تجريبي لطريقة إبراز الخصومات أو التوفير السنوي داخل بطاقات الباقات، يمكن اعتماده لاحقًا في الصفحة الرئيسية وصفحة الأسعار.</p>
+          <h2>تجربة ليبل التوفير على الباقات الأصلية</h2>
+          <p>نفس تصميم الباقات المعتمد في الصفحة الرئيسية وصفحة الأسعار، مع إضافة ليبل وردي صغير للتوفير أو التمييز فقط.</p>
         </div>
 
-        <div class="savings-lab-grid">
-          <!-- Card 1 -->
-          <div class="lab-plan-card reveal">
-            <div class="lab-plan-badge-wrap"><span class="plan-badge badge-save">وفّر 20%</span></div>
-            <h3 class="lab-plan-name">الحضور المؤسسي</h3>
-            <p class="lab-plan-desc">الأنسب لبدء حضورك الرقمي باحتراف.</p>
-            <div class="lab-price-row">
-              <span class="lab-price-amount">75</span>
-              <img class="lab-price-riyal" src="images/riyal.svg" alt="ريال" />
-              <span class="lab-price-period">/ شهريًا</span>
+        <div class="pricing-cards">
+
+          <div class="price-card reveal" id="lab-basic">
+            <span class="savings-label">وفّر 20%</span>
+            <div class="price-tag">الأساسية</div>
+            <h3>الحضور المؤسسي</h3>
+            <p class="desc">للجمعيات الناشئة التي تحتاج موقعًا احترافيًا يعرّف بها ويبرز حوكمتها وفريقها.</p>
+            <div class="price-amount">
+              <img src="images/riyal.svg" alt="ريال" class="riyal-icon" />
+              <span class="num" data-monthly="75" data-yearly="895">75</span>
             </div>
-            <span class="lab-billing-note">تدفع سنويًا 895 ريال</span>
-            <ul class="lab-features">
-              <li>موقع مؤسسي كامل</li>
-              <li>صفحات حوكمة جاهزة</li>
-              <li>دعم فني أساسي</li>
-            </ul>
+            <div class="price-period">شهرياً</div>
+            <div class="price-billing-note" data-monthly="تدفع سنويًا 895 ريال" data-yearly="إجمالي سنوي 895 ريال">تدفع سنويًا 895 ريال</div>
+            <a href="checkout.html?plan=basic" class="btn btn-outline">ابدأ بالأساسية</a>
+            <div class="price-features">
+              <div class="price-features-title">يشمل</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>موقع إلكتروني احترافي متجاوب</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>الصفحة الرئيسية وعن الجمعية</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>صفحة الحوكمة وفريق العمل</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>صفحة اتصل بنا</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>لوحة تحكم سهلة + شهادة SSL</div>
+            </div>
           </div>
 
-          <!-- Card 2 -->
-          <div class="lab-plan-card reveal">
-            <div class="lab-plan-badge-wrap"><span class="plan-badge badge-best-value">الأكثر قيمة</span></div>
-            <h3 class="lab-plan-name">محتوى ومشاريع</h3>
-            <p class="lab-plan-desc">للجمعيات النشطة في المحتوى والمشاريع.</p>
-            <div class="lab-price-row">
-              <span class="lab-price-amount">208</span>
-              <img class="lab-price-riyal" src="images/riyal.svg" alt="ريال" />
-              <span class="lab-price-period">/ شهريًا</span>
+          <div class="price-card featured reveal reveal-d1" id="lab-plus">
+            <span class="savings-label">الأفضل قيمة</span>
+            <span class="price-badge">الأكثر اختياراً</span>
+            <div class="price-tag">بلس</div>
+            <h3>محتوى ومشاريع</h3>
+            <p class="desc">للجمعيات النشطة التي تحتاج إدارة المشاريع والمحتوى الإعلامي والأنشطة بصورة مؤسسية أعمق.</p>
+            <div class="price-amount">
+              <img src="images/riyal.svg" alt="ريال" class="riyal-icon" />
+              <span class="num" data-monthly="208" data-yearly="2,495">208</span>
             </div>
-            <span class="lab-billing-note">تدفع سنويًا 2,495 ريال</span>
-            <ul class="lab-features">
-              <li>كل مزايا الحضور المؤسسي</li>
-              <li>إدارة مشاريع وأخبار</li>
-              <li>مدونة ومركز محتوى</li>
-            </ul>
+            <div class="price-period">شهرياً</div>
+            <div class="price-billing-note" data-monthly="تدفع سنويًا 2,495 ريال" data-yearly="إجمالي سنوي 2,495 ريال">تدفع سنويًا 2,495 ريال</div>
+            <a href="checkout.html?plan=plus" class="btn btn-primary">ابدأ بباقة بلس</a>
+            <div class="price-features">
+              <div class="price-features-title">كل ما في الأساسية + </div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>إدارة الخدمات الإلكترونية</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>إدارة المشاريع وعرضها التفصيلي</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>المركز الإعلامي (أخبار ومقالات)</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>الأنشطة والفعاليات مع التسجيل</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>دعم فني ذو أولوية</div>
+            </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="lab-plan-card reveal">
-            <div class="lab-plan-badge-wrap"><span class="plan-badge badge-discount">وفّر 500 ريال</span></div>
-            <h3 class="lab-plan-name">منصة متكاملة</h3>
-            <p class="lab-plan-desc">منظومة رقمية كاملة لتشغيل جمعيتك.</p>
-            <div class="lab-price-row">
-              <span class="lab-price-amount">416</span>
-              <img class="lab-price-riyal" src="images/riyal.svg" alt="ريال" />
-              <span class="lab-price-period">/ شهريًا</span>
+          <div class="price-card reveal reveal-d2" id="lab-pro">
+            <span class="savings-label">وفّر 500 ريال</span>
+            <div class="price-tag">برو</div>
+            <h3>منصة متكاملة</h3>
+            <p class="desc">للجمعيات والكيانات الكبيرة التي تحتاج بوابة تبرعات ومتجر إلكتروني وتكاملات تشغيلية متقدمة.</p>
+            <div class="price-amount">
+              <img src="images/riyal.svg" alt="ريال" class="riyal-icon" />
+              <span class="num" data-monthly="416" data-yearly="4,995">416</span>
             </div>
-            <span class="lab-billing-note">تدفع سنويًا 4,995 ريال</span>
-            <ul class="lab-features">
-              <li>كل مزايا محتوى ومشاريع</li>
-              <li>متجر وبوابة تبرعات</li>
-              <li>دعم فني ذو أولوية</li>
-            </ul>
+            <div class="price-period">شهرياً</div>
+            <div class="price-billing-note" data-monthly="تدفع سنويًا 4,995 ريال" data-yearly="إجمالي سنوي 4,995 ريال">تدفع سنويًا 4,995 ريال</div>
+            <a href="checkout.html?plan=pro" class="btn btn-outline">ابدأ بباقة برو</a>
+            <div class="price-features">
+              <div class="price-features-title">كل ما في بلس + </div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>بوابة التبرعات الكاملة</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>المتجر الإلكتروني</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>تكاملات بوابات الدفع</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>تقارير مالية وأدائية</div>
+              <div class="price-feature"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>دعم فني مخصّص (مدير حساب)</div>
+            </div>
           </div>
-        </div>
 
-        <!-- معرض الليبلات الأربعة للاستخدام لاحقًا -->
-        <div style="margin-top:40px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
-          <span class="plan-badge badge-save">وفّر 20%</span>
-          <span class="plan-badge badge-discount">وفّر 180 ريال</span>
-          <span class="plan-badge badge-best-value">الأفضل قيمة</span>
-          <span class="plan-badge badge-launch-offer">خصم الإطلاق</span>
         </div>
       </div>
     </section>
