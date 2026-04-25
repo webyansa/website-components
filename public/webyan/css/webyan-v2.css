@@ -3798,20 +3798,28 @@ html[dir="ltr"] body { line-height: 1.6; }
 .partners-marquee{
   position:relative;
   overflow:hidden;
+  direction:ltr;
   -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
           mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 .partners-track{
   display:flex;
   align-items:center;
-  gap:22px;
+  gap:0;
   width:max-content;
-  /* Force LTR layout inside the track so the duplicated set sits immediately
-     after the first set, guaranteeing a continuous, never-empty marquee
-     regardless of the page direction. */
   direction:ltr;
-  animation:partnersScroll 45s linear infinite;
+  animation:partnersScrollLtr 34s linear infinite;
   will-change:transform;
+}
+html[dir="rtl"] .partners-track{
+  animation-name:partnersScrollRtl;
+}
+.partners-group{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex:0 0 auto;
+  padding-inline-end:22px;
 }
 .partners-marquee:hover .partners-track,
 .partners-marquee:focus-within .partners-track{
@@ -3849,9 +3857,13 @@ html[dir="ltr"] body { line-height: 1.6; }
   filter:grayscale(0) opacity(1);
   transform:scale(1.04);
 }
-@keyframes partnersScroll{
+@keyframes partnersScrollLtr{
   from{ transform:translateX(0); }
-  to  { transform:translateX(-50%); }
+  to  { transform:translateX(calc(-100% / 3)); }
+}
+@keyframes partnersScrollRtl{
+  from{ transform:translateX(calc(-100% / 3)); }
+  to  { transform:translateX(0); }
 }
 @media (prefers-reduced-motion: reduce){
   .partners-track{ animation:none; }
@@ -3859,7 +3871,8 @@ html[dir="ltr"] body { line-height: 1.6; }
 @media (max-width: 768px){
   .partners-section{ padding:56px 0 50px; }
   .partners-head{ margin-bottom:32px; padding:0 16px; }
-  .partners-track{ gap:14px; animation-duration:32s; }
+  .partners-track{ animation-duration:26s; }
+  .partners-group{ gap:14px; padding-inline-end:14px; }
   .partner-logo-card{
     width:148px;
     height:72px;
