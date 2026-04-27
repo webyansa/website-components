@@ -501,29 +501,139 @@ document.addEventListener('DOMContentLoaded', function() {
         renderFeaturedAwards();
     }
     
-    // Handle add award form submission
+    // ===== Add Award Wizard =====
+    const awardModalEl = document.getElementById('addAwardModal');
+    const awardForm = document.getElementById('addAwardForm');
     const submitBtn = document.getElementById('submitAwardBtn');
-    if (submitBtn) {
-        submitBtn.addEventListener('click', function() {
-            const form = document.getElementById('addAwardForm');
-            
-            // Check form validity
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
+    const nextBtn = document.getElementById('wizardNextBtn');
+    const prevBtn = document.getElementById('wizardPrevBtn');
+
+    if (awardForm && submitBtn && nextBtn && prevBtn) {
+        const stepper = awardModalEl.querySelector('.add-wizard__stepper');
+        const panels = awardForm.querySelectorAll('.add-wizard__panel');
+        const indicators = awardModalEl.querySelectorAll('[data-step-indicator]');
+
+        const setStep = (n) => {
+            panels.forEach(p => p.classList.toggle('is-active', +p.dataset.step === n));
+            indicators.forEach(ind => {
+                const num = +ind.dataset.stepIndicator;
+                ind.classList.toggle('is-active', num === n);
+                ind.classList.toggle('is-complete', num < n);
+            });
+            stepper.classList.toggle('step-2', n === 2);
+            prevBtn.disabled = n === 1;
+            nextBtn.classList.toggle('d-none', n === 2);
+            submitBtn.classList.toggle('d-none', n !== 2);
+            const first = panels[n-1].querySelector('input, select, textarea');
+            if (first) setTimeout(() => first.focus(), 150);
+            const body = awardModalEl.querySelector('.add-modal__body');
+            if (body) body.scrollTop = 0;
+        };
+
+        const errorMsg = (input) => {
+            const v = (input.value || '').trim();
+            if (input.required && !v) return 'هذا الحقل مطلوب';
+            if (input.type === 'email' && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'صيغة البريد غير صحيحة';
+            if (input.type === 'url' && v && !/^https?:\/\/.+/i.test(v)) return 'يجب أن يبدأ الرابط بـ http:// أو https://';
+            if (input.id === 'subPhone' && v && !/^5[0-9]{8}$/.test(v)) return 'رقم جوال سعودي غير صحيح (يبدأ بـ 5 و9 أرقام)';
+            if (input.minLength > 0 && v && v.length < input.minLength) return `الحد الأدنى ${input.minLength} حرفًا`;
+            if (input.id === 'awYear' && v) {
+                const y = +v; const cy = new Date().getFullYear();
+                if (y < 1900 || y > cy) return `أدخل سنة بين 1900 و ${cy}`;
             }
-            
-            // Close modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById('addAwardModal'));
-            modal.hide();
-            
-            // Reset form
-            form.reset();
-            
-            // Show success toast
-            const toast = new bootstrap.Toast(document.getElementById('successToast'));
-            toast.show();
+            return '';
+        };
+
+        const validateField = (input) => {
+            const wrap = input.closest('.form-floating-custom');
+            if (!wrap) return true;
+            const fb = wrap.querySelector('[data-feedback]');
+            const msg = errorMsg(input);
+            if (msg) {
+                wrap.classList.add('is-invalid');
+                wrap.classList.remove('is-valid');
+                if (fb) fb.textContent = msg;
+                return false;
+            }
+            wrap.classList.remove('is-invalid');
+            if ((input.value || '').trim()) wrap.classList.add('is-valid');
+            else wrap.classList.remove('is-valid');
+            if (fb) fb.textContent = fb.dataset.hint || '';
+            return true;
+        };
+
+        awardForm.querySelectorAll('[data-feedback]').forEach(fb => {
+            const t = fb.textContent.trim();
+            if (t) fb.dataset.hint = t;
         });
+
+        const validateStep = (n) => {
+            const panel = panels[n-1];
+            const fields = panel.querySelectorAll('input:not([type=checkbox]), select, textarea');
+            let ok = true; let firstBad = null;
+            fields.forEach(f => {
+                if (!validateField(f)) { ok = false; if (!firstBad) firstBad = f; }
+            });
+            if (n === 1) {
+                const consent = document.getElementById('subConsent');
+                if (consent && !consent.checked) {
+                    ok = false;
+                    consent.parentElement.style.color = '#dc3545';
+                    if (!firstBad) firstBad = consent;
+                } else if (consent) {
+                    consent.parentElement.style.color = '';
+                }
+            }
+            if (firstBad) firstBad.focus();
+            return ok;
+        };
+
+        awardForm.addEventListener('input', e => {
+            const t = e.target;
+            if (t.matches('input, select, textarea')) {
+                const wrap = t.closest('.form-floating-custom');
+                if (wrap && wrap.classList.contains('is-invalid')) validateField(t);
+            }
+        });
+        awardForm.addEventListener('blur', e => {
+            if (e.target.matches('input:not([type=checkbox]), select, textarea')) validateField(e.target);
+        }, true);
+
+        const desc = document.getElementById('awDesc');
+        const descCount = document.getElementById('awDescCount');
+        if (desc && descCount) {
+            desc.addEventListener('input', () => { descCount.textContent = desc.value.length; });
+        }
+        const phone = document.getElementById('subPhone');
+        if (phone) {
+            phone.addEventListener('input', () => {
+                phone.value = phone.value.replace(/\D/g, '').slice(0, 9);
+            });
+        }
+
+        nextBtn.addEventListener('click', () => { if (validateStep(1)) setStep(2); });
+        prevBtn.addEventListener('click', () => setStep(1));
+
+        submitBtn.addEventListener('click', () => {
+            if (!validateStep(2)) return;
+            const original = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm ms-2"></span> جاري الإرسال...';
+            setTimeout(() => {
+                const modal = bootstrap.Modal.getInstance(awardModalEl);
+                modal.hide();
+                awardForm.reset();
+                awardForm.querySelectorAll('.is-valid, .is-invalid').forEach(el => el.classList.remove('is-valid','is-invalid'));
+                if (descCount) descCount.textContent = '0';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = original;
+                setStep(1);
+                const toast = new bootstrap.Toast(document.getElementById('successToast'));
+                toast.show();
+            }, 700);
+        });
+
+        awardModalEl.addEventListener('shown.bs.modal', () => setStep(1));
     }
     
     // Handle service request form submission

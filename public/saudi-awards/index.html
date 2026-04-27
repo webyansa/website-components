@@ -557,133 +557,235 @@
       </div>
     </div>
 
-    <!-- ==================== ADD AWARD MODAL - Professional ==================== -->
+    <!-- ==================== ADD AWARD MODAL - Professional Wizard ==================== -->
     <div class="modal fade" id="addAwardModal" tabindex="-1" aria-labelledby="addAwardModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content add-modal">
           <div class="modal-header add-modal__header">
             <div class="add-modal__header-content">
               <div class="add-modal__icon">
-                <i class="bi bi-plus-lg"></i>
+                <i class="bi bi-trophy-fill"></i>
               </div>
               <div>
-                <h2 class="modal-title add-modal__title" id="addAwardModalLabel">إضافة جائزة جديدة</h2>
+                <h2 class="modal-title add-modal__title" id="addAwardModalLabel">اقتراح جائزة جديدة</h2>
                 <p class="add-modal__subtitle">ساهم في إثراء دليل الجوائز السعودية</p>
               </div>
             </div>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="إغلاق"></button>
           </div>
+
+          <!-- Stepper -->
+          <div class="add-wizard__stepper" role="tablist" aria-label="خطوات الإضافة">
+            <div class="add-wizard__step is-active" data-step-indicator="1">
+              <div class="add-wizard__step-bubble"><span>1</span><i class="bi bi-check-lg"></i></div>
+              <div class="add-wizard__step-text">
+                <span class="add-wizard__step-title">بيانات مقدّم الطلب</span>
+                <span class="add-wizard__step-sub">من سيتواصل معه فريقنا</span>
+              </div>
+            </div>
+            <div class="add-wizard__step-line"><span class="add-wizard__step-line-fill"></span></div>
+            <div class="add-wizard__step" data-step-indicator="2">
+              <div class="add-wizard__step-bubble"><span>2</span><i class="bi bi-check-lg"></i></div>
+              <div class="add-wizard__step-text">
+                <span class="add-wizard__step-title">بيانات الجائزة</span>
+                <span class="add-wizard__step-sub">المعلومات الرسمية للجائزة</span>
+              </div>
+            </div>
+          </div>
+
           <div class="modal-body add-modal__body">
             <div class="add-modal__intro">
-              <i class="bi bi-info-circle"></i>
-              <span>سيتم مراجعة المعلومات من قبل فريقنا قبل النشر</span>
+              <i class="bi bi-shield-check"></i>
+              <span>بياناتك سرية ولن تُنشر. سيتم مراجعة المعلومات من قبل فريقنا قبل النشر خلال 3 أيام عمل.</span>
             </div>
-            <form id="addAwardForm" class="add-modal__form">
-              <div class="row g-4">
-                <!-- Award Name -->
-                <div class="col-12">
-                  <div class="form-floating-custom">
-                    <label class="form-label-custom">
-                      <i class="bi bi-trophy"></i>
-                      اسم الجائزة
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control form-control-custom"
-                      required
-                      placeholder="مثال: جائزة الملك فيصل"
-                    />
-                  </div>
-                </div>
 
-                <!-- Sector & Scope -->
-                <div class="col-md-6">
-                  <div class="form-floating-custom">
-                    <label class="form-label-custom">
-                      <i class="bi bi-grid"></i>
-                      القطاع
-                      <span class="text-danger">*</span>
-                    </label>
-                    <select class="form-select form-control-custom" required>
-                      <option value="">اختر القطاع</option>
-                      <option value="culture">الثقافة</option>
-                      <option value="education">التعليم</option>
-                      <option value="tech">التقنية</option>
-                      <option value="health">الصحة</option>
-                      <option value="business">الأعمال</option>
-                      <option value="environment">البيئة</option>
-                      <option value="other">أخرى</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating-custom">
-                    <label class="form-label-custom">
-                      <i class="bi bi-globe2"></i>
-                      نطاق الجائزة
-                      <span class="text-danger">*</span>
-                    </label>
-                    <select class="form-select form-control-custom" required>
-                      <option value="">اختر النطاق</option>
-                      <option value="national">وطنية</option>
-                      <option value="arab">عربية</option>
-                      <option value="international">عالمية</option>
-                    </select>
-                  </div>
-                </div>
+            <form id="addAwardForm" class="add-modal__form" novalidate>
+              <!-- ===== STEP 1: Submitter ===== -->
+              <fieldset class="add-wizard__panel is-active" data-step="1">
+                <legend class="add-wizard__panel-title">
+                  <i class="bi bi-person-badge"></i>
+                  بيانات مقدّم الطلب
+                </legend>
+                <p class="add-wizard__panel-desc">سنستخدم هذه البيانات للتواصل معك فقط لتأكيد المعلومات.</p>
 
-                <!-- Owner -->
-                <div class="col-12">
-                  <div class="form-floating-custom">
-                    <label class="form-label-custom">
-                      <i class="bi bi-building"></i>
-                      الجهة المالكة
-                      <span class="text-danger">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      class="form-control form-control-custom"
-                      required
-                      placeholder="مثال: وزارة الثقافة"
-                    />
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="subFullName">
+                        <i class="bi bi-person"></i> الاسم الكامل <span class="text-danger">*</span>
+                      </label>
+                      <input id="subFullName" name="submitterName" type="text" class="form-control form-control-custom" required minlength="3" maxlength="80" placeholder="مثال: عبدالله محمد" autocomplete="name" />
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
                   </div>
-                </div>
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="subRole">
+                        <i class="bi bi-briefcase"></i> الصفة / المنصب <span class="text-danger">*</span>
+                      </label>
+                      <select id="subRole" name="submitterRole" class="form-select form-control-custom" required>
+                        <option value="">اختر الصفة</option>
+                        <option value="owner">ممثل الجهة المالكة</option>
+                        <option value="employee">موظف في الجهة</option>
+                        <option value="researcher">باحث / مهتم</option>
+                        <option value="media">صحفي / إعلامي</option>
+                        <option value="other">أخرى</option>
+                      </select>
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
 
-                <!-- Website -->
-                <div class="col-12">
-                  <div class="form-floating-custom">
-                    <label class="form-label-custom">
-                      <i class="bi bi-link-45deg"></i>
-                      موقع الجائزة
-                    </label>
-                    <input type="url" class="form-control form-control-custom" placeholder="https://example.com" />
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="subEmail">
+                        <i class="bi bi-envelope"></i> البريد الإلكتروني <span class="text-danger">*</span>
+                      </label>
+                      <input id="subEmail" name="submitterEmail" type="email" class="form-control form-control-custom" required placeholder="name@example.com" autocomplete="email" dir="ltr" />
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
                   </div>
-                </div>
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="subPhone">
+                        <i class="bi bi-telephone"></i> رقم الجوال <span class="text-danger">*</span>
+                      </label>
+                      <div class="phone-input">
+                        <span class="phone-input__prefix" dir="ltr">🇸🇦 +966</span>
+                        <input id="subPhone" name="submitterPhone" type="tel" class="form-control form-control-custom phone-input__field" required pattern="^5[0-9]{8}$" maxlength="9" placeholder="5XXXXXXXX" inputmode="numeric" dir="ltr" />
+                      </div>
+                      <div class="form-feedback" data-feedback>يبدأ بـ 5 ويتكون من 9 أرقام</div>
+                    </div>
+                  </div>
 
-                <!-- Description -->
-                <div class="col-12">
-                  <div class="form-floating-custom">
-                    <label class="form-label-custom">
-                      <i class="bi bi-card-text"></i>
-                      وصف مختصر
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="subOrg">
+                        <i class="bi bi-building"></i> الجهة التابع لها (اختياري)
+                      </label>
+                      <input id="subOrg" name="submitterOrg" type="text" class="form-control form-control-custom" maxlength="120" placeholder="مثال: وزارة الثقافة" />
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="add-wizard__check">
+                      <input type="checkbox" id="subConsent" required />
+                      <span>أوافق على معالجة بياناتي لأغراض التواصل والمراجعة، وأقرّ بصحة المعلومات المقدمة.</span>
                     </label>
-                    <textarea
-                      class="form-control form-control-custom"
-                      rows="3"
-                      placeholder="أضف وصفًا مختصرًا للجائزة وأهدافها..."
-                    ></textarea>
                   </div>
                 </div>
-              </div>
+              </fieldset>
+
+              <!-- ===== STEP 2: Award ===== -->
+              <fieldset class="add-wizard__panel" data-step="2">
+                <legend class="add-wizard__panel-title">
+                  <i class="bi bi-trophy"></i>
+                  بيانات الجائزة
+                </legend>
+                <p class="add-wizard__panel-desc">أدخل المعلومات الرسمية للجائزة. الحقول التي تحمل (*) إلزامية.</p>
+
+                <div class="row g-4">
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awName">
+                        <i class="bi bi-award"></i> اسم الجائزة <span class="text-danger">*</span>
+                      </label>
+                      <input id="awName" name="awardName" type="text" class="form-control form-control-custom" required minlength="3" maxlength="120" placeholder="مثال: جائزة الملك فيصل العالمية" />
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awSector">
+                        <i class="bi bi-grid"></i> القطاع <span class="text-danger">*</span>
+                      </label>
+                      <select id="awSector" name="awardSector" class="form-select form-control-custom" required>
+                        <option value="">اختر القطاع</option>
+                        <option value="culture">الثقافة</option>
+                        <option value="education">التعليم</option>
+                        <option value="tech">التقنية</option>
+                        <option value="health">الصحة</option>
+                        <option value="business">الأعمال</option>
+                        <option value="environment">البيئة</option>
+                        <option value="other">أخرى</option>
+                      </select>
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awScope">
+                        <i class="bi bi-globe2"></i> نطاق الجائزة <span class="text-danger">*</span>
+                      </label>
+                      <select id="awScope" name="awardScope" class="form-select form-control-custom" required>
+                        <option value="">اختر النطاق</option>
+                        <option value="national">وطنية</option>
+                        <option value="arab">عربية</option>
+                        <option value="international">عالمية</option>
+                      </select>
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awOwner">
+                        <i class="bi bi-bank"></i> الجهة المالكة <span class="text-danger">*</span>
+                      </label>
+                      <input id="awOwner" name="awardOwner" type="text" class="form-control form-control-custom" required minlength="2" maxlength="120" placeholder="مثال: وزارة الثقافة" />
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awYear">
+                        <i class="bi bi-calendar-event"></i> سنة التأسيس (اختياري)
+                      </label>
+                      <input id="awYear" name="awardYear" type="number" min="1900" max="2100" class="form-control form-control-custom" placeholder="مثال: 1979" inputmode="numeric" dir="ltr" />
+                      <div class="form-feedback" data-feedback></div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awSite">
+                        <i class="bi bi-link-45deg"></i> الموقع الرسمي للجائزة (اختياري)
+                      </label>
+                      <input id="awSite" name="awardSite" type="url" class="form-control form-control-custom" placeholder="https://example.com" dir="ltr" />
+                      <div class="form-feedback" data-feedback>يجب أن يبدأ بـ https:// أو http://</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <label class="form-label-custom" for="awDesc">
+                        <i class="bi bi-card-text"></i> وصف مختصر <span class="text-danger">*</span>
+                      </label>
+                      <textarea id="awDesc" name="awardDesc" class="form-control form-control-custom" rows="4" required minlength="20" maxlength="500" placeholder="أضف وصفًا مختصرًا للجائزة وأهدافها وفئاتها..."></textarea>
+                      <div class="form-feedback form-feedback--counter">
+                        <span data-feedback></span>
+                        <span class="char-counter"><span id="awDescCount">0</span>/500</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
             </form>
           </div>
-          <div class="modal-footer add-modal__footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-              <i class="bi bi-x-lg"></i>
-              إلغاء
+
+          <div class="modal-footer add-modal__footer add-wizard__footer">
+            <button type="button" class="btn btn-outline-secondary add-wizard__btn-prev" id="wizardPrevBtn" disabled>
+              <i class="bi bi-arrow-right"></i>
+              السابق
             </button>
-            <button type="button" class="btn btn-primary" id="submitAwardBtn">
+            <div class="add-wizard__footer-spacer"></div>
+            <button type="button" class="btn btn-link add-wizard__btn-cancel" data-bs-dismiss="modal">إلغاء</button>
+            <button type="button" class="btn btn-primary add-wizard__btn-next" id="wizardNextBtn">
+              التالي
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <button type="button" class="btn btn-primary add-wizard__btn-submit d-none" id="submitAwardBtn">
               <i class="bi bi-send-fill"></i>
               إرسال الاقتراح
             </button>
