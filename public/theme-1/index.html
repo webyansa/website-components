@@ -3,961 +3,780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="جمعية [اسم الجمعية] - نسعى لبناء مجتمع مستدام من خلال مشاريع تنموية مؤثرة تحقق الأثر والشفافية">
-    <meta name="keywords" content="جمعية، مؤسسة خيرية، تطوع، تنمية، السعودية، حوكمة، شفافية">
-    <meta name="author" content="ويبيان">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="جمعية [اسم الجمعية] - نبني مجتمعاً مستداماً">
-    <meta property="og:description" content="نسعى لبناء مجتمع مستدام من خلال مشاريع تنموية مؤثرة">
+    <meta name="description" content="جمعية البر والتنمية - عطاء منظم وأثر يصل لمستحقيه. مشاريع كفالة الأسر، السلال الغذائية، الإسكان، التعليم والتمكين.">
+    <meta name="keywords" content="جمعية خيرية، بر، تبرعات، كفالة أسر، السعودية، حوكمة، شفافية، ويبيان">
+    <meta name="author" content="منصة ويبيان">
+
+    <meta property="og:title" content="جمعية البر والتنمية - نصنع أثراً يبقى">
+    <meta property="og:description" content="نمكّن الأسر وننمّي المجتمع عبر مشاريع موثوقة وشفافة.">
     <meta property="og:type" content="website">
-    
-    <title>الرئيسية - جمعية [اسم الجمعية]</title>
-    
-    <!-- Favicon -->
+
+    <title>الرئيسية - جمعية البر والتنمية | قالب الجمعية الأول</title>
+
     <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="assets/icons/favicon.png">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/loader.css?v=20260125">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/design-system.css">
-    <link rel="stylesheet" href="css/home-premium.css">
-    <link rel="stylesheet" href="css/rtl.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Charity template styles -->
+    <link rel="stylesheet" href="css/charity.css?v=20260509">
 </head>
 <body>
-    <!-- Page Loader -->
-    <div class="page-loader" id="page-loader" role="status" aria-label="جاري التحميل">
-        <div class="loader-content">
-            <div class="loader-spinner" aria-hidden="true"></div>
+
+<!-- ========================================================
+     NAVBAR
+     ======================================================== -->
+<nav class="wb-navbar navbar navbar-expand-lg" aria-label="القائمة الرئيسية">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="شعار جمعية البر والتنمية" onerror="this.style.display='none'">
+            <span>جمعية البر والتنمية</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wbNav" aria-controls="wbNav" aria-expanded="false" aria-label="فتح القائمة">
+            <i class="bi bi-list fs-3"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="wbNav">
+            <ul class="navbar-nav mx-lg-auto">
+                <li class="nav-item"><a class="nav-link active" href="#home">الرئيسية</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li>
+                <li class="nav-item"><a class="nav-link" href="#fields">مجالات العمل</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">المشاريع</a></li>
+                <li class="nav-item"><a class="nav-link" href="#donate">التبرعات</a></li>
+                <li class="nav-item"><a class="nav-link" href="#store">المتجر</a></li>
+                <li class="nav-item"><a class="nav-link" href="#news">الأخبار</a></li>
+                <li class="nav-item"><a class="nav-link" href="#governance">الحوكمة</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">تواصل</a></li>
+            </ul>
+            <div class="wb-nav-actions">
+                <a href="#contact" class="wb-btn wb-btn-outline d-none d-lg-inline-flex"><i class="bi bi-headset"></i> تواصل معنا</a>
+                <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع الآن</a>
+            </div>
         </div>
     </div>
+</nav>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         NAVBAR - Premium Sticky Navigation
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <nav class="navbar dark-mode" role="navigation" aria-label="القائمة الرئيسية">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-brand">
-                <img src="assets/img/logo.svg" alt="شعار جمعية [اسم الجمعية]" class="navbar-logo">
-            </a>
-            
-            <ul class="navbar-nav">
-                <li><a href="index.html" class="navbar-link active">الرئيسية</a></li>
-                <li class="navbar-dropdown">
-                    <a href="#" class="navbar-link navbar-dropdown-toggle">
-                        عن الجمعية
-                        <i class="fas fa-chevron-down navbar-dropdown-icon"></i>
-                    </a>
-                    <ul class="navbar-dropdown-menu">
-                        <li><a href="strategy.html"><i class="fas fa-chess"></i> استراتيجيتنا</a></li>
-                        <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
-                        <li><a href="founders.html"><i class="fas fa-landmark"></i> مؤسسونا</a></li>
-                        <li><a href="board.html"><i class="fas fa-users-cog"></i> مجلس الإدارة</a></li>
-                        <li><a href="general-assembly.html"><i class="fas fa-users"></i> الجمعية العمومية</a></li>
-                        <li><a href="org-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a></li>
-                        <li><a href="committees.html"><i class="fas fa-user-friends"></i> اللجان</a></li>
-                        <li><a href="team.html"><i class="fas fa-id-badge"></i> فريق العمل</a></li>
-                    </ul>
-                </li>
-                <li class="navbar-dropdown">
-                    <a href="#" class="navbar-link navbar-dropdown-toggle">
-                        المركز الإعلامي
-                        <i class="fas fa-chevron-down navbar-dropdown-icon"></i>
-                    </a>
-                    <ul class="navbar-dropdown-menu">
-                        <li><a href="media/news.html"><i class="fas fa-newspaper"></i> أخبار الجمعية</a></li>
-                        <li><a href="media/videos.html"><i class="fas fa-video"></i> مكتبة الفيديو</a></li>
-                        <li><a href="media/gallery.html"><i class="fas fa-images"></i> معرض الصور</a></li>
-                    </ul>
-                </li>
-                <li><a href="projects.html" class="navbar-link">المشاريع</a></li>
-                <li><a href="services.html" class="navbar-link">الخدمات</a></li>
-                <li><a href="governance.html" class="navbar-link">الحوكمة</a></li>
-                <li><a href="contact.html" class="navbar-link">اتصل بنا</a></li>
-            </ul>
-            
-            <a href="join.html" class="ds-btn ds-btn-primary navbar-cta">
-                <i class="fas fa-heart"></i>
-                انضم معنا
-            </a>
-            
-            <button class="navbar-toggle" aria-label="فتح القائمة" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-overlay" aria-hidden="true"></div>
-    <aside class="navbar-mobile" role="dialog" aria-label="القائمة المتنقلة">
-        <div class="navbar-mobile-header">
-            <img src="assets/img/logo.svg" alt="شعار الجمعية" style="height: 36px;">
-            <button class="navbar-mobile-close" aria-label="إغلاق القائمة">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <nav class="navbar-mobile-nav">
-            <a href="index.html" class="navbar-mobile-link active">
-                <i class="fas fa-home"></i>
-                الرئيسية
-            </a>
-            <div class="mobile-dropdown">
-                <button class="navbar-mobile-link mobile-dropdown-toggle">
-                    <i class="fas fa-building"></i>
-                    عن الجمعية
-                    <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
-                </button>
-                <div class="mobile-dropdown-menu">
-                    <a href="strategy.html">استراتيجيتنا</a>
-                    <a href="about.html">من نحن</a>
-                    <a href="founders.html">مؤسسونا</a>
-                    <a href="board.html">مجلس الإدارة</a>
-                    <a href="general-assembly.html">الجمعية العمومية</a>
-                    <a href="org-structure.html">الهيكل التنظيمي</a>
-                    <a href="committees.html">اللجان</a>
-                    <a href="team.html">فريق العمل</a>
+<!-- ========================================================
+     HERO SECTION
+     ======================================================== -->
+<header id="home" class="wb-hero">
+    <div class="container wb-hero-content">
+        <div class="row">
+            <div class="col-lg-9">
+                <span class="wb-hero-eyebrow"><i class="bi bi-patch-check-fill"></i> جمعية مرخّصة ومعتمدة</span>
+                <h1 class="wb-hero-title">نعمل لأجل الإنسان… <br> ونصنع <span>أثراً يبقى</span></h1>
+                <p class="wb-hero-lead">جمعية خيرية تسعى لتمكين الأسر، وتنمية المجتمع، وبناء فرص أكثر استدامة للفئات الأشد احتياجاً عبر مشاريع موثوقة وشفافة.</p>
+                <div class="wb-hero-actions">
+                    <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> ساهم الآن</a>
+                    <a href="#projects" class="wb-btn wb-btn-ghost"><i class="bi bi-grid-3x3-gap-fill"></i> استعرض مشاريعنا</a>
                 </div>
             </div>
-            <div class="mobile-dropdown">
-                <button class="navbar-mobile-link mobile-dropdown-toggle">
-                    <i class="fas fa-photo-video"></i>
-                    المركز الإعلامي
-                    <i class="fas fa-chevron-down mobile-dropdown-icon"></i>
-                </button>
-                <div class="mobile-dropdown-menu">
-                    <a href="media/news.html">أخبار الجمعية</a>
-                    <a href="media/videos.html">مكتبة الفيديو</a>
-                    <a href="media/gallery.html">معرض الصور</a>
-                </div>
-            </div>
-            <a href="projects.html" class="navbar-mobile-link">
-                <i class="fas fa-project-diagram"></i>
-                المشاريع
-            </a>
-            <a href="services.html" class="navbar-mobile-link">
-                <i class="fas fa-concierge-bell"></i>
-                الخدمات
-            </a>
-            <a href="governance.html" class="navbar-mobile-link">
-                <i class="fas fa-balance-scale"></i>
-                الحوكمة
-            </a>
-            <a href="contact.html" class="navbar-mobile-link">
-                <i class="fas fa-envelope"></i>
-                اتصل بنا
-            </a>
-            <a href="join.html" class="ds-btn ds-btn-primary" style="margin-top: 24px; width: 100%;">
-                <i class="fas fa-heart"></i>
-                انضم معنا
-            </a>
-        </nav>
-    </aside>
+        </div>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         1. HERO SECTION - Ultra Premium Fullscreen Cinematic Slider
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="hero-ultra" id="hero" aria-label="القسم الرئيسي">
-        <!-- Fullscreen Image Slider -->
-        <div class="hero-slider-ultra" data-autoplay="true" data-interval="7000">
-            <div class="hero-slides-track">
-                <!-- Slide 1 -->
-                <div class="hero-slide-ultra active" data-slide="0">
-                    <img src="assets/img/hero/hero-1.jpg" alt="مبادرات تنموية مجتمعية" loading="eager">
-                    <div class="slide-content-wrapper">
-                        <div class="slide-content">
-                            <span class="slide-eyebrow">
-                                <span class="eyebrow-line"></span>
-                                مبادرات تنموية
-                            </span>
-                            <h2 class="slide-title">
-                                <span class="title-word">نحو</span>
-                                <span class="title-word">أثرٍ</span>
-                                <span class="title-word accent">تنمويٍ</span>
-                                <span class="title-word accent">موثوق</span>
-                            </h2>
-                            <p class="slide-desc">نحوّل الاحتياج إلى مبادرات قابلة للقياس، بشفافية وشراكات تصنع فرقًا.</p>
-                            <a href="projects.html" class="slide-cta">
-                                <span>استكشف المشاريع</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="hero-slide-ultra" data-slide="1">
-                    <img src="assets/img/hero/hero-2.jpg" alt="دعم الأسر والأطفال" loading="lazy">
-                    <div class="slide-content-wrapper">
-                        <div class="slide-content">
-                            <span class="slide-eyebrow">
-                                <span class="eyebrow-line"></span>
-                                برامج اجتماعية
-                            </span>
-                            <h2 class="slide-title">
-                                <span class="title-word">دعم</span>
-                                <span class="title-word">الأسر</span>
-                                <span class="title-word accent">والمجتمع</span>
-                            </h2>
-                            <p class="slide-desc">نعمل على تمكين الأسر وتعزيز التماسك المجتمعي من خلال برامج متكاملة.</p>
-                            <a href="services.html" class="slide-cta">
-                                <span>تعرف على خدماتنا</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="hero-slide-ultra" data-slide="2">
-                    <img src="assets/img/hero/hero-3.jpg" alt="برامج تعليمية وتأهيلية" loading="lazy">
-                    <div class="slide-content-wrapper">
-                        <div class="slide-content">
-                            <span class="slide-eyebrow">
-                                <span class="eyebrow-line"></span>
-                                تمكين وتأهيل
-                            </span>
-                            <h2 class="slide-title">
-                                <span class="title-word">برامج</span>
-                                <span class="title-word accent">تعليمية</span>
-                                <span class="title-word accent">وتأهيلية</span>
-                            </h2>
-                            <p class="slide-desc">نؤمن بأن التعليم هو أساس التنمية المستدامة والنهضة الحقيقية.</p>
-                            <a href="about.html" class="slide-cta">
-                                <span>تعرف علينا</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <!-- Impact strip -->
+        <div class="wb-impact-strip reveal">
+            <div class="wb-impact-item">
+                <div class="wb-impact-num"><span data-count="500">0</span><small>+</small></div>
+                <div class="wb-impact-label">أسرة مستفيدة</div>
             </div>
-            
-            <!-- Cinematic Overlays -->
-            <div class="hero-overlay-gradient"></div>
-            <div class="hero-overlay-vignette"></div>
-            <div class="hero-noise-texture"></div>
-        </div>
-        
-        <!-- Navigation with Numbers Above -->
-        <div class="hero-nav-ultra hero-nav-prev-wrap">
-            <span class="nav-number prev-number">01</span>
-            <button class="hero-nav-btn-ultra hero-nav-prev" aria-label="الشريحة السابقة">
-                <span class="nav-btn-bg"></span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
-            <span class="nav-label">السابق</span>
-        </div>
-        
-        <div class="hero-nav-ultra hero-nav-next-wrap">
-            <span class="nav-number next-number">02</span>
-            <button class="hero-nav-btn-ultra hero-nav-next" aria-label="الشريحة التالية">
-                <span class="nav-btn-bg"></span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
-            <span class="nav-label">التالي</span>
-        </div>
-        
-        <!-- Vertical Progress Bar -->
-        <div class="hero-progress-vertical">
-            <div class="progress-line">
-                <div class="progress-line-fill"></div>
+            <div class="wb-impact-item">
+                <div class="wb-impact-num"><span data-count="120">0</span><small>+</small></div>
+                <div class="wb-impact-label">مشروع ومبادرة</div>
             </div>
-            <div class="progress-dots">
-                <button class="progress-dot active" data-index="0" aria-label="الشريحة 1"></button>
-                <button class="progress-dot" data-index="1" aria-label="الشريحة 2"></button>
-                <button class="progress-dot" data-index="2" aria-label="الشريحة 3"></button>
+            <div class="wb-impact-item">
+                <div class="wb-impact-num"><span data-count="8000">0</span><small>+</small></div>
+                <div class="wb-impact-label">مستفيد مباشر</div>
             </div>
-            <span class="progress-counter">
-                <span class="counter-current">01</span>
-                <span class="counter-divider"></span>
-                <span class="counter-total">03</span>
-            </span>
-        </div>
-        
-        <!-- Bottom Info Bar -->
-        <div class="hero-bottom-bar">
-            <div class="bottom-bar-content">
-                <div class="bar-stat">
-                    <span class="stat-number">+15</span>
-                    <span class="stat-label">سنة خبرة</span>
-                </div>
-                <div class="bar-divider"></div>
-                <div class="bar-stat">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">مشروع منجز</span>
-                </div>
-                <div class="bar-divider"></div>
-                <div class="bar-stat">
-                    <span class="stat-number">10K+</span>
-                    <span class="stat-label">مستفيد</span>
-                </div>
+            <div class="wb-impact-item">
+                <div class="wb-impact-num"><span data-count="15">0</span><small>+</small></div>
+                <div class="wb-impact-label">عاماً من العطاء</div>
             </div>
         </div>
-        
-        <!-- Scroll Down Indicator -->
-        <a href="#about-preview" class="hero-scroll-ultra" aria-label="انتقل للأسفل">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span class="scroll-text">اكتشف المزيد</span>
-            <div class="scroll-arrows">
-                <svg class="scroll-arrow-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-                <svg class="scroll-arrow-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </a>
-    </section>
+    </div>
+</header>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         2. ABOUT SECTION - Premium Human-Centered Design
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section about-premium" id="about-preview" aria-labelledby="about-title">
-        <!-- Subtle Background Pattern -->
-        <div class="about-bg-pattern"></div>
-        
-        <div class="container">
-            <!-- Section Header -->
-            <header class="about-header ds-reveal">
-                <span class="about-eyebrow">
-                    <span class="eyebrow-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
-                    </span>
-                    <span class="eyebrow-text">من نحن</span>
-                    <span class="eyebrow-line"></span>
-                </span>
-                <h2 class="about-main-title" id="about-title">
-                    <span class="title-line">نبني مجتمعاً</span>
-                    <span class="title-line accent">أكثر استدامة</span>
-                </h2>
-            </header>
-            
-            <div class="about-premium-grid">
-                <!-- Photography Column - Enhanced Layout -->
-                <div class="about-gallery ds-reveal">
-                    <div class="gallery-main">
-                        <img src="assets/img/about/about-field.jpg" alt="متطوع يقدم مستلزمات مدرسية للأطفال" loading="lazy">
-                        <div class="gallery-main-overlay"></div>
+<!-- ========================================================
+     ABOUT SECTION
+     ======================================================== -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <div class="wb-about-media reveal">
+                    <img class="wb-about-img-main" src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=900&q=80" alt="فريق الجمعية يقدم مساعدات للأسر">
+                    <img class="wb-about-img-sub" src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=600&q=80" alt="متطوعون أثناء مبادرة ميدانية">
+                    <div class="wb-about-badge">
+                        <span class="num">15+</span>
+                        <span>سنة <br>من العطاء</span>
                     </div>
-                    <div class="gallery-secondary">
-                        <img src="assets/img/about/about-main.jpg" alt="رعاية النمو والتنمية المستدامة" loading="lazy">
-                        <!-- Experience Badge -->
-                        <div class="experience-badge">
-                            <span class="badge-number">+15</span>
-                            <span class="badge-text">عاماً من<br>العطاء</span>
-                        </div>
-                    </div>
-                    <!-- Decorative Frame -->
-                    <div class="gallery-frame"></div>
                 </div>
-                
-                <!-- Content Column - Enhanced -->
-                <div class="about-content-premium ds-reveal">
-                    <p class="about-lead">
-                        نعمل ميدانياً في خدمة المجتمع منذ أكثر من 15 عاماً، نبني شراكات حقيقية 
-                        ونقيس أثرنا بشفافية تامة.
+            </div>
+            <div class="col-lg-7">
+                <div class="reveal">
+                    <span class="wb-section-eyebrow"><i class="bi bi-stars"></i> عن الجمعية</span>
+                    <h2 class="wb-section-title">عطاءٌ منظّم… <span>وأثرٌ يصل لمستحقيه</span></h2>
+                    <p class="wb-section-lead mx-0">
+                        نحن جمعية خيرية مرخّصة تعمل ضمن منظومة العمل الأهلي في المملكة العربية السعودية، نسعى إلى رفع جودة حياة الأسر المحتاجة عبر مشاريع تنموية مستدامة، ونلتزم بأعلى معايير الحوكمة والشفافية في كل ريال يصل إلينا.
                     </p>
-                    
-                    <!-- Core Values Grid -->
-                    <div class="about-values-grid">
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                    <path d="M9 12l2 2 4-4"/>
-                                </svg>
-                            </div>
-                            <div class="value-content">
-                                <h4>شفافية وحوكمة</h4>
-                                <p>التزام كامل بأعلى معايير الشفافية والحوكمة الرشيدة</p>
-                            </div>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="9" cy="7" r="4"/>
-                                    <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-                                    <circle cx="17" cy="11" r="3"/>
-                                    <path d="M21 21v-1.5a3 3 0 0 0-3-3"/>
-                                </svg>
-                            </div>
-                            <div class="value-content">
-                                <h4>شراكات فاعلة</h4>
-                                <p>شبكة شراكات استراتيجية مع القطاعين الحكومي والخاص</p>
-                            </div>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M21 21H3"/>
-                                    <path d="M18 21V9l-6-6-6 6v12"/>
-                                    <rect x="9" y="14" width="6" height="7"/>
-                                    <path d="M3 14l9-9 9 9"/>
-                                </svg>
-                            </div>
-                            <div class="value-content">
-                                <h4>قياس الأثر</h4>
-                                <p>منهجية علمية لقياس ومتابعة الأثر التنموي</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Vision & Mission Cards -->
-                    <div class="vm-cards">
-                        <div class="vm-card vision">
-                            <div class="vm-icon">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <circle cx="12" cy="12" r="6"/>
-                                    <circle cx="12" cy="12" r="2"/>
-                                </svg>
-                            </div>
-                            <div class="vm-content">
-                                <span class="vm-label">الرؤية</span>
-                                <p>أن نكون الجمعية الرائدة في تحقيق التنمية المستدامة على مستوى المملكة.</p>
-                            </div>
-                        </div>
-                        <div class="vm-card mission">
-                            <div class="vm-icon">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
-                                    <line x1="4" y1="22" x2="4" y2="15"/>
-                                </svg>
-                            </div>
-                            <div class="vm-content">
-                                <span class="vm-label">الرسالة</span>
-                                <p>بناء مبادرات تنموية تحقق حياة كريمة لأفراد المجتمع من خلال تنمية قدراتهم.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- CTA -->
-                    <div class="about-cta-wrap">
-                        <a href="about.html" class="about-cta-primary">
-                            <span>تعرف على الجمعية</span>
-                            <span class="cta-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                                </svg>
-                            </span>
-                        </a>
-                        <a href="governance.html" class="about-cta-secondary">
-                            <span>الحوكمة والشفافية</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bottom Stats Bar -->
-            <div class="about-stats-bar ds-reveal">
-                <div class="stat-item">
-                    <span class="stat-number" data-count="50">50+</span>
-                    <span class="stat-label">مشروع منجز</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="10000">10K+</span>
-                    <span class="stat-label">مستفيد</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="25">25+</span>
-                    <span class="stat-label">شريك استراتيجي</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number" data-count="500">500+</span>
-                    <span class="stat-label">متطوع نشط</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         3. FIELDS SECTION - Horizontal Scroll
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section bg-light fields-section" aria-labelledby="fields-title">
-        <div class="container">
-            <header class="ds-section-header ds-reveal">
-                <span class="ds-section-badge">
-                    <i class="fas fa-compass"></i>
-                    مجالاتنا
-                </span>
-                <h2 class="ds-section-title" id="fields-title">مجالات عمل الجمعية</h2>
-                <p class="ds-section-subtitle">نعمل في مجالات متنوعة تخدم المجتمع وتحقق التنمية المستدامة</p>
-            </header>
-        </div>
-        
-        <div class="fields-scroll-container ds-horizontal-scroll ds-reveal-stagger">
-            <article class="ds-icon-card">
-                <div class="ds-icon-card-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="ds-icon-card-title">التعليم والتدريب</h3>
-                <p class="ds-icon-card-text">برامج تعليمية وتدريبية متقدمة لتطوير المهارات وبناء القدرات</p>
-            </article>
-            
-            <article class="ds-icon-card">
-                <div class="ds-icon-card-icon">
-                    <i class="fas fa-hand-holding-heart"></i>
-                </div>
-                <h3 class="ds-icon-card-title">الخدمات الإنسانية</h3>
-                <p class="ds-icon-card-text">مساعدات وإغاثة عاجلة للمحتاجين والمتضررين في المجتمع</p>
-            </article>
-            
-            <article class="ds-icon-card">
-                <div class="ds-icon-card-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3 class="ds-icon-card-title">ريادة الأعمال</h3>
-                <p class="ds-icon-card-text">دعم وتمكين رواد الأعمال والمشاريع الصغيرة والمتوسطة</p>
-            </article>
-            
-            <article class="ds-icon-card">
-                <div class="ds-icon-card-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3 class="ds-icon-card-title">التمكين المجتمعي</h3>
-                <p class="ds-icon-card-text">برامج شاملة لتمكين الأسر والشباب والمرأة</p>
-            </article>
-            
-            <article class="ds-icon-card">
-                <div class="ds-icon-card-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <h3 class="ds-icon-card-title">الصحة والرعاية</h3>
-                <p class="ds-icon-card-text">خدمات صحية وتوعوية شاملة للمجتمع</p>
-            </article>
-            
-            <article class="ds-icon-card">
-                <div class="ds-icon-card-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <h3 class="ds-icon-card-title">البيئة والاستدامة</h3>
-                <p class="ds-icon-card-text">مبادرات رائدة للحفاظ على البيئة والتنمية المستدامة</p>
-            </article>
-        </div>
-    </section>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-6">
+                            <div class="wb-pillar-card">
+                                <div class="wb-pillar-icon"><i class="bi bi-bullseye"></i></div>
+                                <div>
+                                    <h5>رسالتنا</h5>
+                                    <p>تمكين الأسر المحتاجة وتنمية المجتمع عبر برامج نوعية ومستدامة.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="wb-pillar-card">
+                                <div class="wb-pillar-icon"><i class="bi bi-eye-fill"></i></div>
+                                <div>
+                                    <h5>رؤيتنا</h5>
+                                    <p>أن نكون الجمعية الرائدة في صناعة الأثر الإنساني المستدام.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="wb-pillar-card">
+                                <div class="wb-pillar-icon"><i class="bi bi-gem"></i></div>
+                                <div>
+                                    <h5>قيمنا</h5>
+                                    <p>الشفافية، الإتقان، الرحمة، الشراكة المجتمعية، والمسؤولية أمام المتبرع والمستفيد.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         4. PROJECTS SECTION - Story Cards Carousel
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section projects-section" aria-labelledby="projects-title">
-        <div class="container">
-            <header class="ds-section-header ds-reveal">
-                <span class="ds-section-badge">
-                    <i class="fas fa-project-diagram"></i>
-                    مشاريعنا
-                </span>
-                <h2 class="ds-section-title" id="projects-title">المشاريع والمبادرات</h2>
-                <p class="ds-section-subtitle">نفخر بمشاريعنا التي تحقق أثراً ملموساً في المجتمع</p>
-            </header>
-            
-            <div class="projects-carousel ds-reveal">
-                <div class="projects-carousel-track">
-                    <!-- Project 1 -->
-                    <article class="ds-project-card">
-                        <span class="ds-project-card-badge active">قيد التنفيذ</span>
-                        <div class="ds-project-card-img">
-                            <img src="assets/svg/placeholder-project.svg" alt="مشروع تمكين الشباب">
-                        </div>
-                        <div class="ds-project-card-body">
-                            <h3 class="ds-project-card-title">مشروع تمكين الشباب</h3>
-                            <p class="ds-project-card-text">برنامج شامل لتأهيل الشباب وتمكينهم من سوق العمل</p>
-                            <div class="ds-progress">
-                                <div class="ds-progress-bar" style="width: 65%;"></div>
-                            </div>
-                            <div class="ds-project-card-kpis">
-                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 500 مستفيد</span>
-                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2024</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Project 2 -->
-                    <article class="ds-project-card">
-                        <span class="ds-project-card-badge complete">مكتمل</span>
-                        <div class="ds-project-card-img">
-                            <img src="assets/svg/placeholder-project.svg" alt="مبادرة إفطار صائم">
-                        </div>
-                        <div class="ds-project-card-body">
-                            <h3 class="ds-project-card-title">مبادرة إفطار صائم</h3>
-                            <p class="ds-project-card-text">توزيع وجبات إفطار على الصائمين في شهر رمضان</p>
-                            <div class="ds-progress">
-                                <div class="ds-progress-bar" style="width: 100%;"></div>
-                            </div>
-                            <div class="ds-project-card-kpis">
-                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 10,000 مستفيد</span>
-                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2024</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Project 3 -->
-                    <article class="ds-project-card">
-                        <span class="ds-project-card-badge active">قيد التنفيذ</span>
-                        <div class="ds-project-card-img">
-                            <img src="assets/svg/placeholder-project.svg" alt="برنامج التدريب المهني">
-                        </div>
-                        <div class="ds-project-card-body">
-                            <h3 class="ds-project-card-title">برنامج التدريب المهني</h3>
-                            <p class="ds-project-card-text">دورات تدريبية متخصصة لتأهيل الكوادر الوطنية</p>
-                            <div class="ds-progress">
-                                <div class="ds-progress-bar" style="width: 40%;"></div>
-                            </div>
-                            <div class="ds-project-card-kpis">
-                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 200 مستفيد</span>
-                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2025</span>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <!-- Project 4 -->
-                    <article class="ds-project-card">
-                        <span class="ds-project-card-badge complete">مكتمل</span>
-                        <div class="ds-project-card-img">
-                            <img src="assets/svg/placeholder-project.svg" alt="مشروع كسوة الشتاء">
-                        </div>
-                        <div class="ds-project-card-body">
-                            <h3 class="ds-project-card-title">مشروع كسوة الشتاء</h3>
-                            <p class="ds-project-card-text">توزيع ملابس شتوية على الأسر المحتاجة</p>
-                            <div class="ds-progress">
-                                <div class="ds-progress-bar" style="width: 100%;"></div>
-                            </div>
-                            <div class="ds-project-card-kpis">
-                                <span class="ds-project-card-kpi"><i class="fas fa-users"></i> 3,000 مستفيد</span>
-                                <span class="ds-project-card-kpi"><i class="fas fa-calendar"></i> 2024</span>
-                            </div>
-                        </div>
-                    </article>
+                    <a href="#about" class="wb-btn-link mt-4"><span>اعرف أكثر عن الجمعية</span> <i class="bi bi-arrow-left"></i></a>
                 </div>
-                
-                <!-- Carousel Navigation -->
-                <button class="carousel-nav carousel-prev" aria-label="السابق">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="carousel-nav carousel-next" aria-label="التالي">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            
-            <div class="text-center mt-12 ds-reveal">
-                <a href="projects.html" class="ds-btn ds-btn-secondary">
-                    <i class="fas fa-th-large"></i>
-                    عرض جميع المشاريع
-                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         5. NEWS SECTION - Editorial Magazine Layout
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section bg-light news-section" aria-labelledby="news-title">
-        <div class="container">
-            <header class="ds-section-header ds-reveal">
-                <span class="ds-section-badge">
-                    <i class="fas fa-newspaper"></i>
-                    آخر الأخبار
-                </span>
-                <h2 class="ds-section-title" id="news-title">أخبار الجمعية</h2>
-                <p class="ds-section-subtitle">تابع آخر أخبارنا وفعالياتنا ومستجداتنا</p>
-            </header>
-            
-            <div class="ds-news-grid ds-reveal">
-                <!-- Featured News -->
-                <a href="media/news-details.html" class="ds-news-featured">
-                    <div class="ds-news-featured-img">
-                        <img src="assets/svg/placeholder-news.svg" alt="افتتاح المقر الجديد">
-                    </div>
-                    <div class="ds-news-featured-overlay"></div>
-                    <div class="ds-news-featured-content">
-                        <span class="ds-news-featured-date">
-                            <i class="fas fa-calendar-alt"></i>
-                            15 مارس 2024
-                        </span>
-                        <h3 class="ds-news-featured-title">افتتاح المقر الجديد للجمعية بحضور نخبة من الشخصيات</h3>
-                        <p class="ds-news-featured-excerpt">تم بحمد الله افتتاح المقر الجديد للجمعية الذي يمثل نقلة نوعية في مسيرة العمل المؤسسي...</p>
-                    </div>
-                </a>
-                
-                <!-- Side News List -->
-                <div class="ds-news-list">
-                    <a href="media/news-details.html" class="ds-news-item">
-                        <div class="ds-news-item-img">
-                            <img src="assets/svg/placeholder-news.svg" alt="توقيع اتفاقية">
-                        </div>
-                        <div class="ds-news-item-content">
-                            <span class="ds-news-item-date">10 مارس 2024</span>
-                            <h4 class="ds-news-item-title">توقيع اتفاقية شراكة استراتيجية مع القطاع الخاص</h4>
-                        </div>
-                    </a>
-                    
-                    <a href="media/news-details.html" class="ds-news-item">
-                        <div class="ds-news-item-img">
-                            <img src="assets/svg/placeholder-news.svg" alt="إطلاق مبادرة">
-                        </div>
-                        <div class="ds-news-item-content">
-                            <span class="ds-news-item-date">5 مارس 2024</span>
-                            <h4 class="ds-news-item-title">إطلاق مبادرة "معاً نبني" للتنمية المجتمعية</h4>
-                        </div>
-                    </a>
-                    
-                    <a href="media/news-details.html" class="ds-news-item">
-                        <div class="ds-news-item-img">
-                            <img src="assets/svg/placeholder-news.svg" alt="تكريم المتطوعين">
-                        </div>
-                        <div class="ds-news-item-content">
-                            <span class="ds-news-item-date">28 فبراير 2024</span>
-                            <h4 class="ds-news-item-title">حفل تكريم المتطوعين المتميزين لعام 2024</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 ds-reveal">
-                <a href="media/news.html" class="ds-btn ds-btn-secondary">
-                    <i class="fas fa-newspaper"></i>
-                    عرض جميع الأخبار
-                </a>
-            </div>
+<!-- ========================================================
+     FIELDS OF WORK
+     ======================================================== -->
+<section id="fields" class="section bg-soft">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <span class="wb-section-eyebrow"><i class="bi bi-diagram-3-fill"></i> ماذا نعمل</span>
+            <h2 class="wb-section-title">مجالات عمل <span>الجمعية</span></h2>
+            <p class="wb-section-lead">نقدّم برامج متكاملة تغطي الاحتياجات الأساسية للأسر، وتفتح أبواب التمكين والاستدامة.</p>
         </div>
-    </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         6. TEAM SECTION - Horizontal Slider
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section team-section" aria-labelledby="team-title">
-        <div class="container">
-            <header class="ds-section-header ds-reveal">
-                <span class="ds-section-badge">
-                    <i class="fas fa-users"></i>
-                    فريقنا
-                </span>
-                <h2 class="ds-section-title" id="team-title">فريق العمل</h2>
-                <p class="ds-section-subtitle">نخبة من الكفاءات المتميزة تعمل بشغف لخدمة المجتمع</p>
-            </header>
-            
-            <div class="team-slider ds-reveal">
-                <div class="team-slider-track">
-                    <article class="ds-team-card">
-                        <div class="ds-team-card-img">
-                            <img src="assets/svg/placeholder-person-m.svg" alt="أحمد محمد">
-                        </div>
-                        <h3 class="ds-team-card-name">أحمد محمد</h3>
-                        <p class="ds-team-card-role">المدير التنفيذي</p>
-                    </article>
-                    
-                    <article class="ds-team-card">
-                        <div class="ds-team-card-img">
-                            <img src="assets/svg/placeholder-person-f.svg" alt="سارة أحمد">
-                        </div>
-                        <h3 class="ds-team-card-name">سارة أحمد</h3>
-                        <p class="ds-team-card-role">مدير البرامج</p>
-                    </article>
-                    
-                    <article class="ds-team-card">
-                        <div class="ds-team-card-img">
-                            <img src="assets/svg/placeholder-person-m.svg" alt="خالد العمري">
-                        </div>
-                        <h3 class="ds-team-card-name">خالد العمري</h3>
-                        <p class="ds-team-card-role">مدير المشاريع</p>
-                    </article>
-                    
-                    <article class="ds-team-card">
-                        <div class="ds-team-card-img">
-                            <img src="assets/svg/placeholder-person-f.svg" alt="نورة السالم">
-                        </div>
-                        <h3 class="ds-team-card-name">نورة السالم</h3>
-                        <p class="ds-team-card-role">مدير التسويق</p>
-                    </article>
-                    
-                    <article class="ds-team-card">
-                        <div class="ds-team-card-img">
-                            <img src="assets/svg/placeholder-person-m.svg" alt="محمد الفهد">
-                        </div>
-                        <h3 class="ds-team-card-name">محمد الفهد</h3>
-                        <p class="ds-team-card-role">المدير المالي</p>
-                    </article>
-                    
-                    <article class="ds-team-card">
-                        <div class="ds-team-card-img">
-                            <img src="assets/svg/placeholder-person-f.svg" alt="هند الشمري">
-                        </div>
-                        <h3 class="ds-team-card-name">هند الشمري</h3>
-                        <p class="ds-team-card-role">مدير الموارد البشرية</p>
-                    </article>
-                </div>
-                
-                <!-- Slider Navigation -->
-                <button class="carousel-nav team-prev" aria-label="السابق">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="carousel-nav team-next" aria-label="التالي">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-            </div>
-            
-            <div class="text-center mt-12 ds-reveal">
-                <a href="team.html" class="ds-btn ds-btn-secondary">
-                    <i class="fas fa-users"></i>
-                    عرض فريق العمل كاملاً
-                </a>
-            </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-house-heart-fill"></i></div>
+                <h4>الرعاية الاجتماعية</h4>
+                <p>تقديم الدعم النفسي والاجتماعي للأسر، وربطهم بالخدمات الحكومية والأهلية المناسبة.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-people-fill"></i></div>
+                <h4>كفالة الأسر</h4>
+                <p>برنامج كفالة شهري ينقل الأسر من حدّ الكفاف إلى الاستقرار المعيشي والكرامة.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-basket3-fill"></i></div>
+                <h4>السلال الغذائية</h4>
+                <p>سلال شهرية وموسمية تُجهّز بمحتوى متكامل وتُسلَّم بطريقة كريمة وموثقة.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-tools"></i></div>
+                <h4>الإسكان والترميم</h4>
+                <p>ترميم منازل الأسر المحتاجة وتأمين بيئة سكن آمنة تليق بكرامة الإنسان.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+                <h4>الدعم الصحي</h4>
+                <p>تأمين الأدوية والاستشارات والكشف الطبي للأسر غير المقتدرة.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                <h4>التعليم والتمكين</h4>
+                <p>دعم الطلاب المتعثرين بالحقائب، الزي، والرسوم لضمان استمرار التعليم.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-briefcase-fill"></i></div>
+                <h4>التدريب والتأهيل</h4>
+                <p>برامج تدريبية تساعد المستفيدين على دخول سوق العمل وتحقيق الاستقلال المادي.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
+            <div class="col-md-6 col-lg-3 reveal"><div class="wb-field-card">
+                <div class="wb-field-icon"><i class="bi bi-calendar-heart-fill"></i></div>
+                <h4>المبادرات الموسمية</h4>
+                <p>كسوة الشتاء، إفطار الصائم، الأضاحي، وزكاة الفطر بتوزيع منظّم وعادل.</p>
+                <a href="#fields" class="wb-btn-link">اكتشف المجال <i class="bi bi-arrow-left"></i></a>
+            </div></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════════
-         7. FOOTER CTA + FOOTER
-         ═══════════════════════════════════════════════════════════════════════════ -->
-    <section class="section footer-cta-section" aria-label="دعوة للعمل">
-        <div class="container">
-            <div class="ds-footer-cta ds-reveal">
-                <h2 class="ds-footer-cta-title">كن جزءاً من التغيير الإيجابي</h2>
-                <p class="ds-footer-cta-text">
-                    انضم إلينا اليوم وساهم في بناء مستقبل أفضل لمجتمعنا. 
-                    معاً نستطيع تحقيق الأثر المستدام والشفافية الكاملة.
-                </p>
-                <div class="ds-footer-cta-actions">
-                    <a href="join.html" class="ds-btn ds-btn-primary ds-btn-lg">
-                        <i class="fas fa-heart"></i>
-                        انضم معنا
-                        <i class="fas fa-arrow-left btn-icon-arrow"></i>
-                    </a>
-                    <a href="contact.html" class="ds-btn ds-btn-ghost ds-btn-ghost-light ds-btn-lg">
-                        <i class="fas fa-envelope"></i>
-                        تواصل معنا
-                    </a>
-                </div>
+<!-- ========================================================
+     PROJECTS
+     ======================================================== -->
+<section id="projects" class="section">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5 reveal">
+            <div>
+                <span class="wb-section-eyebrow"><i class="bi bi-kanban-fill"></i> مشاريعنا</span>
+                <h2 class="wb-section-title mb-2">مشاريع <span>تصنع أثراً حقيقياً</span></h2>
+                <p class="wb-section-lead mx-0">مشاريع موثّقة ومتابعة، يمكنك المساهمة فيها بشفافية كاملة.</p>
             </div>
+            <a href="#projects" class="wb-btn wb-btn-outline">جميع المشاريع <i class="bi bi-arrow-left"></i></a>
         </div>
-    </section>
-    
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Brand Column -->
-                <div class="footer-brand">
-                    <img src="assets/img/logo.svg" alt="شعار جمعية [اسم الجمعية]" class="footer-logo">
-                    <p class="footer-about">
-                        نعمل من أجل مجتمع أفضل من خلال مشاريع تنموية ومبادرات مستدامة 
-                        تخدم أفراد المجتمع وتحقق رؤيتنا في التنمية الشاملة.
-                    </p>
-                    <div class="footer-socials">
-                        <a href="#" class="footer-social" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="footer-social" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="footer-social" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="footer-social" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+
+        <div class="row g-4">
+            <!-- Project 1 -->
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-project-card">
+                <div class="wb-project-img">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="مشروع كفالة أسرة">
+                    <span class="wb-project-tag">كفالات</span>
+                </div>
+                <div class="wb-project-body">
+                    <h4>كفالة أسرة لمدة عام</h4>
+                    <p>كفالة شهرية لأسرة محتاجة تشمل الغذاء والمواصلات والاحتياجات الأساسية.</p>
+                    <div class="wb-progress"><div class="wb-progress-bar" style="width:72%"></div></div>
+                    <div class="wb-progress-meta">
+                        <span>تم جمع <strong>108,000 ر.س</strong></span>
+                        <span>الهدف <strong>150,000 ر.س</strong></span>
+                    </div>
+                    <div class="wb-project-actions">
+                        <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع للمشروع</a>
+                        <a href="project-details.html" class="wb-btn wb-btn-outline">التفاصيل</a>
                     </div>
                 </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="footer-title">روابط سريعة</h3>
-                    <nav class="footer-links">
-                        <a href="about.html" class="footer-link">عن الجمعية</a>
-                        <a href="projects.html" class="footer-link">المشاريع</a>
-                        <a href="services.html" class="footer-link">الخدمات</a>
-                        <a href="governance.html" class="footer-link">الحوكمة</a>
-                        <a href="join.html" class="footer-link">انضم معنا</a>
-                    </nav>
+            </div></div>
+
+            <!-- Project 2 -->
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-project-card">
+                <div class="wb-project-img">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="السلة الغذائية الشهرية">
+                    <span class="wb-project-tag">إغاثة</span>
                 </div>
-                
-                <!-- Services -->
-                <div>
-                    <h3 class="footer-title">خدماتنا</h3>
-                    <nav class="footer-links">
-                        <a href="services.html" class="footer-link">الاستشارات</a>
-                        <a href="services.html" class="footer-link">التدريب</a>
-                        <a href="services.html" class="footer-link">الدعم المجتمعي</a>
-                        <a href="services.html" class="footer-link">البرامج التنموية</a>
-                    </nav>
+                <div class="wb-project-body">
+                    <h4>السلة الغذائية الشهرية</h4>
+                    <p>سلة متكاملة شهرية تكفي أسرة من 5 أفراد لمدة شهر كامل.</p>
+                    <div class="wb-progress"><div class="wb-progress-bar" style="width:88%"></div></div>
+                    <div class="wb-progress-meta">
+                        <span>تم جمع <strong>176,000 ر.س</strong></span>
+                        <span>الهدف <strong>200,000 ر.س</strong></span>
+                    </div>
+                    <div class="wb-project-actions">
+                        <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع للمشروع</a>
+                        <a href="project-details.html" class="wb-btn wb-btn-outline">التفاصيل</a>
+                    </div>
                 </div>
-                
-                <!-- Contact Info -->
-                <div>
-                    <h3 class="footer-title">تواصل معنا</h3>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>المملكة العربية السعودية - الرياض</span>
+            </div></div>
+
+            <!-- Project 3 -->
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-project-card">
+                <div class="wb-project-img">
+                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80" alt="ترميم منازل الأسر المحتاجة">
+                    <span class="wb-project-tag">إسكان</span>
+                </div>
+                <div class="wb-project-body">
+                    <h4>ترميم منازل الأسر</h4>
+                    <p>ترميم وصيانة منازل الأسر المحتاجة لتأمين مسكن آمن وكريم.</p>
+                    <div class="wb-progress"><div class="wb-progress-bar" style="width:46%"></div></div>
+                    <div class="wb-progress-meta">
+                        <span>تم جمع <strong>92,000 ر.س</strong></span>
+                        <span>الهدف <strong>200,000 ر.س</strong></span>
                     </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span class="phone-number">+966 11 XXX XXXX</span>
+                    <div class="wb-project-actions">
+                        <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع للمشروع</a>
+                        <a href="project-details.html" class="wb-btn wb-btn-outline">التفاصيل</a>
                     </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>info@association.org.sa</span>
+                </div>
+            </div></div>
+
+            <!-- Project 4 -->
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-project-card">
+                <div class="wb-project-img">
+                    <img src="https://images.unsplash.com/photo-1607113256158-56a934936ef1?auto=format&fit=crop&w=800&q=80" alt="كسوة الشتاء">
+                    <span class="wb-project-tag">موسمي</span>
+                </div>
+                <div class="wb-project-body">
+                    <h4>كسوة الشتاء</h4>
+                    <p>توفير ملابس وأغطية شتوية للأسر والأطفال في المناطق الباردة.</p>
+                    <div class="wb-progress"><div class="wb-progress-bar" style="width:60%"></div></div>
+                    <div class="wb-progress-meta">
+                        <span>تم جمع <strong>60,000 ر.س</strong></span>
+                        <span>الهدف <strong>100,000 ر.س</strong></span>
+                    </div>
+                    <div class="wb-project-actions">
+                        <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع للمشروع</a>
+                        <a href="project-details.html" class="wb-btn wb-btn-outline">التفاصيل</a>
+                    </div>
+                </div>
+            </div></div>
+
+            <!-- Project 5 -->
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-project-card">
+                <div class="wb-project-img">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="الحقيبة المدرسية">
+                    <span class="wb-project-tag">تعليم</span>
+                </div>
+                <div class="wb-project-body">
+                    <h4>الحقيبة المدرسية</h4>
+                    <p>تجهيز الطلاب الأيتام والأسر المحتاجة بحقيبة مدرسية متكاملة قبل العام الدراسي.</p>
+                    <div class="wb-progress"><div class="wb-progress-bar" style="width:34%"></div></div>
+                    <div class="wb-progress-meta">
+                        <span>تم جمع <strong>34,000 ر.س</strong></span>
+                        <span>الهدف <strong>100,000 ر.س</strong></span>
+                    </div>
+                    <div class="wb-project-actions">
+                        <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع للمشروع</a>
+                        <a href="project-details.html" class="wb-btn wb-btn-outline">التفاصيل</a>
+                    </div>
+                </div>
+            </div></div>
+
+            <!-- Project 6 -->
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-project-card">
+                <div class="wb-project-img">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80" alt="الرعاية الصحية">
+                    <span class="wb-project-tag">صحي</span>
+                </div>
+                <div class="wb-project-body">
+                    <h4>الرعاية الصحية</h4>
+                    <p>توفير الأدوية والعلاج للحالات المرضية ذات الدخل المحدود.</p>
+                    <div class="wb-progress"><div class="wb-progress-bar" style="width:54%"></div></div>
+                    <div class="wb-progress-meta">
+                        <span>تم جمع <strong>81,000 ر.س</strong></span>
+                        <span>الهدف <strong>150,000 ر.س</strong></span>
+                    </div>
+                    <div class="wb-project-actions">
+                        <a href="#donate" class="wb-btn wb-btn-primary"><i class="bi bi-heart-fill"></i> تبرع للمشروع</a>
+                        <a href="project-details.html" class="wb-btn wb-btn-outline">التفاصيل</a>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     DONATION GATEWAY
+     ======================================================== -->
+<section id="donate" class="section bg-soft">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5 reveal">
+                <span class="wb-section-eyebrow"><i class="bi bi-heart-fill"></i> بوابة التبرعات</span>
+                <h2 class="wb-section-title">ساهم في صناعة <span>الأثر</span></h2>
+                <p class="wb-section-lead mx-0">تبرعك مهما كان مقداره يصنع فرقاً حقيقياً في حياة أسرة محتاجة. اختر مبلغك ونوع تبرعك بكل سهولة.</p>
+                <ul class="list-unstyled mt-4">
+                    <li class="mb-3 d-flex gap-2"><i class="bi bi-shield-check text-success fs-5"></i> جمعية مرخّصة من المركز الوطني لتنمية القطاع غير الربحي.</li>
+                    <li class="mb-3 d-flex gap-2"><i class="bi bi-receipt text-success fs-5"></i> إيصال إلكتروني فوري بعد كل عملية تبرع.</li>
+                    <li class="mb-3 d-flex gap-2"><i class="bi bi-graph-up-arrow text-success fs-5"></i> تقارير دورية توضح أثر التبرعات على المستفيدين.</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-7 reveal">
+                <div class="wb-donate-section">
+                    <h3 class="fw-bold mb-1" style="font-size:22px">اختر مبلغ تبرعك</h3>
+                    <p class="opacity-75 mb-3" style="font-size:14px">جميع المبالغ بالريال السعودي</p>
+
+                    <div data-donate-group>
+                        <div class="wb-donate-amounts">
+                            <button class="wb-amount-btn" data-amount="50">50</button>
+                            <button class="wb-amount-btn active" data-amount="100">100</button>
+                            <button class="wb-amount-btn" data-amount="250">250</button>
+                            <button class="wb-amount-btn" data-amount="500">500</button>
+                        </div>
+                    </div>
+                    <input type="number" class="wb-donate-input" placeholder="أو أدخل مبلغاً مفتوحاً" data-donate-custom min="10">
+
+                    <h4 class="fw-bold mb-2 mt-3" style="font-size:16px">نوع التبرع</h4>
+                    <div class="wb-donate-types" data-type-group>
+                        <button class="wb-type-chip active">تبرع عام</button>
+                        <button class="wb-type-chip">مشروع محدد</button>
+                        <button class="wb-type-chip">إهداء</button>
+                        <button class="wb-type-chip">زكاة وصدقات</button>
+                    </div>
+
+                    <button class="wb-btn wb-btn-light w-100 justify-content-center" style="padding:14px"><i class="bi bi-shield-lock-fill"></i> تبرع الآن بأمان</button>
+
+                    <div class="wb-trust-note">
+                        <i class="bi bi-patch-check-fill"></i>
+                        <span>جميع التبرعات تصل إلى مستحقيها عبر مسارات موثّقة ومعتمدة.</span>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    جميع الحقوق محفوظة © <span id="current-year">2024</span> جمعية [اسم الجمعية]
-                </p>
-                <p class="footer-powered">
-                    مدعوم عبر منصة <a href="https://webyan.sa" target="_blank" rel="noopener">ويبيان</a>
-                </p>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     CHARITY STORE
+     ======================================================== -->
+<section id="store" class="section">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5 reveal">
+            <div>
+                <span class="wb-section-eyebrow"><i class="bi bi-bag-heart-fill"></i> المتجر الخيري</span>
+                <h2 class="wb-section-title mb-2">منتجات <span>تُهدي بها أثراً</span></h2>
+                <p class="wb-section-lead mx-0">تبرّع، أو اشترِ، أو أهدِ — كلها طرق تصل بها إلى من يستحق.</p>
+            </div>
+            <a href="#store" class="wb-btn wb-btn-outline">كل المنتجات <i class="bi bi-arrow-left"></i></a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-product-card">
+                <div class="wb-product-img"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=600&q=80" alt="بطاقة إهداء"></div>
+                <div class="wb-product-body">
+                    <span class="wb-product-cat">إهداء</span>
+                    <h5>بطاقة إهداء خيرية</h5>
+                    <p>أهدِ من تحب صدقة باسمه مع بطاقة أنيقة.</p>
+                    <div class="wb-product-price">75 <small>ر.س</small></div>
+                    <div class="wb-product-actions">
+                        <a href="#store" class="wb-btn wb-btn-primary"><i class="bi bi-bag-plus"></i> أضف للسلة</a>
+                    </div>
+                </div>
+            </div></div>
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-product-card">
+                <div class="wb-product-img"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="سلة غذائية"></div>
+                <div class="wb-product-body">
+                    <span class="wb-product-cat">إغاثة</span>
+                    <h5>سلة غذائية متكاملة</h5>
+                    <p>سلة شهرية تكفي أسرة من 5 أفراد.</p>
+                    <div class="wb-product-price">350 <small>ر.س</small></div>
+                    <div class="wb-product-actions">
+                        <a href="#store" class="wb-btn wb-btn-primary"><i class="bi bi-bag-plus"></i> أضف للسلة</a>
+                    </div>
+                </div>
+            </div></div>
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-product-card">
+                <div class="wb-product-img"><img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80" alt="وقف مصغر"></div>
+                <div class="wb-product-body">
+                    <span class="wb-product-cat">وقف</span>
+                    <h5>سهم وقف مصغّر</h5>
+                    <p>سهم في وقف يستمر أثره لسنوات قادمة.</p>
+                    <div class="wb-product-price">500 <small>ر.س</small></div>
+                    <div class="wb-product-actions">
+                        <a href="#store" class="wb-btn wb-btn-primary"><i class="bi bi-bag-plus"></i> أضف للسلة</a>
+                    </div>
+                </div>
+            </div></div>
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-product-card">
+                <div class="wb-product-img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80" alt="منتج أسر منتجة"></div>
+                <div class="wb-product-body">
+                    <span class="wb-product-cat">أسر منتجة</span>
+                    <h5>منتج من أسر منتجة</h5>
+                    <p>ادعم أسرة منتجة بشراء منتجها بسعر عادل.</p>
+                    <div class="wb-product-price">120 <small>ر.س</small></div>
+                    <div class="wb-product-actions">
+                        <a href="#store" class="wb-btn wb-btn-primary"><i class="bi bi-bag-plus"></i> أضف للسلة</a>
+                    </div>
+                </div>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     STATS
+     ======================================================== -->
+<section class="section">
+    <div class="container">
+        <div class="wb-stats reveal">
+            <div class="text-center mb-4">
+                <span class="wb-section-eyebrow" style="background:rgba(110,231,183,0.18); color:#6ee7b7"><i class="bi bi-bar-chart-fill"></i> أثرنا بالأرقام</span>
+                <h2 class="wb-section-title text-white">15 عاماً… وأثرٌ <span style="color:#6ee7b7">يتجدّد كل يوم</span></h2>
+            </div>
+            <div class="row g-3 g-md-4">
+                <div class="col-6 col-md-4 col-lg"><div class="wb-stat-card">
+                    <div class="wb-stat-icon"><i class="bi bi-people-fill"></i></div>
+                    <div class="wb-stat-num"><span data-count="8000">0</span><small>+</small></div>
+                    <div class="wb-stat-label">مستفيد</div>
+                </div></div>
+                <div class="col-6 col-md-4 col-lg"><div class="wb-stat-card">
+                    <div class="wb-stat-icon"><i class="bi bi-house-heart-fill"></i></div>
+                    <div class="wb-stat-num"><span data-count="500">0</span><small>+</small></div>
+                    <div class="wb-stat-label">أسرة</div>
+                </div></div>
+                <div class="col-6 col-md-4 col-lg"><div class="wb-stat-card">
+                    <div class="wb-stat-icon"><i class="bi bi-kanban-fill"></i></div>
+                    <div class="wb-stat-num"><span data-count="120">0</span><small>+</small></div>
+                    <div class="wb-stat-label">مشروع</div>
+                </div></div>
+                <div class="col-6 col-md-4 col-lg"><div class="wb-stat-card">
+                    <div class="wb-stat-icon"><i class="bi bi-calendar-check-fill"></i></div>
+                    <div class="wb-stat-num"><span data-count="15">0</span><small>+</small></div>
+                    <div class="wb-stat-label">عام عطاء</div>
+                </div></div>
+                <div class="col-6 col-md-4 col-lg"><div class="wb-stat-card">
+                    <div class="wb-stat-icon"><i class="bi bi-handshake"></i></div>
+                    <div class="wb-stat-num"><span data-count="35">0</span><small>+</small></div>
+                    <div class="wb-stat-label">شريك نجاح</div>
+                </div></div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" aria-label="العودة للأعلى">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+<!-- ========================================================
+     GOVERNANCE
+     ======================================================== -->
+<section id="governance" class="section bg-soft">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <span class="wb-section-eyebrow"><i class="bi bi-shield-check"></i> ثقة وشفافية</span>
+            <h2 class="wb-section-title">الحوكمة <span>والشفافية</span></h2>
+            <p class="wb-section-lead">نلتزم بأعلى معايير الإفصاح والمساءلة لضمان وصول كل ريال إلى مستحقيه.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-gov-card">
+                <div class="wb-gov-icon"><i class="bi bi-file-earmark-bar-graph-fill"></i></div>
+                <h5>التقرير السنوي</h5>
+                <p>تقرير شامل لأنشطة الجمعية ومؤشرات الأداء والأثر للعام المنصرم.</p>
+                <div class="wb-gov-meta"><span>PDF · 4.2MB</span><a href="#" class="wb-btn-link">تحميل <i class="bi bi-download"></i></a></div>
+            </div></div>
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-gov-card">
+                <div class="wb-gov-icon"><i class="bi bi-clipboard-data-fill"></i></div>
+                <h5>القوائم المالية</h5>
+                <p>القوائم المالية المدققة من قبل مكتب محاسبة قانوني معتمد.</p>
+                <div class="wb-gov-meta"><span>PDF · 2.8MB</span><a href="#" class="wb-btn-link">تحميل <i class="bi bi-download"></i></a></div>
+            </div></div>
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-gov-card">
+                <div class="wb-gov-icon"><i class="bi bi-people-fill"></i></div>
+                <h5>أعضاء مجلس الإدارة</h5>
+                <p>تعرّف على أعضاء مجلس الإدارة وسيرهم الذاتية ومسؤولياتهم.</p>
+                <div class="wb-gov-meta"><span>صفحة</span><a href="board.html" class="wb-btn-link">عرض <i class="bi bi-arrow-left"></i></a></div>
+            </div></div>
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-gov-card">
+                <div class="wb-gov-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+                <h5>السياسات واللوائح</h5>
+                <p>سياسات الحوكمة وتعارض المصالح وحماية المبلّغين عن المخالفات.</p>
+                <div class="wb-gov-meta"><span>عدة ملفات</span><a href="#" class="wb-btn-link">استعراض <i class="bi bi-arrow-left"></i></a></div>
+            </div></div>
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-gov-card">
+                <div class="wb-gov-icon"><i class="bi bi-clipboard-check-fill"></i></div>
+                <h5>محاضر الاجتماعات</h5>
+                <p>محاضر اجتماعات مجلس الإدارة والجمعية العمومية المعتمدة.</p>
+                <div class="wb-gov-meta"><span>PDF</span><a href="#" class="wb-btn-link">عرض <i class="bi bi-arrow-left"></i></a></div>
+            </div></div>
+            <div class="col-md-6 col-lg-4 reveal"><div class="wb-gov-card">
+                <div class="wb-gov-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                <h5>مؤشرات الأداء</h5>
+                <p>مؤشرات الأداء التشغيلية والإستراتيجية للجمعية وبرامجها.</p>
+                <div class="wb-gov-meta"><span>لوحة بيانات</span><a href="#" class="wb-btn-link">عرض <i class="bi bi-arrow-left"></i></a></div>
+            </div></div>
+        </div>
+    </div>
+</section>
 
-    <!-- Scripts -->
-    <script src="js/loader.js?v=20260125"></script>
-    <script src="js/home-premium.js"></script>
-    <script src="js/components.js"></script>
-    
-    <!-- About Tabs Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.about-tab');
-            const contents = document.querySelectorAll('.about-tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const target = this.getAttribute('data-tab');
-                    
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    
-                    this.classList.add('active');
-                    document.getElementById(target).classList.add('active');
-                });
-            });
-        });
-    </script>
+<!-- ========================================================
+     NEWS
+     ======================================================== -->
+<section id="news" class="section">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-5 reveal">
+            <div>
+                <span class="wb-section-eyebrow"><i class="bi bi-megaphone-fill"></i> المركز الإعلامي</span>
+                <h2 class="wb-section-title mb-2">آخر <span>الأخبار والمستجدات</span></h2>
+            </div>
+            <a href="#news" class="wb-btn wb-btn-outline">جميع الأخبار <i class="bi bi-arrow-left"></i></a>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6 reveal">
+                <article class="wb-news-main">
+                    <img src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=900&q=80" alt="إطلاق الحملة الموسمية">
+                    <div class="wb-news-main-body">
+                        <span class="wb-news-tag">حملات</span>
+                        <h3>الجمعية تُطلق الحملة الموسمية لكسوة الشتاء في 8 مناطق</h3>
+                        <p>تستهدف الحملة أكثر من 2,000 أسرة في المناطق الباردة شمال المملكة، بالشراكة مع جهات حكومية وأهلية.</p>
+                        <div class="wb-news-date"><i class="bi bi-calendar3"></i> 5 نوفمبر 2025 · بقلم فريق الإعلام</div>
+                        <a href="#" class="wb-btn-link">قراءة المزيد <i class="bi bi-arrow-left"></i></a>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-flex flex-column gap-3">
+                    <article class="wb-news-side reveal">
+                        <img src="https://images.unsplash.com/photo-1593113616828-6f22bca04804?auto=format&fit=crop&w=400&q=80" alt="توقيع شراكة">
+                        <div>
+                            <span class="meta"><i class="bi bi-calendar3"></i> 28 أكتوبر 2025 · شراكات</span>
+                            <h5>توقيع اتفاقية شراكة لدعم برنامج كفالة الأسر</h5>
+                        </div>
+                    </article>
+                    <article class="wb-news-side reveal">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=400&q=80" alt="ورشة تدريبية">
+                        <div>
+                            <span class="meta"><i class="bi bi-calendar3"></i> 14 أكتوبر 2025 · تدريب</span>
+                            <h5>ختام برنامج تأهيل ربّات البيوت لسوق العمل</h5>
+                        </div>
+                    </article>
+                    <article class="wb-news-side reveal">
+                        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=400&q=80" alt="إفطار صائم">
+                        <div>
+                            <span class="meta"><i class="bi bi-calendar3"></i> 1 أكتوبر 2025 · مبادرات</span>
+                            <h5>توزيع 12,000 وجبة ضمن مبادرة إفطار الصائم</h5>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     TEAM
+     ======================================================== -->
+<section id="team" class="section bg-soft">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <span class="wb-section-eyebrow"><i class="bi bi-person-badge-fill"></i> القيادة</span>
+            <h2 class="wb-section-title">مجلس الإدارة <span>وفريق العمل</span></h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-team-card">
+                <div class="wb-team-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="رئيس مجلس الإدارة"></div>
+                <div class="wb-team-body">
+                    <h5>د. عبدالله السالم</h5>
+                    <div class="wb-team-role">رئيس مجلس الإدارة</div>
+                    <div class="wb-team-social"><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a></div>
+                </div>
+            </div></div>
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-team-card">
+                <div class="wb-team-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" alt="نائب الرئيس"></div>
+                <div class="wb-team-body">
+                    <h5>أ. مها العتيبي</h5>
+                    <div class="wb-team-role">نائب رئيس المجلس</div>
+                    <div class="wb-team-social"><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a></div>
+                </div>
+            </div></div>
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-team-card">
+                <div class="wb-team-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="المدير التنفيذي"></div>
+                <div class="wb-team-body">
+                    <h5>م. سعد القحطاني</h5>
+                    <div class="wb-team-role">المدير التنفيذي</div>
+                    <div class="wb-team-social"><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a></div>
+                </div>
+            </div></div>
+            <div class="col-6 col-md-4 col-lg-3 reveal"><div class="wb-team-card">
+                <div class="wb-team-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80" alt="مديرة البرامج"></div>
+                <div class="wb-team-body">
+                    <h5>أ. ريم الزهراني</h5>
+                    <div class="wb-team-role">مديرة البرامج</div>
+                    <div class="wb-team-social"><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a></div>
+                </div>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     PARTNERS
+     ======================================================== -->
+<section id="partners" class="section-sm">
+    <div class="container">
+        <div class="text-center mb-4 reveal">
+            <span class="wb-section-eyebrow"><i class="bi bi-handshake"></i> شركاء النجاح</span>
+            <h2 class="wb-section-title" style="font-size:26px">من نفخر بشراكتهم</h2>
+        </div>
+        <div class="row g-3 reveal">
+            <div class="col-6 col-md-3 col-lg-2"><div class="wb-partner-card"><img src="https://dummyimage.com/220x60/cccccc/333333&text=Partner+1" alt="شريك 1"></div></div>
+            <div class="col-6 col-md-3 col-lg-2"><div class="wb-partner-card"><img src="https://dummyimage.com/220x60/cccccc/333333&text=Partner+2" alt="شريك 2"></div></div>
+            <div class="col-6 col-md-3 col-lg-2"><div class="wb-partner-card"><img src="https://dummyimage.com/220x60/cccccc/333333&text=Partner+3" alt="شريك 3"></div></div>
+            <div class="col-6 col-md-3 col-lg-2"><div class="wb-partner-card"><img src="https://dummyimage.com/220x60/cccccc/333333&text=Partner+4" alt="شريك 4"></div></div>
+            <div class="col-6 col-md-3 col-lg-2"><div class="wb-partner-card"><img src="https://dummyimage.com/220x60/cccccc/333333&text=Partner+5" alt="شريك 5"></div></div>
+            <div class="col-6 col-md-3 col-lg-2"><div class="wb-partner-card"><img src="https://dummyimage.com/220x60/cccccc/333333&text=Partner+6" alt="شريك 6"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     FINAL CTA
+     ======================================================== -->
+<section class="section">
+    <div class="container">
+        <div class="wb-cta reveal">
+            <h2>كن جزءًا من أثرٍ يصل لمستحقيه</h2>
+            <p>انضم إلى مئات المتبرعين والشركاء الذين يصنعون الأثر معنا كل يوم. كل مساهمة تُحدث فرقاً، مهما كانت.</p>
+            <div class="wb-cta-actions">
+                <a href="#donate" class="wb-btn wb-btn-light"><i class="bi bi-heart-fill"></i> تبرع الآن</a>
+                <a href="#contact" class="wb-btn wb-btn-ghost"><i class="bi bi-headset"></i> تواصل معنا</a>
+                <a href="#projects" class="wb-btn wb-btn-ghost"><i class="bi bi-grid-3x3-gap-fill"></i> استعرض مشاريعنا</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================
+     FOOTER
+     ======================================================== -->
+<footer id="contact" class="wb-footer">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <img src="assets/img/logo.svg" class="wb-footer-logo" alt="شعار جمعية البر والتنمية" onerror="this.style.display='none'">
+                <p>جمعية البر والتنمية جمعية خيرية مرخّصة، نسعى لتمكين الأسر وتنمية المجتمع عبر مشاريع موثوقة وشفافة، بالتزام كامل بمعايير الحوكمة والإفصاح.</p>
+                <div class="wb-footer-social">
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" aria-label="انستغرام"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="يوتيوب"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="سناب شات"><i class="bi bi-snapchat"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-6">
+                <h6>روابط سريعة</h6>
+                <ul>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#projects">المشاريع</a></li>
+                    <li><a href="#news">الأخبار</a></li>
+                    <li><a href="#team">فريق العمل</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 col-6">
+                <h6>روابط مهمة</h6>
+                <ul>
+                    <li><a href="#donate">التبرعات</a></li>
+                    <li><a href="#governance">الحوكمة</a></li>
+                    <li><a href="#store">المتجر الخيري</a></li>
+                    <li><a href="#fields">مجالات العمل</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h6>تواصل معنا</h6>
+                <ul class="wb-footer-contact list-unstyled">
+                    <li><i class="bi bi-geo-alt-fill"></i><span>الرياض - حي العليا - طريق الملك فهد</span></li>
+                    <li><i class="bi bi-telephone-fill"></i><span>+966 11 000 0000</span></li>
+                    <li><i class="bi bi-envelope-fill"></i><span>info@charity-example.org.sa</span></li>
+                    <li><i class="bi bi-clock-fill"></i><span>الأحد - الخميس · 8:00 صباحاً - 4:00 مساءً</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wb-footer-bottom">
+            <span>© <span id="wb-year">2026</span> جميع الحقوق محفوظة لجمعية البر والتنمية ·
+            تم التطوير بواسطة <strong>منصة ويبيان</strong></span>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap 5 RTL JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Charity template JS -->
+<script src="js/charity.js?v=20260509"></script>
+
 </body>
 </html>
