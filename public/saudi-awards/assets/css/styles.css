@@ -6515,3 +6515,177 @@ button.svc-card__cta:hover { gap: 14px; }
     .add-wizard__step-text { display: none; }
     .add-wizard__step-line { min-width: 20px; }
 }
+
+/* ==================== SUPERVISOR SECTION ==================== */
+.supervisor-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+}
+.supervisor-card {
+    position: relative;
+    background: #fff;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -28px rgba(15, 23, 42, 0.18);
+    border: 1px solid rgba(15, 23, 42, 0.05);
+}
+.supervisor-card__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.supervisor-card__shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+}
+.supervisor-card__shape--1 {
+    width: 320px; height: 320px;
+    background: var(--color-primary, #c9a961);
+    top: -80px; left: -80px;
+    opacity: 0.18;
+}
+.supervisor-card__shape--2 {
+    width: 260px; height: 260px;
+    background: #1f3a5f;
+    bottom: -100px; right: -60px;
+    opacity: 0.12;
+}
+.supervisor-photo {
+    position: relative;
+    height: 100%;
+    min-height: 420px;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.supervisor-photo__frame {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -18px rgba(15, 23, 42, 0.35);
+    background: linear-gradient(135deg, #c9a961 0%, #1f3a5f 100%);
+    padding: 4px;
+}
+.supervisor-photo__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+}
+.supervisor-photo__badge {
+    position: absolute;
+    bottom: 18px;
+    inset-inline-start: 50%;
+    transform: translateX(50%);
+    background: #fff;
+    color: var(--color-primary, #c9a961);
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 10px 24px -10px rgba(15, 23, 42, 0.25);
+    white-space: nowrap;
+}
+.supervisor-photo__badge i { color: #16a34a; }
+.supervisor-content {
+    padding: 3rem 2.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.supervisor-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201, 169, 97, 0.12);
+    color: var(--color-primary, #c9a961);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+.supervisor-name {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+.supervisor-name span {
+    background: linear-gradient(135deg, #c9a961 0%, #1f3a5f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.supervisor-role {
+    font-size: 1rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+.supervisor-bio {
+    color: #475569;
+    line-height: 1.95;
+    margin-bottom: 1.25rem;
+}
+.supervisor-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: grid;
+    gap: 0.6rem;
+}
+.supervisor-points li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #1e293b;
+    font-weight: 500;
+}
+.supervisor-points i {
+    color: var(--color-primary, #c9a961);
+    font-size: 1.05rem;
+}
+.supervisor-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.supervisor-social {
+    width: 42px; height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #1f3a5f;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+.supervisor-social:hover {
+    background: var(--color-primary, #c9a961);
+    color: #fff;
+    transform: translateY(-2px);
+}
+@media (max-width: 991px) {
+    .supervisor-photo { min-height: auto; padding: 2rem 2rem 0; }
+    .supervisor-content { padding: 2rem; text-align: center; }
+    .supervisor-eyebrow, .supervisor-actions { margin-inline: auto; justify-content: center; }
+    .supervisor-points li { justify-content: center; }
+    .supervisor-name { font-size: 1.75rem; }
+}
