@@ -6690,14 +6690,23 @@ button.svc-card__cta:hover { gap: 14px; }
     .supervisor-name { font-size: 1.75rem; }
 }
 
-/* Supervisor photo - circular with rotating border */
+/* Supervisor photo - circular with rotating border, badge below */
+.supervisor-photo {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 3rem 2rem;
+    min-height: auto;
+}
 .supervisor-photo__frame {
-    max-width: 320px;
+    position: relative;
+    width: 280px;
+    max-width: 80%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     background: transparent;
     padding: 0;
-    box-shadow: 0 25px 55px -22px rgba(15, 23, 42, 0.4);
+    box-shadow: 0 28px 60px -22px rgba(15, 23, 42, 0.45);
+    isolation: isolate;
 }
 .supervisor-photo__frame::before,
 .supervisor-photo__frame::after {
@@ -6707,13 +6716,13 @@ button.svc-card__cta:hover { gap: 14px; }
     pointer-events: none;
 }
 .supervisor-photo__frame::before {
-    inset: -14px;
-    background: conic-gradient(from 0deg, #c9a961, #1f3a5f, #c9a961, #e8d5a3, #c9a961);
-    animation: supervisorSpin 8s linear infinite;
+    inset: -10px;
+    background: conic-gradient(from 0deg, #c9a961, #e8d5a3, #1f3a5f, #c9a961, #e8d5a3, #c9a961);
+    animation: supervisorSpin 9s linear infinite;
     z-index: 0;
 }
 .supervisor-photo__frame::after {
-    inset: -6px;
+    inset: -4px;
     background: #fff;
     z-index: 1;
 }
@@ -6724,12 +6733,34 @@ button.svc-card__cta:hover { gap: 14px; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 @keyframes supervisorSpin {
     to { transform: rotate(360deg); }
 }
 .supervisor-photo__badge {
-    z-index: 3;
-    bottom: -6px;
-    transform: translateX(50%);
+    position: relative;
+    inset: auto;
+    transform: none;
+    background: linear-gradient(135deg, #ffffff 0%, #fdf6e3 100%);
+    color: #1f3a5f;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 12px 28px -12px rgba(201, 169, 97, 0.55);
+    border: 1px solid rgba(201, 169, 97, 0.35);
+    white-space: nowrap;
 }
+.supervisor-photo__badge i {
+    color: #c9a961;
+    font-size: 1.05rem;
+}
+@media (max-width: 991px) {
+    .supervisor-photo { padding: 2.5rem 1.5rem 0; }
+    .supervisor-photo__frame { width: 240px; }
+}
+
