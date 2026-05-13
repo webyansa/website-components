@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>طلبات الاشتراك — ويبيان</title>
+  <link rel="icon" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="logo-mark">و</div><div><strong>ويبيان</strong><small>لوحة الإدارة</small></div></div>
+    <a class="nav-link" href="index.html"><i class="ico fa-solid fa-gauge-high"></i><span>لوحة التحكم</span></a>
+    <div class="nav-section">إدارة الاشتراكات</div>
+    <a class="nav-link" href="subscription-requests.html"><i class="ico fa-solid fa-file-circle-plus"></i><span>طلبات الاشتراك</span><span class="count">12</span></a>
+    <a class="nav-link" href="subscriptions.html"><i class="ico fa-solid fa-rotate"></i><span>الاشتراكات الفعلية</span></a>
+    <a class="nav-link" href="manual-create-request.html"><i class="ico fa-solid fa-plus"></i><span>إنشاء طلب يدوي</span></a>
+    <div class="nav-section">المالية</div>
+    <a class="nav-link" href="invoices.html"><i class="ico fa-solid fa-file-invoice-dollar"></i><span>الفواتير</span></a>
+    <a class="nav-link" href="#" data-demo="فتح المدفوعات"><i class="ico fa-solid fa-credit-card"></i><span>المدفوعات</span></a>
+    <div class="nav-section">الإعدادات</div>
+    <a class="nav-link" href="plans.html"><i class="ico fa-solid fa-layer-group"></i><span>الباقات والخدمات</span></a>
+    <a class="nav-link" href="#" data-demo="فتح الجهات"><i class="ico fa-solid fa-building"></i><span>الجهات</span></a>
+    <a class="nav-link" href="#" data-demo="فتح المستخدمين"><i class="ico fa-solid fa-users-gear"></i><span>المستخدمون</span></a>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+      <div><h1>طلبات الاشتراك</h1><div class="crumbs">إدارة الاشتراكات / الطلبات</div></div>
+      <div class="grow"></div>
+      <div class="search"><input placeholder="بحث برقم الطلب أو اسم الجهة..." /><i class="fa-solid fa-magnifying-glass"></i></div>
+      <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+      <div class="user-chip"><div class="av">ع</div><div class="meta"><strong>عبدالله الزهراني</strong><small>مشرف الاشتراكات</small></div></div>
+    </header>
+
+    <section class="page">
+      <div class="page-head">
+        <div>
+          <h2>طلبات الاشتراك</h2>
+          <p>إدارة الطلبات الواردة من الموقع والطلبات اليدوية حتى يتم تفعيلها كاشتراكات</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn" data-demo="تصدير CSV"><i class="fa-solid fa-file-export"></i> تصدير</button>
+          <a class="btn btn-primary" href="manual-create-request.html"><i class="fa-solid fa-plus"></i> طلب جديد</a>
+        </div>
+      </div>
+
+      <!-- quick stat tabs -->
+      <div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div class="stat"><div class="ico"><i class="fa-solid fa-inbox"></i></div><div class="label">إجمالي الطلبات</div><div class="value">42</div></div>
+        <div class="stat amber"><div class="ico"><i class="fa-solid fa-clock"></i></div><div class="label">بانتظار إجراء</div><div class="value">17</div></div>
+        <div class="stat cyan"><div class="ico"><i class="fa-solid fa-screwdriver-wrench"></i></div><div class="label">قيد التجهيز</div><div class="value">7</div></div>
+        <div class="stat green"><div class="ico"><i class="fa-solid fa-circle-check"></i></div><div class="label">مفعّلة</div><div class="value">15</div></div>
+      </div>
+
+      <div class="filters">
+        <input placeholder="بحث برقم الطلب أو اسم الجهة أو الجوال..." />
+        <select><option>كل الباقات</option><option>الحضور المؤسسي</option><option>محتوى ومشاريع</option><option>منصة متكاملة</option></select>
+        <select><option>كل طرق الدفع</option><option>دفع إلكتروني</option><option>تحويل بنكي</option><option>دفع لاحق</option></select>
+        <select><option>كل حالات الدفع</option><option>غير مدفوع</option><option>بانتظار التحقق</option><option>مدفوع</option><option>مرفوض</option></select>
+        <select><option>كل حالات الطلب</option><option>طلب جديد</option><option>بانتظار الدفع</option><option>بانتظار التحقق</option><option>الدفع مؤكد</option><option>قيد التجهيز</option><option>بانتظار التسليم</option><option>مفعّل</option><option>ملغي</option><option>مرفوض</option></select>
+        <button class="btn btn-primary"><i class="fa-solid fa-filter"></i> تطبيق</button>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>الجهة</th>
+                <th>المسؤول</th>
+                <th>الباقة</th>
+                <th>المبلغ</th>
+                <th>طريقة الدفع</th>
+                <th>حالة الدفع</th>
+                <th>حالة الطلب</th>
+                <th>التاريخ</th>
+                <th class="text-end">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="id">SR-2026-0012</td>
+                <td><div class="org"><div class="av">ز</div><div class="fw-700">جمعية زين التنموية</div></div></td>
+                <td>د. سارة الدوسري<br><small class="text-muted">0551234567</small></td>
+                <td>منصة متكاملة</td>
+                <td>9,800 ر.س</td>
+                <td>تحويل بنكي</td>
+                <td><span class="badge b-verify">بانتظار التحقق</span></td>
+                <td><span class="badge b-verify">بانتظار التحقق من الدفع</span></td>
+                <td>اليوم 09:42</td>
+                <td class="actions">
+                  <a class="icon-btn" href="subscription-request-view.html" title="عرض"><i class="fa-regular fa-eye"></i></a>
+                  <button class="icon-btn" title="تأكيد الدفع" data-demo="تأكيد الدفع"><i class="fa-solid fa-check"></i></button>
+                  <button class="icon-btn" title="رفض" data-demo="رفض الطلب"><i class="fa-solid fa-xmark"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0011</td>
+                <td><div class="org"><div class="av">إ</div><div class="fw-700">جمعية إحسانك</div></div></td>
+                <td>أ. خالد الحربي</td>
+                <td>محتوى ومشاريع</td>
+                <td>5,400 ر.س</td>
+                <td>دفع إلكتروني</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-prep">قيد التجهيز</span></td>
+                <td>أمس 17:10</td>
+                <td class="actions">
+                  <a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a>
+                  <button class="icon-btn" data-demo="نقل إلى التسليم"><i class="fa-solid fa-truck"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0010</td>
+                <td><div class="org"><div class="av">ب</div><div class="fw-700">جمعية البر الاجتماعية</div></div></td>
+                <td>أ. منى العتيبي</td>
+                <td>الحضور المؤسسي</td>
+                <td>3,200 ر.س</td>
+                <td>دفع لاحق</td>
+                <td><span class="badge">غير مدفوع</span></td>
+                <td><span class="badge b-await">بانتظار الدفع</span></td>
+                <td>أمس 11:20</td>
+                <td class="actions">
+                  <a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a>
+                  <button class="icon-btn" data-demo="إصدار فاتورة"><i class="fa-regular fa-file-lines"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0009</td>
+                <td><div class="org"><div class="av">م</div><div class="fw-700">مجلس الجمعيات</div></div></td>
+                <td>أ. حمد الخريف</td>
+                <td>منصة متكاملة</td>
+                <td>12,500 ر.س</td>
+                <td>دفع إلكتروني</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-active">مفعّل</span></td>
+                <td>قبل يومين</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0008</td>
+                <td><div class="org"><div class="av">أ</div><div class="fw-700">مؤسسة أفق التنموية</div></div></td>
+                <td>أ. عبدالرحمن الشهري</td>
+                <td>محتوى ومشاريع</td>
+                <td>5,400 ر.س</td>
+                <td>تحويل بنكي</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-deliver">بانتظار التسليم</span></td>
+                <td>قبل 3 أيام</td>
+                <td class="actions">
+                  <a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a>
+                  <button class="icon-btn" data-demo="إرسال بيانات الدخول"><i class="fa-regular fa-paper-plane"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0007</td>
+                <td><div class="org"><div class="av">ز</div><div class="fw-700">جمعية زاد الخير</div></div></td>
+                <td>أ. ريم الزهراني</td>
+                <td>الحضور المؤسسي</td>
+                <td>3,200 ر.س</td>
+                <td>تحويل بنكي</td>
+                <td><span class="badge b-cancel">مرفوض</span></td>
+                <td><span class="badge b-cancel">مرفوض</span></td>
+                <td>قبل 4 أيام</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0006</td>
+                <td><div class="org"><div class="av">ر</div><div class="fw-700">جمعية رفقاء العطاء</div></div></td>
+                <td>أ. تركي القحطاني</td>
+                <td>منصة متكاملة</td>
+                <td>9,800 ر.س</td>
+                <td>دفع إلكتروني</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-paid">الدفع مؤكد</span></td>
+                <td>قبل 5 أيام</td>
+                <td class="actions">
+                  <a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a>
+                  <button class="icon-btn" data-demo="نقل إلى قيد التجهيز"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex between" style="padding:14px 18px;border-top:1px solid var(--line)">
+          <small class="text-muted">عرض 1-7 من 42 طلب</small>
+          <div class="flex gap-8">
+            <button class="btn btn-sm">السابق</button>
+            <button class="btn btn-sm btn-primary">1</button>
+            <button class="btn btn-sm">2</button>
+            <button class="btn btn-sm">3</button>
+            <button class="btn btn-sm">التالي</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
