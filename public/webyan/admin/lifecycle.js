@@ -1,4 +1,5 @@
 /* Webyan Admin — Subscription Lifecycle State Machine (Mockup only)
+   Simplified v3: no checklist, only state transitions
    ================================================================= */
 (function () {
   const root = document.querySelector('[data-lifecycle]');
@@ -44,16 +45,20 @@
   }
   function setNextAction(label, action) {
     const lbl = $('[data-next-action-label]'); if (lbl) lbl.textContent = label;
-    const btn = $('[data-action="" i]') || document.querySelector('[data-current-stage]')?.parentElement?.querySelector('button');
-    // Update the dynamic CTA next to KPI by data attr
     const cta = root.querySelector('.detail-head .btn[data-action]');
     if (cta) cta.setAttribute('data-action', action);
+  }
+  function setPrepState(state) {
+    // state can be: 'ready', 'in-progress', 'ready-deliver'
+    $$('[data-prep-state]').forEach(el => el.classList.add('hidden'));
+    const target = $(`[data-prep-state="${state}"]`);
+    if (target) target.classList.remove('hidden');
   }
 
   // ---- Scenario reset ----
   function applyScenario(s) {
     // hide downstream sections
-    ['prep','deliver','activated'].forEach(hideSection);
+    ['prep','activated'].forEach(hideSection);
     // payment row visible & reset
     const payRow = $('[data-action-row="payment"]'); if (payRow) payRow.classList.remove('hidden');
 
@@ -73,9 +78,13 @@
       $('[data-current-stage]').textContent = 'الدفع → التجهيز';
       $('[data-next-action-label]').textContent = 'بدء التجهيز الفني';
       const cta = root.querySelector('.detail-head .btn[data-action]');
-      if (cta) { cta.setAttribute('data-action','start-prep'); cta.innerHTML = '<i class="fa-solid fa-screwdriver-wrench"></i> بدء التجهيز'; }
+      if (cta) { cta.setAttribute('data-action','scroll-prep'); cta.innerHTML = '<i class="fa-solid fa-arrow-down"></i> الانتقال للتجهيز'; }
       tlMark('confirm', '13 مايو 2026 — 09:43', 'دفع إلكتروني ناجح عبر بوابة الدفع');
       if (payRow) payRow.classList.add('hidden');
+      // unlock prep (ready state)
+      showSection('prep');
+      setPrepState('ready');
+      setSectionStatus('prep', 'badge b-prep', 'جاهز لبدء التجهيز');
     }
     else if (s === 'postpay') {
       setAllPills('method', 'badge', 'طريقة الدفع: دفع لاحق');
@@ -109,10 +118,11 @@
     tlMark('confirm', nowStr(), 'تم تأكيد الدفع بواسطة عبدالله الزهراني');
     const payRow = $('[data-action-row="payment"]'); if (payRow) payRow.classList.add('hidden');
 
-    // unlock prep
+    // unlock prep (ready state)
     setStage('prep');
     showSection('prep');
-    $('[data-prep-started]').textContent = nowStr();
+    setPrepState('ready');
+    setSectionStatus('prep', 'badge b-prep', 'جاهز لبدء التجهيز');
     $('[data-next-action-label]').textContent = 'بدء التجهيز الفني';
     const cta = root.querySelector('.detail-head .btn[data-action]');
     if (cta) { cta.setAttribute('data-action','scroll-prep'); cta.innerHTML = '<i class="fa-solid fa-arrow-down"></i> الانتقال للتجهيز'; }
@@ -127,30 +137,23 @@
     showToast('تم رفض الدفع — العميل سيُبلَّغ لإعادة المحاولة');
   }
 
-  function updatePrepCount() {
-    const total = $$('[data-step]').length;
-    const done = $$('[data-step].done').length;
-    const c = $('[data-prep-count]'); if (c) c.textContent = done;
-    const moveBtn = root.querySelector('[data-action="move-to-deliver"]');
-    if (done === total) {
-      moveBtn?.classList.remove('hidden');
-      setSectionStatus('prep', 'badge b-paid', 'اكتمل التجهيز · ' + done + '/' + total);
-    } else {
-      moveBtn?.classList.add('hidden');
-      setSectionStatus('prep', 'badge b-prep', 'قيد التجهيز · ' + done + '/' + total);
-    }
+  function startPrep() {
+    setPrepState('in-progress');
+    setSectionStatus('prep', 'badge b-prep', 'قيد التجهيز الفني');
+    $('[data-prep-started]').textContent = nowStr();
+    tlMark('prep', nowStr(), 'تم بدء التجهيز الفني');
+    showToast('تم بدء التجهيز الفني — يسجل النظام الحالة فقط');
   }
 
-  function moveToDeliver() {
-    tlMark('prep', nowStr(), 'اكتمل التجهيز الفني — ' + $$('[data-step]').length + ' خطوة');
-    tlMark('deliver', nowStr(), 'الموقع جاهز وبيانات الدخول مرسلة');
+  function confirmReady() {
+    setPrepState('ready-deliver');
+    setSectionStatus('prep', 'badge b-deliver', 'جاهز للتسليم');
     setStage('deliver');
-    showSection('deliver');
+    tlMark('deliver', nowStr(), 'تم تأكيد جاهزية الموقع للتسليم');
     $('[data-next-action-label]').textContent = 'تفعيل الاشتراك';
     const cta = root.querySelector('.detail-head .btn[data-action]');
     if (cta) { cta.setAttribute('data-action','open-activate-modal'); cta.innerHTML = '<i class="fa-solid fa-power-off"></i> تفعيل الاشتراك'; }
-    document.querySelector('[data-section="deliver"]').scrollIntoView({behavior:'smooth'});
-    showToast('تم النقل إلى مرحلة "جاهز للتسليم"');
+    showToast('تم تأكيد جاهزية الموقع — يمكن التفعيل الآن');
   }
 
   // ---- Activation modal ----
@@ -194,9 +197,6 @@
 
   // ---- Wire up ----
   root.addEventListener('click', e => {
-    const stepEl = e.target.closest('[data-step]');
-    if (stepEl) { stepEl.classList.toggle('done'); updatePrepCount(); return; }
-
     const btn = e.target.closest('[data-action], [data-scenario]');
     if (!btn) return;
 
@@ -206,14 +206,8 @@
       case 'confirm-payment': confirmPayment(); break;
       case 'reject-payment':  rejectPayment(); break;
       case 'verify-payment':  document.querySelector('[data-section="payment"]').scrollIntoView({behavior:'smooth'}); break;
-      case 'start-prep':
-        setStage('prep'); showSection('prep');
-        $('[data-prep-started]').textContent = nowStr();
-        document.querySelector('[data-section="prep"]').scrollIntoView({behavior:'smooth'});
-        break;
-      case 'auto-complete-prep':
-        $$('[data-step]').forEach(s => s.classList.add('done')); updatePrepCount(); break;
-      case 'move-to-deliver': moveToDeliver(); break;
+      case 'start-prep':      startPrep(); break;
+      case 'confirm-ready':   confirmReady(); break;
       case 'open-activate-modal': openModal(); break;
       case 'confirm-activation': confirmActivation(); break;
       case 'scroll-prep':
