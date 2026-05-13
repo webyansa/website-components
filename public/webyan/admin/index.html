@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة التحكم — ويبيان</title>
+  <link rel="icon" href="../favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ========== SIDEBAR ========== -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">و</div>
+      <div>
+        <strong>ويبيان</strong>
+        <small>لوحة الإدارة</small>
+      </div>
+    </div>
+
+    <a class="nav-link active" href="index.html"><i class="ico fa-solid fa-gauge-high"></i><span>لوحة التحكم</span></a>
+
+    <div class="nav-section">إدارة الاشتراكات</div>
+    <a class="nav-link" href="subscription-requests.html"><i class="ico fa-solid fa-file-circle-plus"></i><span>طلبات الاشتراك</span><span class="count">12</span></a>
+    <a class="nav-link" href="subscriptions.html"><i class="ico fa-solid fa-rotate"></i><span>الاشتراكات الفعلية</span></a>
+    <a class="nav-link" href="manual-create-request.html"><i class="ico fa-solid fa-plus"></i><span>إنشاء طلب يدوي</span></a>
+
+    <div class="nav-section">المالية</div>
+    <a class="nav-link" href="invoices.html"><i class="ico fa-solid fa-file-invoice-dollar"></i><span>الفواتير</span></a>
+    <a class="nav-link" href="#" data-demo="فتح المدفوعات"><i class="ico fa-solid fa-credit-card"></i><span>المدفوعات</span></a>
+
+    <div class="nav-section">الإعدادات</div>
+    <a class="nav-link" href="plans.html"><i class="ico fa-solid fa-layer-group"></i><span>الباقات والخدمات</span></a>
+    <a class="nav-link" href="#" data-demo="فتح الجهات"><i class="ico fa-solid fa-building"></i><span>الجهات</span></a>
+    <a class="nav-link" href="#" data-demo="فتح المستخدمين"><i class="ico fa-solid fa-users-gear"></i><span>المستخدمون</span></a>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <!-- ========== MAIN ========== -->
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
+      <div>
+        <h1>لوحة التحكم</h1>
+        <div class="crumbs">الرئيسية / نظرة عامة</div>
+      </div>
+      <div class="grow"></div>
+      <div class="search">
+        <input placeholder="ابحث في الطلبات والاشتراكات..." />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <button class="icon-btn" aria-label="الإشعارات"><i class="fa-regular fa-bell"></i><span class="dot"></span></button>
+      <div class="user-chip">
+        <div class="av">ع</div>
+        <div class="meta"><strong>عبدالله الزهراني</strong><small>مشرف الاشتراكات</small></div>
+      </div>
+    </header>
+
+    <section class="page">
+
+      <div class="page-head">
+        <div>
+          <h2>نظرة عامة على الاشتراكات</h2>
+          <p>ملخص حركة الطلبات والاشتراكات الفعلية خلال آخر 30 يومًا</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn"><i class="fa-regular fa-calendar"></i> آخر 30 يومًا</button>
+          <a class="btn btn-primary" href="manual-create-request.html"><i class="fa-solid fa-plus"></i> طلب اشتراك يدوي</a>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="stats">
+        <div class="stat">
+          <div class="ico"><i class="fa-solid fa-file-circle-plus"></i></div>
+          <div class="label">طلبات جديدة</div>
+          <div class="value">12</div>
+          <div class="delta"><i class="fa-solid fa-arrow-up"></i> +18% عن الأسبوع الماضي</div>
+        </div>
+        <div class="stat amber">
+          <div class="ico"><i class="fa-solid fa-clock"></i></div>
+          <div class="label">بانتظار التحقق من الدفع</div>
+          <div class="value">5</div>
+          <div class="delta down"><i class="fa-solid fa-arrow-down"></i> 3 منذ أكثر من 24 ساعة</div>
+        </div>
+        <div class="stat cyan">
+          <div class="ico"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="label">قيد التجهيز</div>
+          <div class="value">7</div>
+          <div class="delta">3 جاهزة للتسليم</div>
+        </div>
+        <div class="stat green">
+          <div class="ico"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="label">اشتراكات نشطة</div>
+          <div class="value">86</div>
+          <div class="delta"><i class="fa-solid fa-arrow-up"></i> +6 هذا الشهر</div>
+        </div>
+        <div class="stat purple">
+          <div class="ico"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="label">منتهية قريبًا (30 يوم)</div>
+          <div class="value">9</div>
+          <div class="delta">يحتاجون متابعة تجديد</div>
+        </div>
+        <div class="stat">
+          <div class="ico"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div class="label">إيرادات الشهر</div>
+          <div class="value">187,420 <small style="font-size:13px;color:var(--muted)">ر.س</small></div>
+          <div class="delta"><i class="fa-solid fa-arrow-up"></i> +12% مقارنة بالشهر السابق</div>
+        </div>
+      </div>
+
+      <!-- Charts + recent -->
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h3>حالات طلبات الاشتراك</h3>
+              <div class="sub">توزيع الطلبات الحالية حسب الحالة</div>
+            </div>
+            <button class="btn btn-sm btn-ghost"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="card-pad">
+            <div class="bars">
+              <div class="col"><div class="bar" style="height:35%"></div><div class="lbl">جديد</div></div>
+              <div class="col"><div class="bar alt" style="height:18%"></div><div class="lbl">بانتظار الدفع</div></div>
+              <div class="col"><div class="bar alt" style="height:25%"></div><div class="lbl">بانتظار التحقق</div></div>
+              <div class="col"><div class="bar" style="height:55%"></div><div class="lbl">الدفع مؤكد</div></div>
+              <div class="col"><div class="bar" style="height:45%"></div><div class="lbl">قيد التجهيز</div></div>
+              <div class="col"><div class="bar" style="height:30%"></div><div class="lbl">بانتظار التسليم</div></div>
+              <div class="col"><div class="bar" style="height:80%"></div><div class="lbl">مفعّل</div></div>
+              <div class="col"><div class="bar alt" style="height:12%"></div><div class="lbl">ملغي</div></div>
+            </div>
+            <div class="legend">
+              <span><i style="background:linear-gradient(180deg,var(--cyan),var(--navy))"></i>طلبات نشطة</span>
+              <span><i style="background:linear-gradient(180deg,#f1c45f,#ea7a1a)"></i>تتطلب إجراء</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h3>دورة حياة الطلب</h3>
+              <div class="sub">من الطلب إلى الاشتراك المفعّل</div>
+            </div>
+          </div>
+          <div class="card-pad">
+            <div class="stepper">
+              <div class="step done"><div class="num">1</div><div class="body"><div class="title">طلب جديد</div><div class="desc">العميل أكمل نموذج الاشتراك</div></div></div>
+              <div class="step done"><div class="num">2</div><div class="body"><div class="title">تأكيد الدفع</div><div class="desc">دفع إلكتروني / تحويل / فاتورة</div></div></div>
+              <div class="step active"><div class="num">3</div><div class="body"><div class="title">قيد التجهيز</div><div class="desc">استضافة، دومين، تهيئة الموقع</div></div></div>
+              <div class="step"><div class="num">4</div><div class="body"><div class="title">بانتظار التسليم</div><div class="desc">إرسال بيانات الدخول للعميل</div></div></div>
+              <div class="step"><div class="num">5</div><div class="body"><div class="title">تفعيل الاشتراك</div><div class="desc">تحديد بداية ونهاية الاشتراك</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent requests -->
+      <div class="card mt-20">
+        <div class="card-head">
+          <div>
+            <h3>أحدث طلبات الاشتراك</h3>
+            <div class="sub">آخر 6 طلبات وصلت من الموقع أو أُنشئت يدويًا</div>
+          </div>
+          <a class="btn btn-sm" href="subscription-requests.html">عرض الكل <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="table-wrap">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>رقم الطلب</th>
+                <th>الجهة</th>
+                <th>الباقة</th>
+                <th>المبلغ</th>
+                <th>الدفع</th>
+                <th>حالة الطلب</th>
+                <th>التاريخ</th>
+                <th class="text-end">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="id">SR-2026-0012</td>
+                <td><div class="org"><div class="av">ز</div><div><div class="fw-700">جمعية زين التنموية</div><small class="text-muted">د. سارة الدوسري</small></div></div></td>
+                <td>منصة متكاملة</td>
+                <td>9,800 ر.س</td>
+                <td><span class="badge b-verify">بانتظار التحقق</span></td>
+                <td><span class="badge b-verify">بانتظار التحقق من الدفع</span></td>
+                <td>اليوم — 09:42</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0011</td>
+                <td><div class="org"><div class="av">إ</div><div><div class="fw-700">جمعية إحسانك</div><small class="text-muted">أ. خالد الحربي</small></div></div></td>
+                <td>محتوى ومشاريع</td>
+                <td>5,400 ر.س</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-prep">قيد التجهيز</span></td>
+                <td>أمس — 17:10</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0010</td>
+                <td><div class="org"><div class="av">ب</div><div><div class="fw-700">جمعية البر الاجتماعية</div><small class="text-muted">أ. منى العتيبي</small></div></div></td>
+                <td>الحضور المؤسسي</td>
+                <td>3,200 ر.س</td>
+                <td><span class="badge">غير مدفوع</span></td>
+                <td><span class="badge b-await">بانتظار الدفع</span></td>
+                <td>أمس — 11:20</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0009</td>
+                <td><div class="org"><div class="av">م</div><div><div class="fw-700">مجلس الجمعيات</div><small class="text-muted">أ. حمد الخريف</small></div></div></td>
+                <td>منصة متكاملة</td>
+                <td>12,500 ر.س</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-active">مفعّل</span></td>
+                <td>قبل يومين</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0008</td>
+                <td><div class="org"><div class="av">أ</div><div><div class="fw-700">مؤسسة أفق التنموية</div><small class="text-muted">أ. عبدالرحمن الشهري</small></div></div></td>
+                <td>محتوى ومشاريع</td>
+                <td>5,400 ر.س</td>
+                <td><span class="badge b-paid">مدفوع</span></td>
+                <td><span class="badge b-deliver">بانتظار التسليم</span></td>
+                <td>قبل 3 أيام</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+              <tr>
+                <td class="id">SR-2026-0007</td>
+                <td><div class="org"><div class="av">ز</div><div><div class="fw-700">جمعية زاد الخير</div><small class="text-muted">أ. ريم الزهراني</small></div></div></td>
+                <td>الحضور المؤسسي</td>
+                <td>3,200 ر.س</td>
+                <td><span class="badge b-cancel">مرفوض</span></td>
+                <td><span class="badge b-cancel">مرفوض</span></td>
+                <td>قبل 4 أيام</td>
+                <td class="actions"><a class="icon-btn" href="subscription-request-view.html"><i class="fa-regular fa-eye"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="alert mt-20">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <strong>تنبيه تشغيلي</strong>
+          لا يبدأ احتساب مدة الاشتراك إلا بعد الضغط على "تفعيل الاشتراك" من صفحة تفاصيل الطلب، وليس من تاريخ إنشاء الطلب.
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
