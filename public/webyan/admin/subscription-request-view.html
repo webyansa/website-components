@@ -20,7 +20,6 @@
     <a class="nav-link" href="manual-create-request.html"><i class="ico fa-solid fa-plus"></i><span>إنشاء طلب يدوي</span></a>
     <div class="nav-section">المالية</div>
     <a class="nav-link" href="invoices.html"><i class="ico fa-solid fa-file-invoice-dollar"></i><span>الفواتير</span></a>
-    <a class="nav-link" href="#" data-demo="فتح المدفوعات"><i class="ico fa-solid fa-credit-card"></i><span>المدفوعات</span></a>
     <div class="nav-section">الإعدادات</div>
     <a class="nav-link" href="plans.html"><i class="ico fa-solid fa-layer-group"></i><span>الباقات</span></a>
   </aside>
@@ -32,276 +31,333 @@
       <div><h1>تفاصيل طلب الاشتراك</h1><div class="crumbs"><a href="subscription-requests.html">الطلبات</a> / SR-2026-0012</div></div>
       <div class="grow"></div>
       <a class="btn" href="subscription-requests.html"><i class="fa-solid fa-arrow-right"></i> رجوع</a>
-      <button class="btn btn-danger" data-demo="رفض الطلب"><i class="fa-solid fa-xmark"></i> رفض</button>
-      <button class="btn btn-primary" data-demo="تأكيد الدفع"><i class="fa-solid fa-check"></i> تأكيد الدفع</button>
+      <button class="btn btn-danger" data-demo="رفض الطلب"><i class="fa-solid fa-xmark"></i> رفض الطلب</button>
     </header>
 
-    <section class="page">
+    <section class="page" data-lifecycle="bank-transfer">
 
-      <!-- Business rules alert -->
-      <div class="alert warn mb-20">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <div>
-          <strong>قواعد العمل التشغيلية</strong>
-          • لا يمكن تفعيل الاشتراك قبل تأكيد الدفع. •
-          لا يمكن احتساب بداية الاشتراك قبل جاهزية الموقع. •
-          تاريخ بداية الاشتراك يحدده المسؤول عند التفعيل وتاريخ النهاية يُحسب تلقائيًا حسب مدة الباقة. •
-          الطلب ليس اشتراكًا حتى يتم الضغط على "تفعيل الاشتراك".
-        </div>
+      <!-- Operational rules -->
+      <div class="rules-box">
+        <h4><i class="fa-solid fa-shield-halved"></i> قواعد تشغيلية مهمة</h4>
+        <ul>
+          <li>الطلب لا يعني اشتراكًا نشطًا — الاشتراك يبدأ فقط بعد التفعيل الرسمي.</li>
+          <li>الدفع المؤكد لا يعني بدء مدة الاشتراك، بل يسمح فقط ببدء التجهيز الفني.</li>
+          <li>لا يمكن تفعيل الاشتراك قبل تأكيد الدفع وقبل اكتمال جاهزية الموقع.</li>
+          <li>تاريخ بداية الاشتراك = تاريخ التفعيل، وتاريخ النهاية = تاريخ التفعيل + مدة الباقة.</li>
+          <li>الفواتير تصدر خارج النظام حاليًا، ويُسجَّل داخل النظام مرجع الدفع فقط.</li>
+        </ul>
       </div>
 
-      <!-- Header summary -->
+      <!-- Top summary -->
       <div class="detail-head">
         <div>
           <div class="req-id">رقم الطلب · SR-2026-0012</div>
           <div class="req-org">جمعية زين التنموية</div>
-          <div class="req-meta">مصدر الطلب: الموقع · أُنشئ: 13 مايو 2026 — 09:42</div>
+          <div class="req-meta">الباقة: <strong>منصة متكاملة</strong> · المبلغ: <strong>9,545 ر.س</strong> · أُنشئ: 13 مايو 2026 — 09:42</div>
           <div class="req-statuses">
-            <span class="badge b-verify">بانتظار التحقق من الدفع</span>
-            <span class="badge b-verify">دفع: بانتظار التحقق</span>
-            <span class="badge">طريقة: تحويل بنكي</span>
+            <span class="badge" data-pill="method">طريقة الدفع: تحويل بنكي</span>
+            <span class="badge b-verify" data-pill="payment">حالة الدفع: بانتظار التأكيد</span>
+            <span class="badge b-verify" data-pill="request">حالة الطلب: بانتظار تأكيد الدفع</span>
           </div>
         </div>
-        <div class="kpi"><small>الباقة</small><strong>منصة متكاملة</strong><small>اشتراك سنوي</small></div>
-        <div class="kpi"><small>إجمالي الطلب</small><strong>9,800 ر.س</strong><small>شامل الضريبة</small></div>
+        <div class="kpi">
+          <small>المرحلة الحالية</small>
+          <strong data-current-stage>الدفع</strong>
+          <small>من أصل 5 مراحل</small>
+        </div>
+        <div class="kpi">
+          <small>الإجراء التالي</small>
+          <strong style="color:var(--cyan);font-size:15px" data-next-action-label>التحقق من الدفع</strong>
+          <button class="btn btn-cyan btn-sm mt-12" data-action="verify-payment"><i class="fa-solid fa-arrow-left"></i> ابدأ الإجراء</button>
+        </div>
+      </div>
+
+      <!-- Horizontal stepper: 5 stages -->
+      <div class="h-stepper">
+        <div class="h-step done" data-stage="request">
+          <div class="dot"><i class="fa-solid fa-check"></i></div>
+          <div class="lbl">الطلب</div>
+          <div class="sub">تم الاستلام</div>
+        </div>
+        <div class="h-step active" data-stage="payment">
+          <div class="dot">2</div>
+          <div class="lbl">الدفع</div>
+          <div class="sub">بانتظار التأكيد</div>
+        </div>
+        <div class="h-step" data-stage="prep">
+          <div class="dot">3</div>
+          <div class="lbl">التجهيز</div>
+          <div class="sub">لم يبدأ بعد</div>
+        </div>
+        <div class="h-step" data-stage="deliver">
+          <div class="dot">4</div>
+          <div class="lbl">التسليم</div>
+          <div class="sub">—</div>
+        </div>
+        <div class="h-step" data-stage="activate">
+          <div class="dot">5</div>
+          <div class="lbl">التفعيل</div>
+          <div class="sub">—</div>
+        </div>
       </div>
 
       <div class="grid grid-2">
 
-        <!-- LEFT column: details + payment + checklist -->
+        <!-- LEFT column -->
         <div>
 
-          <!-- Tabs -->
-          <div data-tabs>
-            <div class="tabs">
-              <button class="tab active" data-target="details">التفاصيل</button>
-              <button class="tab" data-target="payment">الدفع</button>
-              <button class="tab" data-target="prep">خطوات التجهيز</button>
-              <button class="tab" data-target="activate">تفعيل الاشتراك</button>
+          <!-- 1. Request data -->
+          <div class="section">
+            <div class="section-strip">
+              <h3><i class="fa-solid fa-file-lines" style="color:var(--navy)"></i> القسم 1 · بيانات الطلب</h3>
+              <span class="badge b-paid">مكتمل</span>
             </div>
-
-            <!-- DETAILS PANEL -->
-            <div data-tab-panel="details">
+            <div class="body">
               <div class="grid grid-2" style="grid-template-columns:1fr 1fr">
-                <div class="card">
-                  <div class="card-head"><h3><i class="fa-solid fa-building"></i> بيانات الجهة</h3></div>
-                  <div class="card-pad">
-                    <div class="info-list">
-                      <div class="info-row"><div class="k">اسم الجهة</div><div class="v">جمعية زين التنموية</div></div>
-                      <div class="info-row"><div class="k">نوع الجهة</div><div class="v">جمعية خيرية مرخصة</div></div>
-                      <div class="info-row"><div class="k">رقم الترخيص</div><div class="v">1234 / 2019</div></div>
-                      <div class="info-row"><div class="k">العنوان</div><div class="v">الرياض — حي الملقا</div></div>
-                      <div class="info-row"><div class="k">الجوال</div><div class="v">+966 55 123 4567</div></div>
-                      <div class="info-row"><div class="k">البريد</div><div class="v">info@zain-association.org</div></div>
-                      <div class="info-row"><div class="k">دومين سابق؟</div><div class="v">نعم — zain-association.org</div></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="card-head"><h3><i class="fa-solid fa-user-tie"></i> بيانات المسؤول</h3></div>
-                  <div class="card-pad">
-                    <div class="info-list">
-                      <div class="info-row"><div class="k">الاسم</div><div class="v">د. سارة الدوسري</div></div>
-                      <div class="info-row"><div class="k">المسمى</div><div class="v">مديرة المشاريع</div></div>
-                      <div class="info-row"><div class="k">الجوال</div><div class="v">+966 55 987 6543</div></div>
-                      <div class="info-row"><div class="k">البريد</div><div class="v">sara@zain-association.org</div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mt-16">
-                <div class="card-head"><h3><i class="fa-solid fa-layer-group"></i> الباقة والخدمات</h3></div>
-                <div class="card-pad">
+                <div>
+                  <h4 style="font-size:13px;color:var(--muted);margin-bottom:8px">بيانات الجهة</h4>
                   <div class="info-list">
-                    <div class="info-row"><div class="k">الباقة</div><div class="v">منصة متكاملة — اشتراك سنوي</div></div>
-                    <div class="info-row"><div class="k">سعر الباقة</div><div class="v">7,500 ر.س</div></div>
-                    <div class="info-row"><div class="k">خدمات إضافية</div><div class="v">ربط دومين خاص (300 ر.س) · بريد مؤسسي 5 صناديق (500 ر.س)</div></div>
-                    <div class="info-row"><div class="k">الضريبة (15%)</div><div class="v">1,245 ر.س</div></div>
-                    <div class="info-row"><div class="k">الإجمالي</div><div class="v" style="color:var(--navy);font-size:16px">9,545 ر.س</div></div>
+                    <div class="info-row"><div class="k">اسم الجهة</div><div class="v">جمعية زين التنموية</div></div>
+                    <div class="info-row"><div class="k">نوع الجهة</div><div class="v">جمعية خيرية مرخصة</div></div>
+                    <div class="info-row"><div class="k">رقم الترخيص</div><div class="v">1234 / 2019</div></div>
+                    <div class="info-row"><div class="k">العنوان</div><div class="v">الرياض — حي الملقا</div></div>
                   </div>
+                </div>
+                <div>
+                  <h4 style="font-size:13px;color:var(--muted);margin-bottom:8px">بيانات المسؤول</h4>
+                  <div class="info-list">
+                    <div class="info-row"><div class="k">الاسم</div><div class="v">د. سارة الدوسري</div></div>
+                    <div class="info-row"><div class="k">المسمى</div><div class="v">مديرة المشاريع</div></div>
+                    <div class="info-row"><div class="k">الجوال</div><div class="v">+966 55 987 6543</div></div>
+                    <div class="info-row"><div class="k">البريد</div><div class="v">sara@zain-association.org</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <h4 style="font-size:13px;color:var(--muted);margin-bottom:8px">الباقة والخدمات الإضافية</h4>
+              <div class="info-list">
+                <div class="info-row"><div class="k">الباقة</div><div class="v">منصة متكاملة — اشتراك سنوي · 7,500 ر.س</div></div>
+                <div class="info-row"><div class="k">خدمات إضافية</div><div class="v">ربط دومين خاص (300) · بريد مؤسسي 5 صناديق (500)</div></div>
+                <div class="info-row"><div class="k">الضريبة (15%)</div><div class="v">1,245 ر.س</div></div>
+                <div class="info-row"><div class="k">الإجمالي</div><div class="v" style="color:var(--navy);font-size:16px">9,545 ر.س</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Payment -->
+          <div class="section" data-section="payment">
+            <div class="section-strip">
+              <h3><i class="fa-solid fa-money-bill-transfer" style="color:var(--st-await-pay)"></i> القسم 2 · الدفع</h3>
+              <span class="badge b-verify" data-section-status="payment">بانتظار التأكيد</span>
+            </div>
+            <div class="body">
+
+              <div class="alert mb-16">
+                <i class="fa-solid fa-circle-info"></i>
+                <div><strong>السيناريو الحالي: تحويل بنكي</strong>
+                رفع العميل إيصال التحويل. على المسؤول المالي مطابقة المبلغ مع كشف الحساب ثم القبول أو الرفض.</div>
+              </div>
+
+              <div class="grid grid-2" style="grid-template-columns:1.4fr 1fr">
+                <div class="info-list">
+                  <div class="info-row"><div class="k">طريقة الدفع</div><div class="v">تحويل بنكي</div></div>
+                  <div class="info-row"><div class="k">اسم البنك</div><div class="v">مصرف الراجحي</div></div>
+                  <div class="info-row"><div class="k">اسم المحوّل</div><div class="v">جمعية زين التنموية</div></div>
+                  <div class="info-row"><div class="k">رقم المرجع</div><div class="v">RJ-2026051300047</div></div>
+                  <div class="info-row"><div class="k">المبلغ المحوَّل</div><div class="v">9,545 ر.س</div></div>
+                  <div class="info-row"><div class="k">تاريخ التحويل</div><div class="v">13 مايو 2026 — 08:55</div></div>
+                  <div class="info-row"><div class="k">حالة الدفع</div><div class="v"><span class="badge b-verify" data-pill="payment-2">بانتظار التأكيد</span></div></div>
+                  <div class="info-row"><div class="k">المسؤول عن التأكيد</div><div class="v" data-confirmed-by>—</div></div>
+                </div>
+                <div class="receipt">
+                  <div class="thumb"><i class="fa-regular fa-image"></i></div>
+                  <div class="meta">إيصال_التحويل.jpg · 482KB</div>
+                  <div class="flex gap-8 mt-12" style="justify-content:center">
+                    <button class="btn btn-sm" data-demo="عرض الإيصال"><i class="fa-regular fa-eye"></i> عرض</button>
+                    <button class="btn btn-sm" data-demo="تحميل الإيصال"><i class="fa-solid fa-download"></i> تحميل</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="field">
+                <label>ملاحظات مالية (داخلية)</label>
+                <textarea placeholder="مثال: تم مطابقة المبلغ مع كشف الحساب البنكي بتاريخ..."></textarea>
+              </div>
+
+              <div class="flex gap-8 mt-16" data-action-row="payment">
+                <button class="btn btn-success" data-action="confirm-payment"><i class="fa-solid fa-check"></i> قبول الدفع</button>
+                <button class="btn btn-danger" data-action="reject-payment"><i class="fa-solid fa-xmark"></i> رفض الدفع</button>
+                <button class="btn" data-demo="تسجيل دفع يدوي"><i class="fa-solid fa-pen-to-square"></i> تسجيل دفع يدوي</button>
+              </div>
+
+              <!-- Reference scenarios -->
+              <div class="divider"></div>
+              <h4 style="font-size:13px;color:var(--muted);margin-bottom:10px">السيناريوهات المرجعية لطرق الدفع</h4>
+              <div class="grid grid-3">
+                <div style="padding:12px;background:var(--st-paid-bg);border-radius:10px">
+                  <div class="badge b-paid mb-12">دفع إلكتروني</div>
+                  <p class="text-muted" style="font-size:12px;margin:0">نجاح البوابة → الدفع = مدفوع، الطلب = الدفع مؤكد، يظهر زر "بدء التجهيز".</p>
+                </div>
+                <div style="padding:12px;background:var(--st-await-verify-bg);border-radius:10px">
+                  <div class="badge b-verify mb-12">تحويل بنكي</div>
+                  <p class="text-muted" style="font-size:12px;margin:0">رفع إيصال → بانتظار التأكيد. القبول يحول إلى مؤكد، الرفض يعيد إلى بانتظار الدفع.</p>
+                </div>
+                <div style="padding:12px;background:var(--st-await-pay-bg);border-radius:10px">
+                  <div class="badge b-await mb-12">دفع لاحق</div>
+                  <p class="text-muted" style="font-size:12px;margin:0">يبقى غير مدفوع. الإدارة تسجل دفعًا يدويًا لاحقًا. لا يمكن بدء التجهيز قبل الدفع.</p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- PAYMENT PANEL -->
-            <div data-tab-panel="payment" style="display:none">
-              <div class="card">
-                <div class="card-head">
-                  <div><h3><i class="fa-solid fa-money-bill-transfer"></i> بيانات الدفع</h3>
-                  <div class="sub">طريقة الدفع المختارة: <strong>تحويل بنكي</strong></div></div>
-                  <span class="badge b-verify">بانتظار التحقق</span>
-                </div>
-                <div class="card-pad">
-                  <div class="grid grid-2" style="grid-template-columns:1.4fr 1fr">
-                    <div class="info-list">
-                      <div class="info-row"><div class="k">اسم البنك</div><div class="v">مصرف الراجحي</div></div>
-                      <div class="info-row"><div class="k">اسم المحوّل</div><div class="v">جمعية زين التنموية</div></div>
-                      <div class="info-row"><div class="k">رقم المرجع</div><div class="v">RJ-2026051300047</div></div>
-                      <div class="info-row"><div class="k">المبلغ المحوَّل</div><div class="v">9,545 ر.س</div></div>
-                      <div class="info-row"><div class="k">تاريخ التحويل</div><div class="v">13 مايو 2026 — 08:55</div></div>
-                      <div class="info-row"><div class="k">ملاحظات العميل</div><div class="v">تم التحويل من حساب الجمعية الرئيسي</div></div>
-                    </div>
-                    <div class="receipt">
-                      <div class="thumb"><i class="fa-regular fa-image"></i></div>
-                      <div class="meta">إيصال_التحويل.jpg · 482KB</div>
-                      <div class="flex gap-8 mt-12" style="justify-content:center">
-                        <button class="btn btn-sm" data-demo="عرض الإيصال"><i class="fa-regular fa-eye"></i> عرض</button>
-                        <button class="btn btn-sm" data-demo="تحميل الإيصال"><i class="fa-solid fa-download"></i> تحميل</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="divider"></div>
-
-                  <div class="field">
-                    <label>ملاحظات التحقق (داخلية)</label>
-                    <textarea placeholder="مثال: تم مطابقة المبلغ مع كشف الحساب البنكي بتاريخ..."></textarea>
-                  </div>
-
-                  <div class="flex gap-8 mt-16">
-                    <button class="btn btn-success" data-demo="قبول الدفع وتأكيده"><i class="fa-solid fa-check"></i> قبول الدفع</button>
-                    <button class="btn btn-danger" data-demo="رفض الدفع"><i class="fa-solid fa-xmark"></i> رفض الدفع</button>
-                    <button class="btn" data-demo="تسجيل دفع يدوي"><i class="fa-solid fa-pen-to-square"></i> تسجيل دفع يدوي</button>
-                  </div>
-                </div>
+          <!-- 3. Technical preparation -->
+          <div class="section hidden" data-section="prep">
+            <div class="section-strip">
+              <h3><i class="fa-solid fa-screwdriver-wrench" style="color:var(--st-prep)"></i> القسم 3 · التجهيز الفني</h3>
+              <span class="badge b-prep" data-section-status="prep">قيد التجهيز · <span data-prep-count>0</span>/13</span>
+            </div>
+            <div class="body">
+              <div class="info-list mb-16">
+                <div class="info-row"><div class="k">المسؤول الفني</div><div class="v">م. فيصل العتيبي</div></div>
+                <div class="info-row"><div class="k">تاريخ بدء التجهيز</div><div class="v" data-prep-started>—</div></div>
               </div>
 
-              <!-- alternative scenarios reference -->
-              <div class="card mt-16">
-                <div class="card-head"><h3><i class="fa-solid fa-circle-info"></i> سيناريوهات الدفع المرجعية</h3></div>
-                <div class="card-pad">
-                  <div class="grid grid-3">
-                    <div>
-                      <div class="badge b-paid mb-12">دفع إلكتروني</div>
-                      <p class="text-muted" style="font-size:12.5px;margin:0">عند نجاح بوابة الدفع: حالة الدفع = مدفوع، حالة الطلب = الدفع مؤكد، ثم ينتقل تلقائيًا إلى قيد التجهيز.</p>
-                    </div>
-                    <div>
-                      <div class="badge b-verify mb-12">تحويل بنكي</div>
-                      <p class="text-muted" style="font-size:12.5px;margin:0">يرفع العميل الإيصال، ثم تراجعه الإدارة. القبول يحوّل الحالة إلى "الدفع مؤكد"، والرفض يحوّلها إلى "مرفوض".</p>
-                    </div>
-                    <div>
-                      <div class="badge b-await mb-12">دفع لاحق</div>
-                      <p class="text-muted" style="font-size:12.5px;margin:0">يبقى الطلب "بانتظار الدفع". تستطيع الإدارة إصدار فاتورة أو تسجيل دفع يدوي قبل بدء التجهيز.</p>
-                    </div>
-                  </div>
-                </div>
+              <h4 style="font-size:13px;color:var(--muted);margin-bottom:10px">قائمة التجهيز التشغيلية (يجب إكمالها قبل التفعيل)</h4>
+              <div class="stepper" data-checklist>
+                <div class="step" data-step><div class="num">1</div><div class="body"><div class="title">مراجعة بيانات الجهة</div><div class="desc">التأكد من الترخيص والبيانات الرسمية</div></div></div>
+                <div class="step" data-step><div class="num">2</div><div class="body"><div class="title">مراجعة الباقة والخدمات الإضافية</div><div class="desc">منصة متكاملة + دومين + بريد مؤسسي</div></div></div>
+                <div class="step" data-step><div class="num">3</div><div class="body"><div class="title">تحديد هل لدى العميل دومين سابق</div><div class="desc">نعم — zain-association.org</div></div></div>
+                <div class="step" data-step><div class="num">4</div><div class="body"><div class="title">حجز دومين جديد أو ربط الدومين الحالي</div><div class="desc">إعداد سجلات DNS</div></div></div>
+                <div class="step" data-step><div class="num">5</div><div class="body"><div class="title">تجهيز الاستضافة</div><div class="desc">إنشاء بيئة الجهة على السيرفر</div></div></div>
+                <div class="step" data-step><div class="num">6</div><div class="body"><div class="title">إنشاء نسخة الموقع</div><div class="desc">من القالب الأساس للجهة</div></div></div>
+                <div class="step" data-step><div class="num">7</div><div class="body"><div class="title">تركيب القالب المناسب</div><div class="desc">حسب نوع الجهة وهويتها</div></div></div>
+                <div class="step" data-step><div class="num">8</div><div class="body"><div class="title">تهيئة لوحة التحكم</div><div class="desc">إعدادات أساسية + هوية بصرية</div></div></div>
+                <div class="step" data-step><div class="num">9</div><div class="body"><div class="title">تفعيل مكونات الباقة</div><div class="desc">تفعيل الوحدات: مشاريع، تبرعات، أخبار...</div></div></div>
+                <div class="step" data-step><div class="num">10</div><div class="body"><div class="title">إنشاء حساب مسؤول الجهة</div><div class="desc">صلاحية مدير</div></div></div>
+                <div class="step" data-step><div class="num">11</div><div class="body"><div class="title">إرسال بيانات الدخول للعميل</div><div class="desc">عبر البريد الرسمي</div></div></div>
+                <div class="step" data-step><div class="num">12</div><div class="body"><div class="title">مراجعة نهائية</div><div class="desc">اختبار شامل قبل التسليم</div></div></div>
+                <div class="step" data-step><div class="num">13</div><div class="body"><div class="title">جاهز للتسليم</div><div class="desc">انتقال للقسم التالي</div></div></div>
+              </div>
+
+              <div class="flex gap-8 mt-16">
+                <button class="btn" data-action="auto-complete-prep"><i class="fa-solid fa-wand-magic-sparkles"></i> إكمال جميع الخطوات (تجريبي)</button>
+                <button class="btn btn-cyan hidden" data-action="move-to-deliver"><i class="fa-solid fa-truck"></i> نقل إلى جاهز للتسليم</button>
               </div>
             </div>
+          </div>
 
-            <!-- PREP PANEL -->
-            <div data-tab-panel="prep" style="display:none">
-              <div class="card">
-                <div class="card-head">
-                  <div><h3><i class="fa-solid fa-list-check"></i> قائمة التجهيز التشغيلية</h3>
-                  <div class="sub">يجب إكمال جميع الخطوات قبل تفعيل الاشتراك</div></div>
-                  <span class="badge b-prep">قيد التجهيز · 4/9</span>
-                </div>
-                <div class="card-pad">
-                  <div class="stepper">
-                    <div class="step done" data-step-toggle><div class="num"><i class="fa-solid fa-check"></i></div><div class="body"><div class="title">مراجعة بيانات الجهة</div><div class="desc">التأكد من الترخيص والبيانات الرسمية</div><div class="meta">تم بواسطة: عبدالله الزهراني · أمس 16:20</div></div></div>
-                    <div class="step done" data-step-toggle><div class="num"><i class="fa-solid fa-check"></i></div><div class="body"><div class="title">مراجعة الباقة والخدمات الإضافية</div><div class="desc">منصة متكاملة + دومين + بريد مؤسسي</div></div></div>
-                    <div class="step done" data-step-toggle><div class="num"><i class="fa-solid fa-check"></i></div><div class="body"><div class="title">تجهيز الاستضافة</div><div class="desc">إنشاء بيئة الجهة على السيرفر</div></div></div>
-                    <div class="step done" data-step-toggle><div class="num"><i class="fa-solid fa-check"></i></div><div class="body"><div class="title">تجهيز الدومين / الربط</div><div class="desc">ربط zain-association.org بسجلات DNS</div></div></div>
-                    <div class="step active" data-step-toggle><div class="num">5</div><div class="body"><div class="title">إنشاء نسخة الموقع</div><div class="desc">نسخ القالب وضبط الهوية البصرية</div></div></div>
-                    <div class="step" data-step-toggle><div class="num">6</div><div class="body"><div class="title">تهيئة لوحة التحكم</div><div class="desc">إنشاء حساب المسؤول والصلاحيات</div></div></div>
-                    <div class="step" data-step-toggle><div class="num">7</div><div class="body"><div class="title">تفعيل الخدمات حسب الباقة</div><div class="desc">تفعيل الوحدات: مشاريع، تبرعات، أخبار...</div></div></div>
-                    <div class="step" data-step-toggle><div class="num">8</div><div class="body"><div class="title">إرسال بيانات الدخول للعميل</div><div class="desc">رابط الموقع + بيانات حساب المشرف</div></div></div>
-                    <div class="step" data-step-toggle><div class="num">9</div><div class="body"><div class="title">جاهز للتفعيل</div><div class="desc">انتقل إلى تبويب "تفعيل الاشتراك"</div></div></div>
-                  </div>
-                </div>
+          <!-- 4. Delivery -->
+          <div class="section hidden" data-section="deliver">
+            <div class="section-strip">
+              <h3><i class="fa-solid fa-truck-fast" style="color:var(--st-deliver)"></i> القسم 4 · التسليم</h3>
+              <span class="badge b-deliver" data-section-status="deliver">جاهز للتسليم</span>
+            </div>
+            <div class="body">
+              <div class="alert success mb-16">
+                <i class="fa-solid fa-circle-check"></i>
+                <div><strong>الموقع جاهز وبيانات الدخول مرسلة</strong>
+                لكن الاشتراك لم يبدأ رسميًا بعد — لا تُحتسب أي أيام حتى يتم التفعيل.</div>
+              </div>
+              <div class="info-list">
+                <div class="info-row"><div class="k">رابط الموقع</div><div class="v"><a href="#" data-demo="فتح الموقع">zain-association.webyan.sa</a></div></div>
+                <div class="info-row"><div class="k">رابط لوحة التحكم</div><div class="v"><a href="#" data-demo="فتح لوحة التحكم">zain-association.webyan.sa/admin</a></div></div>
+                <div class="info-row"><div class="k">بريد المسؤول</div><div class="v">sara@zain-association.org</div></div>
+                <div class="info-row"><div class="k">اسم المستخدم</div><div class="v">sara.dosari</div></div>
+                <div class="info-row"><div class="k">حالة إرسال بيانات الدخول</div><div class="v"><span class="badge b-paid">تم الإرسال</span></div></div>
+                <div class="info-row"><div class="k">ملاحظات التسليم</div><div class="v">تم التواصل وتأكيد استلام بيانات الدخول</div></div>
+              </div>
+              <div class="flex gap-8 mt-16">
+                <button class="btn" data-demo="إعادة إرسال بيانات الدخول"><i class="fa-regular fa-paper-plane"></i> إعادة الإرسال</button>
+                <button class="btn btn-cyan" data-action="open-activate-modal"><i class="fa-solid fa-power-off"></i> تفعيل الاشتراك</button>
               </div>
             </div>
+          </div>
 
-            <!-- ACTIVATE PANEL -->
-            <div data-tab-panel="activate" style="display:none">
-              <div class="card">
-                <div class="card-head">
-                  <div><h3><i class="fa-solid fa-rocket"></i> تفعيل الاشتراك</h3>
-                  <div class="sub">الخطوة الأخيرة لتحويل الطلب إلى اشتراك فعلي</div></div>
-                </div>
-                <div class="card-pad">
-                  <div class="alert mb-16">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <div><strong>ملاحظة هامة</strong>
-                    يبدأ احتساب مدة الاشتراك من تاريخ التفعيل وليس من تاريخ إنشاء الطلب. تاريخ النهاية يُحسب تلقائيًا.</div>
-                  </div>
-
-                  <div class="form-grid cols-3">
-                    <div class="field">
-                      <label>تاريخ بداية الاشتراك</label>
-                      <input type="date" value="2026-05-15" />
-                    </div>
-                    <div class="field">
-                      <label>مدة الاشتراك</label>
-                      <select><option>سنة (12 شهرًا)</option><option>6 أشهر</option><option>3 أشهر</option></select>
-                    </div>
-                    <div class="field">
-                      <label>تاريخ نهاية الاشتراك (تلقائي)</label>
-                      <input type="date" value="2027-05-14" disabled style="background:var(--bg);color:var(--muted)" />
-                    </div>
-                    <div class="field full">
-                      <label>ملاحظات التفعيل</label>
-                      <textarea placeholder="أي ملاحظات مرتبطة بهذا التفعيل..."></textarea>
-                    </div>
-                  </div>
-
-                  <div class="flex between mt-20">
-                    <small class="text-muted"><i class="fa-solid fa-lock"></i> لا يمكن التفعيل قبل اكتمال خطوات التجهيز.</small>
-                    <button class="btn btn-cyan" data-demo="تفعيل الاشتراك"><i class="fa-solid fa-power-off"></i> تفعيل الاشتراك</button>
-                  </div>
-                </div>
+          <!-- 5. Activation result -->
+          <div class="section hidden" data-section="activated">
+            <div class="section-strip">
+              <h3><i class="fa-solid fa-rocket" style="color:var(--st-active)"></i> القسم 5 · التفعيل</h3>
+              <span class="badge b-active">اشتراك مفعّل</span>
+            </div>
+            <div class="body">
+              <div class="alert success">
+                <i class="fa-solid fa-circle-check"></i>
+                <div><strong>تم إنشاء الاشتراك الفعلي بنجاح</strong>
+                رقم الاشتراك: <strong data-sub-no>SUB-2026-0001</strong> — يمكنك الآن إدارته من <a href="subscriptions.html">صفحة الاشتراكات الفعلية</a>.</div>
+              </div>
+              <div class="info-list mt-16">
+                <div class="info-row"><div class="k">تاريخ بداية الاشتراك</div><div class="v" data-sub-start>—</div></div>
+                <div class="info-row"><div class="k">تاريخ نهاية الاشتراك</div><div class="v" data-sub-end>—</div></div>
+                <div class="info-row"><div class="k">المسؤول عن التفعيل</div><div class="v">عبدالله الزهراني</div></div>
               </div>
             </div>
-
           </div>
 
         </div>
 
-        <!-- RIGHT column: timeline + payment summary -->
+        <!-- RIGHT column -->
         <div>
+          <!-- Quick status card -->
           <div class="card mb-16">
-            <div class="card-head"><h3><i class="fa-solid fa-receipt"></i> ملخص مالي</h3></div>
+            <div class="card-head"><h3><i class="fa-solid fa-circle-info"></i> الحالة المختصرة</h3></div>
             <div class="card-pad">
               <div class="info-list">
-                <div class="info-row"><div class="k">حالة الدفع</div><div class="v"><span class="badge b-verify">بانتظار التحقق</span></div></div>
+                <div class="info-row"><div class="k">حالة الطلب</div><div class="v"><span class="badge b-verify" data-pill="request-2">بانتظار تأكيد الدفع</span></div></div>
+                <div class="info-row"><div class="k">حالة الدفع</div><div class="v"><span class="badge b-verify" data-pill="payment-3">بانتظار التأكيد</span></div></div>
                 <div class="info-row"><div class="k">طريقة الدفع</div><div class="v">تحويل بنكي</div></div>
-                <div class="info-row"><div class="k">المبلغ المستحق</div><div class="v">9,545 ر.س</div></div>
-                <div class="info-row"><div class="k">المبلغ المحوَّل</div><div class="v">9,545 ر.س</div></div>
-                <div class="info-row"><div class="k">رقم الفاتورة</div><div class="v">INV-2026-0418</div></div>
+                <div class="info-row"><div class="k">المبلغ</div><div class="v">9,545 ر.س</div></div>
+                <div class="info-row"><div class="k">المرجع المالي</div><div class="v">RJ-2026051300047</div></div>
               </div>
-              <a class="btn btn-block mt-16" href="invoices.html"><i class="fa-regular fa-file-lines"></i> عرض الفاتورة</a>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-head"><h3><i class="fa-solid fa-timeline"></i> سجل حركة الطلب</h3></div>
+          <!-- Lifecycle timeline -->
+          <div class="card mb-16">
+            <div class="card-head"><h3><i class="fa-solid fa-timeline"></i> سجل دورة حياة الطلب</h3></div>
             <div class="card-pad">
-              <div class="timeline">
+              <div class="timeline" data-timeline>
                 <div class="tl-item done">
                   <div class="tl-time">13 مايو 2026 — 09:42</div>
-                  <div class="tl-title">تم استقبال الطلب</div>
-                  <div class="tl-desc">من نموذج الاشتراك في الموقع</div>
+                  <div class="tl-title">تم استقبال الطلب من الموقع</div>
+                  <div class="tl-desc">حالة الطلب: طلب جديد</div>
                 </div>
                 <div class="tl-item done">
                   <div class="tl-time">13 مايو 2026 — 09:55</div>
-                  <div class="tl-title">رفع إيصال التحويل</div>
-                  <div class="tl-desc">من قِبل د. سارة الدوسري</div>
+                  <div class="tl-title">رفع إيصال التحويل البنكي</div>
+                  <div class="tl-desc">من قِبل د. سارة الدوسري — تحول إلى "بانتظار تأكيد الدفع"</div>
                 </div>
-                <div class="tl-item">
+                <div class="tl-item" data-tl="confirm">
                   <div class="tl-time">قيد الانتظار</div>
                   <div class="tl-title">التحقق من الدفع</div>
-                  <div class="tl-desc">بانتظار مراجعة المسؤول المالي</div>
+                  <div class="tl-desc">المسؤول المالي يطابق الإيصال مع البنك</div>
                 </div>
-                <div class="tl-item">
+                <div class="tl-item" data-tl="prep">
                   <div class="tl-time">—</div>
-                  <div class="tl-title">بدء التجهيز التشغيلي</div>
+                  <div class="tl-title">بدء التجهيز الفني</div>
                 </div>
-                <div class="tl-item">
+                <div class="tl-item" data-tl="deliver">
+                  <div class="tl-time">—</div>
+                  <div class="tl-title">جاهز للتسليم</div>
+                </div>
+                <div class="tl-item" data-tl="activate">
                   <div class="tl-time">—</div>
                   <div class="tl-title">تفعيل الاشتراك</div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Switch scenario (demo) -->
+          <div class="card">
+            <div class="card-head"><h3><i class="fa-solid fa-shuffle"></i> تجربة سيناريو آخر</h3></div>
+            <div class="card-pad">
+              <p class="text-muted" style="font-size:12.5px;margin:0 0 12px">للأغراض التوضيحية فقط — يعيد ضبط الواجهة لتعكس سيناريو الدفع المختار.</p>
+              <div style="display:grid;gap:8px">
+                <button class="btn btn-block" data-scenario="electronic"><i class="fa-solid fa-credit-card"></i> دفع إلكتروني (نجاح فوري)</button>
+                <button class="btn btn-block" data-scenario="bank-transfer"><i class="fa-solid fa-building-columns"></i> تحويل بنكي (الحالي)</button>
+                <button class="btn btn-block" data-scenario="postpay"><i class="fa-solid fa-clock"></i> دفع لاحق (غير مدفوع)</button>
               </div>
             </div>
           </div>
@@ -311,6 +367,56 @@
     </section>
   </main>
 </div>
+
+<!-- Activation Modal -->
+<div class="modal-backdrop" id="activate-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3><i class="fa-solid fa-power-off"></i> تفعيل الاشتراك رسميًا</h3>
+      <button class="x" data-close-modal>×</button>
+    </div>
+    <div class="modal-body">
+      <div class="alert warn mb-16">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>بعد التفعيل سيُنشأ سجل اشتراك فعلي برقم يبدأ بـ SUB، وتبدأ مدة الاشتراك من التاريخ المحدد أدناه.</div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label>تاريخ بداية الاشتراك</label>
+          <input type="date" id="act-start" />
+        </div>
+        <div class="field">
+          <label>مدة الاشتراك</label>
+          <select id="act-duration">
+            <option value="365">سنة كاملة (12 شهرًا)</option>
+            <option value="180">6 أشهر</option>
+            <option value="90">3 أشهر</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>تاريخ نهاية الاشتراك (تلقائي)</label>
+          <input type="date" id="act-end" disabled style="background:var(--bg);color:var(--muted)" />
+        </div>
+        <div class="field full">
+          <label>ملاحظات التفعيل</label>
+          <textarea placeholder="ملاحظات اختيارية..."></textarea>
+        </div>
+        <div class="field full">
+          <label style="display:flex;gap:8px;align-items:center;cursor:pointer">
+            <input type="checkbox" id="act-confirm" />
+            <span>أؤكد أن الموقع جاهز وتم إرسال بيانات الدخول للعميل</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" data-close-modal>إلغاء</button>
+      <button class="btn btn-cyan" data-action="confirm-activation"><i class="fa-solid fa-power-off"></i> تفعيل الاشتراك</button>
+    </div>
+  </div>
+</div>
+
 <script src="admin.js"></script>
+<script src="lifecycle.js"></script>
 </body>
 </html>
