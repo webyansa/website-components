@@ -464,3 +464,137 @@ table.tbl {
   display: none; position: fixed; inset: 0; background: rgba(15,23,48,.4); z-index: 40;
 }
 .sidebar-backdrop.show { display: block; }
+
+/* ============================================================
+   Subscription lifecycle additions (v2)
+   ============================================================ */
+
+/* Horizontal stepper (5 stages) */
+.h-stepper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 12px 14px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.h-stepper::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(90deg, var(--navy), var(--cyan));
+}
+.h-step { position: relative; text-align: center; padding: 6px 8px; }
+.h-step + .h-step::before {
+  content: ""; position: absolute; top: 22px; right: 100%;
+  width: 100%; height: 2px; background: var(--line); z-index: 0;
+}
+.h-step.done + .h-step::before,
+.h-step.done.connect-next::before { background: var(--st-paid); }
+.h-step .dot {
+  position: relative; z-index: 1;
+  width: 44px; height: 44px; border-radius: 999px;
+  background: #fff; border: 2px solid var(--line); color: var(--muted);
+  display: grid; place-items: center; margin: 0 auto 8px;
+  font-weight: 700; font-size: 14px; transition: .2s;
+}
+.h-step .lbl { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.h-step .sub { font-size: 11px; color: var(--muted); margin-top: 2px; opacity: .8; }
+.h-step.done .dot { background: var(--st-paid); border-color: var(--st-paid); color: #fff; }
+.h-step.done .lbl { color: var(--st-paid); }
+.h-step.active .dot {
+  background: #fff; border-color: var(--cyan); color: var(--navy);
+  box-shadow: 0 0 0 5px var(--cyan-50);
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+.h-step.active .lbl { color: var(--navy); }
+@keyframes pulseDot {
+  0%,100% { box-shadow: 0 0 0 5px var(--cyan-50); }
+  50%     { box-shadow: 0 0 0 9px rgba(36,194,236,.15); }
+}
+
+/* Stage chip on table rows */
+.next-action {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px; border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--cyan-50), #fff);
+  border: 1px solid #b9ecf9; color: var(--navy);
+  font-size: 11.5px; font-weight: 700; transition: .18s;
+}
+.next-action:hover { background: var(--cyan); color: #fff; border-color: var(--cyan); }
+.next-action.done { background: var(--st-paid-bg); border-color: #b8e8c6; color: var(--st-paid); }
+.next-action.done:hover { background: var(--st-paid); color: #fff; }
+
+/* Rules box (operational rules) */
+.rules-box {
+  background: linear-gradient(135deg, #fff7e0 0%, #fffaeb 100%);
+  border: 1px solid #fde29a; border-right: 4px solid #ea7a1a;
+  border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px;
+}
+.rules-box h4 {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: #7a5a00; margin-bottom: 8px;
+}
+.rules-box ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.rules-box li {
+  font-size: 12.5px; color: #6b4a00; padding-inline-start: 18px; position: relative;
+}
+.rules-box li::before {
+  content: "✓"; position: absolute; right: 0; top: 0; color: #ea7a1a; font-weight: 800;
+}
+
+/* Section header with status pill inline */
+.section-strip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px; background: #fafbfd; border: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) 0 0; border-bottom: 0;
+}
+.section-strip h3 { font-size: 14.5px; flex: 1; }
+.section + .section { margin-top: 16px; }
+.section .body {
+  background: #fff; border: 1px solid var(--line); border-top: 0;
+  border-radius: 0 0 var(--radius) var(--radius); padding: 18px;
+}
+
+/* Activation modal */
+.modal-backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(15,23,48,.55); z-index: 100;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-backdrop.show { display: flex; }
+.modal {
+  background: #fff; border-radius: 16px; width: 100%; max-width: 540px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.3); overflow: hidden;
+  animation: modalIn .25s ease;
+}
+@keyframes modalIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.modal-head {
+  padding: 18px 22px; background: linear-gradient(135deg, var(--navy), var(--navy-700));
+  color: #fff; display: flex; align-items: center; justify-content: space-between;
+}
+.modal-head h3 { color: #fff; font-size: 16px; }
+.modal-head .x {
+  background: rgba(255,255,255,.15); border: 0; color: #fff;
+  width: 30px; height: 30px; border-radius: 8px; cursor: pointer;
+}
+.modal-body { padding: 22px; }
+.modal-foot {
+  padding: 14px 22px; border-top: 1px solid var(--line);
+  display: flex; gap: 10px; justify-content: flex-end; background: #fafbfd;
+}
+
+/* Toast success big */
+.success-toast {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-20px);
+  background: var(--st-paid); color: #fff; padding: 14px 22px; border-radius: 12px;
+  font-weight: 700; box-shadow: 0 12px 30px rgba(15,131,63,.35);
+  z-index: 200; opacity: 0; transition: .3s; display: flex; align-items: center; gap: 10px;
+  font-family: inherit;
+}
+.success-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Hidden helper */
+.hidden { display: none !important; }
