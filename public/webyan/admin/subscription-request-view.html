@@ -45,6 +45,8 @@
           <li>لا يمكن تفعيل الاشتراك قبل تأكيد الدفع وقبل اكتمال جاهزية الموقع.</li>
           <li>تاريخ بداية الاشتراك = تاريخ التفعيل، وتاريخ النهاية = تاريخ التفعيل + مدة الباقة.</li>
           <li>الفواتير تصدر خارج النظام حاليًا، ويُسجَّل داخل النظام مرجع الدفع فقط.</li>
+          <li>يتم تنفيذ تفاصيل التجهيز الفني في النظام التشغيلي المعتمد (خارج لوحة الاشتراكات).</li>
+          <li>لوحة الاشتراكات تسجل حالة التجهيز فقط ولا تدير المهام الفنية التفصيلية.</li>
         </ul>
       </div>
 
@@ -212,66 +214,63 @@
             </div>
           </div>
 
-          <!-- 3. Technical preparation -->
+          <!-- 3. Technical preparation (simplified state tracking) -->
           <div class="section hidden" data-section="prep">
             <div class="section-strip">
-              <h3><i class="fa-solid fa-screwdriver-wrench" style="color:var(--st-prep)"></i> القسم 3 · التجهيز الفني</h3>
-              <span class="badge b-prep" data-section-status="prep">قيد التجهيز · <span data-prep-count>0</span>/13</span>
+              <h3><i class="fa-solid fa-screwdriver-wrench" style="color:var(--st-prep)"></i> تأكيد التجهيز الفني</h3>
+              <span class="badge b-prep" data-section-status="prep">لم يبدأ بعد</span>
             </div>
             <div class="body">
-              <div class="info-list mb-16">
-                <div class="info-row"><div class="k">المسؤول الفني</div><div class="v">م. فيصل العتيبي</div></div>
-                <div class="info-row"><div class="k">تاريخ بدء التجهيز</div><div class="v" data-prep-started>—</div></div>
+
+              <!-- State 1: Ready to start -->
+              <div class="state-card" data-prep-state="ready">
+                <div class="state-card-head">
+                  <div class="state-icon" style="background:var(--st-paid-bg);color:var(--st-paid)"><i class="fa-solid fa-play"></i></div>
+                  <div>
+                    <div class="state-title">جاهز لبدء التجهيز الفني</div>
+                    <div class="state-desc">تم تأكيد الدفع، ويمكن الآن إحالة الطلب للفريق الفني لبدء تجهيز بيئة العميل.</div>
+                  </div>
+                </div>
+                <button class="btn btn-cyan btn-block mt-12" data-action="start-prep"><i class="fa-solid fa-screwdriver-wrench"></i> بدء التجهيز الفني</button>
               </div>
 
-              <h4 style="font-size:13px;color:var(--muted);margin-bottom:10px">قائمة التجهيز التشغيلية (يجب إكمالها قبل التفعيل)</h4>
-              <div class="stepper" data-checklist>
-                <div class="step" data-step><div class="num">1</div><div class="body"><div class="title">مراجعة بيانات الجهة</div><div class="desc">التأكد من الترخيص والبيانات الرسمية</div></div></div>
-                <div class="step" data-step><div class="num">2</div><div class="body"><div class="title">مراجعة الباقة والخدمات الإضافية</div><div class="desc">منصة متكاملة + دومين + بريد مؤسسي</div></div></div>
-                <div class="step" data-step><div class="num">3</div><div class="body"><div class="title">تحديد هل لدى العميل دومين سابق</div><div class="desc">نعم — zain-association.org</div></div></div>
-                <div class="step" data-step><div class="num">4</div><div class="body"><div class="title">حجز دومين جديد أو ربط الدومين الحالي</div><div class="desc">إعداد سجلات DNS</div></div></div>
-                <div class="step" data-step><div class="num">5</div><div class="body"><div class="title">تجهيز الاستضافة</div><div class="desc">إنشاء بيئة الجهة على السيرفر</div></div></div>
-                <div class="step" data-step><div class="num">6</div><div class="body"><div class="title">إنشاء نسخة الموقع</div><div class="desc">من القالب الأساس للجهة</div></div></div>
-                <div class="step" data-step><div class="num">7</div><div class="body"><div class="title">تركيب القالب المناسب</div><div class="desc">حسب نوع الجهة وهويتها</div></div></div>
-                <div class="step" data-step><div class="num">8</div><div class="body"><div class="title">تهيئة لوحة التحكم</div><div class="desc">إعدادات أساسية + هوية بصرية</div></div></div>
-                <div class="step" data-step><div class="num">9</div><div class="body"><div class="title">تفعيل مكونات الباقة</div><div class="desc">تفعيل الوحدات: مشاريع، تبرعات، أخبار...</div></div></div>
-                <div class="step" data-step><div class="num">10</div><div class="body"><div class="title">إنشاء حساب مسؤول الجهة</div><div class="desc">صلاحية مدير</div></div></div>
-                <div class="step" data-step><div class="num">11</div><div class="body"><div class="title">إرسال بيانات الدخول للعميل</div><div class="desc">عبر البريد الرسمي</div></div></div>
-                <div class="step" data-step><div class="num">12</div><div class="body"><div class="title">مراجعة نهائية</div><div class="desc">اختبار شامل قبل التسليم</div></div></div>
-                <div class="step" data-step><div class="num">13</div><div class="body"><div class="title">جاهز للتسليم</div><div class="desc">انتقال للقسم التالي</div></div></div>
+              <!-- State 2: In progress -->
+              <div class="state-card hidden" data-prep-state="in-progress">
+                <div class="state-card-head">
+                  <div class="state-icon" style="background:var(--st-prep-bg);color:var(--st-prep)"><i class="fa-solid fa-gear fa-spin"></i></div>
+                  <div>
+                    <div class="state-title">الطلب قيد التجهيز الفني</div>
+                    <div class="state-desc">يتم تجهيز الموقع وبيئة العميل من خلال الفريق أو النظام التشغيلي المعتمد.</div>
+                  </div>
+                </div>
+                <div class="info-list mt-16" style="background:#fafbfd;border:1px solid var(--line);border-radius:10px;padding:14px">
+                  <div class="info-row"><div class="k">المسؤول الفني</div><div class="v">م. فيصل العتيبي</div></div>
+                  <div class="info-row"><div class="k">تاريخ بدء التجهيز</div><div class="v" data-prep-started>—</div></div>
+                  <div class="info-row"><div class="k">رابط المهمة في النظام الخارجي</div><div class="v"><a href="#" data-demo="فتح النظام الخارجي">#EXT-7821</a></div></div>
+                  <div class="info-row"><div class="k">ملاحظات التجهيز</div><div class="v" data-prep-notes>—</div></div>
+                </div>
+                <button class="btn btn-success btn-block mt-16" data-action="confirm-ready"><i class="fa-solid fa-check"></i> تأكيد جاهزية الموقع للتسليم</button>
               </div>
 
-              <div class="flex gap-8 mt-16">
-                <button class="btn" data-action="auto-complete-prep"><i class="fa-solid fa-wand-magic-sparkles"></i> إكمال جميع الخطوات (تجريبي)</button>
-                <button class="btn btn-cyan hidden" data-action="move-to-deliver"><i class="fa-solid fa-truck"></i> نقل إلى جاهز للتسليم</button>
+              <!-- State 3: Ready for delivery -->
+              <div class="state-card hidden" data-prep-state="ready-deliver">
+                <div class="state-card-head">
+                  <div class="state-icon" style="background:var(--st-deliver-bg);color:var(--st-deliver)"><i class="fa-solid fa-truck-fast"></i></div>
+                  <div>
+                    <div class="state-title">معلومات التسليم</div>
+                    <div class="state-desc">الموقع جاهز وبيانات الدخول جاهزة للإرسال.</div>
+                  </div>
+                </div>
+                <div class="info-list mt-16" style="background:#fafbfd;border:1px solid var(--line);border-radius:10px;padding:14px">
+                  <div class="info-row"><div class="k">رابط الموقع</div><div class="v"><a href="#" data-demo="فتح الموقع">zain-association.webyan.sa</a></div></div>
+                  <div class="info-row"><div class="k">رابط لوحة التحكم</div><div class="v"><a href="#" data-demo="فتح لوحة التحكم">zain-association.webyan.sa/admin</a></div></div>
+                  <div class="info-row"><div class="k">بريد مسؤول الجهة</div><div class="v">sara@zain-association.org</div></div>
+                  <div class="info-row"><div class="k">ملاحظات التسليم</div><div class="v">تم التواصل وتأكيد استلام بيانات الدخول</div></div>
+                  <div class="info-row"><div class="k">حالة إرسال بيانات الدخول</div><div class="v"><span class="badge b-paid" data-login-sent="yes">تم الإرسال</span></div></div>
+                </div>
+                <button class="btn btn-cyan btn-block mt-16" data-action="open-activate-modal"><i class="fa-solid fa-power-off"></i> تفعيل الاشتراك</button>
               </div>
-            </div>
-          </div>
 
-          <!-- 4. Delivery -->
-          <div class="section hidden" data-section="deliver">
-            <div class="section-strip">
-              <h3><i class="fa-solid fa-truck-fast" style="color:var(--st-deliver)"></i> القسم 4 · التسليم</h3>
-              <span class="badge b-deliver" data-section-status="deliver">جاهز للتسليم</span>
-            </div>
-            <div class="body">
-              <div class="alert success mb-16">
-                <i class="fa-solid fa-circle-check"></i>
-                <div><strong>الموقع جاهز وبيانات الدخول مرسلة</strong>
-                لكن الاشتراك لم يبدأ رسميًا بعد — لا تُحتسب أي أيام حتى يتم التفعيل.</div>
-              </div>
-              <div class="info-list">
-                <div class="info-row"><div class="k">رابط الموقع</div><div class="v"><a href="#" data-demo="فتح الموقع">zain-association.webyan.sa</a></div></div>
-                <div class="info-row"><div class="k">رابط لوحة التحكم</div><div class="v"><a href="#" data-demo="فتح لوحة التحكم">zain-association.webyan.sa/admin</a></div></div>
-                <div class="info-row"><div class="k">بريد المسؤول</div><div class="v">sara@zain-association.org</div></div>
-                <div class="info-row"><div class="k">اسم المستخدم</div><div class="v">sara.dosari</div></div>
-                <div class="info-row"><div class="k">حالة إرسال بيانات الدخول</div><div class="v"><span class="badge b-paid">تم الإرسال</span></div></div>
-                <div class="info-row"><div class="k">ملاحظات التسليم</div><div class="v">تم التواصل وتأكيد استلام بيانات الدخول</div></div>
-              </div>
-              <div class="flex gap-8 mt-16">
-                <button class="btn" data-demo="إعادة إرسال بيانات الدخول"><i class="fa-regular fa-paper-plane"></i> إعادة الإرسال</button>
-                <button class="btn btn-cyan" data-action="open-activate-modal"><i class="fa-solid fa-power-off"></i> تفعيل الاشتراك</button>
-              </div>
             </div>
           </div>
 
