@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الباقات والخدمات — ويبيان</title>
+  <link rel="icon" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <style>
+    .plan-card { border-radius: var(--radius); border: 1px solid var(--line); background: #fff; padding: 22px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+    .plan-card.featured { border-color: var(--cyan); box-shadow: 0 16px 40px rgba(36,194,236,.18); }
+    .plan-card.featured::before { content: "الأكثر طلبًا"; position:absolute; top:14px; left:14px; background:linear-gradient(135deg,var(--cyan),#5ed3f1); color:var(--navy); font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; }
+    .plan-card h4 { font-size: 18px; }
+    .plan-card .price { font-size: 30px; font-weight: 800; color: var(--navy); margin: 10px 0 4px; }
+    .plan-card .price small { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .plan-card .feat { display:flex; align-items:flex-start; gap:8px; padding:6px 0; font-size:13.5px; color:var(--text); border-bottom:1px dashed var(--line); }
+    .plan-card .feat:last-of-type { border-bottom: 0; }
+    .plan-card .feat i { color: var(--st-paid); margin-top: 4px; }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="logo-mark">و</div><div><strong>ويبيان</strong><small>لوحة الإدارة</small></div></div>
+    <a class="nav-link" href="index.html"><i class="ico fa-solid fa-gauge-high"></i><span>لوحة التحكم</span></a>
+    <div class="nav-section">إدارة الاشتراكات</div>
+    <a class="nav-link" href="subscription-requests.html"><i class="ico fa-solid fa-file-circle-plus"></i><span>طلبات الاشتراك</span></a>
+    <a class="nav-link" href="subscriptions.html"><i class="ico fa-solid fa-rotate"></i><span>الاشتراكات الفعلية</span></a>
+    <a class="nav-link" href="manual-create-request.html"><i class="ico fa-solid fa-plus"></i><span>إنشاء طلب يدوي</span></a>
+    <div class="nav-section">المالية</div>
+    <a class="nav-link" href="invoices.html"><i class="ico fa-solid fa-file-invoice-dollar"></i><span>الفواتير</span></a>
+    <div class="nav-section">الإعدادات</div>
+    <a class="nav-link active" href="plans.html"><i class="ico fa-solid fa-layer-group"></i><span>الباقات والخدمات</span></a>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+      <div><h1>الباقات والخدمات</h1><div class="crumbs">الإعدادات / الباقات</div></div>
+      <div class="grow"></div>
+      <button class="btn btn-primary" data-demo="إضافة باقة جديدة"><i class="fa-solid fa-plus"></i> باقة جديدة</button>
+    </header>
+
+    <section class="page">
+      <div class="page-head">
+        <div><h2>إدارة الباقات</h2><p>الباقات المتاحة للعملاء عند الاشتراك من الموقع</p></div>
+      </div>
+
+      <div class="grid grid-3">
+        <!-- Plan 1 -->
+        <div class="plan-card">
+          <h4>الحضور المؤسسي</h4>
+          <p class="text-muted" style="font-size:13px;margin:4px 0 0">حلّ مبدئي للجهات الناشئة لإطلاق هويتها الرقمية</p>
+          <div class="price">3,200 <small>ر.س / سنة</small></div>
+          <small class="text-muted">≈ 267 ر.س / شهريًا للعرض</small>
+          <div style="margin-top:14px">
+            <div class="feat"><i class="fa-solid fa-check"></i> موقع تعريفي احترافي</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> لوحة تحكم بالمحتوى</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> استضافة مدارة</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> دعم فني خلال أيام العمل</div>
+          </div>
+          <div class="flex gap-8 mt-16">
+            <button class="btn btn-sm" data-demo="تعديل الباقة"><i class="fa-regular fa-pen-to-square"></i> تعديل</button>
+            <span class="badge b-active" style="margin-inline-start:auto">مفعّلة</span>
+          </div>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="plan-card featured">
+          <h4>محتوى ومشاريع</h4>
+          <p class="text-muted" style="font-size:13px;margin:4px 0 0">للجهات النشطة التي لديها مشاريع وأخبار وفعاليات</p>
+          <div class="price">5,400 <small>ر.س / سنة</small></div>
+          <small class="text-muted">≈ 450 ر.س / شهريًا للعرض</small>
+          <div style="margin-top:14px">
+            <div class="feat"><i class="fa-solid fa-check"></i> كل مزايا الحضور المؤسسي</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> وحدة المشاريع والمبادرات</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> وحدة الأخبار والفعاليات</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> وحدة المتطوعين</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> 5 صناديق بريد مؤسسي</div>
+          </div>
+          <div class="flex gap-8 mt-16">
+            <button class="btn btn-sm" data-demo="تعديل الباقة"><i class="fa-regular fa-pen-to-square"></i> تعديل</button>
+            <span class="badge b-active" style="margin-inline-start:auto">مفعّلة</span>
+          </div>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="plan-card">
+          <h4>منصة متكاملة</h4>
+          <p class="text-muted" style="font-size:13px;margin:4px 0 0">حلّ شامل للجهات الكبيرة بخدمات تبرع وإحصاءات وتقارير</p>
+          <div class="price">9,800 <small>ر.س / سنة</small></div>
+          <small class="text-muted">≈ 817 ر.س / شهريًا للعرض</small>
+          <div style="margin-top:14px">
+            <div class="feat"><i class="fa-solid fa-check"></i> كل مزايا "محتوى ومشاريع"</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> بوابة تبرع إلكتروني</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> لوحة إحصاءات وتقارير</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> دومين خاص + SSL مميز</div>
+            <div class="feat"><i class="fa-solid fa-check"></i> دعم فني على مدار الساعة</div>
+          </div>
+          <div class="flex gap-8 mt-16">
+            <button class="btn btn-sm" data-demo="تعديل الباقة"><i class="fa-regular fa-pen-to-square"></i> تعديل</button>
+            <span class="badge b-active" style="margin-inline-start:auto">مفعّلة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="card mt-20">
+        <div class="card-head">
+          <div><h3>الخدمات الإضافية</h3><div class="sub">يمكن للعميل اختيارها أثناء الاشتراك</div></div>
+          <button class="btn btn-sm btn-primary" data-demo="إضافة خدمة"><i class="fa-solid fa-plus"></i> خدمة جديدة</button>
+        </div>
+        <div class="table-wrap">
+          <table class="tbl">
+            <thead><tr><th>اسم الخدمة</th><th>الوصف</th><th>السعر</th><th>دورية</th><th>الباقات المرتبطة</th><th>الحالة</th><th class="text-end"></th></tr></thead>
+            <tbody>
+              <tr><td>دومين خاص</td><td>ربط دومين العميل مع شهادة SSL</td><td>300 ر.س</td><td>سنوي</td><td>الكل</td><td><span class="badge b-active">مفعّلة</span></td><td class="actions"><button class="icon-btn"><i class="fa-regular fa-pen-to-square"></i></button></td></tr>
+              <tr><td>بريد مؤسسي إضافي</td><td>كل صندوق بريد إضافي</td><td>120 ر.س</td><td>سنوي</td><td>محتوى ومشاريع، منصة متكاملة</td><td><span class="badge b-active">مفعّلة</span></td><td class="actions"><button class="icon-btn"><i class="fa-regular fa-pen-to-square"></i></button></td></tr>
+              <tr><td>تصميم هوية بصرية</td><td>تصميم لوقو + هوية أساسية</td><td>1,800 ر.س</td><td>مرة واحدة</td><td>الكل</td><td><span class="badge b-active">مفعّلة</span></td><td class="actions"><button class="icon-btn"><i class="fa-regular fa-pen-to-square"></i></button></td></tr>
+              <tr><td>دعم فني مميز 24/7</td><td>قناة دعم مخصصة على مدار الساعة</td><td>2,400 ر.س</td><td>سنوي</td><td>منصة متكاملة</td><td><span class="badge">معطّلة</span></td><td class="actions"><button class="icon-btn"><i class="fa-regular fa-pen-to-square"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="admin.js"></script>
+</body>
+</html>
