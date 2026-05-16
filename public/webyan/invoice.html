@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فاتورة اشتراك — منصة ويبيان</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/webyan-documents.css" />
+</head>
+<body class="doc-page">
+  <div class="doc-wrap" style="max-width:840px;">
+    <div class="print-toolbar no-print">
+      <div class="title">📄 فاتورة <span id="invTitleType">ضريبية</span> — <span id="invNoLabel"></span></div>
+      <div style="display:flex;gap:10px;">
+        <button class="doc-btn outline" onclick="window.history.back()">→ رجوع</button>
+        <button class="doc-btn primary" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          طباعة / حفظ PDF
+        </button>
+      </div>
+    </div>
+
+    <article class="a4" id="invoiceDoc">
+      <div class="a4-content">
+      <!-- Header -->
+      <header class="a4-head">
+        <div class="brand">
+          <div class="brand-logos">
+            <img src="images/raneen-logo.svg" alt="رنين" class="r" />
+            <div class="brand-divider"></div>
+            <img src="images/webyan-logo.svg" alt="ويبيان" class="w" />
+          </div>
+        </div>
+        <div class="a4-title">
+          <div class="lab">TAX INVOICE • فاتورة</div>
+          <h1 id="invTitle">فاتورة ضريبية</h1>
+        </div>
+      </header>
+
+      <!-- Issuer block -->
+      <div class="a4-meta-strip">
+        <div class="it"><div class="k">رقم الفاتورة</div><div class="v" id="invNo"></div></div>
+        <div class="it"><div class="k">تاريخ الإصدار</div><div class="v" id="invIssue"></div></div>
+        <div class="it"><div class="k">تاريخ الاستحقاق</div><div class="v" id="invDue"></div></div>
+        <div class="it"><div class="k">حالة الفاتورة</div><div class="v" id="invStatus"></div></div>
+        <div class="it"><div class="k">رقم الطلب</div><div class="v" id="invOrder"></div></div>
+        <div class="it"><div class="k">رقم الاشتراك</div><div class="v" id="invSub"></div></div>
+        <div class="it"><div class="k">طريقة الدفع</div><div class="v" id="invMethod"></div></div>
+        <div class="it"><div class="k">العملة</div><div class="v">ريال سعودي (SAR)</div></div>
+      </div>
+
+      <!-- Parties -->
+      <div class="a4-parties">
+        <div class="a4-party">
+          <h4>صادرة عن • Issued by</h4>
+          <div class="line"><span class="k">اسم الجهة</span><span class="v" id="isName"></span></div>
+          <div class="line"><span class="k">السجل التجاري</span><span class="v" id="isCR"></span></div>
+          <div class="line"><span class="k">الرقم الضريبي</span><span class="v" id="isVAT"></span></div>
+          <div class="line"><span class="k">العنوان</span><span class="v" id="isAddr"></span></div>
+          <div class="line"><span class="k">البريد الإلكتروني</span><span class="v" id="isEmail"></span></div>
+          <div class="line"><span class="k">الموقع</span><span class="v" id="isWeb"></span></div>
+          <div class="line"><span class="k">رقم التواصل</span><span class="v" id="isPhone"></span></div>
+        </div>
+        <div class="a4-party">
+          <h4>صادرة إلى • Billed to</h4>
+          <div class="line"><span class="k">اسم الجهة</span><span class="v" id="cuName"></span></div>
+          <div class="line"><span class="k">اسم المسؤول</span><span class="v" id="cuContact"></span></div>
+          <div class="line"><span class="k">البريد الإلكتروني</span><span class="v" id="cuEmail"></span></div>
+          <div class="line"><span class="k">رقم الجوال</span><span class="v" id="cuPhone"></span></div>
+          <div class="line"><span class="k">الرقم الضريبي</span><span class="v" id="cuVAT"></span></div>
+          <div class="line"><span class="k">العنوان</span><span class="v" id="cuAddr"></span></div>
+        </div>
+      </div>
+
+      <!-- Items -->
+      <table class="inv-table">
+        <thead>
+          <tr>
+            <th>البند / الوصف</th>
+            <th class="num">الكمية</th>
+            <th class="num">السعر</th>
+            <th class="num">الخصم</th>
+            <th class="num">الضريبة</th>
+            <th class="num">الإجمالي</th>
+          </tr>
+        </thead>
+        <tbody id="invItems"></tbody>
+      </table>
+
+      <!-- Totals -->
+      <div class="totals">
+        <div class="totals-box">
+          <div class="row"><span>الإجمالي قبل الضريبة</span><span class="v" id="tSubtotal"></span></div>
+          <div class="row"><span>الخصم</span><span class="v" id="tDiscount"></span></div>
+          <div class="row"><span>ضريبة القيمة المضافة <span id="tVatRate"></span></span><span class="v" id="tVat"></span></div>
+          <div class="row grand"><span>الإجمالي شامل الضريبة</span><span class="v" id="tGrand"></span></div>
+          <div class="row"><span>المبلغ المدفوع</span><span class="v" id="tPaid"></span></div>
+          <div class="row"><span>المبلغ المتبقي</span><span class="v" id="tDue"></span></div>
+        </div>
+      </div>
+
+      <!-- Payment / Bank info -->
+      <div class="a4-parties" style="margin-top:18px;">
+        <div class="a4-party" id="payBlock">
+          <h4>بيانات الدفع • Payment Details</h4>
+          <div id="payRows"></div>
+        </div>
+        <div class="a4-party">
+          <h4>QR Code للفاتورة الإلكترونية</h4>
+          <div class="qr-block">
+            <div class="qr-ph">QR<br>CODE</div>
+            <div class="qr-info">
+              <b>متطلبات هيئة الزكاة والضريبة:</b><br>
+              يتم توليد رمز QR تلقائيًا للفاتورة الإلكترونية، ويحتوي بيانات المُصدر والرقم الضريبي والمبلغ والضريبة وفقًا لمتطلبات الفوترة الإلكترونية في المملكة العربية السعودية.
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="a4-foot">
+        <div class="a4-foot-note">
+          هذه الفاتورة صادرة إلكترونيًا من <b>منصة ويبيان</b> التابعة لـ <b>شركة رنين التنمية لخدمات الأعمال</b>.
+          لأي استفسار بخصوص الفاتورة أو الاشتراك، يمكنكم التواصل مع فريق ويبيان عبر القنوات الرسمية أدناه.
+        </div>
+        <img src="images/webyan-doc-footer.svg" alt="Webyan Official Footer" class="a4-foot-img" />
+      </footer>
+    </article>
+  </div>
+
+  <script src="js/webyan-documents.js"></script>
+  <script>
+    (function () {
+      const { mock, fmtSAR, LABELS } = window.WebyanDocs;
+      const inv = mock.invoice, p = mock.payment, c = mock.customer, iss = mock.issuer, sub = mock.subscription, b = mock.bankAccount;
+
+      const titleType = inv.status === 'paid' ? 'ضريبية' : 'اشتراك';
+      document.getElementById('invTitle').textContent = 'فاتورة ' + titleType;
+      document.getElementById('invTitleType').textContent = titleType;
+      document.getElementById('invNoLabel').textContent = inv.no;
+
+      document.getElementById('invNo').textContent = inv.no;
+      document.getElementById('invIssue').textContent = inv.issueDate;
+      document.getElementById('invDue').textContent = inv.dueDate;
+      document.getElementById('invStatus').innerHTML = `<span class="pill ${inv.status === 'paid' ? 'success' : 'pending'}">${LABELS.invoiceStatus[inv.status]}</span>`;
+      document.getElementById('invOrder').textContent = sub.orderNo;
+      document.getElementById('invSub').textContent = sub.subNo;
+      document.getElementById('invMethod').textContent = LABELS.paymentMethod[p.method];
+
+      // Issuer
+      document.getElementById('isName').textContent = iss.name;
+      document.getElementById('isCR').textContent = iss.cr;
+      document.getElementById('isVAT').textContent = iss.vat;
+      document.getElementById('isAddr').textContent = iss.address;
+      document.getElementById('isEmail').textContent = iss.email;
+      document.getElementById('isWeb').textContent = iss.website;
+      document.getElementById('isPhone').textContent = iss.phone;
+
+      // Customer
+      document.getElementById('cuName').textContent = c.entity;
+      document.getElementById('cuContact').textContent = c.contact;
+      document.getElementById('cuEmail').textContent = c.email;
+      document.getElementById('cuPhone').textContent = c.phone;
+      document.getElementById('cuVAT').textContent = c.vat;
+      document.getElementById('cuAddr').textContent = c.address;
+
+      // Items
+      document.getElementById('invItems').innerHTML = inv.items.map(it => `
+        <tr>
+          <td><div class="item-title">${it.title}</div><div class="item-desc">${it.desc}</div></td>
+          <td class="num">${it.qty}</td>
+          <td class="num">${fmtSAR(it.price)}</td>
+          <td class="num">${it.discount ? '- ' + fmtSAR(it.discount) : '—'}</td>
+          <td class="num">${fmtSAR(it.tax)}</td>
+          <td class="num"><b>${fmtSAR(it.total)}</b></td>
+        </tr>`).join('');
+
+      // Totals
+      document.getElementById('tSubtotal').textContent = fmtSAR(inv.subtotal);
+      document.getElementById('tDiscount').textContent = '- ' + fmtSAR(inv.discount);
+      document.getElementById('tVatRate').textContent = `(${inv.vatRate}%)`;
+      document.getElementById('tVat').textContent = fmtSAR(inv.vat);
+      document.getElementById('tGrand').textContent = fmtSAR(inv.grand);
+      document.getElementById('tPaid').textContent = fmtSAR(inv.paid);
+      document.getElementById('tDue').textContent = fmtSAR(inv.due);
+
+      // Payment block
+      let payRows = '';
+      if (p.method === 'moyasar') {
+        payRows = `
+          <div class="line"><span class="k">بوابة الدفع</span><span class="v">${p.gateway}</span></div>
+          <div class="line"><span class="k">رقم العملية</span><span class="v">${p.txnNo}</span></div>
+          <div class="line"><span class="k">تاريخ العملية</span><span class="v">${p.txnDate}</span></div>
+          <div class="line"><span class="k">آخر 4 أرقام</span><span class="v">**** ${p.cardLast4}</span></div>
+          <div class="line"><span class="k">حالة العملية</span><span class="v"><span class="pill success">مدفوعة</span></span></div>
+          <div class="line"><span class="k">مرجع الدفع</span><span class="v">${p.reference}</span></div>`;
+      } else {
+        payRows = `
+          <div class="line"><span class="k">اسم البنك</span><span class="v">${b.bank}</span></div>
+          <div class="line"><span class="k">اسم المستفيد</span><span class="v">${b.holder}</span></div>
+          <div class="line"><span class="k">رقم الحساب</span><span class="v">${b.account}</span></div>
+          <div class="line"><span class="k">الآيبان (IBAN)</span><span class="v">${b.iban}</span></div>
+          <div class="line"><span class="k">حالة الدفع</span><span class="v"><span class="pill pending">بانتظار التحقق</span></span></div>`;
+      }
+      document.getElementById('payRows').innerHTML = payRows;
+    })();
+  </script>
+</body>
+</html>

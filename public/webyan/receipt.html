@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سند قبض — منصة ويبيان</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/webyan-documents.css" />
+</head>
+<body class="doc-page">
+  <div class="doc-wrap" style="max-width:840px;">
+    <div class="print-toolbar no-print">
+      <div class="title">🧾 سند قبض — <span id="rvNoLabel"></span></div>
+      <div style="display:flex;gap:10px;">
+        <button class="doc-btn outline" onclick="window.history.back()">→ رجوع</button>
+        <button class="doc-btn primary" onclick="window.print()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          طباعة / حفظ PDF
+        </button>
+      </div>
+    </div>
+
+    <article class="a4">
+      <div class="a4-content">
+      <div class="receipt-stamp">PAID • مستلم</div>
+
+      <header class="a4-head">
+        <div class="brand">
+          <div class="brand-logos">
+            <img src="images/raneen-logo.svg" alt="رنين" class="r" />
+            <div class="brand-divider"></div>
+            <img src="images/webyan-logo.svg" alt="ويبيان" class="w" />
+          </div>
+        </div>
+        <div class="a4-title">
+          <div class="lab">RECEIPT VOUCHER</div>
+          <h1>سَنَد قَبْض</h1>
+        </div>
+      </header>
+
+      <div class="a4-meta-strip">
+        <div class="it"><div class="k">رقم السند</div><div class="v" id="rvNo"></div></div>
+        <div class="it"><div class="k">تاريخ الاستلام</div><div class="v" id="rvDate"></div></div>
+        <div class="it"><div class="k">رقم الفاتورة المرتبطة</div><div class="v" id="rvInv"></div></div>
+        <div class="it"><div class="k">رقم الطلب</div><div class="v" id="rvOrder"></div></div>
+      </div>
+
+      <div class="receipt-body">
+        <div class="receipt-line"><span class="k">استلمنا من السيد/السادة</span><span class="v" id="rvFrom"></span></div>
+        <div class="receipt-line"><span class="k">ممثل الجهة</span><span class="v" id="rvRep"></span></div>
+        <div class="receipt-line"><span class="k">مقابل</span><span class="v" id="rvFor"></span></div>
+        <div class="receipt-line"><span class="k">طريقة الدفع</span><span class="v" id="rvMethod"></span></div>
+        <div class="receipt-line"><span class="k">رقم العملية / مرجع التحويل</span><span class="v" id="rvRef"></span></div>
+        <div class="receipt-line"><span class="k">حالة السند</span><span class="v"><span class="pill success">معتمد</span></span></div>
+      </div>
+
+      <div class="receipt-amount">
+        <div>
+          <div class="lab">مبلغ وقدره</div>
+          <div class="txt" id="rvAmountWords"></div>
+        </div>
+        <div class="num" id="rvAmount"></div>
+      </div>
+
+      <div class="a4-parties" style="margin-top:8px;">
+        <div class="a4-party">
+          <h4>الجهة المستلِمة • Issued by</h4>
+          <div class="line"><span class="k">اسم الجهة</span><span class="v" id="isName"></span></div>
+          <div class="line"><span class="k">السجل التجاري</span><span class="v" id="isCR"></span></div>
+          <div class="line"><span class="k">الرقم الضريبي</span><span class="v" id="isVAT"></span></div>
+          <div class="line"><span class="k">العنوان</span><span class="v" id="isAddr"></span></div>
+        </div>
+        <div class="a4-party">
+          <h4>اعتماد السند • Authorized signature</h4>
+          <div style="height:90px;border-bottom:1px dashed var(--doc-line);margin:6px 0 8px;"></div>
+          <div class="line"><span class="k">الاسم</span><span class="v">قسم المحاسبة — شركة رنين</span></div>
+          <div class="line"><span class="k">التاريخ</span><span class="v" id="rvDate2"></span></div>
+          <div class="line"><span class="k">التوقيع والختم</span><span class="v">معتمد إلكترونيًا</span></div>
+        </div>
+      </div>
+
+      <div class="doc-alert info" style="margin-top:14px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div>هذا السند يؤكد استلام المبلغ، ولا يغني عن الفاتورة الضريبية عند الحاجة. الفاتورة المرتبطة بهذا السند رقم: <b id="rvInv2"></b></div>
+      </div>
+      </div>
+
+      <footer class="a4-foot">
+        <div class="a4-foot-note">
+          سند قبض رسمي صادر من <b>شركة رنين التنمية لخدمات الأعمال</b> مقابل اشتراك العميل في <b>منصة ويبيان</b>.
+        </div>
+        <img src="images/webyan-doc-footer.svg" alt="Webyan Official Footer" class="a4-foot-img" />
+      </footer>
+    </article>
+  </div>
+
+  <script src="js/webyan-documents.js"></script>
+  <script>
+    (function () {
+      const { mock, fmtSAR, numberToArabicWords, LABELS } = window.WebyanDocs;
+      const r = mock.receipt, inv = mock.invoice, c = mock.customer, p = mock.payment, iss = mock.issuer, sub = mock.subscription;
+
+      document.getElementById('rvNoLabel').textContent = r.no;
+      document.getElementById('rvNo').textContent = r.no;
+      document.getElementById('rvDate').textContent = r.date;
+      document.getElementById('rvDate2').textContent = r.date;
+      document.getElementById('rvInv').textContent = inv.no;
+      document.getElementById('rvInv2').textContent = inv.no;
+      document.getElementById('rvOrder').textContent = sub.orderNo;
+      document.getElementById('rvFrom').textContent = c.entity;
+      document.getElementById('rvRep').textContent = c.contact;
+      document.getElementById('rvFor').textContent = `اشتراك منصة ويبيان — ${sub.plan} — ${sub.duration}`;
+      document.getElementById('rvMethod').textContent = LABELS.paymentMethod[p.method];
+      document.getElementById('rvRef').textContent = p.method === 'moyasar' ? p.txnNo : (p.reference || '—');
+      document.getElementById('rvAmount').textContent = fmtSAR(inv.paid);
+      document.getElementById('rvAmountWords').textContent = numberToArabicWords(inv.paid);
+
+      document.getElementById('isName').textContent = iss.name;
+      document.getElementById('isCR').textContent = iss.cr;
+      document.getElementById('isVAT').textContent = iss.vat;
+      document.getElementById('isAddr').textContent = iss.address;
+    })();
+  </script>
+</body>
+</html>
