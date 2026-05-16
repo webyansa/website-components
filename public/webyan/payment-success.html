@@ -6,29 +6,92 @@
   <title>تم استلام الدفع — منصة ويبيان</title>
   <meta name="description" content="تم استلام دفعتكم بنجاح. اشتراككم في منصة ويبيان قيد التجهيز الفني." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/webyan.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/webyan-v2.css" />
   <link rel="stylesheet" href="css/webyan-documents.css" />
+  <script src="js/webyan-theme.js"></script>
 </head>
-<body class="doc-page wb-page" data-result-state="success">
-  <header class="wb-header">
-    <div class="wb-container">
-      <a href="index.html" class="wb-logo"><img src="images/webyan-logo.svg" alt="ويبيان" height="36" /></a>
-      <nav class="wb-nav">
+<body class="doc-page has-site-chrome" data-result-state="success">
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo" aria-label="ويبيان"><img src="images/webyan-logo.svg" alt="ويبيان" height="34" /></a>
+      <nav class="header-nav">
         <a href="index.html">الرئيسية</a>
-        <a href="pricing.html">الباقات</a>
-        <a href="contact.html">الدعم</a>
+        <a href="pricing.html">الأسعار</a>
+        <a href="about.html">عن ويبيان</a>
+        <a href="blog.html">المدونة</a>
+        <a href="contact.html">اتصل بنا</a>
       </nav>
+      <div class="header-actions">
+        <button class="btn-theme" type="button" aria-label="تبديل الوضع"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+        <a href="en/payment-success.html" class="btn-lang" title="English">EN</a>
+        <a href="contact.html" class="btn-header-secondary">الدعم</a>
+        <a href="pricing.html" class="btn-header-cta">الباقات</a>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="القائمة"><span></span><span></span><span></span></button>
     </div>
   </header>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span style="font-family:var(--font-heading);font-weight:700;color:var(--brand-navy);font-size:1.1rem;">ويبيان</span>
+      <button class="drawer-close" id="drawerClose" aria-label="إغلاق">×</button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="pricing.html">الأسعار</a>
+      <a href="about.html">عن ويبيان</a>
+      <a href="contact.html">اتصل بنا</a>
+    </nav>
+    <a href="pricing.html" class="drawer-cta">الباقات</a>
+  </aside>
 
   <main class="doc-wrap">
     <div id="resultRoot"></div>
   </main>
 
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link" aria-label="ويبيان"><img src="images/webyan-logo-white.svg" alt="ويبيان" height="36" /></a>
+          <p>منصة رقمية سعودية متخصصة في تمكين الجمعيات والكيانات غير الربحية من بناء حضور رقمي مؤسسي وإدارته باحتراف.</p>
+          <div class="footer-social"><a href="#" aria-label="X">𝕏</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div>
+        </div>
+        <div class="footer-col"><h4>المنصة</h4><ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="pricing.html">الأسعار</a></li>
+          <li><a href="checkout.html">اشترك الآن</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>الشركة</h4><ul>
+          <li><a href="about.html">عن ويبيان</a></li>
+          <li><a href="blog.html">المدونة</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>الدعم</h4><ul>
+          <li><a href="contact.html">طلب عرض توضيحي</a></li>
+          <li><a href="mailto:help@webyan.sa">help@webyan.sa</a></li>
+          <li><a href="privacy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms.html">الشروط والأحكام</a></li>
+        </ul></div>
+        <div class="footer-newsletter">
+          <h4 style="color:#fff;font-size:1rem;margin-bottom:14px;">النشرة البريدية</h4>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin-bottom:14px;">جديد القطاع غير الربحي والتحول الرقمي في بريدك.</p>
+          <input type="email" placeholder="بريدك الإلكتروني" />
+          <button>اشترك في النشرة</button>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 ويبيان | شركة رنين التنمية لخدمات الأعمال | جميع الحقوق محفوظة</div>
+    </div>
+  </footer>
+
   <script src="js/webyan-documents.js"></script>
   <script src="js/webyan-result.js"></script>
+  <script src="js/webyan-v2.js"></script>
 </body>
 </html>
