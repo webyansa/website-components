@@ -466,55 +466,131 @@
 .doc-actions-bar .ghost { margin-inline-end: auto; }
 
 /* ── Integration with main site chrome (site-header / site-footer) ── */
-.doc-page.has-site-chrome { padding: 110px 16px 60px; }
+.doc-page.has-site-chrome {
+  padding: 130px 16px 120px;
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(36,194,236,.10), transparent 60%),
+    radial-gradient(900px 420px at 10% 8%, rgba(38,60,132,.08), transparent 60%),
+    var(--doc-bg);
+}
 @media (max-width: 768px) {
-  .doc-page.has-site-chrome { padding: 90px 12px 40px; }
+  .doc-page.has-site-chrome { padding: 96px 12px 80px; }
 }
 .doc-page.has-site-chrome .doc-wrap { max-width: 1200px; }
 
+/* Page eyebrow above the hero */
+.doc-page-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .82rem; color: var(--doc-muted); font-weight: 600;
+  margin: 0 4px 14px;
+}
+.doc-page-eyebrow .crumb { color: var(--doc-primary); font-weight: 700; }
+.doc-page-eyebrow .sep { opacity: .5; }
+
 /* Polish hero on the result pages */
-.result-hero { border-radius: 18px; }
+.result-hero { border-radius: 20px; box-shadow: 0 20px 50px -28px rgba(38,60,132,.28); }
 .result-hero-top {
   background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+  padding: 28px 30px 22px;
 }
-.result-hero h1 { font-size: 1.45rem; }
-.result-hero p { font-size: .94rem; }
+.result-hero h1 { font-size: 1.5rem; }
+.result-hero p { font-size: .94rem; max-width: 760px; }
+.result-icon { width: 64px; height: 64px; box-shadow: inset 0 0 0 6px rgba(255,255,255,.55); }
+.result-icon svg { width: 30px; height: 30px; }
 .result-meta {
   background: linear-gradient(180deg, #f4f8fd 0%, #ebf2fb 100%);
   border-top: 1px solid #e1ebf8;
+  padding: 18px 30px;
+  gap: 18px 36px;
+}
+
+/* Tighter, more readable grid rhythm */
+.doc-grid { gap: 20px; margin-top: 22px; }
+.doc-stepper { margin-top: 22px; padding: 24px 28px; border-radius: 18px; }
+.step .lab { font-size: .82rem; }
+
+/* Card head accent */
+.doc-card { border-radius: 18px; }
+.doc-card-head {
+  padding: 18px 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafbfe 100%);
+}
+.doc-card-head h3 { font-size: 1.02rem; }
+.doc-card-head h3::before {
+  content: ""; width: 3px; height: 18px; border-radius: 3px;
+  background: linear-gradient(180deg, var(--doc-primary), var(--doc-cyan));
+  display: inline-block;
+}
+.doc-card-body { padding: 22px 24px; }
+
+/* Section heading band above grouped cards */
+.doc-section-title {
+  margin: 28px 4px 12px; display: flex; align-items: center; gap: 12px;
+  font-size: .78rem; font-weight: 800; letter-spacing: 2px;
+  color: var(--doc-primary); text-transform: uppercase;
+}
+.doc-section-title::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(38,60,132,.25), transparent);
 }
 
 /* Bank card – richer presentation for pending state */
 .bank-card {
-  padding: 26px 28px;
+  padding: 28px 30px;
   background: linear-gradient(135deg, #1f3375 0%, #263c84 55%, #1b2c63 100%);
-  box-shadow: 0 18px 40px -18px rgba(38,60,132,.55);
+  box-shadow: 0 22px 50px -22px rgba(38,60,132,.55);
+  border-radius: 16px;
 }
 .bank-card::before {
   content: ""; position: absolute; bottom: -60px; right: -40px;
-  width: 200px; height: 200px; border-radius: 50%;
+  width: 220px; height: 220px; border-radius: 50%;
   background: rgba(255,255,255,.05);
 }
 .bank-card h4 {
   font-size: 1.05rem; padding-bottom: 14px;
   border-bottom: 1px solid rgba(255,255,255,.15); margin-bottom: 18px;
 }
-.bank-grid { gap: 16px 22px; }
+.bank-grid { gap: 18px 24px; }
 .bank-grid .it .lab { font-size: .78rem; opacity: .72; margin-bottom: 4px; }
-.bank-grid .it .val { font-size: 1rem; letter-spacing: .2px; }
+.bank-grid .it .val { font-size: 1rem; letter-spacing: .2px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .bank-grid .iban .val { font-family: 'Tajawal', sans-serif; font-size: 1.05rem; }
 
-/* Upload box – more inviting */
+/* Upload box */
 .upload-box {
-  padding: 32px 22px; border-width: 2px;
+  padding: 34px 22px; border-width: 2px;
   background: linear-gradient(180deg, #f6faff 0%, #eef5fc 100%);
+  border-radius: 16px;
 }
 .upload-box .t { font-size: 1rem; }
 
-/* Action bar – align right side on RTL nicely */
-.doc-actions-bar { justify-content: flex-start; }
+/* Action bar — clean grouping, sticky-feeling */
+.doc-actions-bar {
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
+  box-shadow: 0 18px 40px -28px rgba(38,60,132,.35);
+  justify-content: flex-start;
+  gap: 12px;
+}
+.doc-actions-bar .doc-btn { padding: 11px 20px; font-size: .9rem; }
 .doc-actions-bar .ghost { margin-inline-start: auto; margin-inline-end: 0; }
 
-/* Stepper polish */
-.doc-stepper { padding: 26px 28px; }
-.step .lab { font-size: .82rem; }
+/* Compact next-steps tweak: clearer cards */
+.next-steps.compact .next-step {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8fd 100%);
+  border: 1px solid #e1ebf8;
+  padding: 16px 16px;
+}
+.next-steps.compact .ns-t { font-size: .92rem; }
+
+/* Comfortable spacer before the site footer */
+.doc-wrap > :last-child { margin-bottom: 12px; }
+
+@media (max-width: 768px) {
+  .result-hero-top { padding: 22px 20px 18px; flex-direction: row; }
+  .result-meta { padding: 14px 20px; gap: 12px 22px; }
+  .doc-card-head, .doc-card-body { padding-left: 18px; padding-right: 18px; }
+  .bank-card { padding: 22px 20px; }
+  .bank-grid { grid-template-columns: 1fr; }
+  .bank-grid .iban { grid-column: span 1; }
+}
