@@ -166,7 +166,7 @@
 
   function renderBankBlock() {
     const b = mock.bankAccount;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card bank-transfer-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
       بيانات التحويل البنكي</h3></div>
       <div class="doc-card-body">
@@ -185,15 +185,17 @@
             </div>
           </div>
         </div>
-        <label class="upload-box" style="margin-top:16px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          <div class="t">رفع إيصال التحويل البنكي</div>
-          <div class="s">PDF / JPG / PNG — الحد الأقصى 5MB</div>
-          <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="this.parentElement.querySelector('.t').textContent='✓ ' + this.files[0].name">
-        </label>
-        <div class="doc-alert warn">
+        <div class="bank-followup-grid">
+          <label class="upload-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div class="t">رفع إيصال التحويل البنكي</div>
+            <div class="s">PDF / JPG / PNG — الحد الأقصى 5MB</div>
+            <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="this.parentElement.querySelector('.t').textContent='✓ ' + this.files[0].name">
+          </label>
+          <div class="doc-alert warn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div><strong>تنبيه:</strong> سيتم تفعيل الاشتراك وإصدار سند القبض بعد اعتماد التحويل من الإدارة المالية.</div>
+          </div>
         </div>
       </div></div>`;
   }
