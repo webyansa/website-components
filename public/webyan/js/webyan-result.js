@@ -203,18 +203,15 @@
 
   function renderNextSteps(s) {
     const items = [
-      { t: 'مراجعة بيانات الاشتراك', d: 'فريق ويبيان يراجع بيانات الجهة والباقة المختارة.' },
-      { t: 'تجهيز البيئة الفنية', d: 'إعداد الاستضافة وقواعد البيانات وتهيئة بيئة المنصة.' },
-      { t: 'إعداد الدومين والاستضافة', d: 'ربط النطاق وإصدار شهادة SSL عند الحاجة.' },
-      { t: 'تفعيل الموقع ولوحة التحكم', d: 'تثبيت نسخة الموقع وتفعيل لوحة الإدارة.' },
-      { t: 'إرسال بيانات الدخول', d: 'إرسال بيانات الدخول للمسؤول عبر البريد الإلكتروني.' },
-      { t: 'بدء فترة الاشتراك', d: 'احتساب فترة الاشتراك يبدأ من تاريخ التفعيل الفعلي.' }
+      { t: 'مراجعة البيانات', d: 'مراجعة بيانات الجهة والباقة' },
+      { t: 'تجهيز البيئة الفنية', d: 'استضافة، دومين، نسخة الموقع' },
+      { t: 'تفعيل الاشتراك', d: 'إرسال بيانات الدخول وبدء فترة الاشتراك' }
     ];
     const doneIdx = s.paymentStatus === 'paid' ? 1 : 0;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card compact"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      ماذا يحدث بعد ذلك؟</h3></div>
-      <div class="doc-card-body"><div class="next-steps">
+      الخطوات التالية</h3></div>
+      <div class="doc-card-body"><div class="next-steps compact">
         ${items.map((it, i) => `<div class="next-step ${i < doneIdx ? 'done' : ''}">
           <div class="ns-num">${i < doneIdx ? '✓' : (i + 1)}</div>
           <div class="ns-body"><div class="ns-t">${it.t}</div><div class="ns-d">${it.d}</div></div>
@@ -224,32 +221,35 @@
 
   function renderActions(s) {
     if (s.icon === 'success') {
-      return `<div class="doc-card"><div class="doc-actions" style="border-top:0;background:transparent;padding:0;">
+      return `<div class="doc-actions-bar">
         <a href="invoice.html" target="_blank" class="doc-btn primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          تحميل الفاتورة PDF
+          الفاتورة الضريبية
+        </a>
+        <a href="invoice-simple.html" target="_blank" class="doc-btn outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          فاتورة الاشتراك
         </a>
         <a href="receipt.html" target="_blank" class="doc-btn cyan">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          تحميل سند القبض PDF
+          سند القبض
         </a>
-        <a href="#" class="doc-btn outline">الذهاب إلى لوحة التحكم</a>
         <a href="contact.html" class="doc-btn ghost">التواصل مع الدعم</a>
-      </div></div>`;
+      </div>`;
     }
     if (s.icon === 'pending') {
-      return `<div class="doc-card"><div class="doc-actions" style="border-top:0;background:transparent;padding:0;">
-        <a href="invoice.html" target="_blank" class="doc-btn primary">تحميل الفاتورة PDF</a>
+      return `<div class="doc-actions-bar">
+        <a href="invoice.html" target="_blank" class="doc-btn primary">تحميل الفاتورة</a>
         <button class="doc-btn cyan" onclick="document.querySelector('.upload-box input').click()">رفع إيصال التحويل</button>
         <button class="doc-btn outline" data-copy="${mock.bankAccount.iban.replace(/\s/g,'')}">نسخ الآيبان</button>
         <a href="contact.html" class="doc-btn ghost">التواصل مع الدعم</a>
-      </div></div>`;
+      </div>`;
     }
-    return `<div class="doc-card"><div class="doc-actions" style="border-top:0;background:transparent;padding:0;">
+    return `<div class="doc-actions-bar">
       <a href="checkout.html" class="doc-btn primary">إعادة محاولة الدفع</a>
       <a href="checkout.html?method=bank" class="doc-btn cyan">اختيار التحويل البنكي</a>
       <a href="contact.html" class="doc-btn ghost">التواصل مع الدعم</a>
-    </div></div>`;
+    </div>`;
   }
 
   function render() {
