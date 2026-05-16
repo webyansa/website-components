@@ -252,22 +252,43 @@
     </div>`;
   }
 
+  function eyebrow(s) {
+    const labels = {
+      success: 'تأكيد الاشتراك',
+      pending: 'بانتظار التحويل البنكي',
+      failed: 'فشل في عملية الدفع'
+    };
+    return `<div class="doc-page-eyebrow">
+      <span>منصة ويبيان</span><span class="sep">/</span>
+      <span>الاشتراك</span><span class="sep">/</span>
+      <span class="crumb">${labels[s.icon] || ''}</span>
+    </div>`;
+  }
+  function sectionTitle(t) { return `<div class="doc-section-title"><span>${t}</span></div>`; }
+
   function render() {
     const stateKey = document.body.dataset.resultState || 'success';
     const s = STATES[stateKey];
     const root = document.getElementById('resultRoot');
-    let html = renderHero(s);
+    let html = eyebrow(s);
+    html += renderHero(s);
     html += renderStepper(s.activeStep, s.doneSteps);
+    html += sectionTitle('تفاصيل الطلب');
     html += `<div class="doc-grid">
       <div class="col-6">${renderCustomerCard()}</div>
       <div class="col-6">${renderSubCard(s)}</div>
-      <div class="col-12">${renderInvoiceSummary()}</div>`;
+    </div>`;
+    html += sectionTitle('ملخص مالي');
+    html += `<div class="doc-grid"><div class="col-12">${renderInvoiceSummary()}</div></div>`;
     if (s.paymentMethod === 'bank_transfer' && s.icon === 'pending') {
-      html += `<div class="col-12">${renderBankBlock()}</div>`;
+      html += sectionTitle('سداد التحويل البنكي');
+      html += `<div class="doc-grid"><div class="col-12">${renderBankBlock()}</div></div>`;
     }
-    html += `<div class="col-12">${renderNextSteps(s)}</div>`;
-    html += `<div class="col-12">${renderActions(s)}</div>`;
-    html += `</div>`;
+    html += sectionTitle('الخطوات التالية');
+    html += `<div class="doc-grid">
+      <div class="col-12">${renderNextSteps(s)}</div>
+      <div class="col-12">${renderActions(s)}</div>
+    </div>`;
     root.innerHTML = html;
 
     // wire copy buttons
