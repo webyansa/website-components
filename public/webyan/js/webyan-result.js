@@ -10,7 +10,7 @@
     success: {
       icon: 'success',
       title: 'تم استلام دفعتكم بنجاح',
-      text: 'شكرًا لاشتراككم في منصة ويبيان. تم تسجيل عملية الدفع بنجاح، وسيبدأ فريق ويبيان إجراءات مراجعة البيانات وتجهيز البيئة الفنية للمنصة. يمكنكم تحميل الفاتورة وسند القبض من هذه الصفحة، وسيتم إشعاركم فور اكتمال تفعيل الاشتراك.',
+      text: 'تم تأكيد عملية الدفع وإصدار مستندات الاشتراك. ينتقل الطلب الآن إلى مرحلة المراجعة والتجهيز الفني قبل تفعيل حساب الجهة.',
       paymentStatus: 'paid',
       invoiceStatus: 'paid',
       subscriptionStatus: 'pending_setup',
@@ -22,7 +22,7 @@
     pending: {
       icon: 'pending',
       title: 'تم إنشاء طلب الاشتراك',
-      text: 'تم إصدار فاتورة اشتراك بانتظار السداد. يرجى تحويل المبلغ إلى الحساب البنكي الموضح أدناه، ثم رفع إيصال التحويل ليتم التحقق من العملية وتفعيل الاشتراك.',
+      text: 'تم إصدار فاتورة الاشتراك وهي بانتظار التحويل البنكي. يرجى تحويل المبلغ ثم رفع إيصال السداد لاعتماده من الإدارة المالية.',
       paymentStatus: 'pending',
       invoiceStatus: 'pending_payment',
       subscriptionStatus: 'pending_review',
@@ -34,7 +34,7 @@
     failed: {
       icon: 'failed',
       title: 'لم تكتمل عملية الدفع',
-      text: 'لم نتمكن من تأكيد عملية الدفع. يمكنكم إعادة المحاولة باستخدام وسيلة دفع أخرى، أو اختيار التحويل البنكي لإكمال الاشتراك.',
+      text: 'تعذّر تأكيد عملية الدفع. يمكنكم إعادة المحاولة أو اختيار التحويل البنكي لإكمال الاشتراك دون إعادة إدخال بيانات الطلب.',
       paymentStatus: 'failed',
       invoiceStatus: 'pending_payment',
       subscriptionStatus: 'pending_payment',
@@ -67,12 +67,18 @@
   function row(k, v) { return `<div class="row"><span class="k">${k}</span><span class="v">${v}</span></div>`; }
 
   function renderHero(s) {
-    return `<div class="result-hero">
+    return `<div class="result-hero result-${s.icon}">
       <div class="result-hero-top">
         <div class="result-icon ${s.icon}">${iconSvg(s.icon)}</div>
-        <div>
+        <div class="result-hero-copy">
+          <span class="result-kicker">منصة ويبيان · إدارة الاشتراك</span>
           <h1>${s.title}</h1>
           <p>${s.text}</p>
+        </div>
+        <div class="result-amount-card">
+          <span>إجمالي الاشتراك</span>
+          <strong>${fmtSAR(mock.invoice.grand)}</strong>
+          <em>${LABELS.paymentMethod[s.paymentMethod]}</em>
         </div>
       </div>
       <div class="result-meta">
@@ -80,15 +86,13 @@
         <div class="item"><span class="lab">رقم الفاتورة</span><span class="val">${mock.invoice.no}</span></div>
         <div class="item"><span class="lab">حالة الدفع</span><span class="val">${pill(s.paymentStatus, 'paymentStatus')}</span></div>
         <div class="item"><span class="lab">حالة الاشتراك</span><span class="val">${pill(s.subscriptionStatus, 'subscriptionStatus')}</span></div>
-        <div class="item"><span class="lab">حالة التجهيز الفني</span><span class="val">${pill(s.setupStatus, 'technicalSetupStatus')}</span></div>
-        <div class="item"><span class="lab">طريقة الدفع</span><span class="val">${LABELS.paymentMethod[s.paymentMethod]}</span></div>
       </div>
     </div>`;
   }
 
   function renderCustomerCard() {
     const c = mock.customer;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card summary-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       بيانات العميل</h3></div>
       <div class="doc-card-body"><div class="dlist">
@@ -103,7 +107,7 @@
 
   function renderSubCard(s) {
     const sub = mock.subscription;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card summary-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       بيانات الاشتراك</h3></div>
       <div class="doc-card-body"><div class="dlist">
@@ -120,25 +124,18 @@
 
   function renderInvoiceSummary() {
     const inv = mock.invoice;
-    const rows = inv.items.map(it => `<tr>
-      <td><div class="item-title">${it.title}</div><div class="item-desc">${it.desc}</div></td>
-      <td class="num">${it.qty}</td>
-      <td class="num">${fmtSAR(it.price)}</td>
-      <td class="num">${it.discount ? fmtSAR(it.discount) : '—'}</td>
-      <td class="num">${fmtSAR(it.tax)}</td>
-      <td class="num"><b>${fmtSAR(it.total)}</b></td>
-    </tr>`).join('');
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    const rows = inv.items.map(it => `<div class="invoice-line">
+      <div><div class="item-title">${it.title}</div><div class="item-desc">${it.desc}</div></div>
+      <div class="invoice-line-total"><span>${it.qty} × ${fmtSAR(it.price)}</span><strong>${fmtSAR(it.total)}</strong></div>
+    </div>`).join('');
+    return `<div class="doc-card invoice-summary-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       ملخص الفاتورة</h3>
       <a href="invoice.html" class="doc-btn outline" style="padding:6px 14px;font-size:.82rem;">عرض الفاتورة الكاملة ←</a>
       </div>
-      <div class="doc-card-body" style="padding:0;">
-        <table class="inv-table">
-          <thead><tr><th>البند / الوصف</th><th class="num">الكمية</th><th class="num">السعر</th><th class="num">الخصم</th><th class="num">الضريبة</th><th class="num">الإجمالي</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-        <div style="padding:0 22px 22px;">
+      <div class="doc-card-body">
+        <div class="invoice-summary-layout">
+          <div class="invoice-lines">${rows}</div>
           <div class="totals"><div class="totals-box">
             <div class="row"><span>الإجمالي قبل الضريبة</span><span class="v">${fmtSAR(inv.subtotal)}</span></div>
             <div class="row"><span>الخصم</span><span class="v">- ${fmtSAR(inv.discount)}</span></div>
@@ -169,7 +166,7 @@
 
   function renderBankBlock() {
     const b = mock.bankAccount;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card bank-transfer-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
       بيانات التحويل البنكي</h3></div>
       <div class="doc-card-body">
@@ -188,15 +185,17 @@
             </div>
           </div>
         </div>
-        <label class="upload-box" style="margin-top:16px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          <div class="t">رفع إيصال التحويل البنكي</div>
-          <div class="s">PDF / JPG / PNG — الحد الأقصى 5MB</div>
-          <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="this.parentElement.querySelector('.t').textContent='✓ ' + this.files[0].name">
-        </label>
-        <div class="doc-alert warn">
+        <div class="bank-followup-grid">
+          <label class="upload-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div class="t">رفع إيصال التحويل البنكي</div>
+            <div class="s">PDF / JPG / PNG — الحد الأقصى 5MB</div>
+            <input type="file" accept=".pdf,.jpg,.jpeg,.png" onchange="this.parentElement.querySelector('.t').textContent='✓ ' + this.files[0].name">
+          </label>
+          <div class="doc-alert warn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div><strong>تنبيه:</strong> سيتم تفعيل الاشتراك وإصدار سند القبض بعد اعتماد التحويل من الإدارة المالية.</div>
+          </div>
         </div>
       </div></div>`;
   }
@@ -271,6 +270,7 @@
     const s = STATES[stateKey];
     const root = document.getElementById('resultRoot');
     let html = eyebrow(s);
+    html += `<div class="result-main-panel">`;
     html += renderHero(s);
     html += renderStepper(s.activeStep, s.doneSteps);
     html += sectionTitle('تفاصيل الطلب');
@@ -289,6 +289,7 @@
       <div class="col-12">${renderNextSteps(s)}</div>
       <div class="col-12">${renderActions(s)}</div>
     </div>`;
+    html += `</div>`;
     root.innerHTML = html;
 
     // wire copy buttons
