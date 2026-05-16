@@ -270,6 +270,7 @@
     const s = STATES[stateKey];
     const root = document.getElementById('resultRoot');
     let html = eyebrow(s);
+    html += `<div class="result-main-panel">`;
     html += renderHero(s);
     html += renderStepper(s.activeStep, s.doneSteps);
     html += sectionTitle('تفاصيل الطلب');
@@ -288,6 +289,7 @@
       <div class="col-12">${renderNextSteps(s)}</div>
       <div class="col-12">${renderActions(s)}</div>
     </div>`;
+    html += `</div>`;
     root.innerHTML = html;
 
     // wire copy buttons
