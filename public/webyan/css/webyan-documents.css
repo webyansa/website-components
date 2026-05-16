@@ -410,3 +410,57 @@
   .receipt-stamp { opacity: .18; }
   @page { size: A4; margin: 0; }
 }
+
+/* ── Compact result page tweaks ─────────────────────── */
+.doc-page { padding: 24px 16px 60px; }
+.result-hero-top { padding: 22px 26px 18px; gap: 18px; }
+.result-icon { width: 56px; height: 56px; }
+.result-icon svg { width: 28px; height: 28px; }
+.result-hero h1 { font-size: 1.25rem; margin-bottom: 4px; }
+.result-hero p { font-size: .9rem; line-height: 1.7; }
+.result-meta { padding: 14px 26px; gap: 14px 32px; font-size: .85rem; }
+.doc-card.compact .doc-card-body { padding: 14px 18px; }
+.next-steps.compact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.next-steps.compact .next-step {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 14px;
+  background: var(--doc-tint);
+  border: 1px solid var(--doc-line-soft);
+  border-radius: var(--doc-radius-sm);
+}
+.next-steps.compact .ns-num {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--doc-primary);
+  font-weight: 800; font-size: .82rem;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--doc-primary);
+}
+.next-steps.compact .next-step.done .ns-num {
+  background: var(--doc-success); color: #fff; border-color: var(--doc-success);
+}
+.next-steps.compact .ns-t { font-weight: 700; font-size: .9rem; margin-bottom: 2px; }
+.next-steps.compact .ns-d { font-size: .78rem; color: var(--doc-muted); line-height: 1.5; }
+@media (max-width: 768px) {
+  .next-steps.compact { grid-template-columns: 1fr; }
+}
+
+/* Sticky compact action bar */
+.doc-actions-bar {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--doc-line);
+  border-radius: var(--doc-radius);
+  box-shadow: var(--doc-shadow);
+  justify-content: flex-end;
+  align-items: center;
+}
+.doc-actions-bar .doc-btn { padding: 10px 18px; font-size: .88rem; }
+.doc-actions-bar .ghost { margin-inline-end: auto; }
