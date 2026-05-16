@@ -92,7 +92,7 @@
 
   function renderCustomerCard() {
     const c = mock.customer;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card summary-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       بيانات العميل</h3></div>
       <div class="doc-card-body"><div class="dlist">
@@ -107,7 +107,7 @@
 
   function renderSubCard(s) {
     const sub = mock.subscription;
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    return `<div class="doc-card summary-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       بيانات الاشتراك</h3></div>
       <div class="doc-card-body"><div class="dlist">
@@ -124,25 +124,18 @@
 
   function renderInvoiceSummary() {
     const inv = mock.invoice;
-    const rows = inv.items.map(it => `<tr>
-      <td><div class="item-title">${it.title}</div><div class="item-desc">${it.desc}</div></td>
-      <td class="num">${it.qty}</td>
-      <td class="num">${fmtSAR(it.price)}</td>
-      <td class="num">${it.discount ? fmtSAR(it.discount) : '—'}</td>
-      <td class="num">${fmtSAR(it.tax)}</td>
-      <td class="num"><b>${fmtSAR(it.total)}</b></td>
-    </tr>`).join('');
-    return `<div class="doc-card"><div class="doc-card-head"><h3>
+    const rows = inv.items.map(it => `<div class="invoice-line">
+      <div><div class="item-title">${it.title}</div><div class="item-desc">${it.desc}</div></div>
+      <div class="invoice-line-total"><span>${it.qty} × ${fmtSAR(it.price)}</span><strong>${fmtSAR(it.total)}</strong></div>
+    </div>`).join('');
+    return `<div class="doc-card invoice-summary-card"><div class="doc-card-head"><h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       ملخص الفاتورة</h3>
       <a href="invoice.html" class="doc-btn outline" style="padding:6px 14px;font-size:.82rem;">عرض الفاتورة الكاملة ←</a>
       </div>
-      <div class="doc-card-body" style="padding:0;">
-        <table class="inv-table">
-          <thead><tr><th>البند / الوصف</th><th class="num">الكمية</th><th class="num">السعر</th><th class="num">الخصم</th><th class="num">الضريبة</th><th class="num">الإجمالي</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-        <div style="padding:0 22px 22px;">
+      <div class="doc-card-body">
+        <div class="invoice-summary-layout">
+          <div class="invoice-lines">${rows}</div>
           <div class="totals"><div class="totals-box">
             <div class="row"><span>الإجمالي قبل الضريبة</span><span class="v">${fmtSAR(inv.subtotal)}</span></div>
             <div class="row"><span>الخصم</span><span class="v">- ${fmtSAR(inv.discount)}</span></div>
