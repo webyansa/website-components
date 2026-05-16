@@ -1024,3 +1024,26 @@ body.doc-page.has-site-chrome .site-footer {
 }
 :root[data-theme="dark"] body.doc-page.has-site-chrome .bank-card h4,
 :root[data-theme="dark"] body.doc-page.has-site-chrome .bank-grid .it .val { color: #fff; }
+
+/* Hard override: result pages are formal document pages, not dark dashboard surfaces */
+html[data-theme="dark"] body.doc-page.has-site-chrome,
+:root[data-theme="dark"] body.doc-page.has-site-chrome {
+  background:
+    radial-gradient(760px 360px at 88% 0%, rgba(36,194,236,.12), transparent 64%),
+    linear-gradient(180deg, #f6f8fc 0%, #eef3fa 100%) !important;
+}
+html[data-theme="dark"] body.doc-page.has-site-chrome .doc-wrap,
+:root[data-theme="dark"] body.doc-page.has-site-chrome .doc-wrap {
+  background: transparent !important;
+}
+html[data-theme="dark"] body.doc-page.has-site-chrome .doc-page-eyebrow,
+:root[data-theme="dark"] body.doc-page.has-site-chrome .doc-page-eyebrow,
+html[data-theme="dark"] body.doc-page.has-site-chrome .doc-section-title,
+:root[data-theme="dark"] body.doc-page.has-site-chrome .doc-section-title {
+  color: #263c84 !important;
+}
+@media (min-width: 981px) {
+  body.doc-page.has-site-chrome .doc-wrap {
+    padding-bottom: 72px;
+  }
+}
