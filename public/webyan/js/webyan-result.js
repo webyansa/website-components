@@ -10,7 +10,7 @@
     success: {
       icon: 'success',
       title: 'تم استلام دفعتكم بنجاح',
-      text: 'شكرًا لاشتراككم في منصة ويبيان. تم تسجيل عملية الدفع بنجاح، وسيبدأ فريق ويبيان إجراءات مراجعة البيانات وتجهيز البيئة الفنية للمنصة. يمكنكم تحميل الفاتورة وسند القبض من هذه الصفحة، وسيتم إشعاركم فور اكتمال تفعيل الاشتراك.',
+      text: 'تم تأكيد عملية الدفع وإصدار مستندات الاشتراك. ينتقل الطلب الآن إلى مرحلة المراجعة والتجهيز الفني قبل تفعيل حساب الجهة.',
       paymentStatus: 'paid',
       invoiceStatus: 'paid',
       subscriptionStatus: 'pending_setup',
@@ -22,7 +22,7 @@
     pending: {
       icon: 'pending',
       title: 'تم إنشاء طلب الاشتراك',
-      text: 'تم إصدار فاتورة اشتراك بانتظار السداد. يرجى تحويل المبلغ إلى الحساب البنكي الموضح أدناه، ثم رفع إيصال التحويل ليتم التحقق من العملية وتفعيل الاشتراك.',
+      text: 'تم إصدار فاتورة الاشتراك وهي بانتظار التحويل البنكي. يرجى تحويل المبلغ ثم رفع إيصال السداد لاعتماده من الإدارة المالية.',
       paymentStatus: 'pending',
       invoiceStatus: 'pending_payment',
       subscriptionStatus: 'pending_review',
@@ -34,7 +34,7 @@
     failed: {
       icon: 'failed',
       title: 'لم تكتمل عملية الدفع',
-      text: 'لم نتمكن من تأكيد عملية الدفع. يمكنكم إعادة المحاولة باستخدام وسيلة دفع أخرى، أو اختيار التحويل البنكي لإكمال الاشتراك.',
+      text: 'تعذّر تأكيد عملية الدفع. يمكنكم إعادة المحاولة أو اختيار التحويل البنكي لإكمال الاشتراك دون إعادة إدخال بيانات الطلب.',
       paymentStatus: 'failed',
       invoiceStatus: 'pending_payment',
       subscriptionStatus: 'pending_payment',
@@ -67,12 +67,18 @@
   function row(k, v) { return `<div class="row"><span class="k">${k}</span><span class="v">${v}</span></div>`; }
 
   function renderHero(s) {
-    return `<div class="result-hero">
+    return `<div class="result-hero result-${s.icon}">
       <div class="result-hero-top">
         <div class="result-icon ${s.icon}">${iconSvg(s.icon)}</div>
-        <div>
+        <div class="result-hero-copy">
+          <span class="result-kicker">منصة ويبيان · إدارة الاشتراك</span>
           <h1>${s.title}</h1>
           <p>${s.text}</p>
+        </div>
+        <div class="result-amount-card">
+          <span>إجمالي الاشتراك</span>
+          <strong>${fmtSAR(mock.invoice.grand)}</strong>
+          <em>${LABELS.paymentMethod[s.paymentMethod]}</em>
         </div>
       </div>
       <div class="result-meta">
@@ -80,8 +86,6 @@
         <div class="item"><span class="lab">رقم الفاتورة</span><span class="val">${mock.invoice.no}</span></div>
         <div class="item"><span class="lab">حالة الدفع</span><span class="val">${pill(s.paymentStatus, 'paymentStatus')}</span></div>
         <div class="item"><span class="lab">حالة الاشتراك</span><span class="val">${pill(s.subscriptionStatus, 'subscriptionStatus')}</span></div>
-        <div class="item"><span class="lab">حالة التجهيز الفني</span><span class="val">${pill(s.setupStatus, 'technicalSetupStatus')}</span></div>
-        <div class="item"><span class="lab">طريقة الدفع</span><span class="val">${LABELS.paymentMethod[s.paymentMethod]}</span></div>
       </div>
     </div>`;
   }
