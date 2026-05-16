@@ -464,3 +464,57 @@
 }
 .doc-actions-bar .doc-btn { padding: 10px 18px; font-size: .88rem; }
 .doc-actions-bar .ghost { margin-inline-end: auto; }
+
+/* ── Integration with main site chrome (site-header / site-footer) ── */
+.doc-page.has-site-chrome { padding: 110px 16px 60px; }
+@media (max-width: 768px) {
+  .doc-page.has-site-chrome { padding: 90px 12px 40px; }
+}
+.doc-page.has-site-chrome .doc-wrap { max-width: 1200px; }
+
+/* Polish hero on the result pages */
+.result-hero { border-radius: 18px; }
+.result-hero-top {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+}
+.result-hero h1 { font-size: 1.45rem; }
+.result-hero p { font-size: .94rem; }
+.result-meta {
+  background: linear-gradient(180deg, #f4f8fd 0%, #ebf2fb 100%);
+  border-top: 1px solid #e1ebf8;
+}
+
+/* Bank card – richer presentation for pending state */
+.bank-card {
+  padding: 26px 28px;
+  background: linear-gradient(135deg, #1f3375 0%, #263c84 55%, #1b2c63 100%);
+  box-shadow: 0 18px 40px -18px rgba(38,60,132,.55);
+}
+.bank-card::before {
+  content: ""; position: absolute; bottom: -60px; right: -40px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.bank-card h4 {
+  font-size: 1.05rem; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.15); margin-bottom: 18px;
+}
+.bank-grid { gap: 16px 22px; }
+.bank-grid .it .lab { font-size: .78rem; opacity: .72; margin-bottom: 4px; }
+.bank-grid .it .val { font-size: 1rem; letter-spacing: .2px; }
+.bank-grid .iban .val { font-family: 'Tajawal', sans-serif; font-size: 1.05rem; }
+
+/* Upload box – more inviting */
+.upload-box {
+  padding: 32px 22px; border-width: 2px;
+  background: linear-gradient(180deg, #f6faff 0%, #eef5fc 100%);
+}
+.upload-box .t { font-size: 1rem; }
+
+/* Action bar – align right side on RTL nicely */
+.doc-actions-bar { justify-content: flex-start; }
+.doc-actions-bar .ghost { margin-inline-start: auto; margin-inline-end: 0; }
+
+/* Stepper polish */
+.doc-stepper { padding: 26px 28px; }
+.step .lab { font-size: .82rem; }

@@ -262,11 +262,8 @@
       <div class="col-6">${renderCustomerCard()}</div>
       <div class="col-6">${renderSubCard(s)}</div>
       <div class="col-12">${renderInvoiceSummary()}</div>`;
-    if (s.paymentMethod === 'moyasar' && s.paymentStatus === 'paid') {
-      html += `<div class="col-12">${renderPaymentBlock()}</div>`;
-    }
-    if (s.paymentMethod === 'bank_transfer' || s.icon === 'failed') {
-      if (s.icon === 'pending') html += `<div class="col-12">${renderBankBlock()}</div>`;
+    if (s.paymentMethod === 'bank_transfer' && s.icon === 'pending') {
+      html += `<div class="col-12">${renderBankBlock()}</div>`;
     }
     html += `<div class="col-12">${renderNextSteps(s)}</div>`;
     html += `<div class="col-12">${renderActions(s)}</div>`;
