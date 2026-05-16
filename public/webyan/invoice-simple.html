@@ -102,13 +102,6 @@
         </div>
       </div>
 
-      <!-- Payment / Bank info -->
-      <div style="margin-top:18px;">
-        <div class="a4-party" id="payBlock">
-          <h4>بيانات الدفع • Payment Details</h4>
-          <div id="payRows"></div>
-        </div>
-      </div>
       </div>
 
       <!-- Footer -->
@@ -137,7 +130,7 @@
       document.getElementById('invStatus').innerHTML = `<span class="pill ${inv.status === 'paid' ? 'success' : 'pending'}">${LABELS.invoiceStatus[inv.status]}</span>`;
       document.getElementById('invOrder').textContent = sub.orderNo;
       document.getElementById('invSub').textContent = sub.subNo;
-      document.getElementById('invMethod').textContent = LABELS.paymentMethod[p.method];
+      var methodEl = document.getElementById('invMethod'); if (methodEl) methodEl.textContent = LABELS.paymentMethod[p.method];
 
       // Issuer
       document.getElementById('isName').textContent = iss.name;
@@ -176,25 +169,6 @@
       document.getElementById('tPaid').textContent = fmtSAR(inv.paid);
       document.getElementById('tDue').textContent = fmtSAR(inv.due);
 
-      // Payment block
-      let payRows = '';
-      if (p.method === 'moyasar') {
-        payRows = `
-          <div class="line"><span class="k">بوابة الدفع</span><span class="v">${p.gateway}</span></div>
-          <div class="line"><span class="k">رقم العملية</span><span class="v">${p.txnNo}</span></div>
-          <div class="line"><span class="k">تاريخ العملية</span><span class="v">${p.txnDate}</span></div>
-          <div class="line"><span class="k">آخر 4 أرقام</span><span class="v">**** ${p.cardLast4}</span></div>
-          <div class="line"><span class="k">حالة العملية</span><span class="v"><span class="pill success">مدفوعة</span></span></div>
-          <div class="line"><span class="k">مرجع الدفع</span><span class="v">${p.reference}</span></div>`;
-      } else {
-        payRows = `
-          <div class="line"><span class="k">اسم البنك</span><span class="v">${b.bank}</span></div>
-          <div class="line"><span class="k">اسم المستفيد</span><span class="v">${b.holder}</span></div>
-          <div class="line"><span class="k">رقم الحساب</span><span class="v">${b.account}</span></div>
-          <div class="line"><span class="k">الآيبان (IBAN)</span><span class="v">${b.iban}</span></div>
-          <div class="line"><span class="k">حالة الدفع</span><span class="v"><span class="pill pending">بانتظار التحقق</span></span></div>`;
-      }
-      document.getElementById('payRows').innerHTML = payRows;
     })();
   </script>
 </body>
