@@ -825,3 +825,47 @@ h1,h2,h3,h4,h5,h6{letter-spacing:0}
   .h-display{font-size:28px}.audience-core strong{font-size:26px}.bento{grid-template-columns:1fr}.b-1,.b-2,.b-3,.b-4,.b-5,.b-6{grid-column:span 1}.feature-lab{grid-template-columns:1fr}.lab-panel,.lab-panel.main,.lab-panel.accent{grid-column:span 1}
 }
 
+/* =========================================================
+   FINAL GRID CORRECTION v5 — clean viewport-safe sections
+   ========================================================= */
+#audience,#system,#journey,#impact{scroll-margin-top:118px}
+.audience,.system,.impact{padding-block:clamp(72px,7vw,104px)}
+.audience .section-head,.system .section-head,.journey .section-head,.impact .section-head{margin-bottom:32px}
+
+.audience-matrix{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"c c c c" "a b d e";gap:18px}
+.audience-matrix::before{display:none}
+.audience-core{min-height:230px}
+.audience-matrix .ob-card{min-height:205px;display:flex;flex-direction:column;justify-content:center;padding-top:34px}
+.audience-matrix .p1{grid-area:a}.audience-matrix .p2{grid-area:b}.audience-matrix .p3{grid-area:d}.audience-matrix .p4{grid-area:e;max-width:none !important;margin:0}
+
+.bento{
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-areas:
+    "hero hero hero hero hero hero tool tool guide guide field field"
+    "hero hero hero hero hero hero community community community impact impact impact";
+  grid-auto-rows:220px;
+  align-items:stretch;
+}
+.bento-card{height:auto;min-height:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:30px 28px}
+.b-1{grid-area:hero;min-height:0}.b-2{grid-area:tool}.b-3{grid-area:guide}.b-4{grid-area:field}.b-5{grid-area:community}.b-6{grid-area:impact}
+.bento-card:not(.b-1) .bn-icon{margin:0 0 16px;flex:0 0 auto;transform:none}
+.bento-card:not(.b-1) h3{font-size:18px;line-height:1.5;margin:0 0 8px}.bento-card:not(.b-1) p{font-size:13.25px;line-height:1.75}
+.b-1{justify-content:flex-end;padding:36px}.b-1 .bn-icon{margin-bottom:18px}.b-1 h3{font-size:30px}.b-1 .bn-tags{margin-top:18px}.bento-visual{top:28px;right:34px}
+.bn-num{top:18px;left:20px}.b-4 .bn-num,.b-1 .bn-num{color:rgba(255,255,255,.62)}
+
+.journey-stage{max-width:1080px}.journey-sticky::before{display:none}.journey-sticky{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:32px;padding:28px;backdrop-filter:blur(14px)}
+.journey-sticky .row{padding:0}.jr-steps li{min-height:82px}.jr-visual{max-width:340px}.jr-visual::before{inset:-4%}
+
+.feature-lab{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:220px}.lab-panel,.lab-panel.main,.lab-panel.accent{grid-column:auto;min-height:0}
+.impact-grid{gap:18px}.impact-card{min-height:285px}
+
+@media (max-width:1199px){
+  .bento{grid-template-areas:"hero hero hero hero hero hero hero hero hero hero hero hero" "tool tool tool tool guide guide guide guide field field field field" "community community community community community community impact impact impact impact impact impact";grid-auto-rows:200px}
+  .b-1 h3{font-size:28px}.audience-matrix{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"c c" "a b" "d e"}
+}
+@media (max-width:991px){
+  #audience,#system,#journey,#impact{scroll-margin-top:92px}
+  .audience-matrix{grid-template-columns:1fr;grid-template-areas:"c" "a" "b" "d" "e"}.audience-matrix .ob-card{min-height:auto}
+  .bento{grid-template-columns:1fr;grid-template-areas:"hero" "tool" "guide" "field" "community" "impact";grid-auto-rows:auto}.bento-card,.b-1{min-height:210px}.feature-lab{grid-template-columns:1fr;grid-auto-rows:auto}.lab-panel{min-height:210px}.journey-sticky{padding:20px;border-radius:24px}
+}
+
