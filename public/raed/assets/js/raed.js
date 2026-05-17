@@ -161,6 +161,17 @@
     };
     setStage(0);
 
+    // Click step to scroll to its window
+    steps.forEach((li, idx) => {
+      li.addEventListener('click', () => {
+        const rect = stage.getBoundingClientRect();
+        const stageTop = rect.top + window.scrollY;
+        const stageH = stage.offsetHeight - window.innerHeight;
+        const target = stageTop + (idx + 0.5) / total * stageH;
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      });
+    });
+
     if (window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.create({
@@ -173,7 +184,6 @@
         }
       });
     } else {
-      // Fallback: progress via scroll position
       window.addEventListener('scroll', () => {
         const r = stage.getBoundingClientRect();
         const vh = window.innerHeight;
