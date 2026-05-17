@@ -144,7 +144,7 @@
     });
   });
 
-  // ---------- Journey scroll story (GSAP) ----------
+  // ---------- Journey guided story ----------
   const stage = document.getElementById('journeyStage');
   const stepsEl = document.getElementById('jrSteps');
   const visual = document.getElementById('jrVisual');
@@ -161,38 +161,12 @@
     };
     setStage(0);
 
-    // Click step to scroll to its window
+    // Hover / click step to update the visual without creating broken scroll gaps
     steps.forEach((li, idx) => {
-      li.addEventListener('click', () => {
-        const rect = stage.getBoundingClientRect();
-        const stageTop = rect.top + window.scrollY;
-        const stageH = stage.offsetHeight - window.innerHeight;
-        const target = stageTop + (idx + 0.5) / total * stageH;
-        window.scrollTo({ top: target, behavior: 'smooth' });
-      });
+      li.addEventListener('mouseenter', () => setStage(idx));
+      li.addEventListener('focusin', () => setStage(idx));
+      li.addEventListener('click', () => setStage(idx));
     });
-
-    if (window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-      ScrollTrigger.create({
-        trigger: stage,
-        start: 'top top+=10%',
-        end: 'bottom bottom',
-        onUpdate: self => {
-          const idx = Math.min(total - 1, Math.floor(self.progress * total));
-          setStage(idx);
-        }
-      });
-    } else {
-      window.addEventListener('scroll', () => {
-        const r = stage.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const total2 = r.height - vh;
-        const passed = Math.min(Math.max(-r.top, 0), total2);
-        const p = total2 > 0 ? passed / total2 : 0;
-        setStage(Math.min(total - 1, Math.floor(p * total)));
-      }, { passive: true });
-    }
   }
 
   // ---------- GSAP hero text reveal ----------
