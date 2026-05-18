@@ -1,420 +1,598 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>رائد — جمعية اكتشاف وتطوير المواهب</title>
-  <meta name="description" content="رائد منصة رقمية متخصصة تساعد الممارسين التربويين على اكتشاف المواهب وتنميتها وتحويل المعرفة إلى أثر." />
-  <link rel="icon" href="assets/images/Fichicon.svg" type="image/svg+xml" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>رائد — جمعية اكتشاف وتطوير المواهب</title>
+    <meta
+      name="description"
+      content="رائد منصة رقمية متخصصة تساعد الممارسين التربويين على اكتشاف المواهب وتنميتها وتحويل المعرفة إلى أثر."
+    />
+    <link rel="icon" href="assets/images/Fichicon.svg" type="image/svg+xml" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Bootstrap 5 RTL (grid only usage) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <!-- Bootstrap 5 RTL (grid only usage) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 
-  <link rel="stylesheet" href="assets/css/raed.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="assets/css/raed.css" />
+  </head>
+  <body>
+    <!-- Cursor follower -->
+    <div class="cursor-orb" id="cursorOrb" aria-hidden="true"></div>
 
-  <!-- Cursor follower -->
-  <div class="cursor-orb" id="cursorOrb" aria-hidden="true"></div>
-
-  <!-- NAVBAR -->
-  <header class="raed-nav" id="raedNav">
-    <div class="container-xxl">
-      <div class="nav-row">
-        <a href="#top" class="brand">
-          <img src="assets/images/Raed-Logo.svg" alt="رائد" />
-        </a>
-        <nav class="nav-links" aria-label="القائمة الرئيسية">
-          <a href="#hero">الرئيسية</a>
-          <a href="#about">عن رائد</a>
-          <a href="#audience">لمن صُممت</a>
-          <a href="#system">المنظومة</a>
-          <a href="#journey">رحلة الممارس</a>
-          <a href="#impact">الأثر</a>
-        </nav>
-        <div class="nav-cta">
-          <a href="https://academy.mwahib.org.sa/auth/login" target="_blank" rel="noopener" class="btn-ghost">تسجيل دخول</a>
-          <a href="https://academy.mwahib.org.sa/auth/signup" target="_blank" rel="noopener" class="btn-glow"><span>ابدأ الآن</span><i class="bi bi-arrow-left"></i></a>
-          <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة"><i class="bi bi-list"></i></button>
+    <!-- NAVBAR -->
+    <header class="raed-nav" id="raedNav">
+      <div class="container-xxl">
+        <div class="nav-row">
+          <a href="#top" class="brand">
+            <img src="assets/images/Raed-Logo.svg" alt="رائد" />
+          </a>
+          <nav class="nav-links" aria-label="القائمة الرئيسية">
+            <a href="#hero">الرئيسية</a>
+            <a href="#about">عن رائد</a>
+            <a href="#audience">لمن صُممت</a>
+            <a href="#system">المنظومة</a>
+            <a href="#journey">رحلة الممارس</a>
+            <a href="#impact">الأثر</a>
+          </nav>
+          <div class="nav-cta">
+            <a href="https://academy.mwahib.org.sa/auth/login" target="_blank" rel="noopener" class="btn-ghost"
+              >تسجيل دخول</a
+            >
+            <a href="https://academy.mwahib.org.sa/auth/signup" target="_blank" rel="noopener" class="btn-glow"
+              ><span>ابدأ الآن</span><i class="bi bi-arrow-left"></i
+            ></a>
+            <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة"><i class="bi bi-list"></i></button>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Mobile drawer -->
-  <div class="mobile-overlay" id="mobileOverlay"></div>
-  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <div class="drawer-head">
-      <img src="assets/images/Raed-Logo.svg" alt="رائد" />
-      <button id="drawerClose" aria-label="إغلاق"><i class="bi bi-x-lg"></i></button>
-    </div>
-    <nav>
-      <a href="#hero">الرئيسية</a>
-      <a href="#about">عن رائد</a>
-      <a href="#audience">لمن صُممت</a>
-      <a href="#system">المنظومة</a>
-      <a href="#journey">رحلة الممارس</a>
-      <a href="#impact">الأثر</a>
-      <a href="https://academy.mwahib.org.sa/auth/signup" target="_blank" rel="noopener" class="drawer-cta">ابدأ الآن</a>
-    </nav>
-  </aside>
+    <!-- Mobile drawer -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <div class="drawer-head">
+        <img src="assets/images/Raed-Logo.svg" alt="رائد" />
+        <button id="drawerClose" aria-label="إغلاق"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <nav>
+        <a href="#hero">الرئيسية</a>
+        <a href="#about">عن رائد</a>
+        <a href="#audience">لمن صُممت</a>
+        <a href="#system">المنظومة</a>
+        <a href="#journey">رحلة الممارس</a>
+        <a href="#impact">الأثر</a>
+        <a href="https://academy.mwahib.org.sa/auth/signup" target="_blank" rel="noopener" class="drawer-cta"
+          >ابدأ الآن</a
+        >
+      </nav>
+    </aside>
 
-  <!-- ============== HERO ============== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="mesh mesh-1"></div>
-      <div class="mesh mesh-2"></div>
-      <div class="mesh mesh-3"></div>
-      <div class="grid-lines"></div>
-      <div class="noise"></div>
-      <div class="hero-light" id="heroLight"></div>
-    </div>
+    <!-- ============== HERO ============== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="grid-lines"></div>
+        <div class="noise"></div>
+        <div class="hero-light" id="heroLight"></div>
+      </div>
 
-    <div class="container-xxl hero-inner">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-6 hero-copy">
-          <span class="hero-badge" data-reveal>
-            <span class="pulse-dot"></span>
-            جمعية اكتشاف وتطوير المواهب
-          </span>
-          <h1 class="hero-title" data-reveal>
-            <span class="line">رائد لاكتشاف</span>
-            <span class="line"><span class="grad">المواهب</span>...</span>
-            <span class="line">ومنحها <span class="grad">مسارًا للنمو</span></span>
-          </h1>
-          <p class="hero-lead" data-reveal>
-            منصة رقمية متخصصة تساعد الممارسين التربويين والعاملين مع الموهوبين على اكتشاف القدرات،
-            وتنمية المهارات، وتحويل المعرفة إلى ممارسات وأثر قابل للقياس.
-          </p>
-          <div class="hero-actions" data-reveal>
-            <a href="https://academy.mwahib.org.sa" target="_blank" rel="noopener" class="btn-glow lg"><span>اكتشف المنصة</span><i class="bi bi-arrow-left"></i></a>
-            <a href="#system" class="btn-line"><i class="bi bi-grid-3x3-gap"></i> مميزات المنصة</a>
-          </div>
-          <div class="hero-mini-stats" data-reveal>
-            <div><strong>+100</strong><span>ممارس</span></div>
-            <span class="sep"></span>
-            <div><strong>+30</strong><span>ساعة تدريبية</span></div>
-            <span class="sep"></span>
-            <div><strong>+20</strong><span>أداة عملية</span></div>
-          </div>
-        </div>
-
-        <!-- Talent Compass -->
-        <div class="col-lg-6 hero-visual-col">
-          <div class="compass" id="compass" data-parallax-scene>
-            <div class="orbit orbit-1"></div>
-            <div class="orbit orbit-2"></div>
-            <div class="orbit orbit-3"></div>
-
-            <div class="compass-rays"></div>
-
-            <div class="compass-core">
-              <img src="assets/images/Fichicon.svg" alt="" />
+      <div class="container-xxl hero-inner">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6 hero-copy">
+            <span class="hero-badge" data-reveal>
+              <span class="pulse-dot"></span>
+              جمعية اكتشاف وتطوير المواهب
+            </span>
+            <h1 class="hero-title" data-reveal>
+              <span class="line">برنامج ممارس لاكتشاف</span>
+              <span class="line"><span class="grad">المواهب</span>...</span>
+              <span class="line">ومنحها <span class="grad">مسارًا للنمو</span></span>
+            </h1>
+            <p class="hero-lead" data-reveal>
+              منصة رقمية متخصصة تساعد الممارسين التربويين والعاملين مع الموهوبين على اكتشاف القدرات، وتنمية المهارات،
+              وتحويل المعرفة إلى ممارسات وأثر قابل للقياس.
+            </p>
+            <div class="hero-actions" data-reveal>
+              <a href="https://academy.mwahib.org.sa" target="_blank" rel="noopener" class="btn-glow lg"
+                ><span>اكتشف المنصة</span><i class="bi bi-arrow-left"></i
+              ></a>
+              <a href="#system" class="btn-line"><i class="bi bi-grid-3x3-gap"></i> مميزات المنصة</a>
             </div>
+            <div class="hero-mini-stats" data-reveal>
+              <div><strong>+100</strong><span>ممارس</span></div>
+              <span class="sep"></span>
+              <div><strong>+30</strong><span>ساعة تدريبية</span></div>
+              <span class="sep"></span>
+              <div><strong>+20</strong><span>أداة عملية</span></div>
+            </div>
+          </div>
 
-            <span class="orbit-dot d1"></span>
-            <span class="orbit-dot d2"></span>
-            <span class="orbit-dot d3"></span>
-            <span class="orbit-dot d4"></span>
-            <span class="orbit-dot d5"></span>
+          <!-- Talent Compass -->
+          <div class="col-lg-6 hero-visual-col">
+            <div class="compass" id="compass" data-parallax-scene>
+              <div class="orbit orbit-1"></div>
+              <div class="orbit orbit-2"></div>
+              <div class="orbit orbit-3"></div>
 
-            <i class="bi bi-stars star-spark" aria-hidden="true"></i>
+              <div class="compass-rays"></div>
 
-            <!-- Floating chips -->
-            <div class="chip chip-1" data-depth="0.04"><i class="bi bi-search-heart"></i><span>اكتشاف الموهبة</span></div>
-            <div class="chip chip-2" data-depth="0.06"><i class="bi bi-mortarboard"></i><span>برامج تدريبية</span></div>
-            <div class="chip chip-3" data-depth="0.05"><i class="bi bi-tools"></i><span>أدوات عملية</span></div>
-            <div class="chip chip-4" data-depth="0.07"><i class="bi bi-lightbulb"></i><span>مبادرات تطبيقية</span></div>
-            <div class="chip chip-5" data-depth="0.045"><i class="bi bi-graph-up-arrow"></i><span>أثر مستدام</span></div>
+              <div class="compass-core">
+                <img src="assets/images/Fichicon.svg" alt="" />
+              </div>
+
+              <span class="orbit-dot d1"></span>
+              <span class="orbit-dot d2"></span>
+              <span class="orbit-dot d3"></span>
+              <span class="orbit-dot d4"></span>
+              <span class="orbit-dot d5"></span>
+
+              <i class="bi bi-stars star-spark" aria-hidden="true"></i>
+
+              <!-- Floating chips -->
+              <div class="chip chip-1" data-depth="0.04">
+                <i class="bi bi-search-heart"></i><span>اكتشاف الموهبة</span>
+              </div>
+              <div class="chip chip-2" data-depth="0.06">
+                <i class="bi bi-mortarboard"></i><span>برامج تدريبية</span>
+              </div>
+              <div class="chip chip-3" data-depth="0.05"><i class="bi bi-tools"></i><span>أدوات عملية</span></div>
+              <div class="chip chip-4" data-depth="0.07">
+                <i class="bi bi-lightbulb"></i><span>مبادرات تطبيقية</span>
+              </div>
+              <div class="chip chip-5" data-depth="0.045">
+                <i class="bi bi-graph-up-arrow"></i><span>أثر مستدام</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="scroll-indicator" aria-label="تمرير لأسفل">
+          <span class="si-line"></span>
+          <span class="si-label">اكتشف الرحلة</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============== ABOUT — TALENT SIGNAL ============== -->
+    <section class="section about" id="about">
+      <div class="container-xxl">
+        <div class="raed-split">
+          <div class="section-copy" data-reveal>
+            <span class="eyebrow"><i class="bi bi-asterisk"></i> من الفكرة إلى الأثر</span>
+            <h2 class="h-display">رائد تحوّل اكتشاف الموهبة إلى <span class="grad">مسار واضح</span></h2>
+            <p class="lead-text">
+              منصة تدريبية وتطويرية تمكّن الممارسين التربويين والعاملين مع الموهوبين من ملاحظة القدرات، فهم الميول،
+              تطوير المهارات، ومتابعة الأثر داخل البيئات التعليمية والمجتمعية.
+            </p>
+
+            <div class="signal-list">
+              <article>
+                <span>01</span>
+                <div>
+                  <h4>نلاحظ القدرات</h4>
+                  <p>مؤشرات ومعايير لرصد الموهبة في بيئتها.</p>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <h4>نفهم الميول</h4>
+                  <p>أدوات تشخيص تساعد على قراءة الاهتمامات.</p>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <h4>نطوّر المهارات</h4>
+                  <p>محتوى تدريبي تطبيقي بأثر مباشر.</p>
+                </div>
+              </article>
+              <article>
+                <span>04</span>
+                <div>
+                  <h4>نتابع الأثر</h4>
+                  <p>مؤشرات لقياس النمو والممارسات.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="talent-radar" data-reveal data-tilt aria-label="نموذج بصري لمسار اكتشاف الموهبة">
+            <div class="radar-grid"></div>
+            <div class="radar-core"><img src="assets/images/Fichicon.svg" alt="" /></div>
+            <span class="radar-node n1"><i class="bi bi-search-heart"></i> اكتشاف</span>
+            <span class="radar-node n2"><i class="bi bi-mortarboard"></i> تدريب</span>
+            <span class="radar-node n3"><i class="bi bi-tools"></i> تطبيق</span>
+            <span class="radar-node n4"><i class="bi bi-graph-up-arrow"></i> أثر</span>
+            <div class="radar-card">
+              <strong>Talent OS</strong>
+              <p>نظام يربط المعرفة بالتطبيق والقياس.</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <a href="#about" class="scroll-indicator" aria-label="تمرير لأسفل">
-        <span class="si-line"></span>
-        <span class="si-label">اكتشف الرحلة</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ============== ABOUT — TALENT SIGNAL ============== -->
-  <section class="section about" id="about">
-    <div class="container-xxl">
-      <div class="raed-split">
-        <div class="section-copy" data-reveal>
-          <span class="eyebrow"><i class="bi bi-asterisk"></i> من الفكرة إلى الأثر</span>
-          <h2 class="h-display">رائد تحوّل اكتشاف الموهبة إلى <span class="grad">مسار واضح</span></h2>
-          <p class="lead-text">
-            منصة تدريبية وتطويرية تمكّن الممارسين التربويين والعاملين مع الموهوبين من ملاحظة القدرات،
-            فهم الميول، تطوير المهارات، ومتابعة الأثر داخل البيئات التعليمية والمجتمعية.
+    <!-- ============== AUDIENCE ============== -->
+    <section class="section audience" id="audience">
+      <div class="container-xxl">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow"><i class="bi bi-asterisk"></i> لمن صُممت رائد</span>
+          <h2 class="h-display">الموهبة تبدأ <span class="grad">بمن يكتشفها</span></h2>
+          <p class="lead-text mx-auto">
+            رائد موجّهة لكل من يعمل في بيئة قادرة على رصد القدرات وتنميتها — من المعلم في صفه إلى المؤسسة في مجتمعها.
           </p>
+        </div>
 
-          <div class="signal-list">
-            <article><span>01</span><div><h4>نلاحظ القدرات</h4><p>مؤشرات ومعايير لرصد الموهبة في بيئتها.</p></div></article>
-            <article><span>02</span><div><h4>نفهم الميول</h4><p>أدوات تشخيص تساعد على قراءة الاهتمامات.</p></div></article>
-            <article><span>03</span><div><h4>نطوّر المهارات</h4><p>محتوى تدريبي تطبيقي بأثر مباشر.</p></div></article>
-            <article><span>04</span><div><h4>نتابع الأثر</h4><p>مؤشرات لقياس النمو والممارسات.</p></div></article>
+        <div class="audience-board" data-reveal>
+          <article data-tilt>
+            <span class="board-index">01</span>
+            <i class="bi bi-easel2"></i>
+            <h3>المعلمون والمعلمات</h3>
+            <p>ملاحظة المواهب وبناء ممارسات صفية محفزة.</p>
+          </article>
+          <article data-tilt>
+            <span class="board-index">02</span>
+            <i class="bi bi-person-workspace"></i>
+            <h3>الممارسون التربويون</h3>
+            <p>أدوات عملية لاكتشاف القدرات وتنميتها.</p>
+          </article>
+          <article class="audience-center" data-tilt>
+            <span>Raed Talent Map</span>
+            <strong>خارطة للممارس الذي يصنع الفرق</strong>
+            <p>تربط الشخص المناسب بالأداة المناسبة، ثم تقود التطبيق نحو أثر قابل للمتابعة.</p>
+          </article>
+          <article data-tilt>
+            <span class="board-index">03</span>
+            <i class="bi bi-diagram-3"></i>
+            <h3>مشرفو البرامج والأنشطة</h3>
+            <p>تصميم المبادرات والبرامج الموجهة للموهوبين.</p>
+          </article>
+          <article data-tilt>
+            <span class="board-index">04</span>
+            <i class="bi bi-building"></i>
+            <h3>المؤسسات التعليمية</h3>
+            <p>بناء بيئات داعمة لاكتشاف المواهب وتحويلها إلى أثر.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== SYSTEM ============== -->
+    <section class="section system" id="system">
+      <div class="container-xxl">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow"><i class="bi bi-asterisk"></i> منظومة متكاملة</span>
+          <h2 class="h-display">منظومة تعمل كـ <span class="grad">مختبر موهبة</span> متكامل</h2>
+        </div>
+
+        <div class="system-layout" data-reveal>
+          <div class="system-hero" data-tilt>
+            <span class="bn-num">01</span>
+            <div class="system-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <i class="bi bi-mortarboard"></i>
+            <h3>برامج تدريبية احترافية</h3>
+            <p>مسارات تدريب متخصصة لاكتشاف الموهبة وتنميتها داخل البيئة التعليمية.</p>
+            <div class="bn-tags"><span>تدريب</span><span>محتوى متخصص</span><span>شهادات</span></div>
+          </div>
+
+          <div class="system-modules">
+            <article data-tilt>
+              <span>02</span><i class="bi bi-tools"></i>
+              <h3>أدوات ونماذج عملية</h3>
+              <p>مجموعة جاهزة للاستخدام الفوري في الميدان.</p>
+            </article>
+            <article data-tilt>
+              <span>03</span><i class="bi bi-journal-text"></i>
+              <h3>أدلة إرشادية تطبيقية</h3>
+              <p>مرجع واضح للممارسين خطوة بخطوة.</p>
+            </article>
+            <article data-tilt class="accent">
+              <span>04</span><i class="bi bi-lightbulb"></i>
+              <h3>مبادرات ميدانية</h3>
+              <p>ترجمة المعرفة إلى مشاريع داخل المدارس والمجتمع.</p>
+            </article>
+            <article data-tilt>
+              <span>05</span><i class="bi bi-people"></i>
+              <h3>مجتمع مهني</h3>
+              <p>فضاء لتبادل الخبرات وتطوير الممارسات.</p>
+            </article>
+            <article data-tilt>
+              <span>06</span><i class="bi bi-graph-up-arrow"></i>
+              <h3>قياس أثر مستمر</h3>
+              <p>مؤشرات لمتابعة النمو وتطوير الممارسات.</p>
+            </article>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="talent-radar" data-reveal data-tilt aria-label="نموذج بصري لمسار اكتشاف الموهبة">
-          <div class="radar-grid"></div>
-          <div class="radar-core"><img src="assets/images/Fichicon.svg" alt="" /></div>
-          <span class="radar-node n1"><i class="bi bi-search-heart"></i> اكتشاف</span>
-          <span class="radar-node n2"><i class="bi bi-mortarboard"></i> تدريب</span>
-          <span class="radar-node n3"><i class="bi bi-tools"></i> تطبيق</span>
-          <span class="radar-node n4"><i class="bi bi-graph-up-arrow"></i> أثر</span>
-          <div class="radar-card">
-            <strong>Talent OS</strong>
-            <p>نظام يربط المعرفة بالتطبيق والقياس.</p>
+    <!-- ============== JOURNEY ============== -->
+    <section class="journey" id="journey">
+      <div class="container-xxl">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow"><i class="bi bi-asterisk"></i> رحلة الممارس</span>
+          <h2 class="h-display">من <span class="grad">التهيئة</span> إلى <span class="grad">قياس الأثر</span></h2>
+        </div>
+
+        <div class="journey-panel" id="journeyStage" data-reveal>
+          <div class="journey-visual" id="jrVisual" aria-hidden="true">
+            <div class="jr-ring"></div>
+            <div class="jr-ring r2"></div>
+            <div class="jr-scene show" data-stage="1">
+              <i class="bi bi-rocket-takeoff"></i><span class="jr-tag">التهيئة</span>
+            </div>
+            <div class="jr-scene" data-stage="2"><i class="bi bi-book"></i><span class="jr-tag">التعلم</span></div>
+            <div class="jr-scene" data-stage="3"><i class="bi bi-tools"></i><span class="jr-tag">التطبيق</span></div>
+            <div class="jr-scene" data-stage="4"><i class="bi bi-people"></i><span class="jr-tag">المشاركة</span></div>
+            <div class="jr-scene" data-stage="5">
+              <i class="bi bi-graph-up-arrow"></i><span class="jr-tag">قياس الأثر</span>
+            </div>
+          </div>
+
+          <div class="journey-content">
+            <div class="jr-progress"><i id="jrBar"></i></div>
+            <ol class="jr-steps" id="jrSteps">
+              <li class="active">
+                <span class="s-num">01</span>
+                <div>
+                  <h3>التهيئة</h3>
+                  <p>يتعرّف الممارس على المفاهيم الأساسية لاكتشاف الموهبة.</p>
+                </div>
+              </li>
+              <li>
+                <span class="s-num">02</span>
+                <div>
+                  <h3>التعلم</h3>
+                  <p>يستفيد من محتوى تدريبي وأدلة عملية متخصصة.</p>
+                </div>
+              </li>
+              <li>
+                <span class="s-num">03</span>
+                <div>
+                  <h3>التطبيق</h3>
+                  <p>ينقل المعرفة إلى أنشطة ومبادرات داخل البيئة التعليمية.</p>
+                </div>
+              </li>
+              <li>
+                <span class="s-num">04</span>
+                <div>
+                  <h3>المشاركة</h3>
+                  <p>يتبادل الخبرات والممارسات مع مجتمع مهني داعم.</p>
+                </div>
+              </li>
+              <li>
+                <span class="s-num">05</span>
+                <div>
+                  <h3>قياس الأثر</h3>
+                  <p>يتابع النتائج ويطوّر ممارساته عبر مؤشرات واضحة.</p>
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============== AUDIENCE ============== -->
-  <section class="section audience" id="audience">
-    <div class="container-xxl">
-      <div class="section-head center" data-reveal>
-        <span class="eyebrow"><i class="bi bi-asterisk"></i> لمن صُممت رائد</span>
-        <h2 class="h-display">الموهبة تبدأ <span class="grad">بمن يكتشفها</span></h2>
-        <p class="lead-text mx-auto">رائد موجّهة لكل من يعمل في بيئة قادرة على رصد القدرات وتنميتها — من المعلم في صفه إلى المؤسسة في مجتمعها.</p>
+    <!-- ============== EXPERIENCE ============== -->
+    <section class="section immersive">
+      <div class="immersive-bg">
+        <div class="im-grid"></div>
+        <div class="im-glow g1"></div>
+        <div class="im-glow g2"></div>
+        <div class="noise"></div>
       </div>
-
-      <div class="audience-board" data-reveal>
-        <article data-tilt>
-          <span class="board-index">01</span>
-          <i class="bi bi-easel2"></i>
-          <h3>المعلمون والمعلمات</h3>
-          <p>ملاحظة المواهب وبناء ممارسات صفية محفزة.</p>
-        </article>
-        <article data-tilt>
-          <span class="board-index">02</span>
-          <i class="bi bi-person-workspace"></i>
-          <h3>الممارسون التربويون</h3>
-          <p>أدوات عملية لاكتشاف القدرات وتنميتها.</p>
-        </article>
-        <article class="audience-center" data-tilt>
-          <span>Raed Talent Map</span>
-          <strong>خارطة للممارس الذي يصنع الفرق</strong>
-          <p>تربط الشخص المناسب بالأداة المناسبة، ثم تقود التطبيق نحو أثر قابل للمتابعة.</p>
-        </article>
-        <article data-tilt>
-          <span class="board-index">03</span>
-          <i class="bi bi-diagram-3"></i>
-          <h3>مشرفو البرامج والأنشطة</h3>
-          <p>تصميم المبادرات والبرامج الموجهة للموهوبين.</p>
-        </article>
-        <article data-tilt>
-          <span class="board-index">04</span>
-          <i class="bi bi-building"></i>
-          <h3>المؤسسات التعليمية</h3>
-          <p>بناء بيئات داعمة لاكتشاف المواهب وتحويلها إلى أثر.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== SYSTEM ============== -->
-  <section class="section system" id="system">
-    <div class="container-xxl">
-      <div class="section-head center" data-reveal>
-        <span class="eyebrow"><i class="bi bi-asterisk"></i> منظومة متكاملة</span>
-        <h2 class="h-display">منظومة تعمل كـ <span class="grad">مختبر موهبة</span> متكامل</h2>
-      </div>
-
-      <div class="system-layout" data-reveal>
-        <div class="system-hero" data-tilt>
-          <span class="bn-num">01</span>
-          <div class="system-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-          <i class="bi bi-mortarboard"></i>
-          <h3>برامج تدريبية احترافية</h3>
-          <p>مسارات تدريب متخصصة لاكتشاف الموهبة وتنميتها داخل البيئة التعليمية.</p>
-          <div class="bn-tags"><span>تدريب</span><span>محتوى متخصص</span><span>شهادات</span></div>
+      <div class="container-xxl position-relative">
+        <div class="section-head center light" data-reveal>
+          <span class="eyebrow light"><i class="bi bi-stars"></i> تجربة استثنائية</span>
+          <h2 class="h-display light">تجربة تجمع بين <span class="grad">المعرفة والممارسة</span></h2>
+          <p class="lead-text light mx-auto">
+            رائد ليست مجرد محتوى تدريبي، بل بيئة متكاملة لتطوير الممارسة وتحويل التعلم إلى أثر.
+          </p>
         </div>
 
-        <div class="system-modules">
-          <article data-tilt><span>02</span><i class="bi bi-tools"></i><h3>أدوات ونماذج عملية</h3><p>مجموعة جاهزة للاستخدام الفوري في الميدان.</p></article>
-          <article data-tilt><span>03</span><i class="bi bi-journal-text"></i><h3>أدلة إرشادية تطبيقية</h3><p>مرجع واضح للممارسين خطوة بخطوة.</p></article>
-          <article data-tilt class="accent"><span>04</span><i class="bi bi-lightbulb"></i><h3>مبادرات ميدانية</h3><p>ترجمة المعرفة إلى مشاريع داخل المدارس والمجتمع.</p></article>
-          <article data-tilt><span>05</span><i class="bi bi-people"></i><h3>مجتمع مهني</h3><p>فضاء لتبادل الخبرات وتطوير الممارسات.</p></article>
-          <article data-tilt><span>06</span><i class="bi bi-graph-up-arrow"></i><h3>قياس أثر مستمر</h3><p>مؤشرات لمتابعة النمو وتطوير الممارسات.</p></article>
+        <div class="experience-grid" data-reveal>
+          <article class="wide" data-tilt>
+            <i class="bi bi-phone"></i>
+            <h4>تجربة رقمية سهلة وواضحة</h4>
+            <p>واجهة مدروسة تختصر الطريق إلى الفائدة وتمنح الممارس مسارًا واضحًا.</p>
+          </article>
+          <article data-tilt>
+            <i class="bi bi-bookmark-star"></i>
+            <h4>محتوى متخصص</h4>
+            <p>إنتاج معرفي مبني على الميدان.</p>
+          </article>
+          <article data-tilt>
+            <i class="bi bi-tools"></i>
+            <h4>أدوات عملية</h4>
+            <p>نماذج وقوالب تختصر الجهد.</p>
+          </article>
+          <article class="accent" data-tilt>
+            <i class="bi bi-geo-alt"></i>
+            <h4>دعم للتطبيق الميداني</h4>
+            <p>إرشاد عملي خطوة بخطوة.</p>
+          </article>
+          <article data-tilt>
+            <i class="bi bi-people"></i>
+            <h4>مجتمع مهني محفز</h4>
+            <p>شبكة ممارسين تتشارك التجارب.</p>
+          </article>
+          <article data-tilt>
+            <i class="bi bi-bar-chart"></i>
+            <h4>مؤشرات قياس</h4>
+            <p>أدوات تتابع الأثر والنمو.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============== JOURNEY ============== -->
-  <section class="journey" id="journey">
-    <div class="container-xxl">
-      <div class="section-head center" data-reveal>
-        <span class="eyebrow"><i class="bi bi-asterisk"></i> رحلة الممارس</span>
-        <h2 class="h-display">من <span class="grad">التهيئة</span> إلى <span class="grad">قياس الأثر</span></h2>
-      </div>
-
-      <div class="journey-panel" id="journeyStage" data-reveal>
-        <div class="journey-visual" id="jrVisual" aria-hidden="true">
-          <div class="jr-ring"></div>
-          <div class="jr-ring r2"></div>
-          <div class="jr-scene show" data-stage="1"><i class="bi bi-rocket-takeoff"></i><span class="jr-tag">التهيئة</span></div>
-          <div class="jr-scene" data-stage="2"><i class="bi bi-book"></i><span class="jr-tag">التعلم</span></div>
-          <div class="jr-scene" data-stage="3"><i class="bi bi-tools"></i><span class="jr-tag">التطبيق</span></div>
-          <div class="jr-scene" data-stage="4"><i class="bi bi-people"></i><span class="jr-tag">المشاركة</span></div>
-          <div class="jr-scene" data-stage="5"><i class="bi bi-graph-up-arrow"></i><span class="jr-tag">قياس الأثر</span></div>
-        </div>
-
-        <div class="journey-content">
-          <div class="jr-progress"><i id="jrBar"></i></div>
-          <ol class="jr-steps" id="jrSteps">
-            <li class="active"><span class="s-num">01</span><div><h3>التهيئة</h3><p>يتعرّف الممارس على المفاهيم الأساسية لاكتشاف الموهبة.</p></div></li>
-            <li><span class="s-num">02</span><div><h3>التعلم</h3><p>يستفيد من محتوى تدريبي وأدلة عملية متخصصة.</p></div></li>
-            <li><span class="s-num">03</span><div><h3>التطبيق</h3><p>ينقل المعرفة إلى أنشطة ومبادرات داخل البيئة التعليمية.</p></div></li>
-            <li><span class="s-num">04</span><div><h3>المشاركة</h3><p>يتبادل الخبرات والممارسات مع مجتمع مهني داعم.</p></div></li>
-            <li><span class="s-num">05</span><div><h3>قياس الأثر</h3><p>يتابع النتائج ويطوّر ممارساته عبر مؤشرات واضحة.</p></div></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== EXPERIENCE ============== -->
-  <section class="section immersive">
-    <div class="immersive-bg">
-      <div class="im-grid"></div>
-      <div class="im-glow g1"></div>
-      <div class="im-glow g2"></div>
-      <div class="noise"></div>
-    </div>
-    <div class="container-xxl position-relative">
-      <div class="section-head center light" data-reveal>
-        <span class="eyebrow light"><i class="bi bi-stars"></i> تجربة استثنائية</span>
-        <h2 class="h-display light">تجربة تجمع بين <span class="grad">المعرفة والممارسة</span></h2>
-        <p class="lead-text light mx-auto">رائد ليست مجرد محتوى تدريبي، بل بيئة متكاملة لتطوير الممارسة وتحويل التعلم إلى أثر.</p>
-      </div>
-
-      <div class="experience-grid" data-reveal>
-        <article class="wide" data-tilt><i class="bi bi-phone"></i><h4>تجربة رقمية سهلة وواضحة</h4><p>واجهة مدروسة تختصر الطريق إلى الفائدة وتمنح الممارس مسارًا واضحًا.</p></article>
-        <article data-tilt><i class="bi bi-bookmark-star"></i><h4>محتوى متخصص</h4><p>إنتاج معرفي مبني على الميدان.</p></article>
-        <article data-tilt><i class="bi bi-tools"></i><h4>أدوات عملية</h4><p>نماذج وقوالب تختصر الجهد.</p></article>
-        <article class="accent" data-tilt><i class="bi bi-geo-alt"></i><h4>دعم للتطبيق الميداني</h4><p>إرشاد عملي خطوة بخطوة.</p></article>
-        <article data-tilt><i class="bi bi-people"></i><h4>مجتمع مهني محفز</h4><p>شبكة ممارسين تتشارك التجارب.</p></article>
-        <article data-tilt><i class="bi bi-bar-chart"></i><h4>مؤشرات قياس</h4><p>أدوات تتابع الأثر والنمو.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== METRICS ============== -->
-  <section class="section metrics" id="metrics">
-    <div class="container-xxl">
-      <div class="metrics-panel" data-reveal>
-        <div class="metrics-copy">
-          <span class="eyebrow"><i class="bi bi-asterisk"></i> رائد بالأرقام</span>
-          <h2 class="h-display">أثر يُقاس <span class="grad">بالأرقام</span> ويُلمس في الميدان</h2>
-          <p class="lead-text">مؤشرات تعكس حجم الأثر الذي تصنعه رائد في تمكين الممارسين وتطوير المواهب.</p>
-        </div>
-        <div class="metrics-strip">
-          <div class="ms-item"><div class="ms-num"><span data-counter="100">0</span><i>+</i></div><p>ممارس مستهدف</p></div>
-          <div class="ms-item"><div class="ms-num"><span data-counter="7">0</span><i>+</i></div><p>مبادرات تطبيقية</p></div>
-          <div class="ms-item"><div class="ms-num"><span data-counter="20">0</span><i>+</i></div><p>أداة ونموذج عملي</p></div>
-          <div class="ms-item"><div class="ms-num"><span data-counter="30">0</span><i>+</i></div><p>ساعة تدريبية</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== IMPACT ============== -->
-  <section class="section impact" id="impact">
-    <div class="container-xxl">
-      <div class="section-head center" data-reveal>
-        <span class="eyebrow"><i class="bi bi-asterisk"></i> الأثر</span>
-        <h2 class="h-display">أثر يمتد من <span class="grad">الصف</span> إلى <span class="grad">المجتمع</span></h2>
-      </div>
-
-      <div class="impact-grid" data-reveal>
-        <article class="impact-card" data-tilt><span class="ic-bg">01</span><h3>رفع جودة اكتشاف الموهوبين</h3><p>أدوات وممارسات تساعد على ملاحظة القدرات والميول بشكل أكثر وعيًا.</p><span class="ic-link">اعرف أكثر <i class="bi bi-arrow-left"></i></span></article>
-        <article class="impact-card featured" data-tilt><span class="ic-bg">02</span><h3>تمكين الممارسين</h3><p>محتوى تدريبي يربط المعرفة بالتطبيق العملي داخل الميدان.</p><span class="ic-link">اعرف أكثر <i class="bi bi-arrow-left"></i></span></article>
-        <article class="impact-card" data-tilt><span class="ic-bg">03</span><h3>بناء أثر مستدام</h3><p>تحويل التعلم إلى مبادرات وممارسات قابلة للمتابعة والتطوير.</p><span class="ic-link">اعرف أكثر <i class="bi bi-arrow-left"></i></span></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== FINAL CTA ============== -->
-  <section class="cta-final" id="cta">
-    <div class="cta-bg">
-      <div class="mesh mesh-1"></div>
-      <div class="mesh mesh-2"></div>
-      <img class="cta-deco" src="assets/images/Fichicon.svg" alt="" aria-hidden="true" />
-      <div class="noise"></div>
-    </div>
-    <div class="container-xxl position-relative">
-      <div class="cta-wrap" data-reveal>
-        <span class="eyebrow light"><i class="bi bi-stars"></i> ابدأ الآن</span>
-        <h2 class="h-display light">ابدأ رحلة اكتشاف <span class="grad">الموهبة</span> مع رائد</h2>
-        <p class="lead-text light mx-auto">انتقل إلى المنصة واستكشف البرامج التدريبية، الأدوات العملية، والمبادرات المصممة لدعم الممارسين.</p>
-        <div class="cta-actions">
-          <a href="https://academy.mwahib.org.sa/auth/login" target="_blank" rel="noopener" class="btn-glow xl"><span>الانتقال إلى المنصة</span><i class="bi bi-arrow-left"></i></a>
-          <a href="#about" class="btn-line"><i class="bi bi-play-circle"></i> تعرّف على رائد</a>
-        </div>
-        <div class="cta-trust"><span><i class="bi bi-shield-check"></i> منصة موثوقة</span><span><i class="bi bi-people"></i> مجتمع ممارسين فاعل</span><span><i class="bi bi-award"></i> محتوى متخصص</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== FOOTER ============== -->
-  <footer class="raed-footer">
-    <div class="container-xxl">
-      <div class="row g-5">
-        <div class="col-lg-4">
-          <div class="ft-logos">
-            <img src="assets/images/raed-association-logo.svg" alt="جمعية رائد" class="ft-logo ft-logo-raed" />
-            <span class="ft-logo-sep" aria-hidden="true"></span>
-            <img src="assets/images/Raed-Logo.svg" alt="ممارس" class="ft-logo" />
+    <!-- ============== METRICS ============== -->
+    <section class="section metrics" id="metrics">
+      <div class="container-xxl">
+        <div class="metrics-panel" data-reveal>
+          <div class="metrics-copy">
+            <span class="eyebrow"><i class="bi bi-asterisk"></i> رائد بالأرقام</span>
+            <h2 class="h-display">أثر يُقاس <span class="grad">بالأرقام</span> ويُلمس في الميدان</h2>
+            <p class="lead-text">مؤشرات تعكس حجم الأثر الذي تصنعه رائد في تمكين الممارسين وتطوير المواهب.</p>
           </div>
-          <p class="ft-desc">جمعية اكتشاف وتطوير المواهب — منصة رقمية لتمكين الممارسين التربويين من اكتشاف الموهبة وتنميتها.</p>
-          <div class="ft-social">
-            <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <div class="metrics-strip">
+            <div class="ms-item">
+              <div class="ms-num"><span data-counter="100">0</span><i>+</i></div>
+              <p>ممارس مستهدف</p>
+            </div>
+            <div class="ms-item">
+              <div class="ms-num"><span data-counter="7">0</span><i>+</i></div>
+              <p>مبادرات تطبيقية</p>
+            </div>
+            <div class="ms-item">
+              <div class="ms-num"><span data-counter="20">0</span><i>+</i></div>
+              <p>أداة ونموذج عملي</p>
+            </div>
+            <div class="ms-item">
+              <div class="ms-num"><span data-counter="30">0</span><i>+</i></div>
+              <p>ساعة تدريبية</p>
+            </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-2">
-          <h6>روابط سريعة</h6>
-          <ul><li><a href="#about">عن رائد</a></li><li><a href="#system">المنظومة</a></li><li><a href="#journey">الرحلة</a></li><li><a href="#impact">الأثر</a></li></ul>
+      </div>
+    </section>
+
+    <!-- ============== IMPACT ============== -->
+    <section class="section impact" id="impact">
+      <div class="container-xxl">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow"><i class="bi bi-asterisk"></i> الأثر</span>
+          <h2 class="h-display">أثر يمتد من <span class="grad">الصف</span> إلى <span class="grad">المجتمع</span></h2>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <h6>المنصة</h6>
-          <ul><li><a href="#">البرامج التدريبية</a></li><li><a href="#">الأدوات والنماذج</a></li><li><a href="#">المجتمع المهني</a></li><li><a href="#">المبادرات</a></li></ul>
-        </div>
-        <div class="col-lg-3">
-          <h6>تواصل معنا</h6>
-          <ul class="ft-contact">
-            <li><i class="bi bi-envelope"></i> info@mwahib.org.sa</li>
-            <li><i class="bi bi-telephone"></i> <span dir="ltr">+966 50 041 9817</span></li>
-            <li><i class="bi bi-whatsapp"></i> <span dir="ltr">+966 50 041 9817</span></li>
-            <li><i class="bi bi-geo-alt"></i> طريق الملك عبدالله الفرعي، الحمراء، الرياض ١٣٢١٧، المملكة العربية السعودية</li>
-          </ul>
+
+        <div class="impact-grid" data-reveal>
+          <article class="impact-card" data-tilt>
+            <span class="ic-bg">01</span>
+            <h3>رفع جودة اكتشاف الموهوبين</h3>
+            <p>أدوات وممارسات تساعد على ملاحظة القدرات والميول بشكل أكثر وعيًا.</p>
+            <span class="ic-link">اعرف أكثر <i class="bi bi-arrow-left"></i></span>
+          </article>
+          <article class="impact-card featured" data-tilt>
+            <span class="ic-bg">02</span>
+            <h3>تمكين الممارسين</h3>
+            <p>محتوى تدريبي يربط المعرفة بالتطبيق العملي داخل الميدان.</p>
+            <span class="ic-link">اعرف أكثر <i class="bi bi-arrow-left"></i></span>
+          </article>
+          <article class="impact-card" data-tilt>
+            <span class="ic-bg">03</span>
+            <h3>بناء أثر مستدام</h3>
+            <p>تحويل التعلم إلى مبادرات وممارسات قابلة للمتابعة والتطوير.</p>
+            <span class="ic-link">اعرف أكثر <i class="bi bi-arrow-left"></i></span>
+          </article>
         </div>
       </div>
-      <div class="ft-bottom">
-        <span>© <span id="year"></span> رائد — جميع الحقوق محفوظة.</span>
-        <span class="ft-by">بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="ft-webyan">ويبيان</a></span>
+    </section>
+
+    <!-- ============== FINAL CTA ============== -->
+    <section class="cta-final" id="cta">
+      <div class="cta-bg">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <img class="cta-deco" src="assets/images/Fichicon.svg" alt="" aria-hidden="true" />
+        <div class="noise"></div>
       </div>
-    </div>
-  </footer>
+      <div class="container-xxl position-relative">
+        <div class="cta-wrap" data-reveal>
+          <span class="eyebrow light"><i class="bi bi-stars"></i> ابدأ الآن</span>
+          <h2 class="h-display light">ابدأ رحلة اكتشاف <span class="grad">الموهبة</span> مع رائد</h2>
+          <p class="lead-text light mx-auto">
+            انتقل إلى المنصة واستكشف البرامج التدريبية، الأدوات العملية، والمبادرات المصممة لدعم الممارسين.
+          </p>
+          <div class="cta-actions">
+            <a href="https://academy.mwahib.org.sa/auth/login" target="_blank" rel="noopener" class="btn-glow xl"
+              ><span>الانتقال إلى المنصة</span><i class="bi bi-arrow-left"></i
+            ></a>
+            <a href="#about" class="btn-line"><i class="bi bi-play-circle"></i> تعرّف على رائد</a>
+          </div>
+          <div class="cta-trust">
+            <span><i class="bi bi-shield-check"></i> منصة موثوقة</span
+            ><span><i class="bi bi-people"></i> مجتمع ممارسين فاعل</span
+            ><span><i class="bi bi-award"></i> محتوى متخصص</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <button class="back-top" id="backTop" aria-label="العودة للأعلى"><i class="bi bi-arrow-up"></i></button>
+    <!-- ============== FOOTER ============== -->
+    <footer class="raed-footer">
+      <div class="container-xxl">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <div class="ft-logos">
+              <img src="assets/images/raed-association-logo.svg" alt="جمعية رائد" class="ft-logo ft-logo-raed" />
+              <span class="ft-logo-sep" aria-hidden="true"></span>
+              <img src="assets/images/Raed-Logo.svg" alt="ممارس" class="ft-logo" />
+            </div>
+            <p class="ft-desc">
+              جمعية اكتشاف وتطوير المواهب — منصة رقمية لتمكين الممارسين التربويين من اكتشاف الموهبة وتنميتها.
+            </p>
+            <div class="ft-social">
+              <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-2">
+            <h6>روابط سريعة</h6>
+            <ul>
+              <li><a href="#about">عن رائد</a></li>
+              <li><a href="#system">المنظومة</a></li>
+              <li><a href="#journey">الرحلة</a></li>
+              <li><a href="#impact">الأثر</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <h6>المنصة</h6>
+            <ul>
+              <li><a href="#">البرامج التدريبية</a></li>
+              <li><a href="#">الأدوات والنماذج</a></li>
+              <li><a href="#">المجتمع المهني</a></li>
+              <li><a href="#">المبادرات</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <h6>تواصل معنا</h6>
+            <ul class="ft-contact">
+              <li><i class="bi bi-envelope"></i> info@mwahib.org.sa</li>
+              <li><i class="bi bi-telephone"></i> <span dir="ltr">+966 50 041 9817</span></li>
+              <li><i class="bi bi-whatsapp"></i> <span dir="ltr">+966 50 041 9817</span></li>
+              <li>
+                <i class="bi bi-geo-alt"></i> طريق الملك عبدالله الفرعي، الحمراء، الرياض ١٣٢١٧، المملكة العربية السعودية
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ft-bottom">
+          <span>© <span id="year"></span> رائد — جميع الحقوق محفوظة.</span>
+          <span class="ft-by"
+            >بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="ft-webyan">ويبيان</a></span
+          >
+        </div>
+      </div>
+    </footer>
 
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="assets/js/raed.js"></script>
-</body>
+    <button class="back-top" id="backTop" aria-label="العودة للأعلى"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="assets/js/raed.js"></script>
+  </body>
 </html>
