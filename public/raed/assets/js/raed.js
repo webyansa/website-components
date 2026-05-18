@@ -174,7 +174,7 @@
     gsap.from('.hero-title .line', { y: 80, opacity: 0, stagger: .12, duration: 1, ease: 'power3.out', delay: .2 });
     gsap.from('.hero-badge', { y: 20, opacity: 0, duration: .8, ease: 'power3.out' });
     gsap.from('.hero-lead', { y: 30, opacity: 0, duration: .9, delay: .6, ease: 'power3.out' });
-    gsap.from('.hero-actions > *', { y: 20, opacity: 0, stagger: .1, duration: .7, delay: .8, ease: 'power3.out' });
+    gsap.from('.hero-actions > *', { y: 20, opacity: 0, stagger: .1, duration: .7, delay: .8, ease: 'power3.out', clearProps: 'all' });
     gsap.from('.chip', { scale: .6, opacity: 0, stagger: .08, duration: .8, delay: .6, ease: 'back.out(1.6)' });
   }
 
