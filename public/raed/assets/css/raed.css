@@ -321,3 +321,106 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-ar);font-weight:800;letter-spacing:-.01
   .h-display{font-size:22px !important}
   .compass{transform:scale(.72)}
 }
+
+/* ============================================
+   Page Loader — Decomposed Logo Animation
+   ============================================ */
+body.is-loading { overflow: hidden; }
+
+.raed-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #ffffff 0%, #f5f3ff 100%);
+  transition: opacity .6s ease, visibility .6s ease;
+}
+body.is-loaded .raed-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.raed-loader-stage {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  filter: drop-shadow(0 12px 28px rgba(154, 82, 253, 0.25));
+}
+
+.raed-loader-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.rl-piece {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+/* Purple fills */
+.rl-swoosh, .rl-core { fill: #9a52fd; }
+/* Cyan fills */
+.rl-arrow, .rl-infinity { fill: #01e2e6; }
+
+/* Individual entry animations */
+.rl-core {
+  animation: rlCoreIn .7s cubic-bezier(.34,1.56,.64,1) .1s forwards,
+             rlCorePulse 1.8s ease-in-out 1.4s infinite;
+}
+.rl-swoosh {
+  animation: rlSwooshIn .9s cubic-bezier(.22,1,.36,1) .35s forwards,
+             rlSwooshFloat 3s ease-in-out 1.6s infinite;
+}
+.rl-arrow {
+  animation: rlArrowIn .7s cubic-bezier(.22,1,.36,1) .65s forwards,
+             rlArrowFloat 2.4s ease-in-out 1.7s infinite;
+}
+.rl-infinity {
+  animation: rlInfinityIn .7s cubic-bezier(.22,1,.36,1) .8s forwards,
+             rlInfinitySpin 3.5s ease-in-out 1.8s infinite;
+}
+
+@keyframes rlCoreIn {
+  0%   { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes rlCorePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+@keyframes rlSwooshIn {
+  0%   { opacity: 0; transform: rotate(-90deg) scale(.4); }
+  100% { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+@keyframes rlSwooshFloat {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(6deg); }
+}
+
+@keyframes rlArrowIn {
+  0%   { opacity: 0; transform: translate(-14px, -14px) scale(.6); }
+  100% { opacity: 1; transform: translate(0,0) scale(1); }
+}
+@keyframes rlArrowFloat {
+  0%, 100% { transform: translate(0,0); }
+  50%      { transform: translate(2px,-3px); }
+}
+
+@keyframes rlInfinityIn {
+  0%   { opacity: 0; transform: translate(14px, 14px) scale(.6) rotate(-45deg); }
+  100% { opacity: 1; transform: translate(0,0) scale(1) rotate(0deg); }
+}
+@keyframes rlInfinitySpin {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-12deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rl-piece { opacity: 1; animation: none !important; }
+}
