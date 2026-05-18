@@ -52,8 +52,8 @@
     let mx = 0, my = 0, cx = 0, cy = 0;
     window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
     const loop = () => {
-      cx += (mx - cx) * 0.18;
-      cy += (my - cy) * 0.18;
+      cx += (mx - cx) * 0.55;
+      cy += (my - cy) * 0.55;
       orb.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
       requestAnimationFrame(loop);
     };
