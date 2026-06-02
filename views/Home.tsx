@@ -27,6 +27,17 @@ type Template = {
 
 const templates: Template[] = [
   {
+    id: "sanad",
+    name: "قالب سند — الخدمات الاجتماعية",
+    description: "قالب عربي احترافي لجمعيات الخدمات الاجتماعية والبر والرعاية — كفالة الأسر، السلال الغذائية، التمكين، الحوكمة والشفافية",
+    previewPath: "sanad/index.html",
+    folderPath: "sanad",
+    thumbnail: "sanad/favicon.svg",
+    features: ["Tailwind CSS", "12 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
+    pages: 12,
+    isNew: true,
+  },
+  {
     id: "one-page",
     name: "قالب صفحة واحدة — الجمعيات",
     description: "قالب احترافي لصفحة واحدة يعرض جميع أقسام الجمعية بشكل انسيابي — يدعم العربية والإنجليزية والوضع الداكن",
