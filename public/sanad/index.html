@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>جمعية سند - نرعى الإنسان ونصنع أثرًا يبقى</title>
-  <meta name="description" content="جمعية سند الاجتماعية: خدمات الرعاية، الدعم الأسري، التمكين، كفالة الأسر، السلال الغذائية، الدعم الصحي، بشفافية وحوكمة." />
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <title>جمعية سند — نرعى الإنسان ونصنع أثرًا يبقى</title>
+  <meta name="description" content="جمعية سند للخدمات الاجتماعية: رعاية أسرية وصحية وتعليمية، حوكمة وشفافية، فرص دعم وتطوع." />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
 
-  <!-- خطوط -->
+  <!-- خطوط عربية مؤسسية -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- أيقونات -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -21,14 +21,14 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Tajawal', 'system-ui', 'sans-serif'] },
+          fontFamily: { sans: ['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
           colors: {
             sanad: {
-              navy: '#0e2a47', navyDeep: '#0a1f36', navySoft: '#1b3a5f',
-              emerald: '#0f9b6e', emeraldSoft: '#2bb887', emeraldDeep: '#0a7a55',
-              gold: '#c89a4a', goldSoft: '#e4c07a',
-              sand: '#f6efe2', ivory: '#fbf8f2', gray: '#f3f5f8',
-              border: '#e6ecf2', text: '#1b2a3a', muted: '#5a6b7d'
+              navy:'#0b2545', navyDeep:'#061633', navySoft:'#1d3a6b',
+              emerald:'#0d7a4f', emeraldSoft:'#2fa776', emeraldDeep:'#075c3a',
+              gold:'#b6873a', goldSoft:'#d9b066',
+              sand:'#f3ead8', ivory:'#faf7f0', mist:'#eef2f6',
+              border:'#e6ebf1', text:'#0f1d2e', muted:'#5b6b7d'
             }
           }
         }
@@ -38,685 +38,933 @@
 
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="bg-sanad-ivory text-sanad-text">
+<body class="bg-sanad-ivory text-sanad-text antialiased">
 
-  <!-- ============ الشريط العلوي ============ -->
-  <div class="hidden md:block bg-sanad-navyDeep text-white/85 text-sm">
-    <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-6">
-      <div class="flex items-center gap-5">
-        <a href="services.html" class="hover:text-sanad-goldSoft transition"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
-        <a href="services.html" class="hover:text-sanad-goldSoft transition"><i class="fas fa-magnifying-glass ml-1 text-sanad-emeraldSoft"></i> متابعة طلب</a>
-        <a href="contact.html" class="hover:text-sanad-goldSoft transition"><i class="fas fa-hands-helping ml-1 text-sanad-emeraldSoft"></i> التطوع</a>
-        <a href="contact.html" class="hover:text-sanad-goldSoft transition"><i class="fas fa-id-card ml-1 text-sanad-emeraldSoft"></i> العضوية</a>
-        <a href="contact.html" class="hover:text-sanad-goldSoft transition"><i class="fas fa-triangle-exclamation ml-1 text-sanad-emeraldSoft"></i> الإبلاغ عن مخالفة</a>
+  <!-- ============ شريط علوي مؤسسي ============ -->
+  <div class="s-topbar hidden md:block">
+    <div class="s-container flex items-center justify-between py-2">
+      <div class="flex items-center gap-6">
+        <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+        <a href="services.html"><i class="fas fa-magnifying-glass ml-1 text-sanad-emeraldSoft"></i> متابعة طلب</a>
+        <a href="contact.html"><i class="fas fa-hands-helping ml-1 text-sanad-emeraldSoft"></i> التطوع</a>
+        <a href="contact.html"><i class="fas fa-id-card ml-1 text-sanad-emeraldSoft"></i> العضوية</a>
+        <a href="contact.html"><i class="fas fa-shield-halved ml-1 text-sanad-emeraldSoft"></i> الإبلاغ عن مخالفة</a>
       </div>
-      <div class="flex items-center gap-5 text-white/70">
+      <div class="flex items-center gap-5 text-xs">
         <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
         <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
-        <span><i class="fas fa-clock ml-1 text-sanad-goldSoft"></i> الأحد - الخميس · 8ص - 4م</span>
+        <span class="flex items-center gap-2 px-2 py-1 rounded-md bg-white/5 border border-white/10">
+          <span class="s-pulse"></span> مرخصة من المركز الوطني
+        </span>
       </div>
     </div>
   </div>
 
-  <!-- ============ الهيدر الرئيسي ============ -->
-  <header class="sanad-header sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-sanad-border transition">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+  <!-- ============ الهيدر ============ -->
+  <header class="s-header">
+    <div class="s-container flex items-center justify-between py-4">
       <a href="index.html" class="flex items-center gap-3">
-        <span class="sanad-logo-mark">س</span>
+        <div class="s-logo-mark">س</div>
         <div class="leading-tight">
-          <div class="font-black text-sanad-navy text-xl">جمعية سند</div>
-          <div class="text-xs text-sanad-muted">للخدمات الاجتماعية والرعاية</div>
+          <div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div>
+          <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-7 text-[15px] font-bold text-sanad-navy">
-        <a href="index.html" class="text-sanad-emeraldDeep">الرئيسية</a>
-        <a href="about.html" class="hover:text-sanad-emerald transition">عن الجمعية</a>
-        <a href="services.html" class="hover:text-sanad-emerald transition">خدماتنا</a>
-        <a href="projects.html" class="hover:text-sanad-emerald transition">المشاريع</a>
-        <a href="governance.html" class="hover:text-sanad-emerald transition">الحوكمة</a>
-        <a href="news.html" class="hover:text-sanad-emerald transition">المركز الإعلامي</a>
-        <a href="events.html" class="hover:text-sanad-emerald transition">الفعاليات</a>
-        <a href="contact.html" class="hover:text-sanad-emerald transition">تواصل معنا</a>
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="s-nav-link">الرئيسية</a>
+        <a href="about.html" class="s-nav-link">عن الجمعية</a>
+        <a href="services.html" class="s-nav-link">الخدمات</a>
+        <a href="projects.html" class="s-nav-link">المشاريع</a>
+        <a href="governance.html" class="s-nav-link">الحوكمة</a>
+        <a href="news.html" class="s-nav-link">الأخبار</a>
+        <a href="events.html" class="s-nav-link">الفعاليات</a>
+        <a href="contact.html" class="s-nav-link">تواصل معنا</a>
       </nav>
 
-      <div class="hidden md:flex items-center gap-3">
-        <a href="services.html" class="sanad-btn sanad-btn-outline">اطلب خدمة</a>
-        <a href="#donate" class="sanad-btn sanad-btn-primary"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <div class="flex items-center gap-2">
+        <a href="services.html" class="hidden md:inline-flex s-btn s-btn-outline !py-2.5 !px-4 text-sm">
+          <i class="fas fa-clipboard-list"></i> اطلب خدمة
+        </a>
+        <a href="#donate" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm">
+          <i class="fas fa-heart"></i> تبرع الآن
+        </a>
+        <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة">
+          <i class="fas fa-bars text-lg"></i>
+        </button>
       </div>
-
-      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border text-sanad-navy" aria-label="فتح القائمة">
-        <i class="fas fa-bars"></i>
-      </button>
     </div>
   </header>
 
   <!-- قائمة الجوال -->
-  <aside data-mobile-menu class="sanad-mobile-menu fixed inset-y-0 right-0 w-80 max-w-[85%] bg-white z-[60] shadow-2xl p-6 overflow-y-auto">
+  <div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+  <aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
     <div class="flex items-center justify-between mb-8">
-      <div class="flex items-center gap-3"><span class="sanad-logo-mark">س</span><span class="font-black text-sanad-navy">جمعية سند</span></div>
-      <button data-mobile-close class="w-10 h-10 rounded-lg bg-sanad-gray text-sanad-navy"><i class="fas fa-xmark"></i></button>
+      <div class="flex items-center gap-3">
+        <div class="s-logo-mark">س</div>
+        <div class="font-extrabold text-sanad-navy">جمعية سَنَد</div>
+      </div>
+      <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy">
+        <i class="fas fa-xmark"></i>
+      </button>
     </div>
-    <nav class="flex flex-col gap-2 font-bold text-sanad-navy">
-      <a href="index.html" class="py-3 border-b border-sanad-border">الرئيسية</a>
-      <a href="about.html" class="py-3 border-b border-sanad-border">عن الجمعية</a>
-      <a href="services.html" class="py-3 border-b border-sanad-border">خدماتنا</a>
-      <a href="projects.html" class="py-3 border-b border-sanad-border">المشاريع</a>
-      <a href="governance.html" class="py-3 border-b border-sanad-border">الحوكمة</a>
-      <a href="news.html" class="py-3 border-b border-sanad-border">المركز الإعلامي</a>
-      <a href="events.html" class="py-3 border-b border-sanad-border">الفعاليات</a>
-      <a href="contact.html" class="py-3 border-b border-sanad-border">تواصل معنا</a>
+    <nav class="flex flex-col gap-1 text-base font-semibold">
+      <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+      <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+      <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+      <a href="projects.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المشاريع</a>
+      <a href="governance.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الحوكمة</a>
+      <a href="news.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الأخبار</a>
+      <a href="events.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الفعاليات</a>
+      <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
     </nav>
-    <div class="mt-6 grid gap-3">
-      <a href="services.html" class="sanad-btn sanad-btn-outline justify-center">اطلب خدمة</a>
-      <a href="#donate" class="sanad-btn sanad-btn-primary justify-center"><i class="fas fa-heart"></i> تبرع الآن</a>
+    <div class="mt-6 grid grid-cols-2 gap-2">
+      <a href="services.html" class="s-btn s-btn-outline text-sm justify-center">اطلب خدمة</a>
+      <a href="#donate" class="s-btn s-btn-primary text-sm justify-center">تبرع الآن</a>
     </div>
   </aside>
 
-  <!-- ============ الهيرو ============ -->
-  <section class="sanad-hero">
-    <div class="relative max-w-7xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-12 gap-10 items-center z-10">
-      <div class="lg:col-span-7 reveal">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm text-white/90 backdrop-blur">
-          <span class="w-2 h-2 rounded-full bg-sanad-emeraldSoft animate-pulse"></span>
-          جمعية اجتماعية مرخصة · رقم الترخيص 1024
-        </span>
-        <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-[1.15]">
-          نرعى <span class="text-sanad-goldSoft">الإنسان</span>…<br />
-          ونصنع <span class="bg-gradient-to-l from-sanad-emeraldSoft to-white bg-clip-text text-transparent">أثرًا يبقى</span>
-        </h1>
-        <p class="mt-6 text-white/85 text-lg max-w-2xl leading-relaxed">
-          منصة رقمية لجمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين بشفافية،
-          وتربط المستفيد والمتبرع والمتطوع برحلة أثر واضحة وقابلة للقياس.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="services.html" class="sanad-btn sanad-btn-gold"><i class="fas fa-hand-holding-medical"></i> اطلب خدمة</a>
-          <a href="#donate" class="sanad-btn sanad-btn-primary"><i class="fas fa-heart"></i> ساهم بتبرع</a>
-          <a href="contact.html" class="sanad-btn sanad-btn-ghost"><i class="fas fa-hands-helping"></i> تطوع معنا</a>
-          <a href="governance.html" class="sanad-btn sanad-btn-ghost"><i class="fas fa-shield-halved"></i> اطلع على الحوكمة</a>
+  <!-- ============ 1) الهيرو ============ -->
+  <section class="s-hero">
+    <div class="s-hero-orb a"></div>
+    <div class="s-hero-orb b"></div>
+    <div class="s-container relative z-10 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- النص -->
+        <div class="lg:col-span-7 reveal">
+          <span class="s-eyebrow on-dark mb-5">
+            <i class="fas fa-mosque text-sanad-goldSoft"></i> جمعية أهلية مرخصة • منذ 1438هـ
+          </span>
+          <h1 class="s-title-xl text-white font-extrabold mb-5">
+            نرعى الإنسان…
+            <span class="block bg-gradient-to-l from-sanad-goldSoft via-white to-sanad-emeraldSoft bg-clip-text text-transparent">
+              ونصنع أثرًا يبقى
+            </span>
+          </h1>
+          <p class="text-white/80 text-lg max-w-2xl mb-8 leading-loose">
+            جمعية سَنَد رحلة إنسانية مؤسسية تجمع الرعاية الأسرية والصحية والتعليمية تحت مظلة حوكمة شفافة،
+            لنحوّل عطاءك إلى أثر موثّق يصل لمستحقيه في كل أنحاء المملكة.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-10">
+            <a href="services.html" class="s-btn s-btn-primary"><i class="fas fa-clipboard-list"></i> اطلب خدمة</a>
+            <a href="#donate" class="s-btn s-btn-gold"><i class="fas fa-hand-holding-heart"></i> ساهم بتبرع</a>
+            <a href="contact.html" class="s-btn s-btn-ghost"><i class="fas fa-hands-helping"></i> تطوع معنا</a>
+            <a href="#governance" class="s-btn s-btn-ghost"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
+          </div>
+
+          <!-- بطاقات عائمة -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="s-hero-card">
+              <div class="text-2xl font-extrabold text-white" data-counter="12800" data-suffix="">0</div>
+              <div class="text-xs text-white/70 mt-1">مستفيد ومستفيدة</div>
+            </div>
+            <div class="s-hero-card">
+              <div class="text-2xl font-extrabold text-white" data-counter="96" data-suffix="%">0</div>
+              <div class="text-xs text-white/70 mt-1">رضا المستفيدين</div>
+            </div>
+            <div class="s-hero-card">
+              <div class="text-2xl font-extrabold text-white" data-counter="42" data-suffix="">0</div>
+              <div class="text-xs text-white/70 mt-1">برنامج ومشروع</div>
+            </div>
+            <div class="s-hero-card">
+              <div class="text-sm font-bold text-sanad-goldSoft mt-1">هذا الشهر</div>
+              <div class="text-xs text-white/70 mt-1">آخر تحديث للحوكمة</div>
+            </div>
+          </div>
         </div>
 
-        <!-- شريط ثقة -->
-        <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-white/85">
-          <div><div class="text-2xl font-black text-white">+18</div><div class="text-xs text-white/70">عامًا من العطاء</div></div>
-          <div><div class="text-2xl font-black text-white">+42</div><div class="text-xs text-white/70">برنامجًا ومشروعًا</div></div>
-          <div><div class="text-2xl font-black text-white">+28</div><div class="text-xs text-white/70">شراكة فاعلة</div></div>
-          <div><div class="text-2xl font-black text-white">A+</div><div class="text-xs text-white/70">تصنيف حوكمة</div></div>
-        </div>
-      </div>
+        <!-- العنصر البصري -->
+        <div class="lg:col-span-5 reveal reveal-delay-2">
+          <div class="relative">
+            <div class="s-hero-visual">
+              <div class="s-hero-pattern"></div>
+              <div class="s-hero-figure"></div>
+              <div class="s-hero-badge">
+                <span class="s-pulse"></span> خدمة الآن متاحة
+              </div>
+              <!-- محتوى مركزي مرئي -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                <div class="w-24 h-24 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center mb-5">
+                  <i class="fas fa-mosque text-4xl text-sanad-goldSoft"></i>
+                </div>
+                <div class="text-white text-xl font-bold mb-1">مَن أحيا نفسًا</div>
+                <div class="text-white/80 text-sm max-w-xs leading-relaxed">عطاؤك يصل لمستحقه عبر منظومة رعاية موثّقة ومراجَعة.</div>
+              </div>
+            </div>
 
-      <!-- التركيب البصري -->
-      <div class="lg:col-span-5 relative reveal">
-        <div class="relative aspect-[4/5] rounded-[36px] overflow-hidden shadow-2xl border border-white/20">
-          <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=900&q=80" alt="رعاية إنسانية" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-sanad-navyDeep/70 via-transparent to-transparent"></div>
+            <!-- بطاقات معلقة خارجية -->
+            <div class="absolute -bottom-6 -right-6 s-hero-card !bg-white !text-sanad-navy !border-sanad-border hidden md:block">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-sanad-emerald text-white flex items-center justify-center">
+                  <i class="fas fa-shield-halved"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-sanad-muted">مستوى الالتزام</div>
+                  <div class="font-extrabold text-sanad-navy">حوكمة متقدمة</div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-6 -left-6 s-hero-card !bg-white !text-sanad-navy !border-sanad-border hidden md:block">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-sanad-gold text-white flex items-center justify-center">
+                  <i class="fas fa-file-shield"></i>
+                </div>
+                <div>
+                  <div class="text-xs text-sanad-muted">تقارير مالية</div>
+                  <div class="font-extrabold text-sanad-navy">مدقّقة ومعتمدة</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- بطاقات عائمة -->
-        <div class="sanad-hero-floating absolute -top-6 -right-6 hidden sm:flex items-center gap-3 w-56">
-          <div class="w-11 h-11 rounded-xl bg-sanad-emerald/30 flex items-center justify-center text-sanad-emeraldSoft"><i class="fas fa-users"></i></div>
-          <div><div class="text-xl font-black">12,800</div><div class="text-xs text-white/80">مستفيد</div></div>
-        </div>
-        <div class="sanad-hero-floating absolute top-1/3 -left-6 hidden sm:flex items-center gap-3 w-56">
-          <div class="w-11 h-11 rounded-xl bg-sanad-gold/30 flex items-center justify-center text-sanad-goldSoft"><i class="fas fa-face-smile"></i></div>
-          <div><div class="text-xl font-black">96%</div><div class="text-xs text-white/80">رضا المستفيدين</div></div>
-        </div>
-        <div class="sanad-hero-floating absolute -bottom-6 right-8 hidden sm:flex items-center gap-3 w-64">
-          <div class="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-white"><i class="fas fa-shield-halved"></i></div>
-          <div><div class="text-sm font-black">آخر تحديث للحوكمة</div><div class="text-xs text-white/80">هذا الشهر · 24 ملفًا منشورًا</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- موجة سفلية -->
-    <div class="relative">
-      <svg viewBox="0 0 1440 80" class="w-full h-16 block" preserveAspectRatio="none">
-        <path d="M0,40 C360,100 1080,0 1440,40 L1440,80 L0,80 Z" fill="#fbf8f2"></path>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ============ الإجراءات السريعة ============ -->
-  <section class="py-16 lg:py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center reveal">
-        <span class="sanad-eyebrow">بوابة الزائر السريعة</span>
-        <h2 class="sanad-section-title">ابدأ من هنا… كل ما تحتاجه بنقرة واحدة</h2>
-        <div class="sanad-divider mt-4"></div>
-      </div>
-      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <!-- بطاقة -->
-        <a href="services.html" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-hand-holding-heart"></i></div>
-          <h3 class="mt-5 text-lg font-black">طلب منفعة</h3>
-          <p class="text-sanad-muted text-sm mt-2">تقديم طلب رسمي للحصول على إحدى خدمات الرعاية أو الدعم.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">ابدأ الطلب <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="services.html" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-magnifying-glass"></i></div>
-          <h3 class="mt-5 text-lg font-black">متابعة طلب</h3>
-          <p class="text-sanad-muted text-sm mt-2">تتبع حالة طلبك ومراحل المعالجة بشفافية.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">تابع الآن <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="#donate" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-heart"></i></div>
-          <h3 class="mt-5 text-lg font-black">تبرع الآن</h3>
-          <p class="text-sanad-muted text-sm mt-2">قنوات تبرع متعددة تخدم برامج الجمعية الرئيسية.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">ساهم الآن <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="contact.html" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-hands-helping"></i></div>
-          <h3 class="mt-5 text-lg font-black">تطوع معنا</h3>
-          <p class="text-sanad-muted text-sm mt-2">فرص تطوعية ميدانية وإلكترونية متجددة.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">سجّل الآن <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="contact.html" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-id-card"></i></div>
-          <h3 class="mt-5 text-lg font-black">طلب عضوية</h3>
-          <p class="text-sanad-muted text-sm mt-2">انضم لقاعدة أعضاء الجمعية وكن جزءًا من القرار.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">قدّم الطلب <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="contact.html" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-comment-dots"></i></div>
-          <h3 class="mt-5 text-lg font-black">الشكاوى والمقترحات</h3>
-          <p class="text-sanad-muted text-sm mt-2">صوتك يصنع تحسينًا حقيقيًا في خدماتنا.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">أرسل الآن <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="contact.html" class="sanad-card group reveal">
-          <div class="sanad-icon-wrap"><i class="fas fa-triangle-exclamation"></i></div>
-          <h3 class="mt-5 text-lg font-black">الإبلاغ عن مخالفة</h3>
-          <p class="text-sanad-muted text-sm mt-2">قناة سرية للإبلاغ عن أي مخالفة أو تجاوز.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm group-hover:gap-3 transition-all">أبلغ بسرية <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
-        <a href="about.html" class="sanad-card group reveal bg-gradient-to-br from-sanad-navy to-sanad-emeraldDeep text-white border-0">
-          <div class="sanad-icon-wrap bg-white/15 text-white"><i class="fas fa-circle-info"></i></div>
-          <h3 class="mt-5 text-lg font-black text-white">تعرّف على سند</h3>
-          <p class="text-white/80 text-sm mt-2">رؤيتنا، رسالتنا، حوكمتنا، وأثرنا في المجتمع.</p>
-          <span class="mt-4 inline-flex items-center gap-2 text-sanad-goldSoft font-bold text-sm group-hover:gap-3 transition-all">اكتشف المزيد <i class="fas fa-arrow-left text-xs"></i></span>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ عن الجمعية ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-6 relative reveal">
-        <div class="rounded-[32px] overflow-hidden shadow-xl">
-          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80" alt="فريق جمعية سند" class="w-full h-[480px] object-cover" />
+  <!-- ============ 2) الإجراءات السريعة ============ -->
+  <section class="s-section-tight">
+    <div class="s-container">
+      <div class="-mt-20 relative z-20 reveal">
+        <div class="s-quick-grid grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
+          <a href="services.html" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="s-quick-label">طلب منفعة</div>
+          </a>
+          <a href="services.html" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+            <div class="s-quick-label">متابعة طلب</div>
+          </a>
+          <a href="#donate" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="s-quick-label">تبرع الآن</div>
+          </a>
+          <a href="contact.html" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-hands-helping"></i></div>
+            <div class="s-quick-label">تطوع</div>
+          </a>
+          <a href="contact.html" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-id-card"></i></div>
+            <div class="s-quick-label">طلب عضوية</div>
+          </a>
+          <a href="contact.html" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-comments"></i></div>
+            <div class="s-quick-label">شكاوى ومقترحات</div>
+          </a>
+          <a href="contact.html" class="s-quick-item">
+            <div class="s-quick-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="s-quick-label">إبلاغ عن مخالفة</div>
+          </a>
         </div>
-        <div class="absolute -bottom-8 -left-6 bg-white shadow-xl rounded-2xl p-5 w-60 border border-sanad-border hidden md:block">
-          <div class="text-xs text-sanad-muted">مرخصة من</div>
-          <div class="font-black text-sanad-navy">المركز الوطني لتنمية القطاع غير الربحي</div>
-        </div>
-        <div class="absolute -top-6 -right-6 bg-sanad-emerald text-white rounded-2xl p-5 shadow-xl hidden md:block">
-          <div class="text-3xl font-black">+18</div>
-          <div class="text-xs">سنة من العمل المؤسسي</div>
-        </div>
-      </div>
-      <div class="lg:col-span-6 reveal">
-        <span class="sanad-eyebrow">عن الجمعية</span>
-        <h2 class="sanad-section-title">مؤسسة اجتماعية تؤمن أن الإنسان هو غاية كل أثر</h2>
-        <p class="mt-5 text-sanad-muted leading-loose">
-          تعمل جمعية سند على تقديم الرعاية والخدمات الاجتماعية والتنموية للفئات المستفيدة،
-          من خلال برامج مؤسسية، وحوكمة واضحة، وشراكات فاعلة مع الجهات الحكومية والقطاع الخاص ومنظومة العمل الخيري.
-        </p>
-        <div class="mt-8 grid sm:grid-cols-2 gap-4">
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border">
-            <div class="sanad-icon-wrap"><i class="fas fa-bullseye"></i></div>
-            <h4 class="mt-3 font-black">رسالتنا</h4>
-            <p class="text-sm text-sanad-muted mt-1">رعاية وتمكين الفئات المستفيدة ببرامج مهنية ومستدامة.</p>
-          </div>
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border">
-            <div class="sanad-icon-wrap"><i class="fas fa-eye"></i></div>
-            <h4 class="mt-3 font-black">رؤيتنا</h4>
-            <p class="text-sm text-sanad-muted mt-1">أن نكون مرجعًا مؤسسيًا موثوقًا في الرعاية الاجتماعية.</p>
-          </div>
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border">
-            <div class="sanad-icon-wrap"><i class="fas fa-heart"></i></div>
-            <h4 class="mt-3 font-black">قيمنا</h4>
-            <p class="text-sm text-sanad-muted mt-1">الكرامة، الشفافية، الإتقان، الشراكة، الأثر.</p>
-          </div>
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border">
-            <div class="sanad-icon-wrap"><i class="fas fa-location-dot"></i></div>
-            <h4 class="mt-3 font-black">نطاق خدمتنا</h4>
-            <p class="text-sm text-sanad-muted mt-1">عدة مناطق في المملكة العربية السعودية.</p>
-          </div>
-        </div>
-        <a href="about.html" class="sanad-btn sanad-btn-primary mt-8">تعرف على الجمعية <i class="fas fa-arrow-left"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- ============ الأهداف الرئيسية ============ -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center reveal">
-        <span class="sanad-eyebrow">أهدافنا الرئيسية</span>
-        <h2 class="sanad-section-title">خمسة أهداف تحرّك كل برنامج نقدمه</h2>
-        <div class="sanad-divider mt-4"></div>
-      </div>
-      <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-5 gap-5">
-        <div class="sanad-card reveal lg:translate-y-0"><div class="text-5xl font-black text-sanad-emerald/30">01</div><h3 class="mt-3 font-black text-lg">تعزيز الرعاية الاجتماعية</h3><p class="text-sm text-sanad-muted mt-2">برامج رعاية شاملة تستهدف الفئات الأولى بالعناية.</p></div>
-        <div class="sanad-card reveal lg:translate-y-6"><div class="text-5xl font-black text-sanad-emerald/30">02</div><h3 class="mt-3 font-black text-lg">تمكين الأسر المستفيدة</h3><p class="text-sm text-sanad-muted mt-2">تأهيل أسري ومهني يحوّل الاحتياج إلى استقلال.</p></div>
-        <div class="sanad-card reveal lg:translate-y-0"><div class="text-5xl font-black text-sanad-emerald/30">03</div><h3 class="mt-3 font-black text-lg">جودة حياة المستفيدين</h3><p class="text-sm text-sanad-muted mt-2">تحسين الصحة، التعليم، السكن والدخل بأثر ملموس.</p></div>
-        <div class="sanad-card reveal lg:translate-y-6"><div class="text-5xl font-black text-sanad-emerald/30">04</div><h3 class="mt-3 font-black text-lg">شراكات مجتمعية فاعلة</h3><p class="text-sm text-sanad-muted mt-2">بناء شبكة دعم بين القطاعات الثلاثة لخدمة المجتمع.</p></div>
-        <div class="sanad-card reveal lg:translate-y-0"><div class="text-5xl font-black text-sanad-emerald/30">05</div><h3 class="mt-3 font-black text-lg">شفافية وحوكمة</h3><p class="text-sm text-sanad-muted mt-2">إفصاح مستمر وتقارير منشورة تعزّز ثقة الجميع.</p></div>
+  <!-- ============ 3) عن الجمعية ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-5 reveal">
+          <span class="s-eyebrow mb-4"><i class="fas fa-mosque"></i> عن جمعية سَنَد</span>
+          <h2 class="s-title font-extrabold mb-5">
+            رعاية إنسانية،
+            <span class="text-sanad-emerald">بأثر مؤسسي موثّق.</span>
+          </h2>
+          <p class="s-sub mb-6">
+            تأسست جمعية سَنَد لتكون يدًا ممتدّة للأسر المحتاجة في المملكة، تجمع بين دفء العطاء وانضباط الإجراءات،
+            وتعمل وفق منهجية مرحلية تضمن وصول الخدمة لمستحقها بشفافية وكفاءة.
+          </p>
+          <div class="s-divider mb-6"></div>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-sanad-mist text-sanad-navy">مرخّصة رسميًا</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-sanad-mist text-sanad-navy">عضو في منصة إحسان</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-sanad-mist text-sanad-navy">تقارير مدقّقة</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-sanad-mist text-sanad-navy">حوكمة متقدمة</span>
+          </div>
+          <a href="about.html" class="s-btn s-btn-navy">
+            تعرّف على الجمعية <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+
+        <div class="lg:col-span-7 reveal reveal-delay-1">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="s-pillar">
+              <div class="flex items-start justify-between mb-3">
+                <div class="w-12 h-12 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="s-pillar-num">01</div>
+              </div>
+              <h3 class="font-extrabold text-lg mb-2">رسالتنا</h3>
+              <p class="text-sanad-muted text-sm leading-loose">تمكين الأسر المحتاجة عبر برامج رعاية متكاملة تحفظ كرامة الإنسان وتنمّي قدراته.</p>
+            </div>
+            <div class="s-pillar">
+              <div class="flex items-start justify-between mb-3">
+                <div class="w-12 h-12 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="s-pillar-num">02</div>
+              </div>
+              <h3 class="font-extrabold text-lg mb-2">رؤيتنا</h3>
+              <p class="text-sanad-muted text-sm leading-loose">جمعية رائدة في الرعاية الاجتماعية تنسجم مع مستهدفات رؤية المملكة 2030.</p>
+            </div>
+            <div class="s-pillar">
+              <div class="flex items-start justify-between mb-3">
+                <div class="w-12 h-12 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl">
+                  <i class="fas fa-gem"></i>
+                </div>
+                <div class="s-pillar-num">03</div>
+              </div>
+              <h3 class="font-extrabold text-lg mb-2">قيمنا</h3>
+              <p class="text-sanad-muted text-sm leading-loose">الشفافية، الكرامة، الإتقان، الشراكة، والاستدامة في كل عمل نقدّمه.</p>
+            </div>
+            <div class="s-pillar">
+              <div class="flex items-start justify-between mb-3">
+                <div class="w-12 h-12 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl">
+                  <i class="fas fa-map-location-dot"></i>
+                </div>
+                <div class="s-pillar-num">04</div>
+              </div>
+              <h3 class="font-extrabold text-lg mb-2">نطاق خدمتنا</h3>
+              <p class="text-sanad-muted text-sm leading-loose">نخدم المستفيدين في مختلف مناطق المملكة عبر شبكة فروع وشركاء معتمدين.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ مجالات الخدمات ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+  <!-- ============ 4) الأهداف الاستراتيجية ============ -->
+  <section class="s-section bg-white border-y border-sanad-border">
+    <div class="s-container">
+      <div class="text-center mb-12 reveal">
+        <span class="s-eyebrow mb-4"><i class="fas fa-compass"></i> توجّهنا الاستراتيجي</span>
+        <h2 class="s-title font-extrabold">أهدافنا الرئيسية</h2>
+        <p class="s-sub mx-auto mt-3">خمس ركائز استراتيجية نعمل من خلالها لتحقيق أثر مستدام في حياة المستفيدين.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-4 reveal reveal-delay-1">
+        <div class="s-goal-row">
+          <div class="s-goal-num">01</div>
+          <div>
+            <h3 class="font-extrabold text-lg mb-1">تمكين الأسر المنتجة</h3>
+            <p class="text-sanad-muted text-sm">برامج تأهيل وتدريب وتمويل صغير لتحويل الأسر من الاحتياج إلى الإنتاج.</p>
+          </div>
+          <div class="s-goal-arrow"><i class="fas fa-arrow-left"></i></div>
+        </div>
+        <div class="s-goal-row">
+          <div class="s-goal-num">02</div>
+          <div>
+            <h3 class="font-extrabold text-lg mb-1">رعاية صحية شاملة</h3>
+            <p class="text-sanad-muted text-sm">تغطية تكاليف العلاج والأدوية والمستلزمات للحالات المستحقة.</p>
+          </div>
+          <div class="s-goal-arrow"><i class="fas fa-arrow-left"></i></div>
+        </div>
+        <div class="s-goal-row">
+          <div class="s-goal-num">03</div>
+          <div>
+            <h3 class="font-extrabold text-lg mb-1">دعم تعليمي مستدام</h3>
+            <p class="text-sanad-muted text-sm">منح دراسية ولوازم مدرسية لطلاب الأسر المتعفّفة في جميع المراحل.</p>
+          </div>
+          <div class="s-goal-arrow"><i class="fas fa-arrow-left"></i></div>
+        </div>
+        <div class="s-goal-row">
+          <div class="s-goal-num">04</div>
+          <div>
+            <h3 class="font-extrabold text-lg mb-1">إسكان لائق وكريم</h3>
+            <p class="text-sanad-muted text-sm">ترميم وتأهيل المساكن وتأمين الإيجارات للأسر الأشد حاجة.</p>
+          </div>
+          <div class="s-goal-arrow"><i class="fas fa-arrow-left"></i></div>
+        </div>
+        <div class="s-goal-row lg:col-span-2">
+          <div class="s-goal-num">05</div>
+          <div>
+            <h3 class="font-extrabold text-lg mb-1">حوكمة وشفافية مؤسسية</h3>
+            <p class="text-sanad-muted text-sm">تطبيق أعلى معايير الإفصاح والامتثال لتعزيز ثقة المتبرعين والشركاء.</p>
+          </div>
+          <div class="s-goal-arrow"><i class="fas fa-arrow-left"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5) مجالات الخدمات ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
         <div>
-          <span class="sanad-eyebrow">مجالات خدماتنا</span>
-          <h2 class="sanad-section-title">خدمات متكاملة تلامس احتياج الإنسان</h2>
+          <span class="s-eyebrow mb-4"><i class="fas fa-hand-holding-medical"></i> مجالات خدمتنا</span>
+          <h2 class="s-title font-extrabold">منظومة خدمات متكاملة للأسر المستحقة</h2>
         </div>
-        <a href="services.html" class="sanad-btn sanad-btn-outline">كل الخدمات <i class="fas fa-arrow-left"></i></a>
+        <a href="services.html" class="s-btn s-btn-outline">جميع الخدمات <i class="fas fa-arrow-left"></i></a>
       </div>
 
-      <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- خدمة كبيرة -->
-        <div class="sanad-card sanad-service md:row-span-2 bg-gradient-to-br from-sanad-navy to-sanad-emeraldDeep text-white border-0 reveal">
-          <div class="sanad-icon-wrap bg-white/15 text-white"><i class="fas fa-stethoscope"></i></div>
-          <h3 class="mt-5 text-2xl font-black text-white">الرعاية الصحية</h3>
-          <p class="text-white/85 mt-3 leading-loose">تغطية احتياجات الكشف والعلاج والأجهزة الطبية والأدوية للحالات المستحقة، عبر شبكة من الشركاء الصحيين.</p>
-          <ul class="mt-5 space-y-2 text-white/85 text-sm">
-            <li><i class="fas fa-check ml-2 text-sanad-goldSoft"></i> تغطية علاجية للأسر المستفيدة</li>
-            <li><i class="fas fa-check ml-2 text-sanad-goldSoft"></i> أجهزة طبية وأدوية مزمنة</li>
-            <li><i class="fas fa-check ml-2 text-sanad-goldSoft"></i> دعم نفسي واجتماعي</li>
+      <div class="s-bento reveal reveal-delay-1">
+        <!-- خدمة محورية -->
+        <div class="s-service s-service-hero s-bento-hero">
+          <div class="s-service-icon"><i class="fas fa-house-medical"></i></div>
+          <h3 class="text-2xl font-extrabold mb-3">الرعاية الصحية</h3>
+          <p class="text-white/85 leading-loose mb-5">تغطية شاملة لتكاليف العلاج، الأدوية، الأجهزة الطبية، وتسهيل المواعيد للحالات المستحقة عبر شبكة شركاء صحيين معتمدين.</p>
+          <ul class="space-y-2 text-sm text-white/85 mb-6">
+            <li><i class="fas fa-check-circle text-sanad-goldSoft ml-2"></i> تغطية الأدوية المزمنة</li>
+            <li><i class="fas fa-check-circle text-sanad-goldSoft ml-2"></i> أجهزة طبية ومستلزمات</li>
+            <li><i class="fas fa-check-circle text-sanad-goldSoft ml-2"></i> تنسيق الإحالات الطبية</li>
           </ul>
-          <a href="service-details.html" class="sanad-btn sanad-btn-gold mt-7">تفاصيل الخدمة <i class="fas fa-arrow-left"></i></a>
+          <a href="services.html" class="s-btn s-btn-gold w-fit mt-auto">تفاصيل الخدمة <i class="fas fa-arrow-left"></i></a>
+          <div class="s-service-deco"></div>
         </div>
-        <div class="sanad-card sanad-service reveal"><div class="sanad-icon-wrap"><i class="fas fa-graduation-cap"></i></div><h3 class="mt-4 text-lg font-black">الرعاية التعليمية</h3><p class="text-sm text-sanad-muted mt-2">دعم تعليمي ورسوم دراسية ومستلزمات للأسر المستفيدة.</p><a href="service-details.html" class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm">تفاصيل الخدمة <i class="fas fa-arrow-left text-xs"></i></a></div>
-        <div class="sanad-card sanad-service reveal"><div class="sanad-icon-wrap"><i class="fas fa-house-chimney"></i></div><h3 class="mt-4 text-lg font-black">دعم الإسكان</h3><p class="text-sm text-sanad-muted mt-2">ترميم وتأثيث وتأمين سكن آمن للأسر الأولى بالعناية.</p><a href="service-details.html" class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm">تفاصيل الخدمة <i class="fas fa-arrow-left text-xs"></i></a></div>
-        <div class="sanad-card sanad-service reveal"><div class="sanad-icon-wrap"><i class="fas fa-people-roof"></i></div><h3 class="mt-4 text-lg font-black">التمكين الأسري</h3><p class="text-sm text-sanad-muted mt-2">برامج تدريب وتأهيل مهني وفرص دخل للأسر.</p><a href="service-details.html" class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm">تفاصيل الخدمة <i class="fas fa-arrow-left text-xs"></i></a></div>
-        <div class="sanad-card sanad-service reveal"><div class="sanad-icon-wrap"><i class="fas fa-user-clock"></i></div><h3 class="mt-4 text-lg font-black">دعم كبار السن</h3><p class="text-sm text-sanad-muted mt-2">رعاية صحية واجتماعية وأنشطة محبّبة لكبار السن.</p><a href="service-details.html" class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm">تفاصيل الخدمة <i class="fas fa-arrow-left text-xs"></i></a></div>
-        <div class="sanad-card sanad-service reveal"><div class="sanad-icon-wrap"><i class="fas fa-basket-shopping"></i></div><h3 class="mt-4 text-lg font-black">السلال الغذائية</h3><p class="text-sm text-sanad-muted mt-2">سلال شهرية ومناسباتية تغطي الاحتياج الأساسي.</p><a href="service-details.html" class="mt-4 inline-flex items-center gap-2 text-sanad-emerald font-bold text-sm">تفاصيل الخدمة <i class="fas fa-arrow-left text-xs"></i></a></div>
+
+        <!-- خدمات أصغر -->
+        <div class="s-service s-bento-md">
+          <div class="s-service-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3 class="font-extrabold text-lg mb-2">الرعاية التعليمية</h3>
+          <p class="text-sanad-muted text-sm leading-loose">منح دراسية، لوازم مدرسية، ودروس تقوية لطلاب الأسر المتعفّفة.</p>
+        </div>
+        <div class="s-service s-bento-md">
+          <div class="s-service-icon"><i class="fas fa-house-chimney"></i></div>
+          <h3 class="font-extrabold text-lg mb-2">دعم الإسكان</h3>
+          <p class="text-sanad-muted text-sm leading-loose">ترميم المساكن، تأمين الإيجارات، وتجهيز المنزل بالضروريات.</p>
+        </div>
+        <div class="s-service s-bento-md">
+          <div class="s-service-icon"><i class="fas fa-people-roof"></i></div>
+          <h3 class="font-extrabold text-lg mb-2">التمكين الأسري</h3>
+          <p class="text-sanad-muted text-sm leading-loose">إرشاد أسري، تدريب على المهارات، ومشاريع أسر منتجة.</p>
+        </div>
+        <div class="s-service s-bento-md">
+          <div class="s-service-icon"><i class="fas fa-person-cane"></i></div>
+          <h3 class="font-extrabold text-lg mb-2">دعم كبار السن</h3>
+          <p class="text-sanad-muted text-sm leading-loose">برامج رعاية متخصصة لكبار السن في منازلهم ومراكز الرعاية.</p>
+        </div>
+        <div class="s-service s-bento-md">
+          <div class="s-service-icon"><i class="fas fa-basket-shopping"></i></div>
+          <h3 class="font-extrabold text-lg mb-2">السلال الغذائية</h3>
+          <p class="text-sanad-muted text-sm leading-loose">سلال غذائية شهرية ومواسم رمضان والأضحى للأسر المستحقة.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ رحلة المستفيد ============ -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center reveal">
-        <span class="sanad-eyebrow">رحلة المستفيد</span>
-        <h2 class="sanad-section-title">إجراءات واضحة من الطلب إلى قياس الأثر</h2>
-        <p class="sanad-section-sub">رحلة منظمة تضمن العدالة في الاستحقاق، والشفافية في التنفيذ، وقياس الرضا في النهاية.</p>
+  <!-- ============ 6) رحلة المستفيد ============ -->
+  <section class="s-section bg-sanad-mist/60">
+    <div class="s-container">
+      <div class="text-center mb-14 reveal">
+        <span class="s-eyebrow mb-4"><i class="fas fa-route"></i> رحلة الخدمة</span>
+        <h2 class="s-title font-extrabold">مسار واضح من الطلب… إلى الأثر</h2>
+        <p class="s-sub mx-auto mt-3">ست مراحل مؤسسية موحّدة تضمن وصول الخدمة لمستحقها بأعلى معايير الجودة.</p>
       </div>
-      <div class="sanad-journey mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-        <div class="sanad-journey-step text-center reveal"><div class="num">1</div><h4 class="font-black">تقديم الطلب</h4><p class="text-sm text-sanad-muted mt-1">عبر القنوات الرقمية أو الفرع.</p></div>
-        <div class="sanad-journey-step text-center reveal"><div class="num">2</div><h4 class="font-black">دراسة الأهلية</h4><p class="text-sm text-sanad-muted mt-1">وفق معايير معتمدة وعادلة.</p></div>
-        <div class="sanad-journey-step text-center reveal"><div class="num">3</div><h4 class="font-black">التحقق</h4><p class="text-sm text-sanad-muted mt-1">زيارات وتأكد من المستندات.</p></div>
-        <div class="sanad-journey-step text-center reveal"><div class="num">4</div><h4 class="font-black">الاعتماد</h4><p class="text-sm text-sanad-muted mt-1">اعتماد الخدمة والميزانية.</p></div>
-        <div class="sanad-journey-step text-center reveal"><div class="num">5</div><h4 class="font-black">تقديم الخدمة</h4><p class="text-sm text-sanad-muted mt-1">تنفيذ الخدمة بكرامة وسرية.</p></div>
-        <div class="sanad-journey-step text-center reveal"><div class="num">6</div><h4 class="font-black">قياس الرضا</h4><p class="text-sm text-sanad-muted mt-1">قياس الأثر ومتابعة الأسرة.</p></div>
+
+      <div class="s-rail grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 reveal reveal-delay-1">
+        <div class="s-rail-step text-center">
+          <div class="num">01</div>
+          <h4 class="font-extrabold text-sanad-navy mb-1">تقديم الطلب</h4>
+          <p class="text-xs text-sanad-muted leading-relaxed">عبر الموقع أو الفروع</p>
+        </div>
+        <div class="s-rail-step text-center">
+          <div class="num">02</div>
+          <h4 class="font-extrabold text-sanad-navy mb-1">دراسة الأهلية</h4>
+          <p class="text-xs text-sanad-muted leading-relaxed">وفق معايير معتمدة</p>
+        </div>
+        <div class="s-rail-step text-center">
+          <div class="num">03</div>
+          <h4 class="font-extrabold text-sanad-navy mb-1">التحقق الميداني</h4>
+          <p class="text-xs text-sanad-muted leading-relaxed">من الباحثين الاجتماعيين</p>
+        </div>
+        <div class="s-rail-step text-center">
+          <div class="num">04</div>
+          <h4 class="font-extrabold text-sanad-navy mb-1">الاعتماد</h4>
+          <p class="text-xs text-sanad-muted leading-relaxed">من اللجنة المختصة</p>
+        </div>
+        <div class="s-rail-step text-center">
+          <div class="num">05</div>
+          <h4 class="font-extrabold text-sanad-navy mb-1">تقديم الخدمة</h4>
+          <p class="text-xs text-sanad-muted leading-relaxed">بكرامة وانضباط</p>
+        </div>
+        <div class="s-rail-step text-center">
+          <div class="num">06</div>
+          <h4 class="font-extrabold text-sanad-navy mb-1">قياس الرضا</h4>
+          <p class="text-xs text-sanad-muted leading-relaxed">والمتابعة المستمرة</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ مشاريع الجمعية ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+  <!-- ============ 7) المشاريع ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
         <div>
-          <span class="sanad-eyebrow">مشاريع الجمعية</span>
-          <h2 class="sanad-section-title">برامج مؤسسية تترجم رؤيتنا إلى أثر</h2>
+          <span class="s-eyebrow mb-4"><i class="fas fa-diagram-project"></i> أحدث المشاريع</span>
+          <h2 class="s-title font-extrabold">مشاريع تُترجم الرسالة إلى أثر ملموس</h2>
         </div>
-        <a href="projects.html" class="sanad-btn sanad-btn-outline">كل المشاريع <i class="fas fa-arrow-left"></i></a>
+        <a href="projects.html" class="s-btn s-btn-outline">جميع المشاريع <i class="fas fa-arrow-left"></i></a>
       </div>
 
-      <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- مشروع -->
-        <article class="sanad-card p-0 overflow-hidden reveal">
-          <div class="relative h-44 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=700&q=80" alt="كفالة الأسر" class="w-full h-full object-cover" />
-            <span class="absolute top-3 right-3 bg-white/95 text-xs font-bold text-sanad-navy px-3 py-1 rounded-full">رعاية أسرية</span>
-            <span class="absolute top-3 left-3 bg-sanad-emerald text-white text-xs font-bold px-3 py-1 rounded-full">قيد التنفيذ</span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal reveal-delay-1">
+        <!-- مشروع 1 -->
+        <article class="s-project">
+          <div class="s-project-cover">
+            <span class="s-project-tag">رعاية صحية</span>
+            <span class="s-project-status"><span class="s-pulse"></span> قائم</span>
+            <div class="absolute bottom-3 right-3 z-10 text-white text-2xl"><i class="fas fa-heart-pulse"></i></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-black text-lg">مشروع كفالة الأسر</h3>
-            <p class="text-sm text-sanad-muted mt-2">دعم شهري للأسر المستفيدة لضمان الاحتياجات الأساسية.</p>
-            <div class="mt-4 flex items-center justify-between text-sm">
-              <span class="text-sanad-muted"><i class="fas fa-users ml-1 text-sanad-emerald"></i> 1,240 أسرة</span>
-              <a href="project-details.html" class="text-sanad-emerald font-bold">عرض المشروع <i class="fas fa-arrow-left text-xs"></i></a>
+          <div class="p-5">
+            <h3 class="font-extrabold text-lg mb-2 text-sanad-navy">مشروع كفالة الأدوية المزمنة</h3>
+            <p class="text-sanad-muted text-sm mb-4 leading-loose">توفير أدوية الأمراض المزمنة لـ 1,200 مريض شهريًا في 5 مناطق رئيسية.</p>
+            <div class="flex items-center justify-between text-xs text-sanad-muted mb-4">
+              <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> 1,240 مستفيد</span>
+              <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> 2024 – جارٍ</span>
             </div>
+            <a href="project-details.html" class="s-btn s-btn-outline w-full justify-center !py-2.5 text-sm">عرض المشروع</a>
           </div>
         </article>
-        <article class="sanad-card p-0 overflow-hidden reveal">
-          <div class="relative h-44 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=700&q=80" alt="الدعم الصحي" class="w-full h-full object-cover" />
-            <span class="absolute top-3 right-3 bg-white/95 text-xs font-bold text-sanad-navy px-3 py-1 rounded-full">صحي</span>
-            <span class="absolute top-3 left-3 bg-sanad-emerald text-white text-xs font-bold px-3 py-1 rounded-full">قيد التنفيذ</span>
+
+        <!-- مشروع 2 -->
+        <article class="s-project">
+          <div class="s-project-cover" style="background:linear-gradient(135deg,#b6873a,#075c3a);">
+            <span class="s-project-tag">تعليم</span>
+            <span class="s-project-status"><span class="s-pulse"></span> قائم</span>
+            <div class="absolute bottom-3 right-3 z-10 text-white text-2xl"><i class="fas fa-school"></i></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-black text-lg">مشروع الدعم الصحي</h3>
-            <p class="text-sm text-sanad-muted mt-2">تغطية فحوصات وأجهزة وأدوية للحالات المستحقة.</p>
-            <div class="mt-4 flex items-center justify-between text-sm">
-              <span class="text-sanad-muted"><i class="fas fa-users ml-1 text-sanad-emerald"></i> 860 مستفيد</span>
-              <a href="project-details.html" class="text-sanad-emerald font-bold">عرض المشروع <i class="fas fa-arrow-left text-xs"></i></a>
+          <div class="p-5">
+            <h3 class="font-extrabold text-lg mb-2 text-sanad-navy">حقيبة الطالب المتعفّف</h3>
+            <p class="text-sanad-muted text-sm mb-4 leading-loose">تجهيز الطلاب بلوازم العام الدراسي قبل بدء الفصل الأول لكل عام.</p>
+            <div class="flex items-center justify-between text-xs text-sanad-muted mb-4">
+              <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> 3,500 طالب</span>
+              <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> سنوي</span>
             </div>
+            <a href="project-details.html" class="s-btn s-btn-outline w-full justify-center !py-2.5 text-sm">عرض المشروع</a>
           </div>
         </article>
-        <article class="sanad-card p-0 overflow-hidden reveal">
-          <div class="relative h-44 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=700&q=80" alt="السلة الغذائية" class="w-full h-full object-cover" />
-            <span class="absolute top-3 right-3 bg-white/95 text-xs font-bold text-sanad-navy px-3 py-1 rounded-full">إغاثي</span>
-            <span class="absolute top-3 left-3 bg-sanad-gold text-white text-xs font-bold px-3 py-1 rounded-full">موسمي</span>
+
+        <!-- مشروع 3 -->
+        <article class="s-project">
+          <div class="s-project-cover" style="background:linear-gradient(135deg,#0b2545,#1d3a6b);">
+            <span class="s-project-tag">إسكان</span>
+            <span class="s-project-status" style="background:#b6873a"><span class="s-pulse"></span> قريبًا</span>
+            <div class="absolute bottom-3 right-3 z-10 text-white text-2xl"><i class="fas fa-house-chimney-medical"></i></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-black text-lg">مشروع السلة الغذائية</h3>
-            <p class="text-sm text-sanad-muted mt-2">سلال شهرية ومناسباتية للأسر المسجلة لدى الجمعية.</p>
-            <div class="mt-4 flex items-center justify-between text-sm">
-              <span class="text-sanad-muted"><i class="fas fa-users ml-1 text-sanad-emerald"></i> 3,500 أسرة</span>
-              <a href="project-details.html" class="text-sanad-emerald font-bold">عرض المشروع <i class="fas fa-arrow-left text-xs"></i></a>
+          <div class="p-5">
+            <h3 class="font-extrabold text-lg mb-2 text-sanad-navy">ترميم 100 مسكن</h3>
+            <p class="text-sanad-muted text-sm mb-4 leading-loose">برنامج موسّع لترميم منازل الأسر الأشد حاجة في المناطق الجنوبية.</p>
+            <div class="flex items-center justify-between text-xs text-sanad-muted mb-4">
+              <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> 100 أسرة</span>
+              <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> 2025</span>
             </div>
-          </div>
-        </article>
-        <article class="sanad-card p-0 overflow-hidden reveal">
-          <div class="relative h-44 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=80" alt="التمكين المهني" class="w-full h-full object-cover" />
-            <span class="absolute top-3 right-3 bg-white/95 text-xs font-bold text-sanad-navy px-3 py-1 rounded-full">تمكين</span>
-            <span class="absolute top-3 left-3 bg-sanad-navy text-white text-xs font-bold px-3 py-1 rounded-full">جديد</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-black text-lg">التمكين المهني</h3>
-            <p class="text-sm text-sanad-muted mt-2">تأهيل وتدريب وفرص توظيف للأسر المستفيدة.</p>
-            <div class="mt-4 flex items-center justify-between text-sm">
-              <span class="text-sanad-muted"><i class="fas fa-users ml-1 text-sanad-emerald"></i> 320 مستفيد</span>
-              <a href="project-details.html" class="text-sanad-emerald font-bold">عرض المشروع <i class="fas fa-arrow-left text-xs"></i></a>
-            </div>
+            <a href="project-details.html" class="s-btn s-btn-outline w-full justify-center !py-2.5 text-sm">عرض المشروع</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ فرص الدعم ============ -->
-  <section id="donate" class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center reveal">
-        <span class="sanad-eyebrow">فرص الدعم</span>
-        <h2 class="sanad-section-title">ساهم في فرصة تصنع فرقًا حقيقيًا</h2>
-        <p class="sanad-section-sub">كل تبرع يساوي خطوة ملموسة في حياة أسرة أو مستفيد، وكل ريال له أثر يُقاس.</p>
+  <!-- ============ 8) فرص الدعم ============ -->
+  <section id="donate" class="s-section bg-white border-y border-sanad-border">
+    <div class="s-container">
+      <div class="text-center mb-12 reveal">
+        <span class="s-eyebrow mb-4"><i class="fas fa-hand-holding-heart"></i> فرص الدعم</span>
+        <h2 class="s-title font-extrabold">ساهم في فرصة دعم… وكُن جزءًا من الأثر</h2>
+        <p class="s-sub mx-auto mt-3">فرص دعم مفتوحة ومحدّثة مع متابعة شفافة لنسبة الإنجاز.</p>
       </div>
 
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <div class="sanad-card reveal">
-          <div class="flex items-center justify-between">
-            <div class="sanad-icon-wrap"><i class="fas fa-people-roof"></i></div>
-            <span class="text-xs font-bold text-sanad-emerald bg-sanad-emerald/10 px-3 py-1 rounded-full">كفالة شهرية</span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal reveal-delay-1">
+        <div class="s-donate">
+          <span class="s-donate-ribbon">عاجل</span>
+          <div class="w-14 h-14 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-utensils"></i>
           </div>
-          <h3 class="mt-5 text-xl font-black">كفالة أسرة</h3>
-          <p class="text-sm text-sanad-muted mt-2">كفالة شهرية كاملة تشمل الغذاء والمصاريف الأساسية.</p>
-          <div class="mt-5">
-            <div class="flex items-center justify-between text-sm mb-2"><span class="text-sanad-muted">المبلغ المتحقق</span><span class="font-black text-sanad-navy">186,000 / 250,000 ريال</span></div>
-            <div class="sanad-progress"><span data-progress="74"></span></div>
-            <div class="mt-3 flex items-center justify-between text-xs text-sanad-muted"><span>74% من الهدف</span><span><i class="fas fa-user-group ml-1"></i> 412 مساهمًا</span></div>
+          <h3 class="font-extrabold text-lg mb-2">سلال غذائية للأسر</h3>
+          <p class="text-sanad-muted text-sm mb-5 leading-loose">توفير 1,500 سلة غذائية شهرية للأسر المسجّلة في الجمعية.</p>
+          <div class="flex items-center justify-between mb-2 text-sm">
+            <span class="font-bold text-sanad-navy">78%</span>
+            <span class="text-sanad-muted">340 مساهم</span>
           </div>
-          <button class="sanad-btn sanad-btn-primary w-full justify-center mt-6">ساهم الآن</button>
+          <div class="s-progress mb-4"><span data-progress="78" style="width:0"></span></div>
+          <div class="flex items-center justify-between text-xs text-sanad-muted mb-4">
+            <span>المتحقق: 234,000 ر.س</span>
+            <span>الهدف: 300,000 ر.س</span>
+          </div>
+          <button class="s-btn s-btn-primary w-full justify-center"><i class="fas fa-heart"></i> ساهم الآن</button>
         </div>
 
-        <div class="sanad-card reveal">
-          <div class="flex items-center justify-between">
-            <div class="sanad-icon-wrap"><i class="fas fa-heart-pulse"></i></div>
-            <span class="text-xs font-bold text-sanad-gold bg-sanad-gold/10 px-3 py-1 rounded-full">صحي</span>
+        <div class="s-donate">
+          <div class="w-14 h-14 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-pills"></i>
           </div>
-          <h3 class="mt-5 text-xl font-black">علاج مستفيد</h3>
-          <p class="text-sm text-sanad-muted mt-2">دعم تكاليف علاج وأجهزة وأدوية للحالات المستحقة.</p>
-          <div class="mt-5">
-            <div class="flex items-center justify-between text-sm mb-2"><span class="text-sanad-muted">المبلغ المتحقق</span><span class="font-black text-sanad-navy">92,500 / 180,000 ريال</span></div>
-            <div class="sanad-progress"><span data-progress="51"></span></div>
-            <div class="mt-3 flex items-center justify-between text-xs text-sanad-muted"><span>51% من الهدف</span><span><i class="fas fa-user-group ml-1"></i> 268 مساهمًا</span></div>
+          <h3 class="font-extrabold text-lg mb-2">كفالة دواء مزمن</h3>
+          <p class="text-sanad-muted text-sm mb-5 leading-loose">كفالة شهرية لمريض من ذوي الأمراض المزمنة المستحقّين.</p>
+          <div class="flex items-center justify-between mb-2 text-sm">
+            <span class="font-bold text-sanad-navy">54%</span>
+            <span class="text-sanad-muted">182 مساهم</span>
           </div>
-          <button class="sanad-btn sanad-btn-primary w-full justify-center mt-6">ساهم الآن</button>
+          <div class="s-progress mb-4"><span data-progress="54" style="width:0"></span></div>
+          <div class="flex items-center justify-between text-xs text-sanad-muted mb-4">
+            <span>المتحقق: 108,000 ر.س</span>
+            <span>الهدف: 200,000 ر.س</span>
+          </div>
+          <button class="s-btn s-btn-primary w-full justify-center"><i class="fas fa-heart"></i> ساهم الآن</button>
         </div>
 
-        <div class="sanad-card reveal">
-          <div class="flex items-center justify-between">
-            <div class="sanad-icon-wrap"><i class="fas fa-basket-shopping"></i></div>
-            <span class="text-xs font-bold text-sanad-navy bg-sanad-navy/10 px-3 py-1 rounded-full">غذائي</span>
+        <div class="s-donate">
+          <div class="w-14 h-14 rounded-xl bg-sanad-emerald/10 text-sanad-emeraldDeep flex items-center justify-center text-xl mb-4">
+            <i class="fas fa-graduation-cap"></i>
           </div>
-          <h3 class="mt-5 text-xl font-black">سلة غذائية</h3>
-          <p class="text-sm text-sanad-muted mt-2">تأمين سلة غذائية متكاملة لأسرة مستفيدة ولمدة شهر.</p>
-          <div class="mt-5">
-            <div class="flex items-center justify-between text-sm mb-2"><span class="text-sanad-muted">المبلغ المتحقق</span><span class="font-black text-sanad-navy">63,200 / 75,000 ريال</span></div>
-            <div class="sanad-progress"><span data-progress="84"></span></div>
-            <div class="mt-3 flex items-center justify-between text-xs text-sanad-muted"><span>84% من الهدف</span><span><i class="fas fa-user-group ml-1"></i> 590 مساهمًا</span></div>
+          <h3 class="font-extrabold text-lg mb-2">منحة طالب جامعي</h3>
+          <p class="text-sanad-muted text-sm mb-5 leading-loose">منحة فصلية لطلاب الجامعات من أبناء الأسر المتعفّفة.</p>
+          <div class="flex items-center justify-between mb-2 text-sm">
+            <span class="font-bold text-sanad-navy">32%</span>
+            <span class="text-sanad-muted">94 مساهم</span>
           </div>
-          <button class="sanad-btn sanad-btn-primary w-full justify-center mt-6">ساهم الآن</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ الأثر بالأرقام ============ -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="sanad-impact p-10 lg:p-16 reveal">
-        <div class="relative z-10 grid lg:grid-cols-12 gap-10">
-          <div class="lg:col-span-4">
-            <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/15 text-sm">أثرنا بالأرقام</span>
-            <h2 class="mt-5 text-3xl lg:text-4xl font-black text-white leading-tight">أثر حقيقي… يُقاس ويُنشر</h2>
-            <p class="mt-4 text-white/80 leading-loose">نؤمن أن الأرقام لغة الشفافية. هذه لمحة من أثر برامج الجمعية خلال آخر عام.</p>
-            <a href="about.html" class="sanad-btn sanad-btn-gold mt-6">التقرير السنوي <i class="fas fa-arrow-left"></i></a>
+          <div class="s-progress mb-4"><span data-progress="32" style="width:0"></span></div>
+          <div class="flex items-center justify-between text-xs text-sanad-muted mb-4">
+            <span>المتحقق: 80,000 ر.س</span>
+            <span>الهدف: 250,000 ر.س</span>
           </div>
-          <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-5">
-            <div class="bg-white/8 border border-white/15 rounded-2xl p-6 backdrop-blur"><div class="text-3xl lg:text-4xl font-black text-white" data-counter="12800">0</div><div class="text-white/75 mt-1">مستفيد</div></div>
-            <div class="bg-white/8 border border-white/15 rounded-2xl p-6 backdrop-blur"><div class="text-3xl lg:text-4xl font-black text-sanad-goldSoft" data-counter="42">0</div><div class="text-white/75 mt-1">مشروع وبرنامج</div></div>
-            <div class="bg-white/8 border border-white/15 rounded-2xl p-6 backdrop-blur"><div class="text-3xl lg:text-4xl font-black text-white" data-counter="6500">0</div><div class="text-white/75 mt-1">خدمة مقدمة</div></div>
-            <div class="bg-white/8 border border-white/15 rounded-2xl p-6 backdrop-blur"><div class="text-3xl lg:text-4xl font-black text-white" data-counter="1240">0</div><div class="text-white/75 mt-1">متطوع</div></div>
-            <div class="bg-white/8 border border-white/15 rounded-2xl p-6 backdrop-blur"><div class="text-3xl lg:text-4xl font-black text-sanad-goldSoft" data-counter="96" data-suffix="%">0</div><div class="text-white/75 mt-1">رضا المستفيدين</div></div>
-            <div class="bg-white/8 border border-white/15 rounded-2xl p-6 backdrop-blur"><div class="text-3xl lg:text-4xl font-black text-white" data-counter="28">0</div><div class="text-white/75 mt-1">شراكة مجتمعية</div></div>
-          </div>
+          <button class="s-btn s-btn-primary w-full justify-center"><i class="fas fa-heart"></i> ساهم الآن</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ الحوكمة والشفافية ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10">
-      <div class="lg:col-span-5 reveal">
-        <span class="sanad-eyebrow">حوكمة وشفافية</span>
-        <h2 class="sanad-section-title">نلتزم بنشر بياناتنا وتقاريرنا بوضوح</h2>
-        <p class="mt-4 text-sanad-muted leading-loose">
-          الحوكمة في سند ليست شعارًا، بل التزام مكتوب يضمن استدامة الأثر وثقة المتبرع والمستفيد والشريك.
-        </p>
-        <div class="mt-8 grid grid-cols-2 gap-4">
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border"><div class="text-3xl font-black text-sanad-navy">24</div><div class="text-xs text-sanad-muted mt-1">ملف حوكمة منشور</div></div>
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border"><div class="text-sm font-black text-sanad-emerald">هذا الشهر</div><div class="text-xs text-sanad-muted mt-1">آخر تحديث</div></div>
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border"><div class="text-3xl font-black text-sanad-navy">6</div><div class="text-xs text-sanad-muted mt-1">تقارير مالية متاحة</div></div>
-          <div class="p-5 rounded-2xl bg-sanad-ivory border border-sanad-border"><div class="text-3xl font-black text-sanad-navy">12</div><div class="text-xs text-sanad-muted mt-1">محاضر اجتماعات محدثة</div></div>
-        </div>
-        <a href="governance.html" class="sanad-btn sanad-btn-primary mt-8">صفحة الحوكمة <i class="fas fa-arrow-left"></i></a>
-      </div>
+  <!-- ============ 9) أثرنا بالأرقام ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="s-impact s-noise reveal">
+        <div class="relative z-10">
+          <div class="text-center mb-12">
+            <span class="s-eyebrow on-dark mb-4"><i class="fas fa-chart-line"></i> أثرنا بالأرقام</span>
+            <h2 class="s-title font-extrabold text-white">لوحة مؤشرات الأثر المؤسسي</h2>
+            <p class="text-white/70 max-w-2xl mx-auto mt-3">قراءة موحّدة لأبرز مخرجات الجمعية خلال العام الجاري.</p>
+          </div>
 
-      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4 reveal">
-        <a href="governance.html" class="sanad-card flex items-start gap-4"><div class="sanad-icon-wrap"><i class="fas fa-scroll"></i></div><div><h4 class="font-black">اللوائح والسياسات</h4><p class="text-sm text-sanad-muted mt-1">السياسات المعتمدة من مجلس الإدارة.</p></div></a>
-        <a href="governance.html" class="sanad-card flex items-start gap-4"><div class="sanad-icon-wrap"><i class="fas fa-file-invoice-dollar"></i></div><div><h4 class="font-black">التقارير المالية</h4><p class="text-sm text-sanad-muted mt-1">تقارير مدققة سنوية وربع سنوية.</p></div></a>
-        <a href="governance.html" class="sanad-card flex items-start gap-4"><div class="sanad-icon-wrap"><i class="fas fa-user-tie"></i></div><div><h4 class="font-black">مجلس الإدارة</h4><p class="text-sm text-sanad-muted mt-1">أعضاء المجلس واللجان المنبثقة.</p></div></a>
-        <a href="governance.html" class="sanad-card flex items-start gap-4"><div class="sanad-icon-wrap"><i class="fas fa-users"></i></div><div><h4 class="font-black">الجمعية العمومية</h4><p class="text-sm text-sanad-muted mt-1">قرارات وتوصيات الجمعية العمومية.</p></div></a>
-        <a href="governance.html" class="sanad-card flex items-start gap-4"><div class="sanad-icon-wrap"><i class="fas fa-book"></i></div><div><h4 class="font-black">التقرير السنوي</h4><p class="text-sm text-sanad-muted mt-1">ملخص الأثر والإنجازات السنوية.</p></div></a>
-        <a href="governance.html" class="sanad-card flex items-start gap-4"><div class="sanad-icon-wrap"><i class="fas fa-clipboard-list"></i></div><div><h4 class="font-black">محاضر الاجتماعات</h4><p class="text-sm text-sanad-muted mt-1">محاضر المجلس واللجان الدائمة.</p></div></a>
-        <a href="governance.html" class="sanad-card flex items-start gap-4 sm:col-span-2"><div class="sanad-icon-wrap"><i class="fas fa-file-signature"></i></div><div><h4 class="font-black">نموذج الإفصاح</h4><p class="text-sm text-sanad-muted mt-1">نماذج الإفصاح عن تعارض المصالح للأعضاء والعاملين.</p></div></a>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div class="s-stat-card text-center">
+              <div class="s-stat-num" data-counter="12800">0</div>
+              <div class="text-white/75 text-sm mt-2">مستفيد</div>
+            </div>
+            <div class="s-stat-card text-center">
+              <div class="s-stat-num" data-counter="42">0</div>
+              <div class="text-white/75 text-sm mt-2">مشروع وبرنامج</div>
+            </div>
+            <div class="s-stat-card text-center">
+              <div class="s-stat-num" data-counter="6500">0</div>
+              <div class="text-white/75 text-sm mt-2">خدمة مقدّمة</div>
+            </div>
+            <div class="s-stat-card text-center">
+              <div class="s-stat-num" data-counter="1240">0</div>
+              <div class="text-white/75 text-sm mt-2">متطوع ومتطوعة</div>
+            </div>
+            <div class="s-stat-card text-center">
+              <div class="s-stat-num" data-counter="96" data-suffix="%">0</div>
+              <div class="text-white/75 text-sm mt-2">رضا المستفيدين</div>
+            </div>
+            <div class="s-stat-card text-center">
+              <div class="s-stat-num" data-counter="28">0</div>
+              <div class="text-white/75 text-sm mt-2">شراكة مجتمعية</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ الأخبار ============ -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+  <!-- ============ 10) الحوكمة والشفافية ============ -->
+  <section id="governance" class="s-section bg-sanad-mist/60">
+    <div class="s-container">
+      <div class="grid lg:grid-cols-12 gap-8">
+        <!-- لوحة جانبية -->
+        <aside class="lg:col-span-4 reveal">
+          <div class="s-gov-panel">
+            <span class="s-eyebrow on-dark mb-4"><i class="fas fa-scale-balanced"></i> بوابة الإفصاح</span>
+            <h2 class="text-3xl font-extrabold text-white mb-3">الحوكمة والشفافية</h2>
+            <p class="text-white/80 mb-6 leading-loose">منظومة إفصاح متكاملة تعكس التزامنا بأعلى معايير الحوكمة المؤسسية.</p>
+
+            <div class="space-y-3 relative z-10">
+              <div class="flex items-center justify-between p-3 rounded-xl bg-white/10 border border-white/15">
+                <div class="flex items-center gap-3 text-white">
+                  <i class="fas fa-folder-open text-sanad-goldSoft"></i>
+                  <span class="font-bold">ملفات منشورة</span>
+                </div>
+                <span class="font-extrabold text-white text-lg">24</span>
+              </div>
+              <div class="flex items-center justify-between p-3 rounded-xl bg-white/10 border border-white/15">
+                <div class="flex items-center gap-3 text-white">
+                  <i class="fas fa-calendar-check text-sanad-goldSoft"></i>
+                  <span class="font-bold">آخر تحديث</span>
+                </div>
+                <span class="font-extrabold text-white">هذا الشهر</span>
+              </div>
+              <div class="flex items-center justify-between p-3 rounded-xl bg-white/10 border border-white/15">
+                <div class="flex items-center gap-3 text-white">
+                  <i class="fas fa-file-invoice-dollar text-sanad-goldSoft"></i>
+                  <span class="font-bold">تقارير مالية</span>
+                </div>
+                <span class="font-extrabold text-white">متاحة</span>
+              </div>
+            </div>
+
+            <a href="governance.html" class="s-btn s-btn-gold mt-6 w-full justify-center relative z-10">بوابة الحوكمة <i class="fas fa-arrow-left"></i></a>
+          </div>
+        </aside>
+
+        <!-- شبكة وثائق -->
+        <div class="lg:col-span-8 grid sm:grid-cols-2 gap-3 reveal reveal-delay-1">
+          <a href="governance.html" class="s-gov-card">
+            <div class="s-gov-icon"><i class="fas fa-book"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">اللوائح والسياسات</h4>
+              <p class="text-sanad-muted text-xs">النظام الأساسي ولوائح الحوكمة</p>
+              <div class="s-gov-meta"><i class="fas fa-file-pdf"></i> PDF • 8 ملفات</div>
+            </div>
+          </a>
+          <a href="governance.html" class="s-gov-card">
+            <div class="s-gov-icon"><i class="fas fa-chart-pie"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">التقارير المالية</h4>
+              <p class="text-sanad-muted text-xs">قوائم مالية مدقّقة لكل عام</p>
+              <div class="s-gov-meta"><i class="fas fa-file-pdf"></i> PDF • 5 سنوات</div>
+            </div>
+          </a>
+          <a href="governance.html" class="s-gov-card">
+            <div class="s-gov-icon"><i class="fas fa-users-gear"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">مجلس الإدارة</h4>
+              <p class="text-sanad-muted text-xs">السير الذاتية والاجتماعات</p>
+              <div class="s-gov-meta"><i class="fas fa-circle-info"></i> 9 أعضاء</div>
+            </div>
+          </a>
+          <a href="governance.html" class="s-gov-card">
+            <div class="s-gov-icon"><i class="fas fa-people-group"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">الجمعية العمومية</h4>
+              <p class="text-sanad-muted text-xs">قرارات وتوصيات الاجتماعات</p>
+              <div class="s-gov-meta"><i class="fas fa-calendar"></i> سنويًا</div>
+            </div>
+          </a>
+          <a href="governance.html" class="s-gov-card">
+            <div class="s-gov-icon"><i class="fas fa-file-shield"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">التقرير السنوي</h4>
+              <p class="text-sanad-muted text-xs">إنجازات الجمعية وأبرز مؤشراتها</p>
+              <div class="s-gov-meta"><i class="fas fa-download"></i> تحميل آخر إصدار</div>
+            </div>
+          </a>
+          <a href="governance.html" class="s-gov-card">
+            <div class="s-gov-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">محاضر الاجتماعات</h4>
+              <p class="text-sanad-muted text-xs">محاضر معتمدة ومحدّثة</p>
+              <div class="s-gov-meta"><i class="fas fa-rotate"></i> آخر تحديث: هذا الشهر</div>
+            </div>
+          </a>
+          <a href="governance.html" class="s-gov-card sm:col-span-2">
+            <div class="s-gov-icon"><i class="fas fa-circle-exclamation"></i></div>
+            <div>
+              <h4 class="font-extrabold text-sanad-navy mb-1">نموذج الإفصاح والإبلاغ</h4>
+              <p class="text-sanad-muted text-xs">قناة آمنة وسرّية للإبلاغ عن أي مخالفة أو ملاحظة</p>
+              <div class="s-gov-meta"><i class="fas fa-lock"></i> سرية تامة • متابعة موثّقة</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11) الأخبار ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
         <div>
-          <span class="sanad-eyebrow">المركز الإعلامي</span>
-          <h2 class="sanad-section-title">أخبار الجمعية</h2>
+          <span class="s-eyebrow mb-4"><i class="fas fa-newspaper"></i> المركز الإعلامي</span>
+          <h2 class="s-title font-extrabold">آخر أخبار الجمعية</h2>
         </div>
-        <a href="news.html" class="sanad-btn sanad-btn-outline">كل الأخبار <i class="fas fa-arrow-left"></i></a>
+        <a href="news.html" class="s-btn s-btn-outline">كل الأخبار <i class="fas fa-arrow-left"></i></a>
       </div>
 
-      <div class="mt-12 grid lg:grid-cols-12 gap-6">
-        <article class="lg:col-span-7 sanad-card p-0 overflow-hidden reveal">
-          <div class="relative h-80 lg:h-full min-h-[360px]">
-            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1000&q=80" alt="خبر رئيسي" class="absolute inset-0 w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-0 right-0 left-0 p-8 text-white">
-              <div class="flex items-center gap-3 text-sm mb-3"><span class="bg-sanad-emerald px-3 py-1 rounded-full font-bold">أبرز الأخبار</span><span><i class="fas fa-calendar ml-1"></i> 12 نوفمبر 2025</span></div>
-              <h3 class="text-2xl lg:text-3xl font-black">سند توقّع شراكة استراتيجية لتوسيع برامج التمكين الأسري</h3>
-              <p class="mt-3 text-white/85 max-w-2xl">اتفاقية جديدة تستهدف توسيع نطاق التمكين وتأهيل المستفيدين خلال العامين القادمين.</p>
-              <a href="news-details.html" class="sanad-btn sanad-btn-gold mt-5">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+      <div class="grid lg:grid-cols-12 gap-6 reveal reveal-delay-1">
+        <!-- خبر رئيسي -->
+        <a href="news-details.html" class="lg:col-span-7 s-news-hero">
+          <div class="s-news-cover">
+            <div class="absolute inset-0 flex items-end p-6">
+              <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-white/95 text-sanad-navy">شراكة</span>
             </div>
           </div>
-        </article>
-        <div class="lg:col-span-5 grid gap-5">
-          <article class="sanad-card flex gap-4 reveal">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=300&q=80" class="w-28 h-28 rounded-xl object-cover" alt="" />
+          <div class="p-6 flex flex-col">
+            <div class="text-xs text-sanad-muted mb-2"><i class="fas fa-calendar ml-1"></i> 18 جمادى الأولى 1447هـ</div>
+            <h3 class="text-xl font-extrabold text-sanad-navy mb-3 leading-relaxed">توقيع شراكة استراتيجية لتوسيع برامج الرعاية الصحية في 5 مناطق</h3>
+            <p class="text-sanad-muted text-sm leading-loose mb-5">وقّعت جمعية سَنَد اتفاقية شراكة مع جهة وطنية لرفع جاهزية برنامج كفالة الأدوية المزمنة وتوسيع نطاقه الجغرافي.</p>
+            <span class="text-sanad-emeraldDeep font-bold text-sm mt-auto">اقرأ التفاصيل <i class="fas fa-arrow-left"></i></span>
+          </div>
+        </a>
+
+        <!-- أخبار صغيرة -->
+        <div class="lg:col-span-5 grid gap-4">
+          <a href="news-details.html" class="s-news-mini">
+            <div class="s-news-thumb"></div>
             <div>
-              <div class="text-xs text-sanad-muted"><span class="text-sanad-emerald font-bold">رعاية</span> · 8 نوفمبر 2025</div>
-              <h4 class="font-black mt-1">إطلاق حملة الرعاية الصحية للأسر المستفيدة</h4>
-              <a href="news-details.html" class="text-sanad-emerald font-bold text-sm mt-2 inline-block">اقرأ المزيد <i class="fas fa-arrow-left text-xs"></i></a>
+              <div class="text-[11px] text-sanad-muted mb-1">حوكمة • هذا الأسبوع</div>
+              <h4 class="font-extrabold text-sanad-navy text-sm leading-relaxed">نشر التقرير السنوي للعام 1446هـ</h4>
             </div>
-          </article>
-          <article class="sanad-card flex gap-4 reveal">
-            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=300&q=80" class="w-28 h-28 rounded-xl object-cover" alt="" />
+          </a>
+          <a href="news-details.html" class="s-news-mini">
+            <div class="s-news-thumb" style="background:linear-gradient(135deg,#b6873a,#075c3a);"></div>
             <div>
-              <div class="text-xs text-sanad-muted"><span class="text-sanad-emerald font-bold">تمكين</span> · 1 نوفمبر 2025</div>
-              <h4 class="font-black mt-1">تخريج 120 مستفيدة من برنامج التمكين المهني</h4>
-              <a href="news-details.html" class="text-sanad-emerald font-bold text-sm mt-2 inline-block">اقرأ المزيد <i class="fas fa-arrow-left text-xs"></i></a>
+              <div class="text-[11px] text-sanad-muted mb-1">برامج • هذا الشهر</div>
+              <h4 class="font-extrabold text-sanad-navy text-sm leading-relaxed">انطلاق الحملة الشتوية لدعم 3,000 أسرة</h4>
             </div>
-          </article>
-          <article class="sanad-card flex gap-4 reveal">
-            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=300&q=80" class="w-28 h-28 rounded-xl object-cover" alt="" />
+          </a>
+          <a href="news-details.html" class="s-news-mini">
+            <div class="s-news-thumb" style="background:linear-gradient(135deg,#0b2545,#1d3a6b);"></div>
             <div>
-              <div class="text-xs text-sanad-muted"><span class="text-sanad-emerald font-bold">حوكمة</span> · 20 أكتوبر 2025</div>
-              <h4 class="font-black mt-1">نشر التقرير المالي الربعي الثالث على البوابة</h4>
-              <a href="news-details.html" class="text-sanad-emerald font-bold text-sm mt-2 inline-block">اقرأ المزيد <i class="fas fa-arrow-left text-xs"></i></a>
+              <div class="text-[11px] text-sanad-muted mb-1">تطوع • قريبًا</div>
+              <h4 class="font-extrabold text-sanad-navy text-sm leading-relaxed">فتح باب التسجيل لـ 200 متطوع جديد</h4>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ الفعاليات ============ -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+  <!-- ============ 12) الفعاليات ============ -->
+  <section class="s-section bg-white border-y border-sanad-border">
+    <div class="s-container">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
         <div>
-          <span class="sanad-eyebrow">الأنشطة والفعاليات</span>
-          <h2 class="sanad-section-title">فعاليات قريبة تنتظر مشاركتك</h2>
+          <span class="s-eyebrow mb-4"><i class="fas fa-calendar-days"></i> أجندة الفعاليات</span>
+          <h2 class="s-title font-extrabold">فعاليات قادمة</h2>
         </div>
-        <a href="events.html" class="sanad-btn sanad-btn-outline">كل الفعاليات <i class="fas fa-arrow-left"></i></a>
+        <a href="events.html" class="s-btn s-btn-outline">كل الفعاليات <i class="fas fa-arrow-left"></i></a>
       </div>
 
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <article class="sanad-card flex items-start gap-5 reveal">
-          <div class="text-center bg-sanad-emerald text-white rounded-2xl px-4 py-3 min-w-[78px]">
-            <div class="text-2xl font-black leading-none">22</div><div class="text-xs mt-1">نوفمبر</div>
+      <div class="grid lg:grid-cols-2 gap-4 reveal reveal-delay-1">
+        <a href="event-details.html" class="s-event">
+          <div class="s-event-date">
+            <div class="day">12</div>
+            <div class="month">ربيع الآخر</div>
           </div>
           <div>
-            <span class="inline-block text-xs font-bold text-sanad-emerald bg-sanad-emerald/10 px-2.5 py-0.5 rounded-full">قريبًا</span>
-            <h4 class="font-black mt-2">لقاء تعريفي للمستفيدين</h4>
-            <p class="text-sm text-sanad-muted mt-1"><i class="fas fa-location-dot ml-1 text-sanad-gold"></i> مقر الجمعية · الرياض</p>
-            <a href="event-details.html" class="text-sanad-emerald font-bold text-sm mt-3 inline-block">تفاصيل الفعالية <i class="fas fa-arrow-left text-xs"></i></a>
+            <h4 class="font-extrabold text-sanad-navy mb-1">ملتقى الأسر المنتجة الثاني</h4>
+            <div class="text-xs text-sanad-muted"><i class="fas fa-location-dot ml-1 text-sanad-emerald"></i> الرياض • فندق المؤتمرات</div>
           </div>
-        </article>
-        <article class="sanad-card flex items-start gap-5 reveal">
-          <div class="text-center bg-sanad-navy text-white rounded-2xl px-4 py-3 min-w-[78px]">
-            <div class="text-2xl font-black leading-none">05</div><div class="text-xs mt-1">ديسمبر</div>
-          </div>
-          <div>
-            <span class="inline-block text-xs font-bold text-sanad-gold bg-sanad-gold/10 px-2.5 py-0.5 rounded-full">التسجيل مفتوح</span>
-            <h4 class="font-black mt-2">ورشة التمكين الأسري</h4>
-            <p class="text-sm text-sanad-muted mt-1"><i class="fas fa-location-dot ml-1 text-sanad-gold"></i> القاعة الكبرى · 4 ساعات</p>
-            <a href="event-details.html" class="text-sanad-emerald font-bold text-sm mt-3 inline-block">تفاصيل الفعالية <i class="fas fa-arrow-left text-xs"></i></a>
-          </div>
-        </article>
-        <article class="sanad-card flex items-start gap-5 reveal">
-          <div class="text-center bg-sanad-gold text-white rounded-2xl px-4 py-3 min-w-[78px]">
-            <div class="text-2xl font-black leading-none">18</div><div class="text-xs mt-1">ديسمبر</div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-sanad-emerald/10 text-sanad-emeraldDeep whitespace-nowrap">التسجيل مفتوح</span>
+        </a>
+        <a href="event-details.html" class="s-event">
+          <div class="s-event-date" style="background:linear-gradient(135deg,#b6873a,#075c3a);">
+            <div class="day">22</div>
+            <div class="month">ربيع الآخر</div>
           </div>
           <div>
-            <span class="inline-block text-xs font-bold text-sanad-navy bg-sanad-navy/10 px-2.5 py-0.5 rounded-full">حملة</span>
-            <h4 class="font-black mt-2">حملة السلال الرمضانية</h4>
-            <p class="text-sm text-sanad-muted mt-1"><i class="fas fa-location-dot ml-1 text-sanad-gold"></i> عدة مناطق</p>
-            <a href="event-details.html" class="text-sanad-emerald font-bold text-sm mt-3 inline-block">تفاصيل الفعالية <i class="fas fa-arrow-left text-xs"></i></a>
+            <h4 class="font-extrabold text-sanad-navy mb-1">يوم التطوع الوطني</h4>
+            <div class="text-xs text-sanad-muted"><i class="fas fa-location-dot ml-1 text-sanad-emerald"></i> فروع الجمعية</div>
           </div>
-        </article>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-sanad-gold/15 text-sanad-gold whitespace-nowrap">قريبًا</span>
+        </a>
+        <a href="event-details.html" class="s-event">
+          <div class="s-event-date" style="background:linear-gradient(135deg,#0b2545,#1d3a6b);">
+            <div class="day">05</div>
+            <div class="month">جمادى الأولى</div>
+          </div>
+          <div>
+            <h4 class="font-extrabold text-sanad-navy mb-1">ورشة الإرشاد الأسري</h4>
+            <div class="text-xs text-sanad-muted"><i class="fas fa-location-dot ml-1 text-sanad-emerald"></i> عن بُعد</div>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-sanad-emerald/10 text-sanad-emeraldDeep whitespace-nowrap">التسجيل مفتوح</span>
+        </a>
+        <a href="event-details.html" class="s-event">
+          <div class="s-event-date">
+            <div class="day">19</div>
+            <div class="month">جمادى الأولى</div>
+          </div>
+          <div>
+            <h4 class="font-extrabold text-sanad-navy mb-1">حفل تكريم المتبرعين</h4>
+            <div class="text-xs text-sanad-muted"><i class="fas fa-location-dot ml-1 text-sanad-emerald"></i> الرياض • مقر الجمعية</div>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-sanad-gold/15 text-sanad-gold whitespace-nowrap">بالدعوة</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ قالوا عنا ============ -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center reveal">
-        <span class="sanad-eyebrow">قالوا عنا</span>
-        <h2 class="sanad-section-title">كلمات مؤثرة… من قلب الميدان</h2>
+  <!-- ============ 13) قالوا عنا ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="text-center mb-12 reveal">
+        <span class="s-eyebrow mb-4"><i class="fas fa-quote-right"></i> قالوا عنا</span>
+        <h2 class="s-title font-extrabold">آراء من قلب الميدان</h2>
       </div>
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <div class="sanad-card reveal">
-          <i class="fas fa-quote-right text-3xl text-sanad-emerald/40"></i>
-          <p class="mt-4 text-sanad-text leading-loose">شعرت بكرامتي وأنا أتلقى الخدمة. سند لم تقدم لي مساعدة فقط، بل أعادت لي الثقة بقدرتي على الاستقلال.</p>
-          <div class="mt-6 flex items-center gap-3 border-t border-sanad-border pt-5">
-            <div class="w-12 h-12 rounded-full bg-sanad-emerald/10 flex items-center justify-center text-sanad-emerald"><i class="fas fa-user"></i></div>
-            <div><div class="font-black">مستفيدة من برنامج التمكين</div><div class="text-xs text-sanad-muted">الرياض</div></div>
+
+      <div class="grid md:grid-cols-3 gap-6 reveal reveal-delay-1">
+        <div class="s-quote">
+          <p class="text-sanad-text leading-loose mb-5 relative z-10">
+            وجدت في جمعية سَنَد يدًا تحفظ كرامتي، وأسلوبًا راقيًا في تقديم الخدمة جعلني أشعر بالأمان.
+          </p>
+          <div class="flex items-center gap-3 pt-4 border-t border-sanad-border">
+            <div class="s-quote-avatar">أ</div>
+            <div>
+              <div class="font-bold text-sanad-navy text-sm">أم عبدالله</div>
+              <div class="text-xs text-sanad-muted">مستفيدة من برامج الرعاية</div>
+            </div>
           </div>
         </div>
-        <div class="sanad-card reveal">
-          <i class="fas fa-quote-right text-3xl text-sanad-emerald/40"></i>
-          <p class="mt-4 text-sanad-text leading-loose">التطوع في سند تجربة منظمة ومحترمة، شعرت أن وقتي يصل فعلاً إلى من يستحق، وأن الجمعية تقدر كل دقيقة نقدمها.</p>
-          <div class="mt-6 flex items-center gap-3 border-t border-sanad-border pt-5">
-            <div class="w-12 h-12 rounded-full bg-sanad-emerald/10 flex items-center justify-center text-sanad-emerald"><i class="fas fa-hands-helping"></i></div>
-            <div><div class="font-black">متطوع ميداني</div><div class="text-xs text-sanad-muted">قائد فريق تطوعي</div></div>
+        <div class="s-quote">
+          <p class="text-sanad-text leading-loose mb-5 relative z-10">
+            تجربتي في التطوع مع سَنَد علّمتني معنى العطاء المنظّم؛ فالإجراءات واضحة والأثر ملموس.
+          </p>
+          <div class="flex items-center gap-3 pt-4 border-t border-sanad-border">
+            <div class="s-quote-avatar">س</div>
+            <div>
+              <div class="font-bold text-sanad-navy text-sm">سعد العتيبي</div>
+              <div class="text-xs text-sanad-muted">متطوع</div>
+            </div>
           </div>
         </div>
-        <div class="sanad-card reveal">
-          <i class="fas fa-quote-right text-3xl text-sanad-emerald/40"></i>
-          <p class="mt-4 text-sanad-text leading-loose">شراكتنا مع سند نموذج للحوكمة الواضحة والتنفيذ المتقن، الأرقام أمامنا والتقارير شفافة، وهذا ما نبحث عنه كشريك داعم.</p>
-          <div class="mt-6 flex items-center gap-3 border-t border-sanad-border pt-5">
-            <div class="w-12 h-12 rounded-full bg-sanad-emerald/10 flex items-center justify-center text-sanad-emerald"><i class="fas fa-handshake"></i></div>
-            <div><div class="font-black">شريك داعم</div><div class="text-xs text-sanad-muted">من القطاع الخاص</div></div>
+        <div class="s-quote">
+          <p class="text-sanad-text leading-loose mb-5 relative z-10">
+            شفافية الجمعية في الإفصاح والتقارير المالية جعلتها شريكًا موثوقًا لبرامج المسؤولية الاجتماعية لدينا.
+          </p>
+          <div class="flex items-center gap-3 pt-4 border-t border-sanad-border">
+            <div class="s-quote-avatar">ش</div>
+            <div>
+              <div class="font-bold text-sanad-navy text-sm">شركة شريكة</div>
+              <div class="text-xs text-sanad-muted">جهة داعمة</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ الشركاء ============ -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center reveal">
-        <span class="sanad-eyebrow">شركاؤنا في الأثر</span>
-        <h2 class="sanad-section-title">نعمل معًا… ليصل الأثر أبعد</h2>
+  <!-- ============ 14) الشركاء ============ -->
+  <section class="s-section-tight bg-white border-y border-sanad-border">
+    <div class="s-container">
+      <div class="text-center mb-8 reveal">
+        <span class="s-eyebrow mb-3"><i class="fas fa-handshake"></i> شركاء النجاح</span>
+        <h3 class="text-xl font-extrabold text-sanad-navy">جهات نفخر بالعمل معها</h3>
       </div>
-      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 reveal">
-        <div class="h-24 rounded-2xl border border-sanad-border bg-sanad-ivory flex items-center justify-center text-sanad-muted font-bold">شريك ١</div>
-        <div class="h-24 rounded-2xl border border-sanad-border bg-sanad-ivory flex items-center justify-center text-sanad-muted font-bold">شريك ٢</div>
-        <div class="h-24 rounded-2xl border border-sanad-border bg-sanad-ivory flex items-center justify-center text-sanad-muted font-bold">شريك ٣</div>
-        <div class="h-24 rounded-2xl border border-sanad-border bg-sanad-ivory flex items-center justify-center text-sanad-muted font-bold">شريك ٤</div>
-        <div class="h-24 rounded-2xl border border-sanad-border bg-sanad-ivory flex items-center justify-center text-sanad-muted font-bold">شريك ٥</div>
-        <div class="h-24 rounded-2xl border border-sanad-border bg-sanad-ivory flex items-center justify-center text-sanad-muted font-bold">شريك ٦</div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 reveal reveal-delay-1">
+        <div class="s-partner">إحسان</div>
+        <div class="s-partner">المركز الوطني</div>
+        <div class="s-partner">وزارة الموارد</div>
+        <div class="s-partner">شريك ذهبي</div>
+        <div class="s-partner">شريك فضي</div>
+        <div class="s-partner">جهة داعمة</div>
       </div>
     </div>
   </section>
 
-  <!-- ============ الدعوة الختامية ============ -->
-  <section class="py-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="relative overflow-hidden rounded-[36px] p-10 lg:p-16 text-center text-white reveal" style="background: linear-gradient(135deg, #0a1f36 0%, #0a7a55 100%);">
-        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 30%, #e4c07a, transparent 40%), radial-gradient(circle at 80% 70%, #2bb887, transparent 40%);"></div>
-        <div class="relative">
-          <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/15 text-sm">انضم لرحلة الأثر</span>
-          <h2 class="mt-5 text-3xl lg:text-5xl font-black text-white">كن سندًا لأثر يمتد</h2>
-          <p class="mt-4 max-w-2xl mx-auto text-white/85 leading-loose">ساهم معنا في تحويل الاحتياج إلى فرصة، والخدمة إلى أثر مستدام يعيش طويلاً في حياة الإنسان.</p>
-          <div class="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#donate" class="sanad-btn sanad-btn-gold"><i class="fas fa-heart"></i> تبرع الآن</a>
-            <a href="services.html" class="sanad-btn sanad-btn-primary"><i class="fas fa-hand-holding-heart"></i> اطلب خدمة</a>
-            <a href="contact.html" class="sanad-btn sanad-btn-ghost"><i class="fas fa-phone"></i> تواصل معنا</a>
+  <!-- ============ 15) الدعوة الختامية ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="s-cta reveal">
+        <div class="relative z-10 text-center max-w-3xl mx-auto">
+          <span class="s-eyebrow on-dark mb-5"><i class="fas fa-hand-holding-heart"></i> دعوتنا لك</span>
+          <h2 class="s-title-xl font-extrabold text-white mb-4">كن سَنَدًا… لأثر يمتد</h2>
+          <p class="text-white/85 text-lg mb-8 leading-loose">
+            انضم لرحلة العطاء المؤسسي، وكن جزءًا من قصص حياة يومية نصنعها بأيدي المتبرعين والمتطوعين والشركاء.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="#donate" class="s-btn s-btn-gold"><i class="fas fa-heart"></i> تبرع الآن</a>
+            <a href="services.html" class="s-btn s-btn-primary"><i class="fas fa-clipboard-list"></i> اطلب خدمة</a>
+            <a href="contact.html" class="s-btn s-btn-ghost"><i class="fas fa-envelope"></i> تواصل معنا</a>
           </div>
         </div>
       </div>
@@ -724,82 +972,97 @@
   </section>
 
   <!-- ============ الفوتر ============ -->
-  <footer class="sanad-footer pt-20 pb-8">
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10">
-      <div class="lg:col-span-4">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="sanad-logo-mark">س</span>
-          <div><div class="font-black text-white text-xl">جمعية سند</div><div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div></div>
-        </div>
-        <p class="text-white/75 leading-loose">جمعية اجتماعية مرخصة، تعمل على تقديم خدمات الرعاية والتمكين، بشفافية وحوكمة، لخدمة الإنسان في كل مرحلة من رحلته.</p>
-        <div class="mt-6 flex items-center gap-3">
-          <a href="#" class="social"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social"><i class="fab fa-youtube"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social"><i class="fab fa-snapchat"></i></a>
-        </div>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h4>روابط سريعة</h4>
-        <ul class="space-y-2 text-white/75 text-sm">
-          <li><a href="about.html">عن الجمعية</a></li>
-          <li><a href="services.html">خدماتنا</a></li>
-          <li><a href="projects.html">المشاريع</a></li>
-          <li><a href="news.html">المركز الإعلامي</a></li>
-          <li><a href="events.html">الفعاليات</a></li>
-          <li><a href="contact.html">تواصل معنا</a></li>
-        </ul>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h4>الحوكمة</h4>
-        <ul class="space-y-2 text-white/75 text-sm">
-          <li><a href="governance.html">اللوائح والسياسات</a></li>
-          <li><a href="governance.html">التقارير المالية</a></li>
-          <li><a href="governance.html">مجلس الإدارة</a></li>
-          <li><a href="governance.html">الجمعية العمومية</a></li>
-          <li><a href="governance.html">التقرير السنوي</a></li>
-        </ul>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h4>خدماتنا</h4>
-        <ul class="space-y-2 text-white/75 text-sm">
-          <li><a href="services.html">الرعاية الصحية</a></li>
-          <li><a href="services.html">الرعاية التعليمية</a></li>
-          <li><a href="services.html">دعم الإسكان</a></li>
-          <li><a href="services.html">التمكين الأسري</a></li>
-          <li><a href="services.html">السلال الغذائية</a></li>
-        </ul>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h4>تواصل معنا</h4>
-        <ul class="space-y-3 text-white/75 text-sm">
-          <li><i class="fas fa-location-dot ml-2 text-sanad-emeraldSoft"></i> الرياض - المملكة العربية السعودية</li>
-          <li><i class="fas fa-phone ml-2 text-sanad-emeraldSoft"></i> 920000000</li>
-          <li><i class="fas fa-envelope ml-2 text-sanad-emeraldSoft"></i> info@sanad.org.sa</li>
-        </ul>
-        <form class="mt-5">
-          <label class="text-xs text-white/70">النشرة البريدية</label>
-          <div class="mt-2 flex bg-white/8 border border-white/15 rounded-full overflow-hidden">
-            <input type="email" placeholder="بريدك الإلكتروني" class="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/50 focus:outline-none" />
-            <button type="button" class="bg-sanad-emerald hover:bg-sanad-emeraldDeep transition text-white px-4 text-sm font-bold">اشترك</button>
+  <footer class="s-footer">
+    <div class="s-container pb-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <!-- العمود الأول -->
+        <div class="lg:col-span-4">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="s-logo-mark">س</div>
+            <div>
+              <div class="font-extrabold text-white text-lg">جمعية سَنَد</div>
+              <div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div>
+            </div>
           </div>
-        </form>
+          <p class="text-sm leading-loose mb-5">
+            جمعية أهلية مرخّصة، تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.
+          </p>
+          <div class="flex items-center gap-2">
+            <a href="#" class="s-social" aria-label="تويتر"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="s-social" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="s-social" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="s-social" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="s-social" aria-label="سناب شات"><i class="fab fa-snapchat"></i></a>
+          </div>
+        </div>
+
+        <!-- روابط رئيسية -->
+        <div class="lg:col-span-2">
+          <h4>روابط رئيسية</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="about.html">عن الجمعية</a></li>
+            <li><a href="news.html">الأخبار</a></li>
+            <li><a href="events.html">الفعاليات</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <!-- الخدمات -->
+        <div class="lg:col-span-2">
+          <h4>الخدمات</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="services.html">طلب خدمة</a></li>
+            <li><a href="services.html">متابعة طلب</a></li>
+            <li><a href="contact.html">طلب عضوية</a></li>
+            <li><a href="contact.html">التطوع</a></li>
+            <li><a href="projects.html">المشاريع</a></li>
+          </ul>
+        </div>
+
+        <!-- الحوكمة -->
+        <div class="lg:col-span-2">
+          <h4>الحوكمة</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="governance.html">اللوائح والسياسات</a></li>
+            <li><a href="governance.html">التقارير المالية</a></li>
+            <li><a href="governance.html">التقرير السنوي</a></li>
+            <li><a href="governance.html">مجلس الإدارة</a></li>
+            <li><a href="contact.html">نموذج الإفصاح</a></li>
+          </ul>
+        </div>
+
+        <!-- النشرة -->
+        <div class="lg:col-span-2">
+          <h4>النشرة البريدية</h4>
+          <p class="text-sm mb-3 leading-relaxed">اشترك لتصلك أبرز المستجدات والفرص.</p>
+          <form class="space-y-2" onsubmit="event.preventDefault();">
+            <input type="email" class="s-news-input" placeholder="بريدك الإلكتروني" />
+            <button class="s-btn s-btn-primary w-full justify-center !py-2.5 text-sm"><i class="fas fa-paper-plane"></i> اشترك</button>
+          </form>
+          <div class="mt-5 space-y-2 text-xs text-white/70">
+            <div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div>
+            <div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div>
+            <div><i class="fas fa-location-dot ml-1 text-sanad-goldSoft"></i> الرياض، المملكة العربية السعودية</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-      <div>جميع الحقوق محفوظة © <span data-year></span> جمعية سند</div>
-      <div>مدعوم بواسطة منصة <a href="#" class="text-sanad-emeraldSoft font-bold">ويبيان</a></div>
+    <div class="border-t border-white/10">
+      <div class="s-container py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60">
+        <div>© <span data-year>2026</span> جمعية سَنَد. جميع الحقوق محفوظة.</div>
+        <div class="flex items-center gap-5">
+          <a href="#">سياسة الخصوصية</a>
+          <a href="#">الشروط والأحكام</a>
+          <a href="#">خريطة الموقع</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <!-- زر العودة للأعلى -->
-  <button class="sanad-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+  <button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
   <script src="assets/js/main.js"></script>
 </body>
