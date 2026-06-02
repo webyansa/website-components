@@ -1,0 +1,214 @@
+/* =============================================
+   قالب سند - ملف التنسيقات المخصصة
+   ============================================= */
+
+:root {
+  --sanad-navy: #0e2a47;
+  --sanad-navy-deep: #0a1f36;
+  --sanad-navy-soft: #1b3a5f;
+  --sanad-emerald: #0f9b6e;
+  --sanad-emerald-soft: #2bb887;
+  --sanad-emerald-deep: #0a7a55;
+  --sanad-gold: #c89a4a;
+  --sanad-gold-soft: #e4c07a;
+  --sanad-sand: #f6efe2;
+  --sanad-ivory: #fbf8f2;
+  --sanad-paper: #ffffff;
+  --sanad-gray: #f3f5f8;
+  --sanad-text: #1b2a3a;
+  --sanad-muted: #5a6b7d;
+  --sanad-border: #e6ecf2;
+  --sanad-shadow-sm: 0 4px 14px rgba(14, 42, 71, 0.06);
+  --sanad-shadow-md: 0 12px 30px rgba(14, 42, 71, 0.08);
+  --sanad-shadow-lg: 0 24px 60px rgba(14, 42, 71, 0.12);
+  --sanad-gradient-hero: linear-gradient(135deg, #0a1f36 0%, #0e2a47 55%, #0a7a55 100%);
+  --sanad-gradient-soft: linear-gradient(180deg, #fbf8f2 0%, #ffffff 100%);
+  --sanad-gradient-gold: linear-gradient(135deg, #e4c07a 0%, #c89a4a 100%);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Tajawal", "Cairo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--sanad-ivory);
+  color: var(--sanad-text);
+  margin: 0;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 800; color: var(--sanad-navy); letter-spacing: -0.01em; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* أزرار */
+.sanad-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .85rem 1.6rem; border-radius: 999px;
+  font-weight: 700; font-size: .95rem;
+  transition: all .3s ease; cursor: pointer; border: 0; white-space: nowrap;
+}
+.sanad-btn-primary { background: var(--sanad-emerald); color: #fff; box-shadow: 0 10px 24px rgba(15, 155, 110, .28); }
+.sanad-btn-primary:hover { background: var(--sanad-emerald-deep); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15, 155, 110, .38); }
+.sanad-btn-gold { background: var(--sanad-gradient-gold); color: #3b2a10; box-shadow: 0 10px 24px rgba(200, 154, 74, .3); }
+.sanad-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(200, 154, 74, .42); }
+.sanad-btn-ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(8px); }
+.sanad-btn-ghost:hover { background: rgba(255,255,255,.16); }
+.sanad-btn-outline { background: transparent; color: var(--sanad-navy); border: 1.5px solid var(--sanad-border); }
+.sanad-btn-outline:hover { border-color: var(--sanad-navy); background: var(--sanad-navy); color: #fff; }
+
+/* بطاقات */
+.sanad-card {
+  background: #fff; border-radius: 22px; padding: 1.8rem;
+  border: 1px solid var(--sanad-border);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.sanad-card:hover { transform: translateY(-6px); box-shadow: var(--sanad-shadow-md); border-color: transparent; }
+
+/* أيقونة دائرية */
+.sanad-icon-wrap {
+  width: 56px; height: 56px; border-radius: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(15,155,110,.12), rgba(14,42,71,.08));
+  color: var(--sanad-emerald); font-size: 1.4rem;
+}
+
+/* عنوان قسم */
+.sanad-eyebrow {
+  display: inline-block; padding: .35rem 1rem;
+  background: rgba(15,155,110,.10); color: var(--sanad-emerald-deep);
+  border-radius: 999px; font-size: .82rem; font-weight: 700; margin-bottom: 1rem;
+}
+.sanad-section-title { font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.3; }
+.sanad-section-sub { color: var(--sanad-muted); font-size: 1.05rem; max-width: 720px; margin: .75rem auto 0; }
+
+/* خلفية الهيرو */
+.sanad-hero {
+  position: relative; overflow: hidden;
+  background: var(--sanad-gradient-hero);
+  color: #fff;
+}
+.sanad-hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(228,192,122,.18), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(43,184,135,.22), transparent 45%);
+  pointer-events: none;
+}
+.sanad-hero::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 60px 60px; opacity: .35;
+  mask-image: radial-gradient(circle at center, #000 30%, transparent 75%);
+}
+.sanad-hero-floating {
+  background: rgba(255,255,255,.10); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.22); border-radius: 18px;
+  padding: 1rem 1.2rem; color: #fff;
+}
+
+/* تدرج لقسم الأرقام */
+.sanad-impact {
+  background: linear-gradient(135deg, var(--sanad-navy-deep) 0%, var(--sanad-navy) 55%, var(--sanad-emerald-deep) 130%);
+  color: #fff; border-radius: 32px;
+  position: relative; overflow: hidden;
+}
+.sanad-impact::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(228,192,122,.15), transparent 45%);
+}
+
+/* خط زمني للرحلة */
+.sanad-journey { position: relative; }
+.sanad-journey::before {
+  content: ""; position: absolute; top: 38px; right: 8%; left: 8%; height: 3px;
+  background: linear-gradient(90deg, var(--sanad-emerald), var(--sanad-gold), var(--sanad-navy));
+  border-radius: 999px; opacity: .35;
+}
+.sanad-journey-step .num {
+  width: 76px; height: 76px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--sanad-emerald);
+  color: var(--sanad-navy); font-weight: 800; font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+  box-shadow: 0 12px 24px rgba(15,155,110,.18); position: relative; z-index: 2;
+}
+
+/* شريط تقدم */
+.sanad-progress { height: 10px; background: #eaf1ee; border-radius: 999px; overflow: hidden; }
+.sanad-progress > span { display: block; height: 100%; background: linear-gradient(90deg, var(--sanad-emerald), var(--sanad-emerald-soft)); border-radius: 999px; transition: width 1.6s cubic-bezier(.2,.8,.2,1); }
+
+/* بطاقات الخدمات */
+.sanad-service { position: relative; overflow: hidden; }
+.sanad-service::after {
+  content: ""; position: absolute; inset: auto -40px -40px auto; width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(15,155,110,.10), transparent 70%);
+  border-radius: 50%;
+}
+
+/* الفوتر */
+.sanad-footer {
+  background: linear-gradient(180deg, #0a1f36 0%, #061528 100%);
+  color: #cdd6e1;
+}
+.sanad-footer h4 { color: #fff; font-size: 1.05rem; margin-bottom: 1rem; }
+.sanad-footer a:hover { color: var(--sanad-emerald-soft); }
+.sanad-footer .social {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10);
+  transition: all .25s ease;
+}
+.sanad-footer .social:hover { background: var(--sanad-emerald); border-color: var(--sanad-emerald); color: #fff; transform: translateY(-3px); }
+
+/* الكشف عند التمرير */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* زر العودة للأعلى */
+.sanad-to-top {
+  position: fixed; bottom: 28px; left: 28px; z-index: 60;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--sanad-navy); color: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--sanad-shadow-md); opacity: 0; pointer-events: none;
+  transition: all .3s ease; border: 0; cursor: pointer;
+}
+.sanad-to-top.show { opacity: 1; pointer-events: auto; }
+.sanad-to-top:hover { background: var(--sanad-emerald); }
+
+/* الهيدر الثابت */
+.sanad-header.scrolled {
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: var(--sanad-shadow-sm);
+  backdrop-filter: blur(14px);
+}
+
+/* قائمة الجوال */
+.sanad-mobile-menu { transform: translateX(100%); transition: transform .35s ease; }
+.sanad-mobile-menu.open { transform: translateX(0); }
+
+/* شعار سند نصي */
+.sanad-logo-mark {
+  width: 44px; height: 44px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--sanad-emerald) 0%, var(--sanad-navy) 100%);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1.25rem;
+  box-shadow: 0 8px 20px rgba(15,155,110,.28);
+}
+
+/* خط رفيع زخرفي */
+.sanad-divider {
+  width: 60px; height: 4px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--sanad-emerald), var(--sanad-gold));
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .sanad-journey::before { display: none; }
+}
