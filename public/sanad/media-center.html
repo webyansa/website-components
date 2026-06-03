@@ -74,6 +74,7 @@ tailwind.config = { theme:{ extend:{
   .m-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;}
   @media(min-width:640px){.m-grid{grid-template-columns:repeat(2,1fr);}}
   @media(min-width:1024px){.m-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(min-width:1280px){.m-grid{grid-template-columns:repeat(4,1fr);}}
   .m-card{background:#fff;border:1px solid var(--s-border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.25s;}
   .m-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(11,37,69,.10);border-color:rgba(13,122,79,.3);}
   .m-thumb{position:relative;aspect-ratio:16/10;background-size:cover;background-position:center;}
@@ -198,22 +199,18 @@ tailwind.config = { theme:{ extend:{
 </header>
 
 <!-- Hero -->
-<section class="m-hero">
-  <div class="s-container relative z-10 py-16 lg:py-20">
-    <div class="m-float hidden lg:flex" style="top:80px;left:6%;"><i class="fas fa-newspaper"></i> 48 خبرًا ومنشورًا</div>
-    <div class="m-float hidden lg:flex" style="top:200px;left:14%;"><i class="fas fa-images"></i> 12 معرض صور</div>
-    <div class="m-float hidden lg:flex" style="bottom:80px;left:8%;"><i class="fas fa-video"></i> 18 مادة مرئية</div>
-    <div class="max-w-3xl">
-      <div class="m-crumb mb-5"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left"></i><span>المركز الإعلامي</span></div>
-      <span class="s-eyebrow on-dark mb-4"><i class="fas fa-bullhorn text-sanad-goldSoft"></i> نافذة الجمعية الإعلامية الرسمية</span>
-      <h1 class="text-3xl md:text-5xl font-black text-white leading-tight">المركز الإعلامي</h1>
-      <p class="mt-4 text-white/80 max-w-2xl leading-loose">تابع أخبار الجمعية، مقالاتها، أنشطتها، إصداراتها، ومعارض الصور والفيديو التي توثّق أثرها في المجتمع.</p>
-      <div class="m-hstats">
-        <div class="m-hstat"><div class="n"><i class="fas fa-newspaper"></i> 48</div><div class="l">خبرًا ومنشورًا</div></div>
-        <div class="m-hstat"><div class="n"><i class="fas fa-images"></i> 12</div><div class="l">معرض صور</div></div>
-        <div class="m-hstat"><div class="n"><i class="fas fa-video"></i> 18</div><div class="l">مادة مرئية</div></div>
-        <div class="m-hstat"><div class="n"><i class="fas fa-file-pdf"></i> 9</div><div class="l">إصدارات PDF</div></div>
-      </div>
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide7.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">المركز الإعلامي</span></div>
+    <span class="s-eyebrow on-dark mt-4"><i class="fas fa-bullhorn text-sanad-goldSoft"></i> نافذة الجمعية الإعلامية الرسمية</span>
+    <h1>المركز الإعلامي</h1>
+    <p class="s-hero-lead">تابع أخبار الجمعية، مقالاتها، أنشطتها، إصداراتها، ومعارض الصور والفيديو التي توثّق أثرها في المجتمع.</p>
+    <div class="s-hero-stats">
+      <div class="s-hero-stat"><div class="n">48</div><div class="l"><i class="fas fa-newspaper"></i> خبرًا ومنشورًا</div></div>
+      <div class="s-hero-stat"><div class="n">12</div><div class="l"><i class="fas fa-images"></i> معرض صور</div></div>
+      <div class="s-hero-stat"><div class="n">18</div><div class="l"><i class="fas fa-video"></i> مادة مرئية</div></div>
+      <div class="s-hero-stat"><div class="n">9</div><div class="l"><i class="fas fa-file-pdf"></i> إصدارات PDF</div></div>
     </div>
   </div>
 </section>
@@ -277,34 +274,18 @@ tailwind.config = { theme:{ extend:{
   </div>
 </section>
 
-<!-- Grid + sidebar -->
+<!-- Grid -->
 <section class="py-10">
-  <div class="s-container grid lg:grid-cols-12 gap-8">
-    <div class="lg:col-span-9">
-      <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
-        <h2 class="s-title">المحتوى الإعلامي</h2>
-        <div class="text-sm text-sanad-muted">يعرض <b id="mCount" class="text-sanad-navy">15</b> عنصرًا</div>
-      </div>
-      <div class="m-grid" id="mediaGrid"></div>
-      <div class="text-center mt-10 hidden" id="mEmpty">
-        <div class="sanad-icon-wrap mx-auto"><i class="fas fa-magnifying-glass"></i></div>
-        <p class="mt-4 text-sanad-muted">لا يوجد محتوى يطابق الفلاتر الحالية.</p>
-      </div>
+  <div class="s-container">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
+      <h2 class="s-title">المحتوى الإعلامي</h2>
+      <div class="text-sm text-sanad-muted">يعرض <b id="mCount" class="text-sanad-navy">15</b> عنصرًا</div>
     </div>
-    <aside class="lg:col-span-3 space-y-6">
-      <div class="m-most">
-        <h3><i class="fas fa-fire"></i> الأكثر مشاهدة</h3>
-        <div id="mMost"></div>
-      </div>
-      <div class="m-most" style="background:linear-gradient(135deg,#0b2545,#075c3a);color:#fff;border:0;">
-        <h3 style="color:#fff;"><i class="fas fa-envelope-open-text" style="color:#d9b066;"></i> كن قريبًا من أثرنا</h3>
-        <p class="text-sm leading-loose text-white/80">اشترك ليصلك جديد أخبار الجمعية ومبادراتها.</p>
-        <form class="mt-4 space-y-2" onsubmit="event.preventDefault();showToast('تم الاشتراك في النشرة بنجاح');this.reset();">
-          <input type="email" required placeholder="البريد الإلكتروني" class="w-full px-3 py-2.5 rounded-lg text-sanad-navy text-sm" />
-          <button class="w-full s-btn s-btn-gold !py-2.5"><i class="fas fa-paper-plane"></i> اشترك الآن</button>
-        </form>
-      </div>
-    </aside>
+    <div class="m-grid" id="mediaGrid"></div>
+    <div class="text-center mt-10 hidden" id="mEmpty">
+      <div class="sanad-icon-wrap mx-auto"><i class="fas fa-magnifying-glass"></i></div>
+      <p class="mt-4 text-sanad-muted">لا يوجد محتوى يطابق الفلاتر الحالية.</p>
+    </div>
   </div>
 </section>
 
@@ -463,16 +444,16 @@ tailwind.config = { theme:{ extend:{
     let body = '';
     if(it.type==='news' || it.type==='article'){
       body = `
-        <div class="m-thumb" style="background-image:url('${it.img}')">
+        <a href="article-details.html" class="m-thumb block" style="background-image:url('${it.img}')">
           <span class="m-type-badge ${m.cls}"><i class="fas ${m.ic}"></i> ${m.lbl}</span>
-        </div>
+        </a>
         <div class="m-body">
           <div class="m-meta"><span><i class="fas fa-calendar"></i>${fmtDate(it.date)}</span><span><i class="fas fa-tag"></i>${it.cat}</span>${it.author?`<span><i class="fas fa-user"></i>${it.author}</span>`:''}${it.readMin?`<span><i class="fas fa-clock"></i>${it.readMin} د قراءة</span>`:''}</div>
-          <h3>${it.title}</h3>
+          <h3><a href="article-details.html" class="hover:text-sanad-emeraldDeep transition-colors">${it.title}</a></h3>
           <p>${it.excerpt}</p>
           <div class="m-card-foot">
             <span class="text-xs text-sanad-muted"><i class="fas fa-eye text-sanad-emeraldDeep ml-1"></i>${it.views.toLocaleString('ar-SA')}</span>
-            <a href="article-details.html?id=${it.id}" class="m-link">${it.type==='news'?'قراءة الخبر':'قراءة المقالة'} <i class="fas fa-arrow-left"></i></a>
+            <a href="article-details.html" class="m-link">${it.type==='news'?'قراءة الخبر':'قراءة المقالة'} <i class="fas fa-arrow-left"></i></a>
           </div>
         </div>`;
     } else if(it.type==='gallery'){
@@ -535,10 +516,6 @@ tailwind.config = { theme:{ extend:{
     grid.innerHTML = list.map(cardHtml).join('');
     document.getElementById('mCount').textContent = list.length;
     document.getElementById('mEmpty').classList.toggle('hidden', list.length>0);
-    // Most viewed (overall top 5)
-    const top = [...ITEMS].sort((a,b)=>b.views-a.views).slice(0,5);
-    document.getElementById('mMost').innerHTML = top.map((it,i)=>`
-      <div class="m-most-item"><div class="rk">${i+1}</div><div><h4>${it.title}</h4><span><i class="fas fa-eye"></i> ${it.views.toLocaleString('ar-SA')} · ${TYPE_META[it.type].lbl}</span></div></div>`).join('');
   }
 
   // Filters wiring
