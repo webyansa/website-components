@@ -368,10 +368,15 @@
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       state.type = 'gift';
-      // تأكد من وجود مستلم واحد على الأقل
+      state.method = 'card';
       if (typeof window.__sanadGiftInit === 'function') window.__sanadGiftInit();
       openModal('mGift');
     });
+  });
+
+  /* جسر — تغيير طريقة الدفع من مودال الإهداء */
+  document.addEventListener('sanad:set-method', (e) => {
+    if (e.detail && e.detail.method) state.method = e.detail.method;
   });
 
   /* تحديث ملخص الدفع قبل فتح مودال الدفع */
