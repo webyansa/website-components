@@ -68,4 +68,39 @@
   /* سنة الفوتر */
   const y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
+
+  /* فلاتر المشاريع */
+  const projGrid = document.querySelector('[data-projects-grid]');
+  if (projGrid) {
+    const state = { field: 'all', status: 'all', group: 'all', q: '' };
+    const items = Array.from(projGrid.querySelectorAll('[data-project]'));
+    const apply = () => {
+      const q = state.q.trim();
+      items.forEach(el => {
+        const f = el.getAttribute('data-field') || '';
+        const s = el.getAttribute('data-status') || '';
+        const g = el.getAttribute('data-group') || '';
+        const t = (el.getAttribute('data-title') || '').toLowerCase();
+        const ok =
+          (state.field === 'all' || f.split(',').includes(state.field)) &&
+          (state.status === 'all' || s === state.status) &&
+          (state.group === 'all' || g.split(',').includes(state.group)) &&
+          (!q || t.indexOf(q.toLowerCase()) !== -1);
+        el.classList.toggle('is-hidden', !ok);
+      });
+      const empty = document.querySelector('[data-projects-empty]');
+      if (empty) empty.classList.toggle('is-hidden', items.some(i => !i.classList.contains('is-hidden')));
+    };
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-filter');
+        const val = btn.getAttribute('data-value');
+        state[key] = val;
+        document.querySelectorAll(`[data-filter="${key}"]`).forEach(b => b.classList.toggle('active', b === btn));
+        apply();
+      });
+    });
+    const search = document.querySelector('[data-projects-search]');
+    if (search) search.addEventListener('input', e => { state.q = e.target.value; apply(); });
+  }
 })();
