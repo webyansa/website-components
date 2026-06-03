@@ -1111,3 +1111,105 @@
     });
   }
 })();
+
+/* ===================== Beneficiaries Portal ===================== */
+(function(){
+  // OTP simulate
+  document.querySelectorAll('[data-bp-send-otp]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const area=btn.parentElement.querySelector('[data-bp-otp-area]')||btn.closest('form,fieldset')?.querySelector('[data-bp-otp-area]');
+      if(area){area.classList.remove('hidden');area.querySelector('input')?.focus();}
+      btn.innerHTML='<i class="fas fa-check"></i> تم إرسال الرمز';
+      btn.disabled=true;btn.classList.add('opacity-70');
+      setTimeout(()=>{btn.innerHTML='<i class="fas fa-rotate"></i> إعادة الإرسال';btn.disabled=false;btn.classList.remove('opacity-70');},6000);
+    });
+  });
+  // OTP auto-advance
+  document.querySelectorAll('.bp-otp-inputs').forEach(box=>{
+    const inputs=[...box.querySelectorAll('input')];
+    inputs.forEach((inp,i)=>{
+      inp.addEventListener('input',()=>{inp.value=inp.value.replace(/\D/g,'');if(inp.value&&inputs[i+1])inputs[i+1].focus();});
+      inp.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!inp.value&&inputs[i-1])inputs[i-1].focus();});
+    });
+  });
+
+  // Login fake submit -> dashboard
+  const lf=document.getElementById('bpLoginForm');
+  if(lf){lf.addEventListener('submit',e=>{e.preventDefault();window.location.href='beneficiary-dashboard.html';});}
+
+  // Register stepper
+  const regForm=document.getElementById('bpRegForm');
+  if(regForm){
+    const steps=[...regForm.querySelectorAll('.bp-rs')];
+    const pills=[...document.querySelectorAll('#bpRegSteps .bp-step-pill')];
+    const prev=regForm.querySelector('[data-bp-prev]');
+    const next=regForm.querySelector('[data-bp-next]');
+    const submit=regForm.querySelector('[data-bp-submit]');
+    let cur=0;
+    const show=i=>{
+      steps.forEach((s,idx)=>s.classList.toggle('hidden',idx!==i));
+      pills.forEach((p,idx)=>{p.classList.toggle('active',idx===i);p.classList.toggle('complete',idx<i);});
+      prev.disabled=i===0;
+      next.classList.toggle('hidden',i===steps.length-1);
+      submit.classList.toggle('hidden',i!==steps.length-1);
+      window.scrollTo({top:regForm.offsetTop-90,behavior:'smooth'});
+    };
+    next.addEventListener('click',()=>{
+      const f=steps[cur];const req=f.querySelectorAll('[required]');let ok=true;
+      req.forEach(r=>{if(!r.value||(r.type==='radio'&&![...f.querySelectorAll(`[name="${r.name}"]`)].some(x=>x.checked))){ok=false;r.reportValidity?.();}});
+      if(!ok)return;
+      if(cur<steps.length-1){cur++;show(cur);}
+    });
+    prev.addEventListener('click',()=>{if(cur>0){cur--;show(cur);}});
+    regForm.addEventListener('submit',e=>{
+      e.preventDefault();if(!regForm.checkValidity()){regForm.reportValidity();return;}
+      const id='BEN-2026-'+String(1000+Math.floor(Math.random()*8999));
+      const idEl=document.getElementById('bpRegId');if(idEl)idEl.textContent=id;
+      try{localStorage.setItem('bp_reg_id',id);}catch(_){}
+      document.getElementById('mBpRegSuccess')?.classList.add('open');
+    });
+    document.getElementById('bpSaveLater')?.addEventListener('click',()=>{
+      try{const d={};regForm.querySelectorAll('input,select,textarea').forEach(el=>{if(el.name||el.id)d[el.name||el.id]=el.value;});localStorage.setItem('bp_reg_draft',JSON.stringify(d));}catch(_){}
+      alert('تم حفظ بياناتك مؤقتًا. يمكنك العودة لاحقًا لاستكمال التسجيل.');
+    });
+  }
+
+  // Products filter
+  const pFilter=document.getElementById('bpProdFilter');
+  if(pFilter){
+    pFilter.addEventListener('click',e=>{
+      const b=e.target.closest('button[data-fp]');if(!b)return;
+      pFilter.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
+      const v=b.dataset.fp;
+      document.querySelectorAll('#bpProdGrid .bp-prod').forEach(card=>{
+        const t=(card.dataset.types||'').split(/\s+/);
+        card.style.display=(v==='all'||t.includes(v))?'':'none';
+      });
+    });
+  }
+
+  // Product details: open request modal
+  const openReq=document.getElementById('bpOpenReq');
+  if(openReq){
+    openReq.addEventListener('click',()=>document.getElementById('mBpReq')?.classList.add('open'));
+    document.getElementById('bpReqSubmit')?.addEventListener('click',()=>{
+      const f=document.getElementById('bpReqForm');if(!f.checkValidity()){f.reportValidity();return;}
+      const id='BEN-REQ-2026-'+String(1000+Math.floor(Math.random()*8999));
+      try{localStorage.setItem('bp_last_req',id);}catch(_){}
+      window.location.href='beneficiary-request-success.html';
+    });
+  }
+
+  // Payment fake submit
+  const payF=document.getElementById('bpPayForm');
+  if(payF){payF.addEventListener('submit',e=>{e.preventDefault();if(!payF.checkValidity()){payF.reportValidity();return;}window.location.href='beneficiary-request-success.html';});}
+
+  // Tracking form
+  const trkF=document.getElementById('bpTrkForm');
+  if(trkF){trkF.addEventListener('submit',e=>{e.preventDefault();window.scrollTo({top:trkF.offsetTop+200,behavior:'smooth'});});}
+
+  // Profile send update
+  document.getElementById('bpSendUpdate')?.addEventListener('click',()=>{
+    alert('تم إرسال طلب تحديث بياناتك إلى فريق الجمعية. سيتم الرد عليك خلال يوم عمل.');
+  });
+})();
