@@ -1213,3 +1213,456 @@
     alert('تم إرسال طلب تحديث بياناتك إلى فريق الجمعية. سيتم الرد عليك خلال يوم عمل.');
   });
 })();
+
+/* =========================================================
+   =========== توحيد الهيدر والفوتر (Sanad SX) =============
+   ========================================================= */
+(function(){
+  'use strict';
+  const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  // مجموعات تحديد العنصر النشط
+  const groups = {
+    home: ['index.html',''],
+    about: ['about.html','founding.html','strategy.html','board.html','executive-management.html','organization-structure.html','registration-certificate.html','branches.html','committees.html','membership.html'],
+    donations: ['donations.html','donation-details.html','donation-receipt.html','donor-login.html'],
+    store: ['store.html','product-physical-details.html','product-digital-details.html','service-product-details.html','course-product-details.html','cart.html','checkout.html','order-success.html','customer-login.html'],
+    services: ['services.html','service-details.html','service-tracking.html'],
+    projects: ['projects.html','project-details.html'],
+    governance: ['governance.html'],
+    media: ['media-center.html','news.html','news-details.html','article-details.html'],
+    events: ['events.html','event-details.html','event-details-online.html'],
+    contact: ['contact.html'],
+    beneficiaries: ['beneficiaries.html','beneficiary-login.html','beneficiary-register.html','beneficiary-dashboard.html','beneficiary-profile.html','beneficiary-products.html','beneficiary-product-details.html','beneficiary-payment.html','beneficiary-request-success.html','beneficiary-request-tracking.html']
+  };
+  const isActive = (k) => groups[k]?.includes(page) ? 'active' : '';
+
+  // عدّاد سلة المتجر من localStorage (إن وُجد)
+  function getCartCount(){
+    try{
+      const raw = localStorage.getItem('sanad_cart');
+      if(!raw) return 0;
+      const arr = JSON.parse(raw);
+      if(!Array.isArray(arr)) return 0;
+      return arr.reduce((s,i)=> s + (parseInt(i.qty)||1), 0);
+    }catch(e){return 0;}
+  }
+  function getDonationCount(){
+    try{
+      const raw = localStorage.getItem('sanad_donation_cart');
+      if(!raw) return 0;
+      const arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr.length : 0;
+    }catch(e){return 0;}
+  }
+
+  const headerHTML = `
+  <header class="sx-header" id="sx-header">
+    <div class="sx-topbar">
+      <div class="sx-tcont">
+        <div class="sx-tlinks">
+          <a href="services.html"><i class="fas fa-hand-holding-heart"></i> طلب خدمة</a>
+          <a href="service-tracking.html" class="sx-thide"><i class="fas fa-route"></i> تتبع طلب</a>
+          <a href="beneficiaries.html" class="sx-thide"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
+          <a href="contact.html#report" class="sx-thide"><i class="fas fa-bullhorn"></i> الإبلاغ عن مخالفة</a>
+          <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
+        </div>
+        <div class="sx-tright">
+          <div class="sx-tcontact">
+            <a href="tel:920000000" class="sx-thide"><i class="fas fa-phone"></i> 920000000</a>
+            <a href="mailto:info@sanad.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@sanad.org.sa</a>
+          </div>
+          <div class="sx-lang">
+            <button class="active" data-lang="ar" type="button">العربية</button>
+            <span class="sep">|</span>
+            <button data-lang="en" type="button">English</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sx-main">
+      <a href="index.html" class="sx-logo">
+        <div class="sx-mark">س</div>
+        <div>
+          <div class="sx-name">جمعية سَنَد</div>
+          <div class="sx-tag">للخدمات الاجتماعية والرعاية</div>
+        </div>
+      </a>
+      <nav class="sx-nav" aria-label="القائمة الرئيسية">
+        <a href="index.html" class="${isActive('home')}">الرئيسية</a>
+        <div class="sx-drop" data-drop>
+          <button type="button" class="${isActive('about')}">عن الجمعية <i class="fas fa-chevron-down"></i></button>
+          <div class="sx-dmenu">
+            <a href="about.html"><i class="fas fa-circle-info"></i> من نحن</a>
+            <a href="founding.html"><i class="fas fa-flag"></i> النشأة والتأسيس</a>
+            <a href="strategy.html"><i class="fas fa-compass"></i> استراتيجيتنا</a>
+            <a href="board.html"><i class="fas fa-users-gear"></i> مجلس الإدارة</a>
+            <a href="executive-management.html"><i class="fas fa-user-tie"></i> الإدارة التنفيذية</a>
+            <a href="organization-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
+            <a href="registration-certificate.html"><i class="fas fa-certificate"></i> شهادة التسجيل</a>
+            <a href="branches.html"><i class="fas fa-location-dot"></i> فروع ومكاتب الجمعية</a>
+            <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
+            <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
+          </div>
+        </div>
+        <a href="donations.html" class="${isActive('donations')}">بوابة التبرعات</a>
+        <a href="store.html" class="${isActive('store')}">متجر الجمعية</a>
+        <a href="services.html" class="${isActive('services')}">خدماتنا</a>
+        <a href="projects.html" class="${isActive('projects')}">المشاريع</a>
+        <a href="governance.html" class="${isActive('governance')}">الحوكمة</a>
+        <a href="media-center.html" class="${isActive('media')}">المركز الإعلامي</a>
+        <a href="events.html" class="${isActive('events')}">الفعاليات</a>
+        <a href="contact.html" class="${isActive('contact')}">تواصل معنا</a>
+      </nav>
+      <div class="sx-actions">
+        <button type="button" class="sx-icon-btn" data-sx-donation-cart aria-label="سلة التبرعات" title="سلة التبرعات">
+          <i class="fas fa-heart-circle-plus"></i>
+          <span class="sx-badge" data-donation-count>${getDonationCount()}</span>
+        </button>
+        <a href="cart.html" class="sx-icon-btn" aria-label="سلة المتجر" title="سلة المتجر">
+          <i class="fas fa-bag-shopping"></i>
+          <span class="sx-badge" data-cart-count>${getCartCount()}</span>
+        </a>
+        <div class="sx-login-wrap" data-login-wrap>
+          <button type="button" class="sx-login-btn" data-login-toggle>
+            <i class="fas fa-user-circle"></i> تسجيل الدخول
+          </button>
+          <div class="sx-login-menu">
+            <div class="sx-lhead">اختر نوع الحساب</div>
+            <a href="beneficiary-login.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
+            <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
+            <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
+            <div class="sx-lreg">
+              <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+            </div>
+          </div>
+        </div>
+        <a href="donations.html" class="sx-donate-btn"><i class="fas fa-heart"></i> تبرع الآن</a>
+        <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- قائمة الجوال -->
+  <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
+  <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
+    <div class="sx-mhead">
+      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">جمعية سَنَد</div></div></div>
+      <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sx-mbody">
+      <a href="index.html"><i class="fas fa-house"></i> الرئيسية</a>
+      <button type="button" data-sx-mcollapse="about"><i class="fas fa-circle-info"></i> عن الجمعية <i class="fas fa-chevron-down" style="margin-inline-start:auto;font-size:.7rem"></i></button>
+      <div class="sx-mcollapse" data-sx-mcoll="about">
+        <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">استراتيجيتنا</a>
+        <a href="board.html">مجلس الإدارة</a><a href="executive-management.html">الإدارة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
+        <a href="registration-certificate.html">شهادة التسجيل</a><a href="branches.html">الفروع والمكاتب</a>
+        <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
+      </div>
+      <a href="donations.html"><i class="fas fa-heart"></i> بوابة التبرعات</a>
+      <a href="store.html"><i class="fas fa-store"></i> متجر الجمعية</a>
+      <a href="services.html"><i class="fas fa-hand-holding-heart"></i> خدماتنا</a>
+      <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع والمبادرات</a>
+      <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
+      <a href="media-center.html"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
+      <a href="events.html"><i class="fas fa-calendar-days"></i> الفعاليات</a>
+      <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
+
+      <div class="sx-msec">حسابي وسلاتي</div>
+      <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> سلة التبرعات <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
+      <a href="cart.html"><i class="fas fa-bag-shopping"></i> سلة المتجر <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
+      <a href="beneficiary-login.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
+      <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
+      <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
+      <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+
+      <div class="sx-msec">روابط سريعة</div>
+      <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
+      <a href="beneficiaries.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
+      <a href="contact.html#report"><i class="fas fa-bullhorn"></i> الإبلاغ عن مخالفة</a>
+      <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
+      <a href="mailto:info@sanad.org.sa"><i class="fas fa-envelope"></i> info@sanad.org.sa</a>
+      <button type="button" data-lang-toggle><i class="fas fa-globe"></i> اللغة: العربية / English</button>
+    </div>
+  </aside>
+
+  <!-- سلة التبرعات (Drawer) -->
+  <div class="sx-drawer-overlay" data-sx-dcart-overlay></div>
+  <aside class="sx-drawer" data-sx-dcart>
+    <div class="sx-dhead">
+      <h3><i class="fas fa-heart-circle-plus"></i> سلة التبرعات</h3>
+      <button class="sx-dclose" data-sx-dcart-close><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sx-dbody" data-sx-dcart-body>
+      <div class="sx-dempty">
+        <i class="fas fa-heart"></i>
+        <div>سلة تبرعاتك فارغة حاليًا.</div>
+        <div style="font-size:.78rem;margin-top:.4rem">يمكنك تصفّح فرص التبرع وإضافتها هنا.</div>
+      </div>
+    </div>
+    <div class="sx-dfoot">
+      <a href="donations.html" class="s-btn s-btn-primary" style="justify-content:center"><i class="fas fa-arrow-left"></i> متابعة التبرع</a>
+      <a href="donations.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
+    </div>
+  </aside>
+  `;
+
+  const footerHTML = `
+  <footer class="sx-footer" id="sx-footer">
+    <div class="sx-fmain">
+      <div class="sx-fbrand">
+        <div class="sx-fname">
+          <div class="sx-mark">س</div>
+          <div><div class="nm">جمعية سَنَد</div><div class="tg">للخدمات الاجتماعية والرعاية</div></div>
+        </div>
+        <p>جمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين، عبر برامج مؤسسية تعزز جودة حياة المستفيدين وتدعم الاستدامة المجتمعية ضمن منظومة العمل الخيري السعودي.</p>
+        <div class="sx-fsoc">
+          <a href="#" aria-label="تويتر"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="sx-fcol">
+        <h4>روابط رئيسية</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
+          <li><a href="about.html"><i class="fas fa-angle-left"></i> عن الجمعية</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> خدماتنا</a></li>
+          <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
+          <li><a href="donations.html"><i class="fas fa-angle-left"></i> بوابة التبرع</a></li>
+          <li><a href="store.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
+          <li><a href="beneficiaries.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
+          <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
+          <li><a href="events.html"><i class="fas fa-angle-left"></i> الفعاليات</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="sx-fcol">
+        <h4>الحوكمة والشفافية</h4>
+        <ul>
+          <li><a href="governance.html"><i class="fas fa-angle-left"></i> الحوكمة</a></li>
+          <li><a href="governance.html#policies"><i class="fas fa-angle-left"></i> اللوائح والسياسات</a></li>
+          <li><a href="governance.html#reports"><i class="fas fa-angle-left"></i> التقارير المالية</a></li>
+          <li><a href="board.html"><i class="fas fa-angle-left"></i> مجلس الإدارة</a></li>
+          <li><a href="governance.html#assembly"><i class="fas fa-angle-left"></i> الجمعية العمومية</a></li>
+          <li><a href="governance.html#annual"><i class="fas fa-angle-left"></i> التقرير السنوي</a></li>
+          <li><a href="governance.html#minutes"><i class="fas fa-angle-left"></i> محاضر الاجتماعات</a></li>
+          <li><a href="governance.html#disclosure"><i class="fas fa-angle-left"></i> نموذج الإفصاح</a></li>
+        </ul>
+      </div>
+      <div class="sx-fcol">
+        <h4>خدمات المستفيدين</h4>
+        <ul>
+          <li><a href="beneficiary-login.html"><i class="fas fa-angle-left"></i> دخول المستفيدين</a></li>
+          <li><a href="beneficiary-register.html"><i class="fas fa-angle-left"></i> انضم كمستفيد</a></li>
+          <li><a href="beneficiary-products.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
+          <li><a href="beneficiary-request-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
+          <li><a href="contact.html#complaints"><i class="fas fa-angle-left"></i> الشكاوى والمقترحات</a></li>
+          <li><a href="contact.html#report"><i class="fas fa-angle-left"></i> الإبلاغ عن مخالفة</a></li>
+        </ul>
+      </div>
+      <div class="sx-fcol">
+        <h4>التواصل والنشرة</h4>
+        <ul class="sx-fcontact">
+          <li><i class="fas fa-phone"></i> 920000000</li>
+          <li><i class="fas fa-envelope"></i> info@sanad.org.sa</li>
+          <li><i class="fas fa-location-dot"></i> الرياض — حي الملقا — طريق الملك فهد</li>
+          <li><i class="fas fa-clock"></i> الأحد - الخميس · 8 ص - 4 م</li>
+          <li><i class="fab fa-whatsapp"></i> 0500000000</li>
+        </ul>
+        <form class="sx-fnews" onsubmit="event.preventDefault();window.sxToast&&sxToast('تم الاشتراك في النشرة بنجاح');this.reset();">
+          <div style="font-size:.78rem;color:#a5b3c8;font-weight:700">اشترك في النشرة البريدية</div>
+          <input type="email" required placeholder="بريدك الإلكتروني" />
+          <button type="submit"><i class="fas fa-paper-plane"></i> اشتراك</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="sx-license">
+      <div class="sx-license-card">
+        <div class="sx-lic-left">
+          <div class="sx-lic-ic"><i class="fas fa-shield-halved"></i></div>
+          <div>
+            <div class="sx-lic-title">الجمعية مصرحة من المركز الوطني لتنمية القطاع غير الربحي</div>
+            <div class="sx-lic-meta">
+              <span>رقم الترخيص: <b>0000</b></span>
+              <span>الحالة: <b>ساري</b></span>
+              <span>آخر تحديث: <b>هذا الشهر</b></span>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="sx-lic-btn" data-sx-cert-open><i class="fas fa-certificate"></i> عرض شهادة الترخيص</button>
+      </div>
+    </div>
+
+    <div class="sx-fbottom">
+      <div class="sx-fbcont">
+        <div>© جميع الحقوق محفوظة لجمعية سَنَد <span data-year>2026</span> — بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
+        <div>الرياض · المملكة العربية السعودية</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- نافذة شهادة الترخيص -->
+  <div class="sx-mod-overlay" data-sx-cert-overlay>
+    <div class="sx-mod" role="dialog" aria-modal="true" aria-label="شهادة الترخيص">
+      <div class="sx-mod-head">
+        <h3><i class="fas fa-certificate"></i> شهادة الترخيص</h3>
+        <button class="sx-dclose" data-sx-cert-close><i class="fas fa-times"></i></button>
+      </div>
+      <div class="sx-mod-body">
+        <div class="sx-cert">
+          <div class="sx-cseal"><i class="fas fa-shield-halved"></i></div>
+          <h4>جمعية سَنَد للخدمات الاجتماعية والرعاية</h4>
+          <div class="sx-csub">المركز الوطني لتنمية القطاع غير الربحي</div>
+          <div class="sx-cnum">رقم الترخيص<br><b>0000</b></div>
+          <div style="font-size:.78rem;color:#5b6b7d;margin-top:.4rem">تاريخ الإصدار: 1445 هـ — الموافق 2024 م</div>
+          <div class="sx-cstatus"><i class="fas fa-circle-check"></i> ساري المفعول</div>
+        </div>
+      </div>
+      <div class="sx-mod-actions">
+        <button type="button" class="s-btn s-btn-outline" data-sx-cert-share><i class="fas fa-share-nodes"></i> مشاركة</button>
+        <button type="button" class="s-btn s-btn-outline" onclick="window.print()"><i class="fas fa-download"></i> تحميل / طباعة</button>
+        <button type="button" class="s-btn s-btn-primary" data-sx-cert-close><i class="fas fa-check"></i> إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sx-toast" id="sx-toast"></div>
+  `;
+
+  function inject(){
+    // استبدال الهيدر القديم
+    const oldHeader = document.querySelector('header.s-header');
+    if(oldHeader){
+      oldHeader.insertAdjacentHTML('beforebegin', headerHTML);
+      oldHeader.remove();
+    } else if(!document.querySelector('.sx-header')){
+      document.body.insertAdjacentHTML('afterbegin', headerHTML);
+    }
+    // استبدال الفوتر القديم
+    const oldFooter = document.querySelector('footer.s-footer');
+    if(oldFooter){
+      oldFooter.insertAdjacentHTML('beforebegin', footerHTML);
+      oldFooter.remove();
+    } else if(!document.querySelector('.sx-footer')){
+      document.body.insertAdjacentHTML('beforeend', footerHTML);
+    }
+    bind();
+  }
+
+  // Toast عام
+  window.sxToast = function(msg){
+    const t = document.getElementById('sx-toast');
+    if(!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window.__sxT);
+    window.__sxT = setTimeout(()=>t.classList.remove('show'), 2600);
+  };
+
+  function bind(){
+    // سنة الفوتر
+    document.querySelectorAll('[data-year]').forEach(el=> el.textContent = new Date().getFullYear());
+
+    // تمرير الهيدر
+    const h = document.getElementById('sx-header');
+    if(h){
+      const onSc = ()=> h.classList.toggle('scrolled', window.scrollY > 12);
+      window.addEventListener('scroll', onSc, {passive:true}); onSc();
+    }
+
+    // قائمة "عن الجمعية" المنسدلة
+    document.querySelectorAll('[data-drop]').forEach(d=>{
+      const btn = d.querySelector('button');
+      btn?.addEventListener('click', e=>{
+        e.stopPropagation();
+        document.querySelectorAll('[data-drop].open').forEach(o=>{if(o!==d) o.classList.remove('open');});
+        d.classList.toggle('open');
+      });
+    });
+
+    // تسجيل الدخول
+    const lw = document.querySelector('[data-login-wrap]');
+    const lt = document.querySelector('[data-login-toggle]');
+    lt?.addEventListener('click', e=>{ e.stopPropagation(); lw.classList.toggle('open'); });
+
+    // إغلاق القوائم عند الضغط خارجها
+    document.addEventListener('click', ()=>{
+      document.querySelectorAll('[data-drop].open').forEach(o=>o.classList.remove('open'));
+      lw?.classList.remove('open');
+    });
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape'){
+        document.querySelectorAll('[data-drop].open').forEach(o=>o.classList.remove('open'));
+        lw?.classList.remove('open');
+        closeMobile(); closeDCart(); closeCert();
+      }
+    });
+
+    // قائمة الجوال
+    const mob = document.querySelector('[data-sx-mobile]');
+    const movl = document.querySelector('[data-sx-mobile-overlay]');
+    const openMobile = ()=>{ mob?.classList.add('open'); movl?.classList.add('open'); document.body.style.overflow='hidden'; };
+    const closeMobile = ()=>{ mob?.classList.remove('open'); movl?.classList.remove('open'); document.body.style.overflow=''; };
+    document.querySelector('[data-sx-burger]')?.addEventListener('click', openMobile);
+    document.querySelector('[data-sx-mclose]')?.addEventListener('click', closeMobile);
+    movl?.addEventListener('click', closeMobile);
+    document.querySelectorAll('[data-sx-mobile] a').forEach(a=> a.addEventListener('click', closeMobile));
+
+    // طيّ "عن الجمعية" داخل الجوال
+    document.querySelectorAll('[data-sx-mcollapse]').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const k = b.getAttribute('data-sx-mcollapse');
+        document.querySelector(`[data-sx-mcoll="${k}"]`)?.classList.toggle('open');
+      });
+    });
+
+    // اللغة
+    document.querySelectorAll('[data-lang="en"], [data-lang-toggle]').forEach(b=>{
+      b.addEventListener('click', e=>{
+        if(b.getAttribute('data-lang')==='ar') return;
+        e.preventDefault();
+        sxToast('النسخة الإنجليزية قيد الإعداد');
+      });
+    });
+
+    // سلة التبرعات
+    const dcart = document.querySelector('[data-sx-dcart]');
+    const dovl = document.querySelector('[data-sx-dcart-overlay]');
+    const openDCart = ()=>{ dcart?.classList.add('open'); dovl?.classList.add('open'); document.body.style.overflow='hidden'; };
+    const closeDCart = ()=>{ dcart?.classList.remove('open'); dovl?.classList.remove('open'); document.body.style.overflow=''; };
+    document.querySelectorAll('[data-sx-donation-cart]').forEach(b=> b.addEventListener('click', openDCart));
+    document.querySelector('[data-sx-dcart-close]')?.addEventListener('click', closeDCart);
+    dovl?.addEventListener('click', closeDCart);
+
+    // شهادة الترخيص
+    const cert = document.querySelector('[data-sx-cert-overlay]');
+    const openCert = ()=>{ cert?.classList.add('open'); document.body.style.overflow='hidden'; };
+    const closeCert = ()=>{ cert?.classList.remove('open'); document.body.style.overflow=''; };
+    document.querySelectorAll('[data-sx-cert-open]').forEach(b=> b.addEventListener('click', openCert));
+    document.querySelectorAll('[data-sx-cert-close]').forEach(b=> b.addEventListener('click', closeCert));
+    cert?.addEventListener('click', e=>{ if(e.target===cert) closeCert(); });
+    document.querySelector('[data-sx-cert-share]')?.addEventListener('click', ()=>{
+      const url = location.origin + location.pathname;
+      if(navigator.share){ navigator.share({title:'شهادة ترخيص جمعية سَنَد', url}).catch(()=>{}); }
+      else if(navigator.clipboard){ navigator.clipboard.writeText(url); sxToast('تم نسخ الرابط'); }
+    });
+
+    // تحديث العدادات
+    window.sxUpdateCounts = function(){
+      document.querySelectorAll('[data-cart-count]').forEach(el=> el.textContent = getCartCount());
+      document.querySelectorAll('[data-donation-count]').forEach(el=> el.textContent = getDonationCount());
+    };
+    window.addEventListener('storage', window.sxUpdateCounts);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', inject);
+  } else {
+    inject();
+  }
+})();
