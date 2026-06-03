@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>كفالة الأيتام — بوابة التبرع | جمعية سَنَد</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme:{ extend:{
+      fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+      colors:{ sanad:{ navy:'#0b2545', navyDeep:'#061633', navySoft:'#1d3a6b', emerald:'#0d7a4f', emeraldSoft:'#2fa776', emeraldDeep:'#075c3a', gold:'#b6873a', goldSoft:'#d9b066', sand:'#f3ead8', ivory:'#faf7f0', mist:'#eef2f6', border:'#e6ebf1', text:'#0f1d2e', muted:'#5b6b7d' } }
+    }}}
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+  <!-- Header -->
+  <div class="s-topbar hidden md:block">
+    <div class="s-container flex items-center justify-between py-2">
+      <div class="flex items-center gap-6">
+        <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+        <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+      </div>
+      <div class="flex items-center gap-5 text-xs">
+        <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+        <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+      </div>
+    </div>
+  </div>
+  <header class="s-header">
+    <div class="s-container flex items-center justify-between py-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="s-logo-mark">س</div>
+        <div class="leading-tight"><div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div><div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div></div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="index.html" class="s-nav-link">الرئيسية</a>
+        <a href="about.html" class="s-nav-link">عن الجمعية</a>
+        <a href="services.html" class="s-nav-link">الخدمات</a>
+        <a href="projects.html" class="s-nav-link">المشاريع</a>
+        <a href="donations.html" class="s-nav-link active">بوابة التبرع</a>
+        <a href="governance.html" class="s-nav-link">الحوكمة</a>
+        <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+        <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy"><i class="fas fa-bars text-lg"></i></button>
+      </div>
+    </div>
+  </header>
+  <div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+  <aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+    <div class="flex items-center justify-between mb-8">
+      <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية سَنَد</div></div>
+      <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+    </div>
+    <nav class="flex flex-col gap-1 text-base font-semibold">
+      <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+      <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+      <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+      <a href="projects.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المشاريع</a>
+      <a href="donations.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">بوابة التبرع</a>
+      <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+    </nav>
+  </aside>
+
+  <!-- ============ Hero فرصة التبرع ============ -->
+  <section class="s-dhero">
+    <div class="s-container py-14 s-dhero-inner">
+      <nav class="s-bcrumbs mb-5">
+        <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <a href="donations.html">بوابة التبرع</a>
+        <i class="fas fa-chevron-left"></i>
+        <span>كفالة الأيتام</span>
+      </nav>
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="s-dbadge kafala"><i class="fas fa-heart"></i> كفالة</span>
+        <span class="s-dbadge sadaqah">فرصة نشطة</span>
+      </div>
+      <h1 class="s-title-xl text-white font-extrabold mb-3">كفالة الأيتام</h1>
+      <p class="text-white/85 text-lg max-w-3xl leading-loose">ساهم في كفالة الأيتام ورعايتهم، وكن سندًا يفتح لهم أبواب التعليم والرعاية والاستقرار.</p>
+    </div>
+  </section>
+
+  <!-- ============ تخطيط التفاصيل + بطاقة التبرع ============ -->
+  <section class="s-section">
+    <div class="s-container">
+      <div class="grid lg:grid-cols-12 gap-8">
+
+        <!-- العمود الرئيسي -->
+        <div class="lg:col-span-8 space-y-8">
+
+          <!-- صورة الفرصة + معلومات سريعة -->
+          <div class="bg-white rounded-2xl border border-sanad-border overflow-hidden shadow-sm">
+            <img src="assets/images/donations/orphans.jpg" alt="كفالة الأيتام" class="w-full h-72 object-cover" />
+            <div class="p-6">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div><div class="text-2xl font-extrabold text-sanad-navy">250,000</div><div class="text-xs text-sanad-muted">المستهدف ﷼</div></div>
+                <div><div class="text-2xl font-extrabold text-sanad-emeraldDeep">168,000</div><div class="text-xs text-sanad-muted">المحقق ﷼</div></div>
+                <div><div class="text-2xl font-extrabold text-sanad-gold">82,000</div><div class="text-xs text-sanad-muted">المتبقي ﷼</div></div>
+                <div><div class="text-2xl font-extrabold text-sanad-navy">430</div><div class="text-xs text-sanad-muted">مساهمًا</div></div>
+              </div>
+              <div class="mt-5">
+                <div class="flex justify-between text-xs mb-2"><span class="text-sanad-muted">نسبة الإنجاز</span><span class="font-extrabold text-sanad-emeraldDeep">67%</span></div>
+                <div class="s-dprog"><span data-dprog="67"></span></div>
+              </div>
+              <div class="mt-5 flex flex-wrap gap-4 text-xs text-sanad-muted">
+                <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> مدة الفرصة: مستمرة</span>
+                <span><i class="fas fa-arrows-rotate ml-1 text-sanad-emerald"></i> آخر تحديث: هذا الشهر</span>
+                <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> الفئة المستفيدة: الأيتام</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- عن الفرصة -->
+          <div class="bg-white rounded-2xl border border-sanad-border p-6 lg:p-8">
+            <span class="s-eyebrow mb-3"><i class="fas fa-circle-info"></i> عن فرصة التبرع</span>
+            <h2 class="text-xl font-extrabold text-sanad-navy mt-2 mb-3">رعاية شاملة بأثر مستدام</h2>
+            <p class="text-sanad-text leading-loose">تهدف فرصة كفالة الأيتام إلى توفير رعاية شهرية منتظمة تشمل الاحتياجات الأساسية والتعليمية والاجتماعية، بما يضمن بيئة أكثر استقرارًا ونموًا للفئة المستفيدة. تُدار الكفالة وفق ضوابط معتمدة وتقارير دورية تُرسل إلى المتبرع.</p>
+          </div>
+
+          <!-- أثر المساهمة -->
+          <div class="bg-white rounded-2xl border border-sanad-border p-6 lg:p-8">
+            <span class="s-eyebrow mb-3"><i class="fas fa-seedling"></i> أثر المساهمة</span>
+            <h2 class="text-xl font-extrabold text-sanad-navy mt-2 mb-4">ماذا تصنع مساهمتك؟</h2>
+            <div class="space-y-3">
+              <div class="s-impact-row"><span class="amt">100 ﷼</span><span class="txt">تساهم في تغطية الاحتياجات الأساسية للطفل لأسبوع.</span></div>
+              <div class="s-impact-row"><span class="amt">300 ﷼</span><span class="txt">كفالة شهرية جزئية تشمل المأكل والملبس.</span></div>
+              <div class="s-impact-row"><span class="amt">900 ﷼</span><span class="txt">كفالة 3 أشهر بمتابعة كاملة وتقرير دوري.</span></div>
+              <div class="s-impact-row"><span class="amt">3,600 ﷼</span><span class="txt">كفالة سنة كاملة شاملة الجانب التعليمي.</span></div>
+            </div>
+          </div>
+
+          <!-- الفئة المستفيدة + كيف يوجَّه التبرع -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl border border-sanad-border p-6">
+              <span class="s-eyebrow mb-3"><i class="fas fa-child"></i> الفئة المستفيدة</span>
+              <h3 class="text-lg font-extrabold text-sanad-navy mt-2 mb-3">الأيتام دون 18 عامًا</h3>
+              <p class="text-sm text-sanad-muted leading-loose">يستفيد من البرنامج الأطفال الأيتام من الأسر المسجَّلة لدى الجمعية، وفق معايير اختيار دقيقة تراعي الأكثر احتياجًا.</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-sanad-border p-6">
+              <span class="s-eyebrow mb-3"><i class="fas fa-route"></i> توجيه التبرع</span>
+              <h3 class="text-lg font-extrabold text-sanad-navy mt-2 mb-3">شفافية في الصرف</h3>
+              <ul class="text-sm text-sanad-text space-y-2 leading-loose">
+                <li><i class="fas fa-circle-check text-sanad-emerald ml-1"></i> دراسة الحالات وفق معايير معتمدة</li>
+                <li><i class="fas fa-circle-check text-sanad-emerald ml-1"></i> صرف منتظم شهري للمستحقين</li>
+                <li><i class="fas fa-circle-check text-sanad-emerald ml-1"></i> تقارير دورية للمتبرع</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- أسئلة شائعة -->
+          <div>
+            <h2 class="text-xl font-extrabold text-sanad-navy mb-4">أسئلة شائعة عن الفرصة</h2>
+            <details class="s-faq-item" open><summary>هل أحصل على تقارير دورية؟</summary><p>نعم، يصلك تقرير شهري ملخّص بأثر الكفالة عبر البريد الإلكتروني.</p></details>
+            <details class="s-faq-item"><summary>هل يمكنني تجديد الكفالة تلقائيًا؟</summary><p>نعم، يمكن تفعيل التجديد التلقائي شهريًا عبر بطاقتك البنكية.</p></details>
+            <details class="s-faq-item"><summary>هل يمكن إخفاء بياناتي؟</summary><p>نعم، يمكنك التبرع كفاعل خير دون إظهار بياناتك في سند التبرع.</p></details>
+          </div>
+        </div>
+
+        <!-- بطاقة التبرع الجانبية -->
+        <aside class="lg:col-span-4">
+          <div class="s-dside">
+            <span class="s-eyebrow mb-3"><i class="fas fa-hand-holding-heart"></i> ساهم الآن</span>
+            <h3 class="font-extrabold mt-2">اختر مبلغ المساهمة</h3>
+            <p class="text-xs text-sanad-muted mb-3">حدد المبلغ أو اكتب مبلغًا مخصصًا</p>
+
+            <div data-amt-row class="s-amt-row mb-1">
+              <button class="s-amt" data-value="50">50 ﷼</button>
+              <button class="s-amt" data-value="100">100 ﷼</button>
+              <button class="s-amt active" data-value="300">300 ﷼</button>
+              <button class="s-amt" data-value="500">500 ﷼</button>
+              <input type="number" class="s-amt-custom" placeholder="مبلغ مخصص" />
+            </div>
+
+            <div class="total">
+              <div><div class="text-xs text-sanad-muted">إجمالي المبلغ</div><div class="v"><span data-total>300</span> <span class="u">﷼</span></div></div>
+              <i class="fas fa-receipt text-2xl text-sanad-emeraldSoft"></i>
+            </div>
+
+            <label class="s-anon-toggle mb-3">
+              <input type="checkbox" data-anon /> <i class="fas fa-mask text-sanad-emerald"></i> تبرع كفاعل خير
+            </label>
+            <div data-anon-notice class="text-xs text-sanad-muted mb-3" style="display:none;background:var(--s-mist);padding:.6rem .8rem;border-radius:10px;border-right:3px solid var(--s-emeraldSoft,#2fa776);">
+              <i class="fas fa-circle-info text-sanad-emerald ml-1"></i> سيتم تسجيل التبرع دون إظهار بياناتك في سند التبرع العام، مع حفظ بيانات العملية وفق الأنظمة.
+            </div>
+
+            <div class="space-y-2">
+              <button data-open-modal="mDonor" class="s-btn s-btn-primary w-full justify-center"><i class="fas fa-credit-card"></i> تبرع عبر البطاقة</button>
+              <div class="s-pay-tabs">
+                <button data-open-modal="mDonor" class="s-pay-tab"><i class="fas fa-credit-card"></i> مدى</button>
+                <button data-open-modal="mDonor" class="s-pay-tab"><i class="fab fa-apple-pay"></i> Apple Pay</button>
+                <button data-open-modal="mDonor" class="s-pay-tab"><i class="fas fa-building-columns"></i> تحويل</button>
+              </div>
+            </div>
+
+            <div class="mt-4 text-xs text-sanad-muted flex items-center justify-center gap-2">
+              <i class="fas fa-shield-halved text-sanad-emerald"></i> دفع آمن ومشفّر
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- فرص مشابهة -->
+  <section class="s-section bg-white border-t border-sanad-border">
+    <div class="s-container">
+      <div class="text-center mb-8"><span class="s-eyebrow mb-3"><i class="fas fa-layer-group"></i> اقتراحات</span><h2 class="s-title font-extrabold text-sanad-navy">فرص تبرع مشابهة</h2><div class="s-divider mx-auto mt-3"></div></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="donation-details.html" class="s-dcard kafala"><div class="cover"><img src="assets/images/donations/families.jpg" alt="" /><div class="badges"><span class="s-dbadge kafala">كفالة أسرة</span></div></div><div class="body"><h3>كفالة أسرة محتاجة</h3><p class="desc">دعم شهري لأسرة فقدت معيلها يشمل احتياجات السكن والمعيشة.</p></div></a>
+        <a href="donation-details.html" class="s-dcard project"><div class="cover"><img src="assets/images/donations/education.jpg" alt="" /><div class="badges"><span class="s-dbadge project">تعليم وتمكين</span></div></div><div class="body"><h3>مشروع الحقيبة المدرسية</h3><p class="desc">حقائب وأدوات مدرسية لأبناء الأسر المحتاجة.</p></div></a>
+        <a href="donation-details.html" class="s-dcard"><div class="cover"><img src="assets/images/donations/sadaqah.jpg" alt="" /><div class="badges"><span class="s-dbadge sadaqah">صدقة مفتوحة</span></div></div><div class="body"><h3>الصدقة الجارية</h3><p class="desc">دعم برامج الجمعية وخدماتها المستمرة.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer class="s-footer">
+    <div class="s-container pb-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-4">
+          <div class="flex items-center gap-3 mb-5"><div class="s-logo-mark">س</div><div><div class="font-extrabold text-white text-lg">جمعية سَنَد</div><div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div></div></div>
+          <p class="text-sm leading-loose">جمعية أهلية مرخّصة، تعمل بحوكمة وشفافية.</p>
+        </div>
+        <div class="lg:col-span-2"><h4>روابط مهمة</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن الجمعية</a></li><li><a href="donations.html">بوابة التبرع</a></li><li><a href="projects.html">المشاريع</a></li></ul></div>
+        <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="contact.html">التطوع</a></li><li><a href="news.html">الأخبار</a></li></ul></div>
+        <div class="lg:col-span-2"><h4>الحوكمة</h4><ul class="space-y-2.5 text-sm"><li><a href="governance.html">اللوائح</a></li><li><a href="board.html">مجلس الإدارة</a></li></ul></div>
+        <div class="lg:col-span-2"><h4>تواصل</h4><div class="space-y-2 text-xs text-white/70"><div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div><div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div></div></div>
+      </div>
+    </div>
+    <div class="border-t border-white/10"><div class="s-container py-5 text-xs text-white/60 text-center">© <span data-year>2026</span> جمعية سَنَد. جميع الحقوق محفوظة.</div></div>
+  </footer>
+
+  <!-- ============ شريط جانبي عائم ============ -->
+  <div class="s-dquick">
+    <a href="#" data-open-modal="mDonor" title="تبرع سريع"><i class="fas fa-heart"></i></a>
+    <button onclick="navigator.share?navigator.share({title:document.title,url:location.href}):navigator.clipboard.writeText(location.href)" title="مشاركة"><i class="fas fa-share-nodes"></i></button>
+    <button onclick="navigator.clipboard.writeText(location.href);this.querySelector('i').className='fas fa-check';" title="نسخ الرابط"><i class="fas fa-link"></i></button>
+    <a href="donations.html" title="العودة للفرص"><i class="fas fa-grid-2"></i></a>
+  </div>
+
+  <!-- ============ Modal: بيانات المتبرع ============ -->
+  <div class="s-modal-overlay" id="mDonor">
+    <div class="s-modal">
+      <div class="s-modal-head">
+        <h3><i class="fas fa-user-pen text-sanad-emerald ml-2"></i> أدخل معلوماتك</h3>
+        <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="s-modal-body">
+        <div data-donor-name class="s-field"><label>الاسم الكامل</label><input type="text" class="s-input" placeholder="مثال: عبدالله محمد" /></div>
+        <div data-donor-phone class="s-field"><label>رقم الجوال</label><input type="tel" class="s-input" placeholder="05XXXXXXXX" /></div>
+        <div class="s-field"><label>البريد الإلكتروني <span class="text-xs text-sanad-muted font-normal">(اختياري)</span></label><input type="email" class="s-input" placeholder="name@example.com" /></div>
+        <label class="s-anon-toggle">
+          <input type="checkbox" data-anon /> <i class="fas fa-mask text-sanad-emerald"></i> تبرع كفاعل خير
+        </label>
+        <div data-anon-notice class="text-xs text-sanad-muted mt-3" style="display:none;background:var(--s-mist);padding:.7rem .9rem;border-radius:10px;">
+          <i class="fas fa-circle-info text-sanad-emerald ml-1"></i> سيتم تسجيل التبرع دون إظهار بياناتك في سند التبرع العام، مع حفظ بيانات العملية وفق الأنظمة.
+        </div>
+        <div class="mt-4 text-xs text-sanad-muted">
+          بإكمال هذه الخطوة فإنك توافق على <a href="#" data-open-modal="mPrivacy" class="text-sanad-emeraldDeep font-bold underline">سياسة الخصوصية</a>.
+        </div>
+      </div>
+      <div class="s-modal-foot">
+        <button class="s-btn s-btn-outline" data-close>إلغاء</button>
+        <button data-donor-submit data-go-pay class="s-btn s-btn-primary"><i class="fas fa-arrow-left"></i> متابعة للدفع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Modal: سياسة الخصوصية ============ -->
+  <div class="s-modal-overlay" id="mPrivacy">
+    <div class="s-modal">
+      <div class="s-modal-head">
+        <h3><i class="fas fa-shield-halved text-sanad-emerald ml-2"></i> سياسة الخصوصية</h3>
+        <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="s-modal-body text-sm leading-loose">
+        <p>تلتزم الجمعية بحماية بيانات المتبرعين وعدم مشاركتها مع أي طرف غير مصرح له، وتستخدم البيانات فقط لأغراض توثيق عملية التبرع، إصدار السند، والتواصل المتعلق بالتبرع، وفق الأنظمة المعمول بها.</p>
+        <ul class="mt-4 space-y-2">
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> جميع البيانات مشفّرة وآمنة.</li>
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> لا تُشارَك بيانات المتبرع مع جهات ثالثة.</li>
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> يمكن طلب حذف البيانات في أي وقت.</li>
+        </ul>
+      </div>
+      <div class="s-modal-foot">
+        <button class="s-btn s-btn-outline" data-close>إغلاق</button>
+        <button class="s-btn s-btn-primary" data-close><i class="fas fa-check"></i> موافق</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Modal: إتمام الدفع ============ -->
+  <div class="s-modal-overlay" id="mPay">
+    <div class="s-modal">
+      <div class="s-modal-head">
+        <h3><i class="fas fa-credit-card text-sanad-emerald ml-2"></i> إتمام الدفع</h3>
+        <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="s-modal-body">
+        <div class="s-field"><label>اسم حامل البطاقة</label><input type="text" class="s-input" placeholder="كما هو مكتوب على البطاقة" /></div>
+        <div class="s-field"><label>رقم البطاقة</label><input type="text" class="s-input" placeholder="0000 0000 0000 0000" maxlength="19" /></div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="s-field"><label>تاريخ الانتهاء</label><input type="text" class="s-input" placeholder="MM/YY" maxlength="5" /></div>
+          <div class="s-field"><label>رمز التحقق</label><input type="text" class="s-input" placeholder="CVV" maxlength="4" /></div>
+        </div>
+        <div class="flex items-center justify-between p-4 bg-sanad-ivory rounded-xl mt-2">
+          <span class="text-sm text-sanad-muted">إجمالي المبلغ</span>
+          <span class="text-2xl font-extrabold text-sanad-emeraldDeep"><span data-total>300</span> ﷼</span>
+        </div>
+        <div class="mt-3 text-xs text-sanad-muted flex items-center gap-2 justify-center">
+          <i class="fas fa-lock text-sanad-emerald"></i> الدفع آمن ومشفّر — نموذج واجهة فقط
+        </div>
+      </div>
+      <div class="s-modal-foot">
+        <button class="s-btn s-btn-outline" data-close>رجوع</button>
+        <button class="s-btn s-btn-primary" data-finish-pay><i class="fas fa-check"></i> إتمام التبرع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Modal: سند التبرع ============ -->
+  <div class="s-modal-overlay" id="mReceipt">
+    <div class="s-modal wide" style="background:transparent;box-shadow:none;">
+      <div class="s-receipt" id="receiptPrint">
+        <div class="s-receipt-stamp">تم التبرع بنجاح</div>
+        <div class="s-receipt-head">
+          <div class="logo">س</div>
+          <h2>سند تبرع</h2>
+          <div class="sub">جمعية سَنَد للخدمات الاجتماعية</div>
+        </div>
+        <div class="s-receipt-body">
+          <div class="s-rrow"><span class="k">رقم السند</span><span class="v" data-r-no>SANAD-2026-0001</span></div>
+          <div class="s-rrow"><span class="k">تاريخ التبرع</span><span class="v" data-r-date>—</span></div>
+          <div class="s-rrow"><span class="k">اسم المتبرع</span><span class="v" data-r-name>فاعل خير</span></div>
+          <div class="s-rrow"><span class="k">رقم الجوال</span><span class="v" data-r-phone>—</span></div>
+          <div class="s-rrow"><span class="k">اسم الفرصة</span><span class="v">كفالة الأيتام</span></div>
+          <div class="s-rrow"><span class="k">نوع التبرع</span><span class="v">كفالة</span></div>
+          <div class="s-rrow"><span class="k">طريقة الدفع</span><span class="v">بطاقة بنكية</span></div>
+          <div class="s-rrow"><span class="k">حالة العملية</span><span class="v" style="color:var(--s-emerald);"><i class="fas fa-circle-check ml-1"></i> مكتملة</span></div>
+          <div class="s-receipt-amount">
+            <span class="text-sm text-sanad-muted">المبلغ المُتبَرَّع به</span>
+            <span class="v"><span data-r-amount>300</span> ﷼</span>
+          </div>
+          <div class="s-receipt-thanks">
+            <i class="fas fa-heart text-sanad-emerald text-2xl mb-2"></i>
+            <p>شكرًا لعطائكم، مساهمتكم تصنع أثرًا يصل إلى مستحقيه. جزاكم الله خيرًا.</p>
+          </div>
+        </div>
+        <div class="s-receipt-foot">
+          <button class="s-btn s-btn-primary" data-print-receipt><i class="fas fa-print"></i> طباعة السند</button>
+          <button class="s-btn s-btn-gold" data-print-receipt><i class="fas fa-download"></i> تحميل السند</button>
+          <a href="donations.html" class="s-btn s-btn-outline"><i class="fas fa-grid-2"></i> العودة للبوابة</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
