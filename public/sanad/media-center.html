@@ -273,34 +273,18 @@ tailwind.config = { theme:{ extend:{
   </div>
 </section>
 
-<!-- Grid + sidebar -->
+<!-- Grid -->
 <section class="py-10">
-  <div class="s-container grid lg:grid-cols-12 gap-8">
-    <div class="lg:col-span-9">
-      <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
-        <h2 class="s-title">المحتوى الإعلامي</h2>
-        <div class="text-sm text-sanad-muted">يعرض <b id="mCount" class="text-sanad-navy">15</b> عنصرًا</div>
-      </div>
-      <div class="m-grid" id="mediaGrid"></div>
-      <div class="text-center mt-10 hidden" id="mEmpty">
-        <div class="sanad-icon-wrap mx-auto"><i class="fas fa-magnifying-glass"></i></div>
-        <p class="mt-4 text-sanad-muted">لا يوجد محتوى يطابق الفلاتر الحالية.</p>
-      </div>
+  <div class="s-container">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
+      <h2 class="s-title">المحتوى الإعلامي</h2>
+      <div class="text-sm text-sanad-muted">يعرض <b id="mCount" class="text-sanad-navy">15</b> عنصرًا</div>
     </div>
-    <aside class="lg:col-span-3 space-y-6">
-      <div class="m-most">
-        <h3><i class="fas fa-fire"></i> الأكثر مشاهدة</h3>
-        <div id="mMost"></div>
-      </div>
-      <div class="m-most" style="background:linear-gradient(135deg,#0b2545,#075c3a);color:#fff;border:0;">
-        <h3 style="color:#fff;"><i class="fas fa-envelope-open-text" style="color:#d9b066;"></i> كن قريبًا من أثرنا</h3>
-        <p class="text-sm leading-loose text-white/80">اشترك ليصلك جديد أخبار الجمعية ومبادراتها.</p>
-        <form class="mt-4 space-y-2" onsubmit="event.preventDefault();showToast('تم الاشتراك في النشرة بنجاح');this.reset();">
-          <input type="email" required placeholder="البريد الإلكتروني" class="w-full px-3 py-2.5 rounded-lg text-sanad-navy text-sm" />
-          <button class="w-full s-btn s-btn-gold !py-2.5"><i class="fas fa-paper-plane"></i> اشترك الآن</button>
-        </form>
-      </div>
-    </aside>
+    <div class="m-grid" id="mediaGrid"></div>
+    <div class="text-center mt-10 hidden" id="mEmpty">
+      <div class="sanad-icon-wrap mx-auto"><i class="fas fa-magnifying-glass"></i></div>
+      <p class="mt-4 text-sanad-muted">لا يوجد محتوى يطابق الفلاتر الحالية.</p>
+    </div>
   </div>
 </section>
 
