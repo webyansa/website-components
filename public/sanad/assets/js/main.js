@@ -227,3 +227,212 @@
   /* طباعة سند التبرع */
   document.querySelectorAll('[data-print-receipt]').forEach(b => b.addEventListener('click', () => window.print()));
 })();
+
+/* =============================================
+   مسارات التبرع المتقدمة — donation paths v2
+   ============================================= */
+(function(){
+  'use strict';
+  const card = document.querySelector('[data-donation-card]');
+  if (!card) return;
+
+  const oppName = card.getAttribute('data-opportunity') || 'فرصة تبرع';
+  const state = {
+    type: 'once',          // once | recurring | gift
+    method: 'card',        // card | mada | applepay | transfer
+    freq: 'monthly',
+    methodLabels: { card:'بطاقة بنكية', mada:'مدى', applepay:'Apple Pay', transfer:'تحويل بنكي' },
+    freqLabels: { daily:'يومي', weekly:'أسبوعي', monthly:'شهري', yearly:'سنوي' },
+    freqLabelsReceipt: { daily:'يوميًا', weekly:'أسبوعيًا', monthly:'شهريًا', yearly:'سنويًا' },
+    durLabels: { open:'مفتوحة', '3m':'3 أشهر', '6m':'6 أشهر', '12m':'سنة كاملة' },
+    typeLabels: { once:'تبرع مرة واحدة', recurring:'تبرع دوري', gift:'إهداء تبرع' }
+  };
+
+  /* تبويبات مسارات التبرع */
+  const tabs = card.querySelectorAll('[data-dtab]');
+  const panels = card.querySelectorAll('[data-dpanel]');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    state.type = t.getAttribute('data-dtab');
+    tabs.forEach(x => x.classList.toggle('active', x === t));
+    panels.forEach(p => p.classList.toggle('active', p.getAttribute('data-dpanel') === state.type));
+  }));
+
+  /* segmented control: تكرار التبرع الدوري */
+  const seg = card.querySelector('[data-seg="freq"]');
+  if (seg){
+    const opts = seg.querySelectorAll('.s-seg-opt');
+    opts.forEach(o => o.addEventListener('click', () => {
+      opts.forEach(x => x.classList.toggle('active', x === o));
+      state.freq = o.getAttribute('data-value');
+      updateRecurringSummary();
+    }));
+  }
+
+  const rdStart = card.querySelector('[data-rd-start]');
+  const rdDur = card.querySelector('[data-rd-duration]');
+  const sumFreq = card.querySelector('[data-rd-sum-freq]');
+  const sumDate = card.querySelector('[data-rd-sum-date]');
+  const sumDur = card.querySelector('[data-rd-sum-dur]');
+  function updateRecurringSummary(){
+    if (sumFreq) sumFreq.textContent = state.freqLabels[state.freq];
+    if (sumDate) sumDate.textContent = rdStart && rdStart.value ? new Date(rdStart.value).toLocaleDateString('ar-SA') : 'تاريخ اليوم';
+    if (sumDur) sumDur.textContent = state.durLabels[rdDur ? rdDur.value : 'open'];
+  }
+  rdStart?.addEventListener('change', updateRecurringSummary);
+  rdDur?.addEventListener('change', updateRecurringSummary);
+  // set today as default
+  if (rdStart && !rdStart.value){ const t = new Date(); rdStart.value = t.toISOString().slice(0,10); }
+  updateRecurringSummary();
+
+  /* معاينة بطاقة الإهداء */
+  const gpTo = card.querySelector('[data-gp-to]');
+  const gpFrom = card.querySelector('[data-gp-from]');
+  const gpMsg = card.querySelector('[data-gp-msg]');
+  const gpAmt = card.querySelector('[data-gp-amount]');
+  const gpAmtRow = card.querySelector('[data-gp-amount-row]');
+  const giftTo = card.querySelector('[data-gift-to-name]');
+  const giftFrom = card.querySelector('[data-gift-from-name]');
+  const giftMsg = card.querySelector('[data-gift-msg]');
+  const giftShowAmt = card.querySelector('[data-gift-show-amount]');
+  const giftSchedule = card.querySelector('[data-gift-schedule]');
+  const giftScheduleBox = card.querySelector('.s-gift-schedule');
+
+  function updateGiftPreview(){
+    if (gpTo) gpTo.textContent = (giftTo?.value || '').trim() || '—';
+    if (gpFrom) gpFrom.textContent = (giftFrom?.value || '').trim() || '—';
+    if (gpMsg) gpMsg.textContent = (giftMsg?.value || '').trim() || 'تقبّل الله منكم صالح الأعمال';
+    if (gpAmtRow) gpAmtRow.style.display = (giftShowAmt && !giftShowAmt.checked) ? 'none' : '';
+  }
+  [giftTo, giftFrom, giftMsg, giftShowAmt].forEach(el => el && el.addEventListener('input', updateGiftPreview));
+  giftShowAmt?.addEventListener('change', updateGiftPreview);
+  giftSchedule?.addEventListener('change', () => { if (giftScheduleBox) giftScheduleBox.style.display = giftSchedule.checked ? 'grid' : 'none'; });
+
+  /* مزامنة المبلغ في معاينة الإهداء (مرتبط بـ data-total النشط داخل لوحة الإهداء) */
+  const giftPanel = card.querySelector('[data-dpanel="gift"]');
+  if (giftPanel){
+    const obs = new MutationObserver(() => {
+      const t = giftPanel.querySelector('[data-total]');
+      if (t && gpAmt) gpAmt.textContent = t.textContent;
+    });
+    giftPanel.querySelectorAll('[data-total]').forEach(t => obs.observe(t, { childList:true, subtree:true, characterData:true }));
+    // initial
+    const t0 = giftPanel.querySelector('[data-total]');
+    if (t0 && gpAmt) gpAmt.textContent = t0.textContent;
+  }
+
+  /* تبرع كفاعل خير لكل مسار — يضبط حالة المودال */
+  function activeAnonChecked(){
+    const map = { once:'[data-anon-once]', recurring:'[data-anon-recurring]', gift:'[data-anon-gift]' };
+    const el = card.querySelector(map[state.type]);
+    return !!(el && el.checked);
+  }
+
+  /* المبلغ النشط من اللوحة الحالية */
+  function activeAmount(){
+    const panel = card.querySelector(`[data-dpanel="${state.type}"]`);
+    const t = panel?.querySelector('[data-total]');
+    return t ? (t.textContent || '0').trim() : '0';
+  }
+
+  /* فتح المودالات */
+  const openModal = (id) => { const m = document.getElementById(id); if (m){ m.classList.add('open'); document.body.style.overflow='hidden'; }};
+  const closeModal = (m) => { m.classList.remove('open'); if(!document.querySelector('.s-modal-overlay.open')) document.body.style.overflow=''; };
+
+  /* أزرار إطلاق الدفع — تجمع بيانات المسار ثم تفتح مودال بيانات المتبرع */
+  card.querySelectorAll('[data-pay-launch]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      state.type = btn.getAttribute('data-pay-launch');
+      state.method = btn.getAttribute('data-pay-method') || 'card';
+      // وضع حالة "فاعل خير" في مودال المتبرع وفق المسار النشط
+      const donorAnon = document.querySelector('#mDonor [data-anon]');
+      if (donorAnon){
+        donorAnon.checked = activeAnonChecked();
+        donorAnon.dispatchEvent(new Event('change'));
+      }
+      openModal('mDonor');
+    });
+  });
+
+  /* تحديث ملخص الدفع قبل فتح مودال الدفع */
+  const goPay = document.querySelector('[data-go-pay]');
+  if (goPay){
+    goPay.addEventListener('click', () => {
+      const ps = {
+        type: document.querySelector('[data-ps-type]'),
+        freqRow: document.querySelector('[data-ps-freq-row]'),
+        freq: document.querySelector('[data-ps-freq]'),
+        giftRow: document.querySelector('[data-ps-gift-row]'),
+        giftTo: document.querySelector('[data-ps-gift-to]'),
+        method: document.querySelector('[data-ps-method]'),
+        amount: document.querySelector('[data-ps-amount]'),
+      };
+      if (ps.type) ps.type.textContent = state.typeLabels[state.type];
+      if (ps.method) ps.method.textContent = state.methodLabels[state.method];
+      if (ps.amount) ps.amount.textContent = activeAmount();
+      if (ps.freqRow) ps.freqRow.style.display = state.type === 'recurring' ? '' : 'none';
+      if (ps.freq) ps.freq.textContent = state.freqLabels[state.freq];
+      if (ps.giftRow) ps.giftRow.style.display = state.type === 'gift' ? '' : 'none';
+      if (ps.giftTo) ps.giftTo.textContent = (giftTo?.value || '').trim() || '—';
+    }, true); // capture قبل المعالج القديم الذي يفتح mPay
+  }
+
+  /* تحديث سند التبرع بحسب نوع التبرع — يعمل بعد المعالج الأساسي */
+  const finishBtn = document.querySelector('[data-finish-pay]');
+  if (finishBtn){
+    finishBtn.addEventListener('click', () => {
+      // اسم الفرصة / طريقة الدفع / نوع التبرع
+      const setT = (sel, val) => { const el = document.querySelector(sel); if (el) el.textContent = val; };
+      setT('[data-r-type]', state.typeLabels[state.type]);
+      setT('[data-r-method]', state.methodLabels[state.method]);
+      setT('[data-r-opp]', oppName);
+      setT('[data-r-amount]', activeAmount());
+
+      // عند فاعل خير: تأكد أن الاسم يظهر "فاعل خير"
+      if (activeAnonChecked()){
+        setT('[data-r-name]', 'فاعل خير');
+        setT('[data-r-phone]', '—');
+      }
+
+      // كتلة التبرع الدوري
+      const rdBlock = document.querySelector('[data-r-recurring-block]');
+      if (rdBlock){
+        if (state.type === 'recurring'){
+          rdBlock.style.display = '';
+          setT('[data-r-rd-freq]', state.freqLabelsReceipt[state.freq]);
+          setT('[data-r-rd-start]', rdStart && rdStart.value ? new Date(rdStart.value).toLocaleDateString('ar-SA') : new Date().toLocaleDateString('ar-SA'));
+          setT('[data-r-rd-dur]', state.durLabels[rdDur ? rdDur.value : 'open']);
+          setT('[data-r-rd-no]', 'RD-2026-' + String(Math.floor(1000 + Math.random()*9000)));
+        } else { rdBlock.style.display = 'none'; }
+      }
+
+      // كتلة الإهداء
+      const gBlock = document.querySelector('[data-r-gift-block]');
+      if (gBlock){
+        if (state.type === 'gift'){
+          gBlock.style.display = '';
+          setT('[data-r-gift-to]', (giftTo?.value || '').trim() || '—');
+          setT('[data-r-gift-from]', activeAnonChecked() ? 'فاعل خير' : ((giftFrom?.value || '').trim() || '—'));
+          setT('[data-r-gift-msg]', (giftMsg?.value || '').trim() || '—');
+          setT('[data-r-gift-show]', giftShowAmt && giftShowAmt.checked ? 'نعم' : 'لا');
+          const dateRow = document.querySelector('[data-r-gift-date-row]');
+          if (dateRow){
+            if (giftSchedule && giftSchedule.checked){
+              dateRow.style.display = '';
+              const d = card.querySelector('[data-gift-date]')?.value;
+              const tm = card.querySelector('[data-gift-time]')?.value;
+              setT('[data-r-gift-date]', (d ? new Date(d).toLocaleDateString('ar-SA') : '—') + (tm ? ' • ' + tm : ''));
+            } else { dateRow.style.display = 'none'; }
+          }
+        } else { gBlock.style.display = 'none'; }
+      }
+    });
+  }
+
+  /* مشاركة السند */
+  document.querySelectorAll('[data-share-receipt]').forEach(b => b.addEventListener('click', () => {
+    const txt = 'سند تبرع — جمعية سَنَد';
+    if (navigator.share){ navigator.share({ title: txt, text: txt, url: location.href }).catch(()=>{}); }
+    else { navigator.clipboard?.writeText(location.href); b.innerHTML = '<i class="fas fa-check"></i> تم نسخ الرابط'; }
+  }));
+})();
