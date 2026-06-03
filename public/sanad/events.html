@@ -290,16 +290,16 @@ tailwind.config = { theme:{ extend:{
   function cardHtml(e){
     const dm = dayMonth(e.date);
     return `<article class="e-card" data-id="${e.id}">
-      <div class="e-thumb" style="background-image:url('${e.img}')">
+      <a href="event-details.html" class="e-thumb block" style="background-image:url('${e.img}')">
         <div class="e-badges">
           <span class="e-bg ${TYPE_CLS[e.type]}"><i class="fas ${TYPE_IC[e.type]}"></i> ${TYPE_LBL[e.type]}</span>
           <span class="e-bg ${MODE_CLS[e.mode]}"><i class="fas ${MODE_IC[e.mode]}"></i> ${MODE_LBL[e.mode]}</span>
         </div>
         <span class="e-status ${e.stat}"><i class="fas fa-circle"></i> ${STAT_LBL[e.stat]}</span>
         <div class="e-date"><b>${dm.day}</b><span>${dm.mon}</span></div>
-      </div>
+      </a>
       <div class="e-body">
-        <h3>${e.t}</h3>
+        <h3><a href="event-details.html" class="hover:text-sanad-emeraldDeep transition-colors">${e.t}</a></h3>
         <p>${e.d}</p>
         <div class="e-meta">
           <span><i class="fas fa-calendar"></i>${fmtDate(e.date)}</span>
@@ -308,8 +308,8 @@ tailwind.config = { theme:{ extend:{
           ${e.seats?`<span><i class="fas fa-users"></i>${e.left}/${e.seats} مقعدًا</span>`:''}
         </div>
         <div class="e-foot">
-          <a href="event-details.html?id=${e.id}" class="s-btn s-btn-outline"><i class="fas fa-circle-info"></i> التفاصيل</a>
-          ${e.stat==='open' ? `<a href="event-details.html?id=${e.id}#register" class="s-btn s-btn-primary"><i class="fas fa-clipboard-check"></i> التسجيل</a>` : `<button class="s-btn s-btn-outline" disabled style="opacity:.55;cursor:not-allowed;"><i class="fas fa-lock"></i> ${STAT_LBL[e.stat]}</button>`}
+          <a href="event-details.html" class="s-btn s-btn-outline"><i class="fas fa-circle-info"></i> التفاصيل</a>
+          ${e.stat==='open' ? `<a href="event-details.html#register" class="s-btn s-btn-primary"><i class="fas fa-clipboard-check"></i> التسجيل</a>` : `<button class="s-btn s-btn-outline" disabled style="opacity:.55;cursor:not-allowed;"><i class="fas fa-lock"></i> ${STAT_LBL[e.stat]}</button>`}
         </div>
       </div>
     </article>`;
@@ -331,13 +331,6 @@ tailwind.config = { theme:{ extend:{
     document.getElementById('eGrid').innerHTML = list.map(cardHtml).join('');
     document.getElementById('eCount').textContent = list.length;
     document.getElementById('eEmpty').classList.toggle('hidden', list.length>0);
-    // calendar = upcoming 5
-    const cal = EVENTS.filter(e=> new Date(e.date)>=today).slice(0,5);
-    document.getElementById('eCal').innerHTML = cal.map(e=>{ const dm=dayMonth(e.date); return `
-      <a class="e-cal-item" href="event-details.html?id=${e.id}">
-        <div class="dt"><b>${dm.day}</b><span>${dm.mon}</span></div>
-        <div><h4>${e.t}</h4><span class="m"><i class="fas fa-clock"></i> ${e.time} · ${MODE_LBL[e.mode]}</span></div>
-      </a>`; }).join('');
   }
 
   document.getElementById('eTabs').addEventListener('click', ev=>{
