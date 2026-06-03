@@ -1260,3 +1260,53 @@ img { max-width: 100%; display: block; }
   .s-gift-meta{grid-template-columns:1fr;}
   .s-gift-meta>div:last-child{grid-column:auto;}
 }
+
+/* === تحسينات مسارات التبرع v3 === */
+.s-dtabs.cols-2{grid-template-columns:repeat(2,1fr);}
+.s-pay-methods{display:flex;flex-direction:column;gap:.55rem;margin-top:1rem;}
+.s-method-btn{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem;border:1.5px solid var(--s-border);background:#fff;border-radius:14px;cursor:pointer;text-align:right;width:100%;font-family:inherit;transition:.2s;position:relative;color:var(--s-navy);}
+.s-method-btn:hover{border-color:var(--s-emerald);transform:translateY(-1px);box-shadow:0 8px 18px rgba(11,37,69,.08);}
+.s-method-btn.primary{background:linear-gradient(135deg,var(--s-navy),var(--s-emerald-deep));color:#fff;border-color:transparent;}
+.s-method-btn.primary:hover{box-shadow:0 10px 22px rgba(11,37,69,.22);}
+.s-method-btn.primary .mt-sub{color:rgba(255,255,255,.78);}
+.s-method-btn.primary .mt-ic{background:rgba(255,255,255,.16);color:#fff;}
+.s-method-btn .mt-ic{width:44px;height:44px;border-radius:12px;background:var(--s-ivory);color:var(--s-emerald-deep);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.s-method-btn .mt-title{display:block;font-weight:800;font-size:.92rem;line-height:1.25;}
+.s-method-btn .mt-sub{display:block;font-size:.72rem;color:var(--s-muted);margin-top:.22rem;line-height:1.3;}
+.s-method-btn .mt-arrow{margin-right:auto;opacity:.6;font-size:.8rem;}
+.s-method-btn .flex-1{flex:1;min-width:0;}
+.s-brand-pills{display:flex;gap:.3rem;margin-top:.45rem;flex-wrap:wrap;}
+.s-brand-pills span{font-size:.6rem;font-weight:800;padding:.18rem .45rem;border-radius:6px;background:#fff;color:var(--s-navy);border:1px solid var(--s-border);letter-spacing:.04em;}
+.s-method-btn.primary .s-brand-pills span{background:rgba(255,255,255,.18);color:#fff;border-color:transparent;}
+
+/* تحويل بنكي */
+.s-transfer-card{background:linear-gradient(135deg,var(--s-navy),var(--s-emerald-deep));color:#fff;padding:1.1rem 1.2rem;border-radius:16px;margin-bottom:1rem;box-shadow:0 10px 24px rgba(11,37,69,.18);}
+.s-transfer-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.65rem 0;border-bottom:1px dashed rgba(255,255,255,.18);}
+.s-transfer-row:last-child{border-bottom:0;}
+.s-transfer-row .k{font-size:.76rem;opacity:.8;}
+.s-transfer-row .v{font-weight:800;font-size:.9rem;display:flex;align-items:center;gap:.5rem;}
+.s-copy-btn{background:rgba(255,255,255,.16);color:#fff;border:0;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:.74rem;transition:.18s;display:inline-flex;align-items:center;justify-content:center;}
+.s-copy-btn:hover{background:rgba(255,255,255,.32);}
+.s-copy-btn.copied{background:var(--s-emerald);}
+.s-upload{display:block;border:2px dashed var(--s-border);border-radius:14px;padding:1.1rem;text-align:center;cursor:pointer;transition:.18s;background:var(--s-ivory);}
+.s-upload:hover{border-color:var(--s-emerald);background:#fff;}
+.s-upload .ic{font-size:1.6rem;color:var(--s-emerald);margin-bottom:.35rem;}
+.s-upload .ttl{font-weight:800;color:var(--s-navy);font-size:.88rem;}
+.s-upload .sub{font-size:.72rem;color:var(--s-muted);margin-top:.2rem;}
+.s-upload .fname{margin-top:.55rem;font-size:.78rem;color:var(--s-emerald-deep);font-weight:800;display:inline-flex;align-items:center;gap:.35rem;}
+
+/* مودال الإهداء — المستلمون */
+.s-recipients{display:flex;flex-direction:column;gap:.55rem;}
+.s-recip{display:grid;grid-template-columns:1fr 1fr auto;gap:.5rem;align-items:end;padding:.65rem;background:var(--s-ivory);border-radius:12px;border:1px solid var(--s-border);position:relative;}
+.s-recip .s-field{margin-bottom:0;}
+.s-recip .s-field label{font-size:.72rem;}
+.s-recip-del{width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid var(--s-border);color:#b3261e;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:.18s;}
+.s-recip-del:hover{background:#fff5f4;border-color:#b3261e;}
+.s-recip-add{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .95rem;border:1.5px dashed var(--s-emerald);color:var(--s-emerald-deep);background:rgba(47,167,118,.08);border-radius:10px;cursor:pointer;font-weight:800;font-size:.82rem;margin-top:.7rem;font-family:inherit;}
+.s-recip-add:hover{background:rgba(47,167,118,.16);}
+.s-recip-index{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;background:var(--s-emerald);color:#fff;font-size:.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+
+@media(max-width:640px){
+  .s-recip{grid-template-columns:1fr auto;}
+  .s-recip .s-field:nth-child(2){grid-column:1;}
+}
