@@ -340,19 +340,37 @@
   const openModal = (id) => { const m = document.getElementById(id); if (m){ m.classList.add('open'); document.body.style.overflow='hidden'; }};
   const closeModal = (m) => { m.classList.remove('open'); if(!document.querySelector('.s-modal-overlay.open')) document.body.style.overflow=''; };
 
-  /* أزرار إطلاق الدفع — تجمع بيانات المسار ثم تفتح مودال بيانات المتبرع */
+  /* أزرار إطلاق الدفع — توجيه حسب طريقة الدفع */
   card.querySelectorAll('[data-pay-launch]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       state.type = btn.getAttribute('data-pay-launch');
       state.method = btn.getAttribute('data-pay-method') || 'card';
-      // وضع حالة "فاعل خير" في مودال المتبرع وفق المسار النشط
       const donorAnon = document.querySelector('#mDonor [data-anon]');
       if (donorAnon){
         donorAnon.checked = activeAnonChecked();
         donorAnon.dispatchEvent(new Event('change'));
       }
-      openModal('mDonor');
+      // تحويل بنكي → افتح مودال التحويل مباشرة، بقية الطرق → بيانات المتبرع
+      if (state.method === 'transfer'){
+        // اضبط المبلغ في حقل التحويل من المسار النشط
+        const trAmt = document.querySelector('[data-tr-amount]');
+        if (trAmt && !trAmt.value){ trAmt.value = (activeAmount() || '').replace(/[^\d.]/g,''); }
+        openModal('mTransfer');
+      } else {
+        openModal('mDonor');
+      }
+    });
+  });
+
+  /* فتح مودال الإهداء من الأزرار */
+  document.querySelectorAll('[data-open-gift]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      state.type = 'gift';
+      // تأكد من وجود مستلم واحد على الأقل
+      if (typeof window.__sanadGiftInit === 'function') window.__sanadGiftInit();
+      openModal('mGift');
     });
   });
 
