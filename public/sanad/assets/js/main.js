@@ -430,19 +430,22 @@
       const gBlock = document.querySelector('[data-r-gift-block]');
       if (gBlock){
         if (state.type === 'gift'){
+          const gs = window.__sanadGift || {};
           gBlock.style.display = '';
-          setT('[data-r-gift-to]', (giftTo?.value || '').trim() || '—');
-          setT('[data-r-gift-from]', activeAnonChecked() ? 'فاعل خير' : ((giftFrom?.value || '').trim() || '—'));
-          setT('[data-r-gift-msg]', (giftMsg?.value || '').trim() || '—');
-          setT('[data-r-gift-show]', giftShowAmt && giftShowAmt.checked ? 'نعم' : 'لا');
+          setT('[data-r-gift-to]', (gs.recipients && gs.recipients.length) ? gs.recipients.map(r => r.name || '—').join(' • ') : '—');
+          setT('[data-r-gift-from]', (gs.anon ? 'فاعل خير' : (gs.fromName || '—')));
+          setT('[data-r-gift-msg]', gs.msg || '—');
+          setT('[data-r-gift-show]', gs.showAmount ? 'نعم' : 'لا');
           const dateRow = document.querySelector('[data-r-gift-date-row]');
           if (dateRow){
-            if (giftSchedule && giftSchedule.checked){
+            if (gs.schedule){
               dateRow.style.display = '';
-              const d = card.querySelector('[data-gift-date]')?.value;
-              const tm = card.querySelector('[data-gift-time]')?.value;
-              setT('[data-r-gift-date]', (d ? new Date(d).toLocaleDateString('ar-SA') : '—') + (tm ? ' • ' + tm : ''));
+              setT('[data-r-gift-date]', (gs.date ? new Date(gs.date).toLocaleDateString('ar-SA') : '—') + (gs.time ? ' • ' + gs.time : ''));
             } else { dateRow.style.display = 'none'; }
+          }
+          // اظهر الإجمالي الكلي عند تعدد المستلمين
+          if (gs.recipients && gs.recipients.length > 1 && gs.perAmount){
+            setT('[data-r-amount]', String(gs.perAmount * gs.recipients.length));
           }
         } else { gBlock.style.display = 'none'; }
       }
