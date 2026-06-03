@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>تواصل معنا · جمعية سَنَد</title>
+<meta name="description" content="تواصل مع جمعية سَنَد عبر القنوات الرسمية، استفسارات، شكاوى ومقترحات، والبلاغات السرية." />
 <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,44 +21,276 @@ tailwind.config = { theme:{ extend:{
 </head>
 <body class="bg-sanad-ivory text-sanad-text antialiased">
 
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="service-tracking.html"><i class="fas fa-route ml-1 text-sanad-emeraldSoft"></i> تتبع طلب خدمة</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
 <header class="s-header">
   <div class="s-container flex items-center justify-between py-4">
-    <a href="index.html" class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="leading-tight"><div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div><div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div></div></a>
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
     <nav class="hidden lg:flex items-center gap-7">
-      <a href="index.html" class="s-nav-link">الرئيسية</a><a href="about.html" class="s-nav-link">عن الجمعية</a><a href="services.html" class="s-nav-link">الخدمات</a><a href="projects.html" class="s-nav-link">المشاريع</a><a href="donations.html" class="s-nav-link">بوابة التبرع</a><a href="governance.html" class="s-nav-link">الحوكمة</a><a href="media-center.html" class="s-nav-link">المركز الإعلامي</a><a href="events.html" class="s-nav-link">الفعاليات</a><a href="store.html" class="s-nav-link">المتجر</a>
-        <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link">المركز الإعلامي</a>
+      <a href="store.html" class="s-nav-link">المتجر</a>
+      <a href="contact.html" class="s-nav-link active">تواصل معنا</a>
     </nav>
-    <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+    <div class="flex items-center gap-2">
+      <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
   </div>
 </header>
 
-<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide3.jpg');">
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية سَنَد</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+    <a href="service-tracking.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تتبع طلب خدمة</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide7.jpg');">
   <div class="s-hero-bg"></div>
   <div class="s-container">
     <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">تواصل معنا</span></div>
     <h1>تواصل معنا</h1>
-    <p class="s-hero-lead">صفحة قيد الإعداد ضمن قالب سَنَد، وستكتمل قريبًا بمحتوى تفصيلي مرتبط بنظام إدارة المحتوى.</p>
+    <p class="s-hero-lead">نحن قريبون منكم للإجابة عن استفساراتكم، استقبال مقترحاتكم، ومساعدتكم في الوصول إلى الخدمة المناسبة.</p>
   </div>
 </section>
 
-<section class="py-20">
-  <div class="s-container max-w-3xl text-center">
-    <div class="w-20 h-20 mx-auto rounded-full bg-sanad-mist flex items-center justify-center text-sanad-emerald text-2xl mb-5"><i class="fas fa-tools"></i></div>
-    <h2 class="s-title">تواصل معنا</h2>
-    <p class="text-sanad-muted mt-4 leading-loose">سيتم تجهيز هذه الصفحة قريبًا بمحتوى احترافي مرتبط بهوية وخدمات جمعية سَنَد، مع ربطها بنظام إدارة المحتوى لتحديث البيانات بسهولة.</p>
-    <a href="index.html" class="s-btn s-btn-primary mt-8"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+<section class="py-12">
+  <div class="s-container">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="ct-card"><div class="ic"><i class="fas fa-phone"></i></div><h4>الهاتف</h4><p>الرقم الموحد:</p><strong dir="ltr">920000000</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-envelope"></i></div><h4>البريد الإلكتروني</h4><p>للاستفسارات العامة:</p><strong>info@sanad.org.sa</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fab fa-whatsapp"></i></div><h4>واتساب</h4><p>للتواصل السريع:</p><strong dir="ltr">+966 55 555 0000</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-clock"></i></div><h4>ساعات العمل</h4><p>الأحد - الخميس</p><strong>8 صباحًا - 4 مساءً</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-location-dot"></i></div><h4>موقع الجمعية</h4><p>المقر الرئيسي:</p><strong>الرياض - حي الورود</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-headset"></i></div><h4>الدعم والخدمات</h4><p>فريق المستفيدين:</p><strong>support@sanad.org.sa</strong></div>
+    </div>
   </div>
 </section>
+
+<section class="py-12 bg-white">
+  <div class="s-container">
+    <div class="ct-tabs" data-ct-tabs>
+      <button class="active" data-tab="general"><i class="fas fa-envelope-open-text"></i> تواصل عام</button>
+      <button data-tab="complaints"><i class="fas fa-bullhorn"></i> الشكاوى والمقترحات</button>
+      <button data-tab="report"><i class="fas fa-shield-halved"></i> الإبلاغ عن مخالفة</button>
+    </div>
+
+    <div class="ct-panel" data-panel="general">
+      <div class="grid lg:grid-cols-5 gap-8">
+        <div class="lg:col-span-3 ct-form">
+          <h3>نموذج التواصل العام</h3>
+          <p class="text-sanad-muted text-sm mb-5">أرسل لنا استفسارك أو ملاحظتك وسنرد عليك خلال يومي عمل.</p>
+          <form id="ctGeneral" novalidate class="grid sm:grid-cols-2 gap-4">
+            <div class="srv-field"><label>الاسم الكامل *</label><input type="text" name="name" required maxlength="100"></div>
+            <div class="srv-field"><label>رقم الجوال *</label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" required pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX"></div></div>
+            <div class="srv-field"><label>البريد الإلكتروني</label><input type="email" name="email" maxlength="120"></div>
+            <div class="srv-field"><label>نوع الرسالة *</label>
+              <select name="type" required>
+                <option value="">اختر النوع</option>
+                <option>استفسار عام</option><option>طلب مساعدة</option><option>شراكة</option><option>تطوع</option><option>ملاحظة</option>
+              </select>
+            </div>
+            <div class="srv-field sm:col-span-2"><label>عنوان الرسالة *</label><input type="text" name="subject" required maxlength="150"></div>
+            <div class="srv-field sm:col-span-2"><label>نص الرسالة *</label><textarea name="body" rows="5" required maxlength="1500"></textarea></div>
+            <div class="sm:col-span-2"><button class="s-btn s-btn-primary w-full justify-center"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button></div>
+            <div class="sm:col-span-2 ct-ok hidden" data-ok>تم إرسال رسالتك بنجاح، وسيتم التواصل معك قريبًا.</div>
+          </form>
+        </div>
+        <aside class="lg:col-span-2 ct-side">
+          <h4>قنوات سريعة</h4>
+          <a href="tel:920000000" class="ct-side-row"><i class="fas fa-phone"></i><div><strong>اتصل بنا</strong><small dir="ltr">920000000</small></div></a>
+          <a href="mailto:info@sanad.org.sa" class="ct-side-row"><i class="fas fa-envelope"></i><div><strong>راسلنا</strong><small>info@sanad.org.sa</small></div></a>
+          <a href="https://wa.me/966555550000" class="ct-side-row"><i class="fab fa-whatsapp"></i><div><strong>واتساب</strong><small dir="ltr">+966 55 555 0000</small></div></a>
+          <a href="service-tracking.html" class="ct-side-row"><i class="fas fa-route"></i><div><strong>تتبع طلب خدمة</strong><small>برقم الطلب</small></div></a>
+        </aside>
+      </div>
+    </div>
+
+    <div class="ct-panel hidden" data-panel="complaints" id="complaints">
+      <div class="ct-form max-w-3xl">
+        <h3>الشكاوى والمقترحات</h3>
+        <p class="text-sanad-muted text-sm mb-5">نرحّب بشكواك أو مقترحك لتحسين خدماتنا. ستصلك تذكرة بعد الإرسال.</p>
+        <form id="ctComplaint" novalidate class="grid sm:grid-cols-2 gap-4">
+          <div class="srv-field"><label>الاسم الكامل (اختياري)</label><input type="text" name="name" maxlength="100"></div>
+          <div class="srv-field"><label>رقم الجوال (اختياري)</label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX"></div></div>
+          <div class="srv-field"><label>نوع البلاغ *</label>
+            <select name="type" required><option value="">اختر النوع</option><option>شكوى</option><option>مقترح</option><option>ملاحظة</option></select>
+          </div>
+          <div class="srv-field"><label>الجهة أو الخدمة</label>
+            <select name="dept"><option>خدمات اجتماعية</option><option>دعم صحي</option><option>سلال غذائية</option><option>التطوع</option><option>عامة</option></select>
+          </div>
+          <div class="srv-field sm:col-span-2"><label>وصف الشكوى أو المقترح *</label><textarea name="body" rows="5" required maxlength="1500"></textarea></div>
+          <div class="srv-field sm:col-span-2"><label>إرفاق ملف (اختياري)</label><input type="file" disabled class="srv-file-disabled"></div>
+          <div class="srv-field sm:col-span-2"><label>هل ترغب بالتواصل معك؟</label>
+            <div class="srv-radios"><label><input type="radio" name="contact" value="نعم" checked> نعم</label><label><input type="radio" name="contact" value="لا"> لا</label></div>
+          </div>
+          <div class="sm:col-span-2"><button class="s-btn s-btn-primary w-full justify-center"><i class="fas fa-paper-plane"></i> إرسال</button></div>
+          <div class="sm:col-span-2 ct-ok hidden" data-ok>تم تسجيل بلاغك بنجاح. رقم التذكرة: <strong data-ticket>TCK-2026-0001</strong></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="ct-panel hidden" data-panel="report">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="ct-report">
+          <div class="ic"><i class="fas fa-shield-halved"></i></div>
+          <h3>الإبلاغ عن مخالفة</h3>
+          <p>يمكنك تقديم بلاغ بسرية تامة حول أي مخالفة إدارية أو مالية أو سلوكية. جميع البلاغات تُعامل بسرية كاملة وتُحال للجهة المختصة.</p>
+          <ul class="ct-report-points">
+            <li><i class="fas fa-lock text-sanad-emerald"></i> سرية تامة للبلاغ ومُقدّمه.</li>
+            <li><i class="fas fa-user-shield text-sanad-emerald"></i> حماية المُبلّغ من أي إجراء انتقامي.</li>
+            <li><i class="fas fa-file-shield text-sanad-emerald"></i> دراسة احترافية ومحايدة من لجنة مختصة.</li>
+          </ul>
+          <button class="s-btn s-btn-gold mt-5" data-open-modal="mReport"><i class="fas fa-shield"></i> تقديم بلاغ سري</button>
+        </div>
+        <div class="ct-report-side">
+          <h4>متى أستخدم هذه القناة؟</h4>
+          <ul>
+            <li>المخالفات المالية أو الإدارية.</li>
+            <li>السلوكيات المخالفة لأخلاقيات العمل.</li>
+            <li>إساءة استخدام موارد الجمعية.</li>
+            <li>أي مخالفة لسياسات الجمعية المعتمدة.</li>
+          </ul>
+          <div class="bg-white border border-sanad-border rounded-xl p-4 mt-4 text-sm">
+            <strong>للطوارئ المباشرة:</strong><br>
+            تواصل مع <a href="tel:920000000" class="text-sanad-emerald font-bold" dir="ltr">920000000</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container">
+    <h2 class="s-title text-center mb-8">موقع الجمعية والفروع</h2>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 ct-map">
+        <div class="ct-map-mock">
+          <i class="fas fa-map-location-dot"></i>
+          <div>
+            <strong>المقر الرئيسي - الرياض</strong>
+            <span>حي الورود، شارع الأمير محمد بن عبدالعزيز</span>
+          </div>
+          <a href="https://maps.google.com" target="_blank" class="s-btn s-btn-primary"><i class="fas fa-diamond-turn-right"></i> عرض الاتجاهات</a>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="ct-branch"><i class="fas fa-building"></i><div><strong>المقر الرئيسي</strong><small>الرياض - حي الورود</small></div></div>
+        <div class="ct-branch"><i class="fas fa-building"></i><div><strong>فرع جدة</strong><small>حي الزهراء</small></div></div>
+        <div class="ct-branch"><i class="fas fa-building"></i><div><strong>فرع الدمام</strong><small>حي الفيصلية</small></div></div>
+        <div class="ct-branch ct-hours"><i class="fas fa-clock"></i><div><strong>ساعات العمل</strong><small>الأحد - الخميس / 8 ص - 4 م</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-white">
+  <div class="s-container">
+    <h2 class="s-title text-center mb-2">روابط مهمة</h2>
+    <p class="text-center text-sanad-muted mb-8">اختصارات للوصول السريع لأهم خدماتنا.</p>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <a href="services.html" class="ct-quick"><i class="fas fa-clipboard-list"></i> طلب خدمة</a>
+      <a href="service-tracking.html" class="ct-quick"><i class="fas fa-route"></i> تتبع طلب</a>
+      <a href="services.html" class="ct-quick"><i class="fas fa-hands-helping"></i> التطوع</a>
+      <a href="services.html" class="ct-quick"><i class="fas fa-id-card"></i> العضوية</a>
+      <a href="donations.html" class="ct-quick"><i class="fas fa-heart"></i> بوابة التبرع</a>
+      <a href="governance.html" class="ct-quick"><i class="fas fa-shield-halved"></i> الحوكمة</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container max-w-4xl">
+    <h2 class="s-title text-center mb-8">أسئلة شائعة</h2>
+    <div class="space-y-3">
+      <details class="srv-faq"><summary>كيف أتابع طلب خدمة؟</summary><p>من خلال صفحة "تتبع طلب خدمة" بإدخال رقم الطلب ورقم الجوال.</p></details>
+      <details class="srv-faq"><summary>كيف أرفع شكوى؟</summary><p>عبر تبويب "الشكاوى والمقترحات" أعلاه، وستحصل على رقم تذكرة فور الإرسال.</p></details>
+      <details class="srv-faq"><summary>هل يمكن التواصل عبر واتساب؟</summary><p>نعم، عبر الرقم الموضح في بطاقات التواصل أعلاه.</p></details>
+      <details class="srv-faq"><summary>ما أوقات العمل؟</summary><p>من الأحد إلى الخميس، 8 صباحًا إلى 4 مساءً.</p></details>
+      <details class="srv-faq"><summary>أين يقع مقر الجمعية؟</summary><p>الرياض - حي الورود، شارع الأمير محمد بن عبدالعزيز.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- نافذة البلاغ السري -->
+<div class="s-modal-overlay" id="mReport">
+  <div class="s-modal wide">
+    <div class="s-modal-head">
+      <h3><i class="fas fa-shield-halved text-sanad-emerald"></i> تقديم بلاغ سري</h3>
+      <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="s-modal-body">
+      <div class="bg-sanad-ivory border border-sanad-border rounded-xl p-4 mb-5 text-sm text-sanad-muted leading-loose">
+        <i class="fas fa-lock text-sanad-emerald"></i> جميع البلاغات تُعامل بسرية تامة، ولا يتم الإفصاح عن هوية المُبلّغ.
+      </div>
+      <form id="ctReport" class="grid sm:grid-cols-2 gap-4">
+        <div class="srv-field"><label>نوع البلاغ *</label>
+          <select name="type" required><option value="">اختر</option><option>مخالفة مالية</option><option>مخالفة إدارية</option><option>سلوك مهني</option><option>أخرى</option></select>
+        </div>
+        <div class="srv-field"><label>الجهة أو القسم</label><input type="text" name="dept" maxlength="100"></div>
+        <div class="srv-field sm:col-span-2"><label>وصف البلاغ *</label><textarea name="body" rows="5" required maxlength="2000"></textarea></div>
+        <div class="srv-field sm:col-span-2"><label>هل ترغب بإضافة بيانات التواصل؟</label>
+          <div class="srv-radios">
+            <label><input type="radio" name="addContact" value="لا" checked> لا (بلاغ مجهول)</label>
+            <label><input type="radio" name="addContact" value="نعم"> نعم</label>
+          </div>
+        </div>
+        <div class="srv-field"><label>الاسم</label><input type="text" name="name" maxlength="100"></div>
+        <div class="srv-field"><label>رقم الجوال</label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9"></div></div>
+        <div class="srv-field sm:col-span-2"><label>مرفقات (اختياري)</label><input type="file" disabled class="srv-file-disabled"></div>
+        <div class="sm:col-span-2"><label class="srv-check"><input type="checkbox" required> أُقرّ بأن البلاغ صحيح وأوافق على سرية الإجراءات.</label></div>
+      </form>
+      <div class="ct-ok hidden mt-4" data-ok>تم استلام البلاغ بسرية تامة. رقم البلاغ: <strong data-ticket>RPT-2026-0001</strong></div>
+    </div>
+    <div class="s-modal-foot">
+      <button class="s-btn s-btn-outline" data-close>إغلاق</button>
+      <button class="s-btn s-btn-primary" id="ctReportSubmit"><i class="fas fa-paper-plane"></i> إرسال البلاغ</button>
+    </div>
+  </div>
+</div>
 
 <footer class="s-footer">
   <div class="s-container pb-10">
     <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
       <div class="lg:col-span-4">
         <div class="flex items-center gap-3 mb-5"><div class="s-logo-mark">س</div><div><div class="font-extrabold text-white text-lg">جمعية سَنَد</div><div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div></div></div>
-        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة تعمل ضمن منظومة العمل الخيري السعودي.</p>
       </div>
-      <div class="lg:col-span-2"><h4>روابط رئيسية</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن الجمعية</a></li><li><a href="donations.html">بوابة التبرع</a></li><li><a href="media-center.html">المركز الإعلامي</a></li><li><a href="events.html">الفعاليات</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
-      <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="projects.html">المشاريع</a></li><li><a href="contact.html">التطوع</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>روابط رئيسية</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن الجمعية</a></li><li><a href="donations.html">بوابة التبرع</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="service-tracking.html">تتبع طلب خدمة</a></li><li><a href="store.html">المتجر</a></li></ul></div>
       <div class="lg:col-span-2"><h4>الحوكمة</h4><ul class="space-y-2.5 text-sm"><li><a href="governance.html">اللوائح والسياسات</a></li><li><a href="governance.html">التقارير المالية</a></li></ul></div>
       <div class="lg:col-span-2"><h4>تواصل</h4><div class="space-y-2 text-xs text-white/70"><div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div><div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div></div></div>
     </div>
