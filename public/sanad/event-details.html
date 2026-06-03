@@ -200,36 +200,16 @@ tailwind.config = { theme:{ extend:{
         <h3>سجّل في الفعالية</h3>
         <p class="text-sm text-sanad-muted leading-loose">املأ النموذج التالي لحجز مقعدك في «ورشة التمكين الأسري».</p>
 
-        <!-- Mode selector (since hybrid) -->
-        <div class="d-mode-info" id="modeBox">
-          <h5><i class="fas fa-shuffle"></i> اختر طريقة الحضور</h5>
-          <div class="grid grid-cols-2 gap-2 mt-2">
-            <label class="flex items-center gap-2 p-2 rounded-lg border border-sanad-border cursor-pointer hover:border-sanad-emeraldDeep" data-mode-lbl>
-              <input type="radio" name="dmode" value="onsite" checked /> <span class="text-sm font-bold text-sanad-navy"><i class="fas fa-location-dot text-sanad-emeraldDeep"></i> حضور بالموقع</span>
-            </label>
-            <label class="flex items-center gap-2 p-2 rounded-lg border border-sanad-border cursor-pointer hover:border-sanad-emeraldDeep" data-mode-lbl>
-              <input type="radio" name="dmode" value="online" /> <span class="text-sm font-bold text-sanad-navy"><i class="fas fa-wifi text-sanad-emeraldDeep"></i> حضور عن بُعد</span>
-            </label>
-          </div>
-          <div id="modeOnsite">
-            <div class="mt-3">
-              <h5><i class="fas fa-location-dot"></i> موقع الحضور</h5>
-              <p class="text-sm text-sanad-muted">مقر الجمعية — الرياض، حي العليا، طريق الملك فهد</p>
-              <a href="#" class="s-btn s-btn-outline !py-2 !px-3 text-xs mt-2"><i class="fas fa-map"></i> عرض الموقع</a>
-            </div>
-            <div class="note"><i class="fas fa-triangle-exclamation"></i> يُرجى الحضور قبل الموعد بـ 15 دقيقة لاستكمال إجراءات التسجيل.</div>
-          </div>
-          <div id="modeOnline" style="display:none;">
-            <div class="mt-3">
-              <h5><i class="fas fa-link"></i> رابط الحضور</h5>
-              <p class="text-sm text-sanad-muted">سيتم إرسال الرابط إلى بريدك الإلكتروني قبل موعد الفعالية.</p>
-              <button class="s-btn s-btn-outline !py-2 !px-3 text-xs mt-2" disabled style="opacity:.7;cursor:not-allowed;"><i class="fas fa-arrow-right-to-bracket"></i> الدخول للفعالية</button>
-            </div>
-            <div class="note"><i class="fas fa-triangle-exclamation"></i> سيتم تفعيل الرابط قبل موعد الفعالية بـ 30 دقيقة.</div>
-          </div>
+        <!-- Mode info (onsite) -->
+        <div class="d-mode-info">
+          <h5><i class="fas fa-location-dot"></i> موقع الحضور</h5>
+          <p class="text-sm text-sanad-muted">مقر الجمعية — الرياض، حي العليا، طريق الملك فهد.</p>
+          <a href="#" class="s-btn s-btn-outline !py-2 !px-3 text-xs mt-2"><i class="fas fa-map"></i> عرض الموقع على الخريطة</a>
+          <div class="note"><i class="fas fa-triangle-exclamation"></i> يُرجى الحضور قبل الموعد بـ 15 دقيقة لاستكمال إجراءات التسجيل.</div>
         </div>
+        <p class="text-xs text-sanad-muted mt-3">تتوفر نسخة عن بُعد من هذه الفعالية — <a href="event-details-online.html" class="text-sanad-emeraldDeep font-bold">عرض النموذج عن بُعد</a>.</p>
 
-        <form class="d-form" id="regForm" onsubmit="event.preventDefault();submitReg();">
+        <form class="d-form" id="regForm">
           <div><label>الاسم الكامل *</label><input required type="text" name="name" placeholder="اكتب اسمك الكامل" /></div>
           <div class="row">
             <div><label>رقم الجوال *</label><input required type="tel" name="phone" pattern="^(\+?966|0)?5\d{8}$" placeholder="05XXXXXXXX" /></div>
