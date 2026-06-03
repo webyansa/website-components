@@ -1883,7 +1883,6 @@
       <div class="sx-msec">روابط سريعة</div>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
       <a href="beneficiaries.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-      <a href="contact.html#report"><i class="fas fa-bullhorn"></i> الإبلاغ عن مخالفة</a>
       <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
       <a href="mailto:info@sanad.org.sa"><i class="fas fa-envelope"></i> info@sanad.org.sa</a>
       <button type="button" data-lang-toggle><i class="fas fa-globe"></i> اللغة: العربية / English</button>
