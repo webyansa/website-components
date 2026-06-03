@@ -1337,7 +1337,7 @@
             </div>
           </div>
         </div>
-        <a href="donations.html" class="sx-donate-btn"><i class="fas fa-heart"></i> تبرع الآن</a>
+        
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
     </div>
