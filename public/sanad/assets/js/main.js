@@ -340,20 +340,43 @@
   const openModal = (id) => { const m = document.getElementById(id); if (m){ m.classList.add('open'); document.body.style.overflow='hidden'; }};
   const closeModal = (m) => { m.classList.remove('open'); if(!document.querySelector('.s-modal-overlay.open')) document.body.style.overflow=''; };
 
-  /* أزرار إطلاق الدفع — تجمع بيانات المسار ثم تفتح مودال بيانات المتبرع */
+  /* أزرار إطلاق الدفع — توجيه حسب طريقة الدفع */
   card.querySelectorAll('[data-pay-launch]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       state.type = btn.getAttribute('data-pay-launch');
       state.method = btn.getAttribute('data-pay-method') || 'card';
-      // وضع حالة "فاعل خير" في مودال المتبرع وفق المسار النشط
       const donorAnon = document.querySelector('#mDonor [data-anon]');
       if (donorAnon){
         donorAnon.checked = activeAnonChecked();
         donorAnon.dispatchEvent(new Event('change'));
       }
-      openModal('mDonor');
+      // تحويل بنكي → افتح مودال التحويل مباشرة، بقية الطرق → بيانات المتبرع
+      if (state.method === 'transfer'){
+        // اضبط المبلغ في حقل التحويل من المسار النشط
+        const trAmt = document.querySelector('[data-tr-amount]');
+        if (trAmt && !trAmt.value){ trAmt.value = (activeAmount() || '').replace(/[^\d.]/g,''); }
+        openModal('mTransfer');
+      } else {
+        openModal('mDonor');
+      }
     });
+  });
+
+  /* فتح مودال الإهداء من الأزرار */
+  document.querySelectorAll('[data-open-gift]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      state.type = 'gift';
+      state.method = 'card';
+      if (typeof window.__sanadGiftInit === 'function') window.__sanadGiftInit();
+      openModal('mGift');
+    });
+  });
+
+  /* جسر — تغيير طريقة الدفع من مودال الإهداء */
+  document.addEventListener('sanad:set-method', (e) => {
+    if (e.detail && e.detail.method) state.method = e.detail.method;
   });
 
   /* تحديث ملخص الدفع قبل فتح مودال الدفع */
@@ -412,19 +435,22 @@
       const gBlock = document.querySelector('[data-r-gift-block]');
       if (gBlock){
         if (state.type === 'gift'){
+          const gs = window.__sanadGift || {};
           gBlock.style.display = '';
-          setT('[data-r-gift-to]', (giftTo?.value || '').trim() || '—');
-          setT('[data-r-gift-from]', activeAnonChecked() ? 'فاعل خير' : ((giftFrom?.value || '').trim() || '—'));
-          setT('[data-r-gift-msg]', (giftMsg?.value || '').trim() || '—');
-          setT('[data-r-gift-show]', giftShowAmt && giftShowAmt.checked ? 'نعم' : 'لا');
+          setT('[data-r-gift-to]', (gs.recipients && gs.recipients.length) ? gs.recipients.map(r => r.name || '—').join(' • ') : '—');
+          setT('[data-r-gift-from]', (gs.anon ? 'فاعل خير' : (gs.fromName || '—')));
+          setT('[data-r-gift-msg]', gs.msg || '—');
+          setT('[data-r-gift-show]', gs.showAmount ? 'نعم' : 'لا');
           const dateRow = document.querySelector('[data-r-gift-date-row]');
           if (dateRow){
-            if (giftSchedule && giftSchedule.checked){
+            if (gs.schedule){
               dateRow.style.display = '';
-              const d = card.querySelector('[data-gift-date]')?.value;
-              const tm = card.querySelector('[data-gift-time]')?.value;
-              setT('[data-r-gift-date]', (d ? new Date(d).toLocaleDateString('ar-SA') : '—') + (tm ? ' • ' + tm : ''));
+              setT('[data-r-gift-date]', (gs.date ? new Date(gs.date).toLocaleDateString('ar-SA') : '—') + (gs.time ? ' • ' + gs.time : ''));
             } else { dateRow.style.display = 'none'; }
+          }
+          // اظهر الإجمالي الكلي عند تعدد المستلمين
+          if (gs.recipients && gs.recipients.length > 1 && gs.perAmount){
+            setT('[data-r-amount]', String(gs.perAmount * gs.recipients.length));
           }
         } else { gBlock.style.display = 'none'; }
       }
@@ -437,4 +463,229 @@
     if (navigator.share){ navigator.share({ title: txt, text: txt, url: location.href }).catch(()=>{}); }
     else { navigator.clipboard?.writeText(location.href); b.innerHTML = '<i class="fas fa-check"></i> تم نسخ الرابط'; }
   }));
+})();
+
+/* =============================================
+   مودال الإهداء + التحويل البنكي + النسخ + الرفع — v3
+   ============================================= */
+(function(){
+  'use strict';
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+  /* فتح/إغلاق عام (نسخة محلية للاعتمادية) */
+  const openModal = (id) => { const m = document.getElementById(id); if (m){ m.classList.add('open'); document.body.style.overflow='hidden'; }};
+  const closeModal = (m) => { m.classList.remove('open'); if(!document.querySelector('.s-modal-overlay.open')) document.body.style.overflow=''; };
+
+  /* ====== أزرار النسخ ====== */
+  $$('[data-copy]').forEach(btn => btn.addEventListener('click', async (e) => {
+    e.preventDefault(); e.stopPropagation();
+    const val = btn.getAttribute('data-copy') || '';
+    try { await navigator.clipboard.writeText(val); } catch(_){}
+    const old = btn.innerHTML;
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="fas fa-check"></i>';
+    setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = old; }, 1400);
+  }));
+
+  /* ====== مودال التحويل البنكي ====== */
+  const trFile = $('[data-tr-file]');
+  const trFname = $('[data-tr-fname]');
+  if (trFile){
+    trFile.addEventListener('change', () => {
+      const f = trFile.files && trFile.files[0];
+      if (f && trFname){
+        trFname.style.display = '';
+        trFname.innerHTML = '<i class="fas fa-file-circle-check"></i> ' + f.name;
+      }
+    });
+  }
+  // تاريخ افتراضي = اليوم
+  const trDate = $('[data-tr-date]');
+  if (trDate && !trDate.value){ trDate.value = new Date().toISOString().slice(0,10); }
+
+  const finishTransfer = $('[data-finish-transfer]');
+  if (finishTransfer){
+    finishTransfer.addEventListener('click', (e) => {
+      e.preventDefault();
+      const amt = ($('[data-tr-amount]')?.value || '0').trim() || '0';
+      const name = ($('[data-tr-name]')?.value || '').trim();
+      const phone = ($('[data-tr-phone]')?.value || '').trim();
+      const anon = $('[data-tr-anon]')?.checked;
+      const setT = (sel, val) => { const el = document.querySelector(sel); if (el) el.textContent = val; };
+      // الفرصة + المعرفات الأساسية
+      const card = $('[data-donation-card]');
+      const oppName = card?.getAttribute('data-opportunity') || 'فرصة تبرع';
+      setT('[data-r-no]', 'SANAD-TR-2026-' + String(Math.floor(1000 + Math.random()*9000)));
+      setT('[data-r-date]', new Date().toLocaleDateString('ar-SA'));
+      setT('[data-r-type]', 'تبرع بتحويل بنكي');
+      setT('[data-r-name]', anon ? 'فاعل خير' : (name || 'فاعل خير'));
+      setT('[data-r-phone]', anon ? '—' : (phone || '—'));
+      setT('[data-r-opp]', oppName);
+      setT('[data-r-method]', 'تحويل بنكي');
+      setT('[data-r-amount]', Number(amt).toLocaleString('ar-SA'));
+      // إخفاء كتل خاصة بالإهداء/الدوري
+      const rd = $('[data-r-recurring-block]'); if (rd) rd.style.display = 'none';
+      const gb = $('[data-r-gift-block]'); if (gb) gb.style.display = 'none';
+      closeModal($('#mTransfer'));
+      openModal('mReceipt');
+    });
+  }
+
+  /* ====== مودال الإهداء ====== */
+  const giftModal = $('#mGift');
+  if (!giftModal) return;
+
+  const recipBox = $('[data-gift-recipients]', giftModal);
+  const addBtn = $('[data-gift-add]', giftModal);
+  const fromName = $('[data-gm-from-name]', giftModal);
+  const fromPhone = $('[data-gm-from-phone]', giftModal);
+  const msgEl = $('[data-gm-msg]', giftModal);
+  const showAmtEl = $('[data-gm-show-amount]', giftModal);
+  const scheduleEl = $('[data-gm-schedule]', giftModal);
+  const scheduleBox = $('[data-gm-schedule-box]', giftModal);
+  const dateEl = $('[data-gm-date]', giftModal);
+  const timeEl = $('[data-gm-time]', giftModal);
+  const anonEl = $('[data-gm-anon]', giftModal);
+  const amtRow = $('[data-gm-amt-row]', giftModal);
+  const totalEl = $('[data-gm-total]', giftModal);
+  const countEl = $('[data-gm-count]', giftModal);
+  const grandEl = $('[data-gm-grand]', giftModal);
+  const pvTo = $('[data-gm-pv-to]', giftModal);
+  const pvFrom = $('[data-gm-pv-from]', giftModal);
+  const pvMsg = $('[data-gm-pv-msg]', giftModal);
+  const pvAmt = $('[data-gm-pv-amount]', giftModal);
+  const pvAmtRow = $('[data-gm-pv-amount-row]', giftModal);
+  const continueBtn = $('[data-gm-continue]', giftModal);
+
+  let payMethod = 'card';
+  $$('[data-gm-pay]', giftModal).forEach(b => b.addEventListener('click', () => {
+    $$('[data-gm-pay]', giftModal).forEach(x => {
+      x.classList.toggle('primary', x === b);
+      x.classList.toggle('active', x === b);
+    });
+    payMethod = b.getAttribute('data-gm-pay');
+  }));
+
+  function recipientTpl(idx){
+    const div = document.createElement('div');
+    div.className = 's-recip';
+    div.innerHTML = `
+      <span class="s-recip-index">${idx}</span>
+      <div class="s-field"><label>اسم المُهدى إليه</label><input type="text" class="s-input" data-r-name placeholder="الاسم" /></div>
+      <div class="s-field"><label>رقم الجوال</label><input type="tel" class="s-input" data-r-phone placeholder="05XXXXXXXX" /></div>
+      <button type="button" class="s-recip-del" title="حذف"><i class="fas fa-trash"></i></button>
+    `;
+    div.querySelector('.s-recip-del').addEventListener('click', () => {
+      if (recipBox.children.length <= 1) return;
+      div.remove(); reindex(); updatePreview();
+    });
+    div.querySelectorAll('input').forEach(i => i.addEventListener('input', updatePreview));
+    return div;
+  }
+  function reindex(){
+    Array.from(recipBox.children).forEach((c, i) => {
+      const s = c.querySelector('.s-recip-index'); if (s) s.textContent = i + 1;
+    });
+  }
+  function addRecipient(){
+    recipBox.appendChild(recipientTpl(recipBox.children.length + 1));
+    updatePreview();
+  }
+  addBtn?.addEventListener('click', addRecipient);
+
+  function getRecipients(){
+    return Array.from(recipBox.querySelectorAll('.s-recip')).map(r => ({
+      name: (r.querySelector('[data-r-name]')?.value || '').trim(),
+      phone: (r.querySelector('[data-r-phone]')?.value || '').trim(),
+    }));
+  }
+  function currentAmount(){
+    const a = amtRow?.querySelector('.s-amt.active');
+    const c = amtRow?.querySelector('.s-amt-custom');
+    if (c && c.value) return Number(c.value) || 0;
+    if (a) return Number(a.getAttribute('data-value')) || 0;
+    return 0;
+  }
+  function updatePreview(){
+    const recips = getRecipients();
+    const per = currentAmount();
+    const count = Math.max(1, recips.length);
+    if (totalEl) totalEl.textContent = per.toLocaleString('ar-SA');
+    if (countEl) countEl.textContent = count;
+    if (grandEl) grandEl.textContent = (per * count).toLocaleString('ar-SA');
+    if (pvTo) pvTo.textContent = recips[0]?.name || '—';
+    if (pvFrom) pvFrom.textContent = (anonEl?.checked ? 'فاعل خير' : (fromName?.value || '').trim()) || '—';
+    if (pvMsg) pvMsg.textContent = (msgEl?.value || '').trim() || 'تقبّل الله منكم صالح الأعمال';
+    if (pvAmt) pvAmt.textContent = per.toLocaleString('ar-SA');
+    if (pvAmtRow) pvAmtRow.style.display = (showAmtEl && !showAmtEl.checked) ? 'none' : '';
+  }
+
+  // ربط تحديثات
+  [fromName, fromPhone, msgEl, showAmtEl, anonEl].forEach(el => el && el.addEventListener('input', updatePreview));
+  showAmtEl?.addEventListener('change', updatePreview);
+  anonEl?.addEventListener('change', updatePreview);
+  scheduleEl?.addEventListener('change', () => { if (scheduleBox) scheduleBox.style.display = scheduleEl.checked ? 'grid' : 'none'; });
+  // chips amount
+  amtRow?.querySelectorAll('.s-amt').forEach(c => c.addEventListener('click', () => setTimeout(updatePreview, 0)));
+  amtRow?.querySelector('.s-amt-custom')?.addEventListener('input', updatePreview);
+
+  // Initialize (also exposed)
+  window.__sanadGiftInit = function(){
+    if (recipBox && recipBox.children.length === 0) addRecipient();
+    updatePreview();
+  };
+  window.__sanadGiftInit();
+
+  /* متابعة الإهداء — يخزّن الحالة ثم يفتح بقية المسار */
+  continueBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const recips = getRecipients().filter(r => r.name || r.phone);
+    if (!recips.length){
+      // اطلب اسم واحد على الأقل
+      const first = recipBox.querySelector('[data-r-name]');
+      if (first){ first.focus(); first.style.borderColor = '#b3261e'; setTimeout(() => first.style.borderColor = '', 1600); }
+      return;
+    }
+    const per = currentAmount() || 0;
+    window.__sanadGift = {
+      recipients: recips,
+      fromName: (fromName?.value || '').trim(),
+      fromPhone: (fromPhone?.value || '').trim(),
+      msg: (msgEl?.value || '').trim() || 'تقبّل الله منكم صالح الأعمال',
+      showAmount: !!showAmtEl?.checked,
+      schedule: !!scheduleEl?.checked,
+      date: dateEl?.value || '',
+      time: timeEl?.value || '',
+      anon: !!anonEl?.checked,
+      perAmount: per,
+      totalAmount: per * recips.length,
+      method: payMethod
+    };
+    // وفّر متغير الحالة العام
+    window.__sanadDonation = window.__sanadDonation || {};
+    window.__sanadDonation.type = 'gift';
+    window.__sanadDonation.method = payMethod;
+    document.dispatchEvent(new CustomEvent('sanad:set-method', { detail: { method: payMethod } }));
+
+    closeModal(giftModal);
+
+    if (payMethod === 'transfer'){
+      // املأ المبلغ ثم افتح مودال التحويل
+      const trAmt = $('[data-tr-amount]'); if (trAmt) trAmt.value = window.__sanadGift.totalAmount;
+      const trName = $('[data-tr-name]'); if (trName && !trName.value) trName.value = window.__sanadGift.fromName;
+      const trPhone = $('[data-tr-phone]'); if (trPhone && !trPhone.value) trPhone.value = window.__sanadGift.fromPhone;
+      openModal('mTransfer');
+    } else {
+      // بطاقة بنكية → مودال المتبرع → الدفع → السند
+      const donorAnon = document.querySelector('#mDonor [data-anon]');
+      if (donorAnon){ donorAnon.checked = window.__sanadGift.anon; donorAnon.dispatchEvent(new Event('change')); }
+      // اضبط حقول المتبرع باسم المُهدي
+      const dn = document.querySelector('#mDonor [data-donor-name] input');
+      const dp = document.querySelector('#mDonor [data-donor-phone] input');
+      if (dn && !dn.value) dn.value = window.__sanadGift.fromName;
+      if (dp && !dp.value) dp.value = window.__sanadGift.fromPhone;
+      openModal('mDonor');
+    }
+  });
 })();
