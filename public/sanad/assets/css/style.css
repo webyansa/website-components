@@ -1203,3 +1203,60 @@ img { max-width: 100%; display: block; }
   body{background:#fff;}
   .s-receipt{box-shadow:none;border:1px solid #ccc;}
 }
+
+/* ============================================
+   مسارات التبرع — تبويبات وألواح (donation paths)
+   ============================================ */
+.s-dtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;background:var(--s-ivory);padding:.35rem;border-radius:14px;border:1px solid var(--s-border);margin-bottom:1rem;}
+.s-dtab{padding:.7rem .4rem;border-radius:10px;background:transparent;border:0;font-family:inherit;font-weight:800;font-size:.78rem;color:var(--s-muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:.3rem;transition:.2s;line-height:1;}
+.s-dtab i{font-size:1rem;}
+.s-dtab:hover{color:var(--s-emerald-deep);}
+.s-dtab.active{background:#fff;color:var(--s-emerald-deep);box-shadow:0 4px 12px rgba(11,37,69,.08);}
+.s-dpanel{display:none;animation:dpop .3s ease;}
+.s-dpanel.active{display:block;}
+.s-dpanel-hint{font-size:.8rem;color:var(--s-muted);margin-bottom:.7rem;line-height:1.7;}
+.s-field-block{margin-top:.8rem;}
+.s-field-title{display:block;font-size:.78rem;font-weight:800;color:var(--s-navy);margin-bottom:.5rem;}
+
+/* segmented control للتكرار */
+.s-seg{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem;background:var(--s-ivory);padding:.3rem;border-radius:12px;border:1px solid var(--s-border);}
+.s-seg-opt{padding:.55rem .3rem;border-radius:9px;background:transparent;border:0;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--s-muted);cursor:pointer;transition:.18s;}
+.s-seg-opt:hover{color:var(--s-emerald-deep);}
+.s-seg-opt.active{background:#fff;color:var(--s-emerald-deep);box-shadow:0 2px 8px rgba(11,37,69,.08);}
+
+/* ملخص التبرع الدوري */
+.s-rd-summary{display:flex;gap:.6rem;align-items:flex-start;padding:.8rem 1rem;background:linear-gradient(135deg,rgba(47,167,118,.08),rgba(11,37,69,.04));border:1px dashed var(--s-emerald-soft);border-radius:12px;font-size:.82rem;color:var(--s-text);line-height:1.8;}
+.s-rd-summary b{color:var(--s-emerald-deep);}
+
+/* بطاقة معاينة الإهداء */
+.s-gift-card{padding:.4rem;border-radius:18px;background:linear-gradient(135deg,var(--s-navy) 0%,var(--s-emerald-deep) 100%);box-shadow:0 12px 32px rgba(11,37,69,.18);}
+.s-gift-card-inner{background:#fff;border-radius:14px;padding:1.2rem 1.1rem;position:relative;overflow:hidden;text-align:center;}
+.s-gift-card-inner::before{content:"";position:absolute;top:-30px;left:-30px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(182,135,58,.18),transparent 70%);}
+.s-gift-card-inner::after{content:"";position:absolute;bottom:-30px;right:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(47,167,118,.16),transparent 70%);}
+.s-gift-logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--s-navy),var(--s-emerald-deep));color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;margin:0 auto .5rem;position:relative;z-index:1;}
+.s-gift-eyebrow{font-size:.7rem;font-weight:800;color:var(--s-gold);letter-spacing:.12em;margin-bottom:.5rem;position:relative;z-index:1;}
+.s-gift-line{font-size:.95rem;color:var(--s-navy);font-weight:700;margin-bottom:.5rem;position:relative;z-index:1;}
+.s-gift-msg{font-size:.85rem;color:var(--s-text);line-height:1.7;padding:.6rem .8rem;background:var(--s-ivory);border-radius:10px;margin:.6rem 0;font-style:italic;position:relative;z-index:1;}
+.s-gift-meta{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:.7rem;position:relative;z-index:1;}
+.s-gift-meta>div{background:var(--s-ivory);padding:.45rem .55rem;border-radius:9px;font-size:.72rem;}
+.s-gift-meta>div:last-child{grid-column:span 2;}
+.s-gift-meta span{display:block;color:var(--s-muted);font-size:.66rem;margin-bottom:.15rem;}
+.s-gift-meta b{color:var(--s-navy);font-weight:800;}
+.s-gift-foot{margin-top:.8rem;padding-top:.6rem;border-top:1px dashed var(--s-border);font-size:.68rem;color:var(--s-muted);position:relative;z-index:1;}
+
+/* ملخص الدفع داخل المودال */
+.s-pay-summary{background:linear-gradient(135deg,var(--s-ivory),#fff);border:1px solid var(--s-border);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1.1rem;}
+.s-pay-summary .row{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;font-size:.85rem;color:var(--s-text);}
+.s-pay-summary .row span{color:var(--s-muted);}
+.s-pay-summary .row b{color:var(--s-navy);font-weight:800;}
+.s-pay-summary .row.total{margin-top:.4rem;padding-top:.7rem;border-top:1px dashed var(--s-border);font-size:1rem;}
+.s-pay-summary .row.total b{color:var(--s-emerald-deep);font-size:1.25rem;font-weight:900;}
+
+/* تجاوب الجوال */
+@media (max-width: 640px){
+  .s-dtab{font-size:.72rem;padding:.6rem .3rem;}
+  .s-dtab i{font-size:.92rem;}
+  .s-seg-opt{font-size:.72rem;}
+  .s-gift-meta{grid-template-columns:1fr;}
+  .s-gift-meta>div:last-child{grid-column:auto;}
+}
