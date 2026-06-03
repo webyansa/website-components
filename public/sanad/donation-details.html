@@ -484,6 +484,143 @@
     </div>
   </div>
 
+  <!-- ============ Modal: تحويل بنكي ============ -->
+  <div class="s-modal-overlay" id="mTransfer">
+    <div class="s-modal wide">
+      <div class="s-modal-head">
+        <h3><i class="fas fa-building-columns text-sanad-emerald ml-2"></i> تبرع بتحويل بنكي</h3>
+        <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="s-modal-body">
+        <p class="text-sm text-sanad-muted mb-3 leading-loose">انسخ رقم حساب الجمعية، نفّذ التحويل من تطبيق بنكك، ثم ارفع صورة الإيصال لتوثيق تبرعك.</p>
+
+        <div class="s-transfer-card">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2 text-white/85 text-sm font-bold"><i class="fas fa-shield-halved"></i> حساب الجمعية الرسمي</div>
+            <div class="text-[11px] text-white/70">معتمد ومرخّص</div>
+          </div>
+          <div class="s-transfer-row"><span class="k">اسم البنك</span><span class="v">البنك الأهلي السعودي</span></div>
+          <div class="s-transfer-row"><span class="k">اسم الحساب</span><span class="v">جمعية سَنَد للخدمات الاجتماعية <button class="s-copy-btn" data-copy="جمعية سَنَد للخدمات الاجتماعية"><i class="fas fa-copy"></i></button></span></div>
+          <div class="s-transfer-row"><span class="k">رقم الآيبان</span><span class="v" style="direction:ltr;font-family:monospace;">SA03 8000 0000 6080 1016 7519 <button class="s-copy-btn" data-copy="SA0380000000608010167519"><i class="fas fa-copy"></i></button></span></div>
+          <div class="s-transfer-row"><span class="k">رقم الحساب</span><span class="v" style="direction:ltr;font-family:monospace;">6080-1016-7519 <button class="s-copy-btn" data-copy="608010167519"><i class="fas fa-copy"></i></button></span></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-3">
+          <div class="s-field"><label>مبلغ التحويل (﷼)</label><input type="number" class="s-input" data-tr-amount placeholder="مثال: 300" /></div>
+          <div class="s-field"><label>تاريخ التحويل</label><input type="date" class="s-input" data-tr-date /></div>
+          <div class="s-field"><label>الاسم الكامل</label><input type="text" class="s-input" data-tr-name placeholder="مثال: عبدالله محمد" /></div>
+          <div class="s-field"><label>رقم الجوال</label><input type="tel" class="s-input" data-tr-phone placeholder="05XXXXXXXX" /></div>
+          <div class="s-field md:col-span-2"><label>البريد الإلكتروني <span class="text-xs text-sanad-muted font-normal">(اختياري)</span></label><input type="email" class="s-input" data-tr-email placeholder="name@example.com" /></div>
+        </div>
+
+        <label class="s-upload" for="trReceiptFile">
+          <div class="ic"><i class="fas fa-cloud-arrow-up"></i></div>
+          <div class="ttl">ارفع صورة إيصال التحويل</div>
+          <div class="sub">صيغة JPG / PNG / PDF — حجم أقصى 5MB</div>
+          <div class="fname" data-tr-fname style="display:none;"></div>
+          <input id="trReceiptFile" type="file" accept="image/*,application/pdf" hidden data-tr-file />
+        </label>
+
+        <label class="s-anon-toggle mt-3"><input type="checkbox" data-tr-anon /> <i class="fas fa-mask text-sanad-emerald"></i> تبرع كفاعل خير</label>
+      </div>
+      <div class="s-modal-foot">
+        <button class="s-btn s-btn-outline" data-close>إلغاء</button>
+        <button class="s-btn s-btn-primary" data-finish-transfer><i class="fas fa-check"></i> توثيق التبرع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Modal: إهداء التبرع ============ -->
+  <div class="s-modal-overlay" id="mGift">
+    <div class="s-modal wide">
+      <div class="s-modal-head">
+        <h3><i class="fas fa-gift text-sanad-gold ml-2"></i> إهداء التبرع</h3>
+        <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="s-modal-body">
+        <p class="text-sm text-sanad-muted mb-4 leading-loose">أهدِ تبرعك باسم شخص عزيز أو أكثر، وسنُرسل لكل واحد منهم بطاقة إهداء أنيقة تحمل اسمك ورسالتك.</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <div class="s-field-block !mt-0">
+              <span class="s-field-title"><i class="fas fa-users ml-1 text-sanad-emerald"></i> المُهدى إليهم</span>
+              <div class="s-recipients" data-gift-recipients></div>
+              <button type="button" class="s-recip-add" data-gift-add><i class="fas fa-plus"></i> إضافة شخص آخر</button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mt-4">
+              <div class="s-field !mb-2"><label>اسم المُهدي</label><input type="text" class="s-input" data-gm-from-name placeholder="اسمك" /></div>
+              <div class="s-field !mb-2"><label>رقم جواله</label><input type="tel" class="s-input" data-gm-from-phone placeholder="05XXXXXXXX" /></div>
+            </div>
+
+            <div class="s-field !mb-2"><label>رسالة الإهداء</label><textarea class="s-input" rows="2" data-gm-msg placeholder="مثال: تقبّل الله منكم صالح الأعمال">تقبّل الله منكم صالح الأعمال</textarea></div>
+
+            <div class="s-field-block">
+              <span class="s-field-title">قيمة الإهداء لكل شخص</span>
+              <div data-amt-row class="s-amt-row" data-gm-amt-row>
+                <button class="s-amt" data-value="50">50 ﷼</button>
+                <button class="s-amt active" data-value="100">100 ﷼</button>
+                <button class="s-amt" data-value="150">150 ﷼</button>
+                <button class="s-amt" data-value="300">300 ﷼</button>
+                <input type="number" class="s-amt-custom" placeholder="مبلغ آخر" />
+              </div>
+            </div>
+
+            <div class="s-rd-summary mt-3" style="background:rgba(182,135,58,.08);border-color:rgba(182,135,58,.25);">
+              <i class="fas fa-circle-info text-sanad-gold"></i>
+              <span>إجمالي الإهداء: <b><span data-gm-total>100</span> ﷼</b> × <b data-gm-count>1</b> شخص = <b><span data-gm-grand>100</span> ﷼</b></span>
+            </div>
+
+            <label class="s-anon-toggle mt-3" style="background:#fff;border-style:solid;"><input type="checkbox" data-gm-show-amount checked /> <i class="fas fa-eye text-sanad-emerald"></i> إظهار المبلغ للمُهدى إليهم</label>
+            <label class="s-anon-toggle mt-2" style="background:#fff;border-style:solid;"><input type="checkbox" data-gm-schedule /> <i class="fas fa-clock text-sanad-emerald"></i> جدولة إرسال الإهداء</label>
+            <div class="grid grid-cols-2 gap-3 mt-3" data-gm-schedule-box style="display:none;">
+              <div class="s-field !mb-0"><label>تاريخ الإرسال</label><input type="date" class="s-input" data-gm-date /></div>
+              <div class="s-field !mb-0"><label>وقت الإرسال</label><input type="time" class="s-input" data-gm-time value="09:00" /></div>
+            </div>
+            <label class="s-anon-toggle mt-3"><input type="checkbox" data-gm-anon /> <i class="fas fa-mask text-sanad-emerald"></i> إخفاء اسمي في السند العام</label>
+          </div>
+
+          <div>
+            <div class="text-xs font-extrabold text-sanad-navy mb-2 flex items-center gap-2"><i class="fas fa-eye text-sanad-emerald"></i> معاينة بطاقة الإهداء</div>
+            <div class="s-gift-card">
+              <div class="s-gift-card-inner">
+                <div class="s-gift-logo">س</div>
+                <div class="s-gift-eyebrow">بطاقة إهداء</div>
+                <div class="s-gift-line">إلى: <b data-gm-pv-to>—</b></div>
+                <div class="s-gift-msg" data-gm-pv-msg>تقبّل الله منكم صالح الأعمال</div>
+                <div class="s-gift-meta">
+                  <div><span>من</span><b data-gm-pv-from>—</b></div>
+                  <div><span>الفرصة</span><b>كفالة الأيتام</b></div>
+                  <div data-gm-pv-amount-row><span>المبلغ</span><b><span data-gm-pv-amount>100</span> ﷼</b></div>
+                </div>
+                <div class="s-gift-foot">جمعية سَنَد للخدمات الاجتماعية والرعاية</div>
+              </div>
+            </div>
+            <p class="text-[11px] text-sanad-muted mt-2 text-center">تُعرض البطاقة بهذا الشكل لكل مُهدى إليه على حدة.</p>
+
+            <div class="s-field-block">
+              <span class="s-field-title">طريقة الدفع للإهداء</span>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" class="s-method-btn primary active" data-gm-pay="card" style="padding:.7rem .8rem;">
+                  <span class="mt-ic" style="width:36px;height:36px;"><i class="fas fa-credit-card"></i></span>
+                  <span class="flex-1"><span class="mt-title" style="font-size:.82rem;">بطاقة بنكية</span></span>
+                </button>
+                <button type="button" class="s-method-btn" data-gm-pay="transfer" style="padding:.7rem .8rem;">
+                  <span class="mt-ic" style="width:36px;height:36px;"><i class="fas fa-building-columns"></i></span>
+                  <span class="flex-1"><span class="mt-title" style="font-size:.82rem;">تحويل بنكي</span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s-modal-foot">
+        <button class="s-btn s-btn-outline" data-close>إلغاء</button>
+        <button class="s-btn s-btn-primary" data-gm-continue><i class="fas fa-arrow-left"></i> متابعة الإهداء</button>
+      </div>
+    </div>
+  </div>
+
   <button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
   <script src="assets/js/main.js"></script>
 </body>
