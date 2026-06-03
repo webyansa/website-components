@@ -884,3 +884,117 @@ img { max-width: 100%; display: block; }
 @media (min-width:768px){ .s-cta-mini { grid-template-columns: 1.4fr auto; } }
 .s-cta-mini h3 { color:#fff; font-size:1.5rem; font-weight:800; margin:0; }
 .s-cta-mini p { color: rgba(255,255,255,.78); margin:.5rem 0 0; }
+
+/* ============ مكوّنات صفحة المشاريع ============ */
+.s-pcard{background:#fff;border:1px solid var(--s-border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s, border-color .3s;}
+.s-pcard:hover{transform:translateY(-6px);box-shadow:var(--s-shadow-md);border-color:transparent;}
+.s-pcard-media{position:relative;aspect-ratio:16/10;overflow:hidden;}
+.s-pcard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.s-pcard:hover .s-pcard-media img{transform:scale(1.06);}
+.s-pcard-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,37,69,0) 50%,rgba(11,37,69,.55) 100%);}
+.s-pcard-badges{position:absolute;top:.85rem;right:.85rem;left:.85rem;display:flex;justify-content:space-between;gap:.4rem;z-index:2;}
+.s-pcard-body{padding:1.3rem 1.3rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;flex:1;}
+.s-pcard-body h3{font-size:1.15rem;font-weight:800;color:var(--s-navy);line-height:1.45;}
+.s-pcard-body p{color:var(--s-muted);font-size:.9rem;line-height:1.85;}
+.s-pcard-meta{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--s-muted);padding-top:.7rem;border-top:1px dashed var(--s-border);margin-top:auto;}
+.s-pcard-meta i{color:var(--s-emerald);margin-left:.3rem;}
+
+.s-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.32rem .7rem;border-radius:999px;font-size:.72rem;font-weight:700;line-height:1;backdrop-filter:blur(6px);}
+.s-badge-status{background:rgba(13,122,79,.92);color:#fff;}
+.s-badge-status.is-done{background:rgba(11,37,69,.92);}
+.s-badge-status.is-season{background:rgba(182,135,58,.92);color:#3a2810;}
+.s-badge-status.is-pending{background:rgba(91,107,125,.92);color:#fff;}
+.s-badge-field{background:rgba(255,255,255,.92);color:var(--s-navy);border:1px solid rgba(255,255,255,.6);}
+
+.s-progress{height:8px;background:var(--s-mist);border-radius:999px;overflow:hidden;position:relative;}
+.s-progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--s-emerald),var(--s-emerald-soft));border-radius:999px;transition:width 1.6s cubic-bezier(.2,.8,.2,1);}
+.s-progress.gold > i{background:linear-gradient(90deg,var(--s-gold),var(--s-gold-soft));}
+.s-progress-row{display:flex;justify-content:space-between;font-size:.78rem;color:var(--s-muted);margin-bottom:.45rem;}
+.s-progress-row b{color:var(--s-emerald-deep);font-weight:800;}
+
+/* فلاتر */
+.s-filter-bar{background:#fff;border:1px solid var(--s-border);border-radius:24px;padding:1.5rem;box-shadow:var(--s-shadow-sm);}
+.s-search{position:relative;}
+.s-search input{width:100%;height:54px;border:1.5px solid var(--s-border);border-radius:14px;padding:0 3rem 0 1.2rem;font:inherit;color:var(--s-text);background:var(--s-ivory);outline:none;transition:.2s;}
+.s-search input:focus{border-color:var(--s-emerald);background:#fff;}
+.s-search > i{position:absolute;top:50%;right:1.1rem;transform:translateY(-50%);color:var(--s-emerald);}
+.s-filter-group{display:flex;flex-wrap:wrap;gap:.5rem;}
+.s-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1rem;border-radius:999px;background:var(--s-ivory);border:1.5px solid var(--s-border);color:var(--s-navy);font-weight:700;font-size:.85rem;cursor:pointer;transition:.2s;}
+.s-chip:hover{border-color:var(--s-emerald-soft);}
+.s-chip.active{background:var(--s-navy);color:#fff;border-color:var(--s-navy);}
+.s-chip-label{font-size:.78rem;color:var(--s-muted);font-weight:700;display:block;margin-bottom:.55rem;}
+
+/* مشروع مميز */
+.s-feature{display:grid;grid-template-columns:1fr;gap:0;background:#fff;border:1px solid var(--s-border);border-radius:28px;overflow:hidden;}
+@media(min-width:1024px){.s-feature{grid-template-columns:1.1fr 1fr;}}
+.s-feature-media{position:relative;min-height:340px;}
+.s-feature-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.s-feature-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,37,69,.15),rgba(11,37,69,.55));}
+.s-feature-body{padding:clamp(1.8rem,3vw,2.6rem);display:flex;flex-direction:column;justify-content:center;gap:1.1rem;}
+
+/* لوحة مؤشرات */
+.s-kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+@media(min-width:768px){.s-kpi-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1024px){.s-kpi-grid{grid-template-columns:repeat(6,1fr);}}
+.s-kpi{background:#fff;border:1px solid var(--s-border);border-radius:18px;padding:1.2rem 1rem;text-align:center;position:relative;overflow:hidden;}
+.s-kpi::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--s-emerald),var(--s-gold-soft));}
+.s-kpi-icon{width:42px;height:42px;border-radius:12px;background:var(--s-ivory);color:var(--s-emerald);display:inline-flex;align-items:center;justify-content:center;margin-bottom:.6rem;}
+.s-kpi-n{font-size:1.6rem;font-weight:900;color:var(--s-navy);line-height:1;}
+.s-kpi-l{font-size:.78rem;color:var(--s-muted);margin-top:.35rem;}
+
+/* مسارات الأثر */
+.s-impact-rail{display:grid;grid-template-columns:1fr;gap:.9rem;}
+@media(min-width:768px){.s-impact-rail{grid-template-columns:repeat(5,1fr);}}
+.s-impact-node{background:#fff;border:1px solid var(--s-border);border-radius:18px;padding:1.4rem 1rem;text-align:center;position:relative;transition:.3s;}
+.s-impact-node:hover{transform:translateY(-4px);border-color:var(--s-emerald-soft);box-shadow:var(--s-shadow-sm);}
+.s-impact-node i{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--s-navy),var(--s-emerald));color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.7rem;}
+.s-impact-node h4{font-weight:800;color:var(--s-navy);font-size:1rem;margin-bottom:.3rem;}
+.s-impact-node p{font-size:.78rem;color:var(--s-muted);}
+
+/* خط زمن المراحل */
+.s-tline{position:relative;padding-right:0;}
+.s-tline-grid{display:grid;grid-template-columns:1fr;gap:1rem;}
+@media(min-width:768px){.s-tline-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.s-tline-grid{grid-template-columns:repeat(3,1fr);}}
+.s-tline-step{background:#fff;border:1px solid var(--s-border);border-radius:18px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:.3s;position:relative;overflow:hidden;}
+.s-tline-step:hover{border-color:var(--s-emerald-soft);transform:translateY(-3px);}
+.s-tline-num{flex:0 0 48px;width:48px;height:48px;border-radius:14px;background:var(--s-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.05rem;}
+.s-tline-step:nth-child(odd) .s-tline-num{background:linear-gradient(135deg,var(--s-navy),var(--s-emerald));}
+.s-tline-step h4{color:var(--s-navy);font-weight:800;margin-bottom:.3rem;}
+.s-tline-step p{font-size:.86rem;color:var(--s-muted);line-height:1.85;}
+
+/* بطاقة دعم */
+.s-support{background:linear-gradient(135deg,var(--s-navy),var(--s-navy-soft));border-radius:24px;padding:2rem;color:#fff;position:relative;overflow:hidden;}
+.s-support::after{content:"";position:absolute;top:-60px;left:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(182,135,58,.28),transparent 70%);border-radius:50%;}
+.s-support h3{color:#fff;font-size:1.5rem;font-weight:900;margin-bottom:.4rem;}
+.s-support .row{display:flex;justify-content:space-between;font-size:.85rem;color:rgba(255,255,255,.85);margin-bottom:.4rem;}
+.s-support .row b{color:#fff;font-weight:800;}
+.s-support .s-progress{background:rgba(255,255,255,.15);height:10px;}
+.s-support .s-progress > i{background:linear-gradient(90deg,var(--s-gold),var(--s-gold-soft));}
+
+/* ملفات المشروع */
+.s-file{background:#fff;border:1px solid var(--s-border);border-radius:16px;padding:1.1rem;display:flex;gap:.9rem;align-items:center;transition:.25s;}
+.s-file:hover{border-color:var(--s-emerald-soft);transform:translateX(-3px);box-shadow:var(--s-shadow-sm);}
+.s-file-icon{width:48px;height:48px;border-radius:12px;background:var(--s-ivory);color:var(--s-emerald);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex:0 0 48px;}
+.s-file-body{flex:1;min-width:0;}
+.s-file-body h5{font-weight:800;color:var(--s-navy);font-size:.95rem;}
+.s-file-body span{font-size:.75rem;color:var(--s-muted);}
+.s-file > a{color:var(--s-emerald);font-weight:800;font-size:.85rem;}
+
+/* لوحة بيانات المشروع */
+.s-dash{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+@media(min-width:768px){.s-dash{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1024px){.s-dash{grid-template-columns:repeat(6,1fr);}}
+.s-dash-cell{background:#fff;border:1px solid var(--s-border);border-radius:18px;padding:1.1rem;text-align:center;}
+.s-dash-cell .ico{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--s-emerald-soft),var(--s-emerald));color:#fff;display:inline-flex;align-items:center;justify-content:center;margin-bottom:.5rem;font-size:.9rem;}
+.s-dash-cell .n{font-size:1.35rem;font-weight:900;color:var(--s-navy);}
+.s-dash-cell .l{font-size:.74rem;color:var(--s-muted);margin-top:.2rem;}
+
+/* فئات مستفيدة */
+.s-bene{background:#fff;border:1px solid var(--s-border);border-radius:16px;padding:1.1rem;display:flex;gap:.8rem;align-items:center;transition:.25s;}
+.s-bene:hover{border-color:var(--s-emerald-soft);transform:translateY(-3px);}
+.s-bene i{width:44px;height:44px;border-radius:12px;background:var(--s-ivory);color:var(--s-emerald);display:inline-flex;align-items:center;justify-content:center;}
+.s-bene span{font-weight:700;color:var(--s-navy);}
+
+/* خفي عند الفلترة */
+.is-hidden{display:none !important;}
