@@ -1535,6 +1535,8 @@
   `;
 
   function inject(){
+    // إزالة الشريط العلوي القديم إن وجد
+    document.querySelectorAll('.s-topbar').forEach(el=> el.remove());
     // استبدال الهيدر القديم
     const oldHeader = document.querySelector('header.s-header');
     if(oldHeader){
@@ -1543,6 +1545,7 @@
     } else if(!document.querySelector('.sx-header')){
       document.body.insertAdjacentHTML('afterbegin', headerHTML);
     }
+
     // استبدال الفوتر القديم
     const oldFooter = document.querySelector('footer.s-footer');
     if(oldFooter){
