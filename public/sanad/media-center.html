@@ -443,16 +443,16 @@ tailwind.config = { theme:{ extend:{
     let body = '';
     if(it.type==='news' || it.type==='article'){
       body = `
-        <div class="m-thumb" style="background-image:url('${it.img}')">
+        <a href="article-details.html" class="m-thumb block" style="background-image:url('${it.img}')">
           <span class="m-type-badge ${m.cls}"><i class="fas ${m.ic}"></i> ${m.lbl}</span>
-        </div>
+        </a>
         <div class="m-body">
           <div class="m-meta"><span><i class="fas fa-calendar"></i>${fmtDate(it.date)}</span><span><i class="fas fa-tag"></i>${it.cat}</span>${it.author?`<span><i class="fas fa-user"></i>${it.author}</span>`:''}${it.readMin?`<span><i class="fas fa-clock"></i>${it.readMin} د قراءة</span>`:''}</div>
-          <h3>${it.title}</h3>
+          <h3><a href="article-details.html" class="hover:text-sanad-emeraldDeep transition-colors">${it.title}</a></h3>
           <p>${it.excerpt}</p>
           <div class="m-card-foot">
             <span class="text-xs text-sanad-muted"><i class="fas fa-eye text-sanad-emeraldDeep ml-1"></i>${it.views.toLocaleString('ar-SA')}</span>
-            <a href="article-details.html?id=${it.id}" class="m-link">${it.type==='news'?'قراءة الخبر':'قراءة المقالة'} <i class="fas fa-arrow-left"></i></a>
+            <a href="article-details.html" class="m-link">${it.type==='news'?'قراءة الخبر':'قراءة المقالة'} <i class="fas fa-arrow-left"></i></a>
           </div>
         </div>`;
     } else if(it.type==='gallery'){
