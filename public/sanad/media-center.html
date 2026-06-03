@@ -515,10 +515,6 @@ tailwind.config = { theme:{ extend:{
     grid.innerHTML = list.map(cardHtml).join('');
     document.getElementById('mCount').textContent = list.length;
     document.getElementById('mEmpty').classList.toggle('hidden', list.length>0);
-    // Most viewed (overall top 5)
-    const top = [...ITEMS].sort((a,b)=>b.views-a.views).slice(0,5);
-    document.getElementById('mMost').innerHTML = top.map((it,i)=>`
-      <div class="m-most-item"><div class="rk">${i+1}</div><div><h4>${it.title}</h4><span><i class="fas fa-eye"></i> ${it.views.toLocaleString('ar-SA')} · ${TYPE_META[it.type].lbl}</span></div></div>`).join('');
   }
 
   // Filters wiring
