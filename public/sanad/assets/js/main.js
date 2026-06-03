@@ -923,3 +923,191 @@
     renderSuccess();
   });
 })();
+
+/* ============= خدمات + تتبع + تواصل ============= */
+(function(){
+  'use strict';
+  const $ = (s,r=document)=>r.querySelector(s);
+  const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+  const openModal=(id)=>{const m=document.getElementById(id);if(m){m.classList.add('open');document.body.style.overflow='hidden';}};
+  const closeModal=(m)=>{m.classList.remove('open');if(!document.querySelector('.s-modal-overlay.open'))document.body.style.overflow='';};
+  $$('.s-modal-overlay').forEach(o=>{
+    o.addEventListener('click',e=>{if(e.target===o)closeModal(o);});
+    o.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(o)));
+  });
+  document.querySelectorAll('[data-open-modal]').forEach(b=>{
+    if(b.__svBound)return;b.__svBound=true;
+    b.addEventListener('click',e=>{e.preventDefault();openModal(b.getAttribute('data-open-modal'));});
+  });
+
+  /* ===== صفحة الخدمات: فلاتر + تفاصيل + طلب ===== */
+  const grid=document.querySelector('[data-srv-grid]');
+  if(grid){
+    const cards=$$('[data-srv]',grid);
+    const state={field:'all',audience:'all',channel:'all',q:''};
+    const empty=$('#srvEmpty');
+    const apply=()=>{
+      let visible=0;
+      cards.forEach(c=>{
+        const f=c.dataset.field||'';
+        const a=c.dataset.audience||'';
+        const ch=c.dataset.channel||'';
+        const n=(c.dataset.name||'')+' '+(c.dataset.desc||'');
+        const ok=(state.field==='all'||f===state.field)
+              &&(state.audience==='all'||a.split(/\s+/).includes(state.audience))
+              &&(state.channel==='all'||ch.split(/\s+/).includes(state.channel))
+              &&(!state.q||n.toLowerCase().includes(state.q.toLowerCase()));
+        c.style.display=ok?'':'none';
+        if(ok)visible++;
+      });
+      if(empty)empty.classList.toggle('hidden',visible>0);
+    };
+    $$('[data-srv-filter]').forEach(g=>{
+      const key=g.dataset.srvFilter;
+      g.querySelectorAll('.chip').forEach(b=>{
+        b.addEventListener('click',()=>{
+          g.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+          b.classList.add('active');
+          state[key]=b.dataset.v;apply();
+        });
+      });
+    });
+    const search=$('#srvSearch');
+    search&&search.addEventListener('input',e=>{state.q=e.target.value;apply();});
+    const reset=$('#srvReset');
+    reset&&reset.addEventListener('click',()=>{
+      state.field='all';state.audience='all';state.channel='all';state.q='';
+      if(search)search.value='';
+      $$('[data-srv-filter]').forEach(g=>{
+        g.querySelectorAll('.chip').forEach((b,i)=>b.classList.toggle('active',i===0));
+      });
+      apply();
+    });
+
+    /* تفاصيل الخدمة */
+    const md={t:$('#mdTitle'),d:$('#mdDesc'),a:$('#mdAudience'),c:$('#mdChannel'),du:$('#mdDuration'),
+      co:$('#mdConditions'),dc:$('#mdDocs'),st:$('#mdSteps'),req:$('#mdRequest')};
+    let lastCard=null;
+    const fillUL=(ul,str)=>{ul.innerHTML=str.split('|').map(x=>`<li>${x.trim()}</li>`).join('');};
+    const audienceMap={families:'الأسر',orphans:'الأيتام',elderly:'كبار السن',patients:'المرضى',students:'الطلاب',volunteers:'المتطوعون'};
+    const channelMap={online:'إلكتروني',onsite:'حضوري',branch:'عبر الفرع',phone:'عبر الاتصال'};
+    const openDetail=(c)=>{
+      lastCard=c;
+      md.t.textContent=c.dataset.name;md.d.textContent=c.dataset.desc;
+      md.a.textContent=(c.dataset.audience||'').split(/\s+/).map(x=>audienceMap[x]||x).join(' • ');
+      md.c.textContent=(c.dataset.channel||'').split(/\s+/).map(x=>channelMap[x]||x).join(' • ');
+      md.du.textContent=c.dataset.duration||'—';
+      fillUL(md.co,c.dataset.conditions||'');fillUL(md.dc,c.dataset.docs||'');fillUL(md.st,c.dataset.steps||'');
+      openModal('mSrvDetail');
+    };
+    cards.forEach(c=>{
+      c.querySelector('[data-srv-detail]')?.addEventListener('click',()=>openDetail(c));
+      c.querySelector('[data-srv-request]')?.addEventListener('click',()=>openRequest(c));
+    });
+    md.req&&md.req.addEventListener('click',()=>{
+      const m=document.getElementById('mSrvDetail');closeModal(m);
+      if(lastCard)openRequest(lastCard);
+    });
+
+    /* نموذج الطلب متعدد الخطوات */
+    const rq={form:$('#srvRequestForm'),title:$('#rqTitle'),srv:$('#rqService'),lbl:$('#rqServiceLabel'),
+      bar:$('[data-srv-steps-bar]'),prev:$('[data-srv-prev]'),next:$('[data-srv-next]'),sub:$('[data-srv-submit]')};
+    let step=1;const maxStep=5;
+    const showStep=(n)=>{
+      step=Math.max(1,Math.min(maxStep,n));
+      $$('.srv-step',rq.form).forEach(s=>s.classList.toggle('hidden',+s.dataset.step!==step));
+      $$('li',rq.bar).forEach(li=>{
+        const s=+li.dataset.s;
+        li.classList.toggle('done',s<step);li.classList.toggle('active',s===step);
+      });
+      rq.prev.disabled=step===1;
+      rq.next.classList.toggle('hidden',step===maxStep);
+      rq.sub.classList.toggle('hidden',step!==maxStep);
+    };
+    const validateStep=()=>{
+      const cur=$(`.srv-step[data-step="${step}"]`,rq.form);
+      const fields=$$('input[required],select[required],textarea[required]',cur);
+      for(const f of fields){if(!f.checkValidity()){f.reportValidity();return false;}}
+      return true;
+    };
+    function openRequest(c){
+      rq.title.textContent=c.dataset.name;rq.srv.value=c.dataset.name;rq.lbl.value=c.dataset.name;
+      step=1;showStep(1);rq.form.reset();rq.srv.value=c.dataset.name;rq.lbl.value=c.dataset.name;
+      const u=$$(`input[name="urgency"]`,rq.form);
+      const p=(c.dataset.priority||'').trim();
+      u.forEach(r=>r.checked=(r.value===p));
+      openModal('mSrvRequest');
+    }
+    rq.next&&rq.next.addEventListener('click',()=>{if(validateStep())showStep(step+1);});
+    rq.prev&&rq.prev.addEventListener('click',()=>showStep(step-1));
+    rq.sub&&rq.sub.addEventListener('click',()=>{
+      if(!validateStep())return;
+      const checks=$$('input[type="checkbox"]',$(`.srv-step[data-step="5"]`,rq.form));
+      if(checks.some(c=>!c.checked)){alert('يرجى الموافقة على جميع الإقرارات.');return;}
+      const id='SRV-2026-'+String(1000+Math.floor(Math.random()*8999));
+      $('#okId').textContent=id;
+      $('#okName').textContent=rq.srv.value;
+      $('#okDate').textContent=new Date().toLocaleDateString('ar-SA');
+      $('#okTrack').href='service-tracking.html?id='+encodeURIComponent(id);
+      try{sessionStorage.setItem('sanadSrvLast',JSON.stringify({id,name:rq.srv.value}));}catch(e){}
+      closeModal(document.getElementById('mSrvRequest'));
+      openModal('mSrvSuccess');
+    });
+  }
+
+  /* ===== صفحة التتبع ===== */
+  const trkForm=$('#trkForm');
+  if(trkForm){
+    const showResult=()=>{
+      const r=$('#trkResult');if(!r)return;
+      r.classList.remove('hidden');
+      const id=$('#trkId').value.trim()||'SRV-2026-0001';
+      $('#trkOutId').textContent=id;
+      r.scrollIntoView({behavior:'smooth',block:'start'});
+    };
+    trkForm.addEventListener('submit',e=>{e.preventDefault();showResult();});
+    /* Auto-show if ?id= present */
+    const qs=new URLSearchParams(location.search);
+    if(qs.get('id')){$('#trkId').value=qs.get('id');showResult();}
+  }
+
+  /* ===== صفحة التواصل ===== */
+  const tabsBar=document.querySelector('[data-ct-tabs]');
+  if(tabsBar){
+    tabsBar.querySelectorAll('button').forEach(b=>{
+      b.addEventListener('click',()=>{
+        tabsBar.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        const t=b.dataset.tab;
+        document.querySelectorAll('[data-panel]').forEach(p=>p.classList.toggle('hidden',p.dataset.panel!==t));
+      });
+    });
+    /* hash deep-link */
+    if(location.hash==='#complaints'){tabsBar.querySelector('[data-tab="complaints"]')?.click();}
+  }
+
+  const handleCtForm=(formId,ticketPrefix)=>{
+    const f=document.getElementById(formId);if(!f)return;
+    f.addEventListener('submit',e=>{
+      e.preventDefault();if(!f.checkValidity()){f.reportValidity();return;}
+      const ok=f.querySelector('[data-ok]');if(!ok)return;
+      const t=ok.querySelector('[data-ticket]');
+      if(t)t.textContent=ticketPrefix+'-2026-'+String(1000+Math.floor(Math.random()*8999));
+      ok.classList.remove('hidden');f.reset();ok.scrollIntoView({behavior:'smooth',block:'nearest'});
+    });
+  };
+  handleCtForm('ctGeneral','MSG');
+  handleCtForm('ctComplaint','TCK');
+
+  const rep=document.getElementById('ctReport');
+  const repBtn=document.getElementById('ctReportSubmit');
+  if(rep&&repBtn){
+    repBtn.addEventListener('click',()=>{
+      if(!rep.checkValidity()){rep.reportValidity();return;}
+      const ok=document.querySelector('#mReport [data-ok]');
+      const t=ok?.querySelector('[data-ticket]');
+      if(t)t.textContent='RPT-2026-'+String(1000+Math.floor(Math.random()*8999));
+      ok&&ok.classList.remove('hidden');
+    });
+  }
+})();
