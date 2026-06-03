@@ -135,8 +135,10 @@
   document.querySelectorAll('[data-amt-row]').forEach(row => {
     const chips = row.querySelectorAll('.s-amt');
     const custom = row.querySelector('.s-amt-custom');
-    const totalEl = row.parentElement.querySelector('[data-total]');
-    const setTotal = (v) => { if (totalEl) totalEl.textContent = (Number(v)||0).toLocaleString('ar-SA'); };
+    // ابحث عن جميع عناصر [data-total] داخل أقرب لوحة أو البطاقة الجانبية
+    const scope = row.closest('[data-dpanel]') || row.closest('[data-donation-card]') || row.parentElement;
+    const totals = scope ? scope.querySelectorAll('[data-total]') : [];
+    const setTotal = (v) => { const t = (Number(v)||0).toLocaleString('ar-SA'); totals.forEach(el => el.textContent = t); };
     chips.forEach(c => c.addEventListener('click', () => {
       chips.forEach(x => x.classList.remove('active'));
       c.classList.add('active');
