@@ -689,3 +689,237 @@
     }
   });
 })();
+
+/* ============ STORE (Sanad) ============ */
+(function(){
+  const LS_KEY='sanad_cart_v1';
+  const ORDER_KEY='sanad_last_order';
+  const fmt=n=>Number(n).toLocaleString('ar-SA')+' ر.س';
+  function read(){ try{ return JSON.parse(localStorage.getItem(LS_KEY))||[]; }catch(e){ return [];} }
+  function write(c){ localStorage.setItem(LS_KEY, JSON.stringify(c)); updateBadges(); }
+  function updateBadges(){
+    const c=read(); const n=c.reduce((s,i)=>s+(i.qty||1),0);
+    document.querySelectorAll('[data-cart-count]').forEach(el=>{ el.textContent=n; el.style.display=n>0?'inline-flex':'none'; });
+  }
+  window.sanadStore={
+    add(item){
+      const c=read();
+      const ex=c.find(x=>x.id===item.id);
+      if(ex){ ex.qty=(ex.qty||1)+(item.qty||1); } else { c.push(Object.assign({qty:1},item)); }
+      write(c);
+      toast('تمت إضافة المنتج للسلة');
+    },
+    remove(id){ write(read().filter(x=>x.id!==id)); renderCart(); },
+    setQty(id,q){ const c=read(); const it=c.find(x=>x.id===id); if(it){ it.qty=Math.max(1,parseInt(q)||1); } write(c); renderCart(); },
+    get(){ return read(); },
+    clear(){ localStorage.removeItem(LS_KEY); updateBadges(); },
+    saveOrder(o){ localStorage.setItem(ORDER_KEY, JSON.stringify(o)); },
+    getOrder(){ try{ return JSON.parse(localStorage.getItem(ORDER_KEY)); }catch(e){ return null;} }
+  };
+  function toast(msg){
+    let t=document.getElementById('st-toast');
+    if(!t){ t=document.createElement('div'); t.id='st-toast'; t.style.cssText='position:fixed;bottom:30px;right:30px;background:#0d7a4f;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;z-index:9999;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:.3s;opacity:0;transform:translateY(10px);'; document.body.appendChild(t);}
+    t.textContent=msg; requestAnimationFrame(()=>{ t.style.opacity='1'; t.style.transform='translateY(0)';});
+    clearTimeout(t._h); t._h=setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateY(10px);'; }, 2200);
+  }
+  window.sanadToast=toast;
+
+  // Store page filters
+  function bindStore(){
+    const grid=document.getElementById('st-grid'); if(!grid) return;
+    const cards=Array.from(grid.querySelectorAll('[data-st-item]'));
+    const search=document.getElementById('st-search');
+    const type=document.getElementById('st-type');
+    const price=document.getElementById('st-price');
+    const status=document.getElementById('st-status');
+    const sort=document.getElementById('st-sort');
+    const cats=document.querySelectorAll('[data-st-cat]');
+    let cat='all';
+    function apply(){
+      const q=(search?.value||'').trim();
+      const t=type?.value||'all';
+      const p=price?.value||'all';
+      const s=status?.value||'all';
+      const so=sort?.value||'new';
+      let visible=cards.filter(c=>{
+        const ct=c.dataset.type;
+        const pr=parseInt(c.dataset.price||0);
+        const st=c.dataset.status||'';
+        if(cat!=='all' && cat!=='featured' && cat!=='new' && cat!=='top' && ct!==cat) return false;
+        if(cat==='new' && !st.includes('new')) return false;
+        if(cat==='top' && !st.includes('top')) return false;
+        if(t!=='all' && ct!==t) return false;
+        if(p==='lt100' && !(pr<100)) return false;
+        if(p==='100-300' && !(pr>=100&&pr<=300)) return false;
+        if(p==='gt300' && !(pr>300)) return false;
+        if(s!=='all' && !st.includes(s)) return false;
+        if(q && !c.dataset.name.includes(q)) return false;
+        return true;
+      });
+      cards.forEach(c=>c.style.display='none');
+      visible.sort((a,b)=>{
+        if(so==='priceAsc') return a.dataset.price-b.dataset.price;
+        if(so==='priceDesc') return b.dataset.price-a.dataset.price;
+        if(so==='top') return (b.dataset.orders||0)-(a.dataset.orders||0);
+        return 0;
+      });
+      visible.forEach(c=>c.style.display='');
+      const empty=document.getElementById('st-empty'); if(empty) empty.style.display=visible.length?'none':'block';
+    }
+    cats.forEach(b=>b.addEventListener('click',()=>{ cats.forEach(x=>x.classList.remove('active')); b.classList.add('active'); cat=b.dataset.stCat; apply();}));
+    [search,type,price,status,sort].forEach(el=>el&&el.addEventListener('input',apply));
+    document.getElementById('st-reset')?.addEventListener('click',()=>{ if(search)search.value=''; if(type)type.value='all'; if(price)price.value='all'; if(status)status.value='all'; if(sort)sort.value='new'; cats.forEach(x=>x.classList.remove('active')); document.querySelector('[data-st-cat="all"]')?.classList.add('active'); cat='all'; apply();});
+    grid.addEventListener('click',e=>{
+      const btn=e.target.closest('[data-st-add]'); if(!btn) return;
+      const c=btn.closest('[data-st-item]');
+      window.sanadStore.add({ id:c.dataset.id, name:c.dataset.name, price:+c.dataset.price, type:c.dataset.type, img:c.dataset.img, url:c.dataset.url });
+    });
+    apply();
+  }
+
+  // Product detail buy
+  function bindDetail(){
+    document.querySelectorAll('[data-st-buy]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const d=btn.dataset;
+        const qty=parseInt(document.querySelector('[data-st-qty-input]')?.value||1);
+        window.sanadStore.add({ id:d.id, name:d.name, price:+d.price, type:d.type, img:d.img, url:d.url, qty });
+        if(btn.dataset.stBuy==='now'){ window.location='cart.html'; }
+      });
+    });
+    document.querySelectorAll('[data-st-qty]').forEach(q=>{
+      const input=q.querySelector('input');
+      q.querySelector('[data-q="-"]').addEventListener('click',()=>{ input.value=Math.max(1,(+input.value||1)-1); });
+      q.querySelector('[data-q="+"]').addEventListener('click',()=>{ input.value=(+input.value||1)+1; });
+    });
+    document.querySelectorAll('[data-st-thumb]').forEach(t=>{
+      t.addEventListener('click',()=>{
+        const main=document.querySelector('[data-st-main-img]'); if(main){ main.src=t.querySelector('img').src; }
+        document.querySelectorAll('[data-st-thumb]').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+      });
+    });
+  }
+
+  // Cart page
+  function renderCart(){
+    const list=document.getElementById('st-cart-list'); if(!list) return;
+    const c=read();
+    const empty=document.getElementById('st-cart-empty');
+    const summary=document.getElementById('st-cart-summary');
+    if(!c.length){ list.innerHTML=''; if(empty) empty.style.display='block'; if(summary) summary.style.display='none'; return; }
+    if(empty) empty.style.display='none'; if(summary) summary.style.display='';
+    list.innerHTML=c.map(i=>`
+      <div class="st-cart-row">
+        <div class="ci"><img src="${i.img}" alt=""></div>
+        <div>
+          <div class="font-extrabold text-sanad-navy">${i.name}</div>
+          <div class="text-xs text-sanad-muted mt-1">${typeLabel(i.type)}</div>
+          <div class="mt-3 flex items-center gap-3 flex-wrap">
+            <div class="st-qty" data-st-qty>
+              <button data-q="-" onclick="sanadStore.setQty('${i.id}', (parseInt(this.nextElementSibling.value)-1))">−</button>
+              <input value="${i.qty}" onchange="sanadStore.setQty('${i.id}', this.value)">
+              <button data-q="+" onclick="sanadStore.setQty('${i.id}', (parseInt(this.previousElementSibling.value)+1))">+</button>
+            </div>
+            <button class="text-red-600 text-sm font-bold" onclick="sanadStore.remove('${i.id}')"><i class="fas fa-trash"></i> حذف</button>
+          </div>
+        </div>
+        <div class="right text-left">
+          <div class="text-lg font-extrabold text-sanad-emeraldDeep">${fmt(i.price*i.qty)}</div>
+          <div class="text-xs text-sanad-muted">${fmt(i.price)} × ${i.qty}</div>
+        </div>
+      </div>`).join('');
+    const sub=c.reduce((s,i)=>s+i.price*i.qty,0);
+    const vat=Math.round(sub*0.15);
+    const total=sub+vat;
+    document.getElementById('st-sub') && (document.getElementById('st-sub').textContent=fmt(sub));
+    document.getElementById('st-vat') && (document.getElementById('st-vat').textContent=fmt(vat));
+    document.getElementById('st-total') && (document.getElementById('st-total').textContent=fmt(total));
+  }
+  function typeLabel(t){ return {physical:'منتج ملموس',digital:'منتج رقمي',service:'خدمة',course:'دورة',impact:'منتج أثر'}[t]||'منتج';}
+  window.renderCart=renderCart;
+
+  // Checkout
+  function bindCheckout(){
+    const form=document.getElementById('st-checkout-form'); if(!form) return;
+    const c=read();
+    // summary
+    const sumBox=document.getElementById('st-co-summary');
+    if(sumBox){
+      const sub=c.reduce((s,i)=>s+i.price*i.qty,0);
+      const vat=Math.round(sub*0.15); const total=sub+vat;
+      sumBox.innerHTML=c.map(i=>`<div class="flex justify-between text-sm py-2 border-b border-dashed border-sanad-border"><span>${i.name} × ${i.qty}</span><span class="font-bold">${fmt(i.price*i.qty)}</span></div>`).join('')+
+        `<div class="flex justify-between text-sm pt-3"><span>المجموع</span><span>${fmt(sub)}</span></div>
+         <div class="flex justify-between text-sm py-1"><span>الضريبة (15%)</span><span>${fmt(vat)}</span></div>
+         <div class="flex justify-between text-lg font-extrabold text-sanad-emeraldDeep pt-2 border-t border-sanad-border mt-2"><span>الإجمالي</span><span>${fmt(total)}</span></div>`;
+    }
+    // delivery option depends on types
+    const hasPhys=c.some(i=>i.type==='physical'||i.type==='impact');
+    const hasDig=c.some(i=>i.type==='digital');
+    const hasSrv=c.some(i=>i.type==='service'||i.type==='course');
+    document.querySelectorAll('[data-st-deliv]').forEach(opt=>{
+      const k=opt.dataset.stDeliv;
+      const show=(k==='ship'||k==='pickup')?hasPhys: k==='download'?hasDig: k==='service'?hasSrv: true;
+      opt.style.display=show?'':'none';
+    });
+    // pay options
+    document.querySelectorAll('.st-pay-opt').forEach(o=>{
+      o.addEventListener('click',()=>{
+        document.querySelectorAll('.st-pay-opt').forEach(x=>x.classList.remove('active'));
+        o.classList.add('active');
+        o.querySelector('input').checked=true;
+      });
+    });
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      const fd=new FormData(form);
+      const order={
+        id:'ORD-2026-'+String(Math.floor(1000+Math.random()*9000)),
+        name:fd.get('name')||'عميل سَنَد',
+        email:fd.get('email')||'',
+        phone:fd.get('phone')||'',
+        items:c,
+        delivery:fd.get('delivery')||'',
+        payment:fd.get('payment')||'card',
+        sub:c.reduce((s,i)=>s+i.price*i.qty,0),
+        date:new Date().toLocaleDateString('ar-SA')
+      };
+      order.vat=Math.round(order.sub*.15); order.total=order.sub+order.vat;
+      window.sanadStore.saveOrder(order);
+      window.sanadStore.clear();
+      window.location='order-success.html';
+    });
+  }
+
+  // Success
+  function renderSuccess(){
+    const root=document.getElementById('st-success'); if(!root) return;
+    const o=window.sanadStore.getOrder();
+    if(!o){ root.innerHTML='<div class="text-center py-12 text-sanad-muted">لا يوجد طلب حديث.</div>'; return;}
+    document.getElementById('st-ord-id') && (document.getElementById('st-ord-id').textContent=o.id);
+    document.getElementById('st-ord-name') && (document.getElementById('st-ord-name').textContent=o.name);
+    document.getElementById('st-ord-date') && (document.getElementById('st-ord-date').textContent=o.date);
+    document.getElementById('st-ord-total') && (document.getElementById('st-ord-total').textContent=fmt(o.total));
+    document.getElementById('st-ord-pay') && (document.getElementById('st-ord-pay').textContent={card:'بطاقة بنكية',mada:'مدى',transfer:'تحويل بنكي'}[o.payment]||'بطاقة');
+    const list=document.getElementById('st-ord-items');
+    if(list){ list.innerHTML=o.items.map(i=>`<div class="flex justify-between text-sm py-2 border-b border-dashed border-sanad-border"><span>${i.name} × ${i.qty}</span><span class="font-bold">${fmt(i.price*i.qty)}</span></div>`).join('');}
+    // type-specific messages
+    const hasDig=o.items.some(i=>i.type==='digital');
+    const hasPhys=o.items.some(i=>i.type==='physical'||i.type==='impact');
+    const hasSrv=o.items.some(i=>i.type==='service');
+    const hasCrs=o.items.some(i=>i.type==='course');
+    document.getElementById('st-msg-digital')&&(document.getElementById('st-msg-digital').style.display=hasDig?'':'none');
+    document.getElementById('st-msg-physical')&&(document.getElementById('st-msg-physical').style.display=hasPhys?'':'none');
+    document.getElementById('st-msg-service')&&(document.getElementById('st-msg-service').style.display=hasSrv?'':'none');
+    document.getElementById('st-msg-course')&&(document.getElementById('st-msg-course').style.display=hasCrs?'':'none');
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    updateBadges();
+    bindStore();
+    bindDetail();
+    renderCart();
+    bindCheckout();
+    renderSuccess();
+  });
+})();

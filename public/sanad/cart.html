@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>سلة المشتريات — جمعية سَنَد</title>
+<meta name="description" content="سلة المشتريات في متجر جمعية سَنَد." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#0b2545', navyDeep:'#061633', navySoft:'#1d3a6b', emerald:'#0d7a4f', emeraldSoft:'#2fa776', emeraldDeep:'#075c3a', gold:'#b6873a', goldSoft:'#d9b066', sand:'#f3ead8', ivory:'#faf7f0', mist:'#eef2f6', border:'#e6ebf1', text:'#0f1d2e', muted:'#5b6b7d' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+      <a href="store.html"><i class="fas fa-bag-shopping ml-1 text-sanad-emeraldSoft"></i> متجر الجمعية</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link">الأخبار</a>
+      <a href="store.html" class="s-nav-link active">المتجر</a>
+      <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="cart.html" class="relative w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy hover:bg-sanad-mist" aria-label="السلة">
+        <i class="fas fa-bag-shopping"></i>
+        <span data-cart-count class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-sanad-emerald text-white text-[11px] font-bold flex items-center justify-center" style="display:none">0</span>
+      </a>
+      <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية سَنَد</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+    <a href="projects.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المشاريع</a>
+    <a href="donations.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">بوابة التبرع</a>
+    <a href="governance.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الحوكمة</a>
+    <a href="media-center.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الأخبار</a>
+    <a href="store.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">متجر الجمعية</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="py-8 bg-white border-b border-sanad-border">
+  <div class="s-container">
+    <nav class="s-bcrumbs mb-3 text-sm">
+      <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a><i class="fas fa-chevron-left"></i>
+      <a href="store.html">المتجر</a><i class="fas fa-chevron-left"></i>
+      <span>السلة</span>
+    </nav>
+    <h1 class="text-3xl font-extrabold text-sanad-navy"><i class="fas fa-bag-shopping text-sanad-emerald"></i> سلة المشتريات</h1>
+  </div>
+</section>
+<section class="py-10">
+  <div class="s-container grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 space-y-4">
+      <div id="st-cart-list" class="space-y-4"></div>
+      <div id="st-cart-empty" class="hidden bg-white border border-dashed border-sanad-border rounded-2xl p-12 text-center">
+        <i class="fas fa-bag-shopping text-4xl text-sanad-muted mb-4"></i>
+        <h3 class="text-xl font-extrabold text-sanad-navy mb-2">سلتك فارغة</h3>
+        <p class="text-sanad-muted mb-4">ابدأ بتصفح منتجات المتجر وأضف ما يناسبك.</p>
+        <a href="store.html" class="s-btn s-btn-primary"><i class="fas fa-bag-shopping"></i> تصفح المتجر</a>
+      </div>
+    </div>
+    <aside id="st-cart-summary" class="bg-white border border-sanad-border rounded-2xl p-6 h-fit sticky top-24">
+      <h3 class="text-lg font-extrabold text-sanad-navy mb-4">ملخص الطلب</h3>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between"><span>إجمالي المنتجات</span><span id="st-sub" class="font-bold">0 ر.س</span></div>
+        <div class="flex justify-between"><span>الضريبة (15%)</span><span id="st-vat" class="font-bold">0 ر.س</span></div>
+        <div class="flex justify-between text-xl font-extrabold text-sanad-emeraldDeep pt-3 mt-3 border-t border-sanad-border"><span>الإجمالي</span><span id="st-total">0 ر.س</span></div>
+      </div>
+      <a href="checkout.html" class="s-btn s-btn-primary w-full justify-center mt-5"><i class="fas fa-credit-card"></i> إتمام الطلب</a>
+      <a href="store.html" class="s-btn s-btn-outline w-full justify-center mt-2"><i class="fas fa-arrow-right"></i> متابعة التسوق</a>
+      <div class="mt-5 pt-5 border-t border-sanad-border text-xs text-sanad-muted space-y-1">
+        <div><i class="fas fa-shield-halved text-sanad-emerald"></i> دفع آمن</div>
+        <div><i class="fas fa-file-invoice text-sanad-emerald"></i> سند طلب رسمي</div>
+        <div><i class="fas fa-heart text-sanad-emerald"></i> ريع يدعم البرامج</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="s-logo-mark">س</div>
+          <div>
+            <div class="font-extrabold text-white text-lg">جمعية سَنَد</div>
+            <div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div>
+          </div>
+        </div>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة، تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+        <div class="flex items-center gap-2">
+          <a href="#" class="s-social"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>عن الجمعية</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="strategy.html">استراتيجيتنا</a></li>
+          <li><a href="board.html">مجلس الإدارة</a></li>
+          <li><a href="organization-structure.html">الهيكل التنظيمي</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>روابط مهمة</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="store.html">متجر الجمعية</a></li>
+          <li><a href="donations.html">بوابة التبرع</a></li>
+          <li><a href="services.html">الخدمات</a></li>
+          <li><a href="projects.html">المشاريع</a></li>
+          <li><a href="media-center.html">الأخبار</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>الحوكمة</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="governance.html">اللوائح والسياسات</a></li>
+          <li><a href="governance.html">التقارير المالية</a></li>
+          <li><a href="governance.html">التقرير السنوي</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>تواصل</h4>
+        <div class="space-y-2 text-xs text-white/70">
+          <div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div>
+          <div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div>
+          <div><i class="fas fa-location-dot ml-1 text-sanad-goldSoft"></i> الرياض، المملكة العربية السعودية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="s-container py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60">
+      <div>© <span data-year>2026</span> جمعية سَنَد. جميع الحقوق محفوظة.</div>
+      <div class="flex items-center gap-5">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">الشروط والأحكام</a>
+        <a href="#">خريطة الموقع</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
