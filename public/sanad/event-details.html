@@ -272,35 +272,5 @@ tailwind.config = { theme:{ extend:{
 </div>
 
 <script src="assets/js/main.js"></script>
-<script>
-(function(){
-  'use strict';
-  const onsite = document.getElementById('modeOnsite');
-  const online = document.getElementById('modeOnline');
-  let mode = 'onsite';
-  document.querySelectorAll('input[name="dmode"]').forEach(r=>{
-    r.addEventListener('change', e=>{
-      mode = e.target.value;
-      onsite.style.display = mode==='onsite' ? '' : 'none';
-      online.style.display = mode==='online' ? '' : 'none';
-    });
-  });
-
-  window.submitReg = function(){
-    const ref = 'EV-2026-' + String(Math.floor(1000 + Math.random()*9000));
-    document.getElementById('dRef').textContent = ref;
-    const onsiteText = 'طريقة الحضور: حضوري — مقر الجمعية، الرياض';
-    const onlineText = 'طريقة الحضور: عن بُعد — سيُرسَل الرابط قبل الموعد بـ 30 دقيقة';
-    document.getElementById('dMode').textContent = mode==='onsite' ? onsiteText : onlineText;
-    const btn = document.getElementById('dPrimary');
-    if(mode==='onsite'){ btn.innerHTML = '<i class="fas fa-map"></i> عرض موقع الحضور'; }
-    else { btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> الدخول للفعالية'; }
-    document.getElementById('dSuccess').classList.add('open');
-  };
-  window.closeSuccess = ()=> document.getElementById('dSuccess').classList.remove('open');
-  window.downloadTicket = ()=> alert('سيتم تحميل تذكرة الحضور بصيغة PDF.');
-  window.addCal = ()=> alert('تم تجهيز الحدث لإضافته إلى تقويمك.');
-})();
-</script>
 </body>
 </html>
