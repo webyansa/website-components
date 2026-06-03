@@ -666,6 +666,7 @@
     window.__sanadDonation = window.__sanadDonation || {};
     window.__sanadDonation.type = 'gift';
     window.__sanadDonation.method = payMethod;
+    document.dispatchEvent(new CustomEvent('sanad:set-method', { detail: { method: payMethod } }));
 
     closeModal(giftModal);
 
