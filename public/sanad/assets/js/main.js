@@ -2152,10 +2152,41 @@
       });
     });
 
-    // اللغة
-    document.querySelectorAll('[data-lang="en"], [data-lang-toggle]').forEach((b) => {
+    // قائمة اللغة المنسدلة
+    document.querySelectorAll("[data-lang-dd]").forEach((dd) => {
+      const trigger = dd.querySelector(".sx-lang-trigger");
+      const current = dd.querySelector(".sx-lang-current");
+      trigger?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dd.classList.toggle("open");
+        trigger.setAttribute("aria-expanded", dd.classList.contains("open"));
+      });
+      dd.querySelectorAll(".sx-lang-menu button").forEach((b) => {
+        b.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const lang = b.getAttribute("data-lang");
+          dd.querySelectorAll(".sx-lang-menu button").forEach((x) => {
+            x.classList.toggle("active", x === b);
+            x.setAttribute("aria-selected", x === b ? "true" : "false");
+          });
+          if (current) current.textContent = b.textContent.trim();
+          dd.classList.remove("open");
+          trigger.setAttribute("aria-expanded", "false");
+          if (lang === "en") sxToast("النسخة الإنجليزية قيد الإعداد");
+        });
+      });
+    });
+    document.addEventListener("click", (e) => {
+      document.querySelectorAll("[data-lang-dd].open").forEach((dd) => {
+        if (!dd.contains(e.target)) {
+          dd.classList.remove("open");
+          dd.querySelector(".sx-lang-trigger")?.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+    // توافق قديم
+    document.querySelectorAll('[data-lang-toggle]').forEach((b) => {
       b.addEventListener("click", (e) => {
-        if (b.getAttribute("data-lang") === "ar") return;
         e.preventDefault();
         sxToast("النسخة الإنجليزية قيد الإعداد");
       });
