@@ -1771,10 +1771,16 @@
             <a href="tel:920000000" class="sx-thide"><i class="fas fa-phone"></i> 920000000</a>
             <a href="mailto:info@sanad.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@sanad.org.sa</a>
           </div>
-          <div class="sx-lang">
-            <button class="active" data-lang="ar" type="button">العربية</button>
-            <span class="sep">|</span>
-            <button data-lang="en" type="button">English</button>
+          <div class="sx-lang-dd" data-lang-dd>
+            <button class="sx-lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <i class="fas fa-globe"></i>
+              <span class="sx-lang-current">العربية</span>
+              <i class="fas fa-chevron-down sx-lang-caret"></i>
+            </button>
+            <ul class="sx-lang-menu" role="listbox">
+              <li><button type="button" data-lang="ar" class="active" role="option" aria-selected="true">العربية</button></li>
+              <li><button type="button" data-lang="en" role="option" aria-selected="false">English</button></li>
+            </ul>
           </div>
         </div>
       </div>
