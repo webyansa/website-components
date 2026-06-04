@@ -2297,3 +2297,71 @@ html[dir="rtl"] .sx-drawer{transform:translateX(-100%);}
   .lg-mselect{display:block;}
   .lg-content{padding:1.3rem 1.1rem;}
 }
+
+/* ============= بطاقة توثيق الترخيص — Sanad v2 ============= */
+.sx-license{max-width:1280px;margin:0 auto;padding:0 1.5rem 1.5rem;}
+.sx-license-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#0b2545 0%,#0f2f5c 55%,#0b2545 100%);
+  border:1px solid rgba(217,176,102,.35);
+  border-radius:20px;padding:1.4rem 1.5rem;
+  display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;justify-content:space-between;
+  box-shadow:0 18px 40px -22px rgba(6,22,51,.55), inset 0 1px 0 rgba(255,255,255,.04);
+}
+.sx-license-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 92% 8%,rgba(217,176,102,.18),transparent 45%),
+             radial-gradient(circle at 5% 95%,rgba(13,122,79,.15),transparent 45%);
+}
+.sx-license-card > *{position:relative;z-index:1;}
+.sx-license-card .sx-lic-left{display:flex;align-items:flex-start;gap:1rem;flex:1 1 420px;min-width:280px;}
+.sx-license-card .sx-lic-mark{
+  flex:0 0 auto;width:78px;height:78px;border-radius:16px;
+  background:linear-gradient(160deg,#f7e9c6,#d9b066);
+  display:flex;align-items:center;justify-content:center;padding:10px;
+  box-shadow:0 8px 18px -10px rgba(217,176,102,.6), inset 0 0 0 1px rgba(255,255,255,.4);
+}
+.sx-license-card .sx-lic-mark img{width:100%;height:100%;object-fit:contain;display:block;}
+.sx-license-card .sx-lic-info{flex:1;min-width:0;}
+.sx-license-card .sx-lic-title{color:#fff;font-weight:900;font-size:1rem;line-height:1.55;}
+.sx-license-card .sx-lic-desc{color:#c6d2e6;font-size:.8rem;line-height:1.75;margin:.45rem 0 .65rem;}
+.sx-license-card .sx-lic-meta{font-size:.74rem;color:#a5b3c8;display:flex;flex-wrap:wrap;gap:.5rem .9rem;}
+.sx-license-card .sx-lic-meta span{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.05);padding:.3rem .55rem;border-radius:8px;border:1px solid rgba(255,255,255,.06);}
+.sx-license-card .sx-lic-meta i{color:#d9b066;font-size:.7rem;}
+.sx-license-card .sx-lic-meta b{color:#fff;font-weight:800;}
+.sx-license-card .sx-lic-actions{display:flex;flex-direction:column;gap:.55rem;flex:0 0 auto;min-width:230px;}
+.sx-license-card .sx-lic-btn{
+  padding:.7rem 1.1rem;border-radius:12px;font-weight:800;font-size:.82rem;
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  transition:transform .2s, background .2s, color .2s, box-shadow .2s;cursor:pointer;border:1px solid transparent;
+}
+.sx-license-card .sx-lic-btn-primary{background:linear-gradient(135deg,#d9b066,#c89947);color:#0b2545;box-shadow:0 8px 18px -10px rgba(217,176,102,.55);}
+.sx-license-card .sx-lic-btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 22px -10px rgba(217,176,102,.65);}
+.sx-license-card .sx-lic-btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.25);}
+.sx-license-card .sx-lic-btn-outline:hover{background:rgba(255,255,255,.08);border-color:#d9b066;color:#d9b066;}
+@media (max-width:720px){
+  .sx-license-card{padding:1.1rem;gap:1rem;}
+  .sx-license-card .sx-lic-left{flex-basis:100%;}
+  .sx-license-card .sx-lic-actions{width:100%;}
+  .sx-license-card .sx-lic-mark{width:60px;height:60px;border-radius:13px;padding:7px;}
+  .sx-license-card .sx-lic-title{font-size:.92rem;}
+}
+
+/* ===== نافذة الترخيص ===== */
+.sx-cert-mod{max-width:960px;width:100%;max-height:92vh;display:flex;flex-direction:column;background:#fff;border-radius:18px;overflow:hidden;}
+.sx-cert-head{background:linear-gradient(135deg,#0b2545 0%,#0d7a4f 100%);}
+.sx-cert-head .sx-cert-head-l{display:flex;align-items:center;gap:.85rem;}
+.sx-cert-head .sx-cert-logo{height:38px;width:auto;background:#fff;padding:5px 8px;border-radius:8px;}
+.sx-cert-body{display:grid;grid-template-columns:280px 1fr;gap:1.2rem;padding:1.3rem;overflow:auto;}
+.sx-cert-meta{display:flex;flex-direction:column;gap:.55rem;}
+.sx-cmrow{background:#f6f8fb;border:1px solid #e6ecf3;border-radius:11px;padding:.65rem .8rem;display:flex;flex-direction:column;gap:.15rem;}
+.sx-cmrow span{font-size:.7rem;color:#5b6b7d;font-weight:600;}
+.sx-cmrow b{color:#0b2545;font-size:.85rem;font-weight:800;line-height:1.6;}
+.sx-cmrow .sx-cm-ok{color:#0d7a4f;display:inline-flex;align-items:center;gap:.3rem;}
+.sx-cert-frame{background:#f1f4f9;border:1px solid #e3e9f1;border-radius:14px;padding:.6rem;display:flex;align-items:center;justify-content:center;min-height:300px;max-height:70vh;overflow:auto;}
+.sx-cert-frame img{max-width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 6px 18px -8px rgba(11,37,69,.25);}
+@media (max-width:780px){
+  .sx-cert-body{grid-template-columns:1fr;padding:1rem;}
+  .sx-cert-frame{max-height:55vh;}
+  .sx-cert-head .sx-cert-logo{height:30px;}
+}
