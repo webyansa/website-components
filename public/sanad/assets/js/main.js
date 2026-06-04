@@ -2792,8 +2792,139 @@
               </div>
             </div>
           </div>
+    </div>
+
+    <!-- Membership Modal -->
+    <div class="sxq-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
+      <div class="sxq-dialog">
+        <div class="sxq-head">
+          <h3 id="sxqMemberTitle"><i class="fas fa-id-card"></i> طلب عضوية الجمعية</h3>
+          <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sxq-body">
+          <!-- Step 1: Form -->
+          <div class="sxq-panel active" data-panel="form">
+            <p style="font-size:.88rem;color:#5b6b85;margin:.1rem 0 .9rem;line-height:1.85">
+              يمكنك تقديم طلب الانضمام لعضوية الجمعية، وسيتم مراجعة الطلب وفق لائحة الجمعية الأساسية والضوابط المعتمدة.
+              <a href="membership.html" style="color:#0d7a4f;font-weight:700;text-decoration:none">الاطلاع على صفحة العضوية <i class="fas fa-arrow-left" style="font-size:.7rem"></i></a>
+            </p>
+
+            <div class="sxq-mem-note">
+              <i class="fas fa-circle-info"></i>
+              <span>قبول طلب العضوية يخضع للائحة الجمعية الأساسية وقرار الجهة المختصة داخل الجمعية، وقد تختلف شروط العضوية أو رسومها حسب نوع العضوية المعتمد.</span>
+            </div>
+
+            <div class="sxq-mem-section">بيانات العضوية</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>نوع العضوية *</label>
+                <select class="sxq-select" data-m-type required>
+                  <option value="">— اختر —</option>
+                  <option>عضو عامل</option>
+                  <option>عضو منتسب</option>
+                  <option>عضو داعم</option>
+                  <option>عضو شرفي</option>
+                </select>
+              </div>
+              <div class="sxq-field"><label>الجنسية</label><input class="sxq-input" data-m-nat placeholder="مثال: سعودي"></div>
+            </div>
+
+            <div class="sxq-mem-section">البيانات الشخصية</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>الاسم الكامل *</label><input class="sxq-input" data-m-name required></div>
+              <div class="sxq-field"><label>رقم الهوية / الإقامة *</label><input class="sxq-input" type="tel" inputmode="numeric" maxlength="10" data-m-id required></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>تاريخ الميلاد</label><input class="sxq-input" type="date" data-m-dob></div>
+              <div class="sxq-field"><label>رقم الجوال *</label><input class="sxq-input" type="tel" inputmode="numeric" placeholder="05xxxxxxxx" data-m-phone required></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>البريد الإلكتروني</label><input class="sxq-input" type="email" data-m-email placeholder="name@example.com"></div>
+              <div class="sxq-field"><label>المدينة</label><input class="sxq-input" data-m-city></div>
+            </div>
+            <div class="sxq-field"><label>العنوان المختصر</label><input class="sxq-input" data-m-addr placeholder="الحي / الشارع"></div>
+
+            <div class="sxq-mem-section">البيانات المهنية</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>المؤهل العلمي</label>
+                <select class="sxq-select" data-m-edu>
+                  <option>ثانوي</option><option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option><option>دكتوراه</option>
+                </select>
+              </div>
+              <div class="sxq-field"><label>المهنة</label><input class="sxq-input" data-m-job></div>
+            </div>
+            <div class="sxq-field"><label>جهة العمل</label><input class="sxq-input" data-m-org></div>
+
+            <div class="sxq-mem-section">الاهتمامات والرغبات</div>
+            <div class="sxq-field"><label>سبب الرغبة في الانضمام للعضوية *</label>
+              <textarea class="sxq-textarea" data-m-reason rows="3" placeholder="اكتب باختصار سبب رغبتك في الانضمام" required></textarea>
+            </div>
+
+            <div class="sxq-field"><label>مجالات الاهتمام داخل الجمعية</label>
+              <div class="sxq-chips" data-m-interests>
+                <label class="sxq-chip"><input type="checkbox" value="البرامج والخدمات"><span>البرامج والخدمات</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الحوكمة"><span>الحوكمة</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="التطوع"><span>التطوع</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="دعم المستفيدين"><span>دعم المستفيدين</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الشراكات"><span>الشراكات</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الاستدامة المالية"><span>الاستدامة المالية</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الإعلام والتوعية"><span>الإعلام والتوعية</span></label>
+              </div>
+            </div>
+
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>هل سبق لك التعامل مع الجمعية؟</label>
+                <select class="sxq-select" data-m-prev><option>لا</option><option>نعم</option></select>
+              </div>
+              <div class="sxq-field"><label>المشاركة في الجمعية العمومية عند القبول؟</label>
+                <select class="sxq-select" data-m-ga><option>نعم</option><option>لا</option></select>
+              </div>
+            </div>
+
+            <div class="sxq-mem-section">مرفقات (اختياري)</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>صورة الهوية</label><input class="sxq-input" type="file" data-m-fid></div>
+              <div class="sxq-field"><label>السيرة الذاتية</label><input class="sxq-input" type="file" data-m-fcv></div>
+            </div>
+            <div class="sxq-field"><label>خطاب تعريفي</label><input class="sxq-input" type="file" data-m-fletter></div>
+
+            <div class="sxq-mem-section">الإقرارات</div>
+            <div class="sxq-mem-acks">
+              <label class="sxq-check"><input type="checkbox" data-m-ack1 required> أقر بصحة البيانات المدخلة.</label>
+              <label class="sxq-check"><input type="checkbox" data-m-ack2 required> أوافق على سياسة الخصوصية.</label>
+              <label class="sxq-check"><input type="checkbox" data-m-ack3 required> أتعهد بالالتزام بلائحة الجمعية وأنظمتها عند قبول العضوية.</label>
+              <label class="sxq-check"><input type="checkbox" data-m-ack4 required> أعلم أن قبول العضوية يخضع لمراجعة الجمعية والضوابط المعتمدة.</label>
+            </div>
+
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-close><i class="fas fa-times"></i> إلغاء</button>
+              <button class="sxq-btn sxq-btn-primary" data-sxq-msubmit>إرسال طلب العضوية <i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+
+          <!-- Step 2: Success -->
+          <div class="sxq-panel" data-panel="ok">
+            <div class="sxq-success">
+              <div class="sxq-success-ic"><i class="fas fa-check"></i></div>
+              <h4>تم استلام طلب العضوية بنجاح</h4>
+              <p>شكرًا لرغبتكم في الانضمام لعضوية جمعية سَنَد. سيتم مراجعة طلبكم وفق لائحة الجمعية، وسيتم إشعاركم بحالة الطلب عبر بيانات التواصل المسجلة.</p>
+              <div class="sxq-sum">
+                <div class="sxq-sum-row"><span>رقم الطلب</span><b data-mok-id>—</b></div>
+                <div class="sxq-sum-row"><span>نوع العضوية</span><b data-mok-type>—</b></div>
+                <div class="sxq-sum-row"><span>تاريخ الإرسال</span><b data-mok-date>—</b></div>
+                <div class="sxq-sum-row total"><span>الحالة</span><b style="color:#0d7a4f">قيد المراجعة</b></div>
+              </div>
+              <div class="sxq-actions">
+                <button class="sxq-btn sxq-btn-ghost" data-sxq-close-x><i class="fas fa-times"></i> إغلاق</button>
+                <button class="sxq-btn sxq-btn-ghost" onclick="window.print()"><i class="fas fa-print"></i> طباعة ملخص الطلب</button>
+                <a class="sxq-btn sxq-btn-primary" href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+
     </div>
 
     <!-- Gift Card Mini-Modal -->
