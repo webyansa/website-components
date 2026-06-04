@@ -61,7 +61,8 @@
           const p = Math.min((now - start) / duration, 1);
           const eased = 1 - Math.pow(1 - p, 3);
           const val = target * eased;
-          const formatted = target % 1 === 0 ? Math.floor(val).toLocaleString("ar-SA") : val.toFixed(1);
+          const locale = el.getAttribute("data-locale") === "en" ? "en-US" : "ar-SA";
+          const formatted = target % 1 === 0 ? Math.floor(val).toLocaleString(locale) : val.toFixed(1);
           el.textContent = formatted + suffix;
           if (p < 1) requestAnimationFrame(step);
         };
