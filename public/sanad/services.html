@@ -105,47 +105,31 @@ tailwind.config = { theme:{ extend:{
 
 <section class="py-12">
   <div class="s-container">
-    <div class="srv-filter">
-      <div class="srv-search">
+    <div class="srv-filter-compact">
+      <div class="srv-search-mini">
         <i class="fas fa-search"></i>
-        <input type="search" id="srvSearch" placeholder="ابحث عن خدمة..." />
+        <input type="search" id="srvSearch" placeholder="بحث سريع..." />
       </div>
-      <div class="srv-fgroup">
-        <span class="lbl">المجال</span>
-        <div class="chips" data-srv-filter="field">
-          <button class="chip active" data-v="all">الكل</button>
-          <button class="chip" data-v="social">الرعاية الاجتماعية</button>
-          <button class="chip" data-v="health">الدعم الصحي</button>
-          <button class="chip" data-v="edu">التعليم والتمكين</button>
-          <button class="chip" data-v="housing">الإسكان</button>
-          <button class="chip" data-v="food">السلال الغذائية</button>
-          <button class="chip" data-v="elderly">كبار السن</button>
-          <button class="chip" data-v="volunteer">التطوع</button>
-        </div>
-      </div>
-      <div class="srv-fgroup">
-        <span class="lbl">الفئة المستهدفة</span>
-        <div class="chips" data-srv-filter="audience">
-          <button class="chip active" data-v="all">الكل</button>
-          <button class="chip" data-v="families">الأسر</button>
-          <button class="chip" data-v="orphans">الأيتام</button>
-          <button class="chip" data-v="elderly">كبار السن</button>
-          <button class="chip" data-v="patients">المرضى</button>
-          <button class="chip" data-v="students">الطلاب</button>
-          <button class="chip" data-v="volunteers">المتطوعون</button>
-        </div>
-      </div>
-      <div class="srv-fgroup">
-        <span class="lbl">طريقة التقديم</span>
-        <div class="chips" data-srv-filter="channel">
-          <button class="chip active" data-v="all">الكل</button>
-          <button class="chip" data-v="online">إلكتروني</button>
-          <button class="chip" data-v="onsite">حضوري</button>
-          <button class="chip" data-v="branch">عبر الفرع</button>
-          <button class="chip" data-v="phone">عبر الاتصال</button>
-        </div>
-      </div>
-      <button id="srvReset" class="s-btn s-btn-outline !py-2 !px-4"><i class="fas fa-rotate-left"></i> إعادة ضبط الفلاتر</button>
+      <select class="srv-select" data-srv-filter="field" aria-label="المجال">
+        <option value="all">كل المجالات</option>
+        <option value="social">الرعاية الاجتماعية</option>
+        <option value="health">الدعم الصحي</option>
+        <option value="edu">التعليم والتمكين</option>
+        <option value="housing">الإسكان</option>
+        <option value="food">السلال الغذائية</option>
+        <option value="elderly">كبار السن</option>
+        <option value="volunteer">التطوع</option>
+      </select>
+      <select class="srv-select" data-srv-filter="audience" aria-label="الفئة المستهدفة">
+        <option value="all">كل المستفيدين</option>
+        <option value="families">الأسر</option>
+        <option value="orphans">الأيتام</option>
+        <option value="elderly">كبار السن</option>
+        <option value="patients">المرضى</option>
+        <option value="students">الطلاب</option>
+        <option value="volunteers">المتطوعون</option>
+      </select>
+      <button id="srvReset" class="srv-reset-mini" title="إعادة الضبط"><i class="fas fa-rotate-left"></i></button>
     </div>
 
     <div id="sv-list" class="srv-grid mt-10" data-srv-grid>
