@@ -2423,3 +2423,693 @@
     applyForm.reset();
   });
 })();
+
+/* ============================================================
+   SXQ — Floating Quick Bar + Donate/Gift/Join Modals (v1)
+   Self-contained. Does not affect existing modals/donation flows.
+   ============================================================ */
+(function(){
+  if (window.__sxqInit) return; window.__sxqInit = true;
+  if (typeof document === "undefined") return;
+
+  const OPPS = [
+    { id: "vol-food", type: "vol", title: "متطوع توزيع السلال الغذائية", city: "الرياض", mode: "ميداني" },
+    { id: "vol-media", type: "vol", title: "متطوع إعلامي", city: "عن بُعد", mode: "جزئي" },
+    { id: "vol-event", type: "vol", title: "متطوع تنظيم فعاليات", city: "جدة", mode: "ميداني" },
+    { id: "job-spec",  type: "job", title: "أخصائي خدمات مستفيدين", city: "الرياض", mode: "دوام كامل" },
+    { id: "job-coord", type: "job", title: "منسق برامج اجتماعية", city: "الدمام", mode: "دوام كامل" },
+  ];
+
+  const CAUSES = [
+    "كفالة الأيتام","الصدقة الجارية","السلة الغذائية","دعم علاج","زكاة المال","وقف الرعاية"
+  ];
+
+  const fmt = (n) => (Number(n)||0).toLocaleString("en-US") + " ريال";
+
+  /* ---------- Build UI ---------- */
+  const root = document.createElement("div");
+  root.id = "sxq-root";
+  root.innerHTML = `
+    <!-- Floating Bar -->
+    <div class="sxq-fab" id="sxqFab">
+      <div class="sxq-fab-menu" id="sxqFabMenu">
+        <button class="sxq-fab-item" data-sxq-open="donate"><i class="fas fa-bolt"></i> تبرع سريع</button>
+        <button class="sxq-fab-item" data-sxq-open="gift"><i class="fas fa-gift"></i> إهداء التبرع</button>
+        <a class="sxq-fab-item" href="donations.html"><i class="fas fa-heart"></i> بوابة التبرعات</a>
+        <button class="sxq-fab-item" data-sxq-open="join"><i class="fas fa-user-plus"></i> انضم معنا</button>
+        <a class="sxq-fab-item" href="beneficiaries.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
+      </div>
+      <button class="sxq-fab-toggle" id="sxqFabBtn" aria-label="افتح القائمة السريعة"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <!-- Donate Modal -->
+    <div class="sxq-modal" id="sxqDonate" role="dialog" aria-modal="true" aria-labelledby="sxqDonateTitle">
+      <div class="sxq-dialog">
+        <div class="sxq-head">
+          <h3 id="sxqDonateTitle"><i class="fas fa-bolt"></i> <span data-sxq-htitle>التبرع السريع</span></h3>
+          <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sxq-body">
+          <div class="sxq-steps" data-sxq-steps>
+            <div class="sxq-step active" data-step="1"><span class="n">1</span> البيانات</div>
+            <div class="sxq-step-sep"></div>
+            <div class="sxq-step" data-step="2"><span class="n">2</span> الدفع</div>
+            <div class="sxq-step-sep"></div>
+            <div class="sxq-step" data-step="3"><span class="n">3</span> التأكيد</div>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="sxq-panel active" data-panel="1">
+            <div class="sxq-field">
+              <label>اختر فرصة التبرع</label>
+              <select class="sxq-select" data-d-cause>${CAUSES.map(c=>`<option>${c}</option>`).join("")}</select>
+            </div>
+            <div class="sxq-field">
+              <label>رقم الجوال (اختياري)</label>
+              <input class="sxq-input" type="tel" inputmode="numeric" placeholder="05xxxxxxxx" data-d-phone>
+            </div>
+            <div class="sxq-field">
+              <label>مبلغ التبرع</label>
+              <div class="sxq-amts">
+                <button type="button" class="sxq-amt" data-d-amt="50">50 ريال</button>
+                <button type="button" class="sxq-amt active" data-d-amt="100">100 ريال</button>
+                <button type="button" class="sxq-amt" data-d-amt="300">300 ريال</button>
+                <button type="button" class="sxq-amt" data-d-amt="500">500 ريال</button>
+              </div>
+              <input class="sxq-input" type="number" min="1" placeholder="مبلغ آخر" data-d-other>
+            </div>
+            <label class="sxq-check"><input type="checkbox" data-d-anon> تبرع كـ "فاعل خير"</label>
+            <div class="sxq-sum">
+              <div class="sxq-sum-row"><span>فرصة التبرع</span><b data-s-cause>—</b></div>
+              <div class="sxq-sum-row"><span>نوع التبرع</span><b>تبرع سريع</b></div>
+              <div class="sxq-sum-row total"><span>مبلغ التبرع</span><b data-s-amt>100 ريال</b></div>
+            </div>
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-primary" data-sxq-next="2">إتمام التبرع <i class="fas fa-arrow-left"></i></button>
+            </div>
+          </div>
+
+          <!-- Step 2: Payment -->
+          <div class="sxq-panel" data-panel="2">
+            <div class="sxq-pay-head">
+              <div>
+                <div class="l">فرصة التبرع</div>
+                <div class="v" data-p-cause>—</div>
+                <div class="l" style="margin-top:.35rem">طريقة الدفع: بطاقة بنكية</div>
+              </div>
+              <div style="text-align:end">
+                <div class="l">المبلغ الإجمالي</div>
+                <div class="amt" data-p-amt>100 <small>ريال</small></div>
+              </div>
+            </div>
+            <div class="sxq-pay-meta">
+              <span>بيانات البطاقة</span>
+              <span class="brands">
+                <span class="brand">مدى</span><span class="brand">VISA</span><span class="brand">MC</span>
+              </span>
+            </div>
+            <div class="sxq-field">
+              <label>اسم حامل البطاقة</label>
+              <input class="sxq-input" type="text" placeholder="الاسم كما هو على البطاقة" data-p-name>
+            </div>
+            <div class="sxq-field">
+              <label>رقم البطاقة</label>
+              <input class="sxq-input" type="text" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" data-p-num>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field">
+                <label>تاريخ الانتهاء</label>
+                <input class="sxq-input" type="text" placeholder="شهر / سنة" maxlength="5" data-p-exp>
+              </div>
+              <div class="sxq-field">
+                <label>رمز التحقق</label>
+                <input class="sxq-input" type="text" inputmode="numeric" maxlength="4" placeholder="•••" data-p-cvc>
+              </div>
+            </div>
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-prev="1"><i class="fas fa-arrow-right"></i> رجوع</button>
+              <button class="sxq-btn sxq-btn-primary" data-sxq-pay>ادفع <span data-p-pay-amt>100</span> ريال</button>
+            </div>
+            <div class="sxq-secure"><i class="fas fa-shield-halved"></i> الدفع آمن — بيانات تجريبية للعرض فقط</div>
+          </div>
+
+          <!-- Step 3: Success -->
+          <div class="sxq-panel" data-panel="3">
+            <div class="sxq-success">
+              <div class="sxq-success-ic"><i class="fas fa-check"></i></div>
+              <h4>تم التبرع بنجاح</h4>
+              <p>شكرًا لعطائكم، مساهمتكم تصنع أثرًا يصل إلى مستحقيه.</p>
+              <div class="sxq-sum">
+                <div class="sxq-sum-row"><span>رقم العملية</span><b data-ok-id>—</b></div>
+                <div class="sxq-sum-row"><span>فرصة التبرع</span><b data-ok-cause>—</b></div>
+                <div class="sxq-sum-row"><span>المتبرع</span><b data-ok-name>—</b></div>
+                <div class="sxq-sum-row"><span>التاريخ</span><b data-ok-date>—</b></div>
+                <div class="sxq-sum-row"><span>الحالة</span><b style="color:#0d7a4f">مكتملة</b></div>
+                <div class="sxq-sum-row total"><span>المبلغ</span><b data-ok-amt>—</b></div>
+              </div>
+              <div class="sxq-actions">
+                <button class="sxq-btn sxq-btn-ghost" data-sxq-receipt><i class="fas fa-file-invoice"></i> عرض سند التبرع</button>
+                <a class="sxq-btn sxq-btn-primary" href="donations.html">بوابة التبرعات</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gift Modal -->
+    <div class="sxq-modal" id="sxqGift" role="dialog" aria-modal="true">
+      <div class="sxq-dialog">
+        <div class="sxq-head">
+          <h3><i class="fas fa-gift"></i> إهداء التبرع</h3>
+          <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sxq-body">
+          <div class="sxq-steps">
+            <div class="sxq-step active" data-step="1"><span class="n">1</span> البيانات</div>
+            <div class="sxq-step-sep"></div>
+            <div class="sxq-step" data-step="2"><span class="n">2</span> الدفع</div>
+            <div class="sxq-step-sep"></div>
+            <div class="sxq-step" data-step="3"><span class="n">3</span> التأكيد</div>
+          </div>
+
+          <div class="sxq-panel active" data-panel="1">
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>اسم المُهدى إليه</label><input class="sxq-input" data-g-to-name placeholder="مثال: أ. عبدالله"></div>
+              <div class="sxq-field"><label>رقم جوال المُهدى إليه</label><input class="sxq-input" type="tel" data-g-to-phone placeholder="05xxxxxxxx"></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>اسم المُهدي</label><input class="sxq-input" data-g-from-name placeholder="اسمك"></div>
+              <div class="sxq-field"><label>رقم جوال المُهدي (اختياري)</label><input class="sxq-input" type="tel" data-g-from-phone placeholder="05xxxxxxxx"></div>
+            </div>
+            <div class="sxq-field">
+              <label>رسالة الإهداء</label>
+              <textarea class="sxq-textarea" data-g-msg placeholder="تقبّل الله منكم صالح الأعمال"></textarea>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field">
+                <label>فرصة الإهداء</label>
+                <select class="sxq-select" data-g-cause>${CAUSES.slice(0,4).map(c=>`<option>${c}</option>`).join("")}</select>
+              </div>
+              <div class="sxq-field">
+                <label>مبلغ الإهداء</label>
+                <input class="sxq-input" type="number" min="1" placeholder="مبلغ آخر" data-g-other>
+              </div>
+            </div>
+            <div class="sxq-amts">
+              <button type="button" class="sxq-amt" data-g-amt="50">50 ريال</button>
+              <button type="button" class="sxq-amt active" data-g-amt="100">100 ريال</button>
+              <button type="button" class="sxq-amt" data-g-amt="150">150 ريال</button>
+              <button type="button" class="sxq-amt" data-g-amt="300">300 ريال</button>
+            </div>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">
+              <label class="sxq-check" style="flex:1"><input type="checkbox" data-g-showamt checked> إظهار المبلغ للمُهدى إليه</label>
+              <label class="sxq-check" style="flex:1"><input type="checkbox" data-g-sched> جدولة إرسال الإهداء</label>
+            </div>
+            <div class="sxq-row2" data-g-sched-box style="display:none">
+              <div class="sxq-field"><label>تاريخ الإرسال</label><input class="sxq-input" type="date" data-g-date></div>
+              <div class="sxq-field"><label>وقت الإرسال</label><input class="sxq-input" type="time" data-g-time></div>
+            </div>
+
+            <div class="sxq-giftpv">
+              <div class="lbl">إهداء خير من جمعية سَنَد</div>
+              <div class="ttl">إلى: <span data-gp-to>—</span></div>
+              <div class="msg">"<span data-gp-msg>تقبّل الله منكم صالح الأعمال</span>"</div>
+              <div class="pers">من: <span data-gp-from>—</span> · <span data-gp-cause>—</span> <span data-gp-amt-wrap>· <b data-gp-amt>100 ريال</b></span></div>
+            </div>
+
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-primary" data-sxq-next="2">إهدِ الآن <i class="fas fa-arrow-left"></i></button>
+            </div>
+          </div>
+
+          <div class="sxq-panel" data-panel="2">
+            <div class="sxq-pay-head">
+              <div>
+                <div class="l">نوع العملية: إهداء تبرع</div>
+                <div class="v" data-gp2-info>—</div>
+                <div class="l" style="margin-top:.35rem">طريقة الدفع: بطاقة بنكية</div>
+              </div>
+              <div style="text-align:end">
+                <div class="l">المبلغ الإجمالي</div>
+                <div class="amt" data-gp2-amt>100 <small>ريال</small></div>
+              </div>
+            </div>
+            <div class="sxq-pay-meta">
+              <span>بيانات البطاقة</span>
+              <span class="brands"><span class="brand">مدى</span><span class="brand">VISA</span><span class="brand">MC</span></span>
+            </div>
+            <div class="sxq-field"><label>اسم حامل البطاقة</label><input class="sxq-input" data-gp2-name></div>
+            <div class="sxq-field"><label>رقم البطاقة</label><input class="sxq-input" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" data-gp2-num></div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>تاريخ الانتهاء</label><input class="sxq-input" placeholder="شهر / سنة" maxlength="5" data-gp2-exp></div>
+              <div class="sxq-field"><label>رمز التحقق</label><input class="sxq-input" inputmode="numeric" maxlength="4" placeholder="•••" data-gp2-cvc></div>
+            </div>
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-prev="1"><i class="fas fa-arrow-right"></i> رجوع</button>
+              <button class="sxq-btn sxq-btn-primary" data-sxq-pay>ادفع <span data-gp2-pay-amt>100</span> ريال</button>
+            </div>
+            <div class="sxq-secure"><i class="fas fa-shield-halved"></i> الدفع آمن — بيانات تجريبية للعرض فقط</div>
+          </div>
+
+          <div class="sxq-panel" data-panel="3">
+            <div class="sxq-success">
+              <div class="sxq-success-ic"><i class="fas fa-gift"></i></div>
+              <h4>تم إهداء التبرع بنجاح</h4>
+              <p>تم تسجيل الإهداء بنجاح، وسيتم إرسال بطاقة الإهداء حسب البيانات المدخلة.</p>
+              <div class="sxq-sum">
+                <div class="sxq-sum-row"><span>رقم العملية</span><b data-gok-id>—</b></div>
+                <div class="sxq-sum-row"><span>المُهدى إليه</span><b data-gok-to>—</b></div>
+                <div class="sxq-sum-row"><span>المُهدي</span><b data-gok-from>—</b></div>
+                <div class="sxq-sum-row"><span>فرصة الإهداء</span><b data-gok-cause>—</b></div>
+                <div class="sxq-sum-row"><span>حالة الإرسال</span><b data-gok-status style="color:#0d7a4f">جاهز للإرسال</b></div>
+                <div class="sxq-sum-row total"><span>المبلغ</span><b data-gok-amt>—</b></div>
+              </div>
+              <div class="sxq-actions">
+                <button class="sxq-btn sxq-btn-ghost" data-sxq-gift-card><i class="fas fa-image"></i> عرض البطاقة</button>
+                <button class="sxq-btn sxq-btn-primary" data-sxq-close-x><i class="fas fa-check"></i> إغلاق</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Join Modal -->
+    <div class="sxq-modal" id="sxqJoin" role="dialog" aria-modal="true">
+      <div class="sxq-dialog">
+        <div class="sxq-head">
+          <h3><i class="fas fa-user-plus"></i> انضم معنا</h3>
+          <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sxq-body">
+          <!-- Step 1: choose type -->
+          <div class="sxq-panel active" data-panel="1">
+            <p style="font-size:.85rem;color:#5b6b85;margin:.1rem 0 .8rem">اختر نوع الانضمام الذي يناسبك:</p>
+            <div class="sxq-types">
+              <button class="sxq-type" data-j-type="vol"><i class="fas fa-hands-helping"></i><div><b>فرصة تطوع عامة</b><span>سجّل اهتمامك بالتطوع معنا</span></div></button>
+              <button class="sxq-type" data-j-type="job"><i class="fas fa-briefcase"></i><div><b>وظيفة عامة</b><span>قدّم سيرتك للانضمام لفريق العمل</span></div></button>
+              <button class="sxq-type" data-j-type="opps"><i class="fas fa-list-check"></i><div><b>اختيار من الفرص المتاحة</b><span>تصفح وظائف وفرص تطوع منشورة</span></div></button>
+            </div>
+            <a class="sxq-careers-link" href="careers.html">عرض جميع الوظائف وفرص التطوع <i class="fas fa-arrow-left"></i></a>
+          </div>
+
+          <!-- Step 2a: vol form -->
+          <div class="sxq-panel" data-panel="vol">
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>الاسم الكامل</label><input class="sxq-input" data-jv-name required></div>
+              <div class="sxq-field"><label>رقم الجوال</label><input class="sxq-input" type="tel" data-jv-phone required></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>البريد الإلكتروني (اختياري)</label><input class="sxq-input" type="email" data-jv-email></div>
+              <div class="sxq-field"><label>المدينة</label><input class="sxq-input" data-jv-city></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>مجال التطوع المفضل</label>
+                <select class="sxq-select" data-jv-area><option>توزيع السلال</option><option>دعم إعلامي</option><option>تنظيم فعاليات</option><option>دعم إداري</option></select>
+              </div>
+              <div class="sxq-field"><label>الأيام المناسبة</label>
+                <select class="sxq-select" data-jv-days><option>أيام الأسبوع</option><option>عطلة نهاية الأسبوع</option><option>مرن</option></select>
+              </div>
+            </div>
+            <div class="sxq-field"><label>نبذة مختصرة</label><textarea class="sxq-textarea" data-jv-bio placeholder="عرّفنا بنفسك باختصار"></textarea></div>
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-jback><i class="fas fa-arrow-right"></i> رجوع</button>
+              <button class="sxq-btn sxq-btn-primary" data-sxq-jsubmit="vol">إرسال طلب التطوع</button>
+            </div>
+          </div>
+
+          <!-- Step 2b: job form -->
+          <div class="sxq-panel" data-panel="job">
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>الاسم الكامل</label><input class="sxq-input" data-jj-name required></div>
+              <div class="sxq-field"><label>رقم الجوال</label><input class="sxq-input" type="tel" data-jj-phone required></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>البريد الإلكتروني</label><input class="sxq-input" type="email" data-jj-email required></div>
+              <div class="sxq-field"><label>المدينة</label><input class="sxq-input" data-jj-city></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>المؤهل العلمي</label>
+                <select class="sxq-select" data-jj-edu><option>ثانوي</option><option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option><option>دكتوراه</option></select>
+              </div>
+              <div class="sxq-field"><label>سنوات الخبرة</label>
+                <select class="sxq-select" data-jj-exp><option>أقل من سنة</option><option>1 - 3 سنوات</option><option>4 - 7 سنوات</option><option>أكثر من 7 سنوات</option></select>
+              </div>
+            </div>
+            <div class="sxq-field"><label>المجال الوظيفي المطلوب</label><input class="sxq-input" data-jj-area placeholder="مثال: إدارة برامج اجتماعية"></div>
+            <div class="sxq-field"><label>السيرة الذاتية</label><input class="sxq-input" type="file" data-jj-cv></div>
+            <div class="sxq-field"><label>نبذة مختصرة</label><textarea class="sxq-textarea" data-jj-bio></textarea></div>
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-jback><i class="fas fa-arrow-right"></i> رجوع</button>
+              <button class="sxq-btn sxq-btn-primary" data-sxq-jsubmit="job">إرسال طلب التوظيف</button>
+            </div>
+          </div>
+
+          <!-- Step 2c: opportunities -->
+          <div class="sxq-panel" data-panel="opps">
+            <div class="sxq-opps" data-j-opps-list></div>
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-jback><i class="fas fa-arrow-right"></i> رجوع</button>
+            </div>
+          </div>
+
+          <!-- Success -->
+          <div class="sxq-panel" data-panel="ok">
+            <div class="sxq-success">
+              <div class="sxq-success-ic"><i class="fas fa-check"></i></div>
+              <h4 data-jok-title>تم استلام طلبك بنجاح</h4>
+              <p data-jok-msg>سنتواصل معكم في أقرب فرصة.</p>
+              <div class="sxq-sum">
+                <div class="sxq-sum-row"><span>رقم الطلب</span><b data-jok-id>—</b></div>
+                <div class="sxq-sum-row"><span>نوع الطلب</span><b data-jok-type>—</b></div>
+              </div>
+              <div class="sxq-actions">
+                <a class="sxq-btn sxq-btn-ghost" href="careers.html"><i class="fas fa-list"></i> عرض جميع الفرص</a>
+                <button class="sxq-btn sxq-btn-primary" data-sxq-close-x>إغلاق</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gift Card Mini-Modal -->
+    <div class="sxq-modal" id="sxqGiftCard" role="dialog" aria-modal="true">
+      <div class="sxq-dialog" style="max-width:440px">
+        <div class="sxq-head"><h3><i class="fas fa-image"></i> بطاقة الإهداء</h3><button class="sxq-close" data-sxq-close><i class="fas fa-times"></i></button></div>
+        <div class="sxq-body">
+          <div class="sxq-giftpv" style="padding:1.4rem 1rem">
+            <div class="lbl">جمعية سَنَد</div>
+            <div class="ttl">إهداء خير إلى <span data-gc-to>—</span></div>
+            <div class="msg">"<span data-gc-msg>—</span>"</div>
+            <div class="pers">من: <span data-gc-from>—</span></div>
+            <div class="pers"><span data-gc-cause>—</span> <span data-gc-amt-wrap>· <b data-gc-amt>—</b></span></div>
+            <div style="font-size:.7rem;color:#9a7a2b;margin-top:.6rem">رقم البطاقة: <b data-gc-id>—</b></div>
+          </div>
+          <div class="sxq-actions">
+            <button class="sxq-btn sxq-btn-ghost" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
+            <button class="sxq-btn sxq-btn-primary" data-sxq-close-x><i class="fas fa-check"></i> تم</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Receipt Mini-Modal -->
+    <div class="sxq-modal" id="sxqReceipt" role="dialog" aria-modal="true">
+      <div class="sxq-dialog" style="max-width:440px">
+        <div class="sxq-head"><h3><i class="fas fa-file-invoice"></i> سند تبرع</h3><button class="sxq-close" data-sxq-close><i class="fas fa-times"></i></button></div>
+        <div class="sxq-body">
+          <div style="text-align:center;padding:.5rem 0 1rem;border-bottom:1px dashed #dde5ef">
+            <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:1.3rem">س</div>
+            <div style="font-weight:800;color:#0b2545;margin-top:.4rem">جمعية سَنَد للخدمات الاجتماعية</div>
+            <div style="font-size:.75rem;color:#7a8aa3">سند تبرع رسمي</div>
+          </div>
+          <div class="sxq-sum" style="margin-top:.6rem">
+            <div class="sxq-sum-row"><span>رقم السند</span><b data-r-id>—</b></div>
+            <div class="sxq-sum-row"><span>فرصة التبرع</span><b data-r-cause>—</b></div>
+            <div class="sxq-sum-row"><span>تاريخ التبرع</span><b data-r-date>—</b></div>
+            <div class="sxq-sum-row total"><span>المبلغ</span><b data-r-amt>—</b></div>
+          </div>
+          <div class="sxq-actions">
+            <button class="sxq-btn sxq-btn-ghost" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
+            <button class="sxq-btn sxq-btn-primary" data-sxq-close-x><i class="fas fa-download"></i> تحميل</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(root);
+
+  /* ---------- Helpers ---------- */
+  const $ = (s, r) => (r||document).querySelector(s);
+  const $$ = (s, r) => Array.from((r||document).querySelectorAll(s));
+
+  function openModal(id){
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(m){
+    if (typeof m === "string") m = document.getElementById(m);
+    if (!m) return;
+    m.classList.remove("open");
+    if (!document.querySelector(".sxq-modal.open")) document.body.style.overflow = "";
+  }
+  function gotoStep(modal, step){
+    $$(".sxq-panel", modal).forEach(p => p.classList.toggle("active", p.dataset.panel === String(step)));
+    const steps = $$(".sxq-steps [data-step]", modal);
+    steps.forEach(s => {
+      const n = Number(s.dataset.step);
+      s.classList.toggle("active", n === Number(step));
+      s.classList.toggle("done", n < Number(step));
+    });
+  }
+
+  /* ---------- FAB ---------- */
+  const fab = $("#sxqFab"), fabBtn = $("#sxqFabBtn");
+  fabBtn.addEventListener("click", () => fab.classList.toggle("open"));
+  document.addEventListener("click", (e) => {
+    if (!fab.contains(e.target)) fab.classList.remove("open");
+  });
+
+  /* ---------- Open triggers ---------- */
+  $$("[data-sxq-open]").forEach(b => b.addEventListener("click", (e) => {
+    e.preventDefault();
+    fab.classList.remove("open");
+    const k = b.dataset.sxqOpen;
+    if (k === "donate") { resetDonate(); openModal("sxqDonate"); }
+    else if (k === "gift") { resetGift(); openModal("sxqGift"); }
+    else if (k === "join") { resetJoin(); openModal("sxqJoin"); }
+  }));
+
+  /* ---------- Close / backdrop / ESC ---------- */
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-sxq-close],[data-sxq-close-x]");
+    if (t) { closeModal(t.closest(".sxq-modal")); return; }
+    if (e.target.classList && e.target.classList.contains("sxq-modal")) closeModal(e.target);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") $$(".sxq-modal.open").forEach(closeModal);
+  });
+
+  /* ---------- DONATE ---------- */
+  const dModal = $("#sxqDonate");
+  const dState = { cause: CAUSES[0], amount: 100, anon: false, phone: "" };
+
+  function resetDonate(){
+    dState.cause = CAUSES[0]; dState.amount = 100; dState.anon = false; dState.phone = "";
+    $("[data-d-cause]", dModal).value = CAUSES[0];
+    $("[data-d-phone]", dModal).value = "";
+    $("[data-d-other]", dModal).value = "";
+    $("[data-d-anon]", dModal).checked = false;
+    $$("[data-d-amt]", dModal).forEach(b => b.classList.toggle("active", b.dataset.dAmt === "100"));
+    ["[data-p-name]","[data-p-num]","[data-p-exp]","[data-p-cvc]"].forEach(s => { const el=$(s,dModal); if(el) el.value=""; });
+    syncDonate();
+    gotoStep(dModal, 1);
+  }
+  function syncDonate(){
+    $("[data-s-cause]", dModal).textContent = dState.cause;
+    $("[data-s-amt]", dModal).textContent = fmt(dState.amount);
+    $("[data-p-cause]", dModal).textContent = dState.cause;
+    $("[data-p-amt]", dModal).innerHTML = `${(dState.amount||0).toLocaleString("en-US")} <small>ريال</small>`;
+    $("[data-p-pay-amt]", dModal).textContent = (dState.amount||0).toLocaleString("en-US");
+  }
+  $("[data-d-cause]", dModal).addEventListener("change", e => { dState.cause = e.target.value; syncDonate(); });
+  $("[data-d-anon]", dModal).addEventListener("change", e => { dState.anon = e.target.checked; });
+  $("[data-d-phone]", dModal).addEventListener("input", e => { dState.phone = e.target.value; });
+  $$("[data-d-amt]", dModal).forEach(b => b.addEventListener("click", () => {
+    $$("[data-d-amt]", dModal).forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    dState.amount = Number(b.dataset.dAmt);
+    $("[data-d-other]", dModal).value = "";
+    syncDonate();
+  }));
+  $("[data-d-other]", dModal).addEventListener("input", e => {
+    const v = Number(e.target.value);
+    if (v > 0) { dState.amount = v; $$("[data-d-amt]", dModal).forEach(x => x.classList.remove("active")); syncDonate(); }
+  });
+  $("[data-sxq-next='2']", dModal).addEventListener("click", () => {
+    if (!dState.amount || dState.amount < 1) { window.sxToast && sxToast("الرجاء إدخال مبلغ صحيح"); return; }
+    gotoStep(dModal, 2);
+  });
+  $("[data-sxq-prev='1']", dModal).addEventListener("click", () => gotoStep(dModal, 1));
+  $("[data-sxq-pay]", dModal).addEventListener("click", () => {
+    const name = $("[data-p-name]", dModal).value.trim();
+    const num = $("[data-p-num]", dModal).value.replace(/\s/g,"");
+    if (!name) { window.sxToast && sxToast("الرجاء إدخال اسم حامل البطاقة"); return; }
+    if (num.length < 12) { window.sxToast && sxToast("الرجاء إدخال رقم بطاقة صحيح"); return; }
+    const id = "DON-2026-" + String(Math.floor(Math.random()*9000)+1000);
+    const date = new Date().toLocaleDateString("ar-SA");
+    $("[data-ok-id]", dModal).textContent = id;
+    $("[data-ok-cause]", dModal).textContent = dState.cause;
+    $("[data-ok-name]", dModal).textContent = dState.anon ? "فاعل خير" : (name || "—");
+    $("[data-ok-date]", dModal).textContent = date;
+    $("[data-ok-amt]", dModal).textContent = fmt(dState.amount);
+    // receipt
+    $("[data-r-id]").textContent = id;
+    $("[data-r-cause]").textContent = dState.cause;
+    $("[data-r-date]").textContent = date;
+    $("[data-r-amt]").textContent = fmt(dState.amount);
+    gotoStep(dModal, 3);
+  });
+  $("[data-sxq-receipt]", dModal).addEventListener("click", () => openModal("sxqReceipt"));
+
+  /* Card formatting */
+  function bindCard(modal){
+    const num = $("[data-p-num],[data-gp2-num]", modal);
+    const exp = $("[data-p-exp],[data-gp2-exp]", modal);
+    num && num.addEventListener("input", e => {
+      let v = e.target.value.replace(/\D/g,"").slice(0,16);
+      e.target.value = v.replace(/(.{4})/g,"$1 ").trim();
+    });
+    exp && exp.addEventListener("input", e => {
+      let v = e.target.value.replace(/\D/g,"").slice(0,4);
+      if (v.length >= 3) v = v.slice(0,2) + "/" + v.slice(2);
+      e.target.value = v;
+    });
+  }
+  bindCard(dModal);
+
+  /* ---------- GIFT ---------- */
+  const gModal = $("#sxqGift");
+  const gState = { toName:"", toPhone:"", fromName:"", fromPhone:"", msg:"تقبّل الله منكم صالح الأعمال", cause: CAUSES[0], amount:100, showAmt:true, sched:false, date:"", time:"" };
+
+  function resetGift(){
+    Object.assign(gState, { toName:"", toPhone:"", fromName:"", fromPhone:"", msg:"تقبّل الله منكم صالح الأعمال", cause: CAUSES[0], amount:100, showAmt:true, sched:false, date:"", time:"" });
+    ["[data-g-to-name]","[data-g-to-phone]","[data-g-from-name]","[data-g-from-phone]","[data-g-other]","[data-gp2-name]","[data-gp2-num]","[data-gp2-exp]","[data-gp2-cvc]"].forEach(s => { const el=$(s,gModal); if(el) el.value=""; });
+    $("[data-g-msg]", gModal).value = "";
+    $("[data-g-cause]", gModal).value = CAUSES[0];
+    $("[data-g-showamt]", gModal).checked = true;
+    $("[data-g-sched]", gModal).checked = false;
+    $("[data-g-sched-box]", gModal).style.display = "none";
+    $$("[data-g-amt]", gModal).forEach(b => b.classList.toggle("active", b.dataset.gAmt === "100"));
+    syncGift();
+    gotoStep(gModal, 1);
+  }
+  function syncGift(){
+    $("[data-gp-to]", gModal).textContent = gState.toName || "—";
+    $("[data-gp-from]", gModal).textContent = gState.fromName || "—";
+    $("[data-gp-msg]", gModal).textContent = (gState.msg || "تقبّل الله منكم صالح الأعمال");
+    $("[data-gp-cause]", gModal).textContent = gState.cause;
+    $("[data-gp-amt]", gModal).textContent = fmt(gState.amount);
+    $("[data-gp-amt-wrap]", gModal).style.display = gState.showAmt ? "" : "none";
+    $("[data-gp2-info]", gModal).textContent = `إلى ${gState.toName||"—"} من ${gState.fromName||"—"} (${gState.cause})`;
+    $("[data-gp2-amt]", gModal).innerHTML = `${(gState.amount||0).toLocaleString("en-US")} <small>ريال</small>`;
+    $("[data-gp2-pay-amt]", gModal).textContent = (gState.amount||0).toLocaleString("en-US");
+  }
+  const giftBindings = {
+    "[data-g-to-name]":"toName","[data-g-to-phone]":"toPhone",
+    "[data-g-from-name]":"fromName","[data-g-from-phone]":"fromPhone",
+    "[data-g-msg]":"msg","[data-g-date]":"date","[data-g-time]":"time"
+  };
+  Object.entries(giftBindings).forEach(([sel, key]) => {
+    const el = $(sel, gModal); if (!el) return;
+    el.addEventListener("input", e => { gState[key] = e.target.value; syncGift(); });
+  });
+  $("[data-g-cause]", gModal).addEventListener("change", e => { gState.cause = e.target.value; syncGift(); });
+  $("[data-g-showamt]", gModal).addEventListener("change", e => { gState.showAmt = e.target.checked; syncGift(); });
+  $("[data-g-sched]", gModal).addEventListener("change", e => {
+    gState.sched = e.target.checked;
+    $("[data-g-sched-box]", gModal).style.display = gState.sched ? "grid" : "none";
+  });
+  $$("[data-g-amt]", gModal).forEach(b => b.addEventListener("click", () => {
+    $$("[data-g-amt]", gModal).forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    gState.amount = Number(b.dataset.gAmt);
+    $("[data-g-other]", gModal).value = "";
+    syncGift();
+  }));
+  $("[data-g-other]", gModal).addEventListener("input", e => {
+    const v = Number(e.target.value);
+    if (v > 0) { gState.amount = v; $$("[data-g-amt]", gModal).forEach(x => x.classList.remove("active")); syncGift(); }
+  });
+  $("[data-sxq-next='2']", gModal).addEventListener("click", () => {
+    if (!gState.toName || !gState.fromName) { window.sxToast && sxToast("الرجاء إدخال اسم المُهدى إليه والمُهدي"); return; }
+    if (!gState.amount || gState.amount < 1) { window.sxToast && sxToast("الرجاء اختيار مبلغ صحيح"); return; }
+    gotoStep(gModal, 2);
+  });
+  $("[data-sxq-prev='1']", gModal).addEventListener("click", () => gotoStep(gModal, 1));
+  bindCard(gModal);
+  $("[data-sxq-pay]", gModal).addEventListener("click", () => {
+    const name = $("[data-gp2-name]", gModal).value.trim();
+    const num = $("[data-gp2-num]", gModal).value.replace(/\s/g,"");
+    if (!name) { window.sxToast && sxToast("الرجاء إدخال اسم حامل البطاقة"); return; }
+    if (num.length < 12) { window.sxToast && sxToast("الرجاء إدخال رقم بطاقة صحيح"); return; }
+    const id = "GFT-2026-" + String(Math.floor(Math.random()*9000)+1000);
+    $("[data-gok-id]", gModal).textContent = id;
+    $("[data-gok-to]", gModal).textContent = gState.toName;
+    $("[data-gok-from]", gModal).textContent = gState.fromName;
+    $("[data-gok-cause]", gModal).textContent = gState.cause;
+    $("[data-gok-amt]", gModal).textContent = fmt(gState.amount);
+    $("[data-gok-status]", gModal).textContent = gState.sched ? `مجدول · ${gState.date||""} ${gState.time||""}`.trim() : "جاهز للإرسال";
+    // gift card
+    $("[data-gc-to]").textContent = gState.toName;
+    $("[data-gc-from]").textContent = gState.fromName;
+    $("[data-gc-msg]").textContent = gState.msg || "تقبّل الله منكم صالح الأعمال";
+    $("[data-gc-cause]").textContent = gState.cause;
+    $("[data-gc-amt]").textContent = fmt(gState.amount);
+    $("[data-gc-amt-wrap]").style.display = gState.showAmt ? "" : "none";
+    $("[data-gc-id]").textContent = id;
+    gotoStep(gModal, 3);
+  });
+  $("[data-sxq-gift-card]", gModal).addEventListener("click", () => openModal("sxqGiftCard"));
+
+  /* ---------- JOIN ---------- */
+  const jModal = $("#sxqJoin");
+  function resetJoin(){
+    gotoStep(jModal, 1);
+    $$(".sxq-type", jModal).forEach(t => t.classList.remove("active"));
+  }
+  function gotoJoinPanel(name){
+    $$(".sxq-panel", jModal).forEach(p => p.classList.toggle("active", p.dataset.panel === name));
+  }
+  $$("[data-j-type]", jModal).forEach(t => t.addEventListener("click", () => {
+    const type = t.dataset.jType;
+    $$(".sxq-type", jModal).forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    if (type === "opps") {
+      const list = $("[data-j-opps-list]", jModal);
+      list.innerHTML = OPPS.map(o => `
+        <div class="sxq-opp">
+          <div class="sxq-opp-info">
+            <b>${o.title}</b>
+            <div class="meta">
+              <span class="badge ${o.type}">${o.type === "vol" ? "تطوع" : "وظيفة"}</span>
+              <span class="badge">${o.city}</span>
+              <span class="badge">${o.mode}</span>
+            </div>
+          </div>
+          <button class="sxq-opp-pick" data-pick="${o.id}">اختيار</button>
+        </div>`).join("");
+      $$("[data-pick]", list).forEach(btn => btn.addEventListener("click", () => {
+        const o = OPPS.find(x => x.id === btn.dataset.pick);
+        gotoJoinPanel(o.type);
+      }));
+      gotoJoinPanel("opps");
+    } else {
+      gotoJoinPanel(type);
+    }
+  }));
+  $$("[data-sxq-jback]", jModal).forEach(b => b.addEventListener("click", () => gotoJoinPanel("1")));
+  $$("[data-sxq-jsubmit]", jModal).forEach(b => b.addEventListener("click", () => {
+    const type = b.dataset.sxqJsubmit;
+    let name, phone;
+    if (type === "vol") {
+      name = $("[data-jv-name]", jModal).value.trim();
+      phone = $("[data-jv-phone]", jModal).value.trim();
+    } else {
+      name = $("[data-jj-name]", jModal).value.trim();
+      phone = $("[data-jj-phone]", jModal).value.trim();
+    }
+    if (!name || !phone) { window.sxToast && sxToast("الرجاء إدخال الاسم ورقم الجوال"); return; }
+    const id = (type === "vol" ? "VOL-2026-" : "CAR-2026-") + String(Math.floor(Math.random()*9000)+1000);
+    $("[data-jok-title]", jModal).textContent = type === "vol" ? "تم استلام طلب التطوع بنجاح" : "تم استلام طلب التوظيف بنجاح";
+    $("[data-jok-msg]", jModal).textContent = "شكرًا لاهتمامكم بالانضمام إلى أسرة سَنَد، سنتواصل معكم قريبًا.";
+    $("[data-jok-id]", jModal).textContent = id;
+    $("[data-jok-type]", jModal).textContent = type === "vol" ? "فرصة تطوع" : "وظيفة";
+    gotoJoinPanel("ok");
+  }));
+
+})();

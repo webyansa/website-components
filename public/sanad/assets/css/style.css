@@ -2376,3 +2376,141 @@ html[dir="rtl"] .sx-drawer{transform:translateX(-100%);}
   .sx-cert-frame{max-height:55vh;}
   .sx-cert-head .sx-cert-logo{height:30px;}
 }
+
+/* ============================================================
+   SXQ — Floating Quick Bar + Donate/Gift/Join Modals (v1)
+   ============================================================ */
+.sxq-fab{position:fixed;z-index:9990;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;font-family:inherit}
+.sxq-fab-toggle{width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff;font-size:1.25rem;box-shadow:0 14px 30px rgba(13,122,79,.35);display:flex;align-items:center;justify-content:center;transition:transform .25s ease}
+.sxq-fab-toggle:hover{transform:scale(1.06)}
+.sxq-fab.open .sxq-fab-toggle{transform:rotate(45deg)}
+.sxq-fab-menu{display:flex;flex-direction:column;gap:8px;opacity:0;pointer-events:none;transform:translateY(8px);transition:.25s ease}
+.sxq-fab.open .sxq-fab-menu{opacity:1;pointer-events:auto;transform:translateY(0)}
+.sxq-fab-item{display:inline-flex;align-items:center;gap:.55rem;background:#fff;color:#0b2545;font-weight:700;font-size:.85rem;padding:.55rem .9rem;border-radius:999px;border:1px solid #e3e9f1;box-shadow:0 10px 24px rgba(11,37,69,.12);text-decoration:none;cursor:pointer;transition:.2s}
+.sxq-fab-item:hover{background:#0d7a4f;color:#fff;border-color:#0d7a4f;transform:translateX(-3px)}
+.sxq-fab-item i{font-size:.95rem;color:#0d7a4f;transition:color .2s}
+.sxq-fab-item:hover i{color:#fff}
+
+/* Modal shell */
+.sxq-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:flex-start;justify-content:center;padding:24px 12px;overflow-y:auto}
+.sxq-modal.open{display:flex;animation:sxqFade .2s ease}
+.sxq-modal::before{content:"";position:fixed;inset:0;background:rgba(7,18,39,.55);backdrop-filter:blur(4px)}
+.sxq-dialog{position:relative;width:100%;max-width:560px;background:#fff;border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.3);overflow:hidden;margin:auto;animation:sxqUp .25s ease}
+@keyframes sxqFade{from{opacity:0}to{opacity:1}}
+@keyframes sxqUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sxq-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff}
+.sxq-head h3{margin:0;font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:.5rem}
+.sxq-close{background:rgba(255,255,255,.18);border:0;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;transition:.2s}
+.sxq-close:hover{background:rgba(255,255,255,.32)}
+.sxq-body{padding:1.1rem 1.25rem 1.25rem}
+
+/* Steps indicator */
+.sxq-steps{display:flex;align-items:center;justify-content:center;gap:.4rem;margin-bottom:1rem;font-size:.78rem;color:#7a8aa3;font-weight:700}
+.sxq-step{display:flex;align-items:center;gap:.4rem;opacity:.55;transition:.2s}
+.sxq-step .n{width:24px;height:24px;border-radius:50%;background:#e9eef6;color:#0b2545;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem}
+.sxq-step.active{opacity:1;color:#0d7a4f}
+.sxq-step.active .n{background:#0d7a4f;color:#fff}
+.sxq-step.done .n{background:#1d3a6b;color:#fff}
+.sxq-step-sep{width:18px;height:2px;background:#e1e7ef;border-radius:2px}
+
+/* Panels — slide animation */
+.sxq-panel{display:none;animation:sxqSlide .3s ease}
+.sxq-panel.active{display:block}
+@keyframes sxqSlide{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+/* Form bits */
+.sxq-field{margin-bottom:.85rem}
+.sxq-field label{display:block;font-size:.82rem;font-weight:700;color:#1d3a6b;margin-bottom:.35rem}
+.sxq-input,.sxq-select,.sxq-textarea{width:100%;border:1px solid #dde5ef;background:#f8fafc;border-radius:12px;padding:.7rem .85rem;font:inherit;font-size:.9rem;color:#0b2545;outline:none;transition:.2s}
+.sxq-input:focus,.sxq-select:focus,.sxq-textarea:focus{border-color:#0d7a4f;background:#fff;box-shadow:0 0 0 3px rgba(13,122,79,.12)}
+.sxq-textarea{resize:vertical;min-height:78px}
+.sxq-row2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.sxq-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+@media (max-width:540px){.sxq-row2,.sxq-row3{grid-template-columns:1fr}}
+
+/* Amount chips */
+.sxq-amts{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-bottom:.55rem}
+.sxq-amt{padding:.55rem .3rem;border:1px solid #dde5ef;background:#fff;border-radius:10px;font-weight:800;color:#0b2545;cursor:pointer;font-size:.85rem;transition:.18s}
+.sxq-amt:hover{border-color:#0d7a4f;color:#0d7a4f}
+.sxq-amt.active{background:#0d7a4f;color:#fff;border-color:#0d7a4f}
+
+/* Checkbox row */
+.sxq-check{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#1d3a6b;font-weight:600;cursor:pointer;padding:.55rem .7rem;background:#f6f9fc;border-radius:10px;border:1px solid #e3e9f1}
+.sxq-check input{accent-color:#0d7a4f}
+
+/* Summary */
+.sxq-sum{background:linear-gradient(135deg,#f5f9f6,#eef4f9);border:1px solid #dbe8df;border-radius:14px;padding:.85rem 1rem;margin:.9rem 0}
+.sxq-sum-row{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;padding:.25rem 0;color:#1d3a6b}
+.sxq-sum-row b{color:#0d7a4f;font-weight:800}
+.sxq-sum-row.total{border-top:1px dashed #c8d6dc;margin-top:.35rem;padding-top:.55rem;font-size:.95rem}
+.sxq-sum-row.total b{font-size:1.05rem}
+
+/* Actions */
+.sxq-actions{display:flex;gap:.55rem;margin-top:1rem}
+.sxq-btn{flex:1;padding:.8rem 1rem;border-radius:12px;border:0;font-weight:800;font-size:.9rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;transition:.2s}
+.sxq-btn-primary{background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff;box-shadow:0 10px 22px rgba(13,122,79,.28)}
+.sxq-btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(13,122,79,.35)}
+.sxq-btn-ghost{background:#f1f5f9;color:#1d3a6b}
+.sxq-btn-ghost:hover{background:#e2e8f0}
+
+/* Payment header */
+.sxq-pay-head{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#0b2545,#1d3a6b);color:#fff;border-radius:14px;padding:.85rem 1rem;margin-bottom:1rem}
+.sxq-pay-head .l{font-size:.78rem;color:#cdd9ea}
+.sxq-pay-head .v{font-weight:800;font-size:.95rem;margin-top:.15rem}
+.sxq-pay-head .amt{font-size:1.3rem;font-weight:900;color:#fff}
+.sxq-pay-head .amt small{font-size:.7rem;font-weight:700;color:#cdd9ea}
+
+/* Pay method tabs (single — card) */
+.sxq-pay-meta{display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:#7a8aa3;margin-bottom:.7rem}
+.sxq-pay-meta .brands{display:flex;gap:.35rem;align-items:center}
+.sxq-pay-meta .brand{background:#fff;border:1px solid #e3e9f1;border-radius:6px;padding:3px 8px;font-weight:800;font-size:.7rem;color:#1d3a6b;letter-spacing:.5px}
+
+.sxq-secure{display:flex;align-items:center;gap:.4rem;justify-content:center;font-size:.75rem;color:#0d7a4f;font-weight:700;margin-top:.7rem}
+
+/* Success */
+.sxq-success{text-align:center;padding:.6rem 0}
+.sxq-success-ic{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#e8f7ef,#d1ecd9);color:#0d7a4f;display:inline-flex;align-items:center;justify-content:center;font-size:1.9rem;margin-bottom:.6rem;animation:sxqPop .5s ease}
+@keyframes sxqPop{0%{transform:scale(0)}60%{transform:scale(1.1)}100%{transform:scale(1)}}
+.sxq-success h4{margin:.2rem 0 .35rem;color:#0b2545;font-size:1.15rem;font-weight:800}
+.sxq-success p{color:#5b6b85;font-size:.85rem;margin:0 0 .8rem}
+.sxq-success .sxq-sum{text-align:start}
+
+/* Gift preview card */
+.sxq-giftpv{background:linear-gradient(135deg,#fff7e6,#fef3d7);border:1px dashed #e6c98a;border-radius:14px;padding:1rem;margin:.8rem 0;text-align:center;color:#6b4d12}
+.sxq-giftpv .lbl{font-size:.72rem;font-weight:800;letter-spacing:1px;color:#9a7a2b}
+.sxq-giftpv .ttl{font-size:1.05rem;font-weight:800;color:#6b4d12;margin:.15rem 0 .35rem}
+.sxq-giftpv .msg{font-size:.85rem;color:#7a5a18;font-style:italic;margin:.35rem 0}
+.sxq-giftpv .pers{font-size:.78rem;color:#8a6a20;margin-top:.3rem}
+
+/* Join — type chooser */
+.sxq-types{display:grid;grid-template-columns:1fr;gap:.5rem;margin-bottom:.5rem}
+.sxq-type{display:flex;align-items:center;gap:.7rem;background:#fff;border:1px solid #e3e9f1;border-radius:12px;padding:.8rem .95rem;cursor:pointer;text-align:start;width:100%;transition:.2s}
+.sxq-type:hover{border-color:#0d7a4f;background:#f5f9f6}
+.sxq-type.active{border-color:#0d7a4f;background:#f0f8f4}
+.sxq-type i{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:1rem}
+.sxq-type b{display:block;color:#0b2545;font-size:.92rem}
+.sxq-type span{display:block;font-size:.76rem;color:#6b7a90;margin-top:.15rem}
+
+/* Opportunities list */
+.sxq-opps{display:flex;flex-direction:column;gap:.5rem;max-height:280px;overflow-y:auto;padding-inline-end:.2rem}
+.sxq-opp{display:flex;align-items:center;justify-content:space-between;gap:.5rem;background:#fff;border:1px solid #e3e9f1;border-radius:12px;padding:.65rem .8rem}
+.sxq-opp-info b{display:block;font-size:.88rem;color:#0b2545;font-weight:800}
+.sxq-opp-info .meta{font-size:.72rem;color:#6b7a90;margin-top:.2rem;display:flex;flex-wrap:wrap;gap:.45rem}
+.sxq-opp-info .meta .badge{padding:2px 8px;border-radius:999px;background:#eef4f9;color:#1d3a6b;font-weight:700}
+.sxq-opp-info .meta .badge.vol{background:#e7f3ec;color:#0d7a4f}
+.sxq-opp-info .meta .badge.job{background:#fdf2dc;color:#8a6310}
+.sxq-opp-pick{background:#0d7a4f;color:#fff;border:0;border-radius:10px;padding:.45rem .8rem;font-weight:800;font-size:.78rem;cursor:pointer}
+.sxq-opp-pick:hover{background:#0b6743}
+.sxq-careers-link{display:block;text-align:center;margin-top:.7rem;font-size:.8rem;color:#1d3a6b;font-weight:700;text-decoration:none}
+.sxq-careers-link:hover{color:#0d7a4f}
+
+/* Mobile bottom bar */
+@media (max-width:640px){
+  .sxq-fab{right:8px;bottom:8px;left:8px;align-items:stretch}
+  .sxq-fab-menu{background:#fff;padding:.5rem;border-radius:14px;border:1px solid #e3e9f1;box-shadow:0 14px 30px rgba(11,37,69,.18)}
+  .sxq-fab-item{justify-content:flex-start}
+  .sxq-fab-toggle{align-self:flex-end}
+  .sxq-dialog{max-width:100%;border-radius:16px}
+  .sxq-body{padding:1rem}
+  .sxq-amts{grid-template-columns:repeat(2,1fr)}
+}
