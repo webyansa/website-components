@@ -1951,6 +1951,8 @@
           <li><a href="beneficiary-products.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
           <li><a href="beneficiary-request-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
           <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
+          <li><a href="careers.html"><i class="fas fa-angle-left"></i> الوظائف والتطوع</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
@@ -1973,49 +1975,65 @@
     <div class="sx-license">
       <div class="sx-license-card">
         <div class="sx-lic-left">
-          <div class="sx-lic-ic"><i class="fas fa-shield-halved"></i></div>
-          <div>
+          <div class="sx-lic-mark">
+            <img src="assets/images/License/ncnps-mark.svg" alt="المركز الوطني لتنمية القطاع غير الربحي" />
+          </div>
+          <div class="sx-lic-info">
             <div class="sx-lic-title">الجمعية مصرحة من المركز الوطني لتنمية القطاع غير الربحي</div>
+            <p class="sx-lic-desc">تعمل الجمعية وفق ترخيص رسمي صادر من المركز الوطني لتنمية القطاع غير الربحي، مع إتاحة شهادات الترخيص للعرض والتحميل.</p>
             <div class="sx-lic-meta">
-              <span>رقم الترخيص: <b>0000</b></span>
-              <span>الحالة: <b>ساري</b></span>
-              <span>آخر تحديث: <b>هذا الشهر</b></span>
+              <span><i class="fas fa-hashtag"></i> رقم الترخيص: <b>0000</b></span>
+              <span><i class="fas fa-circle-check"></i> الحالة: <b>ساري</b></span>
+              <span><i class="fas fa-hand-holding-heart"></i> جمع التبرعات: <b>متاح</b></span>
+              <span><i class="fas fa-rotate"></i> آخر تحديث: <b>هذا الشهر</b></span>
             </div>
           </div>
         </div>
-        <button type="button" class="sx-lic-btn" data-sx-cert-open><i class="fas fa-certificate"></i> عرض شهادة الترخيص</button>
+        <div class="sx-lic-actions">
+          <button type="button" class="sx-lic-btn sx-lic-btn-primary" data-sx-cert-open data-cert="association">
+            <i class="fas fa-certificate"></i> عرض شهادة ترخيص الجمعية
+          </button>
+          <button type="button" class="sx-lic-btn sx-lic-btn-outline" data-sx-cert-open data-cert="fundraising">
+            <i class="fas fa-hand-holding-dollar"></i> عرض ترخيص جمع التبرعات
+          </button>
+        </div>
       </div>
     </div>
 
     <div class="sx-fbottom">
       <div class="sx-fbcont">
-        <div>© جميع الحقوق محفوظة لجمعية سَنَد <span data-year>2026</span> — بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
-        <div class="sx-fpolicy"><a href="terms.html">الشروط والأحكام</a><span>·</span><a href="privacy.html">سياسة الخصوصية</a><span>·</span><a href="careers.html">الوظائف والتطوع</a></div>
-        <div>الرياض · المملكة العربية السعودية</div>
+        <div>© جميع الحقوق محفوظة لجمعية سَنَد <span data-year>2026</span></div>
+        <div>بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
       </div>
     </div>
   </footer>
 
-  <!-- نافذة شهادة الترخيص -->
-  <div class="sx-mod-overlay" data-sx-cert-overlay>
-    <div class="sx-mod" role="dialog" aria-modal="true" aria-label="شهادة الترخيص">
-      <div class="sx-mod-head">
-        <h3><i class="fas fa-certificate"></i> شهادة الترخيص</h3>
-        <button class="sx-dclose" data-sx-cert-close><i class="fas fa-times"></i></button>
+  <!-- نافذة عرض الترخيص -->
+  <div class="sx-mod-overlay sx-cert-overlay" data-sx-cert-overlay>
+    <div class="sx-mod sx-cert-mod" role="dialog" aria-modal="true" aria-labelledby="sx-cert-title">
+      <div class="sx-mod-head sx-cert-head">
+        <div class="sx-cert-head-l">
+          <img src="assets/images/License/ncnps-logo.svg" alt="المركز الوطني" class="sx-cert-logo" />
+          <h3 id="sx-cert-title" data-sx-cert-title>شهادة ترخيص الجمعية</h3>
+        </div>
+        <button class="sx-dclose" data-sx-cert-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
       </div>
-      <div class="sx-mod-body">
-        <div class="sx-cert">
-          <div class="sx-cseal"><i class="fas fa-shield-halved"></i></div>
-          <h4>جمعية سَنَد للخدمات الاجتماعية والرعاية</h4>
-          <div class="sx-csub">المركز الوطني لتنمية القطاع غير الربحي</div>
-          <div class="sx-cnum">رقم الترخيص<br><b>0000</b></div>
-          <div style="font-size:.78rem;color:#5b6b7d;margin-top:.4rem">تاريخ الإصدار: 1445 هـ — الموافق 2024 م</div>
-          <div class="sx-cstatus"><i class="fas fa-circle-check"></i> ساري المفعول</div>
+      <div class="sx-mod-body sx-cert-body">
+        <div class="sx-cert-meta">
+          <div class="sx-cmrow"><span>اسم الجمعية</span><b>جمعية سَنَد للخدمات الاجتماعية والرعاية</b></div>
+          <div class="sx-cmrow"><span data-sx-cert-numlabel>رقم الترخيص</span><b data-sx-cert-num>0000</b></div>
+          <div class="sx-cmrow"><span>الجهة المشرفة</span><b>المركز الوطني لتنمية القطاع غير الربحي</b></div>
+          <div class="sx-cmrow"><span>حالة الترخيص</span><b class="sx-cm-ok"><i class="fas fa-circle-check"></i> ساري</b></div>
+          <div class="sx-cmrow" data-sx-cert-scope-row hidden><span>نطاق الترخيص</span><b data-sx-cert-scope>—</b></div>
+          <div class="sx-cmrow"><span>تاريخ الإصدار</span><b>1445 هـ</b></div>
+        </div>
+        <div class="sx-cert-frame">
+          <img data-sx-cert-img src="assets/images/License/association-license-certificate.jpg" alt="صورة الترخيص" />
         </div>
       </div>
       <div class="sx-mod-actions">
         <button type="button" class="s-btn s-btn-outline" data-sx-cert-share><i class="fas fa-share-nodes"></i> مشاركة</button>
-        <button type="button" class="s-btn s-btn-outline" onclick="window.print()"><i class="fas fa-download"></i> تحميل / طباعة</button>
+        <a class="s-btn s-btn-outline" data-sx-cert-download href="assets/images/License/association-license-certificate.jpg" download><i class="fas fa-download"></i> تحميل الترخيص</a>
         <button type="button" class="s-btn s-btn-primary" data-sx-cert-close><i class="fas fa-check"></i> إغلاق</button>
       </div>
     </div>
@@ -2166,19 +2184,53 @@
       cert?.classList.remove("open");
       document.body.style.overflow = "";
     };
-    document.querySelectorAll("[data-sx-cert-open]").forEach((b) => b.addEventListener("click", openCert));
+    const CERT_DATA = {
+      association: {
+        title: "شهادة ترخيص الجمعية",
+        numLabel: "رقم الترخيص",
+        num: "0000",
+        scope: "",
+        img: "assets/images/License/association-license-certificate.jpg",
+        file: "assets/images/License/association-license-certificate.jpg",
+        shareTitle: "شهادة ترخيص جمعية سَنَد",
+      },
+      fundraising: {
+        title: "ترخيص جمع التبرعات",
+        numLabel: "رقم ترخيص جمع التبرعات",
+        num: "0000",
+        scope: "جمع التبرعات عبر القنوات المعتمدة",
+        img: "assets/images/License/fundraising-license-certificate.jpg",
+        file: "assets/images/License/fundraising-license-certificate.jpg",
+        shareTitle: "ترخيص جمع التبرعات — جمعية سَنَد",
+      },
+    };
+    let currentCert = "association";
+    function applyCert(key) {
+      const d = CERT_DATA[key] || CERT_DATA.association;
+      currentCert = key;
+      const q = (s) => document.querySelector(s);
+      q("[data-sx-cert-title]") && (q("[data-sx-cert-title]").textContent = d.title);
+      q("[data-sx-cert-numlabel]") && (q("[data-sx-cert-numlabel]").textContent = d.numLabel);
+      q("[data-sx-cert-num]") && (q("[data-sx-cert-num]").textContent = d.num);
+      const sRow = q("[data-sx-cert-scope-row]");
+      if (sRow) {
+        if (d.scope) { sRow.hidden = false; q("[data-sx-cert-scope]").textContent = d.scope; }
+        else { sRow.hidden = true; }
+      }
+      const img = q("[data-sx-cert-img]"); if (img) img.src = d.img;
+      const dl = q("[data-sx-cert-download]"); if (dl) dl.href = d.file;
+    }
+    document.querySelectorAll("[data-sx-cert-open]").forEach((b) =>
+      b.addEventListener("click", () => { applyCert(b.dataset.cert || "association"); openCert(); })
+    );
     document.querySelectorAll("[data-sx-cert-close]").forEach((b) => b.addEventListener("click", closeCert));
-    cert?.addEventListener("click", (e) => {
-      if (e.target === cert) closeCert();
-    });
+    cert?.addEventListener("click", (e) => { if (e.target === cert) closeCert(); });
     document.querySelector("[data-sx-cert-share]")?.addEventListener("click", () => {
       const url = location.origin + location.pathname;
-      if (navigator.share) {
-        navigator.share({ title: "شهادة ترخيص جمعية سَنَد", url }).catch(() => {});
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(url);
-        sxToast("تم نسخ الرابط");
-      }
+      const d = CERT_DATA[currentCert];
+      if (navigator.share) navigator.share({ title: d.shareTitle, url }).catch(() => {});
+      else if (navigator.clipboard) { navigator.clipboard.writeText(url); sxToast("تم نسخ رابط الترخيص"); }
+      else sxToast("تم نسخ رابط الترخيص");
     });
 
     // تحديث العدادات
@@ -2188,6 +2240,7 @@
     };
     window.addEventListener("storage", window.sxUpdateCounts);
   }
+
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", inject);
@@ -2237,10 +2290,7 @@
     });
   });
   const search = document.querySelector("[data-careers-search]");
-  search?.addEventListener("input", (e) => {
-    state.q = e.target.value;
-    apply();
-  });
+  search?.addEventListener("input", (e) => { state.q = e.target.value; apply(); });
 
   /* نافذة التفاصيل */
   const detailsModal = document.getElementById("crDetails");
@@ -2251,54 +2301,28 @@
   const fillDetails = (el) => {
     const type = el.getAttribute("data-type");
     const data = JSON.parse(el.getAttribute("data-info") || "{}");
-    detailsTitle.innerHTML = `<i class="fas ${type === "job" ? "fa-briefcase" : "fa-hands-helping"}"></i> ${data.title}`;
+    detailsTitle.innerHTML = `<i class="fas ${type === 'job' ? 'fa-briefcase' : 'fa-hands-helping'}"></i> ${data.title}`;
     const rows = [];
     if (type === "job") {
-      rows.push(
-        ["الإدارة", data.dept],
-        ["مقر العمل", data.location],
-        ["نوع الدوام", data.time],
-        ["آخر موعد للتقديم", data.deadline],
-      );
+      rows.push(["الإدارة", data.dept], ["مقر العمل", data.location], ["نوع الدوام", data.time], ["آخر موعد للتقديم", data.deadline]);
     } else {
-      rows.push(
-        ["المجال التطوعي", data.field],
-        ["طريقة المشاركة", data.mode],
-        ["عدد الساعات", data.hours],
-        ["الموقع", data.location],
-        ["تاريخ البداية", data.start],
-        ["المقاعد المتاحة", data.seats],
-      );
+      rows.push(["المجال التطوعي", data.field], ["طريقة المشاركة", data.mode], ["عدد الساعات", data.hours], ["الموقع", data.location], ["تاريخ البداية", data.start], ["المقاعد المتاحة", data.seats]);
     }
-    const meta = rows
-      .map(([k, v]) => `<div class="cr-meta-item"><span>${k}</span><strong>${v || "-"}</strong></div>`)
-      .join("");
+    const meta = rows.map(([k, v]) => `<div class="cr-meta-item"><span>${k}</span><strong>${v || "-"}</strong></div>`).join("");
     const sections = [
       ["وصف", data.desc],
       [type === "job" ? "المهام والمسؤوليات" : "المهام التطوعية", data.tasks],
       [type === "job" ? "المؤهلات المطلوبة" : "المتطلبات", data.req],
       [type === "job" ? "المهارات المطلوبة" : "الفئة المناسبة", data.skills],
-    ]
-      .filter(([, v]) => v && v.length)
-      .map(
-        ([k, v]) =>
-          `<div class="cr-sec"><h5>${k}</h5>${Array.isArray(v) ? `<ul>${v.map((x) => `<li>${x}</li>`).join("")}</ul>` : `<p>${v}</p>`}</div>`,
-      )
-      .join("");
+    ].filter(([, v]) => v && v.length).map(([k, v]) => `<div class="cr-sec"><h5>${k}</h5>${Array.isArray(v) ? `<ul>${v.map(x => `<li>${x}</li>`).join("")}</ul>` : `<p>${v}</p>`}</div>`).join("");
 
     detailsBody.innerHTML = `<div class="cr-meta-grid">${meta}</div>${sections}`;
     detailsApply.setAttribute("data-apply-type", type);
     detailsApply.setAttribute("data-apply-title", data.title);
   };
 
-  const openModal = (m) => {
-    m?.classList.add("open");
-    document.body.style.overflow = "hidden";
-  };
-  const closeModal = (m) => {
-    m?.classList.remove("open");
-    document.body.style.overflow = "";
-  };
+  const openModal = (m) => { m?.classList.add("open"); document.body.style.overflow = "hidden"; };
+  const closeModal = (m) => { m?.classList.remove("open"); document.body.style.overflow = ""; };
 
   grid.addEventListener("click", (e) => {
     const card = e.target.closest("[data-career]");
@@ -2312,17 +2336,13 @@
     }
   });
 
-  document.querySelectorAll("[data-cr-close]").forEach((b) =>
-    b.addEventListener("click", () => {
-      closeModal(detailsModal);
-      closeModal(document.getElementById("crApply"));
-      closeModal(document.getElementById("crSuccess"));
-    }),
-  );
+  document.querySelectorAll("[data-cr-close]").forEach((b) => b.addEventListener("click", () => {
+    closeModal(detailsModal);
+    closeModal(document.getElementById("crApply"));
+    closeModal(document.getElementById("crSuccess"));
+  }));
   [detailsModal, document.getElementById("crApply"), document.getElementById("crSuccess")].forEach((m) => {
-    m?.addEventListener("click", (e) => {
-      if (e.target === m) closeModal(m);
-    });
+    m?.addEventListener("click", (e) => { if (e.target === m) closeModal(m); });
   });
 
   /* المشاركة */
@@ -2344,19 +2364,11 @@
   const openApply = (type, title) => {
     applyTypeInput.value = type;
     applyTargetInput.value = title || "";
-    applyTitle.innerHTML = `<i class="fas ${type === "job" ? "fa-briefcase" : "fa-hands-helping"}"></i> ${type === "job" ? "التقدم للوظيفة" : "التقدم لفرصة التطوع"}${title ? " — " + title : ""}`;
-    jobFields.forEach((f) => (f.style.display = type === "job" ? "" : "none"));
-    volFields.forEach((f) => (f.style.display = type === "vol" ? "" : "none"));
-    jobFields.forEach((f) =>
-      f
-        .querySelectorAll("input,select,textarea")
-        .forEach((i) => (i.required = type === "job" && i.dataset.req === "1")),
-    );
-    volFields.forEach((f) =>
-      f
-        .querySelectorAll("input,select,textarea")
-        .forEach((i) => (i.required = type === "vol" && i.dataset.req === "1")),
-    );
+    applyTitle.innerHTML = `<i class="fas ${type === 'job' ? 'fa-briefcase' : 'fa-hands-helping'}"></i> ${type === "job" ? "التقدم للوظيفة" : "التقدم لفرصة التطوع"}${title ? " — " + title : ""}`;
+    jobFields.forEach((f) => f.style.display = type === "job" ? "" : "none");
+    volFields.forEach((f) => f.style.display = type === "vol" ? "" : "none");
+    jobFields.forEach((f) => f.querySelectorAll("input,select,textarea").forEach((i) => i.required = type === "job" && i.dataset.req === "1"));
+    volFields.forEach((f) => f.querySelectorAll("input,select,textarea").forEach((i) => i.required = type === "vol" && i.dataset.req === "1"));
     closeModal(detailsModal);
     openModal(applyModal);
   };
