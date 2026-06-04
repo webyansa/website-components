@@ -1979,6 +1979,7 @@
     <div class="sx-fbottom">
       <div class="sx-fbcont">
         <div>© جميع الحقوق محفوظة لجمعية سَنَد <span data-year>2026</span> — بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
+        <div class="sx-fpolicy"><a href="terms.html">الشروط والأحكام</a><span>·</span><a href="privacy.html">سياسة الخصوصية</a><span>·</span><a href="careers.html">الوظائف والتطوع</a></div>
         <div>الرياض · المملكة العربية السعودية</div>
       </div>
     </div>
