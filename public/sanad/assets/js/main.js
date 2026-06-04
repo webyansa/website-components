@@ -1454,86 +1454,21 @@
     }
   }
 
-  /* ===== صفحة التواصل: نموذج موحد ذكي ===== */
+  /* ===== صفحة التواصل: نموذج بسيط ===== */
   const ctForm = document.getElementById("ctUnified");
   if (ctForm) {
-    const TYPE_LABELS = {
-      inquiry: "استفسار", complaint: "شكوى وبلاغات", suggestion: "مقترح",
-      visit: "زيارة", partnership: "شراكات", volunteer: "تطوع",
-      help: "طلب مساعدة", other: "أخرى"
-    };
-    const TICKET_PREFIX = { complaint: "RPT", visit: "VIS", partnership: "PRT" };
-
-    const conditionals = ctForm.querySelectorAll("[data-ct-when]");
-    const nameInput = ctForm.querySelector('input[name="name"]');
-    const phoneInput = ctForm.querySelector('input[name="phone"]');
-    const nameLabel = ctForm.querySelector("[data-ct-name-label]");
-    const phoneLabel = ctForm.querySelector("[data-ct-phone-label]");
-    const attachBox = ctForm.querySelector("[data-ct-attach]");
-    const secretNote = ctForm.querySelector("[data-ct-secret-note]");
-    const channelBox = ctForm.querySelector("[data-ct-channel]");
-
-    const applyType = (t) => {
-      conditionals.forEach((el) => el.classList.toggle("hidden", el.dataset.ctWhen !== t));
-      // المرفق: للشكاوى والشراكات
-      if (attachBox) attachBox.classList.toggle("hidden", !(t === "complaint" || t === "partnership"));
-      // إعادة ضبط السرية عند تغيير النوع
-      if (t !== "complaint") {
-        secretNote?.classList.add("hidden");
-        const noRadio = ctForm.querySelector('input[name="secret"][value="no"]');
-        if (noRadio) noRadio.checked = true;
-        setSecret(false);
-      }
-    };
-
-    const setSecret = (isSecret) => {
-      if (!nameInput || !phoneInput) return;
-      nameInput.required = !isSecret;
-      phoneInput.required = !isSecret;
-      if (nameLabel) nameLabel.innerHTML = isSecret
-        ? 'الاسم الكامل <span class="text-sanad-muted text-xs">(اختياري)</span>'
-        : 'الاسم الكامل <span class="text-red-500">*</span>';
-      if (phoneLabel) phoneLabel.innerHTML = isSecret
-        ? 'رقم الجوال <span class="text-sanad-muted text-xs">(اختياري)</span>'
-        : 'رقم الجوال <span class="text-red-500">*</span>';
-    };
-
-    ctForm.querySelectorAll('input[name="type"]').forEach((r) => {
-      r.addEventListener("change", () => applyType(r.value));
-    });
-    ctForm.querySelectorAll('input[name="secret"]').forEach((r) => {
-      r.addEventListener("change", () => {
-        const isSecret = r.value === "yes" && r.checked;
-        if (r.checked) {
-          secretNote?.classList.toggle("hidden", !isSecret);
-          setSecret(isSecret);
-        }
-      });
-    });
-    ctForm.querySelectorAll('input[name="contact"]').forEach((r) => {
-      r.addEventListener("change", () => {
-        if (r.checked) channelBox?.classList.toggle("hidden", r.value !== "yes");
-      });
-    });
-
-    applyType("inquiry");
-
     ctForm.addEventListener("submit", (e) => {
       e.preventDefault();
       if (!ctForm.checkValidity()) { ctForm.reportValidity(); return; }
-      const t = ctForm.querySelector('input[name="type"]:checked')?.value || "inquiry";
-      const prefix = TICKET_PREFIX[t] || "CNT";
-      const ticket = prefix + "-2026-" + String(1000 + Math.floor(Math.random() * 8999)).padStart(4, "0");
-      const today = new Date().toLocaleDateString("ar-SA-u-nu-latn");
+      const ticket = "CNT-2026-" + String(1 + Math.floor(Math.random() * 9998)).padStart(4, "0");
       const modal = document.getElementById("ctSuccess");
       if (modal) {
-        modal.querySelector("[data-ct-ticket]").textContent = ticket;
-        modal.querySelector("[data-ct-rtype]").textContent = TYPE_LABELS[t] || "—";
-        modal.querySelector("[data-ct-rdate]").textContent = today;
-        modal.classList.add("is-open");
+        const t = modal.querySelector("[data-ct-ticket]");
+        if (t) t.textContent = ticket;
+        modal.classList.add("open");
+        document.body.style.overflow = "hidden";
       }
       ctForm.reset();
-      applyType("inquiry");
     });
 
     // اختيار الفرع في قسم الموقع
@@ -1547,6 +1482,7 @@
       });
     });
   }
+
 })();
 
 /* ===================== Beneficiaries Portal ===================== */

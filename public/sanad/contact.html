@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>تواصل معنا · جمعية سَنَد</title>
-<meta name="description" content="نموذج تواصل موحد لجمعية سَنَد لاستقبال الاستفسارات، الشكاوى، البلاغات، المقترحات، الزيارات، والشراكات." />
+<meta name="description" content="تواصل مع جمعية سَنَد عبر نموذج موحد بسيط لاستقبال الاستفسارات والشكاوى والمقترحات والشراكات وطلبات الزيارة والتطوع." />
 <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,188 +21,65 @@ tailwind.config = { theme:{ extend:{
 </head>
 <body class="bg-sanad-ivory text-sanad-text antialiased">
 
-<!-- يتم استبدال الهيدر/الفوتر تلقائيًا عبر main.js -->
+<!-- الهيدر الموحد (يُحقن عبر main.js) -->
 <header class="s-header"></header>
-<footer class="s-footer"></footer>
 
+<!-- Hero -->
 <section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide7.jpg');">
   <div class="s-hero-bg"></div>
   <div class="s-container">
     <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">تواصل معنا</span></div>
     <h1>تواصل معنا</h1>
-    <p class="s-hero-lead">نحن قريبون منكم لاستقبال استفساراتكم، مقترحاتكم، طلباتكم، وشراكاتكم، ومساعدتكم في الوصول إلى الخدمة المناسبة.</p>
+    <p class="s-hero-lead">نسعد بتواصلكم. اختر نوع التواصل المناسب، واكتب رسالتكم، وسيتم توجيهها للفريق المختص.</p>
   </div>
 </section>
 
 <!-- بطاقات التواصل السريع -->
-<section class="py-12">
+<section class="py-10">
   <div class="s-container">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="ct-card"><div class="ic"><i class="fas fa-phone"></i></div><h4>الهاتف</h4><p>الرقم الموحد</p><strong dir="ltr">920000000</strong><a href="tel:920000000" class="ct-card-link">اتصل الآن</a></div>
-      <div class="ct-card"><div class="ic"><i class="fab fa-whatsapp"></i></div><h4>واتساب</h4><p>للتواصل السريع</p><strong dir="ltr">+966 55 555 0000</strong><a href="https://wa.me/966555550000" target="_blank" class="ct-card-link">راسلنا</a></div>
-      <div class="ct-card"><div class="ic"><i class="fas fa-envelope"></i></div><h4>البريد الإلكتروني</h4><p>للاستفسارات العامة</p><strong>info@sanad.org.sa</strong><a href="mailto:info@sanad.org.sa" class="ct-card-link">راسلنا</a></div>
-      <div class="ct-card"><div class="ic"><i class="fas fa-headset"></i></div><h4>الدعم والخدمات</h4><p>فريق المستفيدين</p><strong>support@sanad.org.sa</strong><a href="mailto:support@sanad.org.sa" class="ct-card-link">راسلنا</a></div>
-      <div class="ct-card"><div class="ic"><i class="fas fa-clock"></i></div><h4>ساعات العمل</h4><p>الأحد - الخميس</p><strong>8 صباحًا - 4 مساءً</strong></div>
-      <div class="ct-card"><div class="ic"><i class="fas fa-location-dot"></i></div><h4>موقع الجمعية</h4><p>المقر الرئيسي</p><strong>الرياض - حي الورود</strong><a href="#ct-location" class="ct-card-link">الاتجاهات</a></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="ct-card"><div class="ic"><i class="fas fa-phone"></i></div><h4>الهاتف</h4><strong dir="ltr">920000000</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fab fa-whatsapp"></i></div><h4>واتساب</h4><strong dir="ltr">+966 55 555 0000</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-envelope"></i></div><h4>البريد الإلكتروني</h4><strong>info@sanad.org.sa</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-headset"></i></div><h4>الدعم والخدمات</h4><strong>support@sanad.org.sa</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-clock"></i></div><h4>ساعات العمل</h4><strong>الأحد - الخميس / 8ص - 4م</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-location-dot"></i></div><h4>موقع الجمعية</h4><strong>الرياض - حي الورود</strong></div>
     </div>
   </div>
 </section>
 
-<!-- نموذج التواصل الموحد -->
+<!-- نموذج اتصل بنا -->
 <section class="py-12 bg-white" id="ct-form">
-  <div class="s-container max-w-4xl">
+  <div class="s-container max-w-3xl">
     <div class="text-center mb-8">
-      <h2 class="s-title">نموذج التواصل الموحد</h2>
-      <p class="text-sanad-muted mt-2">اختر نوع التواصل، ثم اكتب رسالتك، وسيتم توجيهها للفريق المختص.</p>
+      <h2 class="s-title">نموذج اتصل بنا</h2>
+      <p class="text-sanad-muted mt-2">يسعدنا استقبال رسالتك، وسيتم توجيهها للفريق المختص حسب نوع التواصل.</p>
     </div>
 
     <form id="ctUnified" novalidate class="ct-form-wrap">
-
-      <!-- نوع التواصل -->
-      <div class="ct-group">
-        <label class="ct-group-title">نوع التواصل <span class="text-red-500">*</span></label>
-        <div class="ct-chips" data-ct-types>
-          <label><input type="radio" name="type" value="inquiry" required checked><span><i class="fas fa-circle-question"></i> استفسار</span></label>
-          <label><input type="radio" name="type" value="complaint"><span><i class="fas fa-bullhorn"></i> شكوى وبلاغات</span></label>
-          <label><input type="radio" name="type" value="suggestion"><span><i class="fas fa-lightbulb"></i> مقترح</span></label>
-          <label><input type="radio" name="type" value="visit"><span><i class="fas fa-calendar-day"></i> زيارة</span></label>
-          <label><input type="radio" name="type" value="partnership"><span><i class="fas fa-handshake"></i> شراكات</span></label>
-          <label><input type="radio" name="type" value="volunteer"><span><i class="fas fa-hands-helping"></i> تطوع</span></label>
-          <label><input type="radio" name="type" value="help"><span><i class="fas fa-hand-holding-heart"></i> طلب مساعدة</span></label>
-          <label><input type="radio" name="type" value="other"><span><i class="fas fa-ellipsis"></i> أخرى</span></label>
-        </div>
-      </div>
-
-      <!-- تنبيه طلب المساعدة -->
-      <div class="ct-alert hidden" data-ct-when="help">
-        <i class="fas fa-circle-info"></i>
-        <div>
-          <strong>هل تبحث عن خدمة رسمية؟</strong>
-          <p>لتقديم طلب خدمة أو مساعدة رسمي يرجى استخدام صفحة خدماتنا أو بوابة المستفيدين.</p>
-          <div class="flex flex-wrap gap-2 mt-2">
-            <a href="services.html" class="s-btn s-btn-primary !py-2 !px-3 text-xs"><i class="fas fa-clipboard-list"></i> الانتقال إلى الخدمات</a>
-            <a href="beneficiaries.html" class="s-btn s-btn-outline !py-2 !px-3 text-xs"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- بيانات أساسية -->
-      <div class="ct-group">
-        <h4 class="ct-group-title">البيانات الأساسية</h4>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="srv-field"><label data-ct-name-label>الاسم الكامل <span class="text-red-500">*</span></label><input type="text" name="name" maxlength="100" required></div>
-          <div class="srv-field"><label data-ct-phone-label>رقم الجوال <span class="text-red-500">*</span></label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX" required></div></div>
-          <div class="srv-field"><label>البريد الإلكتروني <span class="text-sanad-muted text-xs">(اختياري)</span></label><input type="email" name="email" maxlength="120"></div>
-          <div class="srv-field"><label>الجهة أو الصفة <span class="text-red-500">*</span></label>
-            <select name="party" required>
-              <option value="">اختر</option>
-              <option>مستفيد</option><option>متبرع</option><option>متطوع</option><option>شريك</option>
-              <option>جهة حكومية</option><option>جهة غير ربحية</option><option>فرد</option><option>أخرى</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- حقول الشكوى -->
-      <div class="ct-group hidden" data-ct-when="complaint">
-        <h4 class="ct-group-title">تفاصيل الشكوى أو البلاغ</h4>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="srv-field"><label>الجهة أو الخدمة المرتبطة</label>
-            <select name="complaint_dept">
-              <option>خدمات اجتماعية</option><option>دعم صحي</option><option>سلال غذائية</option>
-              <option>التطوع</option><option>المتجر</option><option>التبرعات</option><option>عامة</option>
-            </select>
-          </div>
-          <div class="srv-field"><label>هل ترغب أن يكون البلاغ سريًا؟</label>
-            <div class="srv-radios" data-ct-secret>
-              <label><input type="radio" name="secret" value="no" checked> لا</label>
-              <label><input type="radio" name="secret" value="yes"> نعم</label>
-            </div>
-          </div>
-        </div>
-        <div class="ct-note hidden" data-ct-secret-note>
-          <i class="fas fa-lock"></i> يمكنك إرسال البلاغ بسرية، لكن إضافة وسيلة تواصل تساعدنا في المتابعة عند الحاجة.
-        </div>
-      </div>
-
-      <!-- حقول المقترح -->
-      <div class="ct-group hidden" data-ct-when="suggestion">
-        <h4 class="ct-group-title">تفاصيل المقترح</h4>
-        <div class="srv-field"><label>مجال المقترح</label>
-          <select name="suggestion_area">
-            <option>الخدمات</option><option>التبرعات</option><option>المتجر</option>
-            <option>بوابة المستفيدين</option><option>الحوكمة</option><option>أخرى</option>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="srv-field sm:col-span-2">
+          <label>نوع التواصل <span class="text-red-500">*</span></label>
+          <select name="type" required>
+            <option value="">اختر نوع التواصل</option>
+            <option value="استفسار">استفسار</option>
+            <option value="شكوى وبلاغات">شكوى وبلاغات</option>
+            <option value="مقترح">مقترح</option>
+            <option value="زيارة">زيارة</option>
+            <option value="شراكات">شراكات</option>
+            <option value="طلب مساعدة">طلب مساعدة</option>
+            <option value="تطوع">تطوع</option>
+            <option value="أخرى">أخرى</option>
           </select>
         </div>
+        <div class="srv-field"><label>الاسم الكامل <span class="text-red-500">*</span></label><input type="text" name="name" maxlength="100" required></div>
+        <div class="srv-field"><label>رقم الجوال <span class="text-red-500">*</span></label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX" required></div></div>
+        <div class="srv-field sm:col-span-2"><label>البريد الإلكتروني</label><input type="email" name="email" maxlength="120"></div>
+        <div class="srv-field sm:col-span-2"><label>عنوان الرسالة <span class="text-red-500">*</span></label><input type="text" name="subject" maxlength="150" required></div>
+        <div class="srv-field sm:col-span-2"><label>نص الرسالة <span class="text-red-500">*</span></label><textarea name="body" rows="5" maxlength="1500" required></textarea></div>
       </div>
 
-      <!-- حقول الزيارة -->
-      <div class="ct-group hidden" data-ct-when="visit">
-        <h4 class="ct-group-title">تفاصيل الزيارة</h4>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="srv-field"><label>الجهة الزائرة</label><input type="text" name="visit_org" maxlength="120"></div>
-          <div class="srv-field"><label>عدد الزوار المتوقع</label><input type="number" name="visit_count" min="1" max="500"></div>
-          <div class="srv-field"><label>التاريخ المقترح</label><input type="date" name="visit_date"></div>
-          <div class="srv-field"><label>الوقت المقترح</label><input type="time" name="visit_time"></div>
-          <div class="srv-field sm:col-span-2"><label>الغرض من الزيارة</label><textarea name="visit_purpose" rows="2" maxlength="500"></textarea></div>
-        </div>
-      </div>
-
-      <!-- حقول الشراكات -->
-      <div class="ct-group hidden" data-ct-when="partnership">
-        <h4 class="ct-group-title">تفاصيل الشراكة</h4>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="srv-field"><label>اسم الجهة</label><input type="text" name="prt_name" maxlength="120"></div>
-          <div class="srv-field"><label>مجال الشراكة</label>
-            <select name="prt_area"><option>خدمي</option><option>تمويلي</option><option>إعلامي</option><option>لوجستي</option><option>أخرى</option></select>
-          </div>
-          <div class="srv-field sm:col-span-2"><label>رابط موقع الجهة (إن وُجد)</label><input type="url" name="prt_url" placeholder="https://"></div>
-          <div class="srv-field sm:col-span-2"><label>وصف مختصر لفكرة الشراكة</label><textarea name="prt_desc" rows="3" maxlength="800"></textarea></div>
-        </div>
-      </div>
-
-      <!-- حقول التطوع -->
-      <div class="ct-group hidden" data-ct-when="volunteer">
-        <h4 class="ct-group-title">تفاصيل التطوع</h4>
-        <div class="srv-field"><label>مجال التطوع المفضل</label>
-          <select name="vol_area">
-            <option>خدمات اجتماعية</option><option>دعم لوجستي</option><option>إعلامي وتسويق</option>
-            <option>تقني</option><option>تعليمي وتدريبي</option><option>أخرى</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- الرسالة -->
-      <div class="ct-group">
-        <h4 class="ct-group-title">رسالتك</h4>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="srv-field sm:col-span-2"><label>عنوان الرسالة <span class="text-red-500">*</span></label><input type="text" name="subject" maxlength="150" required></div>
-          <div class="srv-field sm:col-span-2"><label>نص الرسالة <span class="text-red-500">*</span></label><textarea name="body" rows="5" maxlength="1500" required></textarea></div>
-          <div class="srv-field"><label>أولوية الرسالة</label>
-            <select name="priority"><option value="عادي">عادي</option><option value="مهم">مهم</option><option value="عاجل">عاجل</option></select>
-          </div>
-          <div class="srv-field"><label>هل ترغب بالتواصل معك؟</label>
-            <div class="srv-radios" data-ct-contact>
-              <label><input type="radio" name="contact" value="yes" checked> نعم</label>
-              <label><input type="radio" name="contact" value="no"> لا</label>
-            </div>
-          </div>
-          <div class="srv-field sm:col-span-2 hidden" data-ct-channel><label>وسيلة التواصل المفضلة</label>
-            <select name="channel"><option>اتصال</option><option>واتساب</option><option>رسالة نصية</option><option>بريد إلكتروني</option></select>
-          </div>
-          <div class="srv-field sm:col-span-2 hidden" data-ct-attach>
-            <label>مرفق <span class="text-sanad-muted text-xs">(اختياري)</span></label>
-            <input type="file" disabled class="srv-file-disabled">
-            <small class="text-sanad-muted text-xs">يقبل صور أو PDF حتى 5 ميجابايت.</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- الإقرار -->
-      <div class="ct-group ct-confirm">
-        <label class="srv-check"><input type="checkbox" required> أُقرّ بصحة البيانات المدخلة.</label>
-        <label class="srv-check"><input type="checkbox" required> أوافق على سياسة الخصوصية.</label>
-      </div>
+      <label class="srv-check"><input type="checkbox" required> أوافق على سياسة الخصوصية وأقر بصحة البيانات المدخلة.</label>
 
       <button type="submit" class="s-btn s-btn-primary w-full justify-center !py-3.5"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button>
     </form>
@@ -228,7 +105,6 @@ tailwind.config = { theme:{ extend:{
         <button type="button" class="ct-branch active" data-branch="الرياض|حي الورود، شارع الأمير محمد بن عبدالعزيز"><i class="fas fa-building"></i><div><strong>المقر الرئيسي</strong><small>الرياض - حي الورود</small></div></button>
         <button type="button" class="ct-branch" data-branch="جدة|حي الزهراء، طريق الأمير سلطان"><i class="fas fa-building"></i><div><strong>فرع جدة</strong><small>حي الزهراء</small></div></button>
         <button type="button" class="ct-branch" data-branch="الدمام|حي الفيصلية، طريق الملك فهد"><i class="fas fa-building"></i><div><strong>فرع الدمام</strong><small>حي الفيصلية</small></div></button>
-        <div class="ct-branch ct-hours"><i class="fas fa-clock"></i><div><strong>ساعات العمل</strong><small>الأحد - الخميس / 8 ص - 4 م</small></div></div>
       </div>
     </div>
   </div>
@@ -237,8 +113,7 @@ tailwind.config = { theme:{ extend:{
 <!-- روابط مهمة -->
 <section class="py-12 bg-white">
   <div class="s-container">
-    <h2 class="s-title text-center mb-2">روابط مهمة</h2>
-    <p class="text-center text-sanad-muted mb-8">اختصارات للوصول السريع لأهم خدماتنا وبواباتنا.</p>
+    <h2 class="s-title text-center mb-8">روابط مهمة</h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
       <a href="services.html" class="ct-quick"><i class="fas fa-clipboard-list"></i> طلب خدمة</a>
       <a href="service-tracking.html" class="ct-quick"><i class="fas fa-route"></i> تتبع طلب</a>
@@ -254,15 +129,14 @@ tailwind.config = { theme:{ extend:{
 
 <!-- الأسئلة الشائعة -->
 <section class="py-12">
-  <div class="s-container max-w-4xl">
+  <div class="s-container max-w-3xl">
     <h2 class="s-title text-center mb-8">أسئلة شائعة</h2>
     <div class="space-y-3">
+      <details class="srv-faq"><summary>كيف أتواصل مع الجمعية؟</summary><p>يمكنكم التواصل عبر الهاتف، واتساب، البريد الإلكتروني، أو نموذج اتصل بنا في هذه الصفحة.</p></details>
       <details class="srv-faq"><summary>كيف أتابع طلب خدمة؟</summary><p>من خلال صفحة "تتبع طلب خدمة" بإدخال رقم الطلب ورقم الجوال.</p></details>
-      <details class="srv-faq"><summary>كيف أرفع شكوى أو بلاغًا؟</summary><p>اختر "شكوى وبلاغات" في نموذج التواصل أعلاه، ويمكنك جعل البلاغ سريًا، وستحصل على رقم تذكرة فور الإرسال.</p></details>
-      <details class="srv-faq"><summary>هل يمكن التواصل عبر واتساب؟</summary><p>نعم، عبر الرقم الموضّح في بطاقات التواصل أعلاه أو من خلال زر واتساب في نافذة تأكيد الإرسال.</p></details>
+      <details class="srv-faq"><summary>كيف أرفع شكوى أو بلاغًا؟</summary><p>اختر "شكوى وبلاغات" في نموذج اتصل بنا أعلاه، ثم اكتب تفاصيل البلاغ وسيتم استلامه فورًا.</p></details>
       <details class="srv-faq"><summary>ما أوقات العمل؟</summary><p>من الأحد إلى الخميس، من 8 صباحًا إلى 4 مساءً.</p></details>
       <details class="srv-faq"><summary>أين يقع مقر الجمعية؟</summary><p>الرياض - حي الورود، شارع الأمير محمد بن عبدالعزيز.</p></details>
-      <details class="srv-faq"><summary>كيف أتقدم بطلب زيارة أو شراكة؟</summary><p>من نموذج التواصل أعلاه، اختر "زيارة" أو "شراكات" وستظهر الحقول الخاصة بكل نوع.</p></details>
     </div>
   </div>
 </section>
@@ -271,25 +145,24 @@ tailwind.config = { theme:{ extend:{
 <div class="s-modal-overlay" id="ctSuccess">
   <div class="s-modal">
     <div class="s-modal-head">
-      <h3><i class="fas fa-circle-check text-sanad-emerald"></i> تم استلام رسالتك بنجاح</h3>
+      <h3><i class="fas fa-circle-check text-sanad-emerald"></i> تم إرسال رسالتك بنجاح</h3>
       <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
     </div>
     <div class="s-modal-body">
-      <p class="text-sanad-muted leading-loose mb-4">شكرًا لتواصلكم مع جمعية سَنَد. تم إنشاء تذكرة متابعة وسيتم توجيهها للفريق المختص.</p>
+      <p class="text-sanad-muted leading-loose mb-4">شكرًا لتواصلكم مع جمعية سَنَد. تم استلام رسالتكم وسيتم التعامل معها من الفريق المختص.</p>
       <div class="ct-success-grid">
-        <div><span>رقم التذكرة</span><strong data-ct-ticket>CNT-2026-0001</strong></div>
-        <div><span>نوع التواصل</span><strong data-ct-rtype>—</strong></div>
-        <div><span>تاريخ الإرسال</span><strong data-ct-rdate>—</strong></div>
+        <div><span>رقم المتابعة</span><strong data-ct-ticket>CNT-2026-0001</strong></div>
         <div><span>الحالة</span><strong class="text-sanad-emeraldDeep">قيد المراجعة</strong></div>
       </div>
     </div>
     <div class="s-modal-foot">
-      <button class="s-btn s-btn-outline" data-close>إغلاق</button>
-      <a href="https://wa.me/966555550000" target="_blank" class="s-btn s-btn-gold"><i class="fab fa-whatsapp"></i> تواصل عبر واتساب</a>
-      <a href="index.html" class="s-btn s-btn-primary"><i class="fas fa-house"></i> العودة للرئيسية</a>
+      <button class="s-btn s-btn-primary" data-close>إغلاق</button>
     </div>
   </div>
 </div>
+
+<!-- الفوتر الموحد في نهاية الصفحة فقط -->
+<footer class="s-footer"></footer>
 
 <script src="assets/js/main.js"></script>
 </body>
