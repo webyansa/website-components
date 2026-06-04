@@ -1543,7 +1543,7 @@ img { max-width: 100%; display: block; }
 .srv-card .meta i{color:var(--s-emerald);margin-left:.3rem;}
 .srv-card .meta i.urgent{color:#a45e10;}
 .srv-card .acts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.4rem;}
-.srv-card .acts .s-btn{padding:.65rem .8rem;font-size:.8rem;justify-content:center;}
+.srv-card .acts .s-btn,.srv-card .acts .btn{padding:.65rem .6rem;font-size:.8rem;justify-content:center;min-width:0;white-space:nowrap;}
 .srv-card:hover{transform:translateY(-4px);border-color:var(--s-emerald);box-shadow:0 18px 40px rgba(11,37,69,.1);}
 
 .srv-info{background:var(--s-ivory);border:1px solid var(--s-border);border-radius:16px;padding:1.4rem;text-align:center;}
@@ -2718,3 +2718,49 @@ html[dir="rtl"] .sx-drawer{transform:translateX(-100%);}
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}
 }
+
+/* ---------- Legacy modal aliases → unified sanad-modal look ---------- */
+/* تبنّي مظهر sanad-modal للنوافذ القديمة (s-modal) دون تعديل HTML/JS */
+.s-modal-overlay{
+  position:fixed;inset:0;z-index:9999;display:none;
+  align-items:flex-start;justify-content:center;
+  padding:24px 14px;overflow-y:auto;
+  background:rgba(7,18,39,.55);backdrop-filter:blur(4px);
+  animation:sanadFade .2s ease;
+}
+.s-modal-overlay.open,.s-modal-overlay.is-open{display:flex;animation:sanadFade .2s ease;}
+.s-modal{
+  position:relative;width:100%;max-width:560px;margin:auto;
+  background:var(--color-surface);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-strong);overflow:hidden;
+  animation:sanadUp .25s ease;
+}
+.s-modal.wide,.s-modal-lg{max-width:720px}
+.s-modal-sm{max-width:420px}
+.s-modal-head{
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:1rem 1.25rem;
+  background:linear-gradient(135deg,var(--color-primary-soft),var(--color-secondary));
+  color:#fff;border-bottom:0;
+}
+.s-modal-head h3{
+  margin:0;color:#fff;font-size:1.05rem;font-weight:800;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.s-modal-body{padding:1.25rem;color:var(--color-text);background:var(--color-surface)}
+.s-modal-foot{
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:flex-end;
+  padding:1rem 1.25rem;background:var(--color-surface-soft);
+  border-top:1px solid var(--color-border);
+}
+.s-modal-close{
+  background:rgba(255,255,255,.18);border:0;color:#fff;
+  width:34px;height:34px;border-radius:50%;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.95rem;transition:var(--transition);
+}
+.s-modal-close:hover{background:rgba(255,255,255,.32);transform:rotate(90deg)}
+@media (max-width:540px){
+  .s-modal{max-width:100%;border-radius:var(--radius-md)}
+}
+
