@@ -2726,7 +2726,7 @@
             </div>
             <div class="sxq-row2">
               <div class="sxq-field"><label>مجال التطوع المفضل</label>
-                <select class="sxq-select" data-jv-area"><option>توزيع السلال</option><option>دعم إعلامي</option><option>تنظيم فعاليات</option><option>دعم إداري</option></select>
+                <select class="sxq-select" data-jv-area><option>توزيع السلال</option><option>دعم إعلامي</option><option>تنظيم فعاليات</option><option>دعم إداري</option></select>
               </div>
               <div class="sxq-field"><label>الأيام المناسبة</label>
                 <select class="sxq-select" data-jv-days><option>أيام الأسبوع</option><option>عطلة نهاية الأسبوع</option><option>مرن</option></select>
