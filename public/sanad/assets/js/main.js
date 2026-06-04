@@ -2184,28 +2184,54 @@
       cert?.classList.remove("open");
       document.body.style.overflow = "";
     };
-    document.querySelectorAll("[data-sx-cert-open]").forEach((b) => b.addEventListener("click", openCert));
+    const CERT_DATA = {
+      association: {
+        title: "شهادة ترخيص الجمعية",
+        numLabel: "رقم الترخيص",
+        num: "0000",
+        scope: "",
+        img: "assets/images/License/association-license-certificate.jpg",
+        file: "assets/images/License/association-license-certificate.jpg",
+        shareTitle: "شهادة ترخيص جمعية سَنَد",
+      },
+      fundraising: {
+        title: "ترخيص جمع التبرعات",
+        numLabel: "رقم ترخيص جمع التبرعات",
+        num: "0000",
+        scope: "جمع التبرعات عبر القنوات المعتمدة",
+        img: "assets/images/License/fundraising-license-certificate.jpg",
+        file: "assets/images/License/fundraising-license-certificate.jpg",
+        shareTitle: "ترخيص جمع التبرعات — جمعية سَنَد",
+      },
+    };
+    let currentCert = "association";
+    function applyCert(key) {
+      const d = CERT_DATA[key] || CERT_DATA.association;
+      currentCert = key;
+      const q = (s) => document.querySelector(s);
+      q("[data-sx-cert-title]") && (q("[data-sx-cert-title]").textContent = d.title);
+      q("[data-sx-cert-numlabel]") && (q("[data-sx-cert-numlabel]").textContent = d.numLabel);
+      q("[data-sx-cert-num]") && (q("[data-sx-cert-num]").textContent = d.num);
+      const sRow = q("[data-sx-cert-scope-row]");
+      if (sRow) {
+        if (d.scope) { sRow.hidden = false; q("[data-sx-cert-scope]").textContent = d.scope; }
+        else { sRow.hidden = true; }
+      }
+      const img = q("[data-sx-cert-img]"); if (img) img.src = d.img;
+      const dl = q("[data-sx-cert-download]"); if (dl) dl.href = d.file;
+    }
+    document.querySelectorAll("[data-sx-cert-open]").forEach((b) =>
+      b.addEventListener("click", () => { applyCert(b.dataset.cert || "association"); openCert(); })
+    );
     document.querySelectorAll("[data-sx-cert-close]").forEach((b) => b.addEventListener("click", closeCert));
-    cert?.addEventListener("click", (e) => {
-      if (e.target === cert) closeCert();
-    });
+    cert?.addEventListener("click", (e) => { if (e.target === cert) closeCert(); });
     document.querySelector("[data-sx-cert-share]")?.addEventListener("click", () => {
       const url = location.origin + location.pathname;
-      if (navigator.share) {
-        navigator.share({ title: "شهادة ترخيص جمعية سَنَد", url }).catch(() => {});
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(url);
-        sxToast("تم نسخ الرابط");
-      }
+      const d = CERT_DATA[currentCert];
+      if (navigator.share) navigator.share({ title: d.shareTitle, url }).catch(() => {});
+      else if (navigator.clipboard) { navigator.clipboard.writeText(url); sxToast("تم نسخ رابط الترخيص"); }
+      else sxToast("تم نسخ رابط الترخيص");
     });
-
-    // تحديث العدادات
-    window.sxUpdateCounts = function () {
-      document.querySelectorAll("[data-cart-count]").forEach((el) => (el.textContent = getCartCount()));
-      document.querySelectorAll("[data-donation-count]").forEach((el) => (el.textContent = getDonationCount()));
-    };
-    window.addEventListener("storage", window.sxUpdateCounts);
-  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", inject);
