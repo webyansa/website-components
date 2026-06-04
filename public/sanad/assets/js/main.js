@@ -3252,4 +3252,41 @@
     gotoJoinPanel("ok");
   }));
 
+  /* ---------- MEMBERSHIP ---------- */
+  const mModal = $("#sxqMember");
+  let memSeq = 1;
+  function resetMember(){
+    if (!mModal) return;
+    $$(".sxq-panel", mModal).forEach(p => p.classList.toggle("active", p.dataset.panel === "form"));
+    $$("input,select,textarea", mModal).forEach(el => {
+      if (el.type === "checkbox") el.checked = false;
+      else if (el.type !== "file") el.value = el.tagName === "SELECT" ? el.options[0]?.value || "" : "";
+      else el.value = "";
+    });
+  }
+  if (mModal) {
+    $("[data-sxq-msubmit]", mModal).addEventListener("click", () => {
+      const type = $("[data-m-type]", mModal).value.trim();
+      const name = $("[data-m-name]", mModal).value.trim();
+      const idn  = $("[data-m-id]", mModal).value.trim();
+      const phone= $("[data-m-phone]", mModal).value.trim();
+      const reason = $("[data-m-reason]", mModal).value.trim();
+      const ack1 = $("[data-m-ack1]", mModal).checked;
+      const ack2 = $("[data-m-ack2]", mModal).checked;
+      const ack3 = $("[data-m-ack3]", mModal).checked;
+      const ack4 = $("[data-m-ack4]", mModal).checked;
+      if (!type) { window.sxToast && sxToast("الرجاء اختيار نوع العضوية"); return; }
+      if (!name || !idn || !phone) { window.sxToast && sxToast("الرجاء استكمال البيانات الأساسية"); return; }
+      if (!reason) { window.sxToast && sxToast("الرجاء كتابة سبب الرغبة في الانضمام"); return; }
+      if (!(ack1 && ack2 && ack3 && ack4)) { window.sxToast && sxToast("الرجاء الموافقة على جميع الإقرارات"); return; }
+      const id = "MEM-2026-" + String(memSeq++).padStart(4, "0");
+      const today = new Date().toLocaleDateString("ar-SA-u-nu-latn");
+      $("[data-mok-id]", mModal).textContent = id;
+      $("[data-mok-type]", mModal).textContent = type;
+      $("[data-mok-date]", mModal).textContent = today;
+      $$(".sxq-panel", mModal).forEach(p => p.classList.toggle("active", p.dataset.panel === "ok"));
+    });
+  }
+
 })();
+
