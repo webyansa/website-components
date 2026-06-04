@@ -1911,14 +1911,11 @@
         <h4>روابط رئيسية</h4>
         <ul>
           <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
-          <li><a href="about.html"><i class="fas fa-angle-left"></i> عن الجمعية</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> خدماتنا</a></li>
           <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
           <li><a href="donations.html"><i class="fas fa-angle-left"></i> بوابة التبرع</a></li>
           <li><a href="store.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
           <li><a href="beneficiaries.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
           <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
-          <li><a href="events.html"><i class="fas fa-angle-left"></i> الفعاليات</a></li>
           <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
         </ul>
       </div>
