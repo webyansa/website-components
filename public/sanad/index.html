@@ -30,9 +30,9 @@
             fontFamily: { sans: ['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
             colors: {
               sanad: {
-                navy:'#0b2545', navyDeep:'#061633', navySoft:'#1d3a6b',
-                emerald:'#0d7a4f', emeraldSoft:'#2fa776', emeraldDeep:'#075c3a',
-                gold:'#b6873a', goldSoft:'#d9b066',
+                navy:'var(--color-primary)', navyDeep:'var(--color-primary-dark)', navySoft:'var(--color-primary-soft)',
+                emerald:'var(--color-secondary)', emeraldSoft:'#2fa776', emeraldDeep:'var(--color-secondary-dark)',
+                gold:'var(--color-accent)', goldSoft:'var(--s-gold-soft)',
                 sand:'#f3ead8', ivory:'#faf7f0', mist:'#eef2f6',
                 border:'#e6ebf1', text:'#0f1d2e', muted:'#5b6b7d'
               }
@@ -110,10 +110,10 @@
         </nav>
 
         <div class="flex items-center gap-2">
-          <a href="services.html" class="hidden md:inline-flex s-btn s-btn-outline !py-2.5 !px-4 text-sm">
+          <a href="services.html" class="hidden md:inline-flex btn btn-outline !py-2.5 !px-4 text-sm">
             <i class="fas fa-clipboard-list"></i> اطلب خدمة
           </a>
-          <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm">
+          <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm">
             <i class="fas fa-heart"></i> تبرع الآن
           </a>
           <button
@@ -171,8 +171,8 @@
         <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
       </nav>
       <div class="mt-6 grid grid-cols-2 gap-2">
-        <a href="services.html" class="s-btn s-btn-outline text-sm justify-center">اطلب خدمة</a>
-        <a href="donations.html" class="s-btn s-btn-primary text-sm justify-center">تبرع الآن</a>
+        <a href="services.html" class="btn btn-outline text-sm justify-center">اطلب خدمة</a>
+        <a href="donations.html" class="btn btn-primary text-sm justify-center">تبرع الآن</a>
       </div>
     </aside>
 
@@ -309,7 +309,7 @@
               >
               <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-sanad-mist text-sanad-navy">حوكمة متقدمة</span>
             </div>
-            <a href="about.html" class="s-btn s-btn-navy"> تعرّف على الجمعية <i class="fas fa-arrow-left"></i> </a>
+            <a href="about.html" class="btn btn-navy"> تعرّف على الجمعية <i class="fas fa-arrow-left"></i> </a>
           </div>
 
           <div class="lg:col-span-7 reveal reveal-delay-1">
@@ -440,7 +440,7 @@
             <span class="s-eyebrow mb-4"><i class="fas fa-hand-holding-medical"></i> مجالات خدمتنا</span>
             <h2 class="s-title font-extrabold">منظومة خدمات متكاملة للأسر المستحقة</h2>
           </div>
-          <a href="services.html" class="s-btn s-btn-outline">جميع الخدمات <i class="fas fa-arrow-left"></i></a>
+          <a href="services.html" class="btn btn-outline">جميع الخدمات <i class="fas fa-arrow-left"></i></a>
         </div>
 
         <div class="s-bento reveal reveal-delay-1">
@@ -457,7 +457,7 @@
               <li><i class="fas fa-check-circle text-sanad-goldSoft ml-2"></i> أجهزة طبية ومستلزمات</li>
               <li><i class="fas fa-check-circle text-sanad-goldSoft ml-2"></i> تنسيق الإحالات الطبية</li>
             </ul>
-            <a href="services.html" class="s-btn s-btn-gold w-fit mt-auto"
+            <a href="services.html" class="btn btn-accent w-fit mt-auto"
               >تفاصيل الخدمة <i class="fas fa-arrow-left"></i
             ></a>
             <div class="s-service-deco"></div>
@@ -546,7 +546,7 @@
             <span class="s-eyebrow mb-4"><i class="fas fa-diagram-project"></i> أحدث المشاريع</span>
             <h2 class="s-title font-extrabold">مشاريع تُترجم الرسالة إلى أثر ملموس</h2>
           </div>
-          <a href="projects.html" class="s-btn s-btn-outline">جميع المشاريع <i class="fas fa-arrow-left"></i></a>
+          <a href="projects.html" class="btn btn-outline">جميع المشاريع <i class="fas fa-arrow-left"></i></a>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal reveal-delay-1">
@@ -566,7 +566,7 @@
                 <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> 1,240 مستفيد</span>
                 <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> 2024 – جارٍ</span>
               </div>
-              <a href="project-details.html" class="s-btn s-btn-outline w-full justify-center !py-2.5 text-sm"
+              <a href="project-details.html" class="btn btn-outline w-full justify-center !py-2.5 text-sm"
                 >عرض المشروع</a
               >
             </div>
@@ -574,7 +574,7 @@
 
           <!-- مشروع 2 -->
           <article class="s-project">
-            <div class="s-project-cover" style="background:linear-gradient(135deg,#b6873a,#075c3a);">
+            <div class="s-project-cover" style="background:linear-gradient(135deg,var(--color-accent),var(--color-secondary-dark));">
               <span class="s-project-tag">تعليم</span>
               <span class="s-project-status"><span class="s-pulse"></span> قائم</span>
               <div class="absolute bottom-3 right-3 z-10 text-white text-2xl"><i class="fas fa-school"></i></div>
@@ -588,7 +588,7 @@
                 <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> 3,500 طالب</span>
                 <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> سنوي</span>
               </div>
-              <a href="project-details.html" class="s-btn s-btn-outline w-full justify-center !py-2.5 text-sm"
+              <a href="project-details.html" class="btn btn-outline w-full justify-center !py-2.5 text-sm"
                 >عرض المشروع</a
               >
             </div>
@@ -596,9 +596,9 @@
 
           <!-- مشروع 3 -->
           <article class="s-project">
-            <div class="s-project-cover" style="background:linear-gradient(135deg,#0b2545,#1d3a6b);">
+            <div class="s-project-cover" style="background:linear-gradient(135deg,var(--color-primary),var(--color-primary-soft));">
               <span class="s-project-tag">إسكان</span>
-              <span class="s-project-status" style="background:#b6873a"><span class="s-pulse"></span> قريبًا</span>
+              <span class="s-project-status" style="background:var(--color-accent)"><span class="s-pulse"></span> قريبًا</span>
               <div class="absolute bottom-3 right-3 z-10 text-white text-2xl">
                 <i class="fas fa-house-chimney-medical"></i>
               </div>
@@ -612,7 +612,7 @@
                 <span><i class="fas fa-users ml-1 text-sanad-emerald"></i> 100 أسرة</span>
                 <span><i class="fas fa-calendar ml-1 text-sanad-emerald"></i> 2025</span>
               </div>
-              <a href="project-details.html" class="s-btn s-btn-outline w-full justify-center !py-2.5 text-sm"
+              <a href="project-details.html" class="btn btn-outline w-full justify-center !py-2.5 text-sm"
                 >عرض المشروع</a
               >
             </div>
@@ -663,8 +663,8 @@
                 </div>
               </div>
               <div class="s-dact">
-                <a href="donation-details.html" class="s-btn s-btn-primary"><i class="fas fa-heart"></i> ساهم الآن</a>
-                <a href="donation-details.html" class="s-btn s-btn-outline">التفاصيل</a>
+                <a href="donation-details.html" class="btn btn-primary"><i class="fas fa-heart"></i> ساهم الآن</a>
+                <a href="donation-details.html" class="btn btn-outline">التفاصيل</a>
               </div>
             </div>
           </article>
@@ -701,8 +701,8 @@
                 </div>
               </div>
               <div class="s-dact">
-                <a href="donation-details.html" class="s-btn s-btn-primary"><i class="fas fa-heart"></i> اكفل الآن</a>
-                <a href="donation-details.html" class="s-btn s-btn-outline">التفاصيل</a>
+                <a href="donation-details.html" class="btn btn-primary"><i class="fas fa-heart"></i> اكفل الآن</a>
+                <a href="donation-details.html" class="btn btn-outline">التفاصيل</a>
               </div>
             </div>
           </article>
@@ -739,15 +739,15 @@
                 </div>
               </div>
               <div class="s-dact">
-                <a href="donation-details.html" class="s-btn s-btn-primary"><i class="fas fa-heart"></i> ساهم الآن</a>
-                <a href="donation-details.html" class="s-btn s-btn-outline">التفاصيل</a>
+                <a href="donation-details.html" class="btn btn-primary"><i class="fas fa-heart"></i> ساهم الآن</a>
+                <a href="donation-details.html" class="btn btn-outline">التفاصيل</a>
               </div>
             </div>
           </article>
         </div>
 
         <div class="text-center mt-10 reveal reveal-delay-2">
-          <a href="donations.html" class="s-btn s-btn-primary s-btn-lg">
+          <a href="donations.html" class="btn btn-primary btn-lg">
             <i class="fas fa-th-large"></i> عرض جميع فرص التبرع <i class="fas fa-arrow-left"></i>
           </a>
         </div>
@@ -839,7 +839,7 @@
                 </div>
               </div>
 
-              <a href="governance.html" class="s-btn s-btn-gold mt-6 w-full justify-center relative z-10"
+              <a href="governance.html" class="btn btn-accent mt-6 w-full justify-center relative z-10"
                 >بوابة الحوكمة <i class="fas fa-arrow-left"></i
               ></a>
             </div>
@@ -916,7 +916,7 @@
             <span class="s-eyebrow mb-4"><i class="fas fa-newspaper"></i> المركز الإعلامي</span>
             <h2 class="s-title font-extrabold">آخر أخبار الجمعية</h2>
           </div>
-          <a href="news.html" class="s-btn s-btn-outline">كل الأخبار <i class="fas fa-arrow-left"></i></a>
+          <a href="news.html" class="btn btn-outline">كل الأخبار <i class="fas fa-arrow-left"></i></a>
         </div>
 
         <div class="grid lg:grid-cols-12 gap-6 reveal reveal-delay-1 s-news-grid">
@@ -980,7 +980,7 @@
             <span class="s-eyebrow mb-4"><i class="fas fa-calendar-days"></i> أجندة الفعاليات</span>
             <h2 class="s-title font-extrabold">فعاليات قادمة</h2>
           </div>
-          <a href="events.html" class="s-btn s-btn-outline">كل الفعاليات <i class="fas fa-arrow-left"></i></a>
+          <a href="events.html" class="btn btn-outline">كل الفعاليات <i class="fas fa-arrow-left"></i></a>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-4 reveal reveal-delay-1">
@@ -1001,7 +1001,7 @@
             >
           </a>
           <a href="event-details.html" class="s-event">
-            <div class="s-event-date" style="background:linear-gradient(135deg,#b6873a,#075c3a);">
+            <div class="s-event-date" style="background:linear-gradient(135deg,var(--color-accent),var(--color-secondary-dark));">
               <div class="day">22</div>
               <div class="month">ربيع الآخر</div>
             </div>
@@ -1016,7 +1016,7 @@
             >
           </a>
           <a href="event-details.html" class="s-event">
-            <div class="s-event-date" style="background:linear-gradient(135deg,#0b2545,#1d3a6b);">
+            <div class="s-event-date" style="background:linear-gradient(135deg,var(--color-primary),var(--color-primary-soft));">
               <div class="day">05</div>
               <div class="month">جمادى الأولى</div>
             </div>
@@ -1191,9 +1191,9 @@
               انضم لرحلة العطاء المؤسسي، وكن جزءًا من قصص حياة يومية نصنعها بأيدي المتبرعين والمتطوعين والشركاء.
             </p>
             <div class="flex flex-wrap justify-center gap-3">
-              <a href="donations.html" class="s-btn s-btn-gold"><i class="fas fa-heart"></i> تبرع الآن</a>
-              <a href="services.html" class="s-btn s-btn-primary"><i class="fas fa-clipboard-list"></i> اطلب خدمة</a>
-              <a href="contact.html" class="s-btn s-btn-ghost"><i class="fas fa-envelope"></i> تواصل معنا</a>
+              <a href="donations.html" class="btn btn-accent"><i class="fas fa-heart"></i> تبرع الآن</a>
+              <a href="services.html" class="btn btn-primary"><i class="fas fa-clipboard-list"></i> اطلب خدمة</a>
+              <a href="contact.html" class="btn btn-ghost"><i class="fas fa-envelope"></i> تواصل معنا</a>
             </div>
           </div>
         </div>
@@ -1270,7 +1270,7 @@
             <p class="text-sm mb-3 leading-relaxed">اشترك لتصلك أبرز المستجدات والفرص.</p>
             <form class="space-y-2" onsubmit="event.preventDefault();">
               <input type="email" class="s-news-input" placeholder="بريدك الإلكتروني" />
-              <button class="s-btn s-btn-primary w-full justify-center !py-2.5 text-sm">
+              <button class="btn btn-primary w-full justify-center !py-2.5 text-sm">
                 <i class="fas fa-paper-plane"></i> اشترك
               </button>
             </form>

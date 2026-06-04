@@ -411,13 +411,13 @@ tailwind.config = { theme:{ extend:{
 </section>
 
 <!-- نافذة تفاصيل الخدمة -->
-<div class="s-modal-overlay" id="mSrvDetail">
-  <div class="s-modal wide">
-    <div class="s-modal-head">
+<div class="sanad-modal-overlay" id="mSrvDetail">
+  <div class="sanad-modal sanad-modal-lg">
+    <div class="sanad-modal-header">
       <h3 id="mdTitle">تفاصيل الخدمة</h3>
-      <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      <button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button>
     </div>
-    <div class="s-modal-body">
+    <div class="sanad-modal-body">
       <p id="mdDesc" class="text-sanad-muted leading-loose mb-5"></p>
       <div class="grid sm:grid-cols-3 gap-3 mb-6 text-sm">
         <div class="srv-mini"><i class="fas fa-users text-sanad-emerald"></i><div><small>الفئة المستهدفة</small><strong id="mdAudience"></strong></div></div>
@@ -444,7 +444,7 @@ tailwind.config = { theme:{ extend:{
         <details class="srv-faq"><summary>هل بياناتي سرية؟</summary><p>نعم، تُعامل بياناتك بسرية تامة وفق سياسة الخصوصية المعتمدة.</p></details>
       </div>
     </div>
-    <div class="s-modal-foot">
+    <div class="sanad-modal-footer">
       <button class="btn btn-outline" data-close>إغلاق</button>
       <button class="btn btn-primary" id="mdRequest"><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
     </div>
@@ -452,13 +452,13 @@ tailwind.config = { theme:{ extend:{
 </div>
 
 <!-- نافذة طلب الخدمة متعدد الخطوات -->
-<div class="s-modal-overlay" id="mSrvRequest">
-  <div class="s-modal wide">
-    <div class="s-modal-head">
+<div class="sanad-modal-overlay" id="mSrvRequest">
+  <div class="sanad-modal sanad-modal-lg">
+    <div class="sanad-modal-header">
       <h3>طلب خدمة: <span id="rqTitle">—</span></h3>
-      <button class="s-modal-close" data-close><i class="fas fa-xmark"></i></button>
+      <button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button>
     </div>
-    <div class="s-modal-body">
+    <div class="sanad-modal-body">
       <ol class="srv-steps" data-srv-steps-bar>
         <li class="active" data-s="1"><span>1</span>مقدّم الطلب</li>
         <li data-s="2"><span>2</span>الحالة</li>
@@ -541,7 +541,7 @@ tailwind.config = { theme:{ extend:{
         </fieldset>
       </form>
     </div>
-    <div class="s-modal-foot">
+    <div class="sanad-modal-footer">
       <button class="btn btn-outline" data-srv-prev disabled><i class="fas fa-chevron-right"></i> السابق</button>
       <button class="btn btn-primary" data-srv-next>التالي <i class="fas fa-chevron-left"></i></button>
       <button class="btn btn-accent hidden" data-srv-submit><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
@@ -550,9 +550,9 @@ tailwind.config = { theme:{ extend:{
 </div>
 
 <!-- نافذة نجاح الطلب -->
-<div class="s-modal-overlay" id="mSrvSuccess">
-  <div class="s-modal">
-    <div class="s-modal-body text-center pt-10">
+<div class="sanad-modal-overlay" id="mSrvSuccess">
+  <div class="sanad-modal">
+    <div class="sanad-modal-body text-center pt-10">
       <div class="srv-success-ico"><i class="fas fa-circle-check"></i></div>
       <h3 class="text-xl font-extrabold text-sanad-navy mb-2">تم استلام طلبك بنجاح</h3>
       <p class="text-sanad-muted leading-loose mb-5">تم إنشاء طلب الخدمة الخاص بك، ويمكنك متابعة حالته في أي وقت باستخدام رقم الطلب.</p>
@@ -564,7 +564,7 @@ tailwind.config = { theme:{ extend:{
         <div><small>مدة الدراسة</small><strong>من 3 إلى 5 أيام عمل</strong></div>
       </div>
     </div>
-    <div class="s-modal-foot">
+    <div class="sanad-modal-footer">
       <button class="btn btn-outline" data-close>العودة إلى الخدمات</button>
       <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
       <a class="btn btn-primary" id="okTrack" href="service-tracking.html"><i class="fas fa-route"></i> تتبع الطلب</a>

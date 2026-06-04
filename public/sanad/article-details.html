@@ -13,12 +13,12 @@
 <script>
 tailwind.config = { theme:{ extend:{
   fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
-  colors:{ sanad:{ navy:'#0b2545',navyDeep:'#061633',navySoft:'#1d3a6b',emerald:'#0d7a4f',emeraldSoft:'#2fa776',emeraldDeep:'#075c3a',gold:'#b6873a',goldSoft:'#d9b066',sand:'#f3ead8',ivory:'#faf7f0',mist:'#eef2f6',border:'#e6ebf1',text:'#0f1d2e',muted:'#5b6b7d' } }
+  colors:{ sanad:{ navy:'var(--color-primary)',navyDeep:'var(--color-primary-dark)',navySoft:'var(--color-primary-soft)',emerald:'var(--color-secondary)',emeraldSoft:'#2fa776',emeraldDeep:'var(--color-secondary-dark)',gold:'var(--color-accent)',goldSoft:'var(--s-gold-soft)',sand:'#f3ead8',ivory:'#faf7f0',mist:'#eef2f6',border:'#e6ebf1',text:'#0f1d2e',muted:'#5b6b7d' } }
 }}}
 </script>
 <link rel="stylesheet" href="assets/css/style.css" />
 <style>
-  .a-hero{background:linear-gradient(135deg,#061633 0%,#0b2545 60%,#0d7a4f 130%);color:#fff;position:relative;overflow:hidden;}
+  .a-hero{background:linear-gradient(135deg,var(--color-primary-dark) 0%,var(--color-primary) 60%,var(--color-secondary) 130%);color:#fff;position:relative;overflow:hidden;}
   .a-hero::before{content:"";position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0 1px,transparent 1px 22px);}
   .a-crumb{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;color:rgba(255,255,255,.78);} .a-crumb a{color:#fff;} .a-crumb i{font-size:.62rem;opacity:.7;}
   .a-cover{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/8;background-size:cover;background-position:center;box-shadow:0 22px 50px rgba(11,37,69,.18);}
@@ -28,16 +28,16 @@ tailwind.config = { theme:{ extend:{
   .a-content p{margin:.9rem 0;color:#1d2b40;}
   .a-content ul{margin:.9rem 0;padding-right:1.4rem;}
   .a-content ul li{margin:.45rem 0;position:relative;padding-right:.6rem;}
-  .a-content ul li::before{content:"";position:absolute;right:-.85rem;top:.85rem;width:6px;height:6px;border-radius:50%;background:#0d7a4f;}
-  .a-quote{border-right:4px solid #0d7a4f;background:linear-gradient(180deg,rgba(13,122,79,.06),rgba(13,122,79,0));padding:1.2rem 1.4rem;border-radius:14px;font-size:1.1rem;color:var(--s-navy);font-weight:600;margin:1.6rem 0;}
-  .a-quote i{color:#b6873a;margin-left:.55rem;}
+  .a-content ul li::before{content:"";position:absolute;right:-.85rem;top:.85rem;width:6px;height:6px;border-radius:50%;background:var(--color-secondary);}
+  .a-quote{border-right:4px solid var(--color-secondary);background:linear-gradient(180deg,rgba(13,122,79,.06),rgba(13,122,79,0));padding:1.2rem 1.4rem;border-radius:14px;font-size:1.1rem;color:var(--s-navy);font-weight:600;margin:1.6rem 0;}
+  .a-quote i{color:var(--color-accent);margin-left:.55rem;}
   .a-img{margin:1.5rem 0;border-radius:18px;overflow:hidden;aspect-ratio:16/9;background-size:cover;background-position:center;box-shadow:0 14px 30px rgba(11,37,69,.10);}
   .a-side{background:#fff;border:1px solid var(--s-border);border-radius:18px;padding:1.3rem;}
   .a-side h4{font-weight:900;color:var(--s-navy);font-size:1rem;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;}
-  .a-side h4 i{color:#0d7a4f;}
+  .a-side h4 i{color:var(--color-secondary);}
   .a-share{display:flex;gap:.45rem;flex-wrap:wrap;}
   .a-share a{width:38px;height:38px;border-radius:11px;background:var(--s-mist);color:var(--s-navy);display:flex;align-items:center;justify-content:center;transition:.2s;}
-  .a-share a:hover{background:#0d7a4f;color:#fff;}
+  .a-share a:hover{background:var(--color-secondary);color:#fff;}
   .a-tag{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;background:var(--s-ivory);border:1px solid var(--s-border);border-radius:999px;font-size:.74rem;font-weight:700;color:var(--s-navy);margin:.2rem;}
   .a-rel{display:grid;grid-template-columns:1fr;gap:1rem;}
   @media(min-width:640px){.a-rel{grid-template-columns:repeat(3,1fr);}}
@@ -58,7 +58,7 @@ tailwind.config = { theme:{ extend:{
       <a href="index.html" class="s-nav-link">الرئيسية</a><a href="about.html" class="s-nav-link">عن الجمعية</a><a href="services.html" class="s-nav-link">الخدمات</a><a href="projects.html" class="s-nav-link">المشاريع</a><a href="donations.html" class="s-nav-link">بوابة التبرع</a><a href="governance.html" class="s-nav-link">الحوكمة</a><a href="media-center.html" class="s-nav-link active">المركز الإعلامي</a><a href="events.html" class="s-nav-link">الفعاليات</a><a href="store.html" class="s-nav-link">المتجر</a>
         <a href="contact.html" class="s-nav-link">تواصل معنا</a>
     </nav>
-    <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+    <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
   </div>
 </header>
 
@@ -144,8 +144,8 @@ tailwind.config = { theme:{ extend:{
           <span class="a-tag">رعاية</span><span class="a-tag">تمكين</span><span class="a-tag">أسر</span><span class="a-tag">مبادرات</span><span class="a-tag">شراكات</span>
         </div>
       </div>
-      <div class="a-side" style="background:linear-gradient(135deg,#0b2545,#075c3a);color:#fff;border:0;">
-        <h4 style="color:#fff;"><i class="fas fa-newspaper" style="color:#d9b066;"></i> مقالات ذات صلة</h4>
+      <div class="a-side" style="background:linear-gradient(135deg,var(--color-primary),var(--color-secondary-dark));color:#fff;border:0;">
+        <h4 style="color:#fff;"><i class="fas fa-newspaper" style="color:var(--s-gold-soft);"></i> مقالات ذات صلة</h4>
         <ul class="space-y-3 text-sm">
           <li><a href="article-details.html" class="hover:text-sanad-goldSoft">دور التطوع في تعزيز أثر الجمعيات</a></li>
           <li><a href="article-details.html" class="hover:text-sanad-goldSoft">الحوكمة بوصفها مدخلًا للثقة</a></li>
@@ -160,7 +160,7 @@ tailwind.config = { theme:{ extend:{
   <div class="s-container">
     <div class="flex items-end justify-between mb-5">
       <div><span class="s-eyebrow"><i class="fas fa-layer-group"></i> ذات صلة</span><h2 class="s-title mt-2">مقالات وأخبار قد تهمّك</h2></div>
-      <a href="media-center.html" class="s-btn s-btn-outline !py-2.5 !px-4 text-sm"><i class="fas fa-arrow-left"></i> كل المحتوى</a>
+      <a href="media-center.html" class="btn btn-outline !py-2.5 !px-4 text-sm"><i class="fas fa-arrow-left"></i> كل المحتوى</a>
     </div>
     <div class="a-rel">
       <a href="article-details.html" class="a-rel-card"><div class="a-rel-img" style="background-image:url('assets/images/posts/4.jpeg');"></div><div class="a-rel-body"><span>2 أبريل 2026 · مقالة</span><h4>كيف تسهم الرعاية الاجتماعية في بناء الاستقرار؟</h4></div></a>
@@ -176,8 +176,8 @@ tailwind.config = { theme:{ extend:{
     <h2 class="s-title mt-3">لا تفوّت جديد المركز الإعلامي</h2>
     <p class="text-sanad-muted mt-3 leading-loose">تابع آخر الأخبار والمقالات والمعارض والإصدارات من قناة سَنَد الرسمية.</p>
     <div class="mt-6 flex flex-wrap items-center gap-3 justify-center">
-      <a href="media-center.html" class="s-btn s-btn-primary"><i class="fas fa-arrow-left"></i> العودة إلى المركز الإعلامي</a>
-      <a href="events.html" class="s-btn s-btn-outline"><i class="fas fa-calendar-days"></i> فعالياتنا القادمة</a>
+      <a href="media-center.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> العودة إلى المركز الإعلامي</a>
+      <a href="events.html" class="btn btn-outline"><i class="fas fa-calendar-days"></i> فعالياتنا القادمة</a>
     </div>
   </div>
 </section>

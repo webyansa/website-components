@@ -86,7 +86,7 @@ tailwind.config = { theme:{ extend:{
   .e-meta{display:flex;flex-wrap:wrap;gap:.6rem;font-size:.74rem;color:var(--s-muted);}
   .e-meta i{margin-left:.25rem;color:#0d7a4f;}
   .e-foot{margin-top:auto;display:flex;gap:.5rem;padding-top:.7rem;border-top:1px dashed var(--s-border);}
-  .e-foot .s-btn{flex:1;padding:.6rem .8rem;font-size:.8rem;}
+  .e-foot .btn{flex:1;padding:.6rem .8rem;font-size:.8rem;}
 
   /* Calendar mini */
   .e-cal{background:#fff;border:1px solid var(--s-border);border-radius:20px;padding:1.3rem;}
@@ -110,7 +110,7 @@ tailwind.config = { theme:{ extend:{
       <a href="index.html" class="s-nav-link">الرئيسية</a><a href="about.html" class="s-nav-link">عن الجمعية</a><a href="services.html" class="s-nav-link">الخدمات</a><a href="projects.html" class="s-nav-link">المشاريع</a><a href="donations.html" class="s-nav-link">بوابة التبرع</a><a href="governance.html" class="s-nav-link">الحوكمة</a><a href="media-center.html" class="s-nav-link">المركز الإعلامي</a><a href="events.html" class="s-nav-link active">الفعاليات</a><a href="store.html" class="s-nav-link">المتجر</a>
         <a href="contact.html" class="s-nav-link">تواصل معنا</a>
     </nav>
-    <a href="donations.html" class="hidden md:inline-flex s-btn s-btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+    <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
   </div>
 </header>
 
@@ -143,7 +143,7 @@ tailwind.config = { theme:{ extend:{
     <div class="e-filters">
       <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
         <h3 class="text-base font-extrabold text-sanad-navy flex items-center gap-2"><i class="fas fa-sliders text-sanad-emeraldDeep"></i> ابحث وفلتر الفعاليات</h3>
-        <button id="eReset" class="s-btn s-btn-outline !py-2 !px-3 text-xs"><i class="fas fa-rotate-left"></i> إعادة الضبط</button>
+        <button id="eReset" class="btn btn-outline !py-2 !px-3 text-xs"><i class="fas fa-rotate-left"></i> إعادة الضبط</button>
       </div>
       <div class="e-search"><i class="fas fa-magnifying-glass"></i><input id="eSearch" type="text" placeholder="ابحث عن فعالية…" /></div>
       <div class="e-fgrid">
@@ -180,8 +180,8 @@ tailwind.config = { theme:{ extend:{
           <div><div class="text-xs text-sanad-muted">المتبقي</div><div class="font-bold text-sanad-emeraldDeep">23 مقعدًا</div></div>
         </div>
         <div class="mt-5 flex flex-wrap items-center gap-3">
-          <a href="event-details.html" class="s-btn s-btn-primary"><i class="fas fa-clipboard-check"></i> سجّل الآن</a>
-          <a href="event-details.html" class="s-btn s-btn-outline"><i class="fas fa-circle-info"></i> تفاصيل الفعالية</a>
+          <a href="event-details.html" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> سجّل الآن</a>
+          <a href="event-details.html" class="btn btn-outline"><i class="fas fa-circle-info"></i> تفاصيل الفعالية</a>
         </div>
       </div>
     </div>
@@ -208,8 +208,8 @@ tailwind.config = { theme:{ extend:{
     <h2 class="s-title mt-3">شاركنا فعالياتنا القادمة</h2>
     <p class="text-sanad-muted mt-3 leading-loose">تابع جديد فعاليات الجمعية وكن جزءًا من صناعة الأثر في مجتمعك.</p>
     <div class="mt-6 flex flex-wrap items-center gap-3 justify-center">
-      <a href="#eGrid" class="s-btn s-btn-primary"><i class="fas fa-clipboard-check"></i> استعرض الفعاليات المتاحة</a>
-      <a href="contact.html" class="s-btn s-btn-outline"><i class="fas fa-headset"></i> تواصل معنا</a>
+      <a href="#eGrid" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> استعرض الفعاليات المتاحة</a>
+      <a href="contact.html" class="btn btn-outline"><i class="fas fa-headset"></i> تواصل معنا</a>
     </div>
   </div>
 </section>
@@ -304,8 +304,8 @@ tailwind.config = { theme:{ extend:{
           ${e.seats?`<span><i class="fas fa-users"></i>${e.left}/${e.seats} مقعدًا</span>`:''}
         </div>
         <div class="e-foot">
-          <a href="event-details.html" class="s-btn s-btn-outline"><i class="fas fa-circle-info"></i> التفاصيل</a>
-          ${e.stat==='open' ? `<a href="event-details.html#register" class="s-btn s-btn-primary"><i class="fas fa-clipboard-check"></i> التسجيل</a>` : `<button class="s-btn s-btn-outline" disabled style="opacity:.55;cursor:not-allowed;"><i class="fas fa-lock"></i> ${STAT_LBL[e.stat]}</button>`}
+          <a href="event-details.html" class="btn btn-outline"><i class="fas fa-circle-info"></i> التفاصيل</a>
+          ${e.stat==='open' ? `<a href="event-details.html#register" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> التسجيل</a>` : `<button class="btn btn-outline" disabled style="opacity:.55;cursor:not-allowed;"><i class="fas fa-lock"></i> ${STAT_LBL[e.stat]}</button>`}
         </div>
       </div>
     </article>`;
