@@ -2450,17 +2450,19 @@
   const root = document.createElement("div");
   root.id = "sxq-root";
   root.innerHTML = `
-    <!-- Floating Bar -->
-    <div class="sxq-fab" id="sxqFab">
-      <div class="sxq-fab-menu" id="sxqFabMenu">
-        <button class="sxq-fab-item" data-sxq-open="donate"><i class="fas fa-bolt"></i> تبرع سريع</button>
-        <button class="sxq-fab-item" data-sxq-open="gift"><i class="fas fa-gift"></i> إهداء التبرع</button>
-        <a class="sxq-fab-item" href="donations.html"><i class="fas fa-heart"></i> بوابة التبرعات</a>
-        <button class="sxq-fab-item" data-sxq-open="join"><i class="fas fa-user-plus"></i> انضم معنا</button>
-        <a class="sxq-fab-item" href="beneficiaries.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-      </div>
-      <button class="sxq-fab-toggle" id="sxqFabBtn" aria-label="افتح القائمة السريعة"><i class="fas fa-plus"></i></button>
-    </div>
+    <!-- Floating Action Bar (vertical, always visible) -->
+    <nav class="sxq-fab" id="sxqFab" aria-label="إجراءات سريعة">
+      <ul class="sxq-fab-list">
+        <li><button type="button" class="sxq-fab-item" data-sxq-open="donate" data-tip="تبرع سريع" aria-label="تبرع سريع"><i class="fas fa-hand-holding-heart"></i><span class="sxq-fab-label">تبرع سريع</span></button></li>
+        <li><button type="button" class="sxq-fab-item" data-sxq-open="gift" data-tip="إهداء التبرع" aria-label="إهداء التبرع"><i class="fas fa-gift"></i><span class="sxq-fab-label">إهداء التبرع</span></button></li>
+        <li><a class="sxq-fab-item" href="donations.html" data-tip="بوابة التبرعات" aria-label="بوابة التبرعات"><i class="fas fa-heart"></i><span class="sxq-fab-label">بوابة التبرعات</span></a></li>
+        <li><button type="button" class="sxq-fab-item" data-sxq-open="join" data-tip="انضم معنا" aria-label="انضم معنا"><i class="fas fa-users"></i><span class="sxq-fab-label">انضم معنا</span></button></li>
+        <li><button type="button" class="sxq-fab-item sxq-fab-item-gold" data-sxq-open="member" data-tip="طلب عضوية" aria-label="طلب عضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">طلب عضوية</span></button></li>
+        <li><a class="sxq-fab-item" href="beneficiaries.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
+      </ul>
+      <button type="button" class="sxq-fab-mobile-toggle" id="sxqFabMobBtn" aria-label="إجراءات سريعة"><i class="fas fa-bolt"></i></button>
+    </nav>
+
 
     <!-- Donate Modal -->
     <div class="sxq-modal" id="sxqDonate" role="dialog" aria-modal="true" aria-labelledby="sxqDonateTitle">
@@ -2790,8 +2792,139 @@
               </div>
             </div>
           </div>
+    </div>
+
+    <!-- Membership Modal -->
+    <div class="sxq-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
+      <div class="sxq-dialog">
+        <div class="sxq-head">
+          <h3 id="sxqMemberTitle"><i class="fas fa-id-card"></i> طلب عضوية الجمعية</h3>
+          <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sxq-body">
+          <!-- Step 1: Form -->
+          <div class="sxq-panel active" data-panel="form">
+            <p style="font-size:.88rem;color:#5b6b85;margin:.1rem 0 .9rem;line-height:1.85">
+              يمكنك تقديم طلب الانضمام لعضوية الجمعية، وسيتم مراجعة الطلب وفق لائحة الجمعية الأساسية والضوابط المعتمدة.
+              <a href="membership.html" style="color:#0d7a4f;font-weight:700;text-decoration:none">الاطلاع على صفحة العضوية <i class="fas fa-arrow-left" style="font-size:.7rem"></i></a>
+            </p>
+
+            <div class="sxq-mem-note">
+              <i class="fas fa-circle-info"></i>
+              <span>قبول طلب العضوية يخضع للائحة الجمعية الأساسية وقرار الجهة المختصة داخل الجمعية، وقد تختلف شروط العضوية أو رسومها حسب نوع العضوية المعتمد.</span>
+            </div>
+
+            <div class="sxq-mem-section">بيانات العضوية</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>نوع العضوية *</label>
+                <select class="sxq-select" data-m-type required>
+                  <option value="">— اختر —</option>
+                  <option>عضو عامل</option>
+                  <option>عضو منتسب</option>
+                  <option>عضو داعم</option>
+                  <option>عضو شرفي</option>
+                </select>
+              </div>
+              <div class="sxq-field"><label>الجنسية</label><input class="sxq-input" data-m-nat placeholder="مثال: سعودي"></div>
+            </div>
+
+            <div class="sxq-mem-section">البيانات الشخصية</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>الاسم الكامل *</label><input class="sxq-input" data-m-name required></div>
+              <div class="sxq-field"><label>رقم الهوية / الإقامة *</label><input class="sxq-input" type="tel" inputmode="numeric" maxlength="10" data-m-id required></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>تاريخ الميلاد</label><input class="sxq-input" type="date" data-m-dob></div>
+              <div class="sxq-field"><label>رقم الجوال *</label><input class="sxq-input" type="tel" inputmode="numeric" placeholder="05xxxxxxxx" data-m-phone required></div>
+            </div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>البريد الإلكتروني</label><input class="sxq-input" type="email" data-m-email placeholder="name@example.com"></div>
+              <div class="sxq-field"><label>المدينة</label><input class="sxq-input" data-m-city></div>
+            </div>
+            <div class="sxq-field"><label>العنوان المختصر</label><input class="sxq-input" data-m-addr placeholder="الحي / الشارع"></div>
+
+            <div class="sxq-mem-section">البيانات المهنية</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>المؤهل العلمي</label>
+                <select class="sxq-select" data-m-edu>
+                  <option>ثانوي</option><option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option><option>دكتوراه</option>
+                </select>
+              </div>
+              <div class="sxq-field"><label>المهنة</label><input class="sxq-input" data-m-job></div>
+            </div>
+            <div class="sxq-field"><label>جهة العمل</label><input class="sxq-input" data-m-org></div>
+
+            <div class="sxq-mem-section">الاهتمامات والرغبات</div>
+            <div class="sxq-field"><label>سبب الرغبة في الانضمام للعضوية *</label>
+              <textarea class="sxq-textarea" data-m-reason rows="3" placeholder="اكتب باختصار سبب رغبتك في الانضمام" required></textarea>
+            </div>
+
+            <div class="sxq-field"><label>مجالات الاهتمام داخل الجمعية</label>
+              <div class="sxq-chips" data-m-interests>
+                <label class="sxq-chip"><input type="checkbox" value="البرامج والخدمات"><span>البرامج والخدمات</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الحوكمة"><span>الحوكمة</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="التطوع"><span>التطوع</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="دعم المستفيدين"><span>دعم المستفيدين</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الشراكات"><span>الشراكات</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الاستدامة المالية"><span>الاستدامة المالية</span></label>
+                <label class="sxq-chip"><input type="checkbox" value="الإعلام والتوعية"><span>الإعلام والتوعية</span></label>
+              </div>
+            </div>
+
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>هل سبق لك التعامل مع الجمعية؟</label>
+                <select class="sxq-select" data-m-prev><option>لا</option><option>نعم</option></select>
+              </div>
+              <div class="sxq-field"><label>المشاركة في الجمعية العمومية عند القبول؟</label>
+                <select class="sxq-select" data-m-ga><option>نعم</option><option>لا</option></select>
+              </div>
+            </div>
+
+            <div class="sxq-mem-section">مرفقات (اختياري)</div>
+            <div class="sxq-row2">
+              <div class="sxq-field"><label>صورة الهوية</label><input class="sxq-input" type="file" data-m-fid></div>
+              <div class="sxq-field"><label>السيرة الذاتية</label><input class="sxq-input" type="file" data-m-fcv></div>
+            </div>
+            <div class="sxq-field"><label>خطاب تعريفي</label><input class="sxq-input" type="file" data-m-fletter></div>
+
+            <div class="sxq-mem-section">الإقرارات</div>
+            <div class="sxq-mem-acks">
+              <label class="sxq-check"><input type="checkbox" data-m-ack1 required> أقر بصحة البيانات المدخلة.</label>
+              <label class="sxq-check"><input type="checkbox" data-m-ack2 required> أوافق على سياسة الخصوصية.</label>
+              <label class="sxq-check"><input type="checkbox" data-m-ack3 required> أتعهد بالالتزام بلائحة الجمعية وأنظمتها عند قبول العضوية.</label>
+              <label class="sxq-check"><input type="checkbox" data-m-ack4 required> أعلم أن قبول العضوية يخضع لمراجعة الجمعية والضوابط المعتمدة.</label>
+            </div>
+
+            <div class="sxq-actions">
+              <button class="sxq-btn sxq-btn-ghost" data-sxq-close><i class="fas fa-times"></i> إلغاء</button>
+              <button class="sxq-btn sxq-btn-primary" data-sxq-msubmit>إرسال طلب العضوية <i class="fas fa-paper-plane"></i></button>
+            </div>
+          </div>
+
+          <!-- Step 2: Success -->
+          <div class="sxq-panel" data-panel="ok">
+            <div class="sxq-success">
+              <div class="sxq-success-ic"><i class="fas fa-check"></i></div>
+              <h4>تم استلام طلب العضوية بنجاح</h4>
+              <p>شكرًا لرغبتكم في الانضمام لعضوية جمعية سَنَد. سيتم مراجعة طلبكم وفق لائحة الجمعية، وسيتم إشعاركم بحالة الطلب عبر بيانات التواصل المسجلة.</p>
+              <div class="sxq-sum">
+                <div class="sxq-sum-row"><span>رقم الطلب</span><b data-mok-id>—</b></div>
+                <div class="sxq-sum-row"><span>نوع العضوية</span><b data-mok-type>—</b></div>
+                <div class="sxq-sum-row"><span>تاريخ الإرسال</span><b data-mok-date>—</b></div>
+                <div class="sxq-sum-row total"><span>الحالة</span><b style="color:#0d7a4f">قيد المراجعة</b></div>
+              </div>
+              <div class="sxq-actions">
+                <button class="sxq-btn sxq-btn-ghost" data-sxq-close-x><i class="fas fa-times"></i> إغلاق</button>
+                <button class="sxq-btn sxq-btn-ghost" onclick="window.print()"><i class="fas fa-print"></i> طباعة ملخص الطلب</button>
+                <a class="sxq-btn sxq-btn-primary" href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+
     </div>
 
     <!-- Gift Card Mini-Modal -->
@@ -2867,12 +3000,17 @@
     });
   }
 
-  /* ---------- FAB ---------- */
-  const fab = $("#sxqFab"), fabBtn = $("#sxqFabBtn");
-  fabBtn.addEventListener("click", () => fab.classList.toggle("open"));
-  document.addEventListener("click", (e) => {
-    if (!fab.contains(e.target)) fab.classList.remove("open");
-  });
+  /* ---------- FAB (mobile-only collapse) ---------- */
+  const fab = $("#sxqFab"), fabMobBtn = $("#sxqFabMobBtn");
+  if (fabMobBtn) {
+    fabMobBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      fab.classList.toggle("open");
+    });
+    document.addEventListener("click", (e) => {
+      if (!fab.contains(e.target)) fab.classList.remove("open");
+    });
+  }
 
   /* ---------- Open triggers ---------- */
   $$("[data-sxq-open]").forEach(b => b.addEventListener("click", (e) => {
@@ -2882,7 +3020,9 @@
     if (k === "donate") { resetDonate(); openModal("sxqDonate"); }
     else if (k === "gift") { resetGift(); openModal("sxqGift"); }
     else if (k === "join") { resetJoin(); openModal("sxqJoin"); }
+    else if (k === "member") { resetMember(); openModal("sxqMember"); }
   }));
+
 
   /* ---------- Close / backdrop / ESC ---------- */
   document.addEventListener("click", (e) => {
@@ -3112,4 +3252,41 @@
     gotoJoinPanel("ok");
   }));
 
+  /* ---------- MEMBERSHIP ---------- */
+  const mModal = $("#sxqMember");
+  let memSeq = 1;
+  function resetMember(){
+    if (!mModal) return;
+    $$(".sxq-panel", mModal).forEach(p => p.classList.toggle("active", p.dataset.panel === "form"));
+    $$("input,select,textarea", mModal).forEach(el => {
+      if (el.type === "checkbox") el.checked = false;
+      else if (el.type !== "file") el.value = el.tagName === "SELECT" ? el.options[0]?.value || "" : "";
+      else el.value = "";
+    });
+  }
+  if (mModal) {
+    $("[data-sxq-msubmit]", mModal).addEventListener("click", () => {
+      const type = $("[data-m-type]", mModal).value.trim();
+      const name = $("[data-m-name]", mModal).value.trim();
+      const idn  = $("[data-m-id]", mModal).value.trim();
+      const phone= $("[data-m-phone]", mModal).value.trim();
+      const reason = $("[data-m-reason]", mModal).value.trim();
+      const ack1 = $("[data-m-ack1]", mModal).checked;
+      const ack2 = $("[data-m-ack2]", mModal).checked;
+      const ack3 = $("[data-m-ack3]", mModal).checked;
+      const ack4 = $("[data-m-ack4]", mModal).checked;
+      if (!type) { window.sxToast && sxToast("الرجاء اختيار نوع العضوية"); return; }
+      if (!name || !idn || !phone) { window.sxToast && sxToast("الرجاء استكمال البيانات الأساسية"); return; }
+      if (!reason) { window.sxToast && sxToast("الرجاء كتابة سبب الرغبة في الانضمام"); return; }
+      if (!(ack1 && ack2 && ack3 && ack4)) { window.sxToast && sxToast("الرجاء الموافقة على جميع الإقرارات"); return; }
+      const id = "MEM-2026-" + String(memSeq++).padStart(4, "0");
+      const today = new Date().toLocaleDateString("ar-SA-u-nu-latn");
+      $("[data-mok-id]", mModal).textContent = id;
+      $("[data-mok-type]", mModal).textContent = type;
+      $("[data-mok-date]", mModal).textContent = today;
+      $$(".sxq-panel", mModal).forEach(p => p.classList.toggle("active", p.dataset.panel === "ok"));
+    });
+  }
+
 })();
+
