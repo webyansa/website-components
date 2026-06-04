@@ -1,8 +1,11 @@
 /* =============================================
    قالب سند — نظام تصميم مؤسسي سعودي
+   راجع DESIGN-SYSTEM.md للتوثيق الكامل
    ============================================= */
 
+/* ========== Design Tokens (Single Source of Truth) ========== */
 :root {
+  /* Legacy tokens (يستخدمها الكود القديم — لا تحذف) */
   --s-navy: #0b2545;
   --s-navy-deep: #061633;
   --s-navy-soft: #1d3a6b;
@@ -27,6 +30,36 @@
                  linear-gradient(160deg, #061633 0%, #0b2545 55%, #0a3654 100%);
   --s-grad-gold: linear-gradient(135deg, #d9b066 0%, #b6873a 100%);
   --s-grad-emerald: linear-gradient(135deg, #2fa776 0%, #075c3a 100%);
+
+  /* === Unified Design Tokens (الواجهة الرسمية للنظام الجديد) === */
+  --color-primary: var(--s-navy);
+  --color-primary-dark: var(--s-navy-deep);
+  --color-primary-soft: var(--s-navy-soft);
+  --color-secondary: var(--s-emerald);
+  --color-secondary-dark: var(--s-emerald-deep);
+  --color-secondary-soft: #e8f5f0;
+  --color-accent: var(--s-gold);
+  --color-accent-soft: #f7efd9;
+  --color-bg: var(--s-ivory);
+  --color-surface: #ffffff;
+  --color-surface-soft: #f4f7f6;
+  --color-border: var(--s-border);
+  --color-text: var(--s-text);
+  --color-text-muted: var(--s-muted);
+  --color-success: var(--s-emerald);
+  --color-warning: #c58a18;
+  --color-danger: #b94a48;
+
+  --shadow-soft: 0 12px 30px rgba(6,36,58,.08);
+  --shadow-medium: 0 18px 45px rgba(6,36,58,.14);
+  --shadow-strong: 0 28px 70px rgba(6,36,58,.18);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --transition: all .25s cubic-bezier(.2,.8,.2,1);
 }
 
 * { box-sizing: border-box; }
@@ -2538,3 +2571,150 @@ html[dir="rtl"] .sx-drawer{transform:translateX(-100%);}
 .srv-select:focus,.srv-select:hover{border-color:var(--s-emerald);background:#fff}
 .srv-reset-mini{width:38px;height:38px;border-radius:10px;border:1px solid var(--s-border);background:#fbfbf9;color:var(--s-muted);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:.2s}
 .srv-reset-mini:hover{background:var(--s-emerald);color:#fff;border-color:var(--s-emerald)}
+
+
+/* =============================================================
+   ============ نظام التصميم الموحد (Unified Layer) ============
+   كلاسات API الجديدة. تعمل بالتوازي مع الكلاسات القديمة.
+   ============================================================= */
+
+/* ---------- Buttons (btn / btn-*) ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.85rem 1.5rem;border-radius:var(--radius-sm);
+  font-family:inherit;font-weight:700;font-size:.95rem;line-height:1;
+  border:1.5px solid transparent;cursor:pointer;white-space:nowrap;
+  text-decoration:none;transition:var(--transition);position:relative;
+}
+.btn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(13,122,79,.25)}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.btn i{font-size:.95em}
+.btn-primary{background:var(--color-secondary);color:#fff;box-shadow:0 10px 24px rgba(13,122,79,.25)}
+.btn-primary:hover{background:var(--color-secondary-dark);transform:translateY(-2px);box-shadow:0 16px 32px rgba(13,122,79,.33);color:#fff}
+.btn-secondary{background:var(--color-primary);color:#fff;box-shadow:0 8px 20px rgba(11,37,69,.22)}
+.btn-secondary:hover{background:var(--color-primary-dark);transform:translateY(-2px);color:#fff}
+.btn-outline{background:transparent;color:var(--color-primary);border-color:var(--color-border)}
+.btn-outline:hover{background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.btn-accent{background:var(--s-grad-gold);color:#3a2810;box-shadow:0 10px 24px rgba(182,135,58,.28)}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(182,135,58,.38);color:#3a2810}
+.btn-danger{background:var(--color-danger);color:#fff}
+.btn-danger:hover{background:#9a3937;transform:translateY(-2px);color:#fff}
+.btn-ghost{background:transparent;color:var(--color-primary)}
+.btn-ghost:hover{background:var(--color-surface-soft)}
+.btn-sm{padding:.55rem 1rem;font-size:.85rem;border-radius:8px}
+.btn-lg{padding:1.05rem 1.9rem;font-size:1rem;border-radius:14px}
+.btn-block{display:flex;width:100%}
+
+/* ---------- Cards (sanad-card) ---------- */
+.sanad-card{
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-md);padding:1.5rem;
+  box-shadow:var(--shadow-soft);transition:var(--transition);
+}
+.sanad-card.is-hover:hover,.sanad-card[data-hover]:hover{
+  transform:translateY(-4px);box-shadow:var(--shadow-medium);border-color:rgba(13,122,79,.25)
+}
+.sanad-card-soft{background:var(--color-surface-soft);border-color:var(--color-border)}
+.sanad-card-featured{border-color:var(--color-secondary);box-shadow:0 18px 40px rgba(13,122,79,.18)}
+.sanad-card-dark{background:linear-gradient(160deg,var(--color-primary),var(--color-primary-dark));color:#fff;border-color:transparent}
+.sanad-card-dark h1,.sanad-card-dark h2,.sanad-card-dark h3,.sanad-card-dark h4{color:#fff}
+.sanad-card-meta{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--color-text-muted);margin-bottom:.6rem}
+.sanad-card-title{font-size:1.1rem;font-weight:800;color:var(--color-primary);margin:0 0 .5rem}
+.sanad-card-text{color:var(--color-text-muted);font-size:.92rem;line-height:1.85;margin:0}
+
+/* ---------- Badges (sanad-badge) ---------- */
+.sanad-badge{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.25rem .65rem;border-radius:999px;
+  font-size:.72rem;font-weight:700;letter-spacing:.01em;line-height:1.4;
+  background:var(--color-surface-soft);color:var(--color-primary);
+  border:1px solid var(--color-border);
+}
+.sanad-badge-primary{background:rgba(11,37,69,.08);color:var(--color-primary);border-color:rgba(11,37,69,.15)}
+.sanad-badge-secondary{background:rgba(13,122,79,.10);color:var(--color-secondary-dark);border-color:rgba(13,122,79,.20)}
+.sanad-badge-accent{background:var(--color-accent-soft);color:#7a5a18;border-color:rgba(201,162,77,.35)}
+.sanad-badge-success{background:rgba(13,122,79,.10);color:var(--color-secondary-dark);border-color:rgba(13,122,79,.20)}
+.sanad-badge-warning{background:#fdf2dc;color:#8a6310;border-color:#f0d99b}
+.sanad-badge-danger{background:#fbeaea;color:#8a2c2a;border-color:#f0c4c3}
+.sanad-badge-muted{background:#eef1f5;color:var(--color-text-muted);border-color:#dde3ea}
+
+/* ---------- Forms (sanad-input / form-*) ---------- */
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-label{font-size:.85rem;font-weight:700;color:var(--color-primary)}
+.form-label .req{color:var(--color-danger);margin-inline-start:.15rem}
+.sanad-input,.form-control,.form-select,.form-textarea{
+  width:100%;font-family:inherit;font-size:.92rem;color:var(--color-text);
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-sm);padding:.75rem .95rem;line-height:1.5;
+  outline:none;transition:var(--transition);
+}
+.sanad-input:hover,.form-control:hover,.form-select:hover,.form-textarea:hover{border-color:#cfd7e2}
+.sanad-input:focus,.form-control:focus,.form-select:focus,.form-textarea:focus{
+  border-color:var(--color-secondary);background:#fff;
+  box-shadow:0 0 0 3px rgba(13,122,79,.12)
+}
+.form-textarea{resize:vertical;min-height:96px;line-height:1.7}
+.form-select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--color-text-muted) 50%),linear-gradient(135deg,var(--color-text-muted) 50%,transparent 50%);background-position:calc(0% + 14px) 50%, calc(0% + 19px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-inline-start:2.4rem}
+.form-hint{font-size:.76rem;color:var(--color-text-muted);margin-top:.15rem}
+.form-error{font-size:.78rem;color:var(--color-danger);font-weight:600;display:flex;align-items:center;gap:.3rem;margin-top:.15rem}
+.form-control.is-invalid,.sanad-input.is-invalid{border-color:var(--color-danger);background:#fdf6f6}
+.form-check{display:flex;align-items:center;gap:.55rem;font-size:.88rem;color:var(--color-text);cursor:pointer}
+.form-check input{accent-color:var(--color-secondary);width:1.05rem;height:1.05rem}
+.form-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:1.25rem}
+
+/* ---------- Modals (sanad-modal) ---------- */
+.sanad-modal-overlay{
+  position:fixed;inset:0;z-index:9999;display:none;
+  align-items:flex-start;justify-content:center;
+  padding:24px 14px;overflow-y:auto;
+  background:rgba(7,18,39,.55);backdrop-filter:blur(4px);
+  animation:sanadFade .2s ease;
+}
+.sanad-modal-overlay.is-open{display:flex}
+.sanad-modal{
+  position:relative;width:100%;max-width:560px;margin:auto;
+  background:var(--color-surface);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-strong);overflow:hidden;
+  animation:sanadUp .25s ease;
+}
+.sanad-modal-lg{max-width:720px}
+.sanad-modal-sm{max-width:420px}
+.sanad-modal-header{
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:1rem 1.25rem;
+  background:linear-gradient(135deg,var(--color-primary-soft),var(--color-secondary));
+  color:#fff;
+}
+.sanad-modal-header h3,.sanad-modal-header .title{
+  margin:0;color:#fff;font-size:1.05rem;font-weight:800;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.sanad-modal-body{padding:1.25rem;color:var(--color-text);background:var(--color-surface)}
+.sanad-modal-footer{
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:flex-end;
+  padding:1rem 1.25rem;background:var(--color-surface-soft);
+  border-top:1px solid var(--color-border);
+}
+.sanad-modal-close{
+  background:rgba(255,255,255,.18);border:0;color:#fff;
+  width:34px;height:34px;border-radius:50%;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.95rem;transition:var(--transition);
+}
+.sanad-modal-close:hover{background:rgba(255,255,255,.32);transform:rotate(90deg)}
+@keyframes sanadFade{from{opacity:0}to{opacity:1}}
+@keyframes sanadUp{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (max-width:540px){
+  .sanad-modal{max-width:100%;border-radius:var(--radius-md)}
+}
+
+/* ---------- Sections / utilities ---------- */
+.sanad-section{padding:clamp(3rem,7vw,5.5rem) 0}
+.sanad-section-soft{background:var(--color-surface-soft)}
+.sanad-section-dark{background:linear-gradient(160deg,var(--color-primary-dark),var(--color-primary));color:#fff}
+.sanad-section-dark h1,.sanad-section-dark h2,.sanad-section-dark h3{color:#fff}
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}
