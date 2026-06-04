@@ -2450,17 +2450,19 @@
   const root = document.createElement("div");
   root.id = "sxq-root";
   root.innerHTML = `
-    <!-- Floating Bar -->
-    <div class="sxq-fab" id="sxqFab">
-      <div class="sxq-fab-menu" id="sxqFabMenu">
-        <button class="sxq-fab-item" data-sxq-open="donate"><i class="fas fa-bolt"></i> تبرع سريع</button>
-        <button class="sxq-fab-item" data-sxq-open="gift"><i class="fas fa-gift"></i> إهداء التبرع</button>
-        <a class="sxq-fab-item" href="donations.html"><i class="fas fa-heart"></i> بوابة التبرعات</a>
-        <button class="sxq-fab-item" data-sxq-open="join"><i class="fas fa-user-plus"></i> انضم معنا</button>
-        <a class="sxq-fab-item" href="beneficiaries.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-      </div>
-      <button class="sxq-fab-toggle" id="sxqFabBtn" aria-label="افتح القائمة السريعة"><i class="fas fa-plus"></i></button>
-    </div>
+    <!-- Floating Action Bar (vertical, always visible) -->
+    <nav class="sxq-fab" id="sxqFab" aria-label="إجراءات سريعة">
+      <ul class="sxq-fab-list">
+        <li><button type="button" class="sxq-fab-item" data-sxq-open="donate" data-tip="تبرع سريع" aria-label="تبرع سريع"><i class="fas fa-hand-holding-heart"></i><span class="sxq-fab-label">تبرع سريع</span></button></li>
+        <li><button type="button" class="sxq-fab-item" data-sxq-open="gift" data-tip="إهداء التبرع" aria-label="إهداء التبرع"><i class="fas fa-gift"></i><span class="sxq-fab-label">إهداء التبرع</span></button></li>
+        <li><a class="sxq-fab-item" href="donations.html" data-tip="بوابة التبرعات" aria-label="بوابة التبرعات"><i class="fas fa-heart"></i><span class="sxq-fab-label">بوابة التبرعات</span></a></li>
+        <li><button type="button" class="sxq-fab-item" data-sxq-open="join" data-tip="انضم معنا" aria-label="انضم معنا"><i class="fas fa-users"></i><span class="sxq-fab-label">انضم معنا</span></button></li>
+        <li><button type="button" class="sxq-fab-item sxq-fab-item-gold" data-sxq-open="member" data-tip="طلب عضوية" aria-label="طلب عضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">طلب عضوية</span></button></li>
+        <li><a class="sxq-fab-item" href="beneficiaries.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
+      </ul>
+      <button type="button" class="sxq-fab-mobile-toggle" id="sxqFabMobBtn" aria-label="إجراءات سريعة"><i class="fas fa-bolt"></i></button>
+    </nav>
+
 
     <!-- Donate Modal -->
     <div class="sxq-modal" id="sxqDonate" role="dialog" aria-modal="true" aria-labelledby="sxqDonateTitle">
