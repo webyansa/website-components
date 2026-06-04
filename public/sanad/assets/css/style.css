@@ -2784,3 +2784,80 @@ html[dir="rtl"] .sx-drawer{transform:translateX(-100%);}
   .s-modal{max-width:100%;border-radius:var(--radius-md)}
 }
 
+
+/* ============================================================
+   Responsive Enhancements (Mobile / Tablet / Desktop)
+   ============================================================ */
+
+/* Use dynamic viewport height so mobile browser chrome doesn't
+   clip the modal, and keep the body scrollable inside */
+.sanad-modal,.s-modal{
+  max-height:calc(100dvh - 48px);
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .s-container{padding:0 1.25rem}
+  .s-page-hero{padding:clamp(3rem,8vw,5rem) 0 clamp(2rem,5vw,3.5rem)}
+  .s-page-hero h1{font-size:clamp(1.6rem,4.2vw,2.4rem)}
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .s-container{padding:0 1rem}
+  .s-page-hero{padding:2.5rem 0 2rem}
+  .s-page-hero h1{font-size:1.55rem;line-height:1.35}
+  .s-page-hero .s-hero-lead{font-size:.95rem}
+  .s-crumbs{font-size:.78rem;flex-wrap:wrap}
+
+  /* Buttons stack & full width on mobile when in form-actions */
+  .form-actions .btn,
+  .form-actions{width:100%}
+  .form-actions .btn{justify-content:center}
+
+  /* Tables become horizontally scrollable wrappers */
+  .table-wrap,.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{min-width:560px}
+
+  /* Cards tighter padding */
+  .sanad-card,.s-card,.bp-card{padding:1rem!important}
+
+  /* Section padding */
+  .sanad-section{padding:2.5rem 0}
+}
+
+/* Mobile modals: full-height friendly, tighter padding,
+   ensure body scrolls smoothly */
+@media (max-width: 640px){
+  .sanad-modal-overlay,.s-modal-overlay{padding:12px 10px;align-items:flex-end}
+  .sanad-modal,.s-modal{
+    max-width:100%;
+    max-height:calc(100dvh - 24px);
+    border-radius:18px 18px 12px 12px;
+  }
+  .sanad-modal-header,.s-modal-head{padding:.85rem 1rem;position:sticky;top:0;z-index:2}
+  .sanad-modal-header h3,.s-modal-head h3{font-size:.98rem}
+  .sanad-modal-body,.s-modal-body{
+    padding:1rem;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .sanad-modal-footer,.s-modal-foot{
+    padding:.75rem 1rem;
+    position:sticky;bottom:0;z-index:2;
+  }
+  .sanad-modal-footer .btn,.s-modal-foot .btn{flex:1 1 auto;justify-content:center}
+}
+
+/* Extra small screens */
+@media (max-width: 380px){
+  .s-page-hero h1{font-size:1.35rem}
+  .btn{padding:.6rem .9rem;font-size:.88rem}
+}
+
+/* Prevent iOS background scroll when modal open */
+body:has(.sanad-modal-overlay.is-open),
+body:has(.s-modal-overlay.is-open),
+body:has(.s-modal-overlay.open){
+  overflow:hidden;
+}
