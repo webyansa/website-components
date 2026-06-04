@@ -2233,6 +2233,15 @@
       else sxToast("تم نسخ رابط الترخيص");
     });
 
+    // تحديث العدادات
+    window.sxUpdateCounts = function () {
+      document.querySelectorAll("[data-cart-count]").forEach((el) => (el.textContent = getCartCount()));
+      document.querySelectorAll("[data-donation-count]").forEach((el) => (el.textContent = getDonationCount()));
+    };
+    window.addEventListener("storage", window.sxUpdateCounts);
+  }
+
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", inject);
   } else {
