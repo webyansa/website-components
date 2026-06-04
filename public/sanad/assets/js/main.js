@@ -1454,56 +1454,97 @@
     }
   }
 
-  /* ===== صفحة التواصل ===== */
-  const tabsBar = document.querySelector("[data-ct-tabs]");
-  if (tabsBar) {
-    tabsBar.querySelectorAll("button").forEach((b) => {
-      b.addEventListener("click", () => {
-        tabsBar.querySelectorAll("button").forEach((x) => x.classList.remove("active"));
-        b.classList.add("active");
-        const t = b.dataset.tab;
-        document.querySelectorAll("[data-panel]").forEach((p) => p.classList.toggle("hidden", p.dataset.panel !== t));
+  /* ===== صفحة التواصل: نموذج موحد ذكي ===== */
+  const ctForm = document.getElementById("ctUnified");
+  if (ctForm) {
+    const TYPE_LABELS = {
+      inquiry: "استفسار", complaint: "شكوى وبلاغات", suggestion: "مقترح",
+      visit: "زيارة", partnership: "شراكات", volunteer: "تطوع",
+      help: "طلب مساعدة", other: "أخرى"
+    };
+    const TICKET_PREFIX = { complaint: "RPT", visit: "VIS", partnership: "PRT" };
+
+    const conditionals = ctForm.querySelectorAll("[data-ct-when]");
+    const nameInput = ctForm.querySelector('input[name="name"]');
+    const phoneInput = ctForm.querySelector('input[name="phone"]');
+    const nameLabel = ctForm.querySelector("[data-ct-name-label]");
+    const phoneLabel = ctForm.querySelector("[data-ct-phone-label]");
+    const attachBox = ctForm.querySelector("[data-ct-attach]");
+    const secretNote = ctForm.querySelector("[data-ct-secret-note]");
+    const channelBox = ctForm.querySelector("[data-ct-channel]");
+
+    const applyType = (t) => {
+      conditionals.forEach((el) => el.classList.toggle("hidden", el.dataset.ctWhen !== t));
+      // المرفق: للشكاوى والشراكات
+      if (attachBox) attachBox.classList.toggle("hidden", !(t === "complaint" || t === "partnership"));
+      // إعادة ضبط السرية عند تغيير النوع
+      if (t !== "complaint") {
+        secretNote?.classList.add("hidden");
+        const noRadio = ctForm.querySelector('input[name="secret"][value="no"]');
+        if (noRadio) noRadio.checked = true;
+        setSecret(false);
+      }
+    };
+
+    const setSecret = (isSecret) => {
+      if (!nameInput || !phoneInput) return;
+      nameInput.required = !isSecret;
+      phoneInput.required = !isSecret;
+      if (nameLabel) nameLabel.innerHTML = isSecret
+        ? 'الاسم الكامل <span class="text-sanad-muted text-xs">(اختياري)</span>'
+        : 'الاسم الكامل <span class="text-red-500">*</span>';
+      if (phoneLabel) phoneLabel.innerHTML = isSecret
+        ? 'رقم الجوال <span class="text-sanad-muted text-xs">(اختياري)</span>'
+        : 'رقم الجوال <span class="text-red-500">*</span>';
+    };
+
+    ctForm.querySelectorAll('input[name="type"]').forEach((r) => {
+      r.addEventListener("change", () => applyType(r.value));
+    });
+    ctForm.querySelectorAll('input[name="secret"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        const isSecret = r.value === "yes" && r.checked;
+        if (r.checked) {
+          secretNote?.classList.toggle("hidden", !isSecret);
+          setSecret(isSecret);
+        }
       });
     });
-    /* hash deep-link */
-    if (location.hash === "#complaints") {
-      tabsBar.querySelector('[data-tab="complaints"]')?.click();
-    }
-  }
-
-  const handleCtForm = (formId, ticketPrefix) => {
-    const f = document.getElementById(formId);
-    if (!f) return;
-    f.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!f.checkValidity()) {
-        f.reportValidity();
-        return;
-      }
-      const ok = f.querySelector("[data-ok]");
-      if (!ok) return;
-      const t = ok.querySelector("[data-ticket]");
-      if (t) t.textContent = ticketPrefix + "-2026-" + String(1000 + Math.floor(Math.random() * 8999));
-      ok.classList.remove("hidden");
-      f.reset();
-      ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    ctForm.querySelectorAll('input[name="contact"]').forEach((r) => {
+      r.addEventListener("change", () => {
+        if (r.checked) channelBox?.classList.toggle("hidden", r.value !== "yes");
+      });
     });
-  };
-  handleCtForm("ctGeneral", "MSG");
-  handleCtForm("ctComplaint", "TCK");
 
-  const rep = document.getElementById("ctReport");
-  const repBtn = document.getElementById("ctReportSubmit");
-  if (rep && repBtn) {
-    repBtn.addEventListener("click", () => {
-      if (!rep.checkValidity()) {
-        rep.reportValidity();
-        return;
+    applyType("inquiry");
+
+    ctForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!ctForm.checkValidity()) { ctForm.reportValidity(); return; }
+      const t = ctForm.querySelector('input[name="type"]:checked')?.value || "inquiry";
+      const prefix = TICKET_PREFIX[t] || "CNT";
+      const ticket = prefix + "-2026-" + String(1000 + Math.floor(Math.random() * 8999)).padStart(4, "0");
+      const today = new Date().toLocaleDateString("ar-SA-u-nu-latn");
+      const modal = document.getElementById("ctSuccess");
+      if (modal) {
+        modal.querySelector("[data-ct-ticket]").textContent = ticket;
+        modal.querySelector("[data-ct-rtype]").textContent = TYPE_LABELS[t] || "—";
+        modal.querySelector("[data-ct-rdate]").textContent = today;
+        modal.classList.add("is-open");
       }
-      const ok = document.querySelector("#mReport [data-ok]");
-      const t = ok?.querySelector("[data-ticket]");
-      if (t) t.textContent = "RPT-2026-" + String(1000 + Math.floor(Math.random() * 8999));
-      ok && ok.classList.remove("hidden");
+      ctForm.reset();
+      applyType("inquiry");
+    });
+
+    // اختيار الفرع في قسم الموقع
+    const branchInfo = document.querySelector("[data-ct-branch-info]");
+    document.querySelectorAll("[data-ct-branches] [data-branch]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-ct-branches] [data-branch]").forEach((x) => x.classList.remove("active"));
+        btn.classList.add("active");
+        const [city, addr] = btn.dataset.branch.split("|");
+        if (branchInfo) branchInfo.innerHTML = `<strong>${city.includes("الرياض") ? "المقر الرئيسي - الرياض" : "فرع " + city}</strong><span>${addr}</span>`;
+      });
     });
   }
 })();
