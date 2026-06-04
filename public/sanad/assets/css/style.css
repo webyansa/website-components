@@ -1,8 +1,11 @@
 /* =============================================
    قالب سند — نظام تصميم مؤسسي سعودي
+   راجع DESIGN-SYSTEM.md للتوثيق الكامل
    ============================================= */
 
+/* ========== Design Tokens (Single Source of Truth) ========== */
 :root {
+  /* Legacy tokens (يستخدمها الكود القديم — لا تحذف) */
   --s-navy: #0b2545;
   --s-navy-deep: #061633;
   --s-navy-soft: #1d3a6b;
@@ -27,6 +30,36 @@
                  linear-gradient(160deg, #061633 0%, #0b2545 55%, #0a3654 100%);
   --s-grad-gold: linear-gradient(135deg, #d9b066 0%, #b6873a 100%);
   --s-grad-emerald: linear-gradient(135deg, #2fa776 0%, #075c3a 100%);
+
+  /* === Unified Design Tokens (الواجهة الرسمية للنظام الجديد) === */
+  --color-primary: var(--s-navy);
+  --color-primary-dark: var(--s-navy-deep);
+  --color-primary-soft: var(--s-navy-soft);
+  --color-secondary: var(--s-emerald);
+  --color-secondary-dark: var(--s-emerald-deep);
+  --color-secondary-soft: #e8f5f0;
+  --color-accent: var(--s-gold);
+  --color-accent-soft: #f7efd9;
+  --color-bg: var(--s-ivory);
+  --color-surface: #ffffff;
+  --color-surface-soft: #f4f7f6;
+  --color-border: var(--s-border);
+  --color-text: var(--s-text);
+  --color-text-muted: var(--s-muted);
+  --color-success: var(--s-emerald);
+  --color-warning: #c58a18;
+  --color-danger: #b94a48;
+
+  --shadow-soft: 0 12px 30px rgba(6,36,58,.08);
+  --shadow-medium: 0 18px 45px rgba(6,36,58,.14);
+  --shadow-strong: 0 28px 70px rgba(6,36,58,.18);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --transition: all .25s cubic-bezier(.2,.8,.2,1);
 }
 
 * { box-sizing: border-box; }
