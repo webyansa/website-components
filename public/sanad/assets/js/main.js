@@ -1284,14 +1284,21 @@
     };
     $$("[data-srv-filter]").forEach((g) => {
       const key = g.dataset.srvFilter;
-      g.querySelectorAll(".chip").forEach((b) => {
-        b.addEventListener("click", () => {
-          g.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
-          b.classList.add("active");
-          state[key] = b.dataset.v;
+      if (g.tagName === "SELECT") {
+        g.addEventListener("change", () => {
+          state[key] = g.value;
           apply();
         });
-      });
+      } else {
+        g.querySelectorAll(".chip").forEach((b) => {
+          b.addEventListener("click", () => {
+            g.querySelectorAll(".chip").forEach((x) => x.classList.remove("active"));
+            b.classList.add("active");
+            state[key] = b.dataset.v;
+            apply();
+          });
+        });
+      }
     });
     const search = $("#srvSearch");
     search &&
@@ -1308,7 +1315,11 @@
         state.q = "";
         if (search) search.value = "";
         $$("[data-srv-filter]").forEach((g) => {
-          g.querySelectorAll(".chip").forEach((b, i) => b.classList.toggle("active", i === 0));
+          if (g.tagName === "SELECT") {
+            g.value = "all";
+          } else {
+            g.querySelectorAll(".chip").forEach((b, i) => b.classList.toggle("active", i === 0));
+          }
         });
         apply();
       });
