@@ -1459,7 +1459,10 @@
   if (ctForm) {
     ctForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (!ctForm.checkValidity()) { ctForm.reportValidity(); return; }
+      if (!ctForm.checkValidity()) {
+        ctForm.reportValidity();
+        return;
+      }
       const ticket = "CNT-2026-" + String(1 + Math.floor(Math.random() * 9998)).padStart(4, "0");
       const modal = document.getElementById("ctSuccess");
       if (modal) {
@@ -1478,11 +1481,11 @@
         document.querySelectorAll("[data-ct-branches] [data-branch]").forEach((x) => x.classList.remove("active"));
         btn.classList.add("active");
         const [city, addr] = btn.dataset.branch.split("|");
-        if (branchInfo) branchInfo.innerHTML = `<strong>${city.includes("الرياض") ? "المقر الرئيسي - الرياض" : "فرع " + city}</strong><span>${addr}</span>`;
+        if (branchInfo)
+          branchInfo.innerHTML = `<strong>${city.includes("الرياض") ? "المقر الرئيسي - الرياض" : "فرع " + city}</strong><span>${addr}</span>`;
       });
     });
   }
-
 })();
 
 /* ===================== Beneficiaries Portal ===================== */
@@ -1927,9 +1930,7 @@
           <li><a href="governance.html#reports"><i class="fas fa-angle-left"></i> التقارير المالية</a></li>
           <li><a href="board.html"><i class="fas fa-angle-left"></i> مجلس الإدارة</a></li>
           <li><a href="governance.html#assembly"><i class="fas fa-angle-left"></i> الجمعية العمومية</a></li>
-          <li><a href="governance.html#annual"><i class="fas fa-angle-left"></i> التقرير السنوي</a></li>
           <li><a href="governance.html#minutes"><i class="fas fa-angle-left"></i> محاضر الاجتماعات</a></li>
-          <li><a href="governance.html#disclosure"><i class="fas fa-angle-left"></i> نموذج الإفصاح</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
@@ -1940,8 +1941,6 @@
           <li><a href="beneficiary-products.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
           <li><a href="beneficiary-request-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
           <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
-          <li><a href="contact.html#complaints"><i class="fas fa-angle-left"></i> الشكاوى والمقترحات</a></li>
-          <li><a href="contact.html#report"><i class="fas fa-angle-left"></i> الإبلاغ عن مخالفة</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
