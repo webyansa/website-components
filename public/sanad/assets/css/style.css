@@ -140,8 +140,26 @@ img { max-width: 100%; display: block; }
   background: var(--s-grad-hero);
   color:#fff;
 }
+.s-hero-bg { position:absolute; inset:0; z-index:0; }
+.s-hero-slide {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transition: opacity 1.4s ease-in-out;
+  transform: scale(1.05);
+  animation: sHeroZoom 12s ease-in-out infinite alternate;
+}
+.s-hero-slide.is-active { opacity:1; }
+@keyframes sHeroZoom { from { transform:scale(1.02);} to { transform:scale(1.12);} }
+.s-hero-veil {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(6,22,51,.88) 0%, rgba(11,37,69,.78) 50%, rgba(10,54,84,.72) 100%),
+    radial-gradient(120% 90% at 90% 0%, rgba(16,58,114,.55) 0%, transparent 55%),
+    radial-gradient(110% 100% at 0% 100%, rgba(10,90,60,.5) 0%, transparent 55%);
+}
+.s-hero > .s-container { position:relative; z-index:2; }
 .s-hero::before {
-  content:""; position:absolute; inset:0; pointer-events:none;
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
   background-image:
     linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
