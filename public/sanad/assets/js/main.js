@@ -33,6 +33,20 @@
   onScroll();
   toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
+  /* سلايدر خلفية الهيرو */
+  const heroSlider = document.querySelector("[data-hero-slider]");
+  if (heroSlider) {
+    const slides = heroSlider.querySelectorAll(".s-hero-slide");
+    let idx = 0;
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[idx].classList.remove("is-active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("is-active");
+      }, 5000);
+    }
+  }
+
   /* ظهور الأقسام */
   const ro = new IntersectionObserver(
     (es) => {
