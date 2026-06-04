@@ -3000,12 +3000,17 @@
     });
   }
 
-  /* ---------- FAB ---------- */
-  const fab = $("#sxqFab"), fabBtn = $("#sxqFabBtn");
-  fabBtn.addEventListener("click", () => fab.classList.toggle("open"));
-  document.addEventListener("click", (e) => {
-    if (!fab.contains(e.target)) fab.classList.remove("open");
-  });
+  /* ---------- FAB (mobile-only collapse) ---------- */
+  const fab = $("#sxqFab"), fabMobBtn = $("#sxqFabMobBtn");
+  if (fabMobBtn) {
+    fabMobBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      fab.classList.toggle("open");
+    });
+    document.addEventListener("click", (e) => {
+      if (!fab.contains(e.target)) fab.classList.remove("open");
+    });
+  }
 
   /* ---------- Open triggers ---------- */
   $$("[data-sxq-open]").forEach(b => b.addEventListener("click", (e) => {
@@ -3015,7 +3020,9 @@
     if (k === "donate") { resetDonate(); openModal("sxqDonate"); }
     else if (k === "gift") { resetGift(); openModal("sxqGift"); }
     else if (k === "join") { resetJoin(); openModal("sxqJoin"); }
+    else if (k === "member") { resetMember(); openModal("sxqMember"); }
   }));
+
 
   /* ---------- Close / backdrop / ESC ---------- */
   document.addEventListener("click", (e) => {
