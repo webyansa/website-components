@@ -2184,3 +2184,143 @@
     inject();
   }
 })();
+
+/* =============================================
+   صفحة الوظائف وفرص التطوع — careers
+   ============================================= */
+(function () {
+  "use strict";
+  const grid = document.querySelector("[data-careers-grid]");
+  if (!grid) return;
+
+  const items = Array.from(grid.querySelectorAll("[data-career]"));
+  const state = { type: "all", mode: "all", time: "all", q: "" };
+
+  const apply = () => {
+    const q = state.q.trim().toLowerCase();
+    let visible = 0;
+    items.forEach((el) => {
+      const t = el.getAttribute("data-type") || "";
+      const m = el.getAttribute("data-mode") || "";
+      const tm = el.getAttribute("data-time") || "";
+      const title = (el.getAttribute("data-title") || "").toLowerCase();
+      const ok =
+        (state.type === "all" || t === state.type) &&
+        (state.mode === "all" || m === state.mode) &&
+        (state.time === "all" || tm === state.time) &&
+        (!q || title.indexOf(q) !== -1);
+      el.classList.toggle("is-hidden", !ok);
+      if (ok) visible++;
+    });
+    const empty = document.querySelector("[data-careers-empty]");
+    if (empty) empty.classList.toggle("is-hidden", visible > 0);
+  };
+
+  document.querySelectorAll("[data-cfilter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const k = btn.getAttribute("data-cfilter");
+      const v = btn.getAttribute("data-value");
+      state[k] = v;
+      document.querySelectorAll(`[data-cfilter="${k}"]`).forEach((b) => b.classList.toggle("active", b === btn));
+      apply();
+    });
+  });
+  const search = document.querySelector("[data-careers-search]");
+  search?.addEventListener("input", (e) => { state.q = e.target.value; apply(); });
+
+  /* نافذة التفاصيل */
+  const detailsModal = document.getElementById("crDetails");
+  const detailsBody = document.getElementById("crDetailsBody");
+  const detailsTitle = document.getElementById("crDetailsTitle");
+  const detailsApply = document.getElementById("crDetailsApply");
+
+  const fillDetails = (el) => {
+    const type = el.getAttribute("data-type");
+    const data = JSON.parse(el.getAttribute("data-info") || "{}");
+    detailsTitle.innerHTML = `<i class="fas ${type === 'job' ? 'fa-briefcase' : 'fa-hands-helping'}"></i> ${data.title}`;
+    const rows = [];
+    if (type === "job") {
+      rows.push(["الإدارة", data.dept], ["مقر العمل", data.location], ["نوع الدوام", data.time], ["آخر موعد للتقديم", data.deadline]);
+    } else {
+      rows.push(["المجال التطوعي", data.field], ["طريقة المشاركة", data.mode], ["عدد الساعات", data.hours], ["الموقع", data.location], ["تاريخ البداية", data.start], ["المقاعد المتاحة", data.seats]);
+    }
+    const meta = rows.map(([k, v]) => `<div class="cr-meta-item"><span>${k}</span><strong>${v || "-"}</strong></div>`).join("");
+    const sections = [
+      ["وصف", data.desc],
+      [type === "job" ? "المهام والمسؤوليات" : "المهام التطوعية", data.tasks],
+      [type === "job" ? "المؤهلات المطلوبة" : "المتطلبات", data.req],
+      [type === "job" ? "المهارات المطلوبة" : "الفئة المناسبة", data.skills],
+    ].filter(([, v]) => v && v.length).map(([k, v]) => `<div class="cr-sec"><h5>${k}</h5>${Array.isArray(v) ? `<ul>${v.map(x => `<li>${x}</li>`).join("")}</ul>` : `<p>${v}</p>`}</div>`).join("");
+
+    detailsBody.innerHTML = `<div class="cr-meta-grid">${meta}</div>${sections}`;
+    detailsApply.setAttribute("data-apply-type", type);
+    detailsApply.setAttribute("data-apply-title", data.title);
+  };
+
+  const openModal = (m) => { m?.classList.add("open"); document.body.style.overflow = "hidden"; };
+  const closeModal = (m) => { m?.classList.remove("open"); document.body.style.overflow = ""; };
+
+  grid.addEventListener("click", (e) => {
+    const card = e.target.closest("[data-career]");
+    if (!card) return;
+    if (e.target.closest("[data-cr-details]")) {
+      fillDetails(card);
+      openModal(detailsModal);
+    } else if (e.target.closest("[data-cr-apply]")) {
+      const data = JSON.parse(card.getAttribute("data-info") || "{}");
+      openApply(card.getAttribute("data-type"), data.title);
+    }
+  });
+
+  document.querySelectorAll("[data-cr-close]").forEach((b) => b.addEventListener("click", () => {
+    closeModal(detailsModal);
+    closeModal(document.getElementById("crApply"));
+    closeModal(document.getElementById("crSuccess"));
+  }));
+  [detailsModal, document.getElementById("crApply"), document.getElementById("crSuccess")].forEach((m) => {
+    m?.addEventListener("click", (e) => { if (e.target === m) closeModal(m); });
+  });
+
+  /* المشاركة */
+  document.getElementById("crShare")?.addEventListener("click", () => {
+    const url = location.href;
+    if (navigator.clipboard) navigator.clipboard.writeText(url);
+    window.sxToast && sxToast("تم نسخ رابط الفرصة");
+  });
+
+  /* نموذج التقديم */
+  const applyModal = document.getElementById("crApply");
+  const applyTitle = document.getElementById("crApplyTitle");
+  const jobFields = document.querySelectorAll("[data-cr-job-field]");
+  const volFields = document.querySelectorAll("[data-cr-vol-field]");
+  const applyForm = document.getElementById("crApplyForm");
+  const applyTypeInput = document.getElementById("crApplyType");
+  const applyTargetInput = document.getElementById("crApplyTarget");
+
+  const openApply = (type, title) => {
+    applyTypeInput.value = type;
+    applyTargetInput.value = title || "";
+    applyTitle.innerHTML = `<i class="fas ${type === 'job' ? 'fa-briefcase' : 'fa-hands-helping'}"></i> ${type === "job" ? "التقدم للوظيفة" : "التقدم لفرصة التطوع"}${title ? " — " + title : ""}`;
+    jobFields.forEach((f) => f.style.display = type === "job" ? "" : "none");
+    volFields.forEach((f) => f.style.display = type === "vol" ? "" : "none");
+    jobFields.forEach((f) => f.querySelectorAll("input,select,textarea").forEach((i) => i.required = type === "job" && i.dataset.req === "1"));
+    volFields.forEach((f) => f.querySelectorAll("input,select,textarea").forEach((i) => i.required = type === "vol" && i.dataset.req === "1"));
+    closeModal(detailsModal);
+    openModal(applyModal);
+  };
+
+  detailsApply?.addEventListener("click", () => {
+    openApply(detailsApply.getAttribute("data-apply-type"), detailsApply.getAttribute("data-apply-title"));
+  });
+
+  applyForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const type = applyTypeInput.value;
+    const seq = String(Math.floor(Math.random() * 9000) + 1000);
+    const ticket = (type === "job" ? "CAR-2026-" : "VOL-2026-") + seq;
+    document.getElementById("crTicket").textContent = ticket;
+    closeModal(applyModal);
+    openModal(document.getElementById("crSuccess"));
+    applyForm.reset();
+  });
+})();
