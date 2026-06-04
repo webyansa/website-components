@@ -1916,7 +1916,6 @@
           <li><a href="store.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
           <li><a href="beneficiaries.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
           <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
-          <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
@@ -1938,6 +1937,7 @@
           <li><a href="beneficiary-products.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
           <li><a href="beneficiary-request-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
           <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
+           <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
