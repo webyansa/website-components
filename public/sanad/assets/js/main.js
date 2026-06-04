@@ -33,6 +33,20 @@
   onScroll();
   toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
+  /* سلايدر خلفية الهيرو */
+  const heroSlider = document.querySelector("[data-hero-slider]");
+  if (heroSlider) {
+    const slides = heroSlider.querySelectorAll(".s-hero-slide");
+    let idx = 0;
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[idx].classList.remove("is-active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("is-active");
+      }, 5000);
+    }
+  }
+
   /* ظهور الأقسام */
   const ro = new IntersectionObserver(
     (es) => {
@@ -1920,14 +1934,13 @@
         </ul>
       </div>
       <div class="sx-fcol">
-        <h4>الحوكمة والشفافية</h4>
+        <h4>روابط تهمك</h4>
         <ul>
           <li><a href="governance.html"><i class="fas fa-angle-left"></i> الحوكمة</a></li>
-          <li><a href="governance.html#policies"><i class="fas fa-angle-left"></i> اللوائح والسياسات</a></li>
-          <li><a href="governance.html#reports"><i class="fas fa-angle-left"></i> التقارير المالية</a></li>
-          <li><a href="board.html"><i class="fas fa-angle-left"></i> مجلس الإدارة</a></li>
-          <li><a href="governance.html#assembly"><i class="fas fa-angle-left"></i> الجمعية العمومية</a></li>
-          <li><a href="governance.html#minutes"><i class="fas fa-angle-left"></i> محاضر الاجتماعات</a></li>
+          <li><a href="terms.html"><i class="fas fa-angle-left"></i> الشروط والأحكام</a></li>
+          <li><a href="privacy.html"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
+          <li><a href="careers.html"><i class="fas fa-angle-left"></i> الوظائف والتطوع</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
