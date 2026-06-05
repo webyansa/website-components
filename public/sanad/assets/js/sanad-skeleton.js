@@ -1,32 +1,25 @@
 /* قالب سند — Skeleton Loading
-   هادئ، سريع، ولا يكسر أي تخطيط موجود.
-   يحقن قبل تحميل المحتوى لمنع الوميض. */
+   هادئ، سريع، ولا يكسر أي تخطيط موجود. */
 (function () {
   "use strict";
 
-  // تعطيل عبر <body class="no-skeleton"> أو ?no-skeleton
-  try {
-    if (/[?&]no-skeleton\b/.test(location.search)) return;
-  } catch (_) {}
+  try { if (/[?&]no-skeleton\b/.test(location.search)) return; } catch (_) {}
 
   var DOC = document.documentElement;
   DOC.classList.add("sk-loading");
 
-  // CSS مُدمج (لمنع وميض قبل تحميل style.css)
   var css =
     "html.sk-loading body > *:not(#pageSkeleton){visibility:hidden!important}" +
     "body.no-skeleton #pageSkeleton{display:none!important}" +
     "body.no-skeleton > *{visibility:visible!important}" +
-    "#pageSkeleton{position:fixed;inset:0;z-index:99990;background:#F8F5EE;overflow:hidden;opacity:1;transition:opacity .35s ease}" +
+    "#pageSkeleton{position:fixed;inset:0;z-index:99990;background:#F8F5EE;overflow:hidden;opacity:1;transition:opacity .3s ease}" +
     "#pageSkeleton.sk-hide{opacity:0;pointer-events:none}" +
     "#pageSkeleton .sk-wrap{max-width:1180px;margin:0 auto;padding:18px 20px}" +
     "#pageSkeleton .sk-row{display:flex;align-items:center;gap:12px}" +
     "#pageSkeleton .sk-spacer{flex:1}" +
     "#pageSkeleton .sk{background:#E8ECEA;border-radius:10px;position:relative;overflow:hidden}" +
-    "#pageSkeleton .sk::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:skShimmer 1.6s infinite}" +
-    "html[dir=rtl] #pageSkeleton .sk::after{animation-name:skShimmerRtl}" +
+    "#pageSkeleton .sk::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:skShimmer 1.4s infinite}" +
     "@keyframes skShimmer{100%{transform:translateX(100%)}}" +
-    "@keyframes skShimmerRtl{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}" +
     "#pageSkeleton .sk-logo{width:44px;height:44px;border-radius:12px}" +
     "#pageSkeleton .sk-pill{height:14px;border-radius:999px}" +
     "#pageSkeleton .sk-btn{height:38px;width:108px;border-radius:999px}" +
@@ -39,9 +32,7 @@
       "#pageSkeleton .sk-nav-pill{display:none}" +
       "#pageSkeleton .sk-grid{grid-template-columns:repeat(2,1fr);gap:10px}" +
       "#pageSkeleton .sk-card{height:96px}" +
-      "#pageSkeleton .sk-hero{height:200px;margin:16px 0}}" +
-    "html.sk-fade-in body > *:not(#pageSkeleton){animation:skFadeIn .45s ease both}" +
-    "@keyframes skFadeIn{from{opacity:0}to{opacity:1}}";
+      "#pageSkeleton .sk-hero{height:200px;margin:16px 0}}";
 
   var style = document.createElement("style");
   style.setAttribute("data-sanad-skeleton", "");
@@ -49,7 +40,8 @@
   (document.head || DOC).appendChild(style);
 
   function buildSkeleton() {
-    if (document.body && document.body.classList.contains("no-skeleton")) return;
+    if (!document.body) return;
+    if (document.body.classList.contains("no-skeleton")) { DOC.classList.remove("sk-loading"); return; }
     if (document.getElementById("pageSkeleton")) return;
     var sk = document.createElement("div");
     sk.id = "pageSkeleton";
@@ -78,37 +70,33 @@
     document.body.insertBefore(sk, document.body.firstChild);
   }
 
-  if (document.body) buildSkeleton();
-  else document.addEventListener("DOMContentLoaded", buildSkeleton, { once: true });
-
   var hidden = false;
   function hide() {
     if (hidden) return;
     hidden = true;
-    var sk = document.getElementById("pageSkeleton");
     DOC.classList.remove("sk-loading");
-    DOC.classList.add("sk-fade-in");
+    var sk = document.getElementById("pageSkeleton");
     if (sk) {
       sk.classList.add("sk-hide");
       setTimeout(function () {
-        sk.parentNode && sk.parentNode.removeChild(sk);
-        DOC.classList.remove("sk-fade-in");
-      }, 400);
+        if (sk.parentNode) sk.parentNode.removeChild(sk);
+      }, 320);
     }
   }
 
-  function scheduleHide(extra) {
-    setTimeout(hide, extra || 500);
+  // ابنِ الهيكل فور توفر body
+  if (document.body) buildSkeleton();
+  else document.addEventListener("DOMContentLoaded", buildSkeleton, { once: true });
+
+  // أخفِ الهيكل بمجرد جاهزية DOM (لا ننتظر CDN/الخطوط)
+  if (document.readyState === "interactive" || document.readyState === "complete") {
+    setTimeout(hide, 150);
+  } else {
+    document.addEventListener("DOMContentLoaded", function () { setTimeout(hide, 150); }, { once: true });
   }
 
-  if (document.readyState === "complete") {
-    scheduleHide(300);
-  } else {
-    window.addEventListener("load", function () { scheduleHide(500); }, { once: true });
-  }
-  // أمان: لا يبقى أكثر من 2.5 ثانية مهما حصل
-  setTimeout(hide, 2500);
-  window.addEventListener("pageshow", function (e) {
-    if (e.persisted) hide();
-  });
+  // صمام أمان قصير: 1.2 ثانية كحد أقصى
+  setTimeout(hide, 1200);
+
+  window.addEventListener("pageshow", function (e) { if (e.persisted) hide(); });
 })();
