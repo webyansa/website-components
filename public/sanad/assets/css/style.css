@@ -541,20 +541,22 @@ img { max-width: 100%; display: block; }
 
 /* ========== Partners (شركاء النجاح) ========== */
 .s-partners-wrap {
-  position:relative; overflow:hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  position:relative; overflow:hidden; direction:ltr;
+  padding:.35rem 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 .s-partners-track {
-  display:flex; gap:3rem; align-items:center; width:max-content;
-  animation: s-partners-scroll 40s linear infinite;
+  display:flex; gap:1rem; align-items:center; width:max-content; min-width:200%;
+  direction:ltr; will-change:transform;
+  animation: s-partners-scroll 34s linear infinite;
 }
 .s-partners-wrap:hover .s-partners-track { animation-play-state: paused; }
 .s-partner-item {
-  flex:0 0 auto; width:180px; height:96px;
+  flex:0 0 auto; width:178px; height:96px;
   display:flex; align-items:center; justify-content:center;
   background:#fff; border:1px solid var(--s-border); border-radius:14px;
-  padding:1rem; transition: all .3s;
+  padding:.65rem; transition: all .3s;
 }
 .s-partner-item:hover { border-color: var(--s-emerald-soft); box-shadow: var(--s-shadow-sm); transform: translateY(-3px); }
 .s-partner-item img {
@@ -565,6 +567,11 @@ img { max-width: 100%; display: block; }
 @keyframes s-partners-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+@media (max-width:768px) {
+  .s-partners-track { gap:.75rem; animation-duration:28s; }
+  .s-partner-item { width:138px; height:76px; padding:.55rem; }
 }
 
 /* ========== Events ========== */
