@@ -39,10 +39,14 @@
   style.appendChild(document.createTextNode(css));
   (document.head || DOC).appendChild(style);
 
+  var hidden = false;
+  var built = false;
+
   function buildSkeleton() {
-    if (!document.body) return;
-    if (document.body.classList.contains("no-skeleton")) { DOC.classList.remove("sk-loading"); return; }
+    if (hidden || built || !document.body) return false;
+    if (document.body.classList.contains("no-skeleton")) { hide(); return true; }
     if (document.getElementById("pageSkeleton")) return;
+    built = true;
     var sk = document.createElement("div");
     sk.id = "pageSkeleton";
     sk.setAttribute("aria-hidden", "true");
@@ -68,9 +72,9 @@
         '</div>' +
       '</div>';
     document.body.insertBefore(sk, document.body.firstChild);
+    return true;
   }
 
-  var hidden = false;
   function hide() {
     if (hidden) return;
     hidden = true;
@@ -84,19 +88,17 @@
     }
   }
 
-  // ابنِ الهيكل فور توفر body
-  if (document.body) buildSkeleton();
-  else document.addEventListener("DOMContentLoaded", buildSkeleton, { once: true });
+  // ابنِ الهيكل فور توفر body فقط، ولا تنتظر DOMContentLoaded أو أي مكتبة خارجية.
+  (function waitForBody() {
+    if (buildSkeleton()) {
+      setTimeout(hide, 220);
+      return;
+    }
+    if (!hidden) setTimeout(waitForBody, 16);
+  })();
 
-  // أخفِ الهيكل بمجرد جاهزية DOM (لا ننتظر CDN/الخطوط)
-  if (document.readyState === "interactive" || document.readyState === "complete") {
-    setTimeout(hide, 150);
-  } else {
-    document.addEventListener("DOMContentLoaded", function () { setTimeout(hide, 150); }, { once: true });
-  }
+  // صمام أمان مطلق: يمنع ظهور Skeleton متأخرًا أو بقاؤه عند تأخر أي CDN/خطوط/أيقونات.
+  setTimeout(hide, 900);
 
-  // صمام أمان قصير: 1.2 ثانية كحد أقصى
-  setTimeout(hide, 1200);
-
-  window.addEventListener("pageshow", function (e) { if (e.persisted) hide(); });
+  window.addEventListener("pageshow", hide);
 })();
