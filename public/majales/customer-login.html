@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>دخول العملاء · جمعية سَنَد</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#0b2545',navyDeep:'#061633',emerald:'#0d7a4f',emeraldDeep:'#075c3a',gold:'#b6873a',goldSoft:'#d9b066',ivory:'#faf7f0',mist:'#eef2f6',border:'#e6ebf1',text:'#0f1d2e',muted:'#5b6b7d' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased min-h-screen flex flex-col">
+<section class="flex-1 flex items-center justify-center py-16 px-4">
+  <div class="w-full max-w-md bg-white border border-sanad-border rounded-2xl shadow-xl p-8">
+    <div class="text-center mb-6">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-sanad-navy to-sanad-emerald text-white flex items-center justify-center text-2xl mb-3"><i class="fas fa-bag-shopping"></i></div>
+      <h1 class="text-xl font-extrabold text-sanad-navy">دخول العملاء</h1>
+      <p class="text-sm text-sanad-muted mt-2">سجل دخولك لمتابعة طلباتك من متجر الجمعية.</p>
+    </div>
+    <form class="space-y-4" onsubmit="event.preventDefault();window.sxToast&&sxToast("بوابة العملاء قيد الإعداد");">
+      <div>
+        <label class="text-xs font-bold text-sanad-navy mb-1 block">الجوال أو البريد الإلكتروني</label>
+        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-sanad-border focus:border-sanad-emerald outline-none text-sm" placeholder="05XXXXXXXX" />
+      </div>
+      <div>
+        <label class="text-xs font-bold text-sanad-navy mb-1 block">كلمة المرور</label>
+        <input type="password" required class="w-full px-4 py-3 rounded-xl border border-sanad-border focus:border-sanad-emerald outline-none text-sm" placeholder="••••••••" />
+      </div>
+      <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-sanad-emerald to-sanad-emeraldDeep text-white font-extrabold text-sm"><i class="fas fa-right-to-bracket ml-1"></i> تسجيل الدخول</button>
+      <div class="text-center text-xs text-sanad-muted">
+        ليس لديك حساب؟ <a href="beneficiary-register.html" class="text-sanad-emerald font-bold">إنشاء حساب</a>
+      </div>
+      <div class="text-center text-xs">
+        <a href="store.html" class="text-sanad-navy font-bold"><i class="fas fa-arrow-right"></i> العودة للمتجر</a>
+      </div>
+    </form>
+  </div>
+</section>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

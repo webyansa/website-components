@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>متجر الجمعية — جمعية سَنَد</title>
+<meta name="description" content="منتجات وخدمات الجمعية: ملموسة، رقمية، خدمات، دورات، ومنتجات ذات أثر." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#0b2545', navyDeep:'#061633', navySoft:'#1d3a6b', emerald:'#0d7a4f', emeraldSoft:'#2fa776', emeraldDeep:'#075c3a', gold:'#b6873a', goldSoft:'#d9b066', sand:'#f3ead8', ivory:'#faf7f0', mist:'#eef2f6', border:'#e6ebf1', text:'#0f1d2e', muted:'#5b6b7d' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+      <a href="store.html"><i class="fas fa-bag-shopping ml-1 text-sanad-emeraldSoft"></i> متجر الجمعية</a>
+      <a href="beneficiaries.html"><i class="fas fa-user-shield ml-1 text-sanad-emeraldSoft"></i> بوابة المستفيدين</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link">الأخبار</a>
+      <a href="store.html" class="s-nav-link active">المتجر</a>
+      <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="cart.html" class="relative w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy hover:bg-sanad-mist" aria-label="السلة">
+        <i class="fas fa-bag-shopping"></i>
+        <span data-cart-count class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-sanad-emerald text-white text-[11px] font-bold flex items-center justify-center" style="display:none">0</span>
+      </a>
+      <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية سَنَد</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+    <a href="projects.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المشاريع</a>
+    <a href="donations.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">بوابة التبرع</a>
+    <a href="governance.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الحوكمة</a>
+    <a href="media-center.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الأخبار</a>
+    <a href="store.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">متجر الجمعية</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="st-hero">
+  <div class="s-container py-16 lg:py-20 relative z-10">
+    <nav class="s-bcrumbs mb-5">
+      <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <i class="fas fa-chevron-left"></i>
+      <span>متجر الجمعية</span>
+    </nav>
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        <span class="st-impact-pill mb-5"><i class="fas fa-bag-shopping"></i> ريع المتجر يدعم برامج الرعاية والتمكين</span>
+        <h1 class="text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-5">
+          متجر الجمعية
+          <span class="block bg-gradient-to-l from-sanad-goldSoft via-white to-sanad-emeraldSoft bg-clip-text text-transparent">منتجات وخدمات… تصنع أثرًا</span>
+        </h1>
+        <p class="text-white/85 text-lg leading-loose mb-8 max-w-2xl">منتجات وخدمات مختارة تدعم استدامة برامج الجمعية، وتمنحك تجربة شراء واضحة وآمنة ترتبط بالأثر.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#st-grid" class="btn btn-accent"><i class="fas fa-bag-shopping"></i> استعرض المنتجات</a>
+          <a href="#st-how" class="btn btn-ghost"><i class="fas fa-route"></i> كيف تتم عملية الشراء؟</a>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg">
+          <div><div class="text-2xl font-extrabold text-white">+2400</div><div class="text-xs text-white/70">طلب مكتمل</div></div>
+          <div><div class="text-2xl font-extrabold text-white">+340</div><div class="text-xs text-white/70">مستفيد</div></div>
+          <div><div class="text-2xl font-extrabold text-white">96%</div><div class="text-xs text-white/70">رضا العملاء</div></div>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="st-hero-card">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 relative">
+            <img src="assets/images/store/uploads/backpack.webp" alt="حقيبة العطاء الأسرية" class="w-full h-full object-cover">
+            <div class="absolute top-3 right-3 flex flex-col gap-2">
+              <span class="st-badge type-physical"><i class="fas fa-box"></i> منتج مميز</span>
+              <span class="st-badge new"><i class="fas fa-heart"></i> يدعم البرامج</span>
+            </div>
+          </div>
+          <div class="text-white/90 text-sm mb-1">منتج مميز</div>
+          <div class="text-white text-xl font-extrabold mb-2">حقيبة العطاء الأسرية</div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-sanad-goldSoft text-2xl font-extrabold">120 <small class="text-sm">ر.س</small></div>
+            <div class="text-white/70 text-xs"><i class="fas fa-fire text-sanad-goldSoft"></i> 240 طلبًا</div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="product-physical-details.html" class="btn btn-accent !py-2.5 text-sm justify-center"><i class="fas fa-bag-shopping"></i> اشترِ الآن</a>
+            <a href="#st-grid" class="btn btn-ghost !py-2.5 text-sm justify-center">استعرض المنتجات</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-white border-b border-sanad-border">
+  <div class="s-container">
+    <div class="text-center mb-8">
+      <div class="s-eyebrow mb-3"><i class="fas fa-layer-group text-sanad-emeraldSoft"></i> فئات المتجر</div>
+      <h2 class="text-2xl font-extrabold text-sanad-navy">تصفّح حسب الفئة</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3"><button class="st-cat active" data-st-cat="all"><div class="ico"><i class="fas fa-grip"></i></div><div class="nm">جميع المنتجات</div><div class="ct">19 عنصر</div></button><button class="st-cat " data-st-cat="physical"><div class="ico"><i class="fas fa-box"></i></div><div class="nm">منتجات ملموسة</div><div class="ct">4 عنصر</div></button><button class="st-cat " data-st-cat="digital"><div class="ico"><i class="fas fa-file-pdf"></i></div><div class="nm">منتجات رقمية</div><div class="ct">4 عنصر</div></button><button class="st-cat " data-st-cat="service"><div class="ico"><i class="fas fa-headset"></i></div><div class="nm">خدمات</div><div class="ct">4 عنصر</div></button><button class="st-cat " data-st-cat="course"><div class="ico"><i class="fas fa-graduation-cap"></i></div><div class="nm">دورات وورش</div><div class="ct">4 عنصر</div></button><button class="st-cat " data-st-cat="impact"><div class="ico"><i class="fas fa-heart"></i></div><div class="nm">منتجات ذات أثر</div><div class="ct">3 عنصر</div></button><button class="st-cat " data-st-cat="top"><div class="ico"><i class="fas fa-fire"></i></div><div class="nm">الأكثر طلبًا</div><div class="ct">6 عنصر</div></button><button class="st-cat " data-st-cat="new"><div class="ico"><i class="fas fa-sparkles"></i></div><div class="nm">الجديد</div><div class="ct">7 عنصر</div></button></div>
+  </div>
+</section>
+
+<section class="py-10">
+  <div class="s-container">
+    <div class="st-filterbar mb-6">
+      <div class="st-field"><label>ابحث عن منتج أو خدمة</label><input id="st-search" type="search" placeholder="ابحث..."></div>
+      <div class="st-field"><label>نوع المنتج</label>
+        <select id="st-type">
+          <option value="all">الكل</option>
+          <option value="physical">منتج ملموس</option>
+          <option value="digital">منتج رقمي</option>
+          <option value="service">خدمة</option>
+          <option value="course">دورة</option>
+          <option value="impact">منتج أثر</option>
+        </select>
+      </div>
+      <div class="st-field"><label>السعر</label>
+        <select id="st-price">
+          <option value="all">الكل</option>
+          <option value="lt100">أقل من 100 ر.س</option>
+          <option value="100-300">100 - 300 ر.س</option>
+          <option value="gt300">أكثر من 300 ر.س</option>
+        </select>
+      </div>
+      <div class="st-field"><label>الحالة</label>
+        <select id="st-status">
+          <option value="all">الكل</option>
+          <option value="new">جديد</option>
+          <option value="top">الأكثر طلبًا</option>
+          <option value="limited">محدود الكمية</option>
+        </select>
+      </div>
+      <div class="st-field"><label>الترتيب</label>
+        <select id="st-sort">
+          <option value="new">الأحدث</option>
+          <option value="priceAsc">الأقل سعرًا</option>
+          <option value="priceDesc">الأعلى سعرًا</option>
+          <option value="top">الأكثر طلبًا</option>
+        </select>
+      </div>
+      <div class="st-field"><label>&nbsp;</label><button id="st-reset" class="btn btn-outline w-full"><i class="fas fa-rotate"></i> إعادة ضبط</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="pb-6">
+  <div class="s-container">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <div class="s-eyebrow mb-2"><i class="fas fa-star text-sanad-goldSoft"></i> منتجات مميزة</div>
+        <h2 class="text-2xl font-extrabold text-sanad-navy">اختيارات المتجر هذا الشهر</h2>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<article class="st-card "
+  data-st-item data-id="p-bag" data-name="حقيبة العطاء الأسرية" data-price="120" data-type="physical" data-status="new top" data-orders="240" data-img="assets/images/store/uploads/gift-basket.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/gift-basket.webp" alt="حقيبة العطاء الأسرية" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">حقيبة العطاء الأسرية</a></h3>
+    <p class="desc">حقيبة متكاملة تحتوي على احتياجات أساسية للأسر المستفيدة، يعود ريعها لدعم البرامج.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل متاح</span><span><i class="fas fa-heart"></i> يدعم البرامج</span><span><i class="fas fa-box"></i> كمية محدودة</span> <span><i class="fas fa-fire"></i> 240 طلب</span></div>
+    <div class="price-row">
+      <div class="price">120 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-digital-guide" data-name="دليل التمكين الأسري الرقمي" data-price="45" data-type="digital" data-status="new top" data-orders="312" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html">
+  <a href="product-digital-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دليل التمكين الأسري الرقمي" loading="lazy">
+    <div class="badges"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-digital-details.html" class="hover:text-sanad-emeraldDeep">دليل التمكين الأسري الرقمي</a></h3>
+    <p class="desc">دليل تفاعلي بصيغة PDF يقدم خطوات عملية لتمكين الأسرة اقتصاديًا واجتماعيًا.</p>
+    
+    <div class="meta"><span><i class="fas fa-file-pdf"></i> PDF</span><span><i class="fas fa-weight-hanging"></i> 8 ميجابايت</span><span><i class="fas fa-download"></i> تحميل فوري</span> <span><i class="fas fa-fire"></i> 312 طلب</span></div>
+    <div class="price-row">
+      <div class="price">45 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-download"></i> شراء وتحميل</button>
+    <a href="product-digital-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-course-budget" data-name="دورة إدارة الميزانية المنزلية" data-price="199" data-type="course" data-status="new" data-orders="86" data-img="assets/images/store/uploads/guide.webp" data-url="course-product-details.html">
+  <a href="course-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دورة إدارة الميزانية المنزلية" loading="lazy">
+    <div class="badges"><span class="st-badge type-course"><i class="fas fa-graduation-cap"></i> دورة</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="course-product-details.html" class="hover:text-sanad-emeraldDeep">دورة إدارة الميزانية المنزلية</a></h3>
+    <p class="desc">دورة احترافية لإدارة ميزانية الأسرة وبناء عادات مالية مستدامة.</p>
+    
+    <div class="meta"><span><i class="fas fa-laptop"></i> عن بُعد</span><span><i class="fas fa-calendar"></i> تبدأ 12 يونيو</span><span><i class="fas fa-chair"></i> 18 مقعد متبقي</span> <span><i class="fas fa-fire"></i> 86 طلب</span></div>
+    <div class="price-row">
+      <div class="price">199 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-user-plus"></i> سجّل الآن</button>
+    <a href="course-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article></div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container">
+    <div class="text-center mb-8">
+      <div class="s-eyebrow mb-3"><i class="fas fa-grip text-sanad-emeraldSoft"></i> جميع المنتجات والخدمات</div>
+      <h2 class="text-3xl font-extrabold text-sanad-navy">تسوّق مع أثر</h2>
+    </div>
+    <div id="st-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<article class="st-card "
+  data-st-item data-id="p-bag" data-name="حقيبة العطاء الأسرية" data-price="120" data-type="physical" data-status="new top" data-orders="240" data-img="assets/images/store/uploads/gift-basket.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/gift-basket.webp" alt="حقيبة العطاء الأسرية" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">حقيبة العطاء الأسرية</a></h3>
+    <p class="desc">حقيبة متكاملة تحتوي على احتياجات أساسية للأسر المستفيدة، يعود ريعها لدعم البرامج.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل متاح</span><span><i class="fas fa-heart"></i> يدعم البرامج</span><span><i class="fas fa-box"></i> كمية محدودة</span> <span><i class="fas fa-fire"></i> 240 طلب</span></div>
+    <div class="price-row">
+      <div class="price">120 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-digital-guide" data-name="دليل التمكين الأسري الرقمي" data-price="45" data-type="digital" data-status="new top" data-orders="312" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html">
+  <a href="product-digital-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دليل التمكين الأسري الرقمي" loading="lazy">
+    <div class="badges"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-digital-details.html" class="hover:text-sanad-emeraldDeep">دليل التمكين الأسري الرقمي</a></h3>
+    <p class="desc">دليل تفاعلي بصيغة PDF يقدم خطوات عملية لتمكين الأسرة اقتصاديًا واجتماعيًا.</p>
+    
+    <div class="meta"><span><i class="fas fa-file-pdf"></i> PDF</span><span><i class="fas fa-weight-hanging"></i> 8 ميجابايت</span><span><i class="fas fa-download"></i> تحميل فوري</span> <span><i class="fas fa-fire"></i> 312 طلب</span></div>
+    <div class="price-row">
+      <div class="price">45 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-download"></i> شراء وتحميل</button>
+    <a href="product-digital-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-course-budget" data-name="دورة إدارة الميزانية المنزلية" data-price="199" data-type="course" data-status="new" data-orders="86" data-img="assets/images/store/uploads/guide.webp" data-url="course-product-details.html">
+  <a href="course-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دورة إدارة الميزانية المنزلية" loading="lazy">
+    <div class="badges"><span class="st-badge type-course"><i class="fas fa-graduation-cap"></i> دورة</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="course-product-details.html" class="hover:text-sanad-emeraldDeep">دورة إدارة الميزانية المنزلية</a></h3>
+    <p class="desc">دورة احترافية لإدارة ميزانية الأسرة وبناء عادات مالية مستدامة.</p>
+    
+    <div class="meta"><span><i class="fas fa-laptop"></i> عن بُعد</span><span><i class="fas fa-calendar"></i> تبدأ 12 يونيو</span><span><i class="fas fa-chair"></i> 18 مقعد متبقي</span> <span><i class="fas fa-fire"></i> 86 طلب</span></div>
+    <div class="price-row">
+      <div class="price">199 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-user-plus"></i> سجّل الآن</button>
+    <a href="course-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-calendar" data-name="رزنامة أثر" data-price="55" data-type="physical" data-status="top" data-orders="130" data-img="assets/images/store/uploads/mug.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="رزنامة أثر" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">رزنامة أثر</a></h3>
+    <p class="desc">رزنامة سنوية مصممة باحترافية وتوثق إنجازات الجمعية.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل متاح</span><span><i class="fas fa-heart"></i> يدعم البرامج</span> <span><i class="fas fa-fire"></i> 130 طلب</span></div>
+    <div class="price-row">
+      <div class="price">55 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-gift" data-name="باقة هدايا خيرية" data-price="180" data-type="physical" data-status="limited" data-orders="95" data-img="assets/images/store/uploads/gift-basket.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/gift-basket.webp" alt="باقة هدايا خيرية" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span><span class="st-badge limited"><i class="fas fa-clock"></i> محدود</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">باقة هدايا خيرية</a></h3>
+    <p class="desc">باقة هدايا أنيقة مناسبة للمناسبات الرسمية والخاصة.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل</span><span><i class="fas fa-gift"></i> تغليف خاص</span> <span><i class="fas fa-fire"></i> 95 طلب</span></div>
+    <div class="price-row">
+      <div class="price">180 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-prints" data-name="مطبوعات توعوية" data-price="30" data-type="physical" data-status="" data-orders="210" data-img="assets/images/store/uploads/guide.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="مطبوعات توعوية" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">مطبوعات توعوية</a></h3>
+    <p class="desc">مجموعة مطبوعات توعوية متنوعة بجودة عالية.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل</span><span><i class="fas fa-bullhorn"></i> توعوي</span> <span><i class="fas fa-fire"></i> 210 طلب</span></div>
+    <div class="price-row">
+      <div class="price">30 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-digital-budget" data-name="كتيب إدارة الميزانية المنزلية" data-price="25" data-type="digital" data-status="top" data-orders="410" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html">
+  <a href="product-digital-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="كتيب إدارة الميزانية المنزلية" loading="lazy">
+    <div class="badges"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-digital-details.html" class="hover:text-sanad-emeraldDeep">كتيب إدارة الميزانية المنزلية</a></h3>
+    <p class="desc">كتيب مختصر وعملي لإدارة المصروفات الشهرية للأسرة.</p>
+    
+    <div class="meta"><span><i class="fas fa-file-pdf"></i> PDF</span><span><i class="fas fa-weight-hanging"></i> 3 ميجابايت</span> <span><i class="fas fa-fire"></i> 410 طلب</span></div>
+    <div class="price-row">
+      <div class="price">25 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-download"></i> شراء وتحميل</button>
+    <a href="product-digital-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-digital-forms" data-name="نماذج متابعة الأسرة" data-price="20" data-type="digital" data-status="" data-orders="165" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html">
+  <a href="product-digital-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="نماذج متابعة الأسرة" loading="lazy">
+    <div class="badges"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-digital-details.html" class="hover:text-sanad-emeraldDeep">نماذج متابعة الأسرة</a></h3>
+    <p class="desc">نماذج جاهزة لمتابعة احتياجات الأسرة المستفيدة.</p>
+    
+    <div class="meta"><span><i class="fas fa-file-pdf"></i> PDF</span><span><i class="fas fa-clipboard"></i> 12 نموذج</span> <span><i class="fas fa-fire"></i> 165 طلب</span></div>
+    <div class="price-row">
+      <div class="price">20 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-download"></i> شراء وتحميل</button>
+    <a href="product-digital-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-digital-volunteer" data-name="دليل التطوع المجتمعي" data-price="0" data-type="digital" data-status="new" data-orders="780" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html">
+  <a href="product-digital-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دليل التطوع المجتمعي" loading="lazy">
+    <div class="badges"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-digital-details.html" class="hover:text-sanad-emeraldDeep">دليل التطوع المجتمعي</a></h3>
+    <p class="desc">دليل مجاني للمتطوعين الراغبين في خدمة المجتمع.</p>
+    
+    <div class="meta"><span><i class="fas fa-file-pdf"></i> PDF</span><span><i class="fas fa-gift"></i> مجاني</span> <span><i class="fas fa-fire"></i> 780 طلب</span></div>
+    <div class="price-row">
+      <div class="price">مجاني</div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-download"></i> شراء وتحميل</button>
+    <a href="product-digital-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-srv-family" data-name="جلسة استشارة أسرية" data-price="150" data-type="service" data-status="new" data-orders="75" data-img="assets/images/store/uploads/mug.webp" data-url="service-product-details.html">
+  <a href="service-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="جلسة استشارة أسرية" loading="lazy">
+    <div class="badges"><span class="st-badge type-service"><i class="fas fa-headset"></i> خدمة</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="service-product-details.html" class="hover:text-sanad-emeraldDeep">جلسة استشارة أسرية</a></h3>
+    <p class="desc">جلسة استشارية مع مختص أسري لمدة 45 دقيقة.</p>
+    
+    <div class="meta"><span><i class="fas fa-clock"></i> 45 دقيقة</span><span><i class="fas fa-laptop"></i> عن بُعد / حضوري</span> <span><i class="fas fa-fire"></i> 75 طلب</span></div>
+    <div class="price-row">
+      <div class="price">150 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-calendar-check"></i> احجز الخدمة</button>
+    <a href="service-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-srv-assess" data-name="خدمة تقييم احتياج" data-price="100" data-type="service" data-status="" data-orders="52" data-img="assets/images/store/uploads/mug.webp" data-url="service-product-details.html">
+  <a href="service-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="خدمة تقييم احتياج" loading="lazy">
+    <div class="badges"><span class="st-badge type-service"><i class="fas fa-headset"></i> خدمة</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="service-product-details.html" class="hover:text-sanad-emeraldDeep">خدمة تقييم احتياج</a></h3>
+    <p class="desc">تقييم احترافي لاحتياجات الأسرة من قبل مختصين.</p>
+    
+    <div class="meta"><span><i class="fas fa-clock"></i> 60 دقيقة</span><span><i class="fas fa-clipboard-check"></i> تقرير رسمي</span> <span><i class="fas fa-fire"></i> 52 طلب</span></div>
+    <div class="price-row">
+      <div class="price">100 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-calendar-check"></i> احجز الخدمة</button>
+    <a href="service-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-srv-plan" data-name="خدمة إعداد خطة تمكين" data-price="350" data-type="service" data-status="limited" data-orders="32" data-img="assets/images/store/uploads/mug.webp" data-url="service-product-details.html">
+  <a href="service-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="خدمة إعداد خطة تمكين" loading="lazy">
+    <div class="badges"><span class="st-badge type-service"><i class="fas fa-headset"></i> خدمة</span><span class="st-badge limited"><i class="fas fa-clock"></i> محدود</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="service-product-details.html" class="hover:text-sanad-emeraldDeep">خدمة إعداد خطة تمكين</a></h3>
+    <p class="desc">إعداد خطة تمكين شاملة للأسرة بمتابعة لمدة 3 أشهر.</p>
+    
+    <div class="meta"><span><i class="fas fa-clock"></i> 3 أشهر</span><span><i class="fas fa-route"></i> خطة كاملة</span> <span><i class="fas fa-fire"></i> 32 طلب</span></div>
+    <div class="price-row">
+      <div class="price">350 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-calendar-check"></i> احجز الخدمة</button>
+    <a href="service-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-srv-vol" data-name="استشارة للمتطوعين" data-price="0" data-type="service" data-status="new" data-orders="410" data-img="assets/images/store/uploads/mug.webp" data-url="service-product-details.html">
+  <a href="service-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="استشارة للمتطوعين" loading="lazy">
+    <div class="badges"><span class="st-badge type-service"><i class="fas fa-headset"></i> خدمة</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="service-product-details.html" class="hover:text-sanad-emeraldDeep">استشارة للمتطوعين</a></h3>
+    <p class="desc">جلسة استشارية مجانية للراغبين بالانضمام لفريق المتطوعين.</p>
+    
+    <div class="meta"><span><i class="fas fa-clock"></i> 30 دقيقة</span><span><i class="fas fa-gift"></i> مجاني</span> <span><i class="fas fa-fire"></i> 410 طلب</span></div>
+    <div class="price-row">
+      <div class="price">مجاني</div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-calendar-check"></i> احجز الخدمة</button>
+    <a href="service-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-crs-empower" data-name="ورشة التمكين الأسري" data-price="149" data-type="course" data-status="" data-orders="62" data-img="assets/images/store/uploads/guide.webp" data-url="course-product-details.html">
+  <a href="course-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="ورشة التمكين الأسري" loading="lazy">
+    <div class="badges"><span class="st-badge type-course"><i class="fas fa-graduation-cap"></i> دورة</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="course-product-details.html" class="hover:text-sanad-emeraldDeep">ورشة التمكين الأسري</a></h3>
+    <p class="desc">ورشة عملية مكثفة لتمكين الأسر المنتجة.</p>
+    
+    <div class="meta"><span><i class="fas fa-building"></i> حضوري</span><span><i class="fas fa-calendar"></i> 20 يونيو</span><span><i class="fas fa-chair"></i> 12 مقعد</span> <span><i class="fas fa-fire"></i> 62 طلب</span></div>
+    <div class="price-row">
+      <div class="price">149 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-user-plus"></i> سجّل الآن</button>
+    <a href="course-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-crs-vol" data-name="دورة مهارات التطوع" data-price="99" data-type="course" data-status="top" data-orders="140" data-img="assets/images/store/uploads/guide.webp" data-url="course-product-details.html">
+  <a href="course-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دورة مهارات التطوع" loading="lazy">
+    <div class="badges"><span class="st-badge type-course"><i class="fas fa-graduation-cap"></i> دورة</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="course-product-details.html" class="hover:text-sanad-emeraldDeep">دورة مهارات التطوع</a></h3>
+    <p class="desc">دورة تدريبية شاملة لمهارات العمل التطوعي الفعّال.</p>
+    
+    <div class="meta"><span><i class="fas fa-laptop"></i> عن بُعد</span><span><i class="fas fa-calendar"></i> 5 يوليو</span> <span><i class="fas fa-fire"></i> 140 طلب</span></div>
+    <div class="price-row">
+      <div class="price">99 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-user-plus"></i> سجّل الآن</button>
+    <a href="course-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-crs-prod" data-name="برنامج تأهيل الأسر المنتجة" data-price="450" data-type="course" data-status="limited new" data-orders="28" data-img="assets/images/store/uploads/guide.webp" data-url="course-product-details.html">
+  <a href="course-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="برنامج تأهيل الأسر المنتجة" loading="lazy">
+    <div class="badges"><span class="st-badge type-course"><i class="fas fa-graduation-cap"></i> دورة</span><span class="st-badge limited"><i class="fas fa-clock"></i> محدود</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="course-product-details.html" class="hover:text-sanad-emeraldDeep">برنامج تأهيل الأسر المنتجة</a></h3>
+    <p class="desc">برنامج تأهيلي متكامل للأسر المنتجة من الفكرة إلى السوق.</p>
+    
+    <div class="meta"><span><i class="fas fa-building"></i> هجين</span><span><i class="fas fa-calendar"></i> 1 يوليو</span><span><i class="fas fa-chair"></i> 8 مقاعد</span> <span><i class="fas fa-fire"></i> 28 طلب</span></div>
+    <div class="price-row">
+      <div class="price">450 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-user-plus"></i> سجّل الآن</button>
+    <a href="course-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card impact"
+  data-st-item data-id="p-imp-kafala" data-name="منتج كفالة الأسر" data-price="250" data-type="impact" data-status="top" data-orders="186" data-img="assets/images/store/uploads/gift-basket.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/gift-basket.webp" alt="منتج كفالة الأسر" loading="lazy">
+    <div class="badges"><span class="st-badge type-impact"><i class="fas fa-heart"></i> منتج أثر</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">منتج كفالة الأسر</a></h3>
+    <p class="desc">منتج رمزي يذهب ريعه بالكامل لكفالة الأسر المحتاجة.</p>
+    <div class="st-impact-note"><i class="fas fa-bullseye text-sanad-emeraldDeep"></i> كل 5 طلبات تساهم في كفالة أسرة لمدة شهر</div>
+    <div class="meta"><span><i class="fas fa-heart"></i> 100% أثر</span><span><i class="fas fa-users"></i> برنامج الكفالة</span> <span><i class="fas fa-fire"></i> 186 طلب</span></div>
+    <div class="price-row">
+      <div class="price">250 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-heart"></i> اشترِ وادعم</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card impact"
+  data-st-item data-id="p-imp-edu" data-name="باقة دعم تعليمية" data-price="180" data-type="impact" data-status="" data-orders="92" data-img="assets/images/store/uploads/backpack.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/backpack.webp" alt="باقة دعم تعليمية" loading="lazy">
+    <div class="badges"><span class="st-badge type-impact"><i class="fas fa-heart"></i> منتج أثر</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">باقة دعم تعليمية</a></h3>
+    <p class="desc">باقة تعليمية يتم توزيعها على الطلاب المحتاجين.</p>
+    <div class="st-impact-note"><i class="fas fa-bullseye text-sanad-emeraldDeep"></i> كل طلب يوفر مستلزمات تعليمية لطالب</div>
+    <div class="meta"><span><i class="fas fa-graduation-cap"></i> أثر تعليمي</span><span><i class="fas fa-heart"></i> دعم مباشر</span> <span><i class="fas fa-fire"></i> 92 طلب</span></div>
+    <div class="price-row">
+      <div class="price">180 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-heart"></i> اشترِ وادعم</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card impact"
+  data-st-item data-id="p-imp-stab" data-name="صندوق الاستقرار الأسري" data-price="400" data-type="impact" data-status="limited" data-orders="48" data-img="assets/images/store/uploads/mug.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="صندوق الاستقرار الأسري" loading="lazy">
+    <div class="badges"><span class="st-badge type-impact"><i class="fas fa-heart"></i> منتج أثر</span><span class="st-badge limited"><i class="fas fa-clock"></i> محدود</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">صندوق الاستقرار الأسري</a></h3>
+    <p class="desc">مساهمة في صندوق دعم استقرار الأسر المتعثرة.</p>
+    <div class="st-impact-note"><i class="fas fa-bullseye text-sanad-emeraldDeep"></i> كل 10 طلبات تستقر بها أسرة</div>
+    <div class="meta"><span><i class="fas fa-shield-halved"></i> استقرار</span><span><i class="fas fa-hand-holding-heart"></i> دعم استراتيجي</span> <span><i class="fas fa-fire"></i> 48 طلب</span></div>
+    <div class="price-row">
+      <div class="price">400 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-heart"></i> اشترِ وادعم</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article></div>
+    <div id="st-empty" class="hidden text-center py-16 text-sanad-muted"><i class="fas fa-search text-3xl mb-3"></i><div>لا توجد نتائج مطابقة للفلاتر الحالية.</div></div>
+  </div>
+</section>
+
+<section class="py-14 bg-white border-y border-sanad-border">
+  <div class="s-container">
+    <div class="text-center mb-10">
+      <div class="s-eyebrow mb-3"><i class="fas fa-chart-line text-sanad-emeraldSoft"></i> أثر مشترياتكم</div>
+      <h2 class="text-3xl font-extrabold text-sanad-navy">كل شراء… يصنع أثرًا</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="st-stat"><div class="v">2,400</div><div class="l">طلب مكتمل</div></div>
+      <div class="st-stat"><div class="v">680</div><div class="l">منتج تم تسليمه</div></div>
+      <div class="st-stat"><div class="v">1,200</div><div class="l">تحميل رقمي</div></div>
+      <div class="st-stat"><div class="v">340</div><div class="l">مستفيد مدعوم</div></div>
+      <div class="st-stat"><div class="v">96%</div><div class="l">رضا العملاء</div></div>
+      <div class="st-stat"><div class="v">18</div><div class="l">منتج متاح</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="st-how" class="py-14">
+  <div class="s-container">
+    <div class="text-center mb-10">
+      <div class="s-eyebrow mb-3"><i class="fas fa-route text-sanad-emeraldSoft"></i> خطوات الشراء</div>
+      <h2 class="text-3xl font-extrabold text-sanad-navy">كيف تتم عملية الشراء؟</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div class="st-step"><div class="n">1</div><h4>اختر المنتج</h4><p>تصفح الفئات واختر ما يناسبك</p></div>
+      <div class="st-step"><div class="n">2</div><h4>أضفه للسلة</h4><p>أضف العناصر التي ترغب بشرائها</p></div>
+      <div class="st-step"><div class="n">3</div><h4>أدخل بياناتك</h4><p>أكمل بياناتك في صفحة الدفع</p></div>
+      <div class="st-step"><div class="n">4</div><h4>أتم الدفع</h4><p>اختر طريقة الدفع الآمنة</p></div>
+      <div class="st-step"><div class="n">5</div><h4>استلم المنتج</h4><p>توصيل أو تحميل أو حجز موعد</p></div>
+      <div class="st-step"><div class="n">6</div><h4>سند الطلب</h4><p>يصلك سند رسمي للطلب</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 bg-sanad-ivory">
+  <div class="s-container max-w-4xl">
+    <div class="text-center mb-8">
+      <div class="s-eyebrow mb-3"><i class="fas fa-circle-question text-sanad-emeraldSoft"></i> الأسئلة الشائعة</div>
+      <h2 class="text-3xl font-extrabold text-sanad-navy">إجابات لاستفساراتكم</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="bg-white border border-sanad-border rounded-2xl p-5 group"><summary class="flex items-center justify-between cursor-pointer font-bold text-sanad-navy"><span><i class="fas fa-circle-question text-sanad-emeraldSoft ml-2"></i> هل يمكن شراء المنتجات الرقمية مباشرة؟</span><i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><div class="mt-4 text-sm text-sanad-muted leading-loose">نعم، يتم تفعيل رابط التحميل فور إتمام عملية الدفع.</div></details><details class="bg-white border border-sanad-border rounded-2xl p-5 group"><summary class="flex items-center justify-between cursor-pointer font-bold text-sanad-navy"><span><i class="fas fa-circle-question text-sanad-emeraldSoft ml-2"></i> متى يصل رابط التحميل؟</span><i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><div class="mt-4 text-sm text-sanad-muted leading-loose">يظهر فورًا في صفحة نجاح الطلب ويُرسل أيضًا للبريد الإلكتروني.</div></details><details class="bg-white border border-sanad-border rounded-2xl p-5 group"><summary class="flex items-center justify-between cursor-pointer font-bold text-sanad-navy"><span><i class="fas fa-circle-question text-sanad-emeraldSoft ml-2"></i> هل يوجد توصيل للمنتجات الملموسة؟</span><i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><div class="mt-4 text-sm text-sanad-muted leading-loose">نعم، نوفر التوصيل لجميع مناطق المملكة العربية السعودية.</div></details><details class="bg-white border border-sanad-border rounded-2xl p-5 group"><summary class="flex items-center justify-between cursor-pointer font-bold text-sanad-navy"><span><i class="fas fa-circle-question text-sanad-emeraldSoft ml-2"></i> هل يمكن استرجاع المنتج؟</span><i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><div class="mt-4 text-sm text-sanad-muted leading-loose">يمكن استرجاع المنتجات الملموسة خلال 14 يومًا وفق الشروط.</div></details><details class="bg-white border border-sanad-border rounded-2xl p-5 group"><summary class="flex items-center justify-between cursor-pointer font-bold text-sanad-navy"><span><i class="fas fa-circle-question text-sanad-emeraldSoft ml-2"></i> هل عائد المتجر يدعم برامج الجمعية؟</span><i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><div class="mt-4 text-sm text-sanad-muted leading-loose">نعم، نسبة من العائد تدعم برامج الرعاية والتمكين.</div></details><details class="bg-white border border-sanad-border rounded-2xl p-5 group"><summary class="flex items-center justify-between cursor-pointer font-bold text-sanad-navy"><span><i class="fas fa-circle-question text-sanad-emeraldSoft ml-2"></i> هل أحصل على فاتورة أو سند شراء؟</span><i class="fas fa-chevron-down group-open:rotate-180 transition"></i></summary><div class="mt-4 text-sm text-sanad-muted leading-loose">نعم، يُرسل سند رسمي بعد إتمام الطلب.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 bg-gradient-to-l from-sanad-navy to-sanad-emerald text-white">
+  <div class="s-container text-center">
+    <h2 class="text-3xl font-extrabold mb-3">تسوق… وكن جزءًا من الأثر</h2>
+    <p class="text-white/85 mb-7 max-w-2xl mx-auto">كل عملية شراء تساهم في صناعة فرق حقيقي في حياة أسرة محتاجة.</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="#st-grid" class="btn btn-accent"><i class="fas fa-bag-shopping"></i> استعرض المنتجات</a>
+      <a href="contact.html" class="btn btn-ghost"><i class="fas fa-phone"></i> تواصل معنا</a>
+    </div>
+  </div>
+</section>
+
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="s-logo-mark">س</div>
+          <div>
+            <div class="font-extrabold text-white text-lg">جمعية سَنَد</div>
+            <div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div>
+          </div>
+        </div>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة، تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+        <div class="flex items-center gap-2">
+          <a href="#" class="s-social"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>عن الجمعية</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="strategy.html">استراتيجيتنا</a></li>
+          <li><a href="board.html">مجلس الإدارة</a></li>
+          <li><a href="organization-structure.html">الهيكل التنظيمي</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>روابط مهمة</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="store.html">متجر الجمعية</a></li>
+          <li><a href="donations.html">بوابة التبرع</a></li>
+          <li><a href="services.html">الخدمات</a></li>
+          <li><a href="projects.html">المشاريع</a></li>
+          <li><a href="media-center.html">الأخبار</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>الحوكمة</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="governance.html">اللوائح والسياسات</a></li>
+          <li><a href="governance.html">التقارير المالية</a></li>
+          <li><a href="governance.html">التقرير السنوي</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>تواصل</h4>
+        <div class="space-y-2 text-xs text-white/70">
+          <div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div>
+          <div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div>
+          <div><i class="fas fa-location-dot ml-1 text-sanad-goldSoft"></i> الرياض، المملكة العربية السعودية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="s-container py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60">
+      <div>© <span data-year>2026</span> جمعية سَنَد. جميع الحقوق محفوظة.</div>
+      <div class="flex items-center gap-5">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">الشروط والأحكام</a>
+        <a href="#">خريطة الموقع</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
