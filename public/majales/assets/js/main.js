@@ -33,19 +33,25 @@
   onScroll();
   toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  /* سلايدر خلفية الهيرو */
+  /* سلايدر خلفية الهيرو + نصوص + نقاط */
   const heroSlider = document.querySelector("[data-hero-slider]");
   if (heroSlider) {
     const slides = heroSlider.querySelectorAll(".s-hero-slide");
-    let idx = 0;
-    if (slides.length > 1) {
-      setInterval(() => {
-        slides[idx].classList.remove("is-active");
-        idx = (idx + 1) % slides.length;
-        slides[idx].classList.add("is-active");
-      }, 5000);
-    }
+    const texts = document.querySelectorAll("[data-hero-text] .s-hero-slide-text");
+    const dots = document.querySelectorAll("[data-hero-go]");
+    let idx = 0, timer = null;
+    const go = (n) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+      texts.forEach((t, i) => t.classList.toggle("is-active", i === idx));
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+    };
+    const start = () => { stop(); timer = setInterval(() => go(idx + 1), 6000); };
+    const stop = () => { if (timer) clearInterval(timer); };
+    dots.forEach((d) => d.addEventListener("click", () => { go(parseInt(d.dataset.heroGo, 10)); start(); }));
+    if (slides.length > 1) start();
   }
+
 
   /* ظهور الأقسام */
   const ro = new IntersectionObserver(
@@ -1821,41 +1827,35 @@
             <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
           </div>
         </div>
-        <a href="membership.html" class="${isActive("donations")}">العضويةات</a>
-        <a href="index.html" class="${isActive("store")}">متجر الجمعية</a>
-        <a href="services.html" class="${isActive("services")}">خدماتنا</a>
-        <a href="projects.html" class="${isActive("projects")}">المشاريع</a>
+        <a href="services.html" class="${isActive("services")}">خدمات ومجالات المجلس</a>
+        <a href="projects.html" class="${isActive("projects")}">المشاريع والمبادرات</a>
+        <a href="committees.html" class="${isActive("committees")}">اللجان</a>
         <a href="governance.html" class="${isActive("governance")}">الحوكمة</a>
         <a href="media-center.html" class="${isActive("media")}">المركز الإعلامي</a>
         <a href="events.html" class="${isActive("events")}">الفعاليات</a>
+        <a href="careers.html" class="${isActive("careers")}">الوظائف والتطوع</a>
        
       </nav>
       <div class="sx-actions">
-        <button type="button" class="sx-icon-btn" data-sx-donation-cart aria-label="تواصل معنا" title="تواصل معنا">
-          <i class="fas fa-heart-circle-plus"></i>
-          <span class="sx-badge" data-donation-count>${getDonationCount()}</span>
-        </button>
-        <a href="index.html" class="sx-icon-btn" aria-label="تواصل معنا" title="تواصل معنا">
-          <i class="fas fa-bag-shopping"></i>
-          <span class="sx-badge" data-cart-count>${getCartCount()}</span>
+        <a href="service-tracking.html" class="sx-icon-btn" aria-label="تتبع طلب خدمة" title="تتبع طلب خدمة">
+          <i class="fas fa-route"></i>
         </a>
         <div class="sx-login-wrap" data-login-wrap>
           <button type="button" class="sx-login-btn" data-login-toggle>
-            <i class="fas fa-user-circle"></i> تسجيل الدخول
+            <i class="fas fa-user-circle"></i> دخول المستفيدين
           </button>
           <div class="sx-login-menu">
-            <div class="sx-lhead">اختر نوع الحساب</div>
-            <a href="contact.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
-            <a href="contact.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-            <a href="contact.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
+            <div class="sx-lhead">بوابة المستفيدين</div>
+            <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
             <div class="sx-lreg">
-              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب مستفيد</a>
             </div>
           </div>
         </div>
         
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
+
     </div>
   </header>
 
@@ -1875,29 +1875,17 @@
         <a href="registration-certificate.html">شهادة التسجيل</a><a href="branches.html">الفروع والمكاتب</a>
         <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
       </div>
-      <a href="membership.html"><i class="fas fa-heart"></i> العضويةات</a>
-      <a href="index.html"><i class="fas fa-store"></i> متجر الجمعية</a>
-      <a href="services.html"><i class="fas fa-hand-holding-heart"></i> خدماتنا</a>
+      <a href="services.html"><i class="fas fa-clipboard-list"></i> خدمات ومجالات المجلس</a>
       <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع والمبادرات</a>
+      <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
       <a href="events.html"><i class="fas fa-calendar-days"></i> الفعاليات</a>
+      <a href="careers.html"><i class="fas fa-briefcase"></i> الوظائف والتطوع</a>
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
-
-      <div class="sx-msec">حسابي وسلاتي</div>
-      <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> تواصل معنا <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
-      <a href="index.html"><i class="fas fa-bag-shopping"></i> تواصل معنا <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
-      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-      <a href="contact.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-      <a href="contact.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-      <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
-
-      <div class="sx-msec">روابط سريعة</div>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
-      <a href="services.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-      <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
-      <a href="mailto:info@majales.org.sa"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
-      <button type="button" data-lang-toggle><i class="fas fa-globe"></i> اللغة: العربية / English</button>
+      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
+
     </div>
   </aside>
 
@@ -1945,7 +1933,7 @@
           <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
           <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
           <li><a href="membership.html"><i class="fas fa-angle-left"></i> العضوية</a></li>
-          <li><a href="index.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
+          <li><a href="committees.html"><i class="fas fa-angle-left"></i> اللجان</a></li>
           <li><a href="services.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
           <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
         </ul>
@@ -2464,12 +2452,12 @@
     <!-- Floating Action Bar (vertical, always visible) -->
     <nav class="sxq-fab" id="sxqFab" aria-label="إجراءات سريعة">
       <ul class="sxq-fab-list">
-        <li><button type="button" class="sxq-fab-item" data-sxq-open="donate" data-tip="تبرع سريع" aria-label="تبرع سريع"><i class="fas fa-hand-holding-heart"></i><span class="sxq-fab-label">تبرع سريع</span></button></li>
-        <li><button type="button" class="sxq-fab-item" data-sxq-open="gift" data-tip="إهداء التبرع" aria-label="إهداء التبرع"><i class="fas fa-gift"></i><span class="sxq-fab-label">إهداء التبرع</span></button></li>
-        <li><a class="sxq-fab-item" href="membership.html" data-tip="العضويةات" aria-label="العضويةات"><i class="fas fa-heart"></i><span class="sxq-fab-label">العضويةات</span></a></li>
+        <li><a class="sxq-fab-item" href="contact.html" data-tip="تواصل معنا" aria-label="تواصل معنا"><i class="fas fa-headset"></i><span class="sxq-fab-label">تواصل معنا</span></a></li>
+        <li><a class="sxq-fab-item" href="membership.html" data-tip="العضوية" aria-label="العضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">العضوية</span></a></li>
         <li><button type="button" class="sxq-fab-item" data-sxq-open="join" data-tip="انضم معنا" aria-label="انضم معنا"><i class="fas fa-users"></i><span class="sxq-fab-label">انضم معنا</span></button></li>
-        <li><button type="button" class="sxq-fab-item sxq-fab-item-gold" data-sxq-open="member" data-tip="طلب عضوية" aria-label="طلب عضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">طلب عضوية</span></button></li>
+        <li><a class="sxq-fab-item sxq-fab-item-gold" href="service-tracking.html" data-tip="تتبع طلب خدمة" aria-label="تتبع طلب خدمة"><i class="fas fa-route"></i><span class="sxq-fab-label">تتبع طلب خدمة</span></a></li>
         <li><a class="sxq-fab-item" href="services.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
+
       </ul>
       <button type="button" class="sxq-fab-mobile-toggle" id="sxqFabMobBtn" aria-label="إجراءات سريعة"><i class="fas fa-bolt"></i></button>
     </nav>
