@@ -27,14 +27,25 @@ type Template = {
 
 const templates: Template[] = [
   {
+    id: "majales",
+    name: "قالب مجالس — المجالس واللجان",
+    description: "قالب عربي مؤسسي رسمي للمجالس التخصصية واللجان التنسيقية — يركّز على التنسيق والتمثيل والحوكمة والمبادرات، بدون تبرعات أو متجر",
+    previewPath: "majales/index.html",
+    folderPath: "majales",
+    thumbnail: "majales/favicon.svg",
+    features: ["Tailwind CSS", "25 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
+    pages: 25,
+    isNew: true,
+  },
+  {
     id: "sanad",
     name: "قالب سند — الخدمات الاجتماعية",
     description: "قالب عربي احترافي لجمعيات الخدمات الاجتماعية والبر والرعاية — كفالة الأسر، السلال الغذائية، التمكين، الحوكمة والشفافية",
     previewPath: "sanad/index.html",
     folderPath: "sanad",
     thumbnail: "sanad/favicon.svg",
-    features: ["Tailwind CSS", "12 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
-    pages: 12,
+    features: ["Tailwind CSS", "52 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
+    pages: 52,
     isNew: true,
   },
   {
@@ -498,8 +509,19 @@ const TemplateCard = ({ template }: { template: Template }) => {
       
       // Template files to download
       let templateFiles: string[] = [];
-      
-      if (template.id === "one-page") {
+
+      // Templates that ship a manifest.json with the full file list
+      const manifestTemplates = ["sanad", "majales"];
+      if (manifestTemplates.includes(template.id)) {
+        try {
+          const manifestResp = await fetch(`${import.meta.env.BASE_URL}${basePath}/manifest.json`);
+          if (manifestResp.ok) {
+            templateFiles = await manifestResp.json();
+          }
+        } catch (err) {
+          console.warn("Could not fetch manifest:", err);
+        }
+      } else if (template.id === "one-page") {
         templateFiles = [
           "index.html", "en.html",
           "css/one-page.css", "css/one-page-ltr.css", "css/loader.css",
@@ -561,8 +583,8 @@ const TemplateCard = ({ template }: { template: Template }) => {
         try {
           const response = await fetch(`${import.meta.env.BASE_URL}${basePath}/${file}`);
           if (response.ok) {
-            const isImage = /\.(jpg|jpeg|png|gif|svg|webp|ico)$/i.test(file);
-            if (isImage && !file.endsWith('.svg')) {
+            const isBinary = /\.(jpg|jpeg|png|gif|webp|ico|woff|woff2|ttf|otf|eot|mp4|mp3|pdf|zip)$/i.test(file);
+            if (isBinary) {
               const blob = await response.blob();
               zip.file(file, blob);
             } else {
