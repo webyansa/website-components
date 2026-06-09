@@ -33,19 +33,25 @@
   onScroll();
   toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-  /* سلايدر خلفية الهيرو */
+  /* سلايدر خلفية الهيرو + نصوص + نقاط */
   const heroSlider = document.querySelector("[data-hero-slider]");
   if (heroSlider) {
     const slides = heroSlider.querySelectorAll(".s-hero-slide");
-    let idx = 0;
-    if (slides.length > 1) {
-      setInterval(() => {
-        slides[idx].classList.remove("is-active");
-        idx = (idx + 1) % slides.length;
-        slides[idx].classList.add("is-active");
-      }, 5000);
-    }
+    const texts = document.querySelectorAll("[data-hero-text] .s-hero-slide-text");
+    const dots = document.querySelectorAll("[data-hero-go]");
+    let idx = 0, timer = null;
+    const go = (n) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+      texts.forEach((t, i) => t.classList.toggle("is-active", i === idx));
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+    };
+    const start = () => { stop(); timer = setInterval(() => go(idx + 1), 6000); };
+    const stop = () => { if (timer) clearInterval(timer); };
+    dots.forEach((d) => d.addEventListener("click", () => { go(parseInt(d.dataset.heroGo, 10)); start(); }));
+    if (slides.length > 1) start();
   }
+
 
   /* ظهور الأقسام */
   const ro = new IntersectionObserver(
