@@ -583,8 +583,8 @@ const TemplateCard = ({ template }: { template: Template }) => {
         try {
           const response = await fetch(`${import.meta.env.BASE_URL}${basePath}/${file}`);
           if (response.ok) {
-            const isImage = /\.(jpg|jpeg|png|gif|svg|webp|ico)$/i.test(file);
-            if (isImage && !file.endsWith('.svg')) {
+            const isBinary = /\.(jpg|jpeg|png|gif|webp|ico|woff|woff2|ttf|otf|eot|mp4|mp3|pdf|zip)$/i.test(file);
+            if (isBinary) {
               const blob = await response.blob();
               zip.file(file, blob);
             } else {
