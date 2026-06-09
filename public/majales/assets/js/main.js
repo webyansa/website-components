@@ -1827,41 +1827,35 @@
             <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
           </div>
         </div>
-        <a href="membership.html" class="${isActive("donations")}">العضويةات</a>
-        <a href="index.html" class="${isActive("store")}">متجر الجمعية</a>
-        <a href="services.html" class="${isActive("services")}">خدماتنا</a>
-        <a href="projects.html" class="${isActive("projects")}">المشاريع</a>
+        <a href="services.html" class="${isActive("services")}">خدمات ومجالات المجلس</a>
+        <a href="projects.html" class="${isActive("projects")}">المشاريع والمبادرات</a>
+        <a href="committees.html" class="${isActive("committees")}">اللجان</a>
         <a href="governance.html" class="${isActive("governance")}">الحوكمة</a>
         <a href="media-center.html" class="${isActive("media")}">المركز الإعلامي</a>
         <a href="events.html" class="${isActive("events")}">الفعاليات</a>
+        <a href="careers.html" class="${isActive("careers")}">الوظائف والتطوع</a>
        
       </nav>
       <div class="sx-actions">
-        <button type="button" class="sx-icon-btn" data-sx-donation-cart aria-label="تواصل معنا" title="تواصل معنا">
-          <i class="fas fa-heart-circle-plus"></i>
-          <span class="sx-badge" data-donation-count>${getDonationCount()}</span>
-        </button>
-        <a href="index.html" class="sx-icon-btn" aria-label="تواصل معنا" title="تواصل معنا">
-          <i class="fas fa-bag-shopping"></i>
-          <span class="sx-badge" data-cart-count>${getCartCount()}</span>
+        <a href="service-tracking.html" class="sx-icon-btn" aria-label="تتبع طلب خدمة" title="تتبع طلب خدمة">
+          <i class="fas fa-route"></i>
         </a>
         <div class="sx-login-wrap" data-login-wrap>
           <button type="button" class="sx-login-btn" data-login-toggle>
-            <i class="fas fa-user-circle"></i> تسجيل الدخول
+            <i class="fas fa-user-circle"></i> دخول المستفيدين
           </button>
           <div class="sx-login-menu">
-            <div class="sx-lhead">اختر نوع الحساب</div>
-            <a href="contact.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
-            <a href="contact.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-            <a href="contact.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
+            <div class="sx-lhead">بوابة المستفيدين</div>
+            <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
             <div class="sx-lreg">
-              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب مستفيد</a>
             </div>
           </div>
         </div>
         
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
+
     </div>
   </header>
 
