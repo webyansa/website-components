@@ -509,8 +509,19 @@ const TemplateCard = ({ template }: { template: Template }) => {
       
       // Template files to download
       let templateFiles: string[] = [];
-      
-      if (template.id === "one-page") {
+
+      // Templates that ship a manifest.json with the full file list
+      const manifestTemplates = ["sanad", "majales"];
+      if (manifestTemplates.includes(template.id)) {
+        try {
+          const manifestResp = await fetch(`${import.meta.env.BASE_URL}${basePath}/manifest.json`);
+          if (manifestResp.ok) {
+            templateFiles = await manifestResp.json();
+          }
+        } catch (err) {
+          console.warn("Could not fetch manifest:", err);
+        }
+      } else if (template.id === "one-page") {
         templateFiles = [
           "index.html", "en.html",
           "css/one-page.css", "css/one-page-ltr.css", "css/loader.css",
