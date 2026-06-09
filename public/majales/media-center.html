@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>المركز الإعلامي · مجلس سَنَد</title>
+<meta name="description" content="المركز الإعلامي لمجلس سَنَد: أخبار، مقالات، معارض صور، فيديوهات، وإصدارات إعلامية رسمية." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#152a5e',navyDeep:'#0a1738',navySoft:'#26417a',emerald:'#1a6aa3',emeraldSoft:'#3a8ec4',emeraldDeep:'#125580',gold:'#b08530',goldSoft:'#dab36b',sand:'#eef0f6',ivory:'#f6f7fb',mist:'#eaecf3',border:'#e3e7ef',text:'#0f1d2e',muted:'#5b6b7d' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<!-- Topbar -->
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="contact.html"><i class="fas fa-hands-helping ml-1 text-sanad-emeraldSoft"></i> التطوع</a>
+      <a href="contact.html"><i class="fas fa-id-card ml-1 text-sanad-emeraldSoft"></i> العضوية</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@majales.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">م</div>
+      <div class="leading-tight"><div class="font-extrabold text-lg text-sanad-navy">مجلس سَنَد</div><div class="text-[11px] text-sanad-muted font-medium">للتنسيق والتمثيل المؤسسي</div></div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن المجلس</a>
+      <a href="services.html" class="s-nav-link">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="membership.html" class="s-nav-link">العضوية</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link active">المركز الإعلامي</a>
+      <a href="events.html" class="s-nav-link">الفعاليات</a>
+      <a href="index.html" class="s-nav-link">الخدمات</a>
+        <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="membership.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تواصل معنا</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide7.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">المركز الإعلامي</span></div>
+    <span class="s-eyebrow on-dark mt-4"><i class="fas fa-bullhorn text-sanad-goldSoft"></i> نافذة الجمعية الإعلامية الرسمية</span>
+    <h1>المركز الإعلامي</h1>
+    <p class="s-hero-lead">تابع أخبار المجلس، مقالاتها، أنشطتها، إصداراتها، ومعارض الصور والفيديو التي توثّق أثرها في المجتمع.</p>
+  </div>
+</section>
+
+<!-- Content types -->
+<section class="py-10 -mt-6 relative z-20">
+  <div class="s-container">
+    <div class="m-types" id="mTypes">
+      <button class="m-type active" data-type="all"><div class="ic"><i class="fas fa-layer-group"></i></div><div class="nm">الكل</div><div class="ct">87 عنصرًا</div></button>
+      <button class="m-type" data-type="news"><div class="ic"><i class="fas fa-newspaper"></i></div><div class="nm">الأخبار</div><div class="ct">3 أخبار</div></button>
+      <button class="m-type" data-type="article"><div class="ic"><i class="fas fa-pen-fancy"></i></div><div class="nm">المقالات</div><div class="ct">3 مقالات</div></button>
+      <button class="m-type" data-type="gallery"><div class="ic"><i class="fas fa-images"></i></div><div class="nm">الصور</div><div class="ct">3 معارض</div></button>
+      <button class="m-type" data-type="video"><div class="ic"><i class="fas fa-video"></i></div><div class="nm">الفيديوهات</div><div class="ct">3 فيديوهات</div></button>
+      <button class="m-type" data-type="file"><div class="ic"><i class="fas fa-file-pdf"></i></div><div class="nm">الملفات</div><div class="ct">3 إصدارات</div></button>
+    </div>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="py-6">
+  <div class="s-container">
+    <div class="m-filters">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+        <h3 class="text-base font-extrabold text-sanad-navy flex items-center gap-2"><i class="fas fa-sliders text-sanad-emeraldDeep"></i> ابحث وفلتر المحتوى الإعلامي</h3>
+        <button class="m-reset" id="mReset"><i class="fas fa-rotate-left"></i> إعادة الضبط</button>
+      </div>
+      <div class="m-search"><i class="fas fa-magnifying-glass"></i><input id="mSearch" type="text" placeholder="ابحث في المركز الإعلامي…" /></div>
+      <div class="m-fgrid">
+        <div class="m-fld"><label>السنة</label><select id="mYear"><option value="">الكل</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option></select></div>
+        <div class="m-fld"><label>التصنيف</label><select id="mCat"><option value="">الكل</option><option>أخبار المجلس</option><option>قصص أثر</option><option>حملات</option><option>تطوع</option><option>شراكات</option><option>تقارير إعلامية</option></select></div>
+        <div class="m-fld"><label>الترتيب</label><select id="mSort"><option value="new">الأحدث أولًا</option><option value="views">الأكثر مشاهدة</option><option value="shares">الأكثر مشاركة</option></select></div>
+        <div class="m-fld"><label>النوع</label><select id="mTypeSel"><option value="">الكل</option><option value="news">أخبار</option><option value="article">مقالات</option><option value="gallery">معارض صور</option><option value="video">فيديوهات</option><option value="file">ملفات PDF</option></select></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="py-6">
+  <div class="s-container">
+    <div class="flex items-end justify-between mb-4">
+      <div>
+        <span class="s-eyebrow"><i class="fas fa-star"></i> محتوى مميز</span>
+        <h2 class="s-title mt-2">المحتوى الإعلامي البارز</h2>
+      </div>
+    </div>
+    <div class="m-feat">
+      <div class="m-feat-img" style="background-image:url('assets/images/posts/1.jpeg');">
+        <span class="m-feat-badge"><i class="fas fa-bolt"></i> خبر رئيسي</span>
+      </div>
+      <div class="m-feat-body">
+        <div class="flex items-center gap-3 text-xs text-sanad-muted mb-3"><span><i class="fas fa-calendar text-sanad-emeraldDeep ml-1"></i> 18 أبريل 2026</span><span><i class="fas fa-eye text-sanad-emeraldDeep ml-1"></i> 2,460 مشاهدة</span><span class="px-2 py-1 rounded-full bg-sanad-mist text-sanad-navy font-bold">حملات</span></div>
+        <h3 class="text-2xl font-black text-sanad-navy leading-tight">مجلس سَنَد تطلق مبادرة الرعاية المتكاملة للأسر</h3>
+        <p class="mt-3 text-sanad-muted leading-loose">تنطلق المبادرة لخدمة 600 أسرة سعودية عبر باقات رعاية صحية واجتماعية وتعليمية متكاملة، بالشراكة مع جهات حكومية وقطاع غير ربحي.</p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a href="article-details.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> قراءة الخبر</a>
+          <a href="#mediaGrid" class="btn btn-outline"><i class="fas fa-newspaper"></i> تصفح كل الأخبار</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Grid -->
+<section class="py-10">
+  <div class="s-container">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
+      <h2 class="s-title">المحتوى الإعلامي</h2>
+      <div class="text-sm text-sanad-muted">يعرض <b id="mCount" class="text-sanad-navy">15</b> عنصرًا</div>
+    </div>
+    <div class="m-grid" id="mediaGrid"></div>
+    <div class="text-center mt-10 hidden" id="mEmpty">
+      <div class="sanad-icon-wrap mx-auto"><i class="fas fa-magnifying-glass"></i></div>
+      <p class="mt-4 text-sanad-muted">لا يوجد محتوى يطابق الفلاتر الحالية.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-14 bg-white border-t border-sanad-border">
+  <div class="s-container text-center max-w-2xl mx-auto">
+    <span class="s-eyebrow"><i class="fas fa-heart"></i> دعوة ختامية</span>
+    <h2 class="s-title mt-3">قصة الأثر لا تكتمل إلا بمشاركتكم</h2>
+    <p class="text-sanad-muted mt-3 leading-loose">شاركنا في صنع الأثر عبر التطوع، الشراكة، أو حضور فعالياتنا القادمة.</p>
+    <div class="mt-6 flex flex-wrap items-center gap-3 justify-center">
+      <a href="contact.html" class="btn btn-primary"><i class="fas fa-headset"></i> تواصل معنا</a>
+      <a href="events.html" class="btn btn-outline"><i class="fas fa-calendar-days"></i> استعرض الفعاليات</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5"><div class="s-logo-mark">م</div><div><div class="font-extrabold text-white text-lg">مجلس سَنَد</div><div class="text-xs text-white/60">للتنسيق والتمثيل المؤسسي</div></div></div>
+        <p class="text-sm leading-loose mb-5">مجلس متخصص رسمي تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+      </div>
+      <div class="lg:col-span-2"><h4>روابط رئيسية</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن المجلس</a></li><li><a href="membership.html">العضوية</a></li><li><a href="media-center.html">المركز الإعلامي</a></li><li><a href="events.html">الفعاليات</a></li><li><a href="services.html">بوابة المستفيدين</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="projects.html">المشاريع</a></li><li><a href="contact.html">التطوع</a></li><li><a href="contact.html">العضوية</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الحوكمة</h4><ul class="space-y-2.5 text-sm"><li><a href="governance.html">اللوائح والسياسات</a></li><li><a href="governance.html">التقارير المالية</a></li><li><a href="governance.html">التقرير السنوي</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>تواصل</h4><div class="space-y-2 text-xs text-white/70"><div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div><div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@majales.org.sa</div><div><i class="fas fa-location-dot ml-1 text-sanad-goldSoft"></i> الرياض، السعودية</div></div></div>
+    </div>
+  </div>
+  <div class="border-t border-white/10"><div class="s-container py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60"><div>© <span data-year>2026</span> مجلس سَنَد. جميع الحقوق محفوظة.</div></div></div>
+</footer>
+
+<!-- Gallery Modal -->
+<div class="m-modal" id="mGallery">
+  <div class="m-mdlg">
+    <div class="m-mhead"><h3><i class="fas fa-images text-sanad-emeraldDeep"></i> <span id="gTitle">معرض الصور</span></h3><button class="m-close" data-close><i class="fas fa-xmark"></i></button></div>
+    <div class="m-mbody">
+      <div class="m-gview" id="gView">
+        <button class="m-garrow prev" id="gPrev"><i class="fas fa-chevron-right"></i></button>
+        <button class="m-garrow next" id="gNext"><i class="fas fa-chevron-left"></i></button>
+      </div>
+      <div class="m-gthumbs" id="gThumbs"></div>
+      <div class="text-center text-xs text-sanad-muted mt-3"><span id="gCount">1 / 1</span></div>
+    </div>
+    <div class="m-mfoot">
+      <button class="btn btn-outline" onclick="shareItem('معرض الصور')"><i class="fas fa-share-nodes"></i> مشاركة</button>
+      <button class="btn btn-primary" data-close><i class="fas fa-xmark"></i> إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- Video Modal -->
+<div class="m-modal" id="mVideo">
+  <div class="m-mdlg">
+    <div class="m-mhead"><h3><i class="fas fa-video text-sanad-emeraldDeep"></i> <span id="vTitle">عنوان الفيديو</span></h3><button class="m-close" data-close><i class="fas fa-xmark"></i></button></div>
+    <div class="m-mbody">
+      <div class="m-vid"><iframe id="vFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <p class="mt-3 text-sm text-sanad-muted" id="vDesc"></p>
+    </div>
+    <div class="m-mfoot">
+      <button class="btn btn-outline" onclick="shareItem('الفيديو')"><i class="fas fa-share-nodes"></i> مشاركة</button>
+      <button class="btn btn-primary" data-close><i class="fas fa-xmark"></i> إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- PDF Modal -->
+<div class="m-modal" id="mPdf">
+  <div class="m-mdlg">
+    <div class="m-mhead"><h3><i class="fas fa-file-pdf text-sanad-emeraldDeep"></i> <span id="pTitle">ملف PDF</span></h3><button class="m-close" data-close><i class="fas fa-xmark"></i></button></div>
+    <div class="m-mbody">
+      <div class="m-pdfview"><i class="fas fa-file-pdf"></i><span id="pInfo">عارض الملف — معاينة تجريبية</span></div>
+      <div class="mt-3 text-sm text-sanad-muted" id="pDesc"></div>
+    </div>
+    <div class="m-mfoot">
+      <div class="flex gap-2 flex-wrap">
+        <button class="btn btn-outline" onclick="copyLink()"><i class="fas fa-link"></i> نسخ الرابط</button>
+        <button class="btn btn-outline" onclick="shareItem('الملف')"><i class="fas fa-share-nodes"></i> مشاركة</button>
+      </div>
+      <button class="btn btn-primary" id="pDownload"><i class="fas fa-download"></i> تحميل</button>
+    </div>
+  </div>
+</div>
+
+<div class="m-toast" id="mToast"></div>
+<button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  const ITEMS = [
+    // News
+    {id:'n1', type:'news', title:'مجلس سَنَد تطلق مبادرة الرعاية المتكاملة للأسر', excerpt:'إطلاق مبادرة موسّعة لخدمة 600 أسرة سعودية ببرامج رعاية متكاملة.', img:'assets/images/posts/1.jpeg', date:'2026-04-18', year:'2026', cat:'حملات', views:2460, shares:180},
+    {id:'n2', type:'news', title:'توقيع شراكة استراتيجية لدعم برامج التمكين', excerpt:'الجمعية توقّع اتفاقية شراكة مع جهة داعمة لتعزيز برامج التمكين المجتمعي.', img:'assets/images/posts/2.jpeg', date:'2026-03-12', year:'2026', cat:'شراكات', views:1820, shares:140},
+    {id:'n3', type:'news', title:'حملة السلال الغذائية تصل إلى 800 أسرة', excerpt:'اختتام موسم الحملة بتسليم 800 سلة غذائية للأسر المستفيدة في مختلف المناطق.', img:'assets/images/posts/3.jpeg', date:'2026-02-25', year:'2026', cat:'حملات', views:2150, shares:210},
+
+    // Articles
+    {id:'a1', type:'article', title:'كيف تسهم الرعاية الاجتماعية في بناء الاستقرار؟', excerpt:'قراءة في أثر برامج الرعاية الاجتماعية على استقرار الأسر السعودية.', img:'assets/images/posts/4.jpeg', date:'2026-04-02', year:'2026', cat:'قصص أثر', views:1340, shares:96, author:'فريق التحرير', readMin:6},
+    {id:'a2', type:'article', title:'دور التطوع في تعزيز أثر الجمعيات', excerpt:'كيف يصنع المتطوعون الفارق الحقيقي في عمل الجمعيات الأهلية؟', img:'assets/images/posts/5.jpeg', date:'2026-03-18', year:'2026', cat:'تطوع', views:980, shares:74, author:'إدارة التطوع', readMin:5},
+    {id:'a3', type:'article', title:'الحوكمة بوصفها مدخلًا للثقة', excerpt:'لماذا أصبحت الحوكمة شرطًا أساسيًا لاستدامة عمل القطاع غير الربحي؟', img:'assets/images/posts/6.jpeg', date:'2026-02-10', year:'2026', cat:'تقارير إعلامية', views:760, shares:52, author:'وحدة الحوكمة', readMin:8},
+
+    // Galleries
+    {id:'g1', type:'gallery', title:'صور من حملة السلال الرمضانية', excerpt:'لقطات توثّق توزيع السلال الرمضانية على الأسر المستفيدة.', img:'assets/images/posts/7.jpeg', date:'2026-03-22', year:'2026', cat:'حملات', views:1620, shares:140, photos:['assets/images/posts/7.jpeg','assets/images/posts/1.jpeg','assets/images/posts/3.jpeg','assets/images/posts/9.jpeg','assets/images/posts/10.jpeg','assets/images/posts/2.jpeg']},
+    {id:'g2', type:'gallery', title:'زيارة فريق الجمعية للأسر المستفيدة', excerpt:'لحظات إنسانية من زيارات الفريق الميداني للأسر.', img:'assets/images/posts/8.jpeg', date:'2026-02-08', year:'2026', cat:'قصص أثر', views:1240, shares:88, photos:['assets/images/posts/8.jpeg','assets/images/posts/4.jpeg','assets/images/posts/5.jpeg','assets/images/posts/6.jpeg']},
+    {id:'g3', type:'gallery', title:'لقاء الشركاء والداعمين', excerpt:'لقطات من ملتقى الشركاء السنوي للجمعية.', img:'assets/images/posts/9.jpeg', date:'2025-12-20', year:'2025', cat:'شراكات', views:980, shares:60, photos:['assets/images/posts/9.jpeg','assets/images/posts/2.jpeg','assets/images/posts/10.jpeg','assets/images/posts/1.jpeg','assets/images/posts/3.jpeg']},
+
+    // Videos
+    {id:'v1', type:'video', title:'قصة أثر من برامج التمكين', excerpt:'مقابلة مع إحدى الأسر المستفيدة من برامج التمكين الاقتصادي.', img:'assets/images/posts/10.jpeg', date:'2026-04-05', year:'2026', cat:'قصص أثر', views:3210, shares:240, duration:'٣:٢٤', src:'https://www.youtube.com/embed/dQw4w9WgXcQ'},
+    {id:'v2', type:'video', title:'لمحة عن خدمات المجلس', excerpt:'فيلم تعريفي يعرض أبرز خدمات وبرامج مجلس سَنَد.', img:'assets/images/posts/2.jpeg', date:'2026-02-12', year:'2026', cat:'تقارير إعلامية', views:2780, shares:190, duration:'٤:٥٠', src:'https://www.youtube.com/embed/dQw4w9WgXcQ'},
+    {id:'v3', type:'video', title:'حصاد عام من العطاء', excerpt:'استعراض بصري لإنجازات الجمعية خلال عام كامل.', img:'assets/images/posts/4.jpeg', date:'2025-12-30', year:'2025', cat:'حملات', views:2150, shares:160, duration:'٥:١٢', src:'https://www.youtube.com/embed/dQw4w9WgXcQ'},
+
+    // Files
+    {id:'f1', type:'file', title:'الإصدار الإعلامي السنوي 2025', excerpt:'تقرير إعلامي شامل يستعرض أبرز الأنشطة والإنجازات.', date:'2026-01-15', year:'2026', cat:'تقارير إعلامية', views:1840, shares:120, size:'4.2 ميجابايت', downloads:520},
+    {id:'f2', type:'file', title:'كتيب تعريفي بالجمعية', excerpt:'كتيب موجز يستعرض رؤية ورسالة وبرامج مجلس سَنَد.', date:'2025-11-20', year:'2025', cat:'تقارير إعلامية', views:1240, shares:84, size:'2.8 ميجابايت', downloads:380},
+    {id:'f3', type:'file', title:'تقرير حملة السلال الغذائية', excerpt:'تقرير ميداني يوثّق نتائج وأثر حملة السلال الغذائية.', date:'2026-03-30', year:'2026', cat:'حملات', views:760, shares:54, size:'1.9 ميجابايت', downloads:198},
+  ];
+
+  const TYPE_META = {
+    news:{lbl:'خبر', ic:'fa-newspaper', cls:'news'},
+    article:{lbl:'مقالة', ic:'fa-pen-fancy', cls:'article'},
+    gallery:{lbl:'معرض صور', ic:'fa-images', cls:'gallery'},
+    video:{lbl:'فيديو', ic:'fa-circle-play', cls:'video'},
+    file:{lbl:'ملف PDF', ic:'fa-file-pdf', cls:'file'},
+  };
+
+  const fmtDate = (d) => {
+    const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    const dt = new Date(d); return `${dt.getDate()} ${months[dt.getMonth()]} ${dt.getFullYear()}`;
+  };
+
+  const state = { type:'all', search:'', year:'', cat:'', sort:'new', typeSel:'' };
+
+  function filtered(){
+    return ITEMS.filter(it => {
+      if(state.type !== 'all' && it.type !== state.type) return false;
+      if(state.typeSel && it.type !== state.typeSel) return false;
+      if(state.year && it.year !== state.year) return false;
+      if(state.cat && it.cat !== state.cat) return false;
+      if(state.search){
+        const q = state.search.trim().toLowerCase();
+        if(!(it.title+it.excerpt+it.cat).toLowerCase().includes(q)) return false;
+      }
+      return true;
+    }).sort((a,b)=>{
+      if(state.sort==='views') return b.views - a.views;
+      if(state.sort==='shares') return b.shares - a.shares;
+      return new Date(b.date) - new Date(a.date);
+    });
+  }
+
+  function cardHtml(it){
+    const m = TYPE_META[it.type];
+    let body = '';
+    if(it.type==='news' || it.type==='article'){
+      body = `
+        <a href="article-details.html" class="m-thumb block" style="background-image:url('${it.img}')">
+          <span class="m-type-badge ${m.cls}"><i class="fas ${m.ic}"></i> ${m.lbl}</span>
+        </a>
+        <div class="m-body">
+          <div class="m-meta"><span><i class="fas fa-calendar"></i>${fmtDate(it.date)}</span><span><i class="fas fa-tag"></i>${it.cat}</span>${it.author?`<span><i class="fas fa-user"></i>${it.author}</span>`:''}${it.readMin?`<span><i class="fas fa-clock"></i>${it.readMin} د قراءة</span>`:''}</div>
+          <h3><a href="article-details.html" class="hover:text-sanad-emeraldDeep transition-colors">${it.title}</a></h3>
+          <p>${it.excerpt}</p>
+          <div class="m-card-foot">
+            <span class="text-xs text-sanad-muted"><i class="fas fa-eye text-sanad-emeraldDeep ml-1"></i>${it.views.toLocaleString('ar-SA')}</span>
+            <a href="article-details.html" class="m-link">${it.type==='news'?'قراءة الخبر':'قراءة المقالة'} <i class="fas fa-arrow-left"></i></a>
+          </div>
+        </div>`;
+    } else if(it.type==='gallery'){
+      const thumbs = (it.photos||[]).slice(1,4).map(p=>`<span style="background-image:url('${p}')"></span>`).join('');
+      body = `
+        <div class="m-thumb" style="background-image:url('${it.img}')">
+          <span class="m-type-badge ${m.cls}"><i class="fas ${m.ic}"></i> ${m.lbl}</span>
+        </div>
+        <div class="m-thumbs">${thumbs}</div>
+        <div class="m-body">
+          <div class="m-meta"><span><i class="fas fa-calendar"></i>${fmtDate(it.date)}</span><span><i class="fas fa-image"></i>${(it.photos||[]).length} صور</span></div>
+          <h3>${it.title}</h3>
+          <div class="m-card-foot">
+            <span class="text-xs text-sanad-muted"><i class="fas fa-eye text-sanad-emeraldDeep ml-1"></i>${it.views.toLocaleString('ar-SA')}</span>
+            <button class="m-link" data-open-gallery="${it.id}">عرض الصور <i class="fas fa-arrow-left"></i></button>
+          </div>
+        </div>`;
+    } else if(it.type==='video'){
+      body = `
+        <div class="m-thumb" style="background-image:url('${it.img}')">
+          <span class="m-type-badge ${m.cls}"><i class="fas ${m.ic}"></i> ${m.lbl}</span>
+          <span class="m-dur">${it.duration}</span>
+          <div class="m-play"><span><i class="fas fa-play"></i></span></div>
+        </div>
+        <div class="m-body">
+          <div class="m-meta"><span><i class="fas fa-calendar"></i>${fmtDate(it.date)}</span><span><i class="fas fa-tag"></i>${it.cat}</span></div>
+          <h3>${it.title}</h3>
+          <p>${it.excerpt}</p>
+          <div class="m-card-foot">
+            <span class="text-xs text-sanad-muted"><i class="fas fa-eye text-sanad-emeraldDeep ml-1"></i>${it.views.toLocaleString('ar-SA')}</span>
+            <button class="m-link" data-open-video="${it.id}">مشاهدة الفيديو <i class="fas fa-arrow-left"></i></button>
+          </div>
+        </div>`;
+    } else if(it.type==='file'){
+      body = `
+        <div class="m-pdf-cover">
+          <i class="fas fa-file-pdf"></i>
+          <span class="m-type-badge ${m.cls}"><i class="fas ${m.ic}"></i> ${m.lbl}</span>
+        </div>
+        <div class="m-body">
+          <div class="m-meta"><span><i class="fas fa-calendar"></i>${fmtDate(it.date)}</span><span><i class="fas fa-database"></i>${it.size}</span></div>
+          <h3>${it.title}</h3>
+          <p>${it.excerpt}</p>
+          <div class="m-pdf-stats">
+            <div><b>${it.views.toLocaleString('ar-SA')}</b><span>مشاهدة</span></div>
+            <div><b data-dl="${it.id}">${it.downloads.toLocaleString('ar-SA')}</b><span>تحميل</span></div>
+          </div>
+          <div class="m-card-foot">
+            <button class="m-link" data-open-pdf="${it.id}">عرض الملف <i class="fas fa-arrow-left"></i></button>
+            <button class="btn btn-primary !py-2 !px-3 text-xs" data-dl-btn="${it.id}"><i class="fas fa-download"></i> تحميل</button>
+          </div>
+        </div>`;
+    }
+    return `<article class="m-card" data-id="${it.id}">${body}</article>`;
+  }
+
+  function render(){
+    const list = filtered();
+    const grid = document.getElementById('mediaGrid');
+    grid.innerHTML = list.map(cardHtml).join('');
+    document.getElementById('mCount').textContent = list.length;
+    document.getElementById('mEmpty').classList.toggle('hidden', list.length>0);
+  }
+
+  // Filters wiring
+  document.getElementById('mTypes').addEventListener('click', e=>{
+    const b = e.target.closest('.m-type'); if(!b) return;
+    document.querySelectorAll('.m-type').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); state.type = b.dataset.type; render();
+  });
+  document.getElementById('mSearch').addEventListener('input', e=>{ state.search = e.target.value; render(); });
+  document.getElementById('mYear').addEventListener('change', e=>{ state.year = e.target.value; render(); });
+  document.getElementById('mCat').addEventListener('change', e=>{ state.cat = e.target.value; render(); });
+  document.getElementById('mSort').addEventListener('change', e=>{ state.sort = e.target.value; render(); });
+  document.getElementById('mTypeSel').addEventListener('change', e=>{ state.typeSel = e.target.value; render(); });
+  document.getElementById('mReset').addEventListener('click', ()=>{
+    state.type='all'; state.search=''; state.year=''; state.cat=''; state.sort='new'; state.typeSel='';
+    document.getElementById('mSearch').value=''; document.getElementById('mYear').value=''; document.getElementById('mCat').value=''; document.getElementById('mSort').value='new'; document.getElementById('mTypeSel').value='';
+    document.querySelectorAll('.m-type').forEach(x=>x.classList.remove('active'));
+    document.querySelector('.m-type[data-type="all"]').classList.add('active');
+    render();
+  });
+
+  // Modal helpers
+  const openModal = id => document.getElementById(id).classList.add('open');
+  const closeModal = el => el.classList.remove('open');
+  document.querySelectorAll('.m-modal').forEach(m=>{
+    m.addEventListener('click', e=>{ if(e.target===m || e.target.closest('[data-close]')) {
+      closeModal(m);
+      if(m.id==='mVideo'){ document.getElementById('vFrame').src=''; }
+    }});
+  });
+
+  // Gallery
+  let gItem=null, gIdx=0;
+  function openGallery(it){
+    gItem=it; gIdx=0;
+    document.getElementById('gTitle').textContent = it.title;
+    renderGallery(); openModal('mGallery');
+    bumpViews(it);
+  }
+  function renderGallery(){
+    document.getElementById('gView').style.backgroundImage = `url('${gItem.photos[gIdx]}')`;
+    document.getElementById('gCount').textContent = `${gIdx+1} / ${gItem.photos.length}`;
+    document.getElementById('gThumbs').innerHTML = gItem.photos.map((p,i)=>`<span class="${i===gIdx?'active':''}" data-gi="${i}" style="background-image:url('${p}')"></span>`).join('');
+  }
+  document.getElementById('gPrev').addEventListener('click', ()=>{ gIdx=(gIdx-1+gItem.photos.length)%gItem.photos.length; renderGallery(); });
+  document.getElementById('gNext').addEventListener('click', ()=>{ gIdx=(gIdx+1)%gItem.photos.length; renderGallery(); });
+  document.getElementById('gThumbs').addEventListener('click', e=>{ const s=e.target.closest('[data-gi]'); if(!s)return; gIdx=+s.dataset.gi; renderGallery(); });
+
+  // Video
+  function openVideo(it){
+    document.getElementById('vTitle').textContent = it.title;
+    document.getElementById('vDesc').textContent = it.excerpt;
+    document.getElementById('vFrame').src = it.src + '?autoplay=1';
+    openModal('mVideo'); bumpViews(it);
+  }
+  // PDF
+  function openPdf(it){
+    document.getElementById('pTitle').textContent = it.title;
+    document.getElementById('pInfo').textContent = `${it.title} — ${it.size}`;
+    document.getElementById('pDesc').textContent = it.excerpt;
+    document.getElementById('pDownload').onclick = ()=> doDownload(it);
+    openModal('mPdf'); bumpViews(it);
+  }
+
+  function bumpViews(it){ it.views++; render(); }
+  function doDownload(it){ it.downloads++; render(); showToast('بدأ تحميل الملف…'); }
+
+  document.getElementById('mediaGrid').addEventListener('click', e=>{
+    let b;
+    if((b=e.target.closest('[data-open-gallery]'))){ const it=ITEMS.find(x=>x.id===b.dataset.openGallery); openGallery(it); }
+    else if((b=e.target.closest('[data-open-video]'))){ const it=ITEMS.find(x=>x.id===b.dataset.openVideo); openVideo(it); }
+    else if((b=e.target.closest('[data-open-pdf]'))){ const it=ITEMS.find(x=>x.id===b.dataset.openPdf); openPdf(it); }
+    else if((b=e.target.closest('[data-dl-btn]'))){ const it=ITEMS.find(x=>x.id===b.dataset.dlBtn); doDownload(it); }
+  });
+
+  window.shareItem = (lbl)=> showToast(`جاهز لمشاركة ${lbl}`);
+  window.copyLink = ()=>{ try{ navigator.clipboard.writeText(location.href); showToast('تم نسخ الرابط'); }catch(e){ showToast('تعذّر نسخ الرابط'); } };
+  window.showToast = (msg)=>{ const t=document.getElementById('mToast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200); };
+
+  render();
+})();
+</script>
+</body>
+</html>

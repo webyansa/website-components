@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>تواصل معنا · مجلس سَنَد</title>
+<meta name="description" content="تواصل مع مجلس سَنَد عبر نموذج موحد بسيط لاستقبال الاستفسارات والشكاوى والمقترحات والشراكات وطلبات الزيارة والتطوع." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#152a5e',navyDeep:'#0a1738',navySoft:'#26417a',emerald:'#1a6aa3',emeraldSoft:'#3a8ec4',emeraldDeep:'#125580',gold:'#b08530',goldSoft:'#dab36b',sand:'#eef0f6',ivory:'#f6f7fb',mist:'#eaecf3',border:'#e3e7ef',text:'#0f1d2e',muted:'#5b6b7d' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<!-- الهيدر الموحد (يُحقن عبر main.js) -->
+<header class="s-header"></header>
+
+<!-- Hero -->
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide7.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">تواصل معنا</span></div>
+    <h1>تواصل معنا</h1>
+    <p class="s-hero-lead">نسعد بتواصلكم. اختر نوع التواصل المناسب، واكتب رسالتكم، وسيتم توجيهها للفريق المختص.</p>
+  </div>
+</section>
+
+<!-- بطاقات التواصل السريع -->
+<section class="py-10">
+  <div class="s-container">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="ct-card"><div class="ic"><i class="fas fa-phone"></i></div><h4>الهاتف</h4><strong dir="ltr">920000000</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fab fa-whatsapp"></i></div><h4>واتساب</h4><strong dir="ltr">+966 55 555 0000</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-envelope"></i></div><h4>البريد الإلكتروني</h4><strong>info@majales.org.sa</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-headset"></i></div><h4>الدعم والخدمات</h4><strong>support@sanad.org.sa</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-clock"></i></div><h4>ساعات العمل</h4><strong>الأحد - الخميس / 8ص - 4م</strong></div>
+      <div class="ct-card"><div class="ic"><i class="fas fa-location-dot"></i></div><h4>موقع المجلس</h4><strong>الرياض - حي الورود</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- نموذج اتصل بنا -->
+<section class="py-12 bg-white" id="ct-form">
+  <div class="s-container max-w-3xl">
+    <div class="text-center mb-8">
+      <h2 class="s-title">نموذج اتصل بنا</h2>
+      <p class="text-sanad-muted mt-2">يسعدنا استقبال رسالتك، وسيتم توجيهها للفريق المختص حسب نوع التواصل.</p>
+    </div>
+
+    <form id="ctUnified" novalidate class="ct-form-wrap">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="srv-field sm:col-span-2">
+          <label>نوع التواصل <span class="text-red-500">*</span></label>
+          <select name="type" required>
+            <option value="">اختر نوع التواصل</option>
+            <option value="استفسار">استفسار</option>
+            <option value="شكوى وبلاغات">شكوى وبلاغات</option>
+            <option value="مقترح">مقترح</option>
+            <option value="زيارة">زيارة</option>
+            <option value="شراكات">شراكات</option>
+            <option value="طلب مساعدة">طلب مساعدة</option>
+            <option value="تطوع">تطوع</option>
+            <option value="أخرى">أخرى</option>
+          </select>
+        </div>
+        <div class="srv-field"><label>الاسم الكامل <span class="text-red-500">*</span></label><input type="text" name="name" maxlength="100" required></div>
+        <div class="srv-field"><label>رقم الجوال <span class="text-red-500">*</span></label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX" required></div></div>
+        <div class="srv-field sm:col-span-2"><label>البريد الإلكتروني</label><input type="email" name="email" maxlength="120"></div>
+        <div class="srv-field sm:col-span-2"><label>عنوان الرسالة <span class="text-red-500">*</span></label><input type="text" name="subject" maxlength="150" required></div>
+        <div class="srv-field sm:col-span-2"><label>نص الرسالة <span class="text-red-500">*</span></label><textarea name="body" rows="5" maxlength="1500" required></textarea></div>
+      </div>
+
+      <label class="srv-check"><input type="checkbox" required> أوافق على سياسة الخصوصية وأقر بصحة البيانات المدخلة.</label>
+
+      <button type="submit" class="btn btn-primary w-full justify-center !py-3.5"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button>
+    </form>
+  </div>
+</section>
+
+<!-- موقع المجلس والفروع -->
+<section class="py-12" id="ct-location">
+  <div class="s-container">
+    <h2 class="s-title text-center mb-8">موقع المجلس والفروع</h2>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 ct-map">
+        <div class="ct-map-mock">
+          <i class="fas fa-map-location-dot"></i>
+          <div data-ct-branch-info>
+            <strong>المقر الرئيسي - الرياض</strong>
+            <span>حي الورود، شارع الأمير محمد بن عبدالعزيز</span>
+          </div>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-primary"><i class="fas fa-diamond-turn-right"></i> عرض الاتجاهات</a>
+        </div>
+      </div>
+      <div class="space-y-3" data-ct-branches>
+        <button type="button" class="ct-branch active" data-branch="الرياض|حي الورود، شارع الأمير محمد بن عبدالعزيز"><i class="fas fa-building"></i><div><strong>المقر الرئيسي</strong><small>الرياض - حي الورود</small></div></button>
+        <button type="button" class="ct-branch" data-branch="جدة|حي الزهراء، طريق الأمير سلطان"><i class="fas fa-building"></i><div><strong>فرع جدة</strong><small>حي الزهراء</small></div></button>
+        <button type="button" class="ct-branch" data-branch="الدمام|حي الفيصلية، طريق الملك فهد"><i class="fas fa-building"></i><div><strong>فرع الدمام</strong><small>حي الفيصلية</small></div></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- روابط مهمة -->
+<section class="py-12 bg-white">
+  <div class="s-container">
+    <h2 class="s-title text-center mb-8">روابط مهمة</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+      <a href="services.html" class="ct-quick"><i class="fas fa-clipboard-list"></i> طلب خدمة</a>
+      <a href="service-tracking.html" class="ct-quick"><i class="fas fa-route"></i> تتبع طلب</a>
+      <a href="services.html" class="ct-quick"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
+      <a href="membership.html" class="ct-quick"><i class="fas fa-heart"></i> العضوية</a>
+      <a href="index.html" class="ct-quick"><i class="fas fa-store"></i> متجر الجمعية</a>
+      <a href="governance.html" class="ct-quick"><i class="fas fa-shield-halved"></i> الحوكمة</a>
+      <a href="services.html" class="ct-quick"><i class="fas fa-hands-helping"></i> التطوع</a>
+      <a href="#ct-form" class="ct-quick"><i class="fas fa-bullhorn"></i> الإبلاغ عن مخالفة</a>
+    </div>
+  </div>
+</section>
+
+<!-- الأسئلة الشائعة -->
+<section class="py-12">
+  <div class="s-container max-w-3xl">
+    <h2 class="s-title text-center mb-8">أسئلة شائعة</h2>
+    <div class="space-y-3">
+      <details class="srv-faq"><summary>كيف أتواصل مع المجلس؟</summary><p>يمكنكم التواصل عبر الهاتف، واتساب، البريد الإلكتروني، أو نموذج اتصل بنا في هذه الصفحة.</p></details>
+      <details class="srv-faq"><summary>كيف أتابع طلب خدمة؟</summary><p>من خلال صفحة "تتبع طلب خدمة" بإدخال رقم الطلب ورقم الجوال.</p></details>
+      <details class="srv-faq"><summary>كيف أرفع شكوى أو بلاغًا؟</summary><p>اختر "شكوى وبلاغات" في نموذج اتصل بنا أعلاه، ثم اكتب تفاصيل البلاغ وسيتم استلامه فورًا.</p></details>
+      <details class="srv-faq"><summary>ما أوقات العمل؟</summary><p>من الأحد إلى الخميس، من 8 صباحًا إلى 4 مساءً.</p></details>
+      <details class="srv-faq"><summary>أين يقع مقر الجمعية؟</summary><p>الرياض - حي الورود، شارع الأمير محمد بن عبدالعزيز.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- نافذة نجاح الإرسال -->
+<div class="sanad-modal-overlay" id="ctSuccess">
+  <div class="sanad-modal">
+    <div class="sanad-modal-header">
+      <h3><i class="fas fa-circle-check text-sanad-emerald"></i> تم إرسال رسالتك بنجاح</h3>
+      <button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="sanad-modal-body">
+      <p class="text-sanad-muted leading-loose mb-4">شكرًا لتواصلكم مع مجلس سَنَد. تم استلام رسالتكم وسيتم التعامل معها من الفريق المختص.</p>
+      <div class="ct-success-grid">
+        <div><span>رقم المتابعة</span><strong data-ct-ticket>CNT-2026-0001</strong></div>
+        <div><span>الحالة</span><strong class="text-sanad-emeraldDeep">قيد المراجعة</strong></div>
+      </div>
+    </div>
+    <div class="sanad-modal-footer">
+      <button class="btn btn-primary" data-close>إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- الفوتر الموحد في نهاية الصفحة فقط -->
+<footer class="s-footer"></footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
