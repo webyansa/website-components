@@ -498,8 +498,19 @@ const PageCard = ({ page }: { page: PageLink }) => {
 // Template Card Component
 const TemplateCard = ({ template }: { template: Template }) => {
   const [isDownloading, setIsDownloading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const previewHref = `${import.meta.env.BASE_URL}${template.previewPath}`;
   const thumbnailHref = `${import.meta.env.BASE_URL}${template.thumbnail}`;
+
+  const handleCopyPreviewLink = async () => {
+    try {
+      await navigator.clipboard.writeText(previewHref);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.warn("Clipboard write failed:", err);
+    }
+  };
 
   const handleDownloadTemplate = async () => {
     setIsDownloading(true);
@@ -731,7 +742,7 @@ const TemplateCard = ({ template }: { template: Template }) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="d-flex gap-2">
+          <div className="d-flex gap-2 flex-wrap">
             <a
               href={previewHref}
               target="_blank"
@@ -796,6 +807,40 @@ const TemplateCard = ({ template }: { template: Template }) => {
               تحميل
             </button>
           </div>
+          {/* Copy preview link button */}
+          <button
+            onClick={handleCopyPreviewLink}
+            className="btn w-100 d-flex align-items-center justify-content-center gap-2 mt-2"
+            style={{
+              background: copied ? "#dcfce7" : "#f8fafc",
+              color: copied ? "#16a34a" : "#64748b",
+              borderRadius: "10px",
+              fontSize: "0.8rem",
+              padding: "8px 14px",
+              border: `1px solid ${copied ? "#86efac" : "#e2e8f0"}`,
+              fontWeight: 600,
+              transition: "all 0.2s",
+            }}
+          >
+            {copied ? (
+              <>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                </svg>
+                تم نسخ الرابط
+              </>
+            ) : (
+              <>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4 1.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h2zM2 0a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                  <path d="M10 1.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H8a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h2zM8 0a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H8z"/>
+                  <path d="M4 9.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h2zM2 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2z"/>
+                  <path d="M9 8a1 1 0 0 0-1 1v5.293l-2.146-2.147a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L10 14.293V9a1 1 0 0 0-1-1z"/>
+                </svg>
+                نسخ رابط المعاينة
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>
