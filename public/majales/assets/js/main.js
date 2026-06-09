@@ -151,7 +151,7 @@
 })();
 
 /* =============================================
-   بوابة التبرع — donation portal
+   العضوية — donation portal
    ============================================= */
 (function () {
   "use strict";
@@ -584,7 +584,7 @@
   /* مشاركة السند */
   document.querySelectorAll("[data-share-receipt]").forEach((b) =>
     b.addEventListener("click", () => {
-      const txt = "سند تبرع — جمعية سَنَد";
+      const txt = "سند تبرع — مجلس سَنَد";
       if (navigator.share) {
         navigator.share({ title: txt, text: txt, url: location.href }).catch(() => {});
       } else {
@@ -934,7 +934,7 @@
       t = document.createElement("div");
       t.id = "st-toast";
       t.style.cssText =
-        "position:fixed;bottom:30px;right:30px;background:#0d7a4f;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;z-index:9999;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:.3s;opacity:0;transform:translateY(10px);";
+        "position:fixed;bottom:30px;right:30px;background:#1a6aa3;color:#fff;padding:14px 22px;border-radius:14px;font-weight:700;z-index:9999;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:.3s;opacity:0;transform:translateY(10px);";
       document.body.appendChild(t);
     }
     t.textContent = msg;
@@ -1743,7 +1743,7 @@
   };
   const isActive = (k) => (groups[k]?.includes(page) ? "active" : "");
 
-  // عدّاد سلة المتجر من localStorage (إن وُجد)
+  // عدّاد تواصل معنا من localStorage (إن وُجد)
   function getCartCount() {
     try {
       const raw = localStorage.getItem("sanad_cart");
@@ -1773,14 +1773,14 @@
         <div class="sx-tlinks">
           
           <a href="service-tracking.html" class="sx-thide"><i class="fas fa-route"></i> تتبع طلب</a>
-          <a href="beneficiaries.html" class="sx-thide"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
+          <a href="services.html" class="sx-thide"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
          
         <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
         </div>
         <div class="sx-tright">
           <div class="sx-tcontact">
             <a href="tel:920000000" class="sx-thide"><i class="fas fa-phone"></i> 920000000</a>
-            <a href="mailto:info@sanad.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@sanad.org.sa</a>
+            <a href="mailto:info@majales.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
           </div>
           <div class="sx-lang-dd" data-lang-dd>
             <button class="sx-lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
@@ -1800,14 +1800,14 @@
       <a href="index.html" class="sx-logo">
         <div class="sx-mark">س</div>
         <div>
-          <div class="sx-name">جمعية سَنَد</div>
-          <div class="sx-tag">للخدمات الاجتماعية والرعاية</div>
+          <div class="sx-name">مجلس سَنَد</div>
+          <div class="sx-tag">للتنسيق والتمثيل المؤسسي</div>
         </div>
       </a>
       <nav class="sx-nav" aria-label="القائمة الرئيسية">
         <a href="index.html" class="${isActive("home")}">الرئيسية</a>
         <div class="sx-drop" data-drop>
-          <button type="button" class="${isActive("about")}">عن الجمعية <i class="fas fa-chevron-down"></i></button>
+          <button type="button" class="${isActive("about")}">عن المجلس <i class="fas fa-chevron-down"></i></button>
           <div class="sx-dmenu">
             <a href="about.html"><i class="fas fa-circle-info"></i> من نحن</a>
             <a href="founding.html"><i class="fas fa-flag"></i> النشأة والتأسيس</a>
@@ -1821,8 +1821,8 @@
             <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
           </div>
         </div>
-        <a href="donations.html" class="${isActive("donations")}">بوابة التبرعات</a>
-        <a href="store.html" class="${isActive("store")}">متجر الجمعية</a>
+        <a href="membership.html" class="${isActive("donations")}">العضويةات</a>
+        <a href="index.html" class="${isActive("store")}">متجر الجمعية</a>
         <a href="services.html" class="${isActive("services")}">خدماتنا</a>
         <a href="projects.html" class="${isActive("projects")}">المشاريع</a>
         <a href="governance.html" class="${isActive("governance")}">الحوكمة</a>
@@ -1831,11 +1831,11 @@
        
       </nav>
       <div class="sx-actions">
-        <button type="button" class="sx-icon-btn" data-sx-donation-cart aria-label="سلة التبرعات" title="سلة التبرعات">
+        <button type="button" class="sx-icon-btn" data-sx-donation-cart aria-label="تواصل معنا" title="تواصل معنا">
           <i class="fas fa-heart-circle-plus"></i>
           <span class="sx-badge" data-donation-count>${getDonationCount()}</span>
         </button>
-        <a href="cart.html" class="sx-icon-btn" aria-label="سلة المتجر" title="سلة المتجر">
+        <a href="index.html" class="sx-icon-btn" aria-label="تواصل معنا" title="تواصل معنا">
           <i class="fas fa-bag-shopping"></i>
           <span class="sx-badge" data-cart-count>${getCartCount()}</span>
         </a>
@@ -1845,11 +1845,11 @@
           </button>
           <div class="sx-login-menu">
             <div class="sx-lhead">اختر نوع الحساب</div>
-            <a href="beneficiary-login.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
-            <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-            <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
+            <a href="contact.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
+            <a href="contact.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
+            <a href="contact.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
             <div class="sx-lreg">
-              <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
             </div>
           </div>
         </div>
@@ -1863,20 +1863,20 @@
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
   <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
     <div class="sx-mhead">
-      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">جمعية سَنَد</div></div></div>
+      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">مجلس سَنَد</div></div></div>
       <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-mbody">
       <a href="index.html"><i class="fas fa-house"></i> الرئيسية</a>
-      <button type="button" data-sx-mcollapse="about"><i class="fas fa-circle-info"></i> عن الجمعية <i class="fas fa-chevron-down" style="margin-inline-start:auto;font-size:.7rem"></i></button>
+      <button type="button" data-sx-mcollapse="about"><i class="fas fa-circle-info"></i> عن المجلس <i class="fas fa-chevron-down" style="margin-inline-start:auto;font-size:.7rem"></i></button>
       <div class="sx-mcollapse" data-sx-mcoll="about">
         <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">استراتيجيتنا</a>
         <a href="board.html">مجلس الإدارة</a><a href="executive-management.html">الإدارة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
         <a href="registration-certificate.html">شهادة التسجيل</a><a href="branches.html">الفروع والمكاتب</a>
         <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
       </div>
-      <a href="donations.html"><i class="fas fa-heart"></i> بوابة التبرعات</a>
-      <a href="store.html"><i class="fas fa-store"></i> متجر الجمعية</a>
+      <a href="membership.html"><i class="fas fa-heart"></i> العضويةات</a>
+      <a href="index.html"><i class="fas fa-store"></i> متجر الجمعية</a>
       <a href="services.html"><i class="fas fa-hand-holding-heart"></i> خدماتنا</a>
       <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع والمبادرات</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
@@ -1885,39 +1885,39 @@
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
 
       <div class="sx-msec">حسابي وسلاتي</div>
-      <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> سلة التبرعات <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
-      <a href="cart.html"><i class="fas fa-bag-shopping"></i> سلة المتجر <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
-      <a href="beneficiary-login.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-      <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-      <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-      <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+      <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> تواصل معنا <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
+      <a href="index.html"><i class="fas fa-bag-shopping"></i> تواصل معنا <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
+      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
+      <a href="contact.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
+      <a href="contact.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
+      <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
 
       <div class="sx-msec">روابط سريعة</div>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
-      <a href="beneficiaries.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
+      <a href="services.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
       <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
-      <a href="mailto:info@sanad.org.sa"><i class="fas fa-envelope"></i> info@sanad.org.sa</a>
+      <a href="mailto:info@majales.org.sa"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
       <button type="button" data-lang-toggle><i class="fas fa-globe"></i> اللغة: العربية / English</button>
     </div>
   </aside>
 
-  <!-- سلة التبرعات (Drawer) -->
+  <!-- تواصل معنا (Drawer) -->
   <div class="sx-drawer-overlay" data-sx-dcart-overlay></div>
   <aside class="sx-drawer" data-sx-dcart>
     <div class="sx-dhead">
-      <h3><i class="fas fa-heart-circle-plus"></i> سلة التبرعات</h3>
+      <h3><i class="fas fa-heart-circle-plus"></i> تواصل معنا</h3>
       <button class="sx-dclose" data-sx-dcart-close><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-dbody" data-sx-dcart-body>
       <div class="sx-dempty">
         <i class="fas fa-heart"></i>
         <div>سلة تبرعاتك فارغة حاليًا.</div>
-        <div style="font-size:.78rem;margin-top:.4rem">يمكنك تصفّح فرص التبرع وإضافتها هنا.</div>
+        <div style="font-size:.78rem;margin-top:.4rem">يمكنك تصفّح المبادرات وإضافتها هنا.</div>
       </div>
     </div>
     <div class="sx-dfoot">
-      <a href="donations.html" class="s-btn s-btn-primary" style="justify-content:center"><i class="fas fa-arrow-left"></i> متابعة التبرع</a>
-      <a href="donations.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
+      <a href="membership.html" class="s-btn s-btn-primary" style="justify-content:center"><i class="fas fa-arrow-left"></i> متابعة التبرع</a>
+      <a href="membership.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
     </div>
   </aside>
   `;
@@ -1928,7 +1928,7 @@
       <div class="sx-fbrand">
         <div class="sx-fname">
           <div class="sx-mark">س</div>
-          <div><div class="nm">جمعية سَنَد</div><div class="tg">للخدمات الاجتماعية والرعاية</div></div>
+          <div><div class="nm">مجلس سَنَد</div><div class="tg">للتنسيق والتمثيل المؤسسي</div></div>
         </div>
         <p>جمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين، عبر برامج مؤسسية تعزز جودة حياة المستفيدين وتدعم الاستدامة المجتمعية ضمن منظومة العمل الخيري السعودي.</p>
         <div class="sx-fsoc">
@@ -1944,9 +1944,9 @@
         <ul>
           <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
           <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
-          <li><a href="donations.html"><i class="fas fa-angle-left"></i> بوابة التبرع</a></li>
-          <li><a href="store.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
-          <li><a href="beneficiaries.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
+          <li><a href="membership.html"><i class="fas fa-angle-left"></i> العضوية</a></li>
+          <li><a href="index.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
           <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
         </ul>
       </div>
@@ -1963,10 +1963,10 @@
       <div class="sx-fcol">
         <h4>خدمات المستفيدين</h4>
         <ul>
-          <li><a href="beneficiary-login.html"><i class="fas fa-angle-left"></i> دخول المستفيدين</a></li>
-          <li><a href="beneficiary-register.html"><i class="fas fa-angle-left"></i> انضم كمستفيد</a></li>
-          <li><a href="beneficiary-products.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
-          <li><a href="beneficiary-request-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> دخول المستفيدين</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> انضم كمستفيد</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
+          <li><a href="service-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
           <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
         </ul>
       </div>
@@ -1974,7 +1974,7 @@
         <h4>التواصل والنشرة</h4>
         <ul class="sx-fcontact">
           <li><i class="fas fa-phone"></i> 920000000</li>
-          <li><i class="fas fa-envelope"></i> info@sanad.org.sa</li>
+          <li><i class="fas fa-envelope"></i> info@majales.org.sa</li>
           <li><i class="fas fa-location-dot"></i> الرياض — حي الملقا — طريق الملك فهد</li>
           <li><i class="fas fa-clock"></i> الأحد - الخميس · 8 ص - 4 م</li>
           <li><i class="fab fa-whatsapp"></i> 0500000000</li>
@@ -2017,7 +2017,7 @@
 
     <div class="sx-fbottom">
       <div class="sx-fbcont">
-        <div>© جميع الحقوق محفوظة لجمعية سَنَد <span data-year>2026</span></div>
+        <div>© جميع الحقوق محفوظة لمجلس سَنَد <span data-year>2026</span></div>
         <div>بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
       </div>
     </div>
@@ -2035,7 +2035,7 @@
       </div>
       <div class="sx-mod-body sx-cert-body">
         <div class="sx-cert-meta">
-          <div class="sx-cmrow"><span>اسم الجمعية</span><b>جمعية سَنَد للخدمات الاجتماعية والرعاية</b></div>
+          <div class="sx-cmrow"><span>اسم الجمعية</span><b>مجلس سَنَد للتنسيق والتمثيل المؤسسي</b></div>
           <div class="sx-cmrow"><span data-sx-cert-numlabel>رقم الترخيص</span><b data-sx-cert-num>0000</b></div>
           <div class="sx-cmrow"><span>الجهة المشرفة</span><b>المركز الوطني لتنمية القطاع غير الربحي</b></div>
           <div class="sx-cmrow"><span>حالة الترخيص</span><b class="sx-cm-ok"><i class="fas fa-circle-check"></i> ساري</b></div>
@@ -2102,7 +2102,7 @@
       onSc();
     }
 
-    // قائمة "عن الجمعية" المنسدلة
+    // قائمة "عن المجلس" المنسدلة
     document.querySelectorAll("[data-drop]").forEach((d) => {
       const btn = d.querySelector("button");
       btn?.addEventListener("click", (e) => {
@@ -2155,7 +2155,7 @@
     movl?.addEventListener("click", closeMobile);
     document.querySelectorAll("[data-sx-mobile] a").forEach((a) => a.addEventListener("click", closeMobile));
 
-    // طيّ "عن الجمعية" داخل الجوال
+    // طيّ "عن المجلس" داخل الجوال
     document.querySelectorAll("[data-sx-mcollapse]").forEach((b) => {
       b.addEventListener("click", () => {
         const k = b.getAttribute("data-sx-mcollapse");
@@ -2203,7 +2203,7 @@
       });
     });
 
-    // سلة التبرعات
+    // تواصل معنا
     const dcart = document.querySelector("[data-sx-dcart]");
     const dovl = document.querySelector("[data-sx-dcart-overlay]");
     const openDCart = () => {
@@ -2238,7 +2238,7 @@
         scope: "",
         img: "assets/images/License/association-license-certificate.jpg",
         file: "assets/images/License/association-license-certificate.jpg",
-        shareTitle: "شهادة ترخيص جمعية سَنَد",
+        shareTitle: "شهادة ترخيص مجلس سَنَد",
       },
       fundraising: {
         title: "ترخيص جمع التبرعات",
@@ -2247,7 +2247,7 @@
         scope: "جمع التبرعات عبر القنوات المعتمدة",
         img: "assets/images/License/fundraising-license-certificate.jpg",
         file: "assets/images/License/fundraising-license-certificate.jpg",
-        shareTitle: "ترخيص جمع التبرعات — جمعية سَنَد",
+        shareTitle: "ترخيص جمع التبرعات — مجلس سَنَد",
       },
     };
     let currentCert = "association";
@@ -2466,10 +2466,10 @@
       <ul class="sxq-fab-list">
         <li><button type="button" class="sxq-fab-item" data-sxq-open="donate" data-tip="تبرع سريع" aria-label="تبرع سريع"><i class="fas fa-hand-holding-heart"></i><span class="sxq-fab-label">تبرع سريع</span></button></li>
         <li><button type="button" class="sxq-fab-item" data-sxq-open="gift" data-tip="إهداء التبرع" aria-label="إهداء التبرع"><i class="fas fa-gift"></i><span class="sxq-fab-label">إهداء التبرع</span></button></li>
-        <li><a class="sxq-fab-item" href="donations.html" data-tip="بوابة التبرعات" aria-label="بوابة التبرعات"><i class="fas fa-heart"></i><span class="sxq-fab-label">بوابة التبرعات</span></a></li>
+        <li><a class="sxq-fab-item" href="membership.html" data-tip="العضويةات" aria-label="العضويةات"><i class="fas fa-heart"></i><span class="sxq-fab-label">العضويةات</span></a></li>
         <li><button type="button" class="sxq-fab-item" data-sxq-open="join" data-tip="انضم معنا" aria-label="انضم معنا"><i class="fas fa-users"></i><span class="sxq-fab-label">انضم معنا</span></button></li>
         <li><button type="button" class="sxq-fab-item sxq-fab-item-gold" data-sxq-open="member" data-tip="طلب عضوية" aria-label="طلب عضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">طلب عضوية</span></button></li>
-        <li><a class="sxq-fab-item" href="beneficiaries.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
+        <li><a class="sxq-fab-item" href="services.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
       </ul>
       <button type="button" class="sxq-fab-mobile-toggle" id="sxqFabMobBtn" aria-label="إجراءات سريعة"><i class="fas fa-bolt"></i></button>
     </nav>
@@ -2577,12 +2577,12 @@
                 <div class="sxq-sum-row"><span>فرصة التبرع</span><b data-ok-cause>—</b></div>
                 <div class="sxq-sum-row"><span>المتبرع</span><b data-ok-name>—</b></div>
                 <div class="sxq-sum-row"><span>التاريخ</span><b data-ok-date>—</b></div>
-                <div class="sxq-sum-row"><span>الحالة</span><b style="color:#0d7a4f">مكتملة</b></div>
+                <div class="sxq-sum-row"><span>الحالة</span><b style="color:#1a6aa3">مكتملة</b></div>
                 <div class="sxq-sum-row total"><span>المبلغ</span><b data-ok-amt>—</b></div>
               </div>
               <div class="sxq-actions">
                 <button class="sxq-btn sxq-btn-ghost" data-sxq-receipt><i class="fas fa-file-invoice"></i> عرض سند التبرع</button>
-                <a class="sxq-btn sxq-btn-primary" href="donations.html">بوابة التبرعات</a>
+                <a class="sxq-btn sxq-btn-primary" href="membership.html">العضويةات</a>
               </div>
             </div>
           </div>
@@ -2645,7 +2645,7 @@
             </div>
 
             <div class="sxq-giftpv">
-              <div class="lbl">إهداء خير من جمعية سَنَد</div>
+              <div class="lbl">إهداء خير من مجلس سَنَد</div>
               <div class="ttl">إلى: <span data-gp-to>—</span></div>
               <div class="msg">"<span data-gp-msg>تقبّل الله منكم صالح الأعمال</span>"</div>
               <div class="pers">من: <span data-gp-from>—</span> · <span data-gp-cause>—</span> <span data-gp-amt-wrap>· <b data-gp-amt>100 ريال</b></span></div>
@@ -2695,7 +2695,7 @@
                 <div class="sxq-sum-row"><span>المُهدى إليه</span><b data-gok-to>—</b></div>
                 <div class="sxq-sum-row"><span>المُهدي</span><b data-gok-from>—</b></div>
                 <div class="sxq-sum-row"><span>فرصة الإهداء</span><b data-gok-cause>—</b></div>
-                <div class="sxq-sum-row"><span>حالة الإرسال</span><b data-gok-status style="color:#0d7a4f">جاهز للإرسال</b></div>
+                <div class="sxq-sum-row"><span>حالة الإرسال</span><b data-gok-status style="color:#1a6aa3">جاهز للإرسال</b></div>
                 <div class="sxq-sum-row total"><span>المبلغ</span><b data-gok-amt>—</b></div>
               </div>
               <div class="sxq-actions">
@@ -2817,12 +2817,12 @@
           <div class="sxq-panel active" data-panel="form">
             <p style="font-size:.88rem;color:#5b6b85;margin:.1rem 0 .9rem;line-height:1.85">
               يمكنك تقديم طلب الانضمام لعضوية الجمعية، وسيتم مراجعة الطلب وفق لائحة الجمعية الأساسية والضوابط المعتمدة.
-              <a href="membership.html" style="color:#0d7a4f;font-weight:700;text-decoration:none">الاطلاع على صفحة العضوية <i class="fas fa-arrow-left" style="font-size:.7rem"></i></a>
+              <a href="membership.html" style="color:#1a6aa3;font-weight:700;text-decoration:none">الاطلاع على صفحة العضوية <i class="fas fa-arrow-left" style="font-size:.7rem"></i></a>
             </p>
 
             <div class="sxq-mem-note">
               <i class="fas fa-circle-info"></i>
-              <span>قبول طلب العضوية يخضع للائحة الجمعية الأساسية وقرار الجهة المختصة داخل الجمعية، وقد تختلف شروط العضوية أو رسومها حسب نوع العضوية المعتمد.</span>
+              <span>قبول طلب العضوية يخضع للائحة الجمعية الأساسية وقرار الجهة المختصة داخل المجلس، وقد تختلف شروط العضوية أو رسومها حسب نوع العضوية المعتمد.</span>
             </div>
 
             <div class="sxq-mem-section">بيانات العضوية</div>
@@ -2870,7 +2870,7 @@
               <textarea class="sxq-textarea" data-m-reason rows="3" placeholder="اكتب باختصار سبب رغبتك في الانضمام" required></textarea>
             </div>
 
-            <div class="sxq-field"><label>مجالات الاهتمام داخل الجمعية</label>
+            <div class="sxq-field"><label>مجالات الاهتمام داخل المجلس</label>
               <div class="sxq-chips" data-m-interests>
                 <label class="sxq-chip"><input type="checkbox" value="البرامج والخدمات"><span>البرامج والخدمات</span></label>
                 <label class="sxq-chip"><input type="checkbox" value="الحوكمة"><span>الحوكمة</span></label>
@@ -2886,7 +2886,7 @@
               <div class="sxq-field"><label>هل سبق لك التعامل مع الجمعية؟</label>
                 <select class="sxq-select" data-m-prev><option>لا</option><option>نعم</option></select>
               </div>
-              <div class="sxq-field"><label>المشاركة في الجمعية العمومية عند القبول؟</label>
+              <div class="sxq-field"><label>المشاركة في المجلس العمومية عند القبول؟</label>
                 <select class="sxq-select" data-m-ga><option>نعم</option><option>لا</option></select>
               </div>
             </div>
@@ -2917,12 +2917,12 @@
             <div class="sxq-success">
               <div class="sxq-success-ic"><i class="fas fa-check"></i></div>
               <h4>تم استلام طلب العضوية بنجاح</h4>
-              <p>شكرًا لرغبتكم في الانضمام لعضوية جمعية سَنَد. سيتم مراجعة طلبكم وفق لائحة الجمعية، وسيتم إشعاركم بحالة الطلب عبر بيانات التواصل المسجلة.</p>
+              <p>شكرًا لرغبتكم في الانضمام لعضوية مجلس سَنَد. سيتم مراجعة طلبكم وفق لائحة الجمعية، وسيتم إشعاركم بحالة الطلب عبر بيانات التواصل المسجلة.</p>
               <div class="sxq-sum">
                 <div class="sxq-sum-row"><span>رقم الطلب</span><b data-mok-id>—</b></div>
                 <div class="sxq-sum-row"><span>نوع العضوية</span><b data-mok-type>—</b></div>
                 <div class="sxq-sum-row"><span>تاريخ الإرسال</span><b data-mok-date>—</b></div>
-                <div class="sxq-sum-row total"><span>الحالة</span><b style="color:#0d7a4f">قيد المراجعة</b></div>
+                <div class="sxq-sum-row total"><span>الحالة</span><b style="color:#1a6aa3">قيد المراجعة</b></div>
               </div>
               <div class="sxq-actions">
                 <button class="sxq-btn sxq-btn-ghost" data-sxq-close-x><i class="fas fa-times"></i> إغلاق</button>
@@ -2944,7 +2944,7 @@
         <div class="sxq-head"><h3><i class="fas fa-image"></i> بطاقة الإهداء</h3><button class="sxq-close" data-sxq-close><i class="fas fa-times"></i></button></div>
         <div class="sxq-body">
           <div class="sxq-giftpv" style="padding:1.4rem 1rem">
-            <div class="lbl">جمعية سَنَد</div>
+            <div class="lbl">مجلس سَنَد</div>
             <div class="ttl">إهداء خير إلى <span data-gc-to>—</span></div>
             <div class="msg">"<span data-gc-msg>—</span>"</div>
             <div class="pers">من: <span data-gc-from>—</span></div>
@@ -2965,9 +2965,9 @@
         <div class="sxq-head"><h3><i class="fas fa-file-invoice"></i> سند تبرع</h3><button class="sxq-close" data-sxq-close><i class="fas fa-times"></i></button></div>
         <div class="sxq-body">
           <div style="text-align:center;padding:.5rem 0 1rem;border-bottom:1px dashed #dde5ef">
-            <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:1.3rem">س</div>
-            <div style="font-weight:800;color:#0b2545;margin-top:.4rem">جمعية سَنَد للخدمات الاجتماعية</div>
-            <div style="font-size:.75rem;color:#7a8aa3">سند تبرع رسمي</div>
+            <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#26417a,#1a6aa3);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:1.3rem">س</div>
+            <div style="font-weight:800;color:#152a5e;margin-top:.4rem">مجلس سَنَد للخدمات الاجتماعية</div>
+            <div style="font-size:.75rem;color:#7a8aa3">موقع مؤسسي رسمي</div>
           </div>
           <div class="sxq-sum" style="margin-top:.6rem">
             <div class="sxq-sum-row"><span>رقم السند</span><b data-r-id>—</b></div>
