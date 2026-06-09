@@ -1875,29 +1875,17 @@
         <a href="registration-certificate.html">شهادة التسجيل</a><a href="branches.html">الفروع والمكاتب</a>
         <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
       </div>
-      <a href="membership.html"><i class="fas fa-heart"></i> العضويةات</a>
-      <a href="index.html"><i class="fas fa-store"></i> متجر الجمعية</a>
-      <a href="services.html"><i class="fas fa-hand-holding-heart"></i> خدماتنا</a>
+      <a href="services.html"><i class="fas fa-clipboard-list"></i> خدمات ومجالات المجلس</a>
       <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع والمبادرات</a>
+      <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
       <a href="events.html"><i class="fas fa-calendar-days"></i> الفعاليات</a>
+      <a href="careers.html"><i class="fas fa-briefcase"></i> الوظائف والتطوع</a>
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
-
-      <div class="sx-msec">حسابي وسلاتي</div>
-      <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> تواصل معنا <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
-      <a href="index.html"><i class="fas fa-bag-shopping"></i> تواصل معنا <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
-      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-      <a href="contact.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-      <a href="contact.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-      <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
-
-      <div class="sx-msec">روابط سريعة</div>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
-      <a href="services.html"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-      <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
-      <a href="mailto:info@majales.org.sa"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
-      <button type="button" data-lang-toggle><i class="fas fa-globe"></i> اللغة: العربية / English</button>
+      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
+
     </div>
   </aside>
 
