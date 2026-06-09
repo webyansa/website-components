@@ -1933,7 +1933,7 @@
           <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
           <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
           <li><a href="membership.html"><i class="fas fa-angle-left"></i> العضوية</a></li>
-          <li><a href="index.html"><i class="fas fa-angle-left"></i> متجر الجمعية</a></li>
+          <li><a href="committees.html"><i class="fas fa-angle-left"></i> اللجان</a></li>
           <li><a href="services.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
           <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
         </ul>
