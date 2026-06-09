@@ -27,14 +27,25 @@ type Template = {
 
 const templates: Template[] = [
   {
+    id: "majales",
+    name: "قالب مجالس — المجالس واللجان",
+    description: "قالب عربي مؤسسي رسمي للمجالس التخصصية واللجان التنسيقية — يركّز على التنسيق والتمثيل والحوكمة والمبادرات، بدون تبرعات أو متجر",
+    previewPath: "majales/index.html",
+    folderPath: "majales",
+    thumbnail: "majales/favicon.svg",
+    features: ["Tailwind CSS", "25 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
+    pages: 25,
+    isNew: true,
+  },
+  {
     id: "sanad",
     name: "قالب سند — الخدمات الاجتماعية",
     description: "قالب عربي احترافي لجمعيات الخدمات الاجتماعية والبر والرعاية — كفالة الأسر، السلال الغذائية، التمكين، الحوكمة والشفافية",
     previewPath: "sanad/index.html",
     folderPath: "sanad",
     thumbnail: "sanad/favicon.svg",
-    features: ["Tailwind CSS", "12 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
-    pages: 12,
+    features: ["Tailwind CSS", "52 صفحة", "حوكمة وشفافية", "دعم RTL", "متجاوب"],
+    pages: 52,
     isNew: true,
   },
   {
