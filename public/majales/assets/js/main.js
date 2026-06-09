@@ -2452,12 +2452,12 @@
     <!-- Floating Action Bar (vertical, always visible) -->
     <nav class="sxq-fab" id="sxqFab" aria-label="إجراءات سريعة">
       <ul class="sxq-fab-list">
-        <li><button type="button" class="sxq-fab-item" data-sxq-open="donate" data-tip="تبرع سريع" aria-label="تبرع سريع"><i class="fas fa-hand-holding-heart"></i><span class="sxq-fab-label">تبرع سريع</span></button></li>
-        <li><button type="button" class="sxq-fab-item" data-sxq-open="gift" data-tip="إهداء التبرع" aria-label="إهداء التبرع"><i class="fas fa-gift"></i><span class="sxq-fab-label">إهداء التبرع</span></button></li>
-        <li><a class="sxq-fab-item" href="membership.html" data-tip="العضويةات" aria-label="العضويةات"><i class="fas fa-heart"></i><span class="sxq-fab-label">العضويةات</span></a></li>
+        <li><a class="sxq-fab-item" href="contact.html" data-tip="تواصل معنا" aria-label="تواصل معنا"><i class="fas fa-headset"></i><span class="sxq-fab-label">تواصل معنا</span></a></li>
+        <li><a class="sxq-fab-item" href="membership.html" data-tip="العضوية" aria-label="العضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">العضوية</span></a></li>
         <li><button type="button" class="sxq-fab-item" data-sxq-open="join" data-tip="انضم معنا" aria-label="انضم معنا"><i class="fas fa-users"></i><span class="sxq-fab-label">انضم معنا</span></button></li>
-        <li><button type="button" class="sxq-fab-item sxq-fab-item-gold" data-sxq-open="member" data-tip="طلب عضوية" aria-label="طلب عضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">طلب عضوية</span></button></li>
+        <li><a class="sxq-fab-item sxq-fab-item-gold" href="service-tracking.html" data-tip="تتبع طلب خدمة" aria-label="تتبع طلب خدمة"><i class="fas fa-route"></i><span class="sxq-fab-label">تتبع طلب خدمة</span></a></li>
         <li><a class="sxq-fab-item" href="services.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
+
       </ul>
       <button type="button" class="sxq-fab-mobile-toggle" id="sxqFabMobBtn" aria-label="إجراءات سريعة"><i class="fas fa-bolt"></i></button>
     </nav>
