@@ -200,42 +200,6 @@
 }
 .s-service.v2-row:hover .go{ background: var(--color-secondary); color:#fff; transform: rotate(-45deg); }
 
-/* ============ 6) رحلة المستفيد — Zigzag Path ============ */
-.journey-v2 { position: relative; }
-.s-rail.v2 {
-  display: grid; gap: 1.25rem;
-  grid-template-columns: repeat(1, 1fr);
-  position: relative;
-}
-@media (min-width: 768px){ .s-rail.v2 { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 992px){ .s-rail.v2 { grid-template-columns: repeat(6, 1fr); } }
-.s-rail-step.v2 {
-  background: #fff; border: 1px solid var(--color-border);
-  border-radius: 20px; padding: 1.5rem 1rem 1.25rem;
-  text-align: center; position: relative;
-  transition: transform .35s, box-shadow .35s, border-color .35s;
-}
-.s-rail-step.v2:hover{
-  transform: translateY(-8px);
-  border-color: var(--color-secondary);
-  box-shadow: 0 22px 40px -22px rgba(12,127,174,.4);
-}
-.s-rail-step.v2 .node {
-  width: 64px; height: 64px; margin: -40px auto 1rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  color:#fff; display:inline-flex; align-items:center; justify-content:center;
-  font-weight: 900; font-size: 1.15rem;
-  box-shadow: 0 0 0 6px #fff, 0 18px 30px -10px rgba(12,127,174,.55);
-  position: relative;
-}
-.s-rail-step.v2 .node i { font-size: 1.3rem; }
-.s-rail-step.v2 h4 { color: var(--color-primary); font-weight: 800; font-size: .95rem; margin-bottom: .25rem; }
-.s-rail-step.v2 p { color: var(--color-text-muted); font-size: .78rem; margin:0; line-height:1.7; }
-@media (min-width: 992px){
-  .s-rail-step.v2:nth-child(even) { transform: translateY(36px); }
-  .s-rail-step.v2:nth-child(even):hover { transform: translateY(28px); }
-}
 
 /* ============ 7) المشاريع — Magazine Broken Grid ============ */
 .projects-v2-grid {
@@ -658,7 +622,7 @@
 
 /* ---------- اعتمادية الحركة ---------- */
 @media (prefers-reduced-motion: reduce){
-  .s-pillar.v2, .s-goal-row.v2 .goal-card, .s-rail-step.v2, .s-project.v2,
+  .s-pillar.v2, .s-goal-row.v2 .goal-card, .s-project.v2,
   .s-service.v2-row, .s-event.v2, .s-quote.v2, .s-news-mini-v2.v2,
   .s-dcard.v2, .s-cta.v2 .tile, .s-gov-card.v2, .s-stat-card.v2 {
     transition: none !important;
