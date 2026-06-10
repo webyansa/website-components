@@ -3308,3 +3308,24 @@
     });
   });
 })();
+
+/* ===== Goals v4 — Side Tabs ===== */
+(function(){
+  const tabs = document.querySelectorAll('.goals-v4 .g4-tab');
+  const panels = document.querySelectorAll('.goals-v4 .g4-panel');
+  if (!tabs.length) return;
+  const activate = (id) => {
+    tabs.forEach(t => {
+      const on = t.dataset.g4 === id;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(p => p.classList.toggle('is-active', p.dataset.g4Panel === id));
+  };
+  tabs.forEach(t => {
+    t.addEventListener('click', () => activate(t.dataset.g4));
+    t.addEventListener('mouseenter', () => {
+      if (window.matchMedia('(min-width: 900px)').matches) activate(t.dataset.g4);
+    });
+  });
+})();
