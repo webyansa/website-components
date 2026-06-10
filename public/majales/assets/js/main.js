@@ -3329,3 +3329,61 @@
     });
   });
 })();
+
+/* ============ Projects v5 — Cinematic Showcase ============ */
+(function(){
+  var stage = document.getElementById('pv5Stage');
+  if(!stage) return;
+  var data = {
+    p1: {title:"منصة التنسيق القطاعي الموحّدة", cat:"برامج وطنية", icon:"fa-people-line",
+         img:"assets/images/posts/5.jpeg", status:"قائم", statusType:"live",
+         desc:"منصة رقمية تربط الجهات الأعضاء وتمكّنها من تبادل التقارير والمعرفة وتنسيق المبادرات بسرعة وكفاءة مع لوحات مؤشرات مباشرة لقيادة القرار.",
+         kpis:[["84","جهة عضو"],["78%","نسبة الإنجاز"],["2024","تاريخ الإطلاق"]]},
+    p2: {title:"أكاديمية قيادات القطاع", cat:"تأهيل", icon:"fa-graduation-cap",
+         img:"assets/images/posts/2.jpeg", status:"قائم", statusType:"live",
+         desc:"برنامج تدريبي متقدّم لتأهيل القيادات التنفيذية في الجهات الأعضاء عبر مسارات حوكمة وقيادة استراتيجية وأثر مؤسسي.",
+         kpis:[["220","قياديًا"],["12","مسارًا تدريبيًا"],["94%","إتمام البرنامج"]]},
+    p3: {title:"دليل الحوكمة الموحّد", cat:"حوكمة", icon:"fa-file-shield",
+         img:"assets/images/posts/3.jpeg", status:"قريبًا", statusType:"soon",
+         desc:"إصدار شامل لتوحيد ممارسات الحوكمة والشفافية في الجهات الأعضاء مع أدوات قياس ومؤشرات تقييم معتمدة.",
+         kpis:[["6","محاور رئيسية"],["+40","ممارسة قياسية"],["2025","سنة الإصدار"]]},
+    p4: {title:"مرصد الأثر القطاعي", cat:"بيانات", icon:"fa-chart-line",
+         img:"assets/images/posts/4.jpg", status:"تجريبي", statusType:"beta",
+         desc:"منصة تحليلات تقيس الأثر التراكمي لمشاريع الجهات الأعضاء وتُصدر تقارير ربعية بمؤشرات أداء قابلة للمقارنة.",
+         kpis:[["18","مؤشر أثر"],["4","تقارير سنوية"],["2025","الإطلاق"]]}
+  };
+  var img = document.getElementById('pv5StageImg');
+  var titleEl = document.getElementById('pv5StageTitle');
+  var descEl = document.getElementById('pv5StageDesc');
+  var catEl = document.getElementById('pv5StageCat');
+  var statusEl = document.getElementById('pv5StageStatus');
+  var kpisEl = document.getElementById('pv5StageKpis');
+  var thumbs = stage.querySelectorAll('.pv5-thumb');
+
+  function activate(id){
+    var p = data[id]; if(!p) return;
+    img.style.opacity = '0';
+    setTimeout(function(){
+      img.src = p.img;
+      img.style.opacity = '1';
+    }, 200);
+    titleEl.textContent = p.title;
+    descEl.textContent = p.desc;
+    catEl.innerHTML = '<i class="fas '+p.icon+'"></i> '+p.cat;
+    statusEl.className = 'pv5-status '+p.statusType;
+    statusEl.innerHTML = '<span class="s-pulse"></span> '+p.status;
+    kpisEl.innerHTML = p.kpis.map(function(k){
+      return '<div class="k"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>';
+    }).join('');
+    thumbs.forEach(function(t){
+      t.classList.toggle('is-active', t.getAttribute('data-pid')===id);
+    });
+  }
+
+  thumbs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.getAttribute('data-pid')); });
+  });
+
+  // Init first
+  activate('p1');
+})();
