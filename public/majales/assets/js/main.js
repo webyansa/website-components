@@ -3289,3 +3289,22 @@
 
 })();
 
+
+/* ===== Goals v3 — Expanding Panels ===== */
+(function(){
+  const panels = document.querySelectorAll('.goals-v3-stage .gxp');
+  if (!panels.length) return;
+  const open = (target) => {
+    panels.forEach(p => {
+      const on = p === target;
+      p.classList.toggle('is-open', on);
+      p.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+  };
+  panels.forEach(p => {
+    p.addEventListener('click', () => open(p));
+    p.addEventListener('mouseenter', () => {
+      if (window.matchMedia('(min-width: 900px)').matches) open(p);
+    });
+  });
+})();
