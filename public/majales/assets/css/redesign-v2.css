@@ -1,0 +1,666 @@
+/* ==========================================================
+   Majales Home — Redesign V2
+   إعادة تصميم إبداعية لأقسام الصفحة الرئيسية
+   تستخدم نفس الكلاسات الأصلية + مُعدِّلات .v2 للتجديد البصري
+   ========================================================== */
+
+/* ---------- أدوات عامة ---------- */
+.v2-eyebrow-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: .25em;
+  font-weight: 800;
+  font-size: .72rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  border-inline-start: 3px solid var(--color-secondary);
+  padding-inline-start: 12px;
+}
+
+/* ============ 3) عن المجلس — Diagonal Split ============ */
+.about-v2 { position: relative; overflow: hidden; }
+.about-v2::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 50% at 100% 0%, rgba(12,127,174,.08), transparent 60%),
+    radial-gradient(50% 40% at 0% 100%, rgba(66,176,122,.08), transparent 60%);
+  pointer-events: none;
+}
+.about-v2-grid {
+  display: grid; gap: 3rem;
+  grid-template-columns: 1fr;
+  position: relative;
+}
+@media (min-width: 992px){
+  .about-v2-grid { grid-template-columns: 5fr 7fr; gap: 4rem; align-items: stretch; }
+}
+.about-v2-intro {
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; padding-inline-start: 1rem;
+}
+.about-v2-intro h2 { font-size: clamp(1.85rem, 3.4vw, 2.85rem); line-height: 1.15; letter-spacing: -.01em; }
+.about-v2-intro .badge-row {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem;
+}
+.about-v2-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: #fff; border: 1px solid var(--color-border);
+  color: var(--color-primary); font-weight: 700; font-size: .72rem;
+  padding: .45rem .75rem; border-radius: 999px;
+  box-shadow: 0 4px 14px -8px rgba(15,29,46,.18);
+}
+.about-v2-badge i { color: var(--color-secondary); }
+
+.about-v2-stack { display: grid; gap: 14px; }
+.s-pillar.v2 {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  padding: 1.5rem 1.5rem 1.5rem 6.5rem;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s;
+}
+.s-pillar.v2::before{
+  content: attr(data-num);
+  position: absolute; inset-inline-start: 1rem; top: 50%;
+  transform: translateY(-50%);
+  font-family: "Tajawal", sans-serif;
+  font-weight: 900; font-size: 3.4rem; line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-secondary);
+  opacity: .55; transition: opacity .3s, transform .35s;
+}
+.s-pillar.v2:hover{
+  transform: translateX(-6px);
+  border-color: var(--color-secondary);
+  box-shadow: 0 18px 40px -22px rgba(12,127,174,.35);
+}
+.s-pillar.v2:hover::before{ opacity: 1; transform: translateY(-50%) scale(1.08); }
+.s-pillar.v2 .ico {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, rgba(12,127,174,.12), rgba(66,176,122,.12));
+  color: var(--color-primary); margin-bottom: .65rem; font-size: 1.05rem;
+}
+.s-pillar.v2 h3 { font-weight: 800; color: var(--color-primary); margin-bottom: .35rem; font-size: 1.05rem; }
+.s-pillar.v2 p { color: var(--color-text-muted); font-size: .88rem; line-height: 1.85; margin: 0; }
+
+/* ============ 4) الأهداف — Central Timeline ============ */
+.goals-v2 { position: relative; }
+.goals-v2-rail {
+  position: relative; max-width: 980px; margin: 0 auto;
+}
+.goals-v2-rail::before{
+  content:""; position:absolute; top:0; bottom:0;
+  inset-inline-start: 50%; width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-secondary) 12%, var(--color-primary) 88%, transparent);
+  transform: translateX(-50%);
+}
+@media (max-width: 768px){
+  .goals-v2-rail::before { inset-inline-start: 22px; transform:none; }
+}
+.s-goal-row.v2 {
+  position: relative; display: grid;
+  grid-template-columns: 1fr; gap: 0;
+  background: transparent; border: 0; padding: 0; margin-bottom: 2rem;
+}
+.s-goal-row.v2 .goal-card{
+  background:#fff; border:1px solid var(--color-border); border-radius: 18px;
+  padding: 1.25rem 1.5rem; position: relative;
+  width: calc(50% - 2.5rem);
+  box-shadow: 0 8px 24px -18px rgba(15,29,46,.25);
+  transition: transform .3s, box-shadow .3s;
+}
+.s-goal-row.v2 .goal-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px -20px rgba(12,127,174,.3);
+}
+.s-goal-row.v2 .s-goal-num{
+  position: absolute; top: 50%; inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px; height: 56px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color:#fff; font-weight: 900; font-size: 1rem; z-index: 2;
+  box-shadow: 0 0 0 6px rgba(255,255,255,1), 0 8px 22px -8px rgba(12,127,174,.55);
+}
+.s-goal-row.v2:nth-child(odd) .goal-card { margin-inline-start: 0; }
+.s-goal-row.v2:nth-child(even) .goal-card { margin-inline-start: auto; }
+.s-goal-row.v2 h3 { color: var(--color-primary); font-weight: 800; font-size: 1.05rem; margin-bottom: .3rem; }
+.s-goal-row.v2 p { color: var(--color-text-muted); font-size: .87rem; margin:0; line-height:1.8; }
+.s-goal-row.v2 .pill {
+  display:inline-flex; align-items:center; gap:.3rem;
+  font-size:.7rem; font-weight:700; color: var(--color-secondary);
+  background: rgba(66,176,122,.1); padding: .25rem .6rem; border-radius: 999px;
+  margin-top: .65rem;
+}
+@media (max-width: 768px){
+  .s-goal-row.v2 .goal-card{ width: calc(100% - 64px); margin-inline-start: 64px !important; }
+  .s-goal-row.v2 .s-goal-num{ inset-inline-start: 22px; transform: translate(-50%, -50%); }
+}
+
+/* ============ 5) الخدمات — Hero + Reveal Grid ============ */
+.services-v2-wrap { display:grid; gap: 1.25rem; grid-template-columns: 1fr; }
+@media (min-width: 992px){ .services-v2-wrap { grid-template-columns: 5fr 7fr; } }
+.s-service.s-service-hero.v2 {
+  background:
+    radial-gradient(110% 100% at 0% 0%, rgba(255,255,255,.12), transparent 55%),
+    linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-dark) 60%, #061333 100%);
+  border-radius: 28px; padding: 2.25rem; color:#fff;
+  position: relative; overflow: hidden;
+  min-height: 100%;
+  display:flex; flex-direction: column;
+}
+.s-service.s-service-hero.v2::after{
+  content:""; position:absolute; inset:auto -40px -60px auto;
+  width: 240px; height: 240px; border-radius:50%;
+  background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  opacity: .35; filter: blur(8px);
+}
+.s-service.s-service-hero.v2 .s-service-icon{
+  width: 64px; height: 64px; border-radius: 18px;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size: 1.6rem; color:#fff; margin-bottom: 1.25rem; backdrop-filter: blur(4px);
+}
+.services-v2-list { display:grid; gap: .8rem; }
+.s-service.v2-row {
+  position: relative; background:#fff; border:1px solid var(--color-border);
+  border-radius: 20px; padding: 1.2rem 1.3rem 1.2rem 1.3rem;
+  display:grid; grid-template-columns: 56px 1fr auto; gap: 1rem; align-items: center;
+  transition: transform .3s, border-color .3s, box-shadow .3s, background .3s;
+  overflow: hidden;
+}
+.s-service.v2-row::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(12,127,174,.06), rgba(66,176,122,.04));
+  opacity: 0; transition: opacity .3s; pointer-events:none;
+}
+.s-service.v2-row:hover{
+  transform: translateX(-4px);
+  border-color: var(--color-secondary);
+  box-shadow: 0 18px 32px -22px rgba(12,127,174,.35);
+}
+.s-service.v2-row:hover::before { opacity: 1; }
+.s-service.v2-row .s-service-icon{
+  width: 56px; height: 56px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(12,127,174,.12), rgba(66,176,122,.14));
+  color: var(--color-primary); display:inline-flex; align-items:center; justify-content:center;
+  font-size: 1.3rem; margin: 0;
+}
+.s-service.v2-row h3 { color: var(--color-primary); font-weight: 800; font-size: 1.02rem; margin: 0 0 .2rem; }
+.s-service.v2-row p { margin:0; color: var(--color-text-muted); font-size: .85rem; line-height: 1.7; }
+.s-service.v2-row .go {
+  width: 36px; height: 36px; border-radius: 50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  background: var(--color-secondary-soft); color: var(--color-secondary-dark);
+  transition: background .3s, color .3s, transform .3s;
+  position: relative; z-index: 1;
+}
+.s-service.v2-row:hover .go{ background: var(--color-secondary); color:#fff; transform: rotate(-45deg); }
+
+/* ============ 6) رحلة المستفيد — Zigzag Path ============ */
+.journey-v2 { position: relative; }
+.s-rail.v2 {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: repeat(1, 1fr);
+  position: relative;
+}
+@media (min-width: 768px){ .s-rail.v2 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 992px){ .s-rail.v2 { grid-template-columns: repeat(6, 1fr); } }
+.s-rail-step.v2 {
+  background: #fff; border: 1px solid var(--color-border);
+  border-radius: 20px; padding: 1.5rem 1rem 1.25rem;
+  text-align: center; position: relative;
+  transition: transform .35s, box-shadow .35s, border-color .35s;
+}
+.s-rail-step.v2:hover{
+  transform: translateY(-8px);
+  border-color: var(--color-secondary);
+  box-shadow: 0 22px 40px -22px rgba(12,127,174,.4);
+}
+.s-rail-step.v2 .node {
+  width: 64px; height: 64px; margin: -40px auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color:#fff; display:inline-flex; align-items:center; justify-content:center;
+  font-weight: 900; font-size: 1.15rem;
+  box-shadow: 0 0 0 6px #fff, 0 18px 30px -10px rgba(12,127,174,.55);
+  position: relative;
+}
+.s-rail-step.v2 .node i { font-size: 1.3rem; }
+.s-rail-step.v2 h4 { color: var(--color-primary); font-weight: 800; font-size: .95rem; margin-bottom: .25rem; }
+.s-rail-step.v2 p { color: var(--color-text-muted); font-size: .78rem; margin:0; line-height:1.7; }
+@media (min-width: 992px){
+  .s-rail-step.v2:nth-child(even) { transform: translateY(36px); }
+  .s-rail-step.v2:nth-child(even):hover { transform: translateY(28px); }
+}
+
+/* ============ 7) المشاريع — Magazine Broken Grid ============ */
+.projects-v2-grid {
+  display:grid; gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px){
+  .projects-v2-grid {
+    grid-template-columns: 7fr 5fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .projects-v2-grid .s-project:first-child {
+    grid-row: span 2;
+  }
+}
+.s-project.v2 {
+  background:#fff; border: 1px solid var(--color-border);
+  border-radius: 24px; overflow: hidden;
+  display:flex; flex-direction: column;
+  transition: transform .35s, box-shadow .35s;
+}
+.s-project.v2:hover{ transform: translateY(-6px); box-shadow: 0 24px 50px -25px rgba(15,29,46,.35); }
+.s-project.v2 .cover {
+  position: relative; aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background-size: cover; background-position: center;
+  display:flex; align-items: flex-end; justify-content: space-between;
+  padding: 1rem;
+}
+.s-project.v2:first-child .cover { aspect-ratio: 16/10; }
+.s-project.v2 .cover::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,.55), transparent 60%);
+}
+.s-project.v2 .cover .tag, .s-project.v2 .cover .status, .s-project.v2 .cover .ico {
+  position: relative; z-index: 1; color:#fff;
+}
+.s-project.v2 .cover .tag {
+  background: rgba(255,255,255,.18); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: .35rem .8rem; border-radius: 999px; font-weight: 800; font-size: .72rem;
+}
+.s-project.v2 .cover .status {
+  display:inline-flex; align-items:center; gap:.4rem;
+  background: var(--color-secondary); padding: .35rem .8rem; border-radius:999px;
+  font-weight: 800; font-size: .7rem;
+}
+.s-project.v2 .cover .ico {
+  position: absolute; top: 1rem; inset-inline-start: 1rem;
+  font-size: 1.4rem;
+}
+.s-project.v2 .body { padding: 1.5rem; display:flex; flex-direction:column; flex:1; }
+.s-project.v2 h3 { color: var(--color-primary); font-weight: 800; font-size: 1.15rem; margin-bottom: .6rem; }
+.s-project.v2 .desc { color: var(--color-text-muted); font-size:.88rem; line-height:1.85; margin-bottom: 1rem; flex:1; }
+.s-project.v2 .meta {
+  display:flex; justify-content: space-between; align-items:center;
+  font-size:.78rem; color: var(--color-text-muted);
+  padding-top: 1rem; border-top: 1px dashed var(--color-border);
+}
+.s-project.v2 .meta i { color: var(--color-secondary); }
+.s-project.v2 .progress {
+  height: 6px; background: var(--color-border); border-radius: 999px; overflow: hidden;
+  margin: .5rem 0 1rem;
+}
+.s-project.v2 .progress > span {
+  display:block; height:100%; border-radius: inherit;
+  background: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+}
+
+/* ============ 8) المشاركة — Progress Steps ============ */
+.engage-v2 { display: grid; gap: 1.25rem; }
+.s-dcard.v2 {
+  position: relative; background:#fff; border: 1px solid var(--color-border);
+  border-radius: 22px; padding: 1.75rem;
+  display:grid; gap: 1.25rem;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  transition: transform .35s, box-shadow .35s, border-color .35s;
+}
+@media (min-width: 768px){
+  .s-dcard.v2 { grid-template-columns: 120px 1fr auto; align-items: center; }
+}
+.s-dcard.v2:hover{
+  border-color: var(--color-secondary);
+  box-shadow: 0 22px 44px -24px rgba(12,127,174,.32);
+  transform: translateX(-4px);
+}
+.s-dcard.v2 .step-num {
+  font-family: "Tajawal"; font-weight: 900; font-size: 4.5rem; line-height: .9;
+  color: transparent; -webkit-text-stroke: 2px var(--color-secondary);
+  letter-spacing: -.05em;
+}
+.s-dcard.v2:hover .step-num { color: var(--color-secondary); -webkit-text-stroke-color: var(--color-secondary); }
+.s-dcard.v2 .body h3 { color: var(--color-primary); font-weight: 800; font-size: 1.2rem; margin-bottom: .35rem; }
+.s-dcard.v2 .body p { color: var(--color-text-muted); font-size:.92rem; margin:0; line-height: 1.8; }
+.s-dcard.v2 .s-dact { display:flex; gap:.5rem; flex-wrap: wrap; margin-top: 0; }
+
+/* ============ 9) الأرقام — Hero Stat + Glass Ring ============ */
+.s-impact.v2 {
+  position: relative; padding: 3rem 1.5rem;
+  background:
+    radial-gradient(60% 60% at 80% 20%, rgba(66,176,122,.25), transparent 60%),
+    radial-gradient(50% 60% at 20% 90%, rgba(12,127,174,.3), transparent 60%),
+    linear-gradient(140deg, #071a3d 0%, #0a2858 55%, #061333 100%);
+  border-radius: 32px; overflow: hidden;
+}
+@media (min-width: 768px){ .s-impact.v2 { padding: 4.5rem 3rem; } }
+.s-impact.v2::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+.stats-v2-grid {
+  display:grid; gap: 1rem;
+  grid-template-columns: 1fr;
+  position: relative; z-index: 1;
+}
+@media (min-width: 768px){
+  .stats-v2-grid { grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: auto auto; }
+  .stats-v2-grid .s-stat-card:first-child { grid-row: span 2; }
+}
+.s-stat-card.v2 {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  border-radius: 22px; padding: 1.5rem;
+  color:#fff; text-align: start;
+  position: relative; overflow: hidden;
+  transition: transform .35s, background .35s, border-color .35s;
+}
+.s-stat-card.v2:hover { transform: translateY(-4px); background: rgba(255,255,255,.12); border-color: var(--color-secondary); }
+.s-stat-card.v2 .s-stat-ico {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size: 1.1rem; color:#fff; margin-bottom: 1rem;
+}
+.s-stat-card.v2 .s-stat-num {
+  font-weight: 900; font-size: clamp(2rem, 4vw, 2.6rem);
+  background: linear-gradient(120deg, #fff, #b9e3ff);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1;
+}
+.s-stat-card.v2:first-child .s-stat-num { font-size: clamp(3rem, 7vw, 5.5rem); }
+.s-stat-card.v2 .s-stat-label { font-size:.88rem; opacity:.85; margin-top: .5rem; font-weight: 600; }
+.s-stat-card.v2:first-child .s-stat-label { font-size: 1.05rem; opacity: 1; font-weight: 700; }
+.s-stat-card.v2 .accent-dot{
+  position:absolute; top: 1rem; inset-inline-end: 1rem;
+  width: 8px; height: 8px; border-radius:50%;
+  background: var(--color-secondary); box-shadow: 0 0 16px var(--color-secondary);
+}
+
+/* ============ 10) الحوكمة — Control Room ============ */
+.gov-v2 {
+  background: #fff; border-radius: 28px; overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 30px 60px -40px rgba(15,29,46,.25);
+}
+.gov-v2-head {
+  background: linear-gradient(120deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color:#fff; padding: 2rem 2rem 1.25rem;
+  display:grid; gap: 1.5rem; grid-template-columns: 1fr; align-items:end;
+  position: relative; overflow:hidden;
+}
+@media (min-width: 768px){ .gov-v2-head { grid-template-columns: 1.5fr 1fr; padding: 2.5rem; } }
+.gov-v2-head::after{
+  content:""; position:absolute; inset:auto -100px -100px auto;
+  width: 320px; height: 320px; border-radius:50%;
+  background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  opacity:.35; filter: blur(20px);
+}
+.gov-v2-head h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 900; margin-bottom: .5rem; }
+.gov-v2-head p { opacity: .82; max-width: 38ch; line-height: 1.85; margin:0; }
+.gov-v2-meters { display:grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; position: relative; z-index:1; }
+.gov-v2-meter {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  border-radius: 14px; padding: .85rem; text-align:center;
+}
+.gov-v2-meter .n { font-weight: 900; font-size: 1.4rem; color:#fff; }
+.gov-v2-meter .l { font-size:.7rem; opacity:.85; margin-top: .2rem; }
+
+.gov-v2-body { padding: 2rem; }
+.gov-v2-tabs { display:flex; flex-wrap: wrap; gap:.5rem; margin-bottom: 1.5rem; }
+.gov-v2-tab {
+  padding: .5rem 1rem; border-radius: 999px; font-weight: 700; font-size:.8rem;
+  background: var(--color-surface-soft); color: var(--color-text-muted);
+  border: 1px solid var(--color-border); cursor: pointer;
+  transition: all .25s;
+}
+.gov-v2-tab.is-active, .gov-v2-tab:hover {
+  background: var(--color-primary); color:#fff; border-color: var(--color-primary);
+}
+.gov-v2-cards {
+  display:grid; gap: .8rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.s-gov-card.v2 {
+  background: var(--color-surface-soft); border: 1px solid var(--color-border);
+  border-radius: 16px; padding: 1.1rem; display:flex; gap: .85rem;
+  text-decoration: none; color: inherit;
+  transition: all .25s; align-items: flex-start;
+}
+.s-gov-card.v2:hover {
+  background: #fff; border-color: var(--color-secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 30px -18px rgba(12,127,174,.25);
+}
+.s-gov-card.v2 .s-gov-icon{
+  width: 40px; height: 40px; border-radius: 10px;
+  background: linear-gradient(135deg, rgba(12,127,174,.12), rgba(66,176,122,.12));
+  display:inline-flex; align-items:center; justify-content:center;
+  color: var(--color-primary); flex-shrink:0;
+}
+.s-gov-card.v2 h4 { font-weight: 800; color: var(--color-primary); font-size:.92rem; margin-bottom: .15rem; }
+.s-gov-card.v2 p { font-size:.78rem; color: var(--color-text-muted); margin:0; line-height:1.65; }
+.s-gov-card.v2 .s-gov-meta {
+  margin-top:.5rem; font-size:.72rem; color: var(--color-secondary-dark); font-weight: 700;
+}
+
+/* ============ 11) الأخبار — Editorial Split ============ */
+.news-v2-grid {
+  display:grid; gap: 1.5rem; grid-template-columns: 1fr;
+}
+@media (min-width: 992px){ .news-v2-grid { grid-template-columns: 7fr 5fr; } }
+
+.s-news-hero-v2.v2 {
+  display:block; position: relative; border-radius: 28px; overflow: hidden;
+  min-height: 460px;
+  background-size: cover; background-position: center;
+  color:#fff; text-decoration: none;
+  isolation: isolate;
+}
+.s-news-hero-v2.v2::before{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(7,26,61,.95) 0%, rgba(7,26,61,.45) 55%, transparent 100%);
+}
+.s-news-hero-v2.v2::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(120deg, rgba(12,127,174,.25), transparent 60%);
+  mix-blend-mode: overlay;
+}
+.s-news-hero-v2.v2 .body {
+  position: absolute; inset: auto 0 0 0; padding: 2rem;
+  z-index: 1;
+}
+.s-news-hero-v2.v2 .tags { display:flex; gap:.5rem; margin-bottom: 1rem; }
+.s-news-hero-v2.v2 .chip {
+  background: var(--color-secondary); color:#fff; font-size:.7rem; font-weight: 800;
+  padding: .35rem .75rem; border-radius: 999px;
+}
+.s-news-hero-v2.v2 .chip.light { background: rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.3); backdrop-filter: blur(4px); }
+.s-news-hero-v2.v2 h3 { font-size: clamp(1.3rem, 2.5vw, 1.85rem); font-weight: 900; line-height: 1.35; margin-bottom: .75rem; }
+.s-news-hero-v2.v2 p { opacity:.85; line-height: 1.85; font-size:.9rem; margin-bottom: 1rem; max-width: 55ch; }
+.s-news-hero-v2.v2 .meta {
+  display:flex; justify-content: space-between; align-items: center;
+  font-size:.8rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.18);
+}
+.s-news-hero-v2.v2 .cta { color: var(--color-secondary); font-weight: 800; }
+
+.s-news-side.v2 { display:grid; gap: 1rem; }
+.s-news-mini-v2.v2 {
+  display:grid; grid-template-columns: 120px 1fr; gap: 1rem;
+  background: #fff; border: 1px solid var(--color-border);
+  border-radius: 20px; padding: .75rem;
+  text-decoration: none; color: inherit;
+  transition: all .3s;
+  align-items: center;
+}
+.s-news-mini-v2.v2:hover{
+  border-color: var(--color-secondary);
+  transform: translateX(-4px);
+  box-shadow: 0 18px 30px -22px rgba(12,127,174,.3);
+}
+.s-news-mini-v2.v2 .img {
+  aspect-ratio: 1/1; border-radius: 14px;
+  background-size: cover; background-position: center;
+}
+.s-news-mini-v2.v2 .cat {
+  display:inline-block; font-size:.65rem; font-weight: 800;
+  padding: .25rem .55rem; border-radius: 999px;
+  background: var(--color-secondary-soft); color: var(--color-secondary-dark);
+  margin-bottom: .35rem;
+}
+.s-news-mini-v2.v2 h4 { color: var(--color-primary); font-weight: 800; font-size:.92rem; line-height:1.45; margin-bottom: .35rem; }
+.s-news-mini-v2.v2 .m { font-size:.7rem; color: var(--color-text-muted); }
+.s-news-mini-v2.v2 .m i { color: var(--color-secondary); }
+
+/* ============ 12) الفعاليات — Date Calendar Strip ============ */
+.events-v2-grid { display:grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 768px){ .events-v2-grid { grid-template-columns: 1fr 1fr; } }
+
+.s-event.v2 {
+  display:grid; grid-template-columns: 96px 1fr;
+  background:#fff; border: 1px solid var(--color-border);
+  border-radius: 22px; overflow: hidden; text-decoration:none; color: inherit;
+  transition: all .3s; position: relative;
+}
+.s-event.v2:hover{
+  border-color: var(--color-secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 22px 36px -20px rgba(12,127,174,.3);
+}
+.s-event.v2 .s-event-date {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-dark));
+  color:#fff; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding: 1.25rem .5rem; text-align:center; position: relative;
+}
+.s-event.v2 .s-event-date::after{
+  content:""; position:absolute; top:0; bottom:0; inset-inline-end:0;
+  width: 8px;
+  background-image: radial-gradient(circle at right, #fff 4px, transparent 4px);
+  background-size: 8px 16px;
+}
+.s-event.v2 .s-event-date .day { font-size: 2rem; font-weight: 900; line-height: 1; }
+.s-event.v2 .s-event-date .month { font-size:.7rem; opacity:.85; margin-top:.25rem; }
+.s-event.v2 .info { padding: 1.1rem 1.25rem 1rem 1.5rem; }
+.s-event.v2 .info h4 { font-weight: 800; color: var(--color-primary); margin-bottom: .35rem; }
+.s-event.v2 .info .loc { font-size:.78rem; color: var(--color-text-muted); display:flex; align-items:center; gap:.35rem; }
+.s-event.v2 .info .loc i { color: var(--color-secondary); }
+.s-event.v2 .info .pill {
+  display:inline-flex; align-items:center; gap:.3rem;
+  font-size:.7rem; font-weight:800; margin-top:.6rem;
+  background: var(--color-secondary-soft); color: var(--color-secondary-dark);
+  padding: .3rem .65rem; border-radius:999px;
+}
+.s-event.v2.alt .s-event-date { background: linear-gradient(180deg, var(--color-secondary), var(--color-secondary-dark)); }
+.s-event.v2.gold .s-event-date { background: linear-gradient(180deg, var(--color-accent), #b07a16); }
+
+/* ============ 13) قالوا عنا — Featured + Side Quotes ============ */
+.quotes-v2 { display:grid; gap: 1.25rem; grid-template-columns: 1fr; }
+@media (min-width: 992px){ .quotes-v2 { grid-template-columns: 1fr 1.4fr 1fr; align-items: center; } }
+
+.s-quote.v2 {
+  background:#fff; border:1px solid var(--color-border);
+  border-radius: 22px; padding: 1.75rem; position: relative;
+  transition: transform .35s, box-shadow .35s;
+}
+.s-quote.v2::before{
+  content: "\201C"; position:absolute; top: -.5rem; inset-inline-start: 1rem;
+  font-family: serif; font-size: 5rem; line-height:1;
+  color: var(--color-secondary); opacity: .25;
+}
+.s-quote.v2 p { color: var(--color-text); line-height: 1.95; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+.s-quote.v2 .person { display:flex; gap:.75rem; align-items:center; padding-top: 1rem; border-top: 1px dashed var(--color-border); }
+.s-quote.v2 .s-quote-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color:#fff; display:inline-flex; align-items:center; justify-content:center;
+  font-weight: 900;
+}
+.s-quote.v2 .n { font-weight: 800; color: var(--color-primary); font-size:.92rem; }
+.s-quote.v2 .r { font-size:.75rem; color: var(--color-text-muted); }
+
+.s-quote.v2.featured {
+  background: linear-gradient(160deg, var(--color-primary), var(--color-primary-dark));
+  color:#fff; padding: 2.5rem 2rem;
+  transform: scale(1.04);
+  box-shadow: 0 30px 60px -30px rgba(12,127,174,.5);
+}
+.s-quote.v2.featured::before { color: rgba(255,255,255,.18); opacity:1; font-size:7rem; }
+.s-quote.v2.featured p { color:#fff; font-size: 1.05rem; }
+.s-quote.v2.featured .person { border-top-color: rgba(255,255,255,.2); }
+.s-quote.v2.featured .n { color:#fff; }
+.s-quote.v2.featured .r { color: rgba(255,255,255,.75); }
+.s-quote.v2.featured .s-quote-avatar { background: rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3); }
+
+@media (min-width: 992px){
+  .s-quote.v2:nth-child(1) { transform: translateY(-12px) rotate(-1deg); }
+  .s-quote.v2:nth-child(3) { transform: translateY(12px) rotate(1deg); }
+  .s-quote.v2:nth-child(1):hover, .s-quote.v2:nth-child(3):hover { transform: translateY(-4px) rotate(0); }
+}
+
+/* ============ 15) CTA — Split with Action Tiles ============ */
+.s-cta.v2 {
+  background:
+    radial-gradient(60% 60% at 0% 0%, rgba(66,176,122,.35), transparent 60%),
+    linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color:#fff; border-radius: 32px;
+  padding: 3rem 2rem; position: relative; overflow: hidden;
+  display:grid; gap: 2rem; grid-template-columns: 1fr;
+}
+@media (min-width: 992px){
+  .s-cta.v2 { grid-template-columns: 1.2fr 1fr; padding: 4rem; align-items: center; }
+}
+.s-cta.v2::after{
+  content:""; position:absolute; inset:auto -100px -100px auto;
+  width: 360px; height: 360px; border-radius:50%;
+  background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  opacity: .3; filter: blur(20px);
+}
+.s-cta.v2 .head { position: relative; z-index: 1; }
+.s-cta.v2 .head h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 900; line-height: 1.2; margin-bottom: 1rem; color:#fff; }
+.s-cta.v2 .head p { opacity:.88; line-height: 1.95; margin-bottom: 1.5rem; max-width: 50ch; }
+
+.s-cta.v2 .tiles { display:grid; gap:.85rem; position: relative; z-index: 1; }
+.s-cta.v2 .tile {
+  display:grid; grid-template-columns: 48px 1fr auto; gap: 1rem; align-items:center;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(8px); padding: 1rem 1.1rem;
+  border-radius: 16px; color:#fff; text-decoration:none;
+  transition: all .3s;
+}
+.s-cta.v2 .tile:hover {
+  background: var(--color-secondary); border-color: var(--color-secondary);
+  transform: translateX(-6px);
+}
+.s-cta.v2 .tile .ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.25);
+  display:inline-flex; align-items:center; justify-content:center; font-size: 1.2rem;
+}
+.s-cta.v2 .tile .t { font-weight: 800; font-size: 1rem; line-height: 1.2; }
+.s-cta.v2 .tile .d { font-size:.78rem; opacity:.8; margin-top:.15rem; }
+.s-cta.v2 .tile .arrow { font-size: 1.1rem; transition: transform .3s; }
+.s-cta.v2 .tile:hover .arrow { transform: translateX(-4px); }
+
+/* ---------- اعتمادية الحركة ---------- */
+@media (prefers-reduced-motion: reduce){
+  .s-pillar.v2, .s-goal-row.v2 .goal-card, .s-rail-step.v2, .s-project.v2,
+  .s-service.v2-row, .s-event.v2, .s-quote.v2, .s-news-mini-v2.v2,
+  .s-dcard.v2, .s-cta.v2 .tile, .s-gov-card.v2, .s-stat-card.v2 {
+    transition: none !important;
+  }
+}
