@@ -1839,10 +1839,19 @@
           <i class="fas fa-bag-shopping"></i>
           <span class="sx-badge" data-cart-count>${getCartCount()}</span>
         </a>
-        <div class="sx-login-wrap">
-          <button type="button" class="sx-login-btn" data-auth-open="login">
-            <i class="fas fa-user-circle"></i> تسجيل الدخول
+        <div class="sx-login-wrap" data-drop>
+          <button type="button" class="sx-login-btn">
+            <i class="fas fa-user-circle"></i> تسجيل الدخول <i class="fas fa-chevron-down" style="font-size:.65rem;margin-inline-start:.15rem"></i>
           </button>
+          <div class="sx-login-menu" role="menu">
+            <div class="sx-lhead">اختر بوابة الدخول المناسبة لك</div>
+            <a href="#" data-auth-open="login"><i class="fas fa-user-tie"></i> دخول العملاء والمتبرعين</a>
+            <a href="beneficiary-login.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
+            <div class="sx-lreg">
+              <a href="beneficiary-register.html" style="color:var(--s-emerald-deep)"><i class="fas fa-user-plus"></i> إنشاء حساب مستفيد</a>
+              <a href="#" data-auth-open="register"><i class="fas fa-user-plus"></i> إنشاء حساب عميل / متبرع</a>
+            </div>
+          </div>
         </div>
         
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
@@ -1963,9 +1972,11 @@
 
           <div class="sa-divider"><span>أو</span></div>
 
-          <div class="sa-foot">
-            ليس لديك حساب في جمعية سَنَد؟
-            <a href="#" data-auth-go="register">إنشاء حساب جديد</a>
+          <div class="sa-switch">
+            <span>ليس لديك حساب في جمعية سَنَد؟</span>
+            <button type="button" class="sa-btn sa-btn-switch sa-btn-switch--accent" data-auth-go="register">
+              <i class="fas fa-user-plus"></i> إنشاء حساب جديد
+            </button>
           </div>
         </section>
 
@@ -2053,20 +2064,18 @@
           <p class="sa-sub">حساب واحد يفتح لك جميع خدمات الجمعية: التبرع، المتجر، طلب الخدمات والمزيد.</p>
 
           <form class="sa-form" data-auth-form="register" novalidate>
-            <div class="sa-grid-2">
-              <label class="sa-field">
-                <span class="sa-lbl">الاسم الكامل</span>
-                <div class="sa-input-wrap"><i class="fas fa-user sa-input-ic"></i>
-                  <input type="text" name="name" maxlength="80" required placeholder="اكتب اسمك الثلاثي" />
-                </div>
-              </label>
-              <label class="sa-field">
-                <span class="sa-lbl">رقم الجوال</span>
-                <div class="sa-input-wrap sa-phone"><span class="sa-phone-cc">+966</span>
-                  <input type="tel" name="phone" maxlength="9" pattern="5[0-9]{8}" required placeholder="5XXXXXXXX" />
-                </div>
-              </label>
-            </div>
+            <label class="sa-field">
+              <span class="sa-lbl">الاسم الكامل</span>
+              <div class="sa-input-wrap"><i class="fas fa-user sa-input-ic"></i>
+                <input type="text" name="name" maxlength="80" required placeholder="اكتب اسمك الثلاثي" />
+              </div>
+            </label>
+            <label class="sa-field">
+              <span class="sa-lbl">رقم الجوال</span>
+              <div class="sa-input-wrap sa-phone"><span class="sa-phone-cc">+966</span>
+                <input type="tel" name="phone" maxlength="9" pattern="5[0-9]{8}" required placeholder="5XXXXXXXX" />
+              </div>
+            </label>
             <label class="sa-field">
               <span class="sa-lbl">البريد الإلكتروني</span>
               <div class="sa-input-wrap"><i class="fas fa-envelope sa-input-ic"></i>
@@ -2088,9 +2097,11 @@
             </button>
           </form>
 
-          <div class="sa-foot">
-            لديك حساب بالفعل؟
-            <a href="#" data-auth-go="login">تسجيل الدخول</a>
+          <div class="sa-switch">
+            <span>لديك حساب بالفعل في جمعية سَنَد؟</span>
+            <button type="button" class="sa-btn sa-btn-switch" data-auth-go="login">
+              <i class="fas fa-right-to-bracket"></i> تسجيل الدخول
+            </button>
           </div>
         </section>
 
