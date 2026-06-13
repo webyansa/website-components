@@ -1909,7 +1909,230 @@
       <a href="donations.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
     </div>
   </aside>
+
+  <!-- ============ نافذة المصادقة الموحّدة ============ -->
+  <div class="sa-auth" data-auth-root aria-hidden="true">
+    <div class="sa-auth-overlay" data-auth-close></div>
+    <div class="sa-auth-dialog" role="dialog" aria-modal="true" aria-labelledby="saAuthTitle">
+      <button class="sa-auth-x" type="button" data-auth-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+
+      <!-- شريط الهوية -->
+      <div class="sa-auth-brand">
+        <div class="sa-auth-mark">س</div>
+        <div>
+          <div class="sa-auth-name" id="saAuthTitle">جمعية سَنَد</div>
+          <div class="sa-auth-tag" data-auth-subtitle>بوابة موحدة لجميع حسابات الجمعية</div>
+        </div>
+      </div>
+
+      <!-- مؤشر الخطوات -->
+      <div class="sa-auth-steps" data-auth-steps>
+        <span class="dot active" data-step-dot="1"></span>
+        <span class="ln"></span>
+        <span class="dot" data-step-dot="2"></span>
+        <span class="ln"></span>
+        <span class="dot" data-step-dot="3"></span>
+      </div>
+
+      <div class="sa-auth-body">
+
+        <!-- ====== شاشة 1: تسجيل الدخول (المعرّف) ====== -->
+        <section class="sa-view" data-auth-view="login">
+          <h3 class="sa-h">مرحبًا بعودتك 👋</h3>
+          <p class="sa-sub">سجّل دخولك إلى حسابك في جمعية سَنَد بكل سهولة عبر البريد أو رقم الجوال.</p>
+
+          <form class="sa-form" data-auth-form="login" novalidate>
+            <label class="sa-field">
+              <span class="sa-lbl">البريد الإلكتروني أو رقم الجوال</span>
+              <div class="sa-input-wrap">
+                <i class="fas fa-user sa-input-ic"></i>
+                <input type="text" name="identifier" autocomplete="username" required
+                  placeholder="example@mail.com  أو  5XXXXXXXX" />
+              </div>
+              <small class="sa-hint" data-id-hint>يمكنك استخدام البريد الإلكتروني أو رقم جوالك المسجل لدينا</small>
+            </label>
+
+            <div class="sa-links">
+              <a href="#" data-auth-go="forgot"><i class="fas fa-key"></i> نسيت اسم المستخدم؟</a>
+            </div>
+
+            <button type="submit" class="sa-btn sa-btn-primary">
+              <span>متابعة</span> <i class="fas fa-arrow-left"></i>
+            </button>
+          </form>
+
+          <div class="sa-divider"><span>أو</span></div>
+
+          <div class="sa-foot">
+            ليس لديك حساب في جمعية سَنَد؟
+            <a href="#" data-auth-go="register">إنشاء حساب جديد</a>
+          </div>
+        </section>
+
+        <!-- ====== شاشة 2: اختيار طريقة التحقق ====== -->
+        <section class="sa-view" data-auth-view="method" hidden>
+          <h3 class="sa-h">التحقّق بخطوتين</h3>
+          <p class="sa-sub">لحماية حسابك سنرسل رمز تحقق إلى:</p>
+
+          <div class="sa-methods">
+            <button type="button" class="sa-method" data-auth-method="email">
+              <div class="ic"><i class="fas fa-envelope"></i></div>
+              <div class="tx">
+                <strong>البريد الإلكتروني</strong>
+                <span data-auth-email-mask>—</span>
+              </div>
+              <i class="fas fa-circle-check tick"></i>
+            </button>
+            <button type="button" class="sa-method" data-auth-method="phone">
+              <div class="ic"><i class="fas fa-mobile-screen"></i></div>
+              <div class="tx">
+                <strong>رقم الجوال</strong>
+                <span data-auth-phone-mask>—</span>
+              </div>
+              <i class="fas fa-circle-check tick"></i>
+            </button>
+          </div>
+
+          <div class="sa-row">
+            <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="login"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <button type="button" class="sa-btn sa-btn-primary" data-auth-send-otp>
+              <span>إرسال رمز التحقق</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====== شاشة 3: إدخال رمز OTP ====== -->
+        <section class="sa-view" data-auth-view="otp" hidden>
+          <h3 class="sa-h">أدخل رمز التحقق</h3>
+          <p class="sa-sub">تم إرسال رمز مكوّن من 6 أرقام إلى <strong data-auth-target>—</strong></p>
+
+          <div class="sa-otp" data-auth-otp dir="ltr">
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+          </div>
+
+          <div class="sa-otp-meta">
+            <button type="button" class="sa-link" data-auth-go="method"><i class="fas fa-right-left"></i> تغيير طريقة التحقق</button>
+            <button type="button" class="sa-link" data-auth-resend><i class="fas fa-rotate"></i> إعادة الإرسال <span data-auth-timer></span></button>
+          </div>
+
+          <div class="sa-row">
+            <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="method"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <button type="button" class="sa-btn sa-btn-primary" data-auth-verify>
+              <span>تحقّق ودخول</span> <i class="fas fa-shield-halved"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====== شاشة: نسيت اسم المستخدم ====== -->
+        <section class="sa-view" data-auth-view="forgot" hidden>
+          <h3 class="sa-h">استرجاع اسم المستخدم</h3>
+          <p class="sa-sub">أدخل رقم هويتك أو إقامتك وسنرسل لك بيانات الدخول على البريد/الجوال المسجّل.</p>
+          <form class="sa-form" data-auth-form="forgot" novalidate>
+            <label class="sa-field">
+              <span class="sa-lbl">رقم الهوية أو الإقامة</span>
+              <div class="sa-input-wrap">
+                <i class="fas fa-id-card sa-input-ic"></i>
+                <input type="text" inputmode="numeric" maxlength="10" placeholder="١٠ أرقام" required />
+              </div>
+            </label>
+            <div class="sa-row">
+              <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="login"><i class="fas fa-arrow-right"></i> رجوع</button>
+              <button type="submit" class="sa-btn sa-btn-primary"><span>إرسال البيانات</span> <i class="fas fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ====== شاشة: إنشاء حساب جديد ====== -->
+        <section class="sa-view" data-auth-view="register" hidden>
+          <h3 class="sa-h">انضم إلى عائلة سَنَد</h3>
+          <p class="sa-sub">حساب واحد يفتح لك جميع خدمات الجمعية: التبرع، المتجر، طلب الخدمات والمزيد.</p>
+
+          <form class="sa-form" data-auth-form="register" novalidate>
+            <div class="sa-grid-2">
+              <label class="sa-field">
+                <span class="sa-lbl">الاسم الكامل</span>
+                <div class="sa-input-wrap"><i class="fas fa-user sa-input-ic"></i>
+                  <input type="text" name="name" maxlength="80" required placeholder="اكتب اسمك الثلاثي" />
+                </div>
+              </label>
+              <label class="sa-field">
+                <span class="sa-lbl">رقم الجوال</span>
+                <div class="sa-input-wrap sa-phone"><span class="sa-phone-cc">+966</span>
+                  <input type="tel" name="phone" maxlength="9" pattern="5[0-9]{8}" required placeholder="5XXXXXXXX" />
+                </div>
+              </label>
+            </div>
+            <label class="sa-field">
+              <span class="sa-lbl">البريد الإلكتروني</span>
+              <div class="sa-input-wrap"><i class="fas fa-envelope sa-input-ic"></i>
+                <input type="email" name="email" maxlength="120" required placeholder="example@mail.com" />
+              </div>
+            </label>
+
+            <label class="sa-check">
+              <input type="checkbox" name="agree" data-auth-agree required />
+              <span>
+                أوافق على
+                <button type="button" class="sa-link sa-link-inline" data-auth-go="terms">الشروط والأحكام وسياسة الخصوصية</button>
+                الخاصة بجمعية سَنَد.
+              </span>
+            </label>
+
+            <button type="submit" class="sa-btn sa-btn-primary">
+              <span>إنشاء الحساب</span> <i class="fas fa-user-check"></i>
+            </button>
+          </form>
+
+          <div class="sa-foot">
+            لديك حساب بالفعل؟
+            <a href="#" data-auth-go="login">تسجيل الدخول</a>
+          </div>
+        </section>
+
+        <!-- ====== شاشة: الشروط والأحكام ====== -->
+        <section class="sa-view sa-view-terms" data-auth-view="terms" hidden>
+          <h3 class="sa-h">الشروط والأحكام</h3>
+          <p class="sa-sub">يرجى قراءة الشروط بعناية قبل الموافقة عليها.</p>
+          <div class="sa-terms-box">
+            <h4>1. التعريفات</h4>
+            <p>"الجمعية" تشير إلى جمعية سَنَد للخدمات الاجتماعية والرعاية، و"المستخدم" يشير إلى أي شخص يقوم بإنشاء حساب أو استخدام خدمات الجمعية.</p>
+            <h4>2. استخدام الحساب</h4>
+            <p>يلتزم المستخدم بتقديم بيانات صحيحة وكاملة، والحفاظ على سرية بيانات الدخول، وتحمّل مسؤولية أي نشاط يتم من خلال حسابه.</p>
+            <h4>3. الخصوصية وحماية البيانات</h4>
+            <p>تلتزم الجمعية بحماية بياناتك الشخصية وفق نظام حماية البيانات الشخصية في المملكة العربية السعودية، ولن تتم مشاركتها مع أي طرف ثالث دون موافقتك إلا وفق ما يقتضيه النظام.</p>
+            <h4>4. التبرعات والمدفوعات</h4>
+            <p>جميع التبرعات والمدفوعات تتم عبر بوابات دفع آمنة، وتُصدر إيصالات إلكترونية معتمدة. لا يحق استرداد التبرعات بعد إتمامها إلا وفق سياسة الاسترداد المعتمدة.</p>
+            <h4>5. التعديلات</h4>
+            <p>تحتفظ الجمعية بحق تعديل هذه الشروط في أي وقت، وسيتم إشعار المستخدمين بالتعديلات الجوهرية عبر البريد أو الجوال.</p>
+            <h4>6. القانون المُطبَّق</h4>
+            <p>تخضع هذه الشروط لأنظمة المملكة العربية السعودية، وتختص محاكم الرياض بالنظر في أي نزاع ينشأ عنها.</p>
+          </div>
+          <div class="sa-row">
+            <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="register"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <button type="button" class="sa-btn sa-btn-primary" data-auth-accept-terms>
+              <span>أوافق على الشروط</span> <i class="fas fa-check"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====== شاشة النجاح ====== -->
+        <section class="sa-view sa-view-success" data-auth-view="success" hidden>
+          <div class="sa-success-anim"><i class="fas fa-circle-check"></i></div>
+          <h3 class="sa-h" data-auth-success-title>تم تسجيل دخولك بنجاح</h3>
+          <p class="sa-sub" data-auth-success-sub>مرحبًا بك في بوابة جمعية سَنَد. سيتم تحويلك للوحة حسابك خلال لحظات.</p>
+          <button type="button" class="sa-btn sa-btn-primary" data-auth-close><span>متابعة</span> <i class="fas fa-arrow-left"></i></button>
+        </section>
+
+      </div>
+    </div>
+  </div>
   `;
+
 
   const footerHTML = `
   <footer class="sx-footer" id="sx-footer">
