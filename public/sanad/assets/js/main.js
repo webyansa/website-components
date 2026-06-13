@@ -2336,7 +2336,7 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         document.querySelectorAll("[data-drop].open").forEach((o) => o.classList.remove("open"));
-        lw?.classList.remove("open");
+        document.querySelector("[data-auth-root].open") && closeSanadAuthModal();
         closeMobile();
         closeDCart();
         closeCert();
