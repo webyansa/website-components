@@ -1839,19 +1839,10 @@
           <i class="fas fa-bag-shopping"></i>
           <span class="sx-badge" data-cart-count>${getCartCount()}</span>
         </a>
-        <div class="sx-login-wrap" data-login-wrap>
-          <button type="button" class="sx-login-btn" data-login-toggle>
+        <div class="sx-login-wrap">
+          <button type="button" class="sx-login-btn" data-auth-open="login">
             <i class="fas fa-user-circle"></i> تسجيل الدخول
           </button>
-          <div class="sx-login-menu">
-            <div class="sx-lhead">اختر نوع الحساب</div>
-            <a href="beneficiary-login.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
-            <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-            <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-            <div class="sx-lreg">
-              <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
-            </div>
-          </div>
         </div>
         
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
