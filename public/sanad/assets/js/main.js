@@ -2062,20 +2062,18 @@
           <p class="sa-sub">حساب واحد يفتح لك جميع خدمات الجمعية: التبرع، المتجر، طلب الخدمات والمزيد.</p>
 
           <form class="sa-form" data-auth-form="register" novalidate>
-            <div class="sa-grid-2">
-              <label class="sa-field">
-                <span class="sa-lbl">الاسم الكامل</span>
-                <div class="sa-input-wrap"><i class="fas fa-user sa-input-ic"></i>
-                  <input type="text" name="name" maxlength="80" required placeholder="اكتب اسمك الثلاثي" />
-                </div>
-              </label>
-              <label class="sa-field">
-                <span class="sa-lbl">رقم الجوال</span>
-                <div class="sa-input-wrap sa-phone"><span class="sa-phone-cc">+966</span>
-                  <input type="tel" name="phone" maxlength="9" pattern="5[0-9]{8}" required placeholder="5XXXXXXXX" />
-                </div>
-              </label>
-            </div>
+            <label class="sa-field">
+              <span class="sa-lbl">الاسم الكامل</span>
+              <div class="sa-input-wrap"><i class="fas fa-user sa-input-ic"></i>
+                <input type="text" name="name" maxlength="80" required placeholder="اكتب اسمك الثلاثي" />
+              </div>
+            </label>
+            <label class="sa-field">
+              <span class="sa-lbl">رقم الجوال</span>
+              <div class="sa-input-wrap sa-phone"><span class="sa-phone-cc">+966</span>
+                <input type="tel" name="phone" maxlength="9" pattern="5[0-9]{8}" required placeholder="5XXXXXXXX" />
+              </div>
+            </label>
             <label class="sa-field">
               <span class="sa-lbl">البريد الإلكتروني</span>
               <div class="sa-input-wrap"><i class="fas fa-envelope sa-input-ic"></i>
@@ -2097,9 +2095,11 @@
             </button>
           </form>
 
-          <div class="sa-foot">
-            لديك حساب بالفعل؟
-            <a href="#" data-auth-go="login">تسجيل الدخول</a>
+          <div class="sa-switch">
+            <span>لديك حساب بالفعل في جمعية سَنَد؟</span>
+            <button type="button" class="sa-btn sa-btn-switch" data-auth-go="login">
+              <i class="fas fa-right-to-bracket"></i> تسجيل الدخول
+            </button>
           </div>
         </section>
 
