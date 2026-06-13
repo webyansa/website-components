@@ -2499,7 +2499,218 @@
   } else {
     inject();
   }
+
+  // ============ نافذة المصادقة الموحّدة ============
+  let _saAuthState = { identifier: "", method: "email", email: "", phone: "", timer: 0, _tid: null };
+
+  function openSanadAuthModal(view) {
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+    root.classList.add("open");
+    root.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    showSanadAuthView(view || "login");
+  }
+  function closeSanadAuthModal() {
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+    root.classList.remove("open");
+    root.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (_saAuthState._tid) { clearInterval(_saAuthState._tid); _saAuthState._tid = null; }
+  }
+  function showSanadAuthView(name) {
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+    root.querySelectorAll("[data-auth-view]").forEach((v) => {
+      v.hidden = v.getAttribute("data-auth-view") !== name;
+    });
+    // ترقيم الخطوات
+    const stepMap = { login: 1, forgot: 1, register: 1, terms: 1, method: 2, otp: 3, success: 3 };
+    const step = stepMap[name] || 1;
+    root.querySelectorAll("[data-step-dot]").forEach((d) => {
+      d.classList.toggle("active", Number(d.getAttribute("data-step-dot")) <= step);
+    });
+    const stepsBar = root.querySelector("[data-auth-steps]");
+    if (stepsBar) stepsBar.style.display = (name === "register" || name === "forgot" || name === "terms" || name === "success") ? "none" : "";
+    // عناوين فرعية
+    const sub = root.querySelector("[data-auth-subtitle]");
+    const subs = {
+      login: "بوابة موحدة لجميع حسابات الجمعية",
+      method: "اختر طريقة استلام رمز التحقق",
+      otp: "أدخل الرمز المرسل إليك",
+      register: "خطوات بسيطة لإنشاء حسابك",
+      terms: "اطلع على الشروط قبل المتابعة",
+      forgot: "سنساعدك في استرجاع بيانات الدخول",
+      success: "تمت العملية بنجاح",
+    };
+    if (sub) sub.textContent = subs[name] || subs.login;
+    // تركيز
+    setTimeout(() => {
+      const f = root.querySelector(`[data-auth-view="${name}"] input, [data-auth-view="${name}"] button`);
+      f && f.focus({ preventScroll: true });
+    }, 60);
+  }
+
+  function _saIsEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function _saIsPhone(v) { return /^5\d{8}$/.test(v.replace(/\D/g, "")); }
+  function _saMaskEmail(e) {
+    if (!e || !e.includes("@")) return "—";
+    const [u, d] = e.split("@");
+    return (u.slice(0, 2) + "•••" + u.slice(-1)) + "@" + d;
+  }
+  function _saMaskPhone(p) {
+    const d = String(p || "").replace(/\D/g, "");
+    if (d.length < 9) return "—";
+    return "+966 " + d.slice(0, 2) + " ••• " + d.slice(-2);
+  }
+  function _saStartTimer() {
+    const root = document.querySelector("[data-auth-root]");
+    const lbl = root?.querySelector("[data-auth-timer]");
+    const btn = root?.querySelector("[data-auth-resend]");
+    if (!lbl || !btn) return;
+    if (_saAuthState._tid) clearInterval(_saAuthState._tid);
+    _saAuthState.timer = 45;
+    btn.disabled = true; btn.classList.add("is-disabled");
+    const tick = () => {
+      lbl.textContent = _saAuthState.timer > 0 ? `(${_saAuthState.timer}ث)` : "";
+      if (_saAuthState.timer <= 0) {
+        clearInterval(_saAuthState._tid); _saAuthState._tid = null;
+        btn.disabled = false; btn.classList.remove("is-disabled");
+      }
+      _saAuthState.timer--;
+    };
+    tick();
+    _saAuthState._tid = setInterval(tick, 1000);
+  }
+
+  function initSanadAuthModal() {
+    // فتح من أي زر
+    document.addEventListener("click", (e) => {
+      const opener = e.target.closest("[data-auth-open]");
+      if (opener) {
+        e.preventDefault();
+        openSanadAuthModal(opener.getAttribute("data-auth-open"));
+      }
+      const closer = e.target.closest("[data-auth-close]");
+      if (closer) { e.preventDefault(); closeSanadAuthModal(); }
+      const navL = e.target.closest("[data-auth-go]");
+      if (navL) { e.preventDefault(); showSanadAuthView(navL.getAttribute("data-auth-go")); }
+    });
+
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+
+    // نموذج الدخول
+    const loginForm = root.querySelector('[data-auth-form="login"]');
+    loginForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const v = (loginForm.identifier.value || "").trim();
+      const hint = root.querySelector("[data-id-hint]");
+      const wrap = loginForm.querySelector(".sa-input-wrap");
+      const isEm = _saIsEmail(v), isPh = _saIsPhone(v);
+      if (!isEm && !isPh) {
+        wrap?.classList.add("err");
+        hint.textContent = "صيغة غير صحيحة. أدخل بريدًا إلكترونيًا أو رقم جوال سعودي يبدأ بـ 5";
+        hint.classList.add("err");
+        return;
+      }
+      wrap?.classList.remove("err"); hint.classList.remove("err");
+      hint.textContent = "يمكنك استخدام البريد الإلكتروني أو رقم جوالك المسجل لدينا";
+      _saAuthState.identifier = v;
+      // لمحاكاة بيانات الحساب
+      _saAuthState.email = isEm ? v : "user@sanad.org.sa";
+      _saAuthState.phone = isPh ? v.replace(/\D/g, "") : "5XXXXXX12";
+      _saAuthState.method = isEm ? "email" : "phone";
+      root.querySelector("[data-auth-email-mask]").textContent = _saMaskEmail(_saAuthState.email);
+      root.querySelector("[data-auth-phone-mask]").textContent = _saMaskPhone(_saAuthState.phone);
+      _saSelectMethod(_saAuthState.method);
+      showSanadAuthView("method");
+    });
+
+    // اختيار طريقة التحقق
+    function _saSelectMethod(m) {
+      _saAuthState.method = m;
+      root.querySelectorAll("[data-auth-method]").forEach((b) => {
+        b.classList.toggle("active", b.getAttribute("data-auth-method") === m);
+      });
+    }
+    root.querySelectorAll("[data-auth-method]").forEach((b) => {
+      b.addEventListener("click", () => _saSelectMethod(b.getAttribute("data-auth-method")));
+    });
+
+    // إرسال OTP
+    root.querySelector("[data-auth-send-otp]")?.addEventListener("click", () => {
+      const target = _saAuthState.method === "email"
+        ? _saMaskEmail(_saAuthState.email)
+        : _saMaskPhone(_saAuthState.phone);
+      root.querySelector("[data-auth-target]").textContent = target;
+      root.querySelectorAll("[data-auth-otp] input").forEach((i) => (i.value = ""));
+      showSanadAuthView("otp");
+      _saStartTimer();
+    });
+    root.querySelector("[data-auth-resend]")?.addEventListener("click", () => {
+      if (_saAuthState.timer > 0) return;
+      _saStartTimer();
+    });
+
+    // OTP — انتقال تلقائي
+    const otps = root.querySelectorAll("[data-auth-otp] input");
+    otps.forEach((inp, i) => {
+      inp.addEventListener("input", () => {
+        inp.value = inp.value.replace(/\D/g, "").slice(0, 1);
+        if (inp.value && otps[i + 1]) otps[i + 1].focus();
+      });
+      inp.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !inp.value && otps[i - 1]) otps[i - 1].focus();
+      });
+      inp.addEventListener("paste", (e) => {
+        const t = (e.clipboardData?.getData("text") || "").replace(/\D/g, "").slice(0, otps.length);
+        if (!t) return;
+        e.preventDefault();
+        [...t].forEach((c, k) => { if (otps[k]) otps[k].value = c; });
+        otps[Math.min(t.length, otps.length) - 1]?.focus();
+      });
+    });
+    root.querySelector("[data-auth-verify]")?.addEventListener("click", () => {
+      const code = [...otps].map((i) => i.value).join("");
+      if (code.length < 6) {
+        otps.forEach((i) => i.classList.add("err"));
+        setTimeout(() => otps.forEach((i) => i.classList.remove("err")), 1200);
+        return;
+      }
+      root.querySelector("[data-auth-success-title]").textContent = "تم تسجيل دخولك بنجاح";
+      root.querySelector("[data-auth-success-sub]").textContent = "مرحبًا بك في بوابة جمعية سَنَد. يمكنك الآن متابعة طلباتك وإدارة حسابك.";
+      showSanadAuthView("success");
+    });
+
+    // نموذج إنشاء الحساب
+    const regForm = root.querySelector('[data-auth-form="register"]');
+    regForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const agree = regForm.querySelector("[data-auth-agree]");
+      if (!agree.checked) {
+        agree.closest(".sa-check")?.classList.add("err");
+        setTimeout(() => agree.closest(".sa-check")?.classList.remove("err"), 1200);
+        return;
+      }
+      if (!regForm.checkValidity()) { regForm.reportValidity(); return; }
+      _saAuthState.email = regForm.email.value.trim();
+      _saAuthState.phone = regForm.phone.value.trim();
+      root.querySelector("[data-auth-success-title]").textContent = "تم إنشاء حسابك بنجاح 🎉";
+      root.querySelector("[data-auth-success-sub]").textContent = "أهلاً بك في عائلة سَنَد! سجّل دخولك الآن لتتمكن من استخدام كافة الخدمات.";
+      showSanadAuthView("success");
+    });
+
+    // قبول الشروط (من شاشة الشروط) — يحدّد التشيك بوكس ويرجع لإنشاء الحساب
+    root.querySelector("[data-auth-accept-terms]")?.addEventListener("click", () => {
+      const cb = root.querySelector("[data-auth-agree]");
+      if (cb) { cb.checked = true; cb.closest(".sa-check")?.classList.remove("err"); }
+      showSanadAuthView("register");
+    });
+  }
 })();
+
 
 /* =============================================
    صفحة الوظائف وفرص التطوع — careers
