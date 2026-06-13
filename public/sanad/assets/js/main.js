@@ -1972,9 +1972,11 @@
 
           <div class="sa-divider"><span>أو</span></div>
 
-          <div class="sa-foot">
-            ليس لديك حساب في جمعية سَنَد؟
-            <a href="#" data-auth-go="register">إنشاء حساب جديد</a>
+          <div class="sa-switch">
+            <span>ليس لديك حساب في جمعية سَنَد؟</span>
+            <button type="button" class="sa-btn sa-btn-switch sa-btn-switch--accent" data-auth-go="register">
+              <i class="fas fa-user-plus"></i> إنشاء حساب جديد
+            </button>
           </div>
         </section>
 
