@@ -1839,19 +1839,10 @@
           <i class="fas fa-bag-shopping"></i>
           <span class="sx-badge" data-cart-count>${getCartCount()}</span>
         </a>
-        <div class="sx-login-wrap" data-login-wrap>
-          <button type="button" class="sx-login-btn" data-login-toggle>
+        <div class="sx-login-wrap">
+          <button type="button" class="sx-login-btn" data-auth-open="login">
             <i class="fas fa-user-circle"></i> تسجيل الدخول
           </button>
-          <div class="sx-login-menu">
-            <div class="sx-lhead">اختر نوع الحساب</div>
-            <a href="beneficiary-login.html"><i class="fas fa-hand-holding-heart"></i> دخول المستفيدين</a>
-            <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-            <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-            <div class="sx-lreg">
-              <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
-            </div>
-          </div>
         </div>
         
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
@@ -1887,10 +1878,8 @@
       <div class="sx-msec">حسابي وسلاتي</div>
       <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> سلة التبرعات <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
       <a href="cart.html"><i class="fas fa-bag-shopping"></i> سلة المتجر <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
-      <a href="beneficiary-login.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-      <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-      <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-      <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+      <button type="button" data-auth-open="login"><i class="fas fa-user-circle"></i> تسجيل الدخول</button>
+      <button type="button" data-auth-open="register"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</button>
 
       <div class="sx-msec">روابط سريعة</div>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
@@ -1920,7 +1909,230 @@
       <a href="donations.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
     </div>
   </aside>
+
+  <!-- ============ نافذة المصادقة الموحّدة ============ -->
+  <div class="sa-auth" data-auth-root aria-hidden="true">
+    <div class="sa-auth-overlay" data-auth-close></div>
+    <div class="sa-auth-dialog" role="dialog" aria-modal="true" aria-labelledby="saAuthTitle">
+      <button class="sa-auth-x" type="button" data-auth-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
+
+      <!-- شريط الهوية -->
+      <div class="sa-auth-brand">
+        <div class="sa-auth-mark">س</div>
+        <div>
+          <div class="sa-auth-name" id="saAuthTitle">جمعية سَنَد</div>
+          <div class="sa-auth-tag" data-auth-subtitle>بوابة موحدة لجميع حسابات الجمعية</div>
+        </div>
+      </div>
+
+      <!-- مؤشر الخطوات -->
+      <div class="sa-auth-steps" data-auth-steps>
+        <span class="dot active" data-step-dot="1"></span>
+        <span class="ln"></span>
+        <span class="dot" data-step-dot="2"></span>
+        <span class="ln"></span>
+        <span class="dot" data-step-dot="3"></span>
+      </div>
+
+      <div class="sa-auth-body">
+
+        <!-- ====== شاشة 1: تسجيل الدخول (المعرّف) ====== -->
+        <section class="sa-view" data-auth-view="login">
+          <h3 class="sa-h">مرحبًا بعودتك 👋</h3>
+          <p class="sa-sub">سجّل دخولك إلى حسابك في جمعية سَنَد بكل سهولة عبر البريد أو رقم الجوال.</p>
+
+          <form class="sa-form" data-auth-form="login" novalidate>
+            <label class="sa-field">
+              <span class="sa-lbl">البريد الإلكتروني أو رقم الجوال</span>
+              <div class="sa-input-wrap">
+                <i class="fas fa-user sa-input-ic"></i>
+                <input type="text" name="identifier" autocomplete="username" required
+                  placeholder="example@mail.com  أو  5XXXXXXXX" />
+              </div>
+              <small class="sa-hint" data-id-hint>يمكنك استخدام البريد الإلكتروني أو رقم جوالك المسجل لدينا</small>
+            </label>
+
+            <div class="sa-links">
+              <a href="#" data-auth-go="forgot"><i class="fas fa-key"></i> نسيت اسم المستخدم؟</a>
+            </div>
+
+            <button type="submit" class="sa-btn sa-btn-primary">
+              <span>متابعة</span> <i class="fas fa-arrow-left"></i>
+            </button>
+          </form>
+
+          <div class="sa-divider"><span>أو</span></div>
+
+          <div class="sa-foot">
+            ليس لديك حساب في جمعية سَنَد؟
+            <a href="#" data-auth-go="register">إنشاء حساب جديد</a>
+          </div>
+        </section>
+
+        <!-- ====== شاشة 2: اختيار طريقة التحقق ====== -->
+        <section class="sa-view" data-auth-view="method" hidden>
+          <h3 class="sa-h">التحقّق بخطوتين</h3>
+          <p class="sa-sub">لحماية حسابك سنرسل رمز تحقق إلى:</p>
+
+          <div class="sa-methods">
+            <button type="button" class="sa-method" data-auth-method="email">
+              <div class="ic"><i class="fas fa-envelope"></i></div>
+              <div class="tx">
+                <strong>البريد الإلكتروني</strong>
+                <span data-auth-email-mask>—</span>
+              </div>
+              <i class="fas fa-circle-check tick"></i>
+            </button>
+            <button type="button" class="sa-method" data-auth-method="phone">
+              <div class="ic"><i class="fas fa-mobile-screen"></i></div>
+              <div class="tx">
+                <strong>رقم الجوال</strong>
+                <span data-auth-phone-mask>—</span>
+              </div>
+              <i class="fas fa-circle-check tick"></i>
+            </button>
+          </div>
+
+          <div class="sa-row">
+            <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="login"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <button type="button" class="sa-btn sa-btn-primary" data-auth-send-otp>
+              <span>إرسال رمز التحقق</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====== شاشة 3: إدخال رمز OTP ====== -->
+        <section class="sa-view" data-auth-view="otp" hidden>
+          <h3 class="sa-h">أدخل رمز التحقق</h3>
+          <p class="sa-sub">تم إرسال رمز مكوّن من 6 أرقام إلى <strong data-auth-target>—</strong></p>
+
+          <div class="sa-otp" data-auth-otp dir="ltr">
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+            <input type="text" inputmode="numeric" maxlength="1" />
+          </div>
+
+          <div class="sa-otp-meta">
+            <button type="button" class="sa-link" data-auth-go="method"><i class="fas fa-right-left"></i> تغيير طريقة التحقق</button>
+            <button type="button" class="sa-link" data-auth-resend><i class="fas fa-rotate"></i> إعادة الإرسال <span data-auth-timer></span></button>
+          </div>
+
+          <div class="sa-row">
+            <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="method"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <button type="button" class="sa-btn sa-btn-primary" data-auth-verify>
+              <span>تحقّق ودخول</span> <i class="fas fa-shield-halved"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====== شاشة: نسيت اسم المستخدم ====== -->
+        <section class="sa-view" data-auth-view="forgot" hidden>
+          <h3 class="sa-h">استرجاع اسم المستخدم</h3>
+          <p class="sa-sub">أدخل رقم هويتك أو إقامتك وسنرسل لك بيانات الدخول على البريد/الجوال المسجّل.</p>
+          <form class="sa-form" data-auth-form="forgot" novalidate>
+            <label class="sa-field">
+              <span class="sa-lbl">رقم الهوية أو الإقامة</span>
+              <div class="sa-input-wrap">
+                <i class="fas fa-id-card sa-input-ic"></i>
+                <input type="text" inputmode="numeric" maxlength="10" placeholder="١٠ أرقام" required />
+              </div>
+            </label>
+            <div class="sa-row">
+              <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="login"><i class="fas fa-arrow-right"></i> رجوع</button>
+              <button type="submit" class="sa-btn sa-btn-primary"><span>إرسال البيانات</span> <i class="fas fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ====== شاشة: إنشاء حساب جديد ====== -->
+        <section class="sa-view" data-auth-view="register" hidden>
+          <h3 class="sa-h">انضم إلى عائلة سَنَد</h3>
+          <p class="sa-sub">حساب واحد يفتح لك جميع خدمات الجمعية: التبرع، المتجر، طلب الخدمات والمزيد.</p>
+
+          <form class="sa-form" data-auth-form="register" novalidate>
+            <div class="sa-grid-2">
+              <label class="sa-field">
+                <span class="sa-lbl">الاسم الكامل</span>
+                <div class="sa-input-wrap"><i class="fas fa-user sa-input-ic"></i>
+                  <input type="text" name="name" maxlength="80" required placeholder="اكتب اسمك الثلاثي" />
+                </div>
+              </label>
+              <label class="sa-field">
+                <span class="sa-lbl">رقم الجوال</span>
+                <div class="sa-input-wrap sa-phone"><span class="sa-phone-cc">+966</span>
+                  <input type="tel" name="phone" maxlength="9" pattern="5[0-9]{8}" required placeholder="5XXXXXXXX" />
+                </div>
+              </label>
+            </div>
+            <label class="sa-field">
+              <span class="sa-lbl">البريد الإلكتروني</span>
+              <div class="sa-input-wrap"><i class="fas fa-envelope sa-input-ic"></i>
+                <input type="email" name="email" maxlength="120" required placeholder="example@mail.com" />
+              </div>
+            </label>
+
+            <label class="sa-check">
+              <input type="checkbox" name="agree" data-auth-agree required />
+              <span>
+                أوافق على
+                <button type="button" class="sa-link sa-link-inline" data-auth-go="terms">الشروط والأحكام وسياسة الخصوصية</button>
+                الخاصة بجمعية سَنَد.
+              </span>
+            </label>
+
+            <button type="submit" class="sa-btn sa-btn-primary">
+              <span>إنشاء الحساب</span> <i class="fas fa-user-check"></i>
+            </button>
+          </form>
+
+          <div class="sa-foot">
+            لديك حساب بالفعل؟
+            <a href="#" data-auth-go="login">تسجيل الدخول</a>
+          </div>
+        </section>
+
+        <!-- ====== شاشة: الشروط والأحكام ====== -->
+        <section class="sa-view sa-view-terms" data-auth-view="terms" hidden>
+          <h3 class="sa-h">الشروط والأحكام</h3>
+          <p class="sa-sub">يرجى قراءة الشروط بعناية قبل الموافقة عليها.</p>
+          <div class="sa-terms-box">
+            <h4>1. التعريفات</h4>
+            <p>"الجمعية" تشير إلى جمعية سَنَد للخدمات الاجتماعية والرعاية، و"المستخدم" يشير إلى أي شخص يقوم بإنشاء حساب أو استخدام خدمات الجمعية.</p>
+            <h4>2. استخدام الحساب</h4>
+            <p>يلتزم المستخدم بتقديم بيانات صحيحة وكاملة، والحفاظ على سرية بيانات الدخول، وتحمّل مسؤولية أي نشاط يتم من خلال حسابه.</p>
+            <h4>3. الخصوصية وحماية البيانات</h4>
+            <p>تلتزم الجمعية بحماية بياناتك الشخصية وفق نظام حماية البيانات الشخصية في المملكة العربية السعودية، ولن تتم مشاركتها مع أي طرف ثالث دون موافقتك إلا وفق ما يقتضيه النظام.</p>
+            <h4>4. التبرعات والمدفوعات</h4>
+            <p>جميع التبرعات والمدفوعات تتم عبر بوابات دفع آمنة، وتُصدر إيصالات إلكترونية معتمدة. لا يحق استرداد التبرعات بعد إتمامها إلا وفق سياسة الاسترداد المعتمدة.</p>
+            <h4>5. التعديلات</h4>
+            <p>تحتفظ الجمعية بحق تعديل هذه الشروط في أي وقت، وسيتم إشعار المستخدمين بالتعديلات الجوهرية عبر البريد أو الجوال.</p>
+            <h4>6. القانون المُطبَّق</h4>
+            <p>تخضع هذه الشروط لأنظمة المملكة العربية السعودية، وتختص محاكم الرياض بالنظر في أي نزاع ينشأ عنها.</p>
+          </div>
+          <div class="sa-row">
+            <button type="button" class="sa-btn sa-btn-ghost" data-auth-go="register"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <button type="button" class="sa-btn sa-btn-primary" data-auth-accept-terms>
+              <span>أوافق على الشروط</span> <i class="fas fa-check"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ====== شاشة النجاح ====== -->
+        <section class="sa-view sa-view-success" data-auth-view="success" hidden>
+          <div class="sa-success-anim"><i class="fas fa-circle-check"></i></div>
+          <h3 class="sa-h" data-auth-success-title>تم تسجيل دخولك بنجاح</h3>
+          <p class="sa-sub" data-auth-success-sub>مرحبًا بك في بوابة جمعية سَنَد. سيتم تحويلك للوحة حسابك خلال لحظات.</p>
+          <button type="button" class="sa-btn sa-btn-primary" data-auth-close><span>متابعة</span> <i class="fas fa-arrow-left"></i></button>
+        </section>
+
+      </div>
+    </div>
+  </div>
   `;
+
 
   const footerHTML = `
   <footer class="sx-footer" id="sx-footer">
@@ -2114,23 +2326,17 @@
       });
     });
 
-    // تسجيل الدخول
-    const lw = document.querySelector("[data-login-wrap]");
-    const lt = document.querySelector("[data-login-toggle]");
-    lt?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      lw.classList.toggle("open");
-    });
+    // تسجيل الدخول / إنشاء حساب — نافذة موحّدة
+    initSanadAuthModal();
 
     // إغلاق القوائم عند الضغط خارجها
     document.addEventListener("click", () => {
       document.querySelectorAll("[data-drop].open").forEach((o) => o.classList.remove("open"));
-      lw?.classList.remove("open");
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         document.querySelectorAll("[data-drop].open").forEach((o) => o.classList.remove("open"));
-        lw?.classList.remove("open");
+        document.querySelector("[data-auth-root].open") && closeSanadAuthModal();
         closeMobile();
         closeDCart();
         closeCert();
@@ -2293,7 +2499,218 @@
   } else {
     inject();
   }
+
+  // ============ نافذة المصادقة الموحّدة ============
+  let _saAuthState = { identifier: "", method: "email", email: "", phone: "", timer: 0, _tid: null };
+
+  function openSanadAuthModal(view) {
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+    root.classList.add("open");
+    root.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    showSanadAuthView(view || "login");
+  }
+  function closeSanadAuthModal() {
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+    root.classList.remove("open");
+    root.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (_saAuthState._tid) { clearInterval(_saAuthState._tid); _saAuthState._tid = null; }
+  }
+  function showSanadAuthView(name) {
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+    root.querySelectorAll("[data-auth-view]").forEach((v) => {
+      v.hidden = v.getAttribute("data-auth-view") !== name;
+    });
+    // ترقيم الخطوات
+    const stepMap = { login: 1, forgot: 1, register: 1, terms: 1, method: 2, otp: 3, success: 3 };
+    const step = stepMap[name] || 1;
+    root.querySelectorAll("[data-step-dot]").forEach((d) => {
+      d.classList.toggle("active", Number(d.getAttribute("data-step-dot")) <= step);
+    });
+    const stepsBar = root.querySelector("[data-auth-steps]");
+    if (stepsBar) stepsBar.style.display = (name === "register" || name === "forgot" || name === "terms" || name === "success") ? "none" : "";
+    // عناوين فرعية
+    const sub = root.querySelector("[data-auth-subtitle]");
+    const subs = {
+      login: "بوابة موحدة لجميع حسابات الجمعية",
+      method: "اختر طريقة استلام رمز التحقق",
+      otp: "أدخل الرمز المرسل إليك",
+      register: "خطوات بسيطة لإنشاء حسابك",
+      terms: "اطلع على الشروط قبل المتابعة",
+      forgot: "سنساعدك في استرجاع بيانات الدخول",
+      success: "تمت العملية بنجاح",
+    };
+    if (sub) sub.textContent = subs[name] || subs.login;
+    // تركيز
+    setTimeout(() => {
+      const f = root.querySelector(`[data-auth-view="${name}"] input, [data-auth-view="${name}"] button`);
+      f && f.focus({ preventScroll: true });
+    }, 60);
+  }
+
+  function _saIsEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function _saIsPhone(v) { return /^5\d{8}$/.test(v.replace(/\D/g, "")); }
+  function _saMaskEmail(e) {
+    if (!e || !e.includes("@")) return "—";
+    const [u, d] = e.split("@");
+    return (u.slice(0, 2) + "•••" + u.slice(-1)) + "@" + d;
+  }
+  function _saMaskPhone(p) {
+    const d = String(p || "").replace(/\D/g, "");
+    if (d.length < 9) return "—";
+    return "+966 " + d.slice(0, 2) + " ••• " + d.slice(-2);
+  }
+  function _saStartTimer() {
+    const root = document.querySelector("[data-auth-root]");
+    const lbl = root?.querySelector("[data-auth-timer]");
+    const btn = root?.querySelector("[data-auth-resend]");
+    if (!lbl || !btn) return;
+    if (_saAuthState._tid) clearInterval(_saAuthState._tid);
+    _saAuthState.timer = 45;
+    btn.disabled = true; btn.classList.add("is-disabled");
+    const tick = () => {
+      lbl.textContent = _saAuthState.timer > 0 ? `(${_saAuthState.timer}ث)` : "";
+      if (_saAuthState.timer <= 0) {
+        clearInterval(_saAuthState._tid); _saAuthState._tid = null;
+        btn.disabled = false; btn.classList.remove("is-disabled");
+      }
+      _saAuthState.timer--;
+    };
+    tick();
+    _saAuthState._tid = setInterval(tick, 1000);
+  }
+
+  function initSanadAuthModal() {
+    // فتح من أي زر
+    document.addEventListener("click", (e) => {
+      const opener = e.target.closest("[data-auth-open]");
+      if (opener) {
+        e.preventDefault();
+        openSanadAuthModal(opener.getAttribute("data-auth-open"));
+      }
+      const closer = e.target.closest("[data-auth-close]");
+      if (closer) { e.preventDefault(); closeSanadAuthModal(); }
+      const navL = e.target.closest("[data-auth-go]");
+      if (navL) { e.preventDefault(); showSanadAuthView(navL.getAttribute("data-auth-go")); }
+    });
+
+    const root = document.querySelector("[data-auth-root]");
+    if (!root) return;
+
+    // نموذج الدخول
+    const loginForm = root.querySelector('[data-auth-form="login"]');
+    loginForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const v = (loginForm.identifier.value || "").trim();
+      const hint = root.querySelector("[data-id-hint]");
+      const wrap = loginForm.querySelector(".sa-input-wrap");
+      const isEm = _saIsEmail(v), isPh = _saIsPhone(v);
+      if (!isEm && !isPh) {
+        wrap?.classList.add("err");
+        hint.textContent = "صيغة غير صحيحة. أدخل بريدًا إلكترونيًا أو رقم جوال سعودي يبدأ بـ 5";
+        hint.classList.add("err");
+        return;
+      }
+      wrap?.classList.remove("err"); hint.classList.remove("err");
+      hint.textContent = "يمكنك استخدام البريد الإلكتروني أو رقم جوالك المسجل لدينا";
+      _saAuthState.identifier = v;
+      // لمحاكاة بيانات الحساب
+      _saAuthState.email = isEm ? v : "user@sanad.org.sa";
+      _saAuthState.phone = isPh ? v.replace(/\D/g, "") : "5XXXXXX12";
+      _saAuthState.method = isEm ? "email" : "phone";
+      root.querySelector("[data-auth-email-mask]").textContent = _saMaskEmail(_saAuthState.email);
+      root.querySelector("[data-auth-phone-mask]").textContent = _saMaskPhone(_saAuthState.phone);
+      _saSelectMethod(_saAuthState.method);
+      showSanadAuthView("method");
+    });
+
+    // اختيار طريقة التحقق
+    function _saSelectMethod(m) {
+      _saAuthState.method = m;
+      root.querySelectorAll("[data-auth-method]").forEach((b) => {
+        b.classList.toggle("active", b.getAttribute("data-auth-method") === m);
+      });
+    }
+    root.querySelectorAll("[data-auth-method]").forEach((b) => {
+      b.addEventListener("click", () => _saSelectMethod(b.getAttribute("data-auth-method")));
+    });
+
+    // إرسال OTP
+    root.querySelector("[data-auth-send-otp]")?.addEventListener("click", () => {
+      const target = _saAuthState.method === "email"
+        ? _saMaskEmail(_saAuthState.email)
+        : _saMaskPhone(_saAuthState.phone);
+      root.querySelector("[data-auth-target]").textContent = target;
+      root.querySelectorAll("[data-auth-otp] input").forEach((i) => (i.value = ""));
+      showSanadAuthView("otp");
+      _saStartTimer();
+    });
+    root.querySelector("[data-auth-resend]")?.addEventListener("click", () => {
+      if (_saAuthState.timer > 0) return;
+      _saStartTimer();
+    });
+
+    // OTP — انتقال تلقائي
+    const otps = root.querySelectorAll("[data-auth-otp] input");
+    otps.forEach((inp, i) => {
+      inp.addEventListener("input", () => {
+        inp.value = inp.value.replace(/\D/g, "").slice(0, 1);
+        if (inp.value && otps[i + 1]) otps[i + 1].focus();
+      });
+      inp.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !inp.value && otps[i - 1]) otps[i - 1].focus();
+      });
+      inp.addEventListener("paste", (e) => {
+        const t = (e.clipboardData?.getData("text") || "").replace(/\D/g, "").slice(0, otps.length);
+        if (!t) return;
+        e.preventDefault();
+        [...t].forEach((c, k) => { if (otps[k]) otps[k].value = c; });
+        otps[Math.min(t.length, otps.length) - 1]?.focus();
+      });
+    });
+    root.querySelector("[data-auth-verify]")?.addEventListener("click", () => {
+      const code = [...otps].map((i) => i.value).join("");
+      if (code.length < 6) {
+        otps.forEach((i) => i.classList.add("err"));
+        setTimeout(() => otps.forEach((i) => i.classList.remove("err")), 1200);
+        return;
+      }
+      root.querySelector("[data-auth-success-title]").textContent = "تم تسجيل دخولك بنجاح";
+      root.querySelector("[data-auth-success-sub]").textContent = "مرحبًا بك في بوابة جمعية سَنَد. يمكنك الآن متابعة طلباتك وإدارة حسابك.";
+      showSanadAuthView("success");
+    });
+
+    // نموذج إنشاء الحساب
+    const regForm = root.querySelector('[data-auth-form="register"]');
+    regForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const agree = regForm.querySelector("[data-auth-agree]");
+      if (!agree.checked) {
+        agree.closest(".sa-check")?.classList.add("err");
+        setTimeout(() => agree.closest(".sa-check")?.classList.remove("err"), 1200);
+        return;
+      }
+      if (!regForm.checkValidity()) { regForm.reportValidity(); return; }
+      _saAuthState.email = regForm.email.value.trim();
+      _saAuthState.phone = regForm.phone.value.trim();
+      root.querySelector("[data-auth-success-title]").textContent = "تم إنشاء حسابك بنجاح 🎉";
+      root.querySelector("[data-auth-success-sub]").textContent = "أهلاً بك في عائلة سَنَد! سجّل دخولك الآن لتتمكن من استخدام كافة الخدمات.";
+      showSanadAuthView("success");
+    });
+
+    // قبول الشروط (من شاشة الشروط) — يحدّد التشيك بوكس ويرجع لإنشاء الحساب
+    root.querySelector("[data-auth-accept-terms]")?.addEventListener("click", () => {
+      const cb = root.querySelector("[data-auth-agree]");
+      if (cb) { cb.checked = true; cb.closest(".sa-check")?.classList.remove("err"); }
+      showSanadAuthView("register");
+    });
+  }
 })();
+
 
 /* =============================================
    صفحة الوظائف وفرص التطوع — careers
