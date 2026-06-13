@@ -2326,18 +2326,12 @@
       });
     });
 
-    // تسجيل الدخول
-    const lw = document.querySelector("[data-login-wrap]");
-    const lt = document.querySelector("[data-login-toggle]");
-    lt?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      lw.classList.toggle("open");
-    });
+    // تسجيل الدخول / إنشاء حساب — نافذة موحّدة
+    initSanadAuthModal();
 
     // إغلاق القوائم عند الضغط خارجها
     document.addEventListener("click", () => {
       document.querySelectorAll("[data-drop].open").forEach((o) => o.classList.remove("open"));
-      lw?.classList.remove("open");
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
