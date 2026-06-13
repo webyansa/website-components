@@ -1878,10 +1878,8 @@
       <div class="sx-msec">حسابي وسلاتي</div>
       <button type="button" data-sx-donation-cart><i class="fas fa-heart-circle-plus"></i> سلة التبرعات <span class="sx-badge" data-donation-count style="position:static;margin-inline-start:auto">${getDonationCount()}</span></button>
       <a href="cart.html"><i class="fas fa-bag-shopping"></i> سلة المتجر <span class="sx-badge" data-cart-count style="position:static;margin-inline-start:auto">${getCartCount()}</span></a>
-      <a href="beneficiary-login.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-      <a href="donor-login.html"><i class="fas fa-heart"></i> دخول المتبرعين</a>
-      <a href="customer-login.html"><i class="fas fa-bag-shopping"></i> دخول العملاء</a>
-      <a href="beneficiary-register.html"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</a>
+      <button type="button" data-auth-open="login"><i class="fas fa-user-circle"></i> تسجيل الدخول</button>
+      <button type="button" data-auth-open="register"><i class="fas fa-user-plus"></i> إنشاء حساب جديد</button>
 
       <div class="sx-msec">روابط سريعة</div>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
