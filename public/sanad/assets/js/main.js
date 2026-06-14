@@ -3418,6 +3418,8 @@
   function openModal(id){
     const m = document.getElementById(id);
     if (!m) return;
+    document.querySelectorAll(".sx-mod-overlay.open,.s-modal-overlay.open").forEach((overlay) => overlay.classList.remove("open"));
+    $$(".sxq-modal.open").forEach((modal) => { if (modal !== m) modal.classList.remove("open"); });
     m.classList.add("open");
     document.body.style.overflow = "hidden";
   }
