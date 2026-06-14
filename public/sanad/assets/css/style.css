@@ -2567,6 +2567,71 @@ html[dir="rtl"] .sx-drawer{transform:translateX(-100%);}
   .sxq-amts{grid-template-columns:repeat(2,1fr)}
 }
 
+/* ============================================================
+   SXQ — Unified Sanad form system v2
+   ============================================================ */
+.sxq-modal{align-items:center;padding:1rem;overflow:hidden;}
+.sxq-modal::before{background:radial-gradient(circle at 30% 20%,rgba(15,30,68,.78),rgba(6,16,38,.92));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.sxq-dialog{max-width:520px;max-height:92vh;display:flex;flex-direction:column;border-radius:24px;box-shadow:0 40px 80px -20px rgba(8,20,50,.55),0 0 0 1px rgba(255,255,255,.05);overflow:hidden;animation:sxqUp .35s cubic-bezier(.2,.9,.3,1.2);}
+.sxq-form-modal .sxq-dialog{max-width:600px;}
+.sxq-membership-modal .sxq-dialog{max-width:min(760px,calc(100vw - 24px));}
+.sxq-head{position:relative;flex-shrink:0;padding:1.15rem 1.4rem 1rem;background:linear-gradient(135deg,#0b2545 0%,#075c3a 100%);color:#fff;overflow:hidden;border-bottom:0;}
+.sxq-head::before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.13),transparent 70%);top:-70px;inset-inline-end:-42px;pointer-events:none;}
+.sxq-head h3{position:relative;z-index:1;color:#fff !important;font-size:1.02rem;line-height:1.25;gap:.75rem;}
+.sxq-head h3 small{display:block;margin-top:.18rem;color:rgba(255,255,255,.82);font-size:.74rem;font-weight:500;}
+.sxq-head-ic{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;color:#fff;}
+.sxq-close{position:relative;z-index:2;background:#f2f5fa;color:#0b2545;width:38px;height:38px;}
+.sxq-close:hover{background:#e5413a;color:#fff;transform:rotate(90deg);}
+.sxq-body{padding:1.35rem 1.5rem 1.55rem;overflow-y:auto;background:#fff;}
+.sxq-body::-webkit-scrollbar{width:8px;}
+.sxq-body::-webkit-scrollbar-thumb{background:#d6dde8;border-radius:999px;border:2px solid #fff;}
+.sxq-form-modal .sxq-body>.sxq-panel>p:first-child{margin:0 0 1rem!important;color:#5b6b7d!important;line-height:1.75!important;font-size:.86rem!important;}
+.sxq-row2{gap:.85rem;}
+.sxq-form-modal .sxq-row2{grid-template-columns:1fr;}
+.sxq-field{margin-bottom:.95rem;}
+.sxq-field label{color:#0b2545;font-weight:800;font-size:.78rem;margin-bottom:.42rem;}
+.sxq-input,.sxq-select,.sxq-textarea{border:1.5px solid #e3e8f0;background:#f6f8fc;border-radius:14px;padding:.92rem 1rem;font-size:.92rem;color:#0f1d2e;}
+.sxq-input:focus,.sxq-select:focus,.sxq-textarea:focus{border-color:#0d7a4f;background:#fff;box-shadow:0 0 0 4px rgba(13,122,79,.1);}
+.sxq-textarea{min-height:96px;}
+.sxq-types{gap:.75rem;}
+.sxq-type{border:1.5px solid #e3e8f0;border-radius:16px;background:#f6f8fc;padding:1rem 1.1rem;gap:.85rem;}
+.sxq-type:hover,.sxq-type.active{background:linear-gradient(135deg,rgba(13,122,79,.06),rgba(11,37,69,.04));border-color:#0d7a4f;box-shadow:0 0 0 4px rgba(13,122,79,.08);transform:translateY(-1px);}
+.sxq-type i{width:46px;height:46px;border-radius:13px;background:#fff;color:#075c3a;border:1px solid #e3e8f0;}
+.sxq-type:hover i,.sxq-type.active i{background:#0d7a4f;color:#fff;border-color:transparent;}
+.sxq-type b{font-size:.94rem;color:#0b2545;}
+.sxq-type span{font-size:.78rem;color:#5b6b7d;line-height:1.5;}
+.sxq-careers-link{margin-top:.9rem;color:#075c3a;background:#f6f8fc;border:1px solid #e3e8f0;border-radius:12px;padding:.72rem .9rem;}
+.sxq-careers-link:hover{background:#eef4f0;border-color:#cbded3;}
+.sxq-mem-note{background:linear-gradient(135deg,#f8fafd,#eef5f0);border:1.5px solid #dfe8df;color:#0f1d2e;border-radius:14px;padding:.9rem 1rem;font-size:.82rem;}
+.sxq-mem-note i{color:#0d7a4f;}
+.sxq-mem-section{display:flex;align-items:center;gap:.55rem;margin:1.25rem 0 .75rem;padding:0;color:#0b2545;font-size:.9rem;border-bottom:0;}
+.sxq-mem-section::before{content:"";width:9px;height:9px;border-radius:50%;background:#0d7a4f;box-shadow:0 0 0 4px rgba(13,122,79,.12);}
+.sxq-chips{gap:.5rem;}
+.sxq-chip span{border:1.5px solid #e3e8f0;background:#f6f8fc;color:#0b2545;padding:.48rem .85rem;}
+.sxq-chip input:checked + span{background:#0d7a4f;border-color:#0d7a4f;color:#fff;box-shadow:0 8px 16px -12px rgba(13,122,79,.7);}
+.sxq-check{align-items:flex-start;background:#f8fafd;border:1.5px solid #e3e8f0;border-radius:12px;color:#0f1d2e;line-height:1.7;padding:.75rem .85rem;}
+.sxq-check input{margin-top:.2rem;width:17px;height:17px;flex:0 0 auto;accent-color:#0d7a4f;}
+.sxq-mem-acks{background:#fff;border:0;padding:0;gap:.55rem;}
+.sxq-actions{gap:.65rem;margin-top:1.15rem;}
+.sxq-btn{border-radius:14px;padding:.95rem 1.15rem;font-size:.91rem;font-family:inherit;}
+.sxq-btn-primary{background:linear-gradient(135deg,#0d7a4f,#075c3a);box-shadow:0 10px 22px -10px rgba(13,122,79,.55);color:#fff;}
+.sxq-btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 28px -10px rgba(13,122,79,.65);}
+.sxq-btn-ghost{background:#f2f5fa;color:#0b2545;}
+.sxq-btn-ghost:hover{background:#e6ecf5;}
+.sxq-success{padding:1rem 0 .5rem;}
+.sxq-success-ic{width:86px;height:86px;background:linear-gradient(135deg,#e7faf1,#d1f3e1);font-size:2.35rem;}
+.sxq-success h4{color:#0b2545;font-size:1.22rem;}
+.sxq-success p{color:#5b6b7d;line-height:1.75;}
+.sxq-sum{background:linear-gradient(180deg,#f8fafd,#fff);border:1.5px solid #e3e8f0;border-radius:14px;}
+.sxq-sum-row{color:#5b6b7d;}
+.sxq-sum-row b{color:#0b2545;}
+@media (max-width:640px){
+  .sxq-modal{padding:.65rem;align-items:flex-end;}
+  .sxq-dialog,.sxq-form-modal .sxq-dialog,.sxq-membership-modal .sxq-dialog{max-width:100%;max-height:96vh;border-radius:20px 20px 16px 16px;}
+  .sxq-body{padding:1.05rem 1.05rem 1.25rem;}
+  .sxq-actions{flex-direction:column;}
+}
+
 
 /* === Compact services filter === */
 .srv-filter-compact{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;background:#fff;border:1px solid var(--s-border);border-radius:14px;padding:.6rem;box-shadow:0 4px 14px rgba(11,37,69,.05)}
