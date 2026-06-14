@@ -3137,10 +3137,10 @@
     </div>
 
     <!-- Join Modal -->
-    <div class="sxq-modal" id="sxqJoin" role="dialog" aria-modal="true">
+    <div class="sxq-modal sxq-form-modal" id="sxqJoin" role="dialog" aria-modal="true">
       <div class="sxq-dialog">
         <div class="sxq-head">
-          <h3><i class="fas fa-user-plus"></i> انضم معنا</h3>
+          <h3><span class="sxq-head-ic"><i class="fas fa-user-plus"></i></span><span>انضم معنا<small>فرص التطوع والتوظيف في جمعية سَنَد</small></span></h3>
           <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
         </div>
         <div class="sxq-body">
@@ -3232,12 +3232,14 @@
             </div>
           </div>
     </div>
+        </div>
+      </div>
 
     <!-- Membership Modal -->
-    <div class="sxq-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
+    <div class="sxq-modal sxq-form-modal sxq-membership-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
       <div class="sxq-dialog">
         <div class="sxq-head">
-          <h3 id="sxqMemberTitle"><i class="fas fa-id-card"></i> طلب عضوية الجمعية</h3>
+          <h3 id="sxqMemberTitle"><span class="sxq-head-ic"><i class="fas fa-id-card"></i></span><span>طلب عضوية الجمعية<small>نموذج موحد لمراجعة طلبات العضوية</small></span></h3>
           <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
         </div>
         <div class="sxq-body">
@@ -3362,10 +3364,6 @@
         </div>
       </div>
     </div>
-
-
-    </div>
-
     <!-- Gift Card Mini-Modal -->
     <div class="sxq-modal" id="sxqGiftCard" role="dialog" aria-modal="true">
       <div class="sxq-dialog" style="max-width:440px">
@@ -3420,6 +3418,8 @@
   function openModal(id){
     const m = document.getElementById(id);
     if (!m) return;
+    document.querySelectorAll(".sx-mod-overlay.open,.s-modal-overlay.open").forEach((overlay) => overlay.classList.remove("open"));
+    $$(".sxq-modal.open").forEach((modal) => { if (modal !== m) modal.classList.remove("open"); });
     m.classList.add("open");
     document.body.style.overflow = "hidden";
   }
@@ -3456,6 +3456,7 @@
     e.preventDefault();
     fab.classList.remove("open");
     const k = b.dataset.sxqOpen;
+    $$(".sxq-modal.open").forEach(closeModal);
     if (k === "donate") { resetDonate(); openModal("sxqDonate"); }
     else if (k === "gift") { resetGift(); openModal("sxqGift"); }
     else if (k === "join") { resetJoin(); openModal("sxqJoin"); }
