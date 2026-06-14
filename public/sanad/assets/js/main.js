@@ -3232,6 +3232,9 @@
             </div>
           </div>
     </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Membership Modal -->
     <div class="sxq-modal sxq-form-modal sxq-membership-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
