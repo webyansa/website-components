@@ -3137,10 +3137,10 @@
     </div>
 
     <!-- Join Modal -->
-    <div class="sxq-modal" id="sxqJoin" role="dialog" aria-modal="true">
+    <div class="sxq-modal sxq-form-modal" id="sxqJoin" role="dialog" aria-modal="true">
       <div class="sxq-dialog">
         <div class="sxq-head">
-          <h3><i class="fas fa-user-plus"></i> انضم معنا</h3>
+          <h3><span class="sxq-head-ic"><i class="fas fa-user-plus"></i></span><span>انضم معنا<small>فرص التطوع والتوظيف في جمعية سَنَد</small></span></h3>
           <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
         </div>
         <div class="sxq-body">
@@ -3234,10 +3234,10 @@
     </div>
 
     <!-- Membership Modal -->
-    <div class="sxq-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
+    <div class="sxq-modal sxq-form-modal sxq-membership-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
       <div class="sxq-dialog">
         <div class="sxq-head">
-          <h3 id="sxqMemberTitle"><i class="fas fa-id-card"></i> طلب عضوية الجمعية</h3>
+          <h3 id="sxqMemberTitle"><span class="sxq-head-ic"><i class="fas fa-id-card"></i></span><span>طلب عضوية الجمعية<small>نموذج موحد لمراجعة طلبات العضوية</small></span></h3>
           <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
         </div>
         <div class="sxq-body">
