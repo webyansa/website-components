@@ -3234,7 +3234,6 @@
     </div>
         </div>
       </div>
-    </div>
 
     <!-- Membership Modal -->
     <div class="sxq-modal sxq-form-modal sxq-membership-modal" id="sxqMember" role="dialog" aria-modal="true" aria-labelledby="sxqMemberTitle">
@@ -3365,10 +3364,6 @@
         </div>
       </div>
     </div>
-
-
-    </div>
-
     <!-- Gift Card Mini-Modal -->
     <div class="sxq-modal" id="sxqGiftCard" role="dialog" aria-modal="true">
       <div class="sxq-dialog" style="max-width:440px">
