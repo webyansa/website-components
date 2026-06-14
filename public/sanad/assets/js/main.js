@@ -3454,6 +3454,7 @@
     e.preventDefault();
     fab.classList.remove("open");
     const k = b.dataset.sxqOpen;
+    $$(".sxq-modal.open").forEach(closeModal);
     if (k === "donate") { resetDonate(); openModal("sxqDonate"); }
     else if (k === "gift") { resetGift(); openModal("sxqGift"); }
     else if (k === "join") { resetJoin(); openModal("sxqJoin"); }
