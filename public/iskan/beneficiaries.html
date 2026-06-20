@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>بوابة المستفيدين · جمعية إسكان</title>
+<meta name="description" content="بوابة المستفيدين في جمعية إسكان لتقديم طلبات الدعم ومتابعتها والاستفادة من الخدمات المخصصة." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#7A4E2D',navyDeep:'#5A3820',navySoft:'#97663F',emerald:'#6F8A4A',emeraldSoft:'#8FA968',emeraldDeep:'#54693A',gold:'#D89B4A',goldSoft:'#EBBE7E',sand:'#F1E3CC',ivory:'#FAF4EA',mist:'#F2EADE',border:'#E8DED2',text:'#24313A',muted:'#6F7B80' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="service-tracking.html"><i class="fas fa-route ml-1 text-sanad-emeraldSoft"></i> تتبع طلب خدمة</a>
+      <a href="beneficiaries.html"><i class="fas fa-user-shield ml-1 text-sanad-emeraldSoft"></i> بوابة المستفيدين</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية إسكان</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="beneficiaries.html" class="s-nav-link active">بوابة المستفيدين</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="media-center.html" class="s-nav-link">المركز الإعلامي</a>
+      <a href="store.html" class="s-nav-link">المتجر</a>
+      <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="beneficiary-login.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-right-to-bracket"></i> دخول المستفيد</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية إسكان</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+    <a href="beneficiaries.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">بوابة المستفيدين</a>
+    <a href="donations.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">بوابة التبرع</a>
+    <a href="store.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المتجر</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide6.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">بوابة المستفيدين</span></div>
+    <h1>بوابة المستفيدين</h1>
+    <p class="s-hero-lead">من هنا يمكنك تقديم طلبات الدعم، متابعة حالتها، تحديث بياناتك، والاطلاع على الخدمات المتاحة لك بعد تسجيل الدخول.</p>
+    <div class="flex flex-wrap gap-3 mt-7">
+      <a href="beneficiary-login.html" class="btn btn-primary !text-base !py-3.5 !px-6"><i class="fas fa-right-to-bracket"></i> تسجيل الدخول</a>
+      <a href="beneficiary-register.html" class="btn btn-accent !text-base !py-3.5 !px-6"><i class="fas fa-user-plus"></i> انضم معنا كمستفيد</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-white">
+  <div class="s-container">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-sanad-navy">كيف تستفيد من البوابة؟</h2>
+      <p class="text-sanad-muted mt-2">ثلاث خطوات بسيطة وواضحة</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bp-step"><div class="bp-step-n">1</div><i class="fas fa-user-pen"></i><h3>سجّل بياناتك</h3><p>أكمل بيانات حسابك كمستفيد ليتمكن فريق الجمعية من مراجعة أهليتك.</p></div>
+      <div class="bp-step"><div class="bp-step-n">2</div><i class="fas fa-hand-holding-heart"></i><h3>اطلب الخدمة المناسبة</h3><p>استعرض الخدمات المتاحة لك وقدّم طلبك ببضع خطوات بسيطة.</p></div>
+      <div class="bp-step"><div class="bp-step-n">3</div><i class="fas fa-route"></i><h3>تابع حالة طلبك</h3><p>تابع كل مرحلة من مراحل طلبك بكل وضوح وفي أي وقت.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-10">
+  <div class="s-container">
+    <div class="bp-notice">
+      <div class="ico"><i class="fas fa-circle-info"></i></div>
+      <div><strong>تنبيه مهم</strong><p>لا تظهر الخدمات والمنتجات المخصصة للمستفيدين إلا بعد تسجيل الدخول والتحقق من بياناتك.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-white border-y border-sanad-border">
+  <div class="s-container">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-sanad-navy">أنواع الخدمات والمنتجات</h2>
+      <p class="text-sanad-muted mt-2">تنوع في أوجه الدعم لتغطية احتياجات المستفيدين</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="bp-cat"><i class="fas fa-heart-pulse"></i><h3>خدمات دعم كامل</h3><p>تقدّمها الجمعية مجانًا للمستفيد المستحق.</p></div>
+      <div class="bp-cat"><i class="fas fa-handshake-angle"></i><h3>خدمات دعم جزئي</h3><p>تتحمل الجمعية الجزء الأكبر مع مساهمة بسيطة من المستفيد.</p></div>
+      <div class="bp-cat"><i class="fas fa-calendar-day"></i><h3>خدمات موسمية</h3><p>برامج رمضان، العيد، العودة للمدارس، الشتاء وغيرها.</p></div>
+      <div class="bp-cat"><i class="fas fa-clipboard-check"></i><h3>خدمات تحتاج مراجعة</h3><p>تتطلب زيارة ميدانية أو تقريرًا مختصًا قبل الاعتماد.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-14">
+  <div class="s-container">
+    <div class="bp-help">
+      <div>
+        <div class="bp-help-ico"><i class="fas fa-headset"></i></div>
+        <h3>تحتاج مساعدة؟</h3>
+        <p>فريق خدمة المستفيدين جاهز لمساعدتك في أي خطوة من خطوات التسجيل أو طلب الخدمة.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope-open-text"></i> تواصل مع الجمعية</a>
+        <a href="contact.html" class="btn btn-outline"><i class="fas fa-phone"></i> اتصل بنا</a>
+        <a href="https://wa.me/966500000000" class="btn btn-outline"><i class="fab fa-whatsapp"></i> واتساب</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5"><div class="s-logo-mark">س</div><div><div class="font-extrabold text-white text-lg">جمعية إسكان</div><div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div></div></div>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+      </div>
+      <div class="lg:col-span-2"><h4>روابط رئيسية</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن الجمعية</a></li><li><a href="donations.html">بوابة التبرع</a></li><li><a href="beneficiaries.html">بوابة المستفيدين</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>المستفيدون</h4><ul class="space-y-2.5 text-sm"><li><a href="beneficiary-login.html">تسجيل الدخول</a></li><li><a href="beneficiary-register.html">انضم معنا</a></li><li><a href="beneficiary-request-tracking.html">تتبع طلبي</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="service-tracking.html">تتبع طلب خدمة</a></li><li><a href="store.html">المتجر</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>تواصل</h4><div class="space-y-2 text-xs text-white/70"><div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div><div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div></div></div>
+    </div>
+  </div>
+  <div class="border-t border-white/10"><div class="s-container py-5 text-xs text-white/60">© <span data-year>2026</span> جمعية إسكان. جميع الحقوق محفوظة.</div></div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

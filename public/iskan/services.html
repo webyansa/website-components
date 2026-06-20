@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>خدماتنا · جمعية إسكان</title>
+<meta name="description" content="خدمات جمعية إسكان الاجتماعية والتنموية مع تقديم الطلب الإلكتروني وتتبع الحالة." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#7A4E2D',navyDeep:'#5A3820',navySoft:'#97663F',emerald:'#6F8A4A',emeraldSoft:'#8FA968',emeraldDeep:'#54693A',gold:'#D89B4A',goldSoft:'#EBBE7E',sand:'#F1E3CC',ivory:'#FAF4EA',mist:'#F2EADE',border:'#E8DED2',text:'#24313A',muted:'#6F7B80' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="service-tracking.html"><i class="fas fa-route ml-1 text-sanad-emeraldSoft"></i> تتبع طلب خدمة</a>
+      <a href="beneficiaries.html"><i class="fas fa-user-shield ml-1 text-sanad-emeraldSoft"></i> بوابة المستفيدين</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية إسكان</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link active">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link">المركز الإعلامي</a>
+      <a href="store.html" class="s-nav-link">المتجر</a>
+      <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية إسكان</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">الخدمات</a>
+    <a href="service-tracking.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تتبع طلب خدمة</a>
+    <a href="projects.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المشاريع</a>
+    <a href="donations.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">بوابة التبرع</a>
+    <a href="governance.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الحوكمة</a>
+    <a href="media-center.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المركز الإعلامي</a>
+    <a href="store.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المتجر</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide5.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">خدماتنا</span></div>
+    <h1>خدماتنا</h1>
+    <p class="s-hero-lead">نقدّم خدمات اجتماعية وتنموية مصممة بعناية لمساندة المستفيدين، وتمكينهم من الوصول إلى الدعم المناسب عبر إجراءات واضحة وشفافة.</p>
+  </div>
+</section>
+
+<section class="py-10 bg-white border-b border-sanad-border">
+  <div class="s-container">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="#sv-list" class="srv-quick"><i class="fas fa-clipboard-list"></i><span><strong>تقديم طلب خدمة</strong><small>اختر الخدمة المناسبة وابدأ التقديم</small></span></a>
+      <a href="service-tracking.html" class="srv-quick"><i class="fas fa-route"></i><span><strong>تتبع طلب سابق</strong><small>تابع حالة طلبك برقم الطلب</small></span></a>
+      <a href="#sv-terms" class="srv-quick"><i class="fas fa-circle-check"></i><span><strong>شروط الاستفادة</strong><small>تعرّف على معايير الاستحقاق</small></span></a>
+      <a href="contact.html" class="srv-quick"><i class="fas fa-headset"></i><span><strong>فريق الخدمات</strong><small>تواصل معنا للاستفسار</small></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container">
+    <div class="srv-filter-compact">
+      <div class="srv-search-mini">
+        <i class="fas fa-search"></i>
+        <input type="search" id="srvSearch" placeholder="بحث سريع..." />
+      </div>
+      <select class="srv-select" data-srv-filter="field" aria-label="المجال">
+        <option value="all">كل المجالات</option>
+        <option value="social">الرعاية الاجتماعية</option>
+        <option value="health">الدعم الصحي</option>
+        <option value="edu">التعليم والتمكين</option>
+        <option value="housing">الإسكان</option>
+        <option value="food">السلال الغذائية</option>
+        <option value="elderly">كبار السن</option>
+        <option value="volunteer">التطوع</option>
+      </select>
+      <select class="srv-select" data-srv-filter="audience" aria-label="الفئة المستهدفة">
+        <option value="all">كل المستفيدين</option>
+        <option value="families">الأسر</option>
+        <option value="orphans">الأيتام</option>
+        <option value="elderly">كبار السن</option>
+        <option value="patients">المرضى</option>
+        <option value="students">الطلاب</option>
+        <option value="volunteers">المتطوعون</option>
+      </select>
+      <button id="srvReset" class="srv-reset-mini" title="إعادة الضبط"><i class="fas fa-rotate-left"></i></button>
+    </div>
+
+    <div id="sv-list" class="srv-grid mt-10" data-srv-grid>
+
+      <article class="srv-card warm" data-srv data-field="social" data-audience="families" data-channel="online onsite branch"
+        data-name="طلب دعم أسري" data-desc="دعم معيشي مؤقت أو مستمر للأسر وفق دراسة اجتماعية معتمدة."
+        data-conditions="ضمن نطاق خدمة الجمعية|إرفاق المستندات المطلوبة|اكتمال بيانات الأسرة|قبول الزيارة عند الحاجة"
+        data-docs="الهوية الوطنية أو الإقامة|إثبات السكن|تعريف بالدخل|مستندات الحالة الاجتماعية|أي مرفقات داعمة"
+        data-steps="تعبئة نموذج الطلب|رفع المرفقات|مراجعة البيانات|دراسة الأهلية|إشعار المستفيد بالنتيجة"
+        data-duration="3 إلى 5 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-house-user"></i><span class="badge">رعاية اجتماعية</span></div>
+        <h3>طلب دعم أسري</h3>
+        <p>دعم معيشي مؤقت أو مستمر للأسر وفق دراسة اجتماعية معتمدة.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني / حضوري</li>
+          <li><i class="fas fa-clock"></i> 3-5 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card warm" data-srv data-field="food" data-audience="families" data-channel="online branch"
+        data-name="طلب سلة غذائية" data-desc="سلال غذائية شهرية أو موسمية للأسر المسجلة لدى الجمعية."
+        data-conditions="تسجيل الأسرة لدى الجمعية|إثبات الاحتياج|عدم الاستفادة من سلة خلال 30 يومًا"
+        data-docs="الهوية الوطنية|إثبات السكن|بيانات أفراد الأسرة"
+        data-steps="تعبئة الطلب|تأكيد البيانات|تجهيز السلة|التواصل لاستلامها"
+        data-duration="2 إلى 4 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-basket-shopping"></i><span class="badge">سلال غذائية</span></div>
+        <h3>طلب سلة غذائية</h3>
+        <p>سلال غذائية شهرية أو موسمية للأسر المسجلة لدى الجمعية.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني</li>
+          <li><i class="fas fa-clock"></i> 2-4 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card warm" data-srv data-field="health" data-audience="patients" data-channel="online onsite"
+        data-name="طلب دعم صحي" data-desc="مساعدة في توفير علاج أو أجهزة طبية أو تغطية تكاليف صحية معينة."
+        data-conditions="إثبات الحالة الصحية|تقرير طبي حديث|ضمن السقف المعتمد"
+        data-docs="التقرير الطبي|الفواتير أو العروض|الهوية"
+        data-steps="تعبئة الطلب|رفع التقارير|الدراسة الطبية|الاعتماد|الصرف"
+        data-duration="5 إلى 10 أيام عمل" data-priority="عاجل">
+        <div class="head"><i class="fas fa-heart-pulse"></i><span class="badge">دعم صحي</span></div>
+        <h3>طلب دعم صحي</h3>
+        <p>مساعدة في توفير علاج أو أجهزة طبية أو تغطية تكاليف صحية معينة.</p>
+        <ul class="meta">
+          <li><i class="fas fa-user-injured"></i> المرضى</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني</li>
+          <li><i class="fas fa-clock"></i> 5-10 أيام</li>
+          <li><i class="fas fa-flag urgent"></i> عاجل</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card" data-srv data-field="edu" data-audience="students" data-channel="online branch"
+        data-name="طلب دعم تعليمي" data-desc="دعم مستلزمات دراسية ورسوم وبرامج تأهيل للطلاب من الأسر المستفيدة."
+        data-conditions="إثبات قيد الطالب|أن يكون من أبناء الأسر المسجلة|الالتزام بالحضور"
+        data-docs="إثبات القيد|الهوية|كشف الدرجات"
+        data-steps="تعبئة الطلب|رفع المستندات|دراسة الأهلية|الصرف"
+        data-duration="5 إلى 7 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-graduation-cap"></i><span class="badge">تعليم وتمكين</span></div>
+        <h3>طلب دعم تعليمي</h3>
+        <p>دعم مستلزمات دراسية ورسوم وبرامج تأهيل للطلاب من الأسر المستفيدة.</p>
+        <ul class="meta">
+          <li><i class="fas fa-user-graduate"></i> الطلاب</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني</li>
+          <li><i class="fas fa-clock"></i> 5-7 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card warm" data-srv data-field="housing" data-audience="families" data-channel="onsite branch"
+        data-name="طلب ترميم مسكن" data-desc="ترميم وتأهيل المساكن غير الصالحة للسكن للأسر الأكثر احتياجًا."
+        data-conditions="ملكية المسكن أو إثبات الإقامة|تقييم فني للحاجة|ضمن نطاق الجمعية"
+        data-docs="صك أو إثبات سكن|صور للمسكن|الهوية"
+        data-steps="تعبئة الطلب|الزيارة الميدانية|التقييم الفني|الاعتماد|التنفيذ"
+        data-duration="15 إلى 30 يوم عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-hammer"></i><span class="badge">إسكان</span></div>
+        <h3>طلب ترميم مسكن</h3>
+        <p>ترميم وتأهيل المساكن غير الصالحة للسكن للأسر الأكثر احتياجًا.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر</li>
+          <li><i class="fas fa-building"></i> عبر الفرع</li>
+          <li><i class="fas fa-clock"></i> 15-30 يوم</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card warm" data-srv data-field="social" data-audience="orphans" data-channel="online branch"
+        data-name="طلب كفالة يتيم" data-desc="تسجيل الأيتام ضمن برامج الكفالة الشهرية والدعم النفسي والتعليمي."
+        data-conditions="إثبات الحالة|عدم الكفالة من جهة أخرى بنفس البرنامج"
+        data-docs="شهادة وفاة الأب|إثبات الحضانة|الهوية"
+        data-steps="تعبئة بيانات اليتيم|التحقق|الإدراج في البرنامج|إشعار المستفيد"
+        data-duration="7 إلى 10 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-child"></i><span class="badge">رعاية اجتماعية</span></div>
+        <h3>طلب كفالة يتيم</h3>
+        <p>تسجيل الأيتام ضمن برامج الكفالة الشهرية والدعم النفسي والتعليمي.</p>
+        <ul class="meta">
+          <li><i class="fas fa-children"></i> الأيتام</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني</li>
+          <li><i class="fas fa-clock"></i> 7-10 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card warm" data-srv data-field="elderly" data-audience="elderly" data-channel="onsite branch phone"
+        data-name="طلب دعم كبار السن" data-desc="رعاية كبار السن صحيًا واجتماعيًا، مع زيارات منزلية ومرافقة طبية."
+        data-conditions="أن يكون المستفيد من كبار السن|إثبات الحاجة"
+        data-docs="الهوية|تقرير طبي إن وجد"
+        data-steps="تعبئة الطلب|الزيارة|إعداد خطة الرعاية|التنفيذ"
+        data-duration="5 إلى 8 أيام عمل" data-priority="عاجل">
+        <div class="head"><i class="fas fa-person-cane"></i><span class="badge">كبار السن</span></div>
+        <h3>طلب دعم كبار السن</h3>
+        <p>رعاية كبار السن صحيًا واجتماعيًا، مع زيارات منزلية ومرافقة طبية.</p>
+        <ul class="meta">
+          <li><i class="fas fa-user-clock"></i> كبار السن</li>
+          <li><i class="fas fa-house-medical"></i> حضوري</li>
+          <li><i class="fas fa-clock"></i> 5-8 أيام</li>
+          <li><i class="fas fa-flag urgent"></i> عاجل</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card" data-srv data-field="social" data-audience="families" data-channel="online phone"
+        data-name="طلب استشارة أسرية" data-desc="استشارات اجتماعية ونفسية وأسرية عبر مختصين معتمدين."
+        data-conditions="حجز موعد مسبق|الالتزام بسرية المعلومات"
+        data-docs="بيانات التواصل|وصف موجز للحالة"
+        data-steps="حجز الموعد|الاستشارة|متابعة دورية"
+        data-duration="1 إلى 3 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-user-doctor"></i><span class="badge">استشارات</span></div>
+        <h3>طلب استشارة أسرية</h3>
+        <p>استشارات اجتماعية ونفسية وأسرية عبر مختصين معتمدين.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر</li>
+          <li><i class="fas fa-phone"></i> عبر الاتصال</li>
+          <li><i class="fas fa-clock"></i> 1-3 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card" data-srv data-field="edu" data-audience="families" data-channel="onsite branch"
+        data-name="طلب تأهيل وتمكين" data-desc="برامج تأهيل مهني وتمكين اقتصادي للأسر المستفيدة."
+        data-conditions="الجاهزية للالتزام بالبرنامج|اجتياز المقابلة"
+        data-docs="الهوية|السيرة الذاتية إن وجدت"
+        data-steps="تعبئة الطلب|المقابلة|الإلحاق بالبرنامج|المتابعة"
+        data-duration="7 إلى 14 يوم عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-briefcase"></i><span class="badge">تمكين</span></div>
+        <h3>طلب تأهيل وتمكين</h3>
+        <p>برامج تأهيل مهني وتمكين اقتصادي للأسر المستفيدة.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر</li>
+          <li><i class="fas fa-building"></i> عبر الفرع</li>
+          <li><i class="fas fa-clock"></i> 7-14 يوم</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card warm urgent-card" data-srv data-field="social" data-audience="families" data-channel="online phone"
+        data-name="طلب مساعدة طارئة" data-desc="استجابة سريعة لحالات الطوارئ والكوارث وفق ضوابط معتمدة."
+        data-conditions="إثبات الحالة الطارئة|عدم الازدواجية في الصرف"
+        data-docs="الهوية|أي إثبات للحالة"
+        data-steps="استلام الطلب|تقييم سريع|الصرف العاجل|المتابعة"
+        data-duration="24 إلى 72 ساعة" data-priority="طارئ">
+        <div class="head"><i class="fas fa-triangle-exclamation"></i><span class="badge urgent">طارئ</span></div>
+        <h3>طلب مساعدة طارئة</h3>
+        <p>استجابة سريعة لحالات الطوارئ والكوارث وفق ضوابط معتمدة.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر</li>
+          <li><i class="fas fa-phone"></i> عبر الاتصال</li>
+          <li><i class="fas fa-clock"></i> 24-72 ساعة</li>
+          <li><i class="fas fa-flag urgent"></i> طارئ</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card" data-srv data-field="volunteer" data-audience="volunteers" data-channel="online"
+        data-name="طلب تطوع" data-desc="انضم إلى فريق المتطوعين في برامج الجمعية وفق مجالات اهتمامك."
+        data-conditions="ألا يقل العمر عن 18 سنة|الالتزام بأخلاقيات العمل التطوعي"
+        data-docs="الهوية|السيرة الذاتية"
+        data-steps="تعبئة الطلب|المقابلة|التدريب|الإلحاق بالفريق"
+        data-duration="5 إلى 10 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-hands-helping"></i><span class="badge">تطوع</span></div>
+        <h3>طلب تطوع</h3>
+        <p>انضم إلى فريق المتطوعين في برامج الجمعية وفق مجالات اهتمامك.</p>
+        <ul class="meta">
+          <li><i class="fas fa-hand-holding-heart"></i> المتطوعون</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني</li>
+          <li><i class="fas fa-clock"></i> 5-10 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+      <article class="srv-card" data-srv data-field="social" data-audience="families volunteers" data-channel="online"
+        data-name="طلب عضوية" data-desc="انضم إلى عضوية الجمعية وشارك في صناعة الأثر المجتمعي."
+        data-conditions="استيفاء شروط العضوية|دفع الاشتراك السنوي"
+        data-docs="الهوية|نموذج طلب العضوية"
+        data-steps="تعبئة الطلب|المراجعة|الاعتماد|إصدار البطاقة"
+        data-duration="5 إلى 7 أيام عمل" data-priority="عادي">
+        <div class="head"><i class="fas fa-id-card"></i><span class="badge">عضوية</span></div>
+        <h3>طلب عضوية</h3>
+        <p>انضم إلى عضوية الجمعية وشارك في صناعة الأثر المجتمعي.</p>
+        <ul class="meta">
+          <li><i class="fas fa-users"></i> الأسر/المتطوعون</li>
+          <li><i class="fas fa-laptop"></i> إلكتروني</li>
+          <li><i class="fas fa-clock"></i> 5-7 أيام</li>
+          <li><i class="fas fa-flag"></i> عادي</li>
+        </ul>
+        <div class="acts">
+          <button class="btn btn-outline" data-srv-detail><i class="fas fa-circle-info"></i> عرض التفاصيل</button>
+          <button class="btn btn-primary" data-srv-request><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+        </div>
+      </article>
+
+    </div>
+
+    <div id="srvEmpty" class="text-center py-16 text-sanad-muted hidden">
+      <div class="w-20 h-20 mx-auto rounded-full bg-sanad-mist flex items-center justify-center text-sanad-emerald text-2xl mb-3"><i class="fas fa-magnifying-glass"></i></div>
+      <p>لا توجد خدمات مطابقة لمعايير البحث.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sv-terms" class="py-14 bg-white">
+  <div class="s-container">
+    <div class="text-center mb-10">
+      <h2 class="s-title">شروط الاستفادة العامة</h2>
+      <p class="text-sanad-muted mt-3">معايير عامة تطبّق على معظم خدمات الجمعية، مع تفاصيل خاصة بكل خدمة داخل تفاصيلها.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="srv-info"><i class="fas fa-location-dot"></i><h4>نطاق الخدمة</h4><p>أن يكون المستفيد ضمن نطاق الجمعية الجغرافي المعتمد.</p></div>
+      <div class="srv-info"><i class="fas fa-id-card-clip"></i><h4>اكتمال البيانات</h4><p>تعبئة جميع الحقول المطلوبة ورفع المستندات الأساسية.</p></div>
+      <div class="srv-info"><i class="fas fa-shield-halved"></i><h4>صحة المعلومات</h4><p>الإقرار بصحة البيانات وقبول التحقق منها عند الحاجة.</p></div>
+      <div class="srv-info"><i class="fas fa-handshake"></i><h4>الموافقة على السياسات</h4><p>الالتزام بسياسة الخصوصية وضوابط الخدمة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- نافذة تفاصيل الخدمة -->
+<div class="sanad-modal-overlay" id="mSrvDetail">
+  <div class="sanad-modal sanad-modal-lg">
+    <div class="sanad-modal-header">
+      <h3 id="mdTitle">تفاصيل الخدمة</h3>
+      <button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="sanad-modal-body">
+      <p id="mdDesc" class="text-sanad-muted leading-loose mb-5"></p>
+      <div class="grid sm:grid-cols-3 gap-3 mb-6 text-sm">
+        <div class="srv-mini"><i class="fas fa-users text-sanad-emerald"></i><div><small>الفئة المستهدفة</small><strong id="mdAudience"></strong></div></div>
+        <div class="srv-mini"><i class="fas fa-laptop text-sanad-emerald"></i><div><small>قناة التقديم</small><strong id="mdChannel"></strong></div></div>
+        <div class="srv-mini"><i class="fas fa-clock text-sanad-emerald"></i><div><small>مدة الدراسة</small><strong id="mdDuration"></strong></div></div>
+      </div>
+
+      <div class="srv-acc">
+        <h4><i class="fas fa-circle-check text-sanad-emerald"></i> شروط الاستفادة</h4>
+        <ul id="mdConditions" class="srv-list"></ul>
+      </div>
+      <div class="srv-acc">
+        <h4><i class="fas fa-folder-open text-sanad-emerald"></i> المستندات المطلوبة</h4>
+        <ul id="mdDocs" class="srv-list"></ul>
+      </div>
+      <div class="srv-acc">
+        <h4><i class="fas fa-list-ol text-sanad-emerald"></i> خطوات تقديم الطلب</h4>
+        <ol id="mdSteps" class="srv-list ordered"></ol>
+      </div>
+      <div class="srv-acc">
+        <h4><i class="fas fa-circle-question text-sanad-emerald"></i> أسئلة شائعة</h4>
+        <details class="srv-faq"><summary>هل يمكن تعديل بياناتي بعد إرسال الطلب؟</summary><p>نعم، عبر صفحة تتبع الطلب يمكن تحديث المرفقات والبيانات المطلوبة.</p></details>
+        <details class="srv-faq"><summary>كم مدة الرد على الطلب؟</summary><p>تختلف حسب نوع الخدمة، وتظهر في بطاقة الخدمة وداخل التفاصيل.</p></details>
+        <details class="srv-faq"><summary>هل بياناتي سرية؟</summary><p>نعم، تُعامل بياناتك بسرية تامة وفق سياسة الخصوصية المعتمدة.</p></details>
+      </div>
+    </div>
+    <div class="sanad-modal-footer">
+      <button class="btn btn-outline" data-close>إغلاق</button>
+      <button class="btn btn-primary" id="mdRequest"><i class="fas fa-paper-plane"></i> طلب الخدمة</button>
+    </div>
+  </div>
+</div>
+
+<!-- نافذة طلب الخدمة متعدد الخطوات -->
+<div class="sanad-modal-overlay" id="mSrvRequest">
+  <div class="sanad-modal sanad-modal-lg">
+    <div class="sanad-modal-header">
+      <h3>طلب خدمة: <span id="rqTitle">—</span></h3>
+      <button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="sanad-modal-body">
+      <ol class="srv-steps" data-srv-steps-bar>
+        <li class="active" data-s="1"><span>1</span>مقدّم الطلب</li>
+        <li data-s="2"><span>2</span>الحالة</li>
+        <li data-s="3"><span>3</span>الخدمة</li>
+        <li data-s="4"><span>4</span>المرفقات</li>
+        <li data-s="5"><span>5</span>الإقرار</li>
+      </ol>
+
+      <form id="srvRequestForm" novalidate>
+        <input type="hidden" name="service" id="rqService" />
+
+        <fieldset data-step="1" class="srv-step">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="srv-field"><label>الاسم الكامل *</label><input type="text" name="name" required maxlength="100" /></div>
+            <div class="srv-field"><label>رقم الهوية أو الإقامة *</label><input type="text" name="id_no" required pattern="[0-9]{10}" maxlength="10" placeholder="10 أرقام" /></div>
+            <div class="srv-field"><label>رقم الجوال *</label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" required pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX" /></div></div>
+            <div class="srv-field"><label>البريد الإلكتروني</label><input type="email" name="email" maxlength="120" /></div>
+            <div class="srv-field"><label>المدينة *</label><input type="text" name="city" required maxlength="60" /></div>
+            <div class="srv-field"><label>الحي</label><input type="text" name="district" maxlength="60" /></div>
+            <div class="srv-field md:col-span-2"><label>العنوان المختصر</label><input type="text" name="address" maxlength="160" /></div>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="2" class="srv-step hidden">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="srv-field"><label>عدد أفراد الأسرة *</label><input type="number" name="family_count" min="1" max="30" required /></div>
+            <div class="srv-field"><label>الحالة الاجتماعية</label><select name="marital"><option>متزوج</option><option>أرملة</option><option>مطلق</option><option>أعزب</option></select></div>
+            <div class="srv-field"><label>مصدر الدخل</label><select name="income_src"><option>راتب</option><option>أعمال حرة</option><option>ضمان اجتماعي</option><option>لا يوجد</option></select></div>
+            <div class="srv-field"><label>متوسط الدخل الشهري (ر.س)</label><input type="number" name="income" min="0" max="100000" /></div>
+            <div class="srv-field"><label>هل يوجد ذوو إعاقة؟</label><select name="disability"><option>لا</option><option>نعم</option></select></div>
+            <div class="srv-field"><label>هل يوجد كبار سن؟</label><select name="elderly"><option>لا</option><option>نعم</option></select></div>
+            <div class="srv-field"><label>هل يوجد أطفال أو أيتام؟</label><select name="children"><option>لا</option><option>أطفال</option><option>أيتام</option><option>كلاهما</option></select></div>
+            <div class="srv-field md:col-span-2"><label>وصف مختصر للحالة</label><textarea name="case_desc" rows="3" maxlength="600"></textarea></div>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="3" class="srv-step hidden">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="srv-field"><label>نوع الخدمة</label><input type="text" id="rqServiceLabel" readonly /></div>
+            <div class="srv-field"><label>مستوى الحاجة *</label>
+              <div class="srv-radios">
+                <label><input type="radio" name="urgency" value="عادي" checked> عادي</label>
+                <label><input type="radio" name="urgency" value="عاجل"> عاجل</label>
+                <label><input type="radio" name="urgency" value="طارئ"> طارئ</label>
+              </div>
+            </div>
+            <div class="srv-field"><label>سبق الاستفادة من الجمعية؟</label><select name="prev"><option>لا</option><option>نعم</option></select></div>
+            <div class="srv-field"><label>الموعد المناسب للتواصل</label><select name="time"><option>صباحًا</option><option>ظهرًا</option><option>مساءً</option></select></div>
+            <div class="srv-field md:col-span-2"><label>طريقة التواصل المفضلة</label>
+              <div class="srv-radios">
+                <label><input type="radio" name="channel" value="اتصال" checked> اتصال</label>
+                <label><input type="radio" name="channel" value="رسالة"> رسالة نصية</label>
+                <label><input type="radio" name="channel" value="واتساب"> واتساب</label>
+                <label><input type="radio" name="channel" value="بريد"> بريد إلكتروني</label>
+              </div>
+            </div>
+            <div class="srv-field md:col-span-2"><label>وصف الطلب *</label><textarea name="request_desc" rows="4" required maxlength="800"></textarea></div>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="4" class="srv-step hidden">
+          <p class="text-sm text-sanad-muted mb-4">يمكنك إرفاق المستندات الداعمة (الرفع في هذه النسخة واجهي فقط).</p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <label class="srv-upload"><input type="file" disabled><i class="fas fa-id-card"></i><strong>رفع الهوية</strong><small>صورة واضحة</small></label>
+            <label class="srv-upload"><input type="file" disabled><i class="fas fa-house"></i><strong>إثبات السكن</strong><small>عقد أو فاتورة</small></label>
+            <label class="srv-upload"><input type="file" disabled><i class="fas fa-file-invoice"></i><strong>تعريف الدخل</strong><small>إن وجد</small></label>
+            <label class="srv-upload"><input type="file" disabled><i class="fas fa-paperclip"></i><strong>مستندات داعمة</strong><small>اختياري</small></label>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="5" class="srv-step hidden">
+          <div class="space-y-3 text-sm">
+            <label class="srv-check"><input type="checkbox" required> أُقرّ بصحة البيانات المقدّمة.</label>
+            <label class="srv-check"><input type="checkbox" required> أوافق على سياسة الخصوصية.</label>
+            <label class="srv-check"><input type="checkbox" required> أوافق على تواصل الجمعية معي بخصوص الطلب.</label>
+          </div>
+          <div class="bg-sanad-ivory border border-sanad-border rounded-xl p-4 mt-5 text-sm text-sanad-muted leading-loose">
+            بعد الإرسال سيتم إصدار رقم طلب فريد يمكنك استخدامه لتتبع حالة الطلب في أي وقت.
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="sanad-modal-footer">
+      <button class="btn btn-outline" data-srv-prev disabled><i class="fas fa-chevron-right"></i> السابق</button>
+      <button class="btn btn-primary" data-srv-next>التالي <i class="fas fa-chevron-left"></i></button>
+      <button class="btn btn-accent hidden" data-srv-submit><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
+    </div>
+  </div>
+</div>
+
+<!-- نافذة نجاح الطلب -->
+<div class="sanad-modal-overlay" id="mSrvSuccess">
+  <div class="sanad-modal">
+    <div class="sanad-modal-body text-center pt-10">
+      <div class="srv-success-ico"><i class="fas fa-circle-check"></i></div>
+      <h3 class="text-xl font-extrabold text-sanad-navy mb-2">تم استلام طلبك بنجاح</h3>
+      <p class="text-sanad-muted leading-loose mb-5">تم إنشاء طلب الخدمة الخاص بك، ويمكنك متابعة حالته في أي وقت باستخدام رقم الطلب.</p>
+      <div class="srv-success-card">
+        <div><small>رقم الطلب</small><strong id="okId">SRV-2026-0001</strong></div>
+        <div><small>اسم الخدمة</small><strong id="okName">—</strong></div>
+        <div><small>تاريخ الإرسال</small><strong id="okDate">—</strong></div>
+        <div><small>الحالة الحالية</small><strong class="text-sanad-emerald">تم استلام الطلب</strong></div>
+        <div><small>مدة الدراسة</small><strong>من 3 إلى 5 أيام عمل</strong></div>
+      </div>
+    </div>
+    <div class="sanad-modal-footer">
+      <button class="btn btn-outline" data-close>العودة إلى الخدمات</button>
+      <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
+      <a class="btn btn-primary" id="okTrack" href="service-tracking.html"><i class="fas fa-route"></i> تتبع الطلب</a>
+    </div>
+  </div>
+</div>
+
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5"><div class="s-logo-mark">س</div><div><div class="font-extrabold text-white text-lg">جمعية إسكان</div><div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div></div></div>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+      </div>
+      <div class="lg:col-span-2"><h4>روابط رئيسية</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن الجمعية</a></li><li><a href="donations.html">بوابة التبرع</a></li><li><a href="media-center.html">المركز الإعلامي</a></li><li><a href="beneficiaries.html">بوابة المستفيدين</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="service-tracking.html">تتبع طلب خدمة</a></li><li><a href="projects.html">المشاريع</a></li><li><a href="store.html">المتجر</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الحوكمة</h4><ul class="space-y-2.5 text-sm"><li><a href="governance.html">اللوائح والسياسات</a></li><li><a href="governance.html">التقارير المالية</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>تواصل</h4><div class="space-y-2 text-xs text-white/70"><div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div><div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div></div></div>
+    </div>
+  </div>
+  <div class="border-t border-white/10"><div class="s-container py-5 text-xs text-white/60">© <span data-year>2026</span> جمعية إسكان. جميع الحقوق محفوظة.</div></div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

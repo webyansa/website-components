@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>دليل التمكين الأسري الرقمي — جمعية إسكان</title>
+<meta name="description" content="تفاصيل المنتج الرقمي في متجر جمعية إسكان." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#7A4E2D', navyDeep:'#5A3820', navySoft:'#97663F', emerald:'#6F8A4A', emeraldSoft:'#8FA968', emeraldDeep:'#54693A', gold:'#D89B4A', goldSoft:'#EBBE7E', sand:'#F1E3CC', ivory:'#FAF4EA', mist:'#F2EADE', border:'#E8DED2', text:'#24313A', muted:'#6F7B80' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+      <a href="store.html"><i class="fas fa-bag-shopping ml-1 text-sanad-emeraldSoft"></i> متجر الجمعية</a>
+      <a href="beneficiaries.html"><i class="fas fa-user-shield ml-1 text-sanad-emeraldSoft"></i> بوابة المستفيدين</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية إسكان</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link">الأخبار</a>
+      <a href="store.html" class="s-nav-link active">المتجر</a>
+      <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="cart.html" class="relative w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy hover:bg-sanad-mist" aria-label="السلة">
+        <i class="fas fa-bag-shopping"></i>
+        <span data-cart-count class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-sanad-emerald text-white text-[11px] font-bold flex items-center justify-center" style="display:none">0</span>
+      </a>
+      <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية إسكان</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+    <a href="projects.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">المشاريع</a>
+    <a href="donations.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">بوابة التبرع</a>
+    <a href="governance.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الحوكمة</a>
+    <a href="media-center.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الأخبار</a>
+    <a href="store.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">متجر الجمعية</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="py-8 bg-white border-b border-sanad-border">
+  <div class="s-container">
+    <nav class="s-bcrumbs mb-6 text-sm">
+      <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <i class="fas fa-chevron-left"></i>
+      <a href="store.html">المتجر</a>
+      <i class="fas fa-chevron-left"></i>
+      <span>دليل التمكين الأسري الرقمي</span>
+    </nav>
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-7">
+        <div class="st-gallery-main"><img data-st-main-img src="assets/images/store/uploads/guide.webp" alt="دليل التمكين الأسري الرقمي"></div>
+        <div class="st-thumbs">
+          <button data-st-thumb class="active"><img src="assets/images/store/uploads/guide.webp"></button>
+          <button data-st-thumb><img src="assets/images/store/uploads/mug.webp"></button>
+          <button data-st-thumb><img src="assets/images/store/uploads/gift-basket.webp"></button>
+          <button data-st-thumb><img src="assets/images/store/uploads/guide.webp"></button>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="flex flex-wrap gap-2 mb-3"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+        <h1 class="text-3xl font-extrabold text-sanad-navy mb-3">دليل التمكين الأسري الرقمي</h1>
+        <p class="text-sanad-muted leading-loose mb-5">دليل تفاعلي بصيغة PDF يقدم خطوات عملية لتمكين الأسرة اقتصاديًا واجتماعيًا.</p>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="text-3xl font-extrabold text-sanad-emeraldDeep">45 <small class="text-base">ر.س</small></div>
+          <div class="text-sm text-sanad-muted"><i class="fas fa-fire text-sanad-gold"></i> 312 طلب</div>
+        </div>
+        
+<div class="bg-white border border-sanad-border rounded-2xl p-4 mb-5 grid grid-cols-2 gap-3 text-sm">
+  <div><div class="text-xs text-sanad-muted">نوع الملف</div><div class="font-bold"><i class="fas fa-file-pdf text-red-500"></i> PDF</div></div>
+  <div><div class="text-xs text-sanad-muted">حجم الملف</div><div class="font-bold">8 ميجابايت</div></div>
+  <div><div class="text-xs text-sanad-muted">عدد الصفحات</div><div class="font-bold">96 صفحة</div></div>
+  <div><div class="text-xs text-sanad-muted">آخر تحديث</div><div class="font-bold">مايو 2026</div></div>
+</div>
+<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4 text-sm text-blue-900 flex items-start gap-2">
+  <i class="fas fa-circle-info mt-1"></i>
+  <div>سيصلك رابط التحميل بعد إتمام الدفع، ويمكنك تحميل الملف مباشرة من صفحة نجاح الطلب.</div>
+</div>
+<button class="btn btn-primary w-full justify-center mb-3" data-st-buy data-id="p-digital-guide" data-name="دليل التمكين الأسري الرقمي" data-price="45" data-type="digital" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html"><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+<button class="btn btn-accent w-full justify-center" data-st-buy="now" data-id="p-digital-guide" data-name="دليل التمكين الأسري الرقمي" data-price="45" data-type="digital" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html"><i class="fas fa-download"></i> شراء وتحميل فوري</button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container grid lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 space-y-8">
+      <div class="bg-white border border-sanad-border rounded-2xl p-6">
+        <h3 class="text-lg font-extrabold text-sanad-navy mb-3"><i class="fas fa-book-open text-sanad-emerald"></i> ماذا يحتوي الدليل؟</h3>
+        <ul class="space-y-2 text-sm text-sanad-text">
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> 6 فصول تطبيقية للتمكين الأسري</li>
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> 25 ورقة عمل قابلة للطباعة</li>
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> قصص نجاح من برامج الجمعية</li>
+          <li><i class="fas fa-check text-sanad-emerald ml-1"></i> روابط مصادر إضافية</li>
+        </ul>
+      </div>
+      <div class="bg-white border border-sanad-border rounded-2xl p-6">
+        <h3 class="text-lg font-extrabold text-sanad-navy mb-3"><i class="fas fa-users text-sanad-emerald"></i> لمن هذا الدليل؟</h3>
+        <p class="text-sanad-muted leading-loose">هذا الدليل موجّه للأخصائيين الاجتماعيين، المتطوعين، ورؤساء الأسر الراغبين في تطوير قدراتهم في التمكين.</p>
+      </div>
+      <div class="bg-white border border-sanad-border rounded-2xl p-6">
+        <h3 class="text-lg font-extrabold text-sanad-navy mb-3"><i class="fas fa-eye text-sanad-emerald"></i> معاينة المحتوى</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="aspect-[3/4] rounded-xl bg-sanad-mist flex items-center justify-center text-sanad-navy font-bold">صفحة 1</div><div class="aspect-[3/4] rounded-xl bg-sanad-mist flex items-center justify-center text-sanad-navy font-bold">صفحة 2</div><div class="aspect-[3/4] rounded-xl bg-sanad-mist flex items-center justify-center text-sanad-navy font-bold">صفحة 3</div><div class="aspect-[3/4] rounded-xl bg-sanad-mist flex items-center justify-center text-sanad-navy font-bold">صفحة 4</div>
+        </div>
+        <div class="mt-5 text-sm text-sanad-muted">
+          <div class="font-bold text-sanad-navy mb-2">جدول المحتويات المختصر:</div>
+          <ol class="space-y-1 list-decimal pr-5">
+            <li>مفاهيم التمكين الأسري</li>
+            <li>تحليل احتياجات الأسرة</li>
+            <li>أدوات التخطيط الأسري</li>
+            <li>المتابعة والتقييم</li>
+            <li>قصص نجاح ودراسات حالة</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <aside class="space-y-5">
+      <div class="bg-gradient-to-br from-sanad-navyDeep to-sanad-emeraldDeep text-white rounded-2xl p-6">
+        <i class="fas fa-download text-3xl text-sanad-goldSoft mb-3"></i>
+        <div class="font-extrabold text-lg mb-2">تحميل فوري</div>
+        <p class="text-white/85 text-sm leading-loose">بعد إتمام الدفع يظهر زر التحميل مباشرة في صفحة نجاح الطلب.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="py-14 bg-sanad-ivory">
+  <div class="s-container">
+    <h2 class="text-2xl font-extrabold text-sanad-navy mb-6">منتجات ذات صلة</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<article class="st-card "
+  data-st-item data-id="p-bag" data-name="حقيبة العطاء الأسرية" data-price="120" data-type="physical" data-status="new top" data-orders="240" data-img="assets/images/store/uploads/gift-basket.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/gift-basket.webp" alt="حقيبة العطاء الأسرية" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">حقيبة العطاء الأسرية</a></h3>
+    <p class="desc">حقيبة متكاملة تحتوي على احتياجات أساسية للأسر المستفيدة، يعود ريعها لدعم البرامج.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل متاح</span><span><i class="fas fa-heart"></i> يدعم البرامج</span><span><i class="fas fa-box"></i> كمية محدودة</span> <span><i class="fas fa-fire"></i> 240 طلب</span></div>
+    <div class="price-row">
+      <div class="price">120 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-digital-guide" data-name="دليل التمكين الأسري الرقمي" data-price="45" data-type="digital" data-status="new top" data-orders="312" data-img="assets/images/store/uploads/guide.webp" data-url="product-digital-details.html">
+  <a href="product-digital-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دليل التمكين الأسري الرقمي" loading="lazy">
+    <div class="badges"><span class="st-badge type-digital"><i class="fas fa-file-pdf"></i> منتج رقمي</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-digital-details.html" class="hover:text-sanad-emeraldDeep">دليل التمكين الأسري الرقمي</a></h3>
+    <p class="desc">دليل تفاعلي بصيغة PDF يقدم خطوات عملية لتمكين الأسرة اقتصاديًا واجتماعيًا.</p>
+    
+    <div class="meta"><span><i class="fas fa-file-pdf"></i> PDF</span><span><i class="fas fa-weight-hanging"></i> 8 ميجابايت</span><span><i class="fas fa-download"></i> تحميل فوري</span> <span><i class="fas fa-fire"></i> 312 طلب</span></div>
+    <div class="price-row">
+      <div class="price">45 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-download"></i> شراء وتحميل</button>
+    <a href="product-digital-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-course-budget" data-name="دورة إدارة الميزانية المنزلية" data-price="199" data-type="course" data-status="new" data-orders="86" data-img="assets/images/store/uploads/guide.webp" data-url="course-product-details.html">
+  <a href="course-product-details.html" class="cover block">
+    <img src="assets/images/store/uploads/guide.webp" alt="دورة إدارة الميزانية المنزلية" loading="lazy">
+    <div class="badges"><span class="st-badge type-course"><i class="fas fa-graduation-cap"></i> دورة</span><span class="st-badge new"><i class="fas fa-sparkles"></i> جديد</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="course-product-details.html" class="hover:text-sanad-emeraldDeep">دورة إدارة الميزانية المنزلية</a></h3>
+    <p class="desc">دورة احترافية لإدارة ميزانية الأسرة وبناء عادات مالية مستدامة.</p>
+    
+    <div class="meta"><span><i class="fas fa-laptop"></i> عن بُعد</span><span><i class="fas fa-calendar"></i> تبدأ 12 يونيو</span><span><i class="fas fa-chair"></i> 18 مقعد متبقي</span> <span><i class="fas fa-fire"></i> 86 طلب</span></div>
+    <div class="price-row">
+      <div class="price">199 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-user-plus"></i> سجّل الآن</button>
+    <a href="course-product-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article>
+<article class="st-card "
+  data-st-item data-id="p-calendar" data-name="رزنامة أثر" data-price="55" data-type="physical" data-status="top" data-orders="130" data-img="assets/images/store/uploads/mug.webp" data-url="product-physical-details.html">
+  <a href="product-physical-details.html" class="cover block">
+    <img src="assets/images/store/uploads/mug.webp" alt="رزنامة أثر" loading="lazy">
+    <div class="badges"><span class="st-badge type-physical"><i class="fas fa-box"></i> منتج ملموس</span></div>
+  </a>
+  <div class="body">
+    <h3><a href="product-physical-details.html" class="hover:text-sanad-emeraldDeep">رزنامة أثر</a></h3>
+    <p class="desc">رزنامة سنوية مصممة باحترافية وتوثق إنجازات الجمعية.</p>
+    
+    <div class="meta"><span><i class="fas fa-truck"></i> توصيل متاح</span><span><i class="fas fa-heart"></i> يدعم البرامج</span> <span><i class="fas fa-fire"></i> 130 طلب</span></div>
+    <div class="price-row">
+      <div class="price">55 <small>ر.س</small></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" data-st-add><i class="fas fa-cart-plus"></i> أضف للسلة</button>
+    <a href="product-physical-details.html" class="btn btn-outline"><i class="fas fa-eye"></i></a>
+  </div>
+</article></div>
+  </div>
+</section>
+
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="s-logo-mark">س</div>
+          <div>
+            <div class="font-extrabold text-white text-lg">جمعية إسكان</div>
+            <div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div>
+          </div>
+        </div>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة، تعمل ضمن منظومة العمل الخيري السعودي لتقديم رعاية إنسانية موثّقة بحوكمة وشفافية.</p>
+        <div class="flex items-center gap-2">
+          <a href="#" class="s-social"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="s-social"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>عن الجمعية</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="strategy.html">استراتيجيتنا</a></li>
+          <li><a href="board.html">مجلس الإدارة</a></li>
+          <li><a href="organization-structure.html">الهيكل التنظيمي</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>روابط مهمة</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="store.html">متجر الجمعية</a></li>
+          <li><a href="donations.html">بوابة التبرع</a></li>
+          <li><a href="services.html">الخدمات</a></li>
+          <li><a href="projects.html">المشاريع</a></li>
+          <li><a href="media-center.html">الأخبار</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>الحوكمة</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="governance.html">اللوائح والسياسات</a></li>
+          <li><a href="governance.html">التقارير المالية</a></li>
+          <li><a href="governance.html">التقرير السنوي</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4>تواصل</h4>
+        <div class="space-y-2 text-xs text-white/70">
+          <div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div>
+          <div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div>
+          <div><i class="fas fa-location-dot ml-1 text-sanad-goldSoft"></i> الرياض، المملكة العربية السعودية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="s-container py-5 flex flex-wrap items-center justify-between gap-3 text-xs text-white/60">
+      <div>© <span data-year>2026</span> جمعية إسكان. جميع الحقوق محفوظة.</div>
+      <div class="flex items-center gap-5">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">الشروط والأحكام</a>
+        <a href="#">خريطة الموقع</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
