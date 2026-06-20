@@ -1,35 +1,38 @@
 /* =============================================
-   قالب سند — نظام تصميم مؤسسي سعودي
-   راجع DESIGN-SYSTEM.md للتوثيق الكامل
+   قالب إسكان — مشتق من قالب سند
+   مخصص لجمعيات التنمية والإسكان
+   هوية دافئة مؤسسية: بني عمراني / زيتوني / ذهبي ترابي
+   الكلاسات ومتغيرات الـ tokens مطابقة لقالب سند —
+   تم تغيير القيم فقط لتناسب الهوية الجديدة.
    ============================================= */
 
 /* ========== Design Tokens (Single Source of Truth) ========== */
 :root {
-  /* Legacy tokens (يستخدمها الكود القديم — لا تحذف) */
-  --s-navy: #0b2545;
-  --s-navy-deep: #061633;
-  --s-navy-soft: #1d3a6b;
-  --s-emerald: #0d7a4f;
-  --s-emerald-soft: #2fa776;
-  --s-emerald-deep: #075c3a;
-  --s-gold: #b6873a;
-  --s-gold-soft: #d9b066;
-  --s-sand: #f3ead8;
-  --s-ivory: #faf7f0;
+  /* أسماء المتغيرات محفوظة كما في قالب سند — القيم فقط تغيّرت */
+  --s-navy: #7A4E2D;          /* Primary — بني عمراني دافئ */
+  --s-navy-deep: #5A3820;     /* Primary Dark */
+  --s-navy-soft: #97663F;     /* Primary Soft */
+  --s-emerald: #6F8A4A;       /* Secondary — أخضر زيتوني تنموي */
+  --s-emerald-soft: #8FA968;
+  --s-emerald-deep: #54693A;
+  --s-gold: #D89B4A;          /* Accent — ذهبي ترابي دافئ */
+  --s-gold-soft: #EBBE7E;
+  --s-sand: #F1E3CC;
+  --s-ivory: #FAF4EA;         /* خلفية عاجي دافئ */
   --s-paper: #ffffff;
-  --s-mist: #eef2f6;
-  --s-text: #0f1d2e;
-  --s-muted: #5b6b7d;
-  --s-border: #e6ebf1;
-  --s-shadow-xs: 0 1px 2px rgba(11,37,69,.06);
-  --s-shadow-sm: 0 4px 14px rgba(11,37,69,.06);
-  --s-shadow-md: 0 14px 36px rgba(11,37,69,.09);
-  --s-shadow-lg: 0 28px 70px rgba(11,37,69,.14);
-  --s-grad-hero: radial-gradient(120% 90% at 90% 0%, #103a72 0%, transparent 55%),
-                 radial-gradient(110% 100% at 0% 100%, #0a5a3c 0%, transparent 55%),
-                 linear-gradient(160deg, #061633 0%, #0b2545 55%, #0a3654 100%);
-  --s-grad-gold: linear-gradient(135deg, #d9b066 0%, #b6873a 100%);
-  --s-grad-emerald: linear-gradient(135deg, #2fa776 0%, #075c3a 100%);
+  --s-mist: #F2EADE;
+  --s-text: #24313A;          /* فحمي ناعم */
+  --s-muted: #6F7B80;
+  --s-border: #E8DED2;
+  --s-shadow-xs: 0 1px 2px rgba(58,38,18,.06);
+  --s-shadow-sm: 0 4px 14px rgba(58,38,18,.07);
+  --s-shadow-md: 0 14px 36px rgba(58,38,18,.10);
+  --s-shadow-lg: 0 28px 70px rgba(58,38,18,.16);
+  --s-grad-hero: radial-gradient(120% 90% at 90% 0%, #8a5a36 0%, transparent 55%),
+                 radial-gradient(110% 100% at 0% 100%, #6f8a4a 0%, transparent 55%),
+                 linear-gradient(160deg, #3a2616 0%, #5a3820 55%, #7A4E2D 100%);
+  --s-grad-gold: linear-gradient(135deg, #EBBE7E 0%, #D89B4A 100%);
+  --s-grad-emerald: linear-gradient(135deg, #8FA968 0%, #54693A 100%);
 
   /* === Unified Design Tokens (الواجهة الرسمية للنظام الجديد) === */
   --color-primary: var(--s-navy);
@@ -37,22 +40,22 @@
   --color-primary-soft: var(--s-navy-soft);
   --color-secondary: var(--s-emerald);
   --color-secondary-dark: var(--s-emerald-deep);
-  --color-secondary-soft: #e8f5f0;
+  --color-secondary-soft: #EEF3E3;
   --color-accent: var(--s-gold);
-  --color-accent-soft: #f7efd9;
+  --color-accent-soft: #FBEFD8;
   --color-bg: var(--s-ivory);
   --color-surface: #ffffff;
-  --color-surface-soft: #f4f7f6;
+  --color-surface-soft: #F7F1E5;
   --color-border: var(--s-border);
   --color-text: var(--s-text);
   --color-text-muted: var(--s-muted);
   --color-success: var(--s-emerald);
-  --color-warning: #c58a18;
-  --color-danger: #b94a48;
+  --color-warning: #C58A18;
+  --color-danger: #B94A48;
 
-  --shadow-soft: 0 12px 30px rgba(6,36,58,.08);
-  --shadow-medium: 0 18px 45px rgba(6,36,58,.14);
-  --shadow-strong: 0 28px 70px rgba(6,36,58,.18);
+  --shadow-soft: 0 12px 30px rgba(58,38,18,.08);
+  --shadow-medium: 0 18px 45px rgba(58,38,18,.14);
+  --shadow-strong: 0 28px 70px rgba(58,38,18,.18);
 
   --radius-sm: 10px;
   --radius-md: 16px;
