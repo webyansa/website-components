@@ -49,6 +49,17 @@ const templates: Template[] = [
     isNew: true,
   },
   {
+    id: "iskan",
+    name: "قالب إسكان — التنمية والإسكان",
+    description: "قالب عربي مخصص لجمعيات التنمية والإسكان — ترميم المساكن، التأثيث، دعم الإيجار، وتمكين الأسر من الاستقرار السكني",
+    previewPath: "iskan/index.html",
+    folderPath: "iskan",
+    thumbnail: "iskan/favicon.svg",
+    features: ["Tailwind CSS", "52 صفحة", "إسكان وتنمية", "دعم RTL", "متجاوب"],
+    pages: 52,
+    isNew: true,
+  },
+  {
     id: "one-page",
     name: "قالب صفحة واحدة — الجمعيات",
     description: "قالب احترافي لصفحة واحدة يعرض جميع أقسام الجمعية بشكل انسيابي — يدعم العربية والإنجليزية والوضع الداكن",
@@ -522,7 +533,7 @@ const TemplateCard = ({ template }: { template: Template }) => {
       let templateFiles: string[] = [];
 
       // Templates that ship a manifest.json with the full file list
-      const manifestTemplates = ["sanad", "majales"];
+      const manifestTemplates = ["sanad", "majales", "iskan"];
       if (manifestTemplates.includes(template.id)) {
         try {
           const manifestResp = await fetch(`${import.meta.env.BASE_URL}${basePath}/manifest.json`);
