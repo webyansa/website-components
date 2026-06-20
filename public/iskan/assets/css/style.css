@@ -3773,3 +3773,98 @@ html{scroll-behavior:smooth;}
   .s-hero-stats .s-hero-stat{ border-right:0; border-bottom:1px solid rgba(255,255,255,.08); padding:.7rem; }
   .s-hero-stats .s-hero-stat:nth-child(2n){ border-right:0; }
 }
+
+/* ==========================================================
+   ISKAN v3 — Modern SX Header Override (Floating, Capsule Nav)
+   ========================================================== */
+.sx-topbar{
+  background: linear-gradient(90deg, var(--s-navy-deep) 0%, var(--s-emerald-deep) 100%) !important;
+  color: rgba(255,255,255,.85) !important;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.sx-tlinks a, .sx-tcontact a{ color: rgba(255,255,255,.82) !important; }
+.sx-tlinks a:hover, .sx-tcontact a:hover{ color: var(--s-gold-soft) !important; }
+
+.sx-header{
+  background: rgba(255,255,255,.72) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+  border-bottom: 1px solid rgba(11,87,80,.06) !important;
+  box-shadow: none !important;
+  position: sticky; top:0; z-index:60;
+}
+.sx-header::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background: linear-gradient(90deg, transparent, var(--s-emerald) 30%, var(--s-gold) 70%, transparent);
+  opacity:0; transition: opacity .35s ease;
+}
+.sx-header.scrolled{ background: rgba(255,255,255,.94) !important; box-shadow: 0 6px 24px rgba(11,87,80,.07) !important; }
+.sx-header.scrolled::after{ opacity:1; }
+
+.sx-main{ padding: .95rem 1.5rem !important; gap:1.4rem !important; }
+
+.sx-logo .sx-mark{
+  width:50px !important; height:50px !important; border-radius:15px !important;
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%) !important;
+  box-shadow: 0 12px 28px rgba(11,87,80,.32), inset 0 0 0 1px rgba(255,255,255,.18) !important;
+  position:relative; overflow:hidden;
+}
+.sx-logo .sx-mark::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,192,122,.45), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(45,168,158,.40), transparent 55%);
+}
+
+/* Capsule nav */
+.sx-nav{
+  background: rgba(241,247,245,.55);
+  border:1px solid rgba(11,87,80,.07);
+  border-radius: 999px;
+  padding: .4rem .85rem;
+  gap: .25rem !important;
+  backdrop-filter: blur(8px);
+}
+.sx-nav > a, .sx-nav > .sx-drop > button{
+  padding: .55rem .85rem !important;
+  border-radius: 999px;
+  font-size: .87rem !important;
+  color: var(--s-text) !important;
+  transition: background .25s, color .25s !important;
+}
+.sx-nav > a::after, .sx-nav > .sx-drop > button::after{ display:none !important; }
+.sx-nav > a:hover, .sx-nav > .sx-drop > button:hover{
+  background: rgba(15,118,110,.08); color: var(--s-emerald-deep) !important;
+}
+.sx-nav > a.active, .sx-nav > .sx-drop > button.active{
+  background: var(--s-emerald) !important; color: #fff !important;
+}
+
+/* Action buttons */
+.sx-icon-btn{
+  background: var(--s-mist) !important; color: var(--s-navy) !important;
+  border-radius: 14px !important; transition: all .25s !important;
+}
+.sx-icon-btn:hover{ background: var(--s-emerald) !important; color:#fff !important; transform: translateY(-1px); }
+.sx-icon-btn .sx-badge{ background: var(--s-coral) !important; }
+
+.sx-login-btn{
+  background: linear-gradient(135deg, var(--s-navy) 0%, var(--s-navy-deep) 100%) !important;
+  border-radius: 999px !important; padding: .7rem 1.2rem !important;
+  box-shadow: 0 10px 22px rgba(11,87,80,.25) !important;
+}
+.sx-login-btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 28px rgba(11,87,80,.32) !important; }
+
+.sx-donate-btn{
+  background: var(--s-grad-coral) !important;
+  border-radius: 999px !important; padding: .7rem 1.25rem !important;
+  box-shadow: 0 10px 22px rgba(247,108,94,.35) !important;
+}
+
+.sx-dmenu{ border-radius: 18px !important; }
+.sx-dmenu a:hover{ background: var(--s-mist) !important; color: var(--s-emerald-deep) !important; }
+.sx-dmenu a i{ color: var(--s-emerald) !important; }
+
+/* Remove leftover navy orb color that referenced old palette */
+.s-hero-orb.a{ background: var(--s-emerald) !important; }
+.s-hero-orb.b{ background: var(--s-gold) !important; opacity:.28; }
