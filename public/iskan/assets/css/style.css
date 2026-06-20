@@ -8,54 +8,56 @@
 
 /* ========== Design Tokens (Single Source of Truth) ========== */
 :root {
-  /* أسماء المتغيرات محفوظة كما في قالب سند — القيم فقط تغيّرت */
-  --s-navy: #7A4E2D;          /* Primary — بني عمراني دافئ */
-  --s-navy-deep: #5A3820;     /* Primary Dark */
-  --s-navy-soft: #97663F;     /* Primary Soft */
-  --s-emerald: #6F8A4A;       /* Secondary — أخضر زيتوني تنموي */
-  --s-emerald-soft: #8FA968;
-  --s-emerald-deep: #54693A;
-  --s-gold: #D89B4A;          /* Accent — ذهبي ترابي دافئ */
-  --s-gold-soft: #EBBE7E;
-  --s-sand: #F1E3CC;
-  --s-ivory: #FAF4EA;         /* خلفية عاجي دافئ */
+  /* === نظام ألوان إسكان v3 — Modern Teal & Amber === */
+  --s-navy: #0B5750;          /* Primary — Deep Teal */
+  --s-navy-deep: #042F2C;     /* Ink Teal */
+  --s-navy-soft: #155E58;
+  --s-emerald: #0F766E;       /* Secondary — Fresh Teal */
+  --s-emerald-soft: #2DA89E;
+  --s-emerald-deep: #064E47;
+  --s-gold: #F59E5B;          /* Accent — Warm Amber */
+  --s-gold-soft: #FFC07A;
+  --s-coral: #F76C5E;         /* Highlight pop */
+  --s-sand: #F1E9DA;
+  --s-ivory: #F7F5F0;         /* Warm off-white */
   --s-paper: #ffffff;
-  --s-mist: #F2EADE;
-  --s-text: #24313A;          /* فحمي ناعم */
-  --s-muted: #6F7B80;
-  --s-border: #E8DED2;
-  --s-shadow-xs: 0 1px 2px rgba(58,38,18,.06);
-  --s-shadow-sm: 0 4px 14px rgba(58,38,18,.07);
-  --s-shadow-md: 0 14px 36px rgba(58,38,18,.10);
-  --s-shadow-lg: 0 28px 70px rgba(58,38,18,.16);
-  --s-grad-hero: radial-gradient(120% 90% at 90% 0%, #8a5a36 0%, transparent 55%),
-                 radial-gradient(110% 100% at 0% 100%, #6f8a4a 0%, transparent 55%),
-                 linear-gradient(160deg, #3a2616 0%, #5a3820 55%, #7A4E2D 100%);
-  --s-grad-gold: linear-gradient(135deg, #EBBE7E 0%, #D89B4A 100%);
-  --s-grad-emerald: linear-gradient(135deg, #8FA968 0%, #54693A 100%);
+  --s-mist: #EEF6F4;          /* Teal mist */
+  --s-text: #0F1F1D;
+  --s-muted: #5F6E6B;
+  --s-border: #E2E8E5;
+  --s-shadow-xs: 0 1px 2px rgba(11,87,80,.06);
+  --s-shadow-sm: 0 4px 14px rgba(11,87,80,.08);
+  --s-shadow-md: 0 14px 36px rgba(11,87,80,.12);
+  --s-shadow-lg: 0 28px 70px rgba(11,87,80,.18);
+  --s-grad-hero: radial-gradient(120% 90% at 88% 4%, rgba(245,158,91,.45) 0%, transparent 55%),
+                 radial-gradient(110% 100% at 0% 100%, rgba(45,168,158,.55) 0%, transparent 55%),
+                 linear-gradient(160deg, #042F2C 0%, #0B5750 55%, #0F766E 100%);
+  --s-grad-gold: linear-gradient(135deg, #FFC07A 0%, #F59E5B 100%);
+  --s-grad-emerald: linear-gradient(135deg, #2DA89E 0%, #064E47 100%);
+  --s-grad-coral: linear-gradient(135deg, #F76C5E 0%, #F59E5B 100%);
 
-  /* === Unified Design Tokens (الواجهة الرسمية للنظام الجديد) === */
+  /* === Unified Design Tokens === */
   --color-primary: var(--s-navy);
   --color-primary-dark: var(--s-navy-deep);
   --color-primary-soft: var(--s-navy-soft);
   --color-secondary: var(--s-emerald);
   --color-secondary-dark: var(--s-emerald-deep);
-  --color-secondary-soft: #EEF3E3;
+  --color-secondary-soft: #DCEFEC;
   --color-accent: var(--s-gold);
-  --color-accent-soft: #FBEFD8;
+  --color-accent-soft: #FFE9CF;
   --color-bg: var(--s-ivory);
   --color-surface: #ffffff;
-  --color-surface-soft: #F7F1E5;
+  --color-surface-soft: #F1F7F5;
   --color-border: var(--s-border);
   --color-text: var(--s-text);
   --color-text-muted: var(--s-muted);
   --color-success: var(--s-emerald);
-  --color-warning: #C58A18;
-  --color-danger: #B94A48;
+  --color-warning: #E0A23A;
+  --color-danger: #E5564B;
 
-  --shadow-soft: 0 12px 30px rgba(58,38,18,.08);
-  --shadow-medium: 0 18px 45px rgba(58,38,18,.14);
-  --shadow-strong: 0 28px 70px rgba(58,38,18,.18);
+  --shadow-soft: 0 12px 30px rgba(11,87,80,.10);
+  --shadow-medium: 0 18px 45px rgba(11,87,80,.16);
+  --shadow-strong: 0 28px 70px rgba(11,87,80,.22);
 
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -3573,3 +3575,296 @@ html{scroll-behavior:smooth;}
   .sa-auth-body{padding:1.1rem 1.1rem 1.3rem;}
   .sa-otp input{font-size:1.1rem;}
 }
+
+/* ==========================================================
+   ISKAN v3 — Modern Header (Floating Capsule) + Cinematic Hero
+   ========================================================== */
+
+/* Topbar minimal accent strip */
+.s-topbar{
+  background: linear-gradient(90deg, var(--s-navy-deep) 0%, var(--s-emerald-deep) 100%);
+  color: rgba(255,255,255,.85); font-size:.78rem; letter-spacing:.01em;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.s-topbar a:hover{ color: var(--s-gold-soft); }
+
+/* Modern header — flat, airy, with hairline + sliding gradient bar on scroll */
+.s-header{
+  position: sticky; top:0; z-index:50;
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border-bottom: 1px solid rgba(11,87,80,.06);
+  transition: background .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.s-header::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background: linear-gradient(90deg, transparent 0%, var(--s-emerald) 30%, var(--s-gold) 70%, transparent 100%);
+  opacity:0; transition: opacity .4s ease;
+}
+.s-header.scrolled{
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 6px 24px rgba(11,87,80,.07);
+}
+.s-header.scrolled::after{ opacity:1; }
+
+/* Navigation pills */
+.s-header nav{
+  background: rgba(241,247,245,.55);
+  border:1px solid rgba(11,87,80,.07);
+  border-radius: 999px;
+  padding: .35rem 1rem;
+  backdrop-filter: blur(8px);
+}
+.s-nav-link{
+  position:relative; padding:.55rem .9rem; font-weight:600; font-size:.92rem;
+  color: var(--s-text); border-radius:999px; transition: color .25s, background .25s;
+}
+.s-nav-link::after{ display:none; }
+.s-nav-link:hover{ color: var(--s-emerald-deep); background: rgba(15,118,110,.08); }
+.s-nav-link.active{ color:#fff; background: var(--s-emerald); }
+
+/* Refined logo mark */
+.s-logo-mark{
+  width:48px; height:48px; border-radius:14px;
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%);
+  color:#fff; box-shadow: 0 10px 26px rgba(11,87,80,.30), inset 0 0 0 1px rgba(255,255,255,.18);
+  position:relative; overflow:hidden;
+}
+.s-logo-mark::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,192,122,.45), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(45,168,158,.40), transparent 55%);
+}
+.s-logo-mark::after{
+  content:""; position:absolute; inset:4px; border-radius:11px;
+  border:1.5px solid rgba(255,255,255,.22);
+}
+
+/* ===== Cinematic Hero ===== */
+.s-hero{ min-height: 100vh; padding:0; }
+.s-hero-veil{
+  background:
+    linear-gradient(135deg, rgba(4,47,44,.86) 0%, rgba(11,87,80,.74) 55%, rgba(15,118,110,.62) 100%),
+    radial-gradient(120% 90% at 88% 4%, rgba(245,158,91,.30) 0%, transparent 55%),
+    radial-gradient(110% 100% at 0% 100%, rgba(45,168,158,.42) 0%, transparent 55%);
+}
+.s-hero-slide{ transform: scale(1.08); animation: sHeroZoomCine 16s ease-in-out infinite alternate; }
+@keyframes sHeroZoomCine{ from{ transform:scale(1.04);} to{ transform:scale(1.14);} }
+
+.s-hero-stage{
+  position:relative; z-index:2;
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 7rem 0 6rem; min-height: 100vh;
+}
+
+/* Side rail with slide counter */
+.s-hero-rail{
+  position:absolute; left:2rem; top:50%; transform: translateY(-50%);
+  display:none; flex-direction:column; align-items:center; gap:1rem;
+  z-index:5; color: rgba(255,255,255,.85);
+}
+@media (min-width: 1024px){ .s-hero-rail{ display:flex; } }
+.s-hero-rail .num{ font-size:.78rem; font-weight:700; letter-spacing:.18em; font-feature-settings:"tnum"; }
+.s-hero-rail .bar{ width:2px; height:120px; background: rgba(255,255,255,.18); position:relative; overflow:hidden; border-radius:2px; }
+.s-hero-rail .bar i{
+  position:absolute; left:0; top:0; right:0; height:0;
+  background: linear-gradient(180deg, var(--s-gold-soft), var(--s-emerald-soft));
+  animation: sHeroRail 6s linear infinite;
+}
+@keyframes sHeroRail{ from{ height:0; } to{ height:100%; } }
+.s-hero-rail .label{ writing-mode: vertical-rl; transform: rotate(180deg); font-size:.72rem; letter-spacing:.32em; text-transform:uppercase; opacity:.7; }
+
+/* Text slides */
+.s-hero-content{ position:relative; max-width: 820px; }
+.s-hero-slide-text{ display:none; }
+.s-hero-slide-text.is-active{ display:block; }
+.s-hero-slide-text.is-active .s-hero-eyebrow{ animation: sHeroIn .8s .05s both; }
+.s-hero-slide-text.is-active .s-hero-title{ animation: sHeroIn .9s .15s both; }
+.s-hero-slide-text.is-active .s-hero-lead{ animation: sHeroIn .9s .35s both; }
+.s-hero-slide-text.is-active .s-hero-actions{ animation: sHeroIn .9s .5s both; }
+@keyframes sHeroIn{ from{ opacity:0; transform: translateY(28px); filter: blur(6px);} to{ opacity:1; transform:none; filter: blur(0);} }
+
+.s-hero-eyebrow{
+  display:inline-flex; align-items:center; gap:.55rem;
+  background: rgba(255,255,255,.10); color:#fff;
+  border:1px solid rgba(255,255,255,.20);
+  padding:.5rem 1rem; border-radius:999px;
+  font-size:.82rem; font-weight:600; margin-bottom:1.5rem;
+  backdrop-filter: blur(10px);
+}
+.s-hero-eyebrow i{ color: var(--s-gold-soft); }
+
+.s-hero-title{
+  font-size: clamp(2.4rem, 5.8vw, 4.6rem);
+  line-height:1.1; font-weight:900; color:#fff; margin:0 0 1.25rem;
+  letter-spacing:-.015em;
+}
+.s-hero-title .accent{
+  background: linear-gradient(95deg, var(--s-gold-soft) 0%, #fff 50%, var(--s-emerald-soft) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: 200% 100%; animation: sHeroShine 8s linear infinite;
+}
+@keyframes sHeroShine{ from{ background-position: 0% 0;} to{ background-position: 200% 0;} }
+
+.s-hero-lead{
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  color: rgba(255,255,255,.85); line-height:1.9; max-width: 640px; margin: 0 0 2rem;
+}
+.s-hero-actions{ display:flex; flex-wrap:wrap; gap:.8rem; }
+.s-hero-actions .btn{ padding:1rem 1.6rem; font-weight:700; border-radius:14px; }
+.s-hero-actions .btn-primary{
+  background: var(--s-grad-coral); color:#fff; border:none;
+  box-shadow: 0 14px 32px rgba(247,108,94,.40);
+}
+.s-hero-actions .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 20px 40px rgba(247,108,94,.5);}
+.s-hero-actions .btn-ghost-light{
+  background: rgba(255,255,255,.08); color:#fff;
+  border:1px solid rgba(255,255,255,.30); backdrop-filter: blur(10px);
+}
+.s-hero-actions .btn-ghost-light:hover{ background: rgba(255,255,255,.16); }
+
+/* Dots navigation */
+.s-hero-nav{
+  position:absolute; bottom: 7rem; right: 0; display:flex; gap:.6rem; z-index:5;
+}
+.s-hero-dot{
+  width: 26px; height: 4px; border-radius:4px;
+  background: rgba(255,255,255,.25); border:0; padding:0; cursor:pointer;
+  transition: all .35s ease;
+}
+.s-hero-dot:hover{ background: rgba(255,255,255,.45); }
+.s-hero-dot.is-active{ background: var(--s-gold-soft); width:60px; }
+
+/* Bottom stats strip — glassmorphism rail */
+.s-hero-stats{
+  position:absolute; left:0; right:0; bottom:0; z-index:4;
+  background: linear-gradient(180deg, transparent, rgba(4,47,44,.45));
+  border-top:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(8px);
+}
+.s-hero-stats .grid{
+  display:grid; grid-template-columns: repeat(2, 1fr); gap:0;
+  padding: 1.25rem 0;
+}
+@media (min-width: 768px){ .s-hero-stats .grid{ grid-template-columns: repeat(4, 1fr);} }
+.s-hero-stat{ padding: .6rem 1rem; text-align:center; border-right:1px solid rgba(255,255,255,.08); }
+.s-hero-stat:last-child{ border-right:0; }
+.s-hero-stat .n{ font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight:900; color:#fff; line-height:1; font-feature-settings:"tnum"; }
+.s-hero-stat .l{ font-size:.78rem; color: rgba(255,255,255,.75); margin-top:.4rem; }
+.s-hero-stat .n .unit{ color: var(--s-gold-soft); font-size:.7em; margin-inline-start:.2rem; }
+
+/* Scroll indicator */
+.s-hero-scroll{
+  position:absolute; bottom: 8.5rem; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,.6); font-size:.75rem; display:flex; align-items:center; gap:.4rem;
+  z-index:5; letter-spacing:.2em;
+}
+.s-hero-scroll i{ animation: sHeroBounce 2.2s ease-in-out infinite; }
+@keyframes sHeroBounce{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(6px);} }
+
+@media (max-width: 1023px){
+  .s-hero-stage{ padding: 5.5rem 0 8rem; }
+  .s-hero-nav{ bottom: 9rem; right: 50%; transform: translateX(50%); }
+  .s-hero-scroll{ display:none; }
+}
+@media (max-width: 640px){
+  .s-hero-stats .s-hero-stat{ border-right:0; border-bottom:1px solid rgba(255,255,255,.08); padding:.7rem; }
+  .s-hero-stats .s-hero-stat:nth-child(2n){ border-right:0; }
+}
+
+/* ==========================================================
+   ISKAN v3 — Modern SX Header Override (Floating, Capsule Nav)
+   ========================================================== */
+.sx-topbar{
+  background: linear-gradient(90deg, var(--s-navy-deep) 0%, var(--s-emerald-deep) 100%) !important;
+  color: rgba(255,255,255,.85) !important;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.sx-tlinks a, .sx-tcontact a{ color: rgba(255,255,255,.82) !important; }
+.sx-tlinks a:hover, .sx-tcontact a:hover{ color: var(--s-gold-soft) !important; }
+
+.sx-header{
+  background: rgba(255,255,255,.72) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
+  border-bottom: 1px solid rgba(11,87,80,.06) !important;
+  box-shadow: none !important;
+  position: sticky; top:0; z-index:60;
+}
+.sx-header::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background: linear-gradient(90deg, transparent, var(--s-emerald) 30%, var(--s-gold) 70%, transparent);
+  opacity:0; transition: opacity .35s ease;
+}
+.sx-header.scrolled{ background: rgba(255,255,255,.94) !important; box-shadow: 0 6px 24px rgba(11,87,80,.07) !important; }
+.sx-header.scrolled::after{ opacity:1; }
+
+.sx-main{ padding: .95rem 1.5rem !important; gap:1.4rem !important; }
+
+.sx-logo .sx-mark{
+  width:50px !important; height:50px !important; border-radius:15px !important;
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%) !important;
+  box-shadow: 0 12px 28px rgba(11,87,80,.32), inset 0 0 0 1px rgba(255,255,255,.18) !important;
+  position:relative; overflow:hidden;
+}
+.sx-logo .sx-mark::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,192,122,.45), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(45,168,158,.40), transparent 55%);
+}
+
+/* Capsule nav */
+.sx-nav{
+  background: rgba(241,247,245,.55);
+  border:1px solid rgba(11,87,80,.07);
+  border-radius: 999px;
+  padding: .4rem .85rem;
+  gap: .25rem !important;
+  backdrop-filter: blur(8px);
+}
+.sx-nav > a, .sx-nav > .sx-drop > button{
+  padding: .55rem .85rem !important;
+  border-radius: 999px;
+  font-size: .87rem !important;
+  color: var(--s-text) !important;
+  transition: background .25s, color .25s !important;
+}
+.sx-nav > a::after, .sx-nav > .sx-drop > button::after{ display:none !important; }
+.sx-nav > a:hover, .sx-nav > .sx-drop > button:hover{
+  background: rgba(15,118,110,.08); color: var(--s-emerald-deep) !important;
+}
+.sx-nav > a.active, .sx-nav > .sx-drop > button.active{
+  background: var(--s-emerald) !important; color: #fff !important;
+}
+
+/* Action buttons */
+.sx-icon-btn{
+  background: var(--s-mist) !important; color: var(--s-navy) !important;
+  border-radius: 14px !important; transition: all .25s !important;
+}
+.sx-icon-btn:hover{ background: var(--s-emerald) !important; color:#fff !important; transform: translateY(-1px); }
+.sx-icon-btn .sx-badge{ background: var(--s-coral) !important; }
+
+.sx-login-btn{
+  background: linear-gradient(135deg, var(--s-navy) 0%, var(--s-navy-deep) 100%) !important;
+  border-radius: 999px !important; padding: .7rem 1.2rem !important;
+  box-shadow: 0 10px 22px rgba(11,87,80,.25) !important;
+}
+.sx-login-btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 28px rgba(11,87,80,.32) !important; }
+
+.sx-donate-btn{
+  background: var(--s-grad-coral) !important;
+  border-radius: 999px !important; padding: .7rem 1.25rem !important;
+  box-shadow: 0 10px 22px rgba(247,108,94,.35) !important;
+}
+
+.sx-dmenu{ border-radius: 18px !important; }
+.sx-dmenu a:hover{ background: var(--s-mist) !important; color: var(--s-emerald-deep) !important; }
+.sx-dmenu a i{ color: var(--s-emerald) !important; }
+
+/* Remove leftover navy orb color that referenced old palette */
+.s-hero-orb.a{ background: var(--s-emerald) !important; }
+.s-hero-orb.b{ background: var(--s-gold) !important; opacity:.28; }
