@@ -592,7 +592,7 @@
   /* مشاركة السند */
   document.querySelectorAll("[data-share-receipt]").forEach((b) =>
     b.addEventListener("click", () => {
-      const txt = "سند تبرع — جمعية سَنَد";
+      const txt = "سند تبرع — جمعية إسكان";
       if (navigator.share) {
         navigator.share({ title: txt, text: txt, url: location.href }).catch(() => {});
       } else {
@@ -1169,7 +1169,7 @@
       const fd = new FormData(form);
       const order = {
         id: "ORD-2026-" + String(Math.floor(1000 + Math.random() * 9000)),
-        name: fd.get("name") || "عميل سَنَد",
+        name: fd.get("name") || "عميل إسكان",
         email: fd.get("email") || "",
         phone: fd.get("phone") || "",
         items: c,
@@ -1808,7 +1808,7 @@
       <a href="index.html" class="sx-logo">
         <div class="sx-mark">س</div>
         <div>
-          <div class="sx-name">جمعية سَنَد</div>
+          <div class="sx-name">جمعية إسكان</div>
           <div class="sx-tag">للخدمات الاجتماعية والرعاية</div>
         </div>
       </a>
@@ -1871,7 +1871,7 @@
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
   <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
     <div class="sx-mhead">
-      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">جمعية سَنَد</div></div></div>
+      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">جمعية إسكان</div></div></div>
       <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-mbody">
@@ -1937,7 +1937,7 @@
       <div class="sa-auth-brand">
         <div class="sa-auth-mark">س</div>
         <div>
-          <div class="sa-auth-name" id="saAuthTitle">جمعية سَنَد</div>
+          <div class="sa-auth-name" id="saAuthTitle">جمعية إسكان</div>
           <div class="sa-auth-tag" data-auth-subtitle>بوابة موحدة لجميع حسابات الجمعية</div>
         </div>
       </div>
@@ -1956,7 +1956,7 @@
         <!-- ====== شاشة 1: تسجيل الدخول (المعرّف) ====== -->
         <section class="sa-view" data-auth-view="login">
           <h3 class="sa-h">مرحبًا بعودتك 👋</h3>
-          <p class="sa-sub">سجّل دخولك إلى حسابك في جمعية سَنَد بكل سهولة عبر البريد أو رقم الجوال.</p>
+          <p class="sa-sub">سجّل دخولك إلى حسابك في جمعية إسكان بكل سهولة عبر البريد أو رقم الجوال.</p>
 
           <form class="sa-form" data-auth-form="login" novalidate>
             <label class="sa-field">
@@ -1981,7 +1981,7 @@
           <div class="sa-divider"><span>أو</span></div>
 
           <div class="sa-switch">
-            <span>ليس لديك حساب في جمعية سَنَد؟</span>
+            <span>ليس لديك حساب في جمعية إسكان؟</span>
             <button type="button" class="sa-btn sa-btn-switch sa-btn-switch--accent" data-auth-go="register">
               <i class="fas fa-user-plus"></i> إنشاء حساب جديد
             </button>
@@ -2068,7 +2068,7 @@
 
         <!-- ====== شاشة: إنشاء حساب جديد ====== -->
         <section class="sa-view" data-auth-view="register" hidden>
-          <h3 class="sa-h">انضم إلى عائلة سَنَد</h3>
+          <h3 class="sa-h">انضم إلى عائلة إسكان</h3>
           <p class="sa-sub">حساب واحد يفتح لك جميع خدمات الجمعية: التبرع، المتجر، طلب الخدمات والمزيد.</p>
 
           <form class="sa-form" data-auth-form="register" novalidate>
@@ -2096,7 +2096,7 @@
               <span>
                 أوافق على
                 <button type="button" class="sa-link sa-link-inline" data-auth-go="terms">الشروط والأحكام وسياسة الخصوصية</button>
-                الخاصة بجمعية سَنَد.
+                الخاصة بجمعية إسكان.
               </span>
             </label>
 
@@ -2106,7 +2106,7 @@
           </form>
 
           <div class="sa-switch">
-            <span>لديك حساب بالفعل في جمعية سَنَد؟</span>
+            <span>لديك حساب بالفعل في جمعية إسكان؟</span>
             <button type="button" class="sa-btn sa-btn-switch" data-auth-go="login">
               <i class="fas fa-right-to-bracket"></i> تسجيل الدخول
             </button>
@@ -2119,7 +2119,7 @@
           <p class="sa-sub">يرجى قراءة الشروط بعناية قبل الموافقة عليها.</p>
           <div class="sa-terms-box">
             <h4>1. التعريفات</h4>
-            <p>"الجمعية" تشير إلى جمعية سَنَد للخدمات الاجتماعية والرعاية، و"المستخدم" يشير إلى أي شخص يقوم بإنشاء حساب أو استخدام خدمات الجمعية.</p>
+            <p>"الجمعية" تشير إلى جمعية إسكان للخدمات الاجتماعية والرعاية، و"المستخدم" يشير إلى أي شخص يقوم بإنشاء حساب أو استخدام خدمات الجمعية.</p>
             <h4>2. استخدام الحساب</h4>
             <p>يلتزم المستخدم بتقديم بيانات صحيحة وكاملة، والحفاظ على سرية بيانات الدخول، وتحمّل مسؤولية أي نشاط يتم من خلال حسابه.</p>
             <h4>3. الخصوصية وحماية البيانات</h4>
@@ -2143,7 +2143,7 @@
         <section class="sa-view sa-view-success" data-auth-view="success" hidden>
           <div class="sa-success-anim"><i class="fas fa-circle-check"></i></div>
           <h3 class="sa-h" data-auth-success-title>تم تسجيل دخولك بنجاح</h3>
-          <p class="sa-sub" data-auth-success-sub>مرحبًا بك في بوابة جمعية سَنَد. سيتم تحويلك للوحة حسابك خلال لحظات.</p>
+          <p class="sa-sub" data-auth-success-sub>مرحبًا بك في بوابة جمعية إسكان. سيتم تحويلك للوحة حسابك خلال لحظات.</p>
           <button type="button" class="sa-btn sa-btn-primary" data-auth-close><span>متابعة</span> <i class="fas fa-arrow-left"></i></button>
         </section>
 
@@ -2159,7 +2159,7 @@
       <div class="sx-fbrand">
         <div class="sx-fname">
           <div class="sx-mark">س</div>
-          <div><div class="nm">جمعية سَنَد</div><div class="tg">للخدمات الاجتماعية والرعاية</div></div>
+          <div><div class="nm">جمعية إسكان</div><div class="tg">للخدمات الاجتماعية والرعاية</div></div>
         </div>
         <p>جمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين، عبر برامج مؤسسية تعزز جودة حياة المستفيدين وتدعم الاستدامة المجتمعية ضمن منظومة العمل الخيري السعودي.</p>
         <div class="sx-fsoc">
@@ -2248,7 +2248,7 @@
 
     <div class="sx-fbottom">
       <div class="sx-fbcont">
-        <div>© جميع الحقوق محفوظة لجمعية سَنَد <span data-year>2026</span></div>
+        <div>© جميع الحقوق محفوظة لجمعية إسكان <span data-year>2026</span></div>
         <div>بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
       </div>
     </div>
@@ -2266,7 +2266,7 @@
       </div>
       <div class="sx-mod-body sx-cert-body">
         <div class="sx-cert-meta">
-          <div class="sx-cmrow"><span>اسم الجمعية</span><b>جمعية سَنَد للخدمات الاجتماعية والرعاية</b></div>
+          <div class="sx-cmrow"><span>اسم الجمعية</span><b>جمعية إسكان للخدمات الاجتماعية والرعاية</b></div>
           <div class="sx-cmrow"><span data-sx-cert-numlabel>رقم الترخيص</span><b data-sx-cert-num>0000</b></div>
           <div class="sx-cmrow"><span>الجهة المشرفة</span><b>المركز الوطني لتنمية القطاع غير الربحي</b></div>
           <div class="sx-cmrow"><span>حالة الترخيص</span><b class="sx-cm-ok"><i class="fas fa-circle-check"></i> ساري</b></div>
@@ -2463,7 +2463,7 @@
         scope: "",
         img: "assets/images/License/association-license-certificate.jpg",
         file: "assets/images/License/association-license-certificate.jpg",
-        shareTitle: "شهادة ترخيص جمعية سَنَد",
+        shareTitle: "شهادة ترخيص جمعية إسكان",
       },
       fundraising: {
         title: "ترخيص جمع التبرعات",
@@ -2472,7 +2472,7 @@
         scope: "جمع التبرعات عبر القنوات المعتمدة",
         img: "assets/images/License/fundraising-license-certificate.jpg",
         file: "assets/images/License/fundraising-license-certificate.jpg",
-        shareTitle: "ترخيص جمع التبرعات — جمعية سَنَد",
+        shareTitle: "ترخيص جمع التبرعات — جمعية إسكان",
       },
     };
     let currentCert = "association";
@@ -2699,7 +2699,7 @@
         return;
       }
       root.querySelector("[data-auth-success-title]").textContent = "تم تسجيل دخولك بنجاح";
-      root.querySelector("[data-auth-success-sub]").textContent = "مرحبًا بك في بوابة جمعية سَنَد. يمكنك الآن متابعة طلباتك وإدارة حسابك.";
+      root.querySelector("[data-auth-success-sub]").textContent = "مرحبًا بك في بوابة جمعية إسكان. يمكنك الآن متابعة طلباتك وإدارة حسابك.";
       showSanadAuthView("success");
     });
 
@@ -2717,7 +2717,7 @@
       _saAuthState.email = regForm.email.value.trim();
       _saAuthState.phone = regForm.phone.value.trim();
       root.querySelector("[data-auth-success-title]").textContent = "تم إنشاء حسابك بنجاح 🎉";
-      root.querySelector("[data-auth-success-sub]").textContent = "أهلاً بك في عائلة سَنَد! سجّل دخولك الآن لتتمكن من استخدام كافة الخدمات.";
+      root.querySelector("[data-auth-success-sub]").textContent = "أهلاً بك في عائلة إسكان! سجّل دخولك الآن لتتمكن من استخدام كافة الخدمات.";
       showSanadAuthView("success");
     });
 
@@ -3081,7 +3081,7 @@
             </div>
 
             <div class="sxq-giftpv">
-              <div class="lbl">إهداء خير من جمعية سَنَد</div>
+              <div class="lbl">إهداء خير من جمعية إسكان</div>
               <div class="ttl">إلى: <span data-gp-to>—</span></div>
               <div class="msg">"<span data-gp-msg>تقبّل الله منكم صالح الأعمال</span>"</div>
               <div class="pers">من: <span data-gp-from>—</span> · <span data-gp-cause>—</span> <span data-gp-amt-wrap>· <b data-gp-amt>100 ريال</b></span></div>
@@ -3148,7 +3148,7 @@
     <div class="sxq-modal sxq-form-modal" id="sxqJoin" role="dialog" aria-modal="true">
       <div class="sxq-dialog">
         <div class="sxq-head">
-          <h3><span class="sxq-head-ic"><i class="fas fa-user-plus"></i></span><span>انضم معنا<small>فرص التطوع والتوظيف في جمعية سَنَد</small></span></h3>
+          <h3><span class="sxq-head-ic"><i class="fas fa-user-plus"></i></span><span>انضم معنا<small>فرص التطوع والتوظيف في جمعية إسكان</small></span></h3>
           <button class="sxq-close" data-sxq-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
         </div>
         <div class="sxq-body">
@@ -3355,7 +3355,7 @@
             <div class="sxq-success">
               <div class="sxq-success-ic"><i class="fas fa-check"></i></div>
               <h4>تم استلام طلب العضوية بنجاح</h4>
-              <p>شكرًا لرغبتكم في الانضمام لعضوية جمعية سَنَد. سيتم مراجعة طلبكم وفق لائحة الجمعية، وسيتم إشعاركم بحالة الطلب عبر بيانات التواصل المسجلة.</p>
+              <p>شكرًا لرغبتكم في الانضمام لعضوية جمعية إسكان. سيتم مراجعة طلبكم وفق لائحة الجمعية، وسيتم إشعاركم بحالة الطلب عبر بيانات التواصل المسجلة.</p>
               <div class="sxq-sum">
                 <div class="sxq-sum-row"><span>رقم الطلب</span><b data-mok-id>—</b></div>
                 <div class="sxq-sum-row"><span>نوع العضوية</span><b data-mok-type>—</b></div>
@@ -3378,7 +3378,7 @@
         <div class="sxq-head"><h3><i class="fas fa-image"></i> بطاقة الإهداء</h3><button class="sxq-close" data-sxq-close><i class="fas fa-times"></i></button></div>
         <div class="sxq-body">
           <div class="sxq-giftpv" style="padding:1.4rem 1rem">
-            <div class="lbl">جمعية سَنَد</div>
+            <div class="lbl">جمعية إسكان</div>
             <div class="ttl">إهداء خير إلى <span data-gc-to>—</span></div>
             <div class="msg">"<span data-gc-msg>—</span>"</div>
             <div class="pers">من: <span data-gc-from>—</span></div>
@@ -3400,7 +3400,7 @@
         <div class="sxq-body">
           <div style="text-align:center;padding:.5rem 0 1rem;border-bottom:1px dashed #dde5ef">
             <div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#1d3a6b,#0d7a4f);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:1.3rem">س</div>
-            <div style="font-weight:800;color:#0b2545;margin-top:.4rem">جمعية سَنَد للخدمات الاجتماعية</div>
+            <div style="font-weight:800;color:#0b2545;margin-top:.4rem">جمعية إسكان للخدمات الاجتماعية</div>
             <div style="font-size:.75rem;color:#7a8aa3">سند تبرع رسمي</div>
           </div>
           <div class="sxq-sum" style="margin-top:.6rem">
