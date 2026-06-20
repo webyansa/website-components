@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>تتبع طلب الخدمة · جمعية سَنَد</title>
+<meta name="description" content="تتبع حالة طلب الخدمة في جمعية سَنَد." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#0b2545',navyDeep:'#061633',navySoft:'#1d3a6b',emerald:'#0d7a4f',emeraldSoft:'#2fa776',emeraldDeep:'#075c3a',gold:'#b6873a',goldSoft:'#d9b066',sand:'#f3ead8',ivory:'#faf7f0',mist:'#eef2f6',border:'#e6ebf1',text:'#0f1d2e',muted:'#5b6b7d' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<div class="s-topbar hidden md:block">
+  <div class="s-container flex items-center justify-between py-2">
+    <div class="flex items-center gap-6">
+      <a href="services.html"><i class="fas fa-hand-holding-heart ml-1 text-sanad-emeraldSoft"></i> طلب خدمة</a>
+      <a href="service-tracking.html"><i class="fas fa-route ml-1 text-sanad-emeraldSoft"></i> تتبع طلب خدمة</a>
+      <a href="beneficiaries.html"><i class="fas fa-user-shield ml-1 text-sanad-emeraldSoft"></i> بوابة المستفيدين</a>
+      <a href="donations.html"><i class="fas fa-heart ml-1 text-sanad-emeraldSoft"></i> بوابة التبرع</a>
+    </div>
+    <div class="flex items-center gap-5 text-xs">
+      <span><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</span>
+      <span><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</span>
+    </div>
+  </div>
+</div>
+
+<header class="s-header">
+  <div class="s-container flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="s-logo-mark">س</div>
+      <div class="leading-tight">
+        <div class="font-extrabold text-lg text-sanad-navy">جمعية سَنَد</div>
+        <div class="text-[11px] text-sanad-muted font-medium">للخدمات الاجتماعية والرعاية</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="index.html" class="s-nav-link">الرئيسية</a>
+      <a href="about.html" class="s-nav-link">عن الجمعية</a>
+      <a href="services.html" class="s-nav-link active">الخدمات</a>
+      <a href="projects.html" class="s-nav-link">المشاريع</a>
+      <a href="donations.html" class="s-nav-link">بوابة التبرع</a>
+      <a href="governance.html" class="s-nav-link">الحوكمة</a>
+      <a href="media-center.html" class="s-nav-link">المركز الإعلامي</a>
+      <a href="store.html" class="s-nav-link">المتجر</a>
+      <a href="contact.html" class="s-nav-link">تواصل معنا</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="donations.html" class="hidden md:inline-flex btn btn-primary !py-2.5 !px-4 text-sm"><i class="fas fa-heart"></i> تبرع الآن</a>
+      <button data-mobile-toggle class="lg:hidden w-11 h-11 rounded-xl border border-sanad-border flex items-center justify-center text-sanad-navy" aria-label="القائمة"><i class="fas fa-bars text-lg"></i></button>
+    </div>
+  </div>
+</header>
+
+<div data-mobile-overlay class="s-mobile-overlay fixed inset-0 bg-black/50 z-[60]"></div>
+<aside data-mobile-menu class="s-mobile fixed top-0 right-0 h-full w-[86%] max-w-sm bg-white z-[61] shadow-2xl p-6 overflow-y-auto">
+  <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3"><div class="s-logo-mark">س</div><div class="font-extrabold text-sanad-navy">جمعية سَنَد</div></div>
+    <button data-mobile-close class="w-10 h-10 rounded-full bg-sanad-mist flex items-center justify-center text-sanad-navy"><i class="fas fa-xmark"></i></button>
+  </div>
+  <nav class="flex flex-col gap-1 text-base font-semibold">
+    <a href="index.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الرئيسية</a>
+    <a href="about.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">عن الجمعية</a>
+    <a href="services.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">الخدمات</a>
+    <a href="service-tracking.html" class="py-3 px-3 rounded-lg bg-sanad-ivory text-sanad-emeraldDeep">تتبع طلب خدمة</a>
+    <a href="contact.html" class="py-3 px-3 rounded-lg hover:bg-sanad-ivory">تواصل معنا</a>
+  </nav>
+</aside>
+
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide6.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">تتبع طلب الخدمة</span></div>
+    <h1>تتبع طلب الخدمة</h1>
+    <p class="s-hero-lead">تابع حالة طلبك ومعرفة المرحلة الحالية والإجراءات المطلوبة بسهولة ووضوح.</p>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container max-w-4xl">
+    <div class="trk-search-card">
+      <div class="head">
+        <i class="fas fa-route"></i>
+        <div><h3>تتبع طلب الخدمة</h3><p>أدخل رقم الطلب ورقم الجوال لعرض حالة طلبك.</p></div>
+      </div>
+      <form id="trkForm" class="grid md:grid-cols-3 gap-4">
+        <div class="srv-field md:col-span-1">
+          <label>رقم الطلب *</label>
+          <input type="text" id="trkId" required value="SRV-2026-0001" placeholder="مثال: SRV-2026-0001">
+        </div>
+        <div class="srv-field md:col-span-1">
+          <label>رقم الجوال *</label>
+          <div class="srv-phone"><span>+966</span><input type="tel" id="trkPhone" required pattern="5[0-9]{8}" maxlength="9" value="555555555" placeholder="5XXXXXXXX"></div>
+        </div>
+        <div class="srv-field md:col-span-1 flex items-end">
+          <button class="btn btn-primary w-full"><i class="fas fa-search"></i> تتبع الطلب</button>
+        </div>
+      </form>
+      <p class="text-xs text-sanad-muted mt-3"><i class="fas fa-circle-info text-sanad-emerald"></i> مثال للتجربة: رقم الطلب <strong>SRV-2026-0001</strong></p>
+    </div>
+
+    <div id="trkResult" class="mt-10 hidden">
+      <div class="trk-summary">
+        <div class="trk-sum-head">
+          <div>
+            <span class="badge">طلب نشط</span>
+            <h3 class="mt-2">طلب دعم أسري</h3>
+            <p class="text-sm text-sanad-muted">رقم الطلب: <strong id="trkOutId">SRV-2026-0001</strong></p>
+          </div>
+          <div class="trk-status">
+            <span class="dot"></span>
+            <div><small>الحالة الحالية</small><strong>دراسة الأهلية</strong></div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 text-sm">
+          <div class="trk-info"><small>مقدّم الطلب</small><strong>عبدالله محمد</strong></div>
+          <div class="trk-info"><small>نوع الخدمة</small><strong>دعم أسري</strong></div>
+          <div class="trk-info"><small>تاريخ التقديم</small><strong>01 / 06 / 2026</strong></div>
+          <div class="trk-info"><small>مستوى الأولوية</small><strong class="text-sanad-emerald">عادي</strong></div>
+          <div class="trk-info"><small>الفرع المسؤول</small><strong>الرياض - المقر الرئيسي</strong></div>
+          <div class="trk-info"><small>آخر تحديث</small><strong>03 / 06 / 2026</strong></div>
+          <div class="trk-info"><small>مدة الدراسة</small><strong>3-5 أيام عمل</strong></div>
+          <div class="trk-info"><small>الموظف المسؤول</small><strong>قسم الخدمات الاجتماعية</strong></div>
+        </div>
+      </div>
+
+      <div class="trk-timeline">
+        <h3 class="font-extrabold text-sanad-navy mb-5"><i class="fas fa-stream text-sanad-emerald"></i> مراحل الطلب</h3>
+        <ol>
+          <li class="done"><span class="ic"><i class="fas fa-check"></i></span><div><strong>تم استلام الطلب</strong><small>01 / 06 / 2026 - 09:42</small></div></li>
+          <li class="done"><span class="ic"><i class="fas fa-check"></i></span><div><strong>مراجعة البيانات</strong><small>01 / 06 / 2026 - 14:10</small></div></li>
+          <li class="current"><span class="ic"><i class="fas fa-spinner fa-spin"></i></span><div><strong>دراسة الأهلية</strong><small>قيد العمل الآن</small></div></li>
+          <li><span class="ic">4</span><div><strong>التحقق أو الزيارة الميدانية</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">5</span><div><strong>الاعتماد</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">6</span><div><strong>تقديم الخدمة</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">7</span><div><strong>قياس الرضا</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">8</span><div><strong>إغلاق الطلب</strong><small>لاحقًا</small></div></li>
+        </ol>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 trk-section">
+          <h3><i class="fas fa-circle-info text-sanad-emerald"></i> تفاصيل الطلب</h3>
+          <div class="grid sm:grid-cols-2 gap-3 text-sm mt-3">
+            <div class="trk-mini"><small>رقم الجوال</small><strong>+966 5XXXXXX55</strong></div>
+            <div class="trk-mini"><small>المدينة</small><strong>الرياض</strong></div>
+            <div class="trk-mini"><small>عدد الأسرة</small><strong>6 أفراد</strong></div>
+            <div class="trk-mini"><small>قناة التواصل</small><strong>واتساب</strong></div>
+          </div>
+          <h4 class="font-bold text-sanad-navy mt-5 mb-2">المرفقات المرفوعة</h4>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="trk-chip"><i class="fas fa-file-image"></i> الهوية</span>
+            <span class="trk-chip"><i class="fas fa-file-image"></i> إثبات السكن</span>
+            <span class="trk-chip missing"><i class="fas fa-triangle-exclamation"></i> تعريف الدخل (ناقص)</span>
+          </div>
+          <h4 class="font-bold text-sanad-navy mt-5 mb-2">آخر تواصل</h4>
+          <p class="text-sm text-sanad-muted">تم التواصل معك في 02/06/2026 لطلب رفع تعريف الدخل لاستكمال الدراسة.</p>
+        </div>
+        <aside class="trk-alert">
+          <h3><i class="fas fa-bell"></i> الإجراءات المطلوبة</h3>
+          <p class="text-sm leading-loose mt-2">يرجى تحديث المرفقات المطلوبة لاستكمال دراسة الطلب.</p>
+          <div class="flex flex-col gap-2 mt-4">
+            <button class="btn btn-primary"><i class="fas fa-pen"></i> تحديث بيانات الطلب</button>
+            <button class="btn btn-accent"><i class="fas fa-cloud-arrow-up"></i> رفع مرفقات إضافية</button>
+            <a href="contact.html" class="btn btn-outline"><i class="fas fa-headset"></i> التواصل مع الجمعية</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="trkHelp" class="trk-help mt-12">
+      <h3>هل تحتاج مساعدة؟</h3>
+      <p>فريق خدمة المستفيدين جاهز لمساعدتك في أي وقت.</p>
+      <div class="flex flex-wrap gap-3 justify-center mt-4">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-headset"></i> تواصل مع فريق الخدمات</a>
+        <a href="contact.html#complaints" class="btn btn-accent"><i class="fas fa-bullhorn"></i> رفع شكوى أو مقترح</a>
+        <a href="services.html" class="btn btn-outline"><i class="fas fa-arrow-right"></i> العودة إلى الخدمات</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="s-footer">
+  <div class="s-container pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-5"><div class="s-logo-mark">س</div><div><div class="font-extrabold text-white text-lg">جمعية سَنَد</div><div class="text-xs text-white/60">للخدمات الاجتماعية والرعاية</div></div></div>
+        <p class="text-sm leading-loose mb-5">جمعية أهلية مرخّصة تعمل ضمن منظومة العمل الخيري السعودي.</p>
+      </div>
+      <div class="lg:col-span-2"><h4>روابط رئيسية</h4><ul class="space-y-2.5 text-sm"><li><a href="index.html">الرئيسية</a></li><li><a href="about.html">عن الجمعية</a></li><li><a href="donations.html">بوابة التبرع</a></li><li><a href="beneficiaries.html">بوابة المستفيدين</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الخدمات</h4><ul class="space-y-2.5 text-sm"><li><a href="services.html">طلب خدمة</a></li><li><a href="service-tracking.html">تتبع طلب خدمة</a></li><li><a href="store.html">المتجر</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>الحوكمة</h4><ul class="space-y-2.5 text-sm"><li><a href="governance.html">اللوائح والسياسات</a></li><li><a href="governance.html">التقارير المالية</a></li></ul></div>
+      <div class="lg:col-span-2"><h4>تواصل</h4><div class="space-y-2 text-xs text-white/70"><div><i class="fas fa-phone ml-1 text-sanad-goldSoft"></i> 920000000</div><div><i class="fas fa-envelope ml-1 text-sanad-goldSoft"></i> info@sanad.org.sa</div></div></div>
+    </div>
+  </div>
+  <div class="border-t border-white/10"><div class="s-container py-5 text-xs text-white/60">© <span data-year>2026</span> جمعية سَنَد. جميع الحقوق محفوظة.</div></div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
