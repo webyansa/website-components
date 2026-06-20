@@ -1806,7 +1806,7 @@
     </div>
     <div class="sx-main">
       <a href="index.html" class="sx-logo">
-        <div class="sx-mark">س</div>
+        <div class="sx-mark">إ</div>
         <div>
           <div class="sx-name">جمعية إسكان</div>
           <div class="sx-tag">للخدمات الاجتماعية والرعاية</div>
@@ -1871,7 +1871,7 @@
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
   <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
     <div class="sx-mhead">
-      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">جمعية إسكان</div></div></div>
+      <div class="sx-logo"><div class="sx-mark">إ</div><div><div class="sx-name">جمعية إسكان</div></div></div>
       <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-mbody">
@@ -2158,7 +2158,7 @@
     <div class="sx-fmain">
       <div class="sx-fbrand">
         <div class="sx-fname">
-          <div class="sx-mark">س</div>
+          <div class="sx-mark">إ</div>
           <div><div class="nm">جمعية إسكان</div><div class="tg">للخدمات الاجتماعية والرعاية</div></div>
         </div>
         <p>جمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين، عبر برامج مؤسسية تعزز جودة حياة المستفيدين وتدعم الاستدامة المجتمعية ضمن منظومة العمل الخيري السعودي.</p>
