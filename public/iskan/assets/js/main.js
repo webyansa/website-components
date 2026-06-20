@@ -3694,7 +3694,7 @@
     if (!name || !phone) { window.sxToast && sxToast("الرجاء إدخال الاسم ورقم الجوال"); return; }
     const id = (type === "vol" ? "VOL-2026-" : "CAR-2026-") + String(Math.floor(Math.random()*9000)+1000);
     $("[data-jok-title]", jModal).textContent = type === "vol" ? "تم استلام طلب التطوع بنجاح" : "تم استلام طلب التوظيف بنجاح";
-    $("[data-jok-msg]", jModal).textContent = "شكرًا لاهتمامكم بالانضمام إلى أسرة سَنَد، سنتواصل معكم قريبًا.";
+    $("[data-jok-msg]", jModal).textContent = "شكرًا لاهتمامكم بالانضمام إلى أسرة إسكان، سنتواصل معكم قريبًا.";
     $("[data-jok-id]", jModal).textContent = id;
     $("[data-jok-type]", jModal).textContent = type === "vol" ? "فرصة تطوع" : "وظيفة";
     gotoJoinPanel("ok");
