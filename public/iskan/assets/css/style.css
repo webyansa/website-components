@@ -3868,3 +3868,233 @@ html{scroll-behavior:smooth;}
 /* Remove leftover navy orb color that referenced old palette */
 .s-hero-orb.a{ background: var(--s-emerald) !important; }
 .s-hero-orb.b{ background: var(--s-gold) !important; opacity:.28; }
+
+/* ==========================================================
+   ISKAN v4 — Header polish · Inner Hero signature · Floating
+   bar refinement · Unified Footer palette
+   (Non-structural: overrides only, no class/markup changes)
+   ========================================================== */
+
+/* ---------- 1) HEADER: no wrapping + breathing capsule ---------- */
+.sx-main{
+  padding: .85rem 1.5rem !important;
+  gap: 1rem !important;
+  max-width: 1320px;
+}
+.sx-logo{ flex-shrink:0; }
+.sx-logo .sx-name{ font-size: 1rem !important; }
+.sx-logo .sx-tag{ font-size:.66rem !important; letter-spacing:.01em; }
+
+/* Capsule nav: tighter, never wraps */
+.sx-nav{
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+  padding: .35rem .55rem !important;
+  gap: .15rem !important;
+  background: rgba(238,246,244,.7);
+  border:1px solid rgba(11,87,80,.08);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.5);
+}
+.sx-nav > a, .sx-nav > .sx-drop > button{
+  font-size: .82rem !important;
+  padding: .5rem .7rem !important;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+.sx-nav > .sx-drop > button .fa-chevron-down{ font-size:.55rem; margin-inline-start:.15rem; }
+
+/* Show full nav only when there is real space; below that → burger */
+@media (max-width: 1279.98px){
+  .sx-nav{ display:none !important; }
+  .sx-burger{ display:inline-flex !important; }
+}
+@media (min-width: 1280px){
+  .sx-burger{ display:none !important; }
+}
+
+/* Action cluster: compact icons */
+.sx-actions{ gap:.4rem !important; margin-inline-start:.5rem !important; }
+.sx-icon-btn{ width:40px !important; height:40px !important; border-radius:13px !important; }
+.sx-login-btn{
+  padding:.6rem 1rem !important;
+  font-size:.8rem !important;
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%) !important;
+  box-shadow: 0 8px 20px rgba(11,87,80,.22) !important;
+}
+
+/* Topbar: subtle, lower contrast */
+.sx-topbar{
+  font-size:.72rem !important;
+  background: linear-gradient(90deg, var(--s-navy-deep) 0%, #0b3a36 60%, var(--s-emerald-deep) 100%) !important;
+}
+.sx-topbar .sx-tcont{ padding:.5rem 1.5rem !important; }
+
+/* Hairline accent under header */
+.sx-header::after{
+  background: linear-gradient(90deg, transparent, var(--s-emerald) 25%, var(--s-gold) 55%, var(--s-coral) 75%, transparent) !important;
+  height: 1.5px !important;
+}
+
+/* ---------- 2) INNER PAGE HERO: Iskan signature ---------- */
+/* Replace navy slab with themed teal+amber + soft "rooftops" pattern */
+.s-page-hero{
+  background-color: var(--s-navy-deep) !important;
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0 clamp(4rem, 6vw, 5.5rem) !important;
+}
+.s-page-hero .s-hero-bg{ filter: saturate(.7) brightness(.55); }
+.s-page-hero::before{
+  background:
+    linear-gradient(120deg, rgba(4,47,44,.94) 0%, rgba(11,87,80,.86) 45%, rgba(15,118,110,.62) 100%) !important;
+}
+.s-page-hero::after{
+  background:
+    radial-gradient(60% 50% at 92% 8%, rgba(245,158,91,.32), transparent 60%),
+    radial-gradient(50% 45% at 6% 100%, rgba(247,108,94,.18), transparent 65%),
+    /* signature rooftop pattern */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='110' viewBox='0 0 220 110'><g fill='none' stroke='%23ffffff' stroke-opacity='.06' stroke-width='1.2'><path d='M0 100 L30 70 L60 100 L60 60 L100 60 L100 100 L130 70 L160 100 L160 65 L200 65 L200 100 L220 100'/><path d='M70 60 L70 45 L85 45 L85 60'/><path d='M170 65 L170 50 L185 50 L185 65'/></g></svg>") repeat-x bottom left/220px 110px !important;
+  opacity:.95;
+}
+.s-page-hero h1{ font-weight: 800 !important; }
+.s-page-hero .s-hero-lead{ color: rgba(255,255,255,.88) !important; }
+.s-hero-meta i{ color: var(--s-gold-soft) !important; }
+.s-crumbs{
+  background: rgba(255,255,255,.09);
+  border-color: rgba(245,158,91,.25);
+}
+.s-crumbs .sep{ color: var(--s-gold) !important; }
+
+/* Floating glow accents on inner hero */
+.s-page-hero::before{ z-index:-1; }
+.s-page-hero{ isolation:isolate; }
+
+/* Sub-nav adjustment to new palette */
+.s-subnav{ border-color: rgba(11,87,80,.10) !important; }
+.s-subnav a:hover{ background: var(--s-mist); color: var(--s-emerald-deep); }
+
+/* ---------- 3) FLOATING QUICK BAR (sxq-fab) refinement ---------- */
+.sxq-fab-list{
+  background: rgba(255,255,255,.78) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border:1px solid rgba(11,87,80,.10) !important;
+  border-radius: 22px !important;
+  padding: 7px !important;
+  gap: 4px !important;
+  box-shadow: 0 18px 40px rgba(11,87,80,.16), 0 2px 6px rgba(11,87,80,.06) !important;
+  position: relative;
+}
+.sxq-fab-list::before{
+  content:""; position:absolute; inset:0; border-radius:22px; pointer-events:none;
+  background: linear-gradient(180deg, rgba(245,158,91,.18), transparent 40%, rgba(15,118,110,.14) 100%);
+  opacity:.55;
+}
+.sxq-fab-item{
+  width:46px !important; height:46px !important; border-radius:14px !important;
+  color: var(--s-navy-deep) !important;
+  position: relative; z-index:1;
+}
+.sxq-fab-item i{ color: var(--s-emerald-deep) !important; font-size:1.02rem !important; transition:.25s; }
+.sxq-fab-item:hover{
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%) !important;
+  transform: translateX(-3px) scale(1.04) !important;
+  box-shadow: 0 10px 22px rgba(11,87,80,.28);
+}
+.sxq-fab-item:hover i{ color:#fff !important; transform: scale(1.1); }
+.sxq-fab-item-gold i{ color: var(--s-gold) !important; }
+.sxq-fab-item-gold:hover{ background: linear-gradient(135deg, var(--s-gold) 0%, var(--s-coral) 100%) !important; }
+.sxq-fab-item-gold:hover i{ color:#fff !important; }
+.sxq-fab-label{
+  background: var(--s-navy-deep) !important;
+  box-shadow: 0 10px 22px rgba(4,47,44,.35) !important;
+  border:1px solid rgba(245,158,91,.25);
+}
+.sxq-fab-label::after{ background: var(--s-navy-deep) !important; }
+
+/* ---------- 4) FOOTER: unified Teal + Amber palette ---------- */
+.sx-footer{
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(15,118,110,.45), transparent 55%),
+    radial-gradient(80% 60% at 0% 100%, rgba(245,158,91,.10), transparent 60%),
+    linear-gradient(180deg, #042F2C 0%, #021F1D 100%) !important;
+  color: #c7d6d3 !important;
+  position: relative;
+  overflow: hidden;
+}
+.sx-footer::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--s-emerald-soft) 20%, var(--s-gold) 50%, var(--s-coral) 70%, transparent);
+  opacity:.7;
+}
+.sx-fbrand .sx-fname .sx-mark{
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%) !important;
+  box-shadow: 0 10px 22px rgba(15,118,110,.35), inset 0 0 0 1px rgba(255,192,122,.25) !important;
+}
+.sx-fbrand .sx-fname .nm{ color:#fff !important; }
+.sx-fbrand .sx-fname .tg{ color: var(--s-gold-soft) !important; }
+.sx-fbrand p{ color:#a8bdb9 !important; }
+
+.sx-fsoc a{
+  background: rgba(255,255,255,.06) !important;
+  color:#cfe1de !important;
+  border:1px solid rgba(255,192,122,.10);
+  transition: all .25s;
+}
+.sx-fsoc a:hover{
+  background: linear-gradient(135deg, var(--s-gold), var(--s-coral)) !important;
+  color:#042F2C !important;
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+.sx-fcol h4{ color:#fff !important; }
+.sx-fcol h4::after{ background: linear-gradient(90deg, var(--s-gold), var(--s-coral)) !important; width:38px !important; height:3px !important; }
+.sx-fcol a{ color:#a8bdb9 !important; }
+.sx-fcol a:hover{ color: var(--s-gold-soft) !important; }
+.sx-fcol a i{ color: var(--s-emerald-soft) !important; }
+.sx-fcontact li{ color:#a8bdb9 !important; }
+.sx-fcontact li i{ color: var(--s-gold) !important; }
+
+.sx-fnews input{
+  background: rgba(255,255,255,.05) !important;
+  border-color: rgba(245,158,91,.18) !important;
+  color:#fff !important;
+}
+.sx-fnews input::placeholder{ color:#7e958f !important; }
+.sx-fnews input:focus{
+  border-color: var(--s-gold) !important;
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(245,158,91,.18);
+}
+.sx-fnews button{
+  background: linear-gradient(135deg, var(--s-emerald) 0%, var(--s-navy-deep) 100%) !important;
+  border-radius: 12px !important;
+}
+.sx-fnews button:hover{ filter: brightness(1.1); }
+
+/* License card unified */
+.sx-license-card{
+  background:
+    linear-gradient(135deg, rgba(15,118,110,.18), rgba(245,158,91,.10)) !important;
+  border:1px solid rgba(245,158,91,.28) !important;
+  border-radius: 18px !important;
+}
+.sx-license-card .sx-lic-title{ color:#fff !important; }
+.sx-license-card .sx-lic-desc{ color:#a8bdb9 !important; }
+.sx-license-card .sx-lic-meta{ color:#a8bdb9 !important; }
+.sx-license-card .sx-lic-meta b{ color: var(--s-gold-soft) !important; }
+.sx-lic-btn-primary{
+  background: linear-gradient(135deg, var(--s-gold), var(--s-coral)) !important;
+  color:#fff !important; border:0;
+  box-shadow: 0 10px 22px rgba(247,108,94,.28);
+}
+.sx-lic-btn-outline{
+  background: transparent !important;
+  color:#fff !important;
+  border:1px solid rgba(255,255,255,.25) !important;
+}
+.sx-lic-btn-outline:hover{ background: rgba(255,255,255,.08) !important; }
+
+.sx-fbottom{ border-top-color: rgba(245,158,91,.14) !important; }
+.sx-fbottom .sx-fbcont{ color:#8aa19d !important; }
+.sx-fbottom a.sx-by{ color: var(--s-gold-soft) !important; }
+
