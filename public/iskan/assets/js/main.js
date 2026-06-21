@@ -3737,3 +3737,27 @@
   }
 
 })();
+
+/* ===== Media v3 — feature slider ===== */
+(function(){
+  const root = document.querySelector('[data-media-slider]');
+  if(!root) return;
+  const slides = Array.from(root.querySelectorAll('[data-slides] > .s-media-v3-slide'));
+  const dots = Array.from(root.querySelectorAll('[data-dots] button'));
+  const prev = root.querySelector('[data-slide-prev]');
+  const next = root.querySelector('[data-slide-next]');
+  let i = 0, timer = null;
+  function go(n){
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s,k)=> s.classList.toggle('is-active', k===i));
+    dots.forEach((d,k)=> d.classList.toggle('is-active', k===i));
+  }
+  function start(){ stop(); timer = setInterval(()=> go(i+1), 6000); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  prev && prev.addEventListener('click', ()=>{ go(i-1); start(); });
+  next && next.addEventListener('click', ()=>{ go(i+1); start(); });
+  dots.forEach(d=> d.addEventListener('click', ()=>{ go(parseInt(d.dataset.go,10)||0); start(); }));
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  start();
+})();
