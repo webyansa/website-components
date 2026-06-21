@@ -3738,3 +3738,18 @@
 
 })();
 
+
+/* ===== Media v3 — tab filter ===== */
+(function(){
+  const grid = document.querySelector('[data-media-filter]');
+  if(!grid) return;
+  const tabs = document.querySelectorAll('.s-media-v3-tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('is-active'));
+    t.classList.add('is-active');
+    const f = t.dataset.filter || 'all';
+    grid.querySelectorAll('[data-cat]').forEach(el => {
+      el.classList.toggle('is-hidden', !(f === 'all' || el.dataset.cat === f));
+    });
+  }));
+})();

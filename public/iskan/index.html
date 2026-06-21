@@ -854,18 +854,18 @@
           </div>
           <div class="s-media-v3-actions">
             <div class="s-media-v3-tabs" role="tablist">
-              <button class="s-media-v3-tab is-active" type="button"><i class="fas fa-th-large"></i> الكل</button>
-              <button class="s-media-v3-tab" type="button"><i class="fas fa-bullhorn"></i> أخبار</button>
-              <button class="s-media-v3-tab" type="button"><i class="fas fa-chart-column"></i> تقارير</button>
-              <button class="s-media-v3-tab" type="button"><i class="fas fa-play"></i> فيديو</button>
+              <button class="s-media-v3-tab is-active" type="button" data-filter="all"><i class="fas fa-th-large"></i> الكل</button>
+              <button class="s-media-v3-tab" type="button" data-filter="news"><i class="fas fa-bullhorn"></i> أخبار</button>
+              <button class="s-media-v3-tab" type="button" data-filter="reports"><i class="fas fa-chart-column"></i> تقارير</button>
+              <button class="s-media-v3-tab" type="button" data-filter="video"><i class="fas fa-play"></i> فيديو</button>
             </div>
             <a href="news.html" class="s-media-v3-all">كل المحتوى <i class="fas fa-arrow-left"></i></a>
           </div>
         </div>
 
-        <div class="s-media-v3-grid reveal reveal-delay-1">
+        <div class="s-media-v3-grid reveal reveal-delay-1" data-media-filter>
           <!-- بطاقة محورية كبيرة -->
-          <a href="news-details.html" class="s-media-v3-feature">
+          <a href="news-details.html" class="s-media-v3-feature" data-cat="news">
             <div class="s-media-v3-feature-img" style="background-image:url('assets/images/posts/1.jpeg');"></div>
             <div class="s-media-v3-feature-shade"></div>
             <div class="s-media-v3-feature-body">
@@ -883,11 +883,11 @@
             </div>
           </a>
 
-          <!-- ثلاث بطاقات صغيرة افقية بصور -->
+          <!-- ثلاث بطاقات بصور — متساوية الارتفاع مع البطاقة المحورية -->
           <div class="s-media-v3-list">
-            <a href="news-details.html" class="s-media-v3-item">
+            <a href="news-details.html" class="s-media-v3-item" data-cat="reports">
               <div class="s-media-v3-item-img" style="background-image:url('assets/images/posts/2.jpeg');">
-                <span class="s-media-v3-item-cat">حوكمة</span>
+                <span class="s-media-v3-item-cat">تقارير</span>
               </div>
               <div class="s-media-v3-item-body">
                 <h4>نشر التقرير السنوي للعام 1446هـ</h4>
@@ -898,9 +898,9 @@
                 </div>
               </div>
             </a>
-            <a href="news-details.html" class="s-media-v3-item">
+            <a href="news-details.html" class="s-media-v3-item" data-cat="news">
               <div class="s-media-v3-item-img" style="background-image:url('assets/images/posts/3.jpeg');">
-                <span class="s-media-v3-item-cat s-media-v3-item-cat--gold">برامج</span>
+                <span class="s-media-v3-item-cat s-media-v3-item-cat--gold">أخبار</span>
               </div>
               <div class="s-media-v3-item-body">
                 <h4>انطلاق الحملة الشتوية لدعم 3,000 أسرة</h4>
@@ -911,17 +911,17 @@
                 </div>
               </div>
             </a>
-            <a href="news-details.html" class="s-media-v3-item">
+            <a href="news-details.html" class="s-media-v3-item" data-cat="video">
               <div class="s-media-v3-item-img" style="background-image:url('assets/images/posts/4.jpeg');">
-                <span class="s-media-v3-item-cat">تطوع</span>
+                <span class="s-media-v3-item-cat">فيديو</span>
                 <span class="s-media-v3-item-play"><i class="fas fa-play"></i></span>
               </div>
               <div class="s-media-v3-item-body">
-                <h4>فتح باب التسجيل لـ 200 متطوع جديد</h4>
-                <p>برنامج تأهيل ميداني لرفع كفاءة فرق العمل التطوعي.</p>
+                <h4>جولة ميدانية في مشروع إسكان الأسر المنتجة</h4>
+                <p>لقطات حصرية من تسليم الوحدات السكنية الجديدة للمستفيدين.</p>
                 <div class="s-media-v3-item-meta">
-                  <span><i class="far fa-calendar"></i> قريبًا</span>
-                  <span><i class="far fa-eye"></i> 612</span>
+                  <span><i class="far fa-calendar"></i> جديد</span>
+                  <span><i class="far fa-eye"></i> 2.4k</span>
                 </div>
               </div>
             </a>
