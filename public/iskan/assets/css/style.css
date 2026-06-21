@@ -4815,3 +4815,61 @@ html{scroll-behavior:smooth;}
 
 /* hide old v2 media */
 .s-media-v2{ display:none !important; }
+
+/* ============ Media v3 — Polish v4 (equal heights + filter) ============ */
+.s-media-v3-grid{
+  grid-template-columns: 1.25fr 1fr;
+  align-items: stretch;
+  gap: 24px;
+}
+.s-media-v3-feature{
+  min-height: 0;
+  height: 100%;
+}
+.s-media-v3-list{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  height: 100%;
+}
+.s-media-v3-item{
+  height: 100%;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.s-media-v3-item-img{
+  min-height: 100%;
+  height: 100%;
+}
+.s-media-v3-item-body{
+  padding: 16px 18px;
+  justify-content: center;
+}
+.s-media-v3-item-body h4{
+  font-size: 15.5px;
+  line-height: 1.55;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.s-media-v3-item-body p{ display:none; }
+.s-media-v3-item-meta{ margin-top: 8px; }
+
+/* hide/show on filter */
+.s-media-v3-grid [data-cat].is-hidden{
+  opacity: .25;
+  filter: grayscale(.6);
+  pointer-events: none;
+}
+.s-media-v3-grid [data-cat]{
+  transition: opacity .35s ease, filter .35s ease, transform .35s ease;
+}
+
+@media (max-width: 1023px){
+  .s-media-v3-grid{ grid-template-columns: 1fr; }
+  .s-media-v3-feature{ min-height: 420px; }
+  .s-media-v3-list{ grid-template-rows: auto; }
+  .s-media-v3-item{ height: auto; min-height: 130px; }
+}
+@media (max-width: 560px){
+  .s-media-v3-item{ grid-template-columns: 130px 1fr; }
+}
