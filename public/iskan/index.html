@@ -882,63 +882,73 @@
     </section>
 
     <!-- ============ 11) الأخبار ============ -->
-    <section class="s-section">
+    <section class="s-section s-media-v2">
       <div class="s-container">
-        <div class="flex flex-wrap items-end justify-between gap-6 mb-10 reveal">
+        <div class="s-media-v2-head reveal">
           <div>
             <span class="s-eyebrow mb-4"><i class="fas fa-newspaper"></i> المركز الإعلامي</span>
-            <h2 class="s-title font-extrabold">آخر أخبار الجمعية</h2>
+            <h2 class="s-title font-extrabold">نبضنا الإعلامي… يومًا بيوم</h2>
+            <p class="s-sub mt-3 max-w-2xl">قصص حقيقية من ميدان العطاء، شراكات استراتيجية، وتغطيات لأبرز فعاليات الجمعية.</p>
           </div>
-          <a href="news.html" class="btn btn-outline">كل الأخبار <i class="fas fa-arrow-left"></i></a>
+          <div class="s-media-v2-actions">
+            <div class="s-media-v2-tabs" role="tablist">
+              <button class="s-media-tab is-active" type="button">الكل</button>
+              <button class="s-media-tab" type="button">أخبار</button>
+              <button class="s-media-tab" type="button">تقارير</button>
+              <button class="s-media-tab" type="button">فيديو</button>
+            </div>
+            <a href="news.html" class="btn btn-outline">كل الأخبار <i class="fas fa-arrow-left"></i></a>
+          </div>
         </div>
 
-        <div class="grid lg:grid-cols-12 gap-6 reveal reveal-delay-1 s-news-grid">
-          <!-- خبر رئيسي -->
-          <a href="news-details.html" class="lg:col-span-7 s-news-hero-v2">
-            <div class="s-news-hero-img" style="background-image:url('assets/images/posts/1.jpeg');"></div>
-            <div class="s-news-hero-overlay"></div>
-            <div class="s-news-hero-body">
-              <div class="s-news-hero-tags">
-                <span class="s-news-chip"><i class="fas fa-star"></i> مميز</span>
-                <span class="s-news-chip light">شراكة</span>
+        <div class="s-media-v2-grid reveal reveal-delay-1">
+          <!-- بطاقة محورية -->
+          <a href="news-details.html" class="s-media-card s-media-card--feature">
+            <div class="s-media-card-img" style="background-image:url('assets/images/posts/1.jpeg');"></div>
+            <div class="s-media-card-overlay"></div>
+            <div class="s-media-card-body">
+              <div class="s-media-card-tags">
+                <span class="s-media-chip s-media-chip--gold"><i class="fas fa-star"></i> الخبر الرئيسي</span>
+                <span class="s-media-chip">شراكات</span>
               </div>
-              <h3 class="s-news-hero-title">توقيع شراكة استراتيجية لتوسيع برامج الرعاية الصحية في 5 مناطق</h3>
-              <p class="s-news-hero-desc">
-                وقّعت جمعية إسكان اتفاقية شراكة مع جهة وطنية لرفع جاهزية برنامج كفالة الأدوية المزمنة وتوسيع نطاقه
-                الجغرافي.
-              </p>
-              <div class="s-news-hero-meta">
+              <h3 class="s-media-card-title">توقيع شراكة استراتيجية لتسليم 200 وحدة سكنية في 5 مناطق</h3>
+              <p class="s-media-card-desc">وقّعت جمعية إسكان اتفاقية شراكة وطنية لتسريع برامج تأهيل وتسليم المساكن للأسر الأكثر احتياجًا.</p>
+              <div class="s-media-card-meta">
                 <span><i class="fas fa-calendar"></i> 18 جمادى الأولى 1447هـ</span>
-                <span class="s-news-hero-cta">اقرأ التفاصيل <i class="fas fa-arrow-left"></i></span>
+                <span><i class="fas fa-clock"></i> قراءة 4 دقائق</span>
+                <span class="s-media-card-cta">اقرأ التفاصيل <i class="fas fa-arrow-left"></i></span>
               </div>
             </div>
           </a>
 
-          <!-- أخبار صغيرة -->
-          <div class="lg:col-span-5 grid gap-4 s-news-side">
-            <a href="news-details.html" class="s-news-mini-v2">
-              <div class="s-news-mini-img" style="background-image:url('assets/images/posts/2.jpeg');"></div>
-              <div class="s-news-mini-body">
-                <span class="s-news-cat">حوكمة</span>
+          <!-- ثلاث بطاقات جانبية -->
+          <div class="s-media-v2-side">
+            <a href="news-details.html" class="s-media-card s-media-card--side">
+              <div class="s-media-card-thumb" style="background-image:url('assets/images/posts/2.jpeg');"></div>
+              <div class="s-media-card-side-body">
+                <span class="s-media-chip s-media-chip--ghost">حوكمة</span>
                 <h4>نشر التقرير السنوي للعام 1446هـ</h4>
-                <div class="s-news-mini-meta"><i class="fas fa-calendar"></i> هذا الأسبوع</div>
+                <div class="s-media-card-side-meta"><i class="fas fa-calendar"></i> هذا الأسبوع</div>
               </div>
+              <i class="fas fa-arrow-left s-media-card-arrow"></i>
             </a>
-            <a href="news-details.html" class="s-news-mini-v2">
-              <div class="s-news-mini-img" style="background-image:url('assets/images/posts/3.jpeg');"></div>
-              <div class="s-news-mini-body">
-                <span class="s-news-cat">برامج</span>
+            <a href="news-details.html" class="s-media-card s-media-card--side">
+              <div class="s-media-card-thumb" style="background-image:url('assets/images/posts/3.jpeg');"></div>
+              <div class="s-media-card-side-body">
+                <span class="s-media-chip s-media-chip--ghost">برامج</span>
                 <h4>انطلاق الحملة الشتوية لدعم 3,000 أسرة</h4>
-                <div class="s-news-mini-meta"><i class="fas fa-calendar"></i> هذا الشهر</div>
+                <div class="s-media-card-side-meta"><i class="fas fa-calendar"></i> هذا الشهر</div>
               </div>
+              <i class="fas fa-arrow-left s-media-card-arrow"></i>
             </a>
-            <a href="news-details.html" class="s-news-mini-v2">
-              <div class="s-news-mini-img" style="background-image:url('assets/images/posts/4.jpeg');"></div>
-              <div class="s-news-mini-body">
-                <span class="s-news-cat">تطوع</span>
+            <a href="news-details.html" class="s-media-card s-media-card--side">
+              <div class="s-media-card-thumb" style="background-image:url('assets/images/posts/4.jpeg');"></div>
+              <div class="s-media-card-side-body">
+                <span class="s-media-chip s-media-chip--ghost">تطوع</span>
                 <h4>فتح باب التسجيل لـ 200 متطوع جديد</h4>
-                <div class="s-news-mini-meta"><i class="fas fa-calendar"></i> قريبًا</div>
+                <div class="s-media-card-side-meta"><i class="fas fa-calendar"></i> قريبًا</div>
               </div>
+              <i class="fas fa-arrow-left s-media-card-arrow"></i>
             </a>
           </div>
         </div>
