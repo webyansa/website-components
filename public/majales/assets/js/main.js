@@ -1863,16 +1863,17 @@
       <div class="sx-mcollapse" data-sx-mcoll="about">
         <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">استراتيجيتنا</a>
         <a href="board.html">مجلس الإدارة</a><a href="executive-management.html">الإدارة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
-        <a href="registration-certificate.html">شهادة التسجيل</a><a href="branches.html">الفروع والمكاتب</a>
+        <a href="registration-certificate.html">شهادة التسجيل</a>
         <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
       </div>
-      <a href="services.html"><i class="fas fa-clipboard-list"></i> خدمات ومجالات المجلس</a>
-      <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع والمبادرات</a>
-      <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
+      <a href="services.html"><i class="fas fa-clipboard-list"></i> الخدمات</a>
+      <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع</a>
+      <a href="branches.html"><i class="fas fa-map-location-dot"></i> الفروع</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
       <a href="events.html"><i class="fas fa-calendar-days"></i> الفعاليات</a>
       <a href="careers.html"><i class="fas fa-briefcase"></i> الوظائف والتطوع</a>
+
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
       <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
       <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
