@@ -1712,10 +1712,11 @@
       "executive-management.html",
       "organization-structure.html",
       "registration-certificate.html",
-      "branches.html",
       "committees.html",
       "membership.html",
     ],
+    branches: ["branches.html", "branch-details.html"],
+
     donations: ["donations.html", "donation-details.html", "donation-receipt.html", "donor-login.html"],
     store: [
       "store.html",
