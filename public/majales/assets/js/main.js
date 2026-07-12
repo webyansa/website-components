@@ -1778,17 +1778,13 @@
     <div class="sx-topbar">
       <div class="sx-tcont">
         <div class="sx-tlinks">
-          
-          <a href="service-tracking.html" class="sx-thide"><i class="fas fa-route"></i> تتبع طلب</a>
-          <a href="services.html" class="sx-thide"><i class="fas fa-user-shield"></i> بوابة المستفيدين</a>
-         
-        <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
+          <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
+          <a href="mailto:info@majales.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
+          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> تعمل وفق الأنظمة واللوائح</span>
         </div>
         <div class="sx-tright">
-          <div class="sx-tcontact">
-            <a href="tel:920000000" class="sx-thide"><i class="fas fa-phone"></i> 920000000</a>
-            <a href="mailto:info@majales.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
-          </div>
+          <a href="service-tracking.html" class="sx-tlink"><i class="fas fa-route"></i> تتبع طلب</a>
+          <a href="contact.html" class="sx-tlink sx-thide"><i class="fas fa-headset"></i> تواصل معنا</a>
           <div class="sx-lang-dd" data-lang-dd>
             <button class="sx-lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
               <i class="fas fa-globe"></i>
@@ -1823,24 +1819,19 @@
             <a href="executive-management.html"><i class="fas fa-user-tie"></i> الإدارة التنفيذية</a>
             <a href="organization-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
             <a href="registration-certificate.html"><i class="fas fa-certificate"></i> شهادة التسجيل</a>
-            <a href="branches.html"><i class="fas fa-location-dot"></i> فروع ومكاتب الجمعية</a>
             <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
             <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
           </div>
         </div>
-        <a href="services.html" class="${isActive("services")}">خدمات ومجالات المجلس</a>
-        <a href="projects.html" class="${isActive("projects")}">المشاريع والمبادرات</a>
-        <a href="committees.html" class="${isActive("committees")}">اللجان</a>
+        <a href="services.html" class="${isActive("services")}">الخدمات</a>
+        <a href="projects.html" class="${isActive("projects")}">المشاريع</a>
+        <a href="branches.html" class="${isActive("branches")}">الفروع</a>
         <a href="governance.html" class="${isActive("governance")}">الحوكمة</a>
         <a href="media-center.html" class="${isActive("media")}">المركز الإعلامي</a>
         <a href="events.html" class="${isActive("events")}">الفعاليات</a>
-        <a href="careers.html" class="${isActive("careers")}">الوظائف والتطوع</a>
-       
+        <a href="careers.html" class="${isActive("careers")}">الوظائف</a>
       </nav>
       <div class="sx-actions">
-        <a href="service-tracking.html" class="sx-icon-btn" aria-label="تتبع طلب خدمة" title="تتبع طلب خدمة">
-          <i class="fas fa-route"></i>
-        </a>
         <div class="sx-login-wrap" data-login-wrap>
           <button type="button" class="sx-login-btn" data-login-toggle>
             <i class="fas fa-user-circle"></i> دخول المستفيدين
@@ -1853,12 +1844,11 @@
             </div>
           </div>
         </div>
-        
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
-
     </div>
   </header>
+
 
   <!-- قائمة الجوال -->
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
