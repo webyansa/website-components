@@ -1244,114 +1244,210 @@
 }
 .s-topbar a:hover::after{ transform: scaleX(1); transform-origin:left; }
 
-/* ---------- Header: floating glass capsule (sx-header) ---------- */
+/* ================================================================
+   HEADER — Professional Topbar + Floating Glass Capsule (sx-header)
+   ================================================================ */
+
 .sx-header{
-  position: sticky; top: 14px; z-index: 55;
+  position: sticky; top: 0; z-index: 55;
   background: transparent !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
-  padding: 0 14px;
+  padding: 0;
   transition: top .3s ease;
 }
-.sx-header .sx-topbar{ display:none !important; }
+
+/* --- Topbar (visible, slim, navy) --- */
+.sx-header .sx-topbar{
+  display: block !important;
+  background: linear-gradient(90deg, #0a1738 0%, #152a5e 55%, #0a1738 100%);
+  color: #cfd8ea;
+  font-size: .78rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sx-header .sx-tcont{
+  max-width: 1320px; margin: 0 auto;
+  padding: .45rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: nowrap;
+}
+.sx-header .sx-tlinks,
+.sx-header .sx-tright{
+  display:flex; align-items:center; gap: 1.1rem;
+}
+.sx-header .sx-topbar a,
+.sx-header .sx-tlink{
+  color:#dfe6f5 !important;
+  display:inline-flex; align-items:center; gap:.4rem;
+  transition: color .2s ease;
+  white-space: nowrap;
+}
+.sx-header .sx-topbar a i,
+.sx-header .sx-tlink i{ color:#dab36b; font-size:.72rem; }
+.sx-header .sx-topbar a:hover{ color:#fff !important; }
+.sx-header .sx-tstatus{
+  display:inline-flex; align-items:center; gap:.45rem;
+  padding: .2rem .6rem; border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  font-size:.72rem;
+}
+.sx-header .sx-tdot{
+  width:7px; height:7px; border-radius:50%; background:#42b07a;
+  box-shadow: 0 0 0 4px rgba(66,176,122,.18);
+  animation: sxPulse 1.8s ease-in-out infinite;
+}
+@keyframes sxPulse{ 50%{ transform: scale(.85); opacity:.7 } }
+
+.sx-header .sx-lang-dd{ position:relative; }
+.sx-header .sx-lang-trigger{
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding: .25rem .65rem;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  color:#fff; font-size:.75rem; cursor:pointer;
+  transition: background .2s ease;
+}
+.sx-header .sx-lang-trigger:hover{ background: rgba(255,255,255,.14); }
+.sx-header .sx-lang-caret{ font-size:.6rem; opacity:.8; }
+.sx-header .sx-lang-menu{
+  position:absolute; top:calc(100% + 8px); inset-inline-end: 0;
+  min-width: 140px;
+  background:#fff; border:1px solid #e3e7ef; border-radius:12px;
+  box-shadow: 0 20px 40px -18px rgba(11,23,48,.25);
+  padding:.35rem; list-style:none; margin:0;
+  display:none;
+}
+.sx-header .sx-lang-dd.open .sx-lang-menu{ display:block; }
+.sx-header .sx-lang-menu button{
+  width:100%; text-align:right; background:transparent; border:0;
+  padding:.5rem .75rem; border-radius:8px; cursor:pointer;
+  font-size:.82rem; color:#0f1d2e;
+}
+.sx-header .sx-lang-menu button.active,
+.sx-header .sx-lang-menu button:hover{ background:#f6f7fb; color:#152a5e; font-weight:700; }
+
+/* --- Main bar (floating capsule) --- */
 .sx-header .sx-main{
-  max-width: 1280px;
-  margin: 0 auto;
-  background: rgba(255,255,255,.82);
+  max-width: 1320px;
+  margin: 12px auto 0;
+  background: rgba(255,255,255,.92);
   backdrop-filter: saturate(160%) blur(18px);
   -webkit-backdrop-filter: saturate(160%) blur(18px);
   border: 1px solid rgba(15,29,46,.08);
   border-radius: 999px;
-  padding: .5rem .85rem !important;
+  padding: .45rem .75rem !important;
+  display:flex; align-items:center; gap: .5rem;
   box-shadow:
     0 1px 0 rgba(255,255,255,.7) inset,
-    0 20px 40px -22px rgba(11,23,48,.28),
-    0 6px 18px -10px rgba(11,23,48,.14);
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow .3s ease, background .3s ease;
+    0 18px 38px -22px rgba(11,23,48,.28),
+    0 6px 16px -10px rgba(11,23,48,.12);
+  transition: box-shadow .3s ease, background .3s ease, margin .3s ease;
 }
-.sx-header .sx-main::before{
-  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:
-    radial-gradient(120% 220% at 0% 0%, rgba(13,122,79,.10), transparent 45%),
-    radial-gradient(120% 220% at 100% 0%, rgba(201,160,77,.10), transparent 45%);
-  opacity:.9;
-}
-.sx-header.scrolled{ top: 8px; }
+.sx-header.scrolled{ }
 .sx-header.scrolled .sx-main{
-  background: rgba(255,255,255,.95);
+  background: rgba(255,255,255,.98);
   box-shadow:
     0 1px 0 rgba(255,255,255,.7) inset,
-    0 26px 48px -24px rgba(11,23,48,.35),
-    0 10px 22px -12px rgba(11,23,48,.18);
+    0 22px 42px -22px rgba(11,23,48,.32),
+    0 8px 18px -12px rgba(11,23,48,.16);
 }
 
-/* Logo mark — brand seal with soft ring */
+/* Logo */
+.sx-header .sx-logo{ display:flex; align-items:center; gap:.6rem; padding: 0 .4rem; }
 .sx-header .sx-logo .sx-mark{
   position: relative;
-  width: 44px; height: 44px; border-radius: 14px;
+  width: 40px; height: 40px; border-radius: 12px;
+  display:flex; align-items:center; justify-content:center;
   background: linear-gradient(140deg, #0f1d2e 0%, #17335a 55%, #1c4e88 100%);
-  color:#fff; font-weight:900;
-  box-shadow: 0 8px 20px -10px rgba(11,23,48,.55), 0 0 0 4px rgba(255,255,255,.6);
+  color:#fff; font-weight:900; font-size:1.05rem;
+  box-shadow: 0 8px 18px -10px rgba(11,23,48,.55);
+  flex-shrink:0;
 }
-.sx-header .sx-logo .sx-mark::after{
-  content:""; position:absolute; inset:-6px; border-radius:18px;
-  border: 1px dashed rgba(13,122,79,.35);
-  animation: mj-ring 14s linear infinite;
-  pointer-events:none;
-}
-@keyframes mj-ring{ to{ transform: rotate(360deg);} }
+.sx-header .sx-logo .sx-name{ font-weight:900; color:#0f1d2e; font-size:.95rem; line-height:1.1; }
+.sx-header .sx-logo .sx-tag{ font-size:.65rem; color:#5b6b7d; line-height:1.1; margin-top:2px; }
 
-/* Nav — pill chips */
-.sx-header .sx-nav{ gap: .1rem !important; }
+/* Nav — compact pill chips */
+.sx-header .sx-nav{
+  display:flex; align-items:center; gap: .05rem !important;
+  flex: 1 1 auto; justify-content: center;
+}
 .sx-header .sx-nav > a,
 .sx-header .sx-nav > .sx-drop > button{
   position: relative;
-  padding: .5rem .85rem !important;
+  padding: .5rem .7rem !important;
   border-radius: 999px;
   font-weight: 600;
-  font-size: .86rem;
+  font-size: .82rem;
   color: #0f1d2e !important;
-  transition: color .25s ease, background .25s ease;
+  background: transparent; border: 0; cursor: pointer;
+  transition: color .2s ease, background .2s ease;
   white-space: nowrap;
+  display:inline-flex; align-items:center; gap:.35rem;
 }
 .sx-header .sx-nav > a::after,
 .sx-header .sx-nav > .sx-drop > button::after{ display:none !important; }
 .sx-header .sx-nav > a:hover,
 .sx-header .sx-nav > .sx-drop > button:hover{
-  background: linear-gradient(180deg, rgba(13,122,79,.10), rgba(13,122,79,.03));
+  background: rgba(13,122,79,.08);
   color: #0d7a4f !important;
 }
 .sx-header .sx-nav > a.active,
 .sx-header .sx-nav > .sx-drop > button.active{
-  background: linear-gradient(180deg, rgba(201,160,77,.18), rgba(201,160,77,.04));
+  background: linear-gradient(180deg, rgba(201,160,77,.18), rgba(201,160,77,.05));
   color: #8a6a26 !important;
 }
 
 /* Actions */
+.sx-header .sx-actions{ display:flex; align-items:center; gap:.4rem; }
 .sx-header .sx-login-btn{
   border-radius: 999px !important;
   background: linear-gradient(135deg, #0d7a4f, #14a06a) !important;
   color:#fff !important;
-  padding: .55rem 1rem !important;
-  font-weight: 700; font-size:.82rem;
+  padding: .55rem .95rem !important;
+  font-weight: 700; font-size:.8rem;
   box-shadow: 0 10px 22px -10px rgba(13,122,79,.6) !important;
   border: 0 !important;
-  transition: transform .25s ease, filter .25s ease;
+  display:inline-flex; align-items:center; gap:.4rem;
+  transition: transform .2s ease, filter .2s ease;
+  white-space: nowrap;
 }
 .sx-header .sx-login-btn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
 .sx-header .sx-icon-btn{
+  width: 38px; height: 38px;
+  display:inline-flex; align-items:center; justify-content:center;
   border-radius: 999px !important;
   border: 1px solid rgba(15,29,46,.12) !important;
   background: rgba(255,255,255,.7) !important;
   color:#0f1d2e !important;
 }
-
-/* Compact for narrower screens */
-@media (max-width: 1279px){
-  .sx-header .sx-nav{ display:none !important; }
+.sx-header .sx-burger{
+  display:none;
+  width: 40px; height: 40px; border-radius: 12px;
+  align-items:center; justify-content:center;
+  background:#f6f7fb; border:1px solid #e3e7ef; color:#0f1d2e; cursor:pointer;
 }
+
+/* Responsive breakpoints */
+@media (max-width: 1200px){
+  .sx-header .sx-logo .sx-tag{ display:none; }
+  .sx-header .sx-nav > a,
+  .sx-header .sx-nav > .sx-drop > button{ padding: .45rem .55rem !important; font-size:.78rem; }
+}
+@media (max-width: 1024px){
+  .sx-header .sx-nav{ display:none !important; }
+  .sx-header .sx-burger{ display:inline-flex; }
+}
+@media (max-width: 640px){
+  .sx-header .sx-tcont{ padding: .4rem .8rem; gap:.5rem; }
+  .sx-header .sx-thide{ display:none !important; }
+  .sx-header .sx-main{ margin-top: 8px; padding: .4rem .5rem !important; border-radius: 22px; }
+  .sx-header .sx-login-btn{ padding: .5rem .75rem !important; font-size:.75rem; }
+  .sx-header .sx-logo .sx-tag{ display:none; }
+}
+
+
 
 /* ============================================================
    HERO — cinematic upgrade
