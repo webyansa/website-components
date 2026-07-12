@@ -1650,3 +1650,79 @@
   .s-hero-title .s-hero-accent::after{ animation: none; transform:none; }
   .s-header .s-logo-mark::after{ animation: none; }
 }
+
+/* ================================================================
+   BRANCHES page — cards & filter
+   ================================================================ */
+.br-strip{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  background:#fff; border:1px solid #e3e7ef; border-radius:22px;
+  box-shadow:0 20px 40px -28px rgba(11,23,48,.18);
+  overflow:hidden;
+}
+.br-strip-cell{
+  padding:1.25rem 1rem; text-align:center;
+  border-inline-start:1px solid #eef1f7;
+}
+.br-strip-cell:first-child{ border-inline-start:0; }
+.br-strip-cell .n{ font-family:'Tajawal',sans-serif; font-weight:900; font-size:1.75rem; color:#152a5e; line-height:1; }
+.br-strip-cell .l{ font-size:.78rem; color:#5b6b7d; margin-top:.35rem; font-weight:600; }
+@media (max-width:720px){ .br-strip{ grid-template-columns:repeat(2,1fr); } .br-strip-cell:nth-child(3){ border-inline-start:0; } }
+
+.br-filter{ display:inline-flex; gap:.25rem; padding:.3rem; background:#fff; border:1px solid #e3e7ef; border-radius:999px; }
+.br-filter button{
+  padding:.5rem .95rem; border:0; background:transparent; border-radius:999px;
+  font-size:.8rem; font-weight:700; color:#5b6b7d; cursor:pointer; transition:.2s;
+}
+.br-filter button:hover{ color:#152a5e; }
+.br-filter button.active{ background:linear-gradient(135deg,#0d7a4f,#14a06a); color:#fff; box-shadow:0 8px 20px -10px rgba(13,122,79,.5); }
+
+.br-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.25rem; }
+.br-card{
+  background:#fff; border:1px solid #e6e9f0; border-radius:22px; overflow:hidden;
+  display:flex; flex-direction:column;
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.br-card:hover{
+  transform:translateY(-6px);
+  border-color:#c9d1e1;
+  box-shadow:0 30px 55px -30px rgba(11,23,48,.28);
+}
+.br-card-cover{
+  position:relative; aspect-ratio:16/9;
+  background-size:cover; background-position:center;
+}
+.br-card-cover::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(10,23,56,.05) 0%, rgba(10,23,56,.55) 100%);
+}
+.br-tag{
+  position:absolute; top:12px; inset-inline-start:12px; z-index:2;
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:rgba(255,255,255,.95); backdrop-filter:blur(6px);
+  padding:.35rem .7rem; border-radius:999px;
+  font-size:.72rem; font-weight:800; color:#152a5e;
+  box-shadow:0 6px 16px -8px rgba(11,23,48,.3);
+}
+.br-tag i{ color:#0d7a4f; }
+.br-tag-main{ background:linear-gradient(135deg,#0d7a4f,#14a06a); color:#fff; }
+.br-tag-main i{ color:#dab36b; }
+.br-tag-office{ background:linear-gradient(135deg,#b08530,#dab36b); color:#fff; }
+.br-tag-office i{ color:#fff; }
+.br-card-body{ padding:1.15rem 1.25rem 1.25rem; display:flex; flex-direction:column; flex:1; }
+.br-card-region{ display:inline-flex; align-items:center; gap:.35rem; font-size:.72rem; color:#0d7a4f; font-weight:700; margin-bottom:.5rem; }
+.br-card-title{ font-family:'Tajawal',sans-serif; font-weight:900; font-size:1.1rem; color:#0f1d2e; margin-bottom:.4rem; }
+.br-card-addr{ font-size:.82rem; color:#5b6b7d; margin-bottom:.75rem; display:flex; align-items:center; gap:.4rem; }
+.br-card-addr i{ color:#b08530; }
+.br-card-meta{ display:flex; flex-wrap:wrap; gap:.5rem .9rem; font-size:.75rem; color:#5b6b7d; padding-top:.75rem; border-top:1px dashed #e6e9f0; margin-bottom:1rem; }
+.br-card-meta i{ color:#0d7a4f; margin-inline-end:.25rem; }
+.br-card-cta{
+  margin-top:auto; display:inline-flex; align-items:center; justify-content:space-between;
+  gap:.5rem; padding:.75rem 1rem; border-radius:12px;
+  background:#f6f7fb; border:1px solid #e3e7ef;
+  color:#152a5e; font-weight:800; font-size:.85rem;
+  transition:.2s;
+}
+.br-card-cta:hover{ background:linear-gradient(135deg,#0d7a4f,#14a06a); color:#fff; border-color:transparent; }
+.br-card-cta i{ transition:transform .2s ease; }
+.br-card-cta:hover i{ transform:translateX(-4px); }
