@@ -1301,15 +1301,18 @@
 .sx-header .sx-topbar a:hover{ color:#fff !important; }
 .sx-header .sx-tstatus{
   display:inline-flex; align-items:center; gap:.5rem;
-  padding: .2rem .7rem; border-radius: 999px;
-  background: rgba(201,160,77,.08);
-  border: 1px solid rgba(201,160,77,.22);
-  color:#f0dfb5;
-  font-size:.72rem;
+  padding: .28rem .8rem; border-radius: 4px;
+  background: linear-gradient(135deg,#e6c46b,#c9a84c);
+  border: 0;
+  color:#0a1738 !important;
+  font-size:.68rem; font-weight: 800;
+  letter-spacing:.04em;
+  box-shadow: 0 4px 12px -6px rgba(201,168,76,.5);
 }
+.sx-header .sx-tstatus i{ color:#0a1738 !important; }
 .sx-header .sx-tdot{
-  width:7px; height:7px; border-radius:50%; background:#42b07a;
-  box-shadow: 0 0 0 4px rgba(66,176,122,.18);
+  width:7px; height:7px; border-radius:50%; background:#0a1738;
+  box-shadow: 0 0 0 3px rgba(10,23,56,.15);
   animation: sxPulse 1.8s ease-in-out infinite;
 }
 @keyframes sxPulse{ 50%{ transform: scale(.85); opacity:.7 } }
@@ -1357,26 +1360,22 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: 0;
-  border-bottom: 1px solid #eceff5;
+  border-bottom: 4px solid #c9a84c;
   border-radius: 0;
   padding: 0 !important;
   display: block;
-  box-shadow: 0 8px 24px -20px rgba(11,23,48,.18);
+  box-shadow: 0 10px 30px -22px rgba(11,23,48,.22);
   transition: box-shadow .3s ease, background .3s ease;
   position: relative;
 }
 .sx-header .sx-main::before{
-  /* thin gold underline runs across when scrolled */
   content:"";
-  position:absolute; inset-inline:0; bottom:-1px; height:2px;
-  background: linear-gradient(90deg,
-    transparent, rgba(201,160,77,.0) 15%,
-    rgba(201,160,77,.55) 50%,
-    rgba(201,160,77,.0) 85%, transparent);
-  opacity: 0; transition: opacity .3s ease;
+  position:absolute; inset-inline:0; bottom:-4px; height:4px;
+  background: linear-gradient(90deg, #b08530 0%, #dab36b 50%, #b08530 100%);
+  opacity: 1;
 }
 .sx-header.scrolled .sx-main{
-  box-shadow: 0 14px 34px -22px rgba(11,23,48,.28);
+  box-shadow: 0 16px 36px -22px rgba(11,23,48,.32);
 }
 .sx-header.scrolled .sx-main::before{ opacity: 1; }
 
@@ -1397,37 +1396,42 @@
 
 /* Logo — refined council seal */
 .sx-header .sx-logo{
-  display:flex; align-items:center; gap:.7rem;
+  display:flex; align-items:center; gap:.85rem;
   padding: 0;
   text-decoration:none;
+  position: relative;
 }
 .sx-header .sx-logo .sx-mark{
   position:relative;
-  width: 46px; height: 46px; border-radius: 50%;
+  width: 58px; height: 58px; border-radius: 50%;
   display:flex; align-items:center; justify-content:center;
   background:
     radial-gradient(circle at 30% 25%, #1c4e88 0%, #17335a 55%, #0a1738 100%);
-  color:#fff; font-weight:900; font-size:1.15rem;
+  color:#fff; font-weight:900; font-size:1.55rem;
   font-family: "Tajawal","IBM Plex Sans Arabic",sans-serif;
+  border: 2px solid #c9a84c;
   box-shadow:
-    0 0 0 2px #ffffff,
-    0 0 0 3px rgba(201,160,77,.75),
+    inset 0 0 0 3px #ffffff,
     0 10px 22px -12px rgba(11,23,48,.55);
   flex-shrink:0;
   letter-spacing:-.02em;
+  transition: transform .3s ease;
 }
-.sx-header .sx-logo .sx-mark::after{
-  content:""; position:absolute; inset:4px; border-radius:50%;
-  border: 1px dashed rgba(255,255,255,.18);
-  pointer-events:none;
+.sx-header .sx-logo:hover .sx-mark{ transform: scale(1.05); }
+.sx-header .sx-logo .sx-mark::before{
+  content:""; position:absolute; bottom:-2px; inset-inline-start:-2px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #42b07a; border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(66,176,122,.4);
 }
+.sx-header .sx-logo .sx-mark::after{ content: none; }
 .sx-header .sx-logo .sx-name{
-  font-weight:900; color:#0a1738; font-size:1.02rem; line-height:1.1;
-  letter-spacing:.005em;
+  font-weight:900; color:#0a1738; font-size:1.1rem; line-height:1.1;
+  letter-spacing:-.005em;
 }
 .sx-header .sx-logo .sx-tag{
-  font-size:.68rem; color:#6c7a8f; line-height:1.15; margin-top:3px;
-  letter-spacing:.02em;
+  font-size:.62rem; color:#c9a84c; line-height:1.15; margin-top:4px;
+  letter-spacing:.14em; font-weight: 800; text-transform: uppercase;
 }
 
 /* Nav — editorial with gold underline */
