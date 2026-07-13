@@ -1360,26 +1360,22 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: 0;
-  border-bottom: 1px solid #eceff5;
+  border-bottom: 4px solid #c9a84c;
   border-radius: 0;
   padding: 0 !important;
   display: block;
-  box-shadow: 0 8px 24px -20px rgba(11,23,48,.18);
+  box-shadow: 0 10px 30px -22px rgba(11,23,48,.22);
   transition: box-shadow .3s ease, background .3s ease;
   position: relative;
 }
 .sx-header .sx-main::before{
-  /* thin gold underline runs across when scrolled */
   content:"";
-  position:absolute; inset-inline:0; bottom:-1px; height:2px;
-  background: linear-gradient(90deg,
-    transparent, rgba(201,160,77,.0) 15%,
-    rgba(201,160,77,.55) 50%,
-    rgba(201,160,77,.0) 85%, transparent);
-  opacity: 0; transition: opacity .3s ease;
+  position:absolute; inset-inline:0; bottom:-4px; height:4px;
+  background: linear-gradient(90deg, #b08530 0%, #dab36b 50%, #b08530 100%);
+  opacity: 1;
 }
 .sx-header.scrolled .sx-main{
-  box-shadow: 0 14px 34px -22px rgba(11,23,48,.28);
+  box-shadow: 0 16px 36px -22px rgba(11,23,48,.32);
 }
 .sx-header.scrolled .sx-main::before{ opacity: 1; }
 
