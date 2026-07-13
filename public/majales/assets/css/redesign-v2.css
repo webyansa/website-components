@@ -1396,37 +1396,42 @@
 
 /* Logo — refined council seal */
 .sx-header .sx-logo{
-  display:flex; align-items:center; gap:.7rem;
+  display:flex; align-items:center; gap:.85rem;
   padding: 0;
   text-decoration:none;
+  position: relative;
 }
 .sx-header .sx-logo .sx-mark{
   position:relative;
-  width: 46px; height: 46px; border-radius: 50%;
+  width: 58px; height: 58px; border-radius: 50%;
   display:flex; align-items:center; justify-content:center;
   background:
     radial-gradient(circle at 30% 25%, #1c4e88 0%, #17335a 55%, #0a1738 100%);
-  color:#fff; font-weight:900; font-size:1.15rem;
+  color:#fff; font-weight:900; font-size:1.55rem;
   font-family: "Tajawal","IBM Plex Sans Arabic",sans-serif;
+  border: 2px solid #c9a84c;
   box-shadow:
-    0 0 0 2px #ffffff,
-    0 0 0 3px rgba(201,160,77,.75),
+    inset 0 0 0 3px #ffffff,
     0 10px 22px -12px rgba(11,23,48,.55);
   flex-shrink:0;
   letter-spacing:-.02em;
+  transition: transform .3s ease;
 }
-.sx-header .sx-logo .sx-mark::after{
-  content:""; position:absolute; inset:4px; border-radius:50%;
-  border: 1px dashed rgba(255,255,255,.18);
-  pointer-events:none;
+.sx-header .sx-logo:hover .sx-mark{ transform: scale(1.05); }
+.sx-header .sx-logo .sx-mark::before{
+  content:""; position:absolute; bottom:-2px; inset-inline-start:-2px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #42b07a; border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(66,176,122,.4);
 }
+.sx-header .sx-logo .sx-mark::after{ content: none; }
 .sx-header .sx-logo .sx-name{
-  font-weight:900; color:#0a1738; font-size:1.02rem; line-height:1.1;
-  letter-spacing:.005em;
+  font-weight:900; color:#0a1738; font-size:1.1rem; line-height:1.1;
+  letter-spacing:-.005em;
 }
 .sx-header .sx-logo .sx-tag{
-  font-size:.68rem; color:#6c7a8f; line-height:1.15; margin-top:3px;
-  letter-spacing:.02em;
+  font-size:.62rem; color:#c9a84c; line-height:1.15; margin-top:4px;
+  letter-spacing:.14em; font-weight: 800; text-transform: uppercase;
 }
 
 /* Nav — editorial with gold underline */
