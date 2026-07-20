@@ -69,6 +69,7 @@ const templates: Template[] = [
     features: ["Tailwind CSS", "25 صفحة", "منصة SaaS", "دعم RTL", "متجاوب"],
     pages: 25,
     isNew: true,
+  },
   {
     id: "one-page",
     name: "قالب صفحة واحدة — الجمعيات",
