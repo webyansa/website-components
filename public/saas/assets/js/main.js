@@ -1778,12 +1778,12 @@
     <div class="sx-topbar">
       <div class="sx-tcont">
         <div class="sx-tlinks">
-          <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
-          <a href="mailto:info@majales.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
-          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> تعمل وفق الأنظمة واللوائح</span>
+          <a href="contact.html"><i class="fas fa-headset"></i> مركز المساعدة</a>
+          <a href="mailto:info@platform.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@platform.sa</a>
+          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> منصة رقمية معتمدة لخدمات الجمعيات</span>
         </div>
         <div class="sx-tright">
-          <a href="service-tracking.html" class="sx-tlink"><i class="fas fa-route"></i> تتبع طلب</a>
+          <a href="service-tracking.html" class="sx-tlink"><i class="fas fa-route"></i> متابعة طلب</a>
           <a href="contact.html" class="sx-tlink sx-thide"><i class="fas fa-headset"></i> تواصل معنا</a>
           <div class="sx-lang-dd" data-lang-dd>
             <button class="sx-lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
@@ -1801,103 +1801,48 @@
     </div>
     <div class="sx-main">
       <a href="index.html" class="sx-logo">
-        <div class="sx-mark">س</div>
+        <div class="sx-mark">م</div>
         <div>
-          <div class="sx-name">مجلس سَنَد</div>
-          <div class="sx-tag">للتنسيق والتمثيل المؤسسي</div>
+          <div class="sx-name">منصة تمكين</div>
+          <div class="sx-tag">منصة رقمية لخدمات الجمعيات</div>
         </div>
       </a>
       <nav class="sx-nav" aria-label="القائمة الرئيسية">
         <a href="index.html" class="${isActive("home")}">الرئيسية</a>
-        <div class="sx-drop" data-drop>
-          <button type="button" class="${isActive("about")}">عن المجلس <i class="fas fa-chevron-down"></i></button>
-          <div class="sx-dmenu">
-            <a href="about.html"><i class="fas fa-circle-info"></i> من نحن</a>
-            <a href="founding.html"><i class="fas fa-flag"></i> النشأة والتأسيس</a>
-            <a href="strategy.html"><i class="fas fa-compass"></i> استراتيجيتنا</a>
-            <a href="board.html"><i class="fas fa-users-gear"></i> مجلس الإدارة</a>
-            <a href="executive-management.html"><i class="fas fa-user-tie"></i> الإدارة التنفيذية</a>
-            <a href="organization-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
-            <a href="registration-certificate.html"><i class="fas fa-certificate"></i> شهادة التسجيل</a>
-            <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
-            <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
-          </div>
-        </div>
+        <a href="about.html" class="${isActive("about")}">عن المنصة</a>
         <a href="services.html" class="${isActive("services")}">الخدمات</a>
-        <a href="projects.html" class="${isActive("projects")}">المشاريع</a>
-        <a href="branches.html" class="${isActive("branches")}">الفروع</a>
-        <a href="governance.html" class="${isActive("governance")}">الحوكمة</a>
+        <a href="projects.html" class="${isActive("projects")}">فرص المنح</a>
+        <a href="events.html" class="${isActive("events")}">البرامج والمبادرات</a>
+        <a href="governance.html" class="${isActive("governance")}">الموارد</a>
         <a href="media-center.html" class="${isActive("media")}">المركز الإعلامي</a>
-        <a href="events.html" class="${isActive("events")}">الفعاليات</a>
-        <a href="careers.html" class="${isActive("careers")}">الوظائف</a>
+        <a href="contact.html" class="${isActive("contact")}">تواصل معنا</a>
       </nav>
       <div class="sx-actions">
-        <div class="sx-login-wrap" data-login-wrap>
-          <button type="button" class="sx-login-btn" data-login-toggle>
-            <i class="fas fa-user-circle"></i> دخول المستفيدين
-          </button>
-          <div class="sx-login-menu">
-            <div class="sx-lhead">بوابة المستفيدين</div>
-            <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-            <div class="sx-lreg">
-              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب مستفيد</a>
-            </div>
-          </div>
-        </div>
+        <a href="services.html" class="s-btn s-btn-primary sx-cta"><i class="fas fa-rocket"></i> ابدأ الآن</a>
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </header>
 
-
   <!-- قائمة الجوال -->
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
   <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
     <div class="sx-mhead">
-      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">مجلس سَنَد</div></div></div>
+      <div class="sx-logo"><div class="sx-mark">م</div><div><div class="sx-name">منصة تمكين</div></div></div>
       <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-mbody">
       <a href="index.html"><i class="fas fa-house"></i> الرئيسية</a>
-      <button type="button" data-sx-mcollapse="about"><i class="fas fa-circle-info"></i> عن المجلس <i class="fas fa-chevron-down" style="margin-inline-start:auto;font-size:.7rem"></i></button>
-      <div class="sx-mcollapse" data-sx-mcoll="about">
-        <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">استراتيجيتنا</a>
-        <a href="board.html">مجلس الإدارة</a><a href="executive-management.html">الإدارة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
-        <a href="registration-certificate.html">شهادة التسجيل</a>
-        <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
-      </div>
+      <a href="about.html"><i class="fas fa-circle-info"></i> عن المنصة</a>
       <a href="services.html"><i class="fas fa-clipboard-list"></i> الخدمات</a>
-      <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع</a>
-      <a href="branches.html"><i class="fas fa-map-location-dot"></i> الفروع</a>
-      <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
+      <a href="projects.html"><i class="fas fa-hand-holding-dollar"></i> فرص المنح</a>
+      <a href="events.html"><i class="fas fa-diagram-project"></i> البرامج والمبادرات</a>
+      <a href="governance.html"><i class="fas fa-book-open"></i> الموارد والأدلة</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
-      <a href="events.html"><i class="fas fa-calendar-days"></i> الفعاليات</a>
-      <a href="careers.html"><i class="fas fa-briefcase"></i> الوظائف والتطوع</a>
-
+      <a href="careers.html"><i class="fas fa-briefcase"></i> الوظائف</a>
+      <a href="service-tracking.html"><i class="fas fa-route"></i> متابعة طلب</a>
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
-      <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
-      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-
-    </div>
-  </aside>
-
-  <!-- تواصل معنا (Drawer) -->
-  <div class="sx-drawer-overlay" data-sx-dcart-overlay></div>
-  <aside class="sx-drawer" data-sx-dcart>
-    <div class="sx-dhead">
-      <h3><i class="fas fa-heart-circle-plus"></i> تواصل معنا</h3>
-      <button class="sx-dclose" data-sx-dcart-close><i class="fas fa-times"></i></button>
-    </div>
-    <div class="sx-dbody" data-sx-dcart-body>
-      <div class="sx-dempty">
-        <i class="fas fa-heart"></i>
-        <div>سلة تبرعاتك فارغة حاليًا.</div>
-        <div style="font-size:.78rem;margin-top:.4rem">يمكنك تصفّح المبادرات وإضافتها هنا.</div>
-      </div>
-    </div>
-    <div class="sx-dfoot">
-      <a href="membership.html" class="s-btn s-btn-primary" style="justify-content:center"><i class="fas fa-arrow-left"></i> متابعة التبرع</a>
-      <a href="membership.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
+      <a href="services.html" class="s-btn s-btn-primary" style="justify-content:center;margin-top:.6rem"><i class="fas fa-rocket"></i> ابدأ الآن</a>
     </div>
   </aside>
   `;
@@ -1907,10 +1852,10 @@
     <div class="sx-fmain">
       <div class="sx-fbrand">
         <div class="sx-fname">
-          <div class="sx-mark">س</div>
-          <div><div class="nm">مجلس سَنَد</div><div class="tg">للتنسيق والتمثيل المؤسسي</div></div>
+          <div class="sx-mark">م</div>
+          <div><div class="nm">منصة تمكين</div><div class="tg">منصة رقمية لخدمات الجمعيات</div></div>
         </div>
-        <p>جمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين، عبر برامج مؤسسية تعزز جودة حياة المستفيدين وتدعم الاستدامة المجتمعية ضمن منظومة العمل الخيري السعودي.</p>
+        <p>منصة رقمية تساعد الجمعيات والجهات غير الربحية على الوصول إلى الخدمات والفرص والبرامج والموارد التي تدعم نموها المؤسسي، وتسهل إدارة طلباتها ومتابعة رحلتها من مكان واحد.</p>
         <div class="sx-fsoc">
           <a href="#" aria-label="تويتر"><i class="fab fa-x-twitter"></i></a>
           <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
@@ -1923,119 +1868,63 @@
         <h4>روابط رئيسية</h4>
         <ul>
           <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
-          <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
-          <li><a href="membership.html"><i class="fas fa-angle-left"></i> العضوية</a></li>
-          <li><a href="committees.html"><i class="fas fa-angle-left"></i> اللجان</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
+          <li><a href="about.html"><i class="fas fa-angle-left"></i> عن المنصة</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> الخدمات</a></li>
+          <li><a href="projects.html"><i class="fas fa-angle-left"></i> فرص المنح</a></li>
+          <li><a href="events.html"><i class="fas fa-angle-left"></i> البرامج والمبادرات</a></li>
           <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
-        <h4>روابط تهمك</h4>
+        <h4>خدمات المنصة</h4>
         <ul>
-          <li><a href="governance.html"><i class="fas fa-angle-left"></i> الحوكمة</a></li>
-          <li><a href="terms.html"><i class="fas fa-angle-left"></i> الشروط والأحكام</a></li>
-          <li><a href="privacy.html"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
-          <li><a href="careers.html"><i class="fas fa-angle-left"></i> الوظائف والتطوع</a></li>
-          <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
+          <li><a href="services.html"><i class="fas fa-angle-left"></i> استشارة</a></li>
+          <li><a href="projects.html"><i class="fas fa-angle-left"></i> فرص منح</a></li>
+          <li><a href="events.html"><i class="fas fa-angle-left"></i> برامج تدريبية</a></li>
+          <li><a href="governance.html"><i class="fas fa-angle-left"></i> موارد وأدلة</a></li>
+          <li><a href="service-tracking.html"><i class="fas fa-angle-left"></i> متابعة طلب</a></li>
+          <li><a href="membership.html"><i class="fas fa-angle-left"></i> الانضمام للمنصة</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
-        <h4>خدمات المستفيدين</h4>
+        <h4>الدعم والمساعدة</h4>
         <ul>
-          <li><a href="contact.html"><i class="fas fa-angle-left"></i> دخول المستفيدين</a></li>
-          <li><a href="contact.html"><i class="fas fa-angle-left"></i> انضم كمستفيد</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
-          <li><a href="service-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> مركز المساعدة</a></li>
+          <li><a href="privacy.html"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
+          <li><a href="terms.html"><i class="fas fa-angle-left"></i> الشروط والأحكام</a></li>
+          <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
         <h4>التواصل والنشرة</h4>
         <ul class="sx-fcontact">
           <li><i class="fas fa-phone"></i> 920000000</li>
-          <li><i class="fas fa-envelope"></i> info@majales.org.sa</li>
-          <li><i class="fas fa-location-dot"></i> الرياض — حي الملقا — طريق الملك فهد</li>
-          <li><i class="fas fa-clock"></i> الأحد - الخميس · 8 ص - 4 م</li>
+          <li><i class="fas fa-envelope"></i> info@platform.sa</li>
+          <li><i class="fas fa-location-dot"></i> الرياض — المملكة العربية السعودية</li>
+          <li><i class="fas fa-clock"></i> الأحد - الخميس · 8 ص - 5 م</li>
           <li><i class="fab fa-whatsapp"></i> 0500000000</li>
         </ul>
         <form class="sx-fnews" onsubmit="event.preventDefault();window.sxToast&&sxToast('تم الاشتراك في النشرة بنجاح');this.reset();">
-          <div style="font-size:.78rem;color:#a5b3c8;font-weight:700">اشترك في النشرة البريدية</div>
+          <div style="font-size:.78rem;color:#a5b3c8;font-weight:700">اشترك في نشرة المنصة</div>
           <input type="email" required placeholder="بريدك الإلكتروني" />
           <button type="submit"><i class="fas fa-paper-plane"></i> اشتراك</button>
         </form>
       </div>
     </div>
 
-    <div class="sx-license">
-      <div class="sx-license-card">
-        <div class="sx-lic-left">
-          <div class="sx-lic-mark">
-            <img src="assets/images/License/ncnps-mark.svg" alt="المركز الوطني لتنمية القطاع غير الربحي" />
-          </div>
-          <div class="sx-lic-info">
-            <div class="sx-lic-title">الجمعية مصرحة من المركز الوطني لتنمية القطاع غير الربحي</div>
-            <p class="sx-lic-desc">تعمل الجمعية وفق ترخيص رسمي صادر من المركز الوطني لتنمية القطاع غير الربحي، مع إتاحة شهادات الترخيص للعرض والتحميل.</p>
-            <div class="sx-lic-meta">
-              <span><i class="fas fa-hashtag"></i> رقم الترخيص: <b>0000</b></span>
-              <span><i class="fas fa-circle-check"></i> الحالة: <b>ساري</b></span>
-              <span><i class="fas fa-hand-holding-heart"></i> جمع التبرعات: <b>متاح</b></span>
-              <span><i class="fas fa-rotate"></i> آخر تحديث: <b>هذا الشهر</b></span>
-            </div>
-          </div>
-        </div>
-        <div class="sx-lic-actions">
-          <button type="button" class="sx-lic-btn sx-lic-btn-primary" data-sx-cert-open data-cert="association">
-            <i class="fas fa-certificate"></i> عرض شهادة ترخيص الجمعية
-          </button>
-          <button type="button" class="sx-lic-btn sx-lic-btn-outline" data-sx-cert-open data-cert="fundraising">
-            <i class="fas fa-hand-holding-dollar"></i> عرض ترخيص جمع التبرعات
-          </button>
-        </div>
-      </div>
-    </div>
-
     <div class="sx-fbottom">
       <div class="sx-fbcont">
-        <div>© جميع الحقوق محفوظة لمجلس سَنَد <span data-year>2026</span></div>
+        <div>© جميع الحقوق محفوظة — منصة تمكين <span data-year>2026</span></div>
         <div>بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
       </div>
     </div>
   </footer>
 
-  <!-- نافذة عرض الترخيص -->
-  <div class="sx-mod-overlay sx-cert-overlay" data-sx-cert-overlay>
-    <div class="sx-mod sx-cert-mod" role="dialog" aria-modal="true" aria-labelledby="sx-cert-title">
-      <div class="sx-mod-head sx-cert-head">
-        <div class="sx-cert-head-l">
-          <img src="assets/images/License/ncnps-logo.svg" alt="المركز الوطني" class="sx-cert-logo" />
-          <h3 id="sx-cert-title" data-sx-cert-title>شهادة ترخيص الجمعية</h3>
-        </div>
-        <button class="sx-dclose" data-sx-cert-close aria-label="إغلاق"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="sx-mod-body sx-cert-body">
-        <div class="sx-cert-meta">
-          <div class="sx-cmrow"><span>اسم الجمعية</span><b>مجلس سَنَد للتنسيق والتمثيل المؤسسي</b></div>
-          <div class="sx-cmrow"><span data-sx-cert-numlabel>رقم الترخيص</span><b data-sx-cert-num>0000</b></div>
-          <div class="sx-cmrow"><span>الجهة المشرفة</span><b>المركز الوطني لتنمية القطاع غير الربحي</b></div>
-          <div class="sx-cmrow"><span>حالة الترخيص</span><b class="sx-cm-ok"><i class="fas fa-circle-check"></i> ساري</b></div>
-          <div class="sx-cmrow" data-sx-cert-scope-row hidden><span>نطاق الترخيص</span><b data-sx-cert-scope>—</b></div>
-          <div class="sx-cmrow"><span>تاريخ الإصدار</span><b>1445 هـ</b></div>
-        </div>
-        <div class="sx-cert-frame">
-          <img data-sx-cert-img src="assets/images/License/association-license-certificate.jpg" alt="صورة الترخيص" />
-        </div>
-      </div>
-      <div class="sx-mod-actions">
-        <button type="button" class="s-btn s-btn-outline" data-sx-cert-share><i class="fas fa-share-nodes"></i> مشاركة</button>
-        <a class="s-btn s-btn-outline" data-sx-cert-download href="assets/images/License/association-license-certificate.jpg" download><i class="fas fa-download"></i> تحميل الترخيص</a>
-        <button type="button" class="s-btn s-btn-primary" data-sx-cert-close><i class="fas fa-check"></i> إغلاق</button>
-      </div>
-    </div>
-  </div>
-
   <div class="sx-toast" id="sx-toast"></div>
   `;
+
 
   function inject() {
     // إزالة الشريط العلوي القديم إن وجد
