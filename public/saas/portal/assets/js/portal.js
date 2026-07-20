@@ -3,13 +3,18 @@
   'use strict';
 
   const NAV = [
+    { group: 'الرئيسية' },
     { key: 'dashboard',    label: 'لوحة التحكم',    icon: 'fa-gauge-high',           href: 'index.html' },
     { key: 'profile',      label: 'ملف الجمعية',     icon: 'fa-building-user',        href: 'profile.html' },
+    { key: 'profile-edit', label: 'تحديث البيانات',  icon: 'fa-pen-to-square',        href: 'profile-edit.html' },
+    { key: 'users',        label: 'المستخدمون',      icon: 'fa-users',                href: 'users.html',        badge: '5' },
+    { group: 'العمليات' },
     { key: 'requests',     label: 'طلباتي',          icon: 'fa-file-lines',           href: 'requests.html',     badge: '4' },
     { key: 'projects',     label: 'مشاريعي',         icon: 'fa-diagram-project',      href: 'projects.html' },
     { key: 'tickets',      label: 'تذاكر الدعم',     icon: 'fa-headset',              href: 'tickets.html',      badge: '2' },
     { key: 'messages',     label: 'المحادثات',        icon: 'fa-comments',             href: 'messages.html' },
     { key: 'meetings',     label: 'الاجتماعات',       icon: 'fa-calendar-check',       href: 'meetings.html' },
+    { group: 'الحساب' },
     { key: 'subscription', label: 'الاشتراك',         icon: 'fa-crown',                href: 'subscription.html' },
     { key: 'settings',     label: 'الإعدادات',        icon: 'fa-gear',                 href: 'settings.html' },
   ];
