@@ -1780,7 +1780,7 @@
         <div class="sx-tlinks">
           <a href="contact.html"><i class="fas fa-headset"></i> مركز المساعدة</a>
           <a href="mailto:info@platform.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@platform.sa</a>
-          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> منصة رقمية معتمدة لخدمات الجمعيات</span>
+          <a href="tel:+966920000000" class="sx-thide"><i class="fas fa-phone"></i> 920000000</a>
         </div>
         <div class="sx-tright">
           <a href="service-tracking.html" class="sx-tlink"><i class="fas fa-route"></i> متابعة طلب</a>
