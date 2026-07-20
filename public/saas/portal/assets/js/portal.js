@@ -20,12 +20,15 @@
   ];
 
   function buildSidebar(activeKey) {
-    const items = NAV.map(n => `
+    const items = NAV.map(n => {
+      if (n.group) return `<div class="psidebar-group-label">${n.group}</div>`;
+      return `
       <a href="${n.href}" class="psidebar-item ${n.key === activeKey ? 'is-active' : ''}">
         <i class="fa-solid ${n.icon}"></i>
         <span>${n.label}</span>
         ${n.badge ? `<span class="pbadge pbadge-primary">${n.badge}</span>` : ''}
-      </a>`).join('');
+      </a>`;
+    }).join('');
 
     return `
       <aside class="psidebar" id="psidebar">
@@ -37,11 +40,14 @@
           </div>
         </div>
         <nav class="psidebar-nav">
-          <div class="psidebar-group-label">الرئيسية</div>
           ${items}
         </nav>
         <div class="psidebar-footer">
-          <a href="../login.html" class="psidebar-item">
+          <a href="../index.html" class="psidebar-item">
+            <i class="fa-solid fa-globe"></i>
+            <span>العودة للموقع</span>
+          </a>
+          <a href="../login.html" class="psidebar-item" style="color:var(--p-danger);">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             <span>تسجيل الخروج</span>
           </a>
@@ -61,6 +67,10 @@
           ${subtitle ? `<small>${subtitle}</small>` : ''}
         </div>
         <div class="ptopbar-actions">
+          <a href="../index.html" class="pbtn pbtn-ghost pbtn-sm" title="العودة إلى موقع منصة تمكين" style="gap:6px;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span class="ptopbar-site-label">الموقع الرئيسي</span>
+          </a>
           <button class="ptopbar-icon-btn" title="بحث"><i class="fa-solid fa-magnifying-glass"></i></button>
           <button class="ptopbar-icon-btn" title="الإشعارات"><i class="fa-solid fa-bell"></i><span class="pdot"></span></button>
           <button class="ptopbar-icon-btn" title="الرسائل"><i class="fa-solid fa-envelope"></i></button>
