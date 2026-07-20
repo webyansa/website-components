@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إنشاء حساب جمعية | منصة تمكين</title>
+  <meta name="description" content="أنشئ حساب جمعيتك في منصة تمكين خلال ثلاث خطوات بسيطة." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="portal/assets/css/portal.css" />
+</head>
+<body style="background: var(--p-bg); min-height:100vh; padding: 40px 20px;">
+
+  <div style="max-width: 780px; margin: 0 auto;">
+    <!-- Brand -->
+    <div class="pauth-brand" style="justify-content:center; margin-bottom: 24px;">
+      <div class="plogo">ت</div>
+      <div>
+        <h1>منصة تمكين</h1>
+        <small>بوابة الجمعية</small>
+      </div>
+    </div>
+
+    <div class="pcard" style="padding: 0;">
+      <div style="padding: 28px 28px 0;">
+        <h2 class="pauth-title" style="font-size: 22px;">إنشاء حساب جمعية جديدة</h2>
+        <p class="pauth-subtitle" style="margin-bottom: 20px;">أكمل الخطوات التالية لتفعيل حساب جمعيتك في المنصة.</p>
+      </div>
+
+      <div style="padding: 0 28px;">
+        <div class="pstepper" id="regStepper">
+          <div class="pstep is-active">
+            <div class="pstep-num">1</div>
+            <div class="pstep-label">بيانات الجمعية</div>
+          </div>
+          <div class="pstep-line"></div>
+          <div class="pstep">
+            <div class="pstep-num">2</div>
+            <div class="pstep-label">بيانات الممثل</div>
+          </div>
+          <div class="pstep-line"></div>
+          <div class="pstep">
+            <div class="pstep-num">3</div>
+            <div class="pstep-label">بيانات الدخول</div>
+          </div>
+        </div>
+      </div>
+
+      <form onsubmit="event.preventDefault(); window.location='login.html';" id="regForm" style="padding: 4px 28px 28px;">
+
+        <!-- Step 1 -->
+        <div data-step-panel>
+          <div class="pgrid pgrid-2">
+            <div class="pfield">
+              <label class="plabel">اسم الجمعية <span class="req">*</span></label>
+              <input class="pinput" type="text" placeholder="جمعية العطاء الخيرية" required />
+            </div>
+            <div class="pfield">
+              <label class="plabel">نوع الجهة <span class="req">*</span></label>
+              <select class="pselect" required>
+                <option value="">اختر النوع</option>
+                <option>جمعية خيرية</option>
+                <option>مؤسسة أهلية</option>
+                <option>لجنة تنموية</option>
+                <option>وقف</option>
+              </select>
+            </div>
+            <div class="pfield">
+              <label class="plabel">رقم الترخيص <span class="req">*</span></label>
+              <input class="pinput" type="text" placeholder="1234" required />
+            </div>
+            <div class="pfield">
+              <label class="plabel">المدينة <span class="req">*</span></label>
+              <select class="pselect" required>
+                <option value="">اختر المدينة</option>
+                <option>الرياض</option><option>جدة</option><option>الدمام</option>
+                <option>مكة المكرمة</option><option>المدينة المنورة</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:flex-start; margin-top: 16px;">
+            <button type="button" class="pbtn pbtn-primary" data-step-next>
+              التالي <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div data-step-panel style="display:none;">
+          <div class="pgrid pgrid-2">
+            <div class="pfield">
+              <label class="plabel">اسم ممثل الجمعية <span class="req">*</span></label>
+              <input class="pinput" type="text" placeholder="الاسم رباعياً" required />
+            </div>
+            <div class="pfield">
+              <label class="plabel">الصفة الوظيفية</label>
+              <input class="pinput" type="text" placeholder="المدير التنفيذي" />
+            </div>
+            <div class="pfield">
+              <label class="plabel">البريد الإلكتروني <span class="req">*</span></label>
+              <input class="pinput" type="email" placeholder="representative@example.sa" required />
+            </div>
+            <div class="pfield">
+              <label class="plabel">رقم الجوال <span class="req">*</span></label>
+              <input class="pinput" type="tel" placeholder="+966 5X XXX XXXX" required />
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top: 16px;">
+            <button type="button" class="pbtn pbtn-ghost" data-step-prev>
+              <i class="fa-solid fa-arrow-right"></i> السابق
+            </button>
+            <button type="button" class="pbtn pbtn-primary" data-step-next>
+              التالي <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div data-step-panel style="display:none;">
+          <div class="pgrid pgrid-2">
+            <div class="pfield">
+              <label class="plabel">كلمة المرور <span class="req">*</span></label>
+              <input class="pinput" type="password" placeholder="8 أحرف على الأقل" required />
+              <span class="pfield-hint">حرف كبير، رقم، ورمز خاص للحصول على قوة كلمة مرور جيدة.</span>
+            </div>
+            <div class="pfield">
+              <label class="plabel">تأكيد كلمة المرور <span class="req">*</span></label>
+              <input class="pinput" type="password" placeholder="أعد الإدخال" required />
+            </div>
+          </div>
+          <label class="pcheck" style="margin: 8px 0 16px;">
+            <input type="checkbox" required />
+            أوافق على
+            <a href="#" data-modal-open="termsModal" style="color:var(--p-primary); font-weight:700; margin: 0 4px;">الشروط والأحكام</a>
+            و
+            <a href="#" data-modal-open="termsModal" style="color:var(--p-primary); font-weight:700; margin: 0 4px;">سياسة الخصوصية</a>
+          </label>
+          <div style="display:flex; justify-content:space-between;">
+            <button type="button" class="pbtn pbtn-ghost" data-step-prev>
+              <i class="fa-solid fa-arrow-right"></i> السابق
+            </button>
+            <button type="submit" class="pbtn pbtn-primary">
+              <i class="fa-solid fa-check"></i> إنشاء الحساب
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <p style="text-align:center; font-size:13.5px; color:var(--p-muted); margin-top: 18px;">
+      لديك حساب بالفعل؟
+      <a href="login.html" style="color:var(--p-primary); font-weight:700; margin-inline-start:4px;">تسجيل الدخول</a>
+    </p>
+  </div>
+
+  <!-- Terms modal -->
+  <div class="pmodal-overlay" id="termsModal">
+    <div class="pmodal pmodal-lg">
+      <header class="pmodal-header">
+        <h3><i class="fa-solid fa-file-contract"></i> الشروط والأحكام</h3>
+        <button class="pmodal-close" data-modal-close>&times;</button>
+      </header>
+      <div class="pmodal-body" style="line-height:1.9; color:var(--p-text-2); font-size:14px;">
+        <p>باستخدامك لمنصة تمكين، فإنك توافق على الالتزام بالسياسات والإرشادات الخاصة بالجهات غير الربحية، وضمان صحة البيانات المدخلة، والحفاظ على سرية بيانات الدخول.</p>
+        <p>تحتفظ المنصة بحق تعديل الشروط في أي وقت، وستُبلَّغ الجمعية بأي تحديث جوهري عبر البريد الإلكتروني المسجّل.</p>
+        <p>يُعدّ ممثل الجمعية مسؤولاً عن كافة العمليات التي تتم عبر الحساب، ويجب إبلاغ فريق الدعم فوراً عند اكتشاف أي استخدام غير مصرّح به.</p>
+      </div>
+      <footer class="pmodal-footer">
+        <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+        <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-check"></i> موافق</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="portal/assets/js/portal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      PortalStepper('#regForm');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="dashboard" data-title="لوحة التحكم" data-subtitle="نظرة عامة على نشاط جمعيتك">
+
+  <!-- Welcome -->
+  <div class="pcard" style="background: linear-gradient(120deg, #1E1B4B, #4338CA 60%, #4F46E5); color:#fff; border:0; margin-bottom: 20px; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.14) 1px, transparent 0); background-size:18px 18px; opacity:.4;"></div>
+    <div class="pcard-body" style="position:relative; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:8px; padding:5px 12px; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.18); font-size:12px; margin-bottom:12px;">
+          <i class="fa-solid fa-sparkles" style="color:#67E8F9;"></i> صباح الخير، جمعية العطاء 👋
+        </div>
+        <h2 style="margin:0 0 8px; font-size:22px; font-weight:800;">أهلاً بك في بوابة تمكين.</h2>
+        <p style="margin:0; opacity:.85; font-size:14px;">لديك <strong>3 طلبات</strong> قيد المراجعة و<strong>اجتماعان</strong> قادمان هذا الأسبوع.</p>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a href="requests.html" class="pbtn pbtn-outline" style="background:rgba(255,255,255,.14); color:#fff; border-color:rgba(255,255,255,.25);"><i class="fa-solid fa-plus"></i> طلب جديد</a>
+        <a href="meetings.html" class="pbtn" style="background:#fff; color:var(--p-navy);"><i class="fa-solid fa-calendar"></i> الاجتماعات</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="pgrid pgrid-6" style="margin-bottom: 20px;">
+    <div class="pcard pcard-hover"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-file-lines"></i></div><div><p class="pstat-label">إجمالي الطلبات</p><p class="pstat-value">24</p><span class="pstat-delta"><i class="fa-solid fa-arrow-up"></i> +12%</span></div></div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-hourglass-half"></i></div><div><p class="pstat-label">طلبات نشطة</p><p class="pstat-value">3</p><span class="pstat-delta"><i class="fa-solid fa-arrow-up"></i> +1</span></div></div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-diagram-project"></i></div><div><p class="pstat-label">المشاريع</p><p class="pstat-value">6</p><span class="pstat-delta">مستقرّة</span></div></div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat"><div class="pstat-icon is-danger"><i class="fa-solid fa-headset"></i></div><div><p class="pstat-label">تذاكر مفتوحة</p><p class="pstat-value">2</p><span class="pstat-delta is-down"><i class="fa-solid fa-arrow-down"></i> -1</span></div></div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat"><div class="pstat-icon is-info"><i class="fa-solid fa-calendar-check"></i></div><div><p class="pstat-label">اجتماعات قادمة</p><p class="pstat-value">2</p><span class="pstat-delta">هذا الأسبوع</span></div></div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat"><div class="pstat-icon is-violet"><i class="fa-solid fa-crown"></i></div><div><p class="pstat-label">حالة الاشتراك</p><p class="pstat-value" style="font-size:16px; padding-top:4px;">نشط</p><span class="pstat-delta">ينتهي: 12/2026</span></div></div></div>
+  </div>
+
+  <div class="pgrid" style="grid-template-columns: 2fr 1fr; gap:20px;">
+
+    <!-- Recent activity + quick actions -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--p-primary); margin-inline-end:6px;"></i> النشاط الأخير</h3><a href="requests.html" class="pbtn-text">عرض الكل</a></div>
+        <div class="pcard-body">
+          <div class="ptimeline">
+            <div class="ptimeline-item is-success">
+              <p class="pt-title">تم اعتماد طلب المنحة التشغيلية</p>
+              <span class="pt-meta">رقم الطلب REQ-2398 · قبل ساعتين</span>
+            </div>
+            <div class="ptimeline-item">
+              <p class="pt-title">رد جديد على تذكرة الدعم "استفسار عن التجديد"</p>
+              <span class="pt-meta">TCK-882 · قبل 4 ساعات</span>
+            </div>
+            <div class="ptimeline-item is-warning">
+              <p class="pt-title">تحديث حالة مشروع "تأهيل الأسر المنتجة" إلى مرحلة التنفيذ</p>
+              <span class="pt-meta">PRJ-121 · أمس</span>
+            </div>
+            <div class="ptimeline-item">
+              <p class="pt-title">تم تحميل تقرير الحوكمة السنوي</p>
+              <span class="pt-meta">قبل يومين</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-bolt" style="color:var(--p-primary); margin-inline-end:6px;"></i> إجراءات سريعة</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-4" style="gap:12px;">
+            <a href="requests.html" class="pcard pcard-hover" style="text-align:center; padding:18px; text-decoration:none;">
+              <div class="pstat-icon is-primary" style="margin:0 auto 10px;"><i class="fa-solid fa-plus"></i></div>
+              <div style="font-weight:700; font-size:13px;">طلب جديد</div>
+            </a>
+            <a href="tickets.html" class="pcard pcard-hover" style="text-align:center; padding:18px; text-decoration:none;">
+              <div class="pstat-icon is-danger" style="margin:0 auto 10px;"><i class="fa-solid fa-headset"></i></div>
+              <div style="font-weight:700; font-size:13px;">فتح تذكرة</div>
+            </a>
+            <a href="meetings.html" class="pcard pcard-hover" style="text-align:center; padding:18px; text-decoration:none;">
+              <div class="pstat-icon is-info" style="margin:0 auto 10px;"><i class="fa-solid fa-calendar-plus"></i></div>
+              <div style="font-weight:700; font-size:13px;">طلب اجتماع</div>
+            </a>
+            <a href="profile.html" class="pcard pcard-hover" style="text-align:center; padding:18px; text-decoration:none;">
+              <div class="pstat-icon is-violet" style="margin:0 auto 10px;"><i class="fa-solid fa-pen"></i></div>
+              <div style="font-weight:700; font-size:13px;">تحديث الملف</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-calendar-check" style="color:var(--p-primary); margin-inline-end:6px;"></i> اجتماعات قادمة</h3></div>
+        <div class="pcard-body" style="padding: 10px 22px 20px;">
+          <div class="ptimeline">
+            <div class="ptimeline-item">
+              <p class="pt-title">اجتماع مراجعة الحوكمة</p>
+              <span class="pt-meta"><i class="fa-solid fa-video"></i> أونلاين · 22 يوليو 10:00 ص</span>
+            </div>
+            <div class="ptimeline-item">
+              <p class="pt-title">ورشة تطوير المشاريع</p>
+              <span class="pt-meta"><i class="fa-solid fa-location-dot"></i> حضوري · 25 يوليو 1:00 م</span>
+            </div>
+          </div>
+          <a href="meetings.html" class="pbtn pbtn-outline pbtn-block pbtn-sm" style="margin-top:8px;">عرض كل الاجتماعات</a>
+        </div>
+      </div>
+
+      <div class="pcard" style="background: linear-gradient(140deg, #F5F3FF, #EEF2FF); border-color: transparent;">
+        <div class="pcard-body">
+          <div class="pstat-icon is-violet" style="margin-bottom:12px;"><i class="fa-solid fa-crown"></i></div>
+          <h4 style="margin:0 0 6px; font-size:15px; font-weight:800;">اشتراك جمعيتك</h4>
+          <p style="margin:0 0 12px; font-size:13px; color:var(--p-muted);">باقة الاحترافية — تنتهي في 12 ديسمبر 2026.</p>
+          <div class="pprogress" style="margin-bottom:12px;"><span style="width:62%;"></span></div>
+          <a href="subscription.html" class="pbtn pbtn-primary pbtn-sm pbtn-block">إدارة الاشتراك</a>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-body" style="text-align:center;">
+          <div class="pstat-icon is-info" style="margin:0 auto 10px;"><i class="fa-solid fa-life-ring"></i></div>
+          <h4 style="margin:0 0 6px; font-size:14px; font-weight:700;">تحتاج مساعدة؟</h4>
+          <p style="margin:0 0 12px; font-size:12.5px; color:var(--p-muted);">فريقنا الاستشاري جاهز للرد على استفساراتك.</p>
+          <a href="tickets.html" class="pbtn pbtn-outline pbtn-sm pbtn-block">تواصل مع الدعم</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+</body>
+</html>
