@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>تتبع طلب الخدمة · منصة تمكين</title>
+<meta name="description" content="تتبع حالة طلب الخدمة في منصة تمكين." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#172554',navyDeep:'#0F172A',navySoft:'#334286',emerald:'#4F46E5',emeraldSoft:'#818CF8',emeraldDeep:'#3730A3',gold:'#06B6D4',goldSoft:'#67E8F9',sand:'#EEF2FF',ivory:'#F8FAFC',mist:'#E2E8F0',border:'#E2E8F0',text:'#1E293B',muted:'#64748B' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+    <section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide6.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">تتبع طلب الخدمة</span></div>
+    <h1>تتبع طلب الخدمة</h1>
+    <p class="s-hero-lead">تابع حالة طلبك ومعرفة المرحلة الحالية والإجراءات المطلوبة بسهولة ووضوح.</p>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="s-container max-w-4xl">
+    <div class="trk-search-card">
+      <div class="head">
+        <i class="fas fa-route"></i>
+        <div><h3>تتبع طلب الخدمة</h3><p>أدخل رقم الطلب ورقم الجوال لعرض حالة طلبك.</p></div>
+      </div>
+      <form id="trkForm" class="grid md:grid-cols-3 gap-4">
+        <div class="srv-field md:col-span-1">
+          <label>رقم الطلب *</label>
+          <input type="text" id="trkId" required value="SRV-2026-0001" placeholder="مثال: SRV-2026-0001">
+        </div>
+        <div class="srv-field md:col-span-1">
+          <label>رقم الجوال *</label>
+          <div class="srv-phone"><span>+966</span><input type="tel" id="trkPhone" required pattern="5[0-9]{8}" maxlength="9" value="555555555" placeholder="5XXXXXXXX"></div>
+        </div>
+        <div class="srv-field md:col-span-1 flex items-end">
+          <button class="btn btn-primary w-full"><i class="fas fa-search"></i> تتبع الطلب</button>
+        </div>
+      </form>
+      <p class="text-xs text-sanad-muted mt-3"><i class="fas fa-circle-info text-sanad-emerald"></i> مثال للتجربة: رقم الطلب <strong>SRV-2026-0001</strong></p>
+    </div>
+
+    <div id="trkResult" class="mt-10 hidden">
+      <div class="trk-summary">
+        <div class="trk-sum-head">
+          <div>
+            <span class="badge">طلب نشط</span>
+            <h3 class="mt-2">طلب دعم أسري</h3>
+            <p class="text-sm text-sanad-muted">رقم الطلب: <strong id="trkOutId">SRV-2026-0001</strong></p>
+          </div>
+          <div class="trk-status">
+            <span class="dot"></span>
+            <div><small>الحالة الحالية</small><strong>دراسة الأهلية</strong></div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 text-sm">
+          <div class="trk-info"><small>مقدّم الطلب</small><strong>عبدالله محمد</strong></div>
+          <div class="trk-info"><small>نوع الخدمة</small><strong>دعم أسري</strong></div>
+          <div class="trk-info"><small>تاريخ التقديم</small><strong>01 / 06 / 2026</strong></div>
+          <div class="trk-info"><small>مستوى الأولوية</small><strong class="text-sanad-emerald">عادي</strong></div>
+          <div class="trk-info"><small>الفرع المسؤول</small><strong>الرياض - المقر الرئيسي</strong></div>
+          <div class="trk-info"><small>آخر تحديث</small><strong>03 / 06 / 2026</strong></div>
+          <div class="trk-info"><small>مدة الدراسة</small><strong>3-5 أيام عمل</strong></div>
+          <div class="trk-info"><small>الموظف المسؤول</small><strong>قسم الخدمات الاجتماعية</strong></div>
+        </div>
+      </div>
+
+      <div class="trk-timeline">
+        <h3 class="font-extrabold text-sanad-navy mb-5"><i class="fas fa-stream text-sanad-emerald"></i> مراحل الطلب</h3>
+        <ol>
+          <li class="done"><span class="ic"><i class="fas fa-check"></i></span><div><strong>تم استلام الطلب</strong><small>01 / 06 / 2026 - 09:42</small></div></li>
+          <li class="done"><span class="ic"><i class="fas fa-check"></i></span><div><strong>مراجعة البيانات</strong><small>01 / 06 / 2026 - 14:10</small></div></li>
+          <li class="current"><span class="ic"><i class="fas fa-spinner fa-spin"></i></span><div><strong>دراسة الأهلية</strong><small>قيد العمل الآن</small></div></li>
+          <li><span class="ic">4</span><div><strong>التحقق أو الزيارة الميدانية</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">5</span><div><strong>الاعتماد</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">6</span><div><strong>تقديم الخدمة</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">7</span><div><strong>قياس الرضا</strong><small>لاحقًا</small></div></li>
+          <li><span class="ic">8</span><div><strong>إغلاق الطلب</strong><small>لاحقًا</small></div></li>
+        </ol>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 trk-section">
+          <h3><i class="fas fa-circle-info text-sanad-emerald"></i> تفاصيل الطلب</h3>
+          <div class="grid sm:grid-cols-2 gap-3 text-sm mt-3">
+            <div class="trk-mini"><small>رقم الجوال</small><strong>+966 5XXXXXX55</strong></div>
+            <div class="trk-mini"><small>المدينة</small><strong>الرياض</strong></div>
+            <div class="trk-mini"><small>عدد الأسرة</small><strong>6 أفراد</strong></div>
+            <div class="trk-mini"><small>قناة التواصل</small><strong>واتساب</strong></div>
+          </div>
+          <h4 class="font-bold text-sanad-navy mt-5 mb-2">المرفقات المرفوعة</h4>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="trk-chip"><i class="fas fa-file-image"></i> الهوية</span>
+            <span class="trk-chip"><i class="fas fa-file-image"></i> إثبات السكن</span>
+            <span class="trk-chip missing"><i class="fas fa-triangle-exclamation"></i> تعريف الدخل (ناقص)</span>
+          </div>
+          <h4 class="font-bold text-sanad-navy mt-5 mb-2">آخر تواصل</h4>
+          <p class="text-sm text-sanad-muted">تم التواصل معك في 02/06/2026 لطلب رفع تعريف الدخل لاستكمال الدراسة.</p>
+        </div>
+        <aside class="trk-alert">
+          <h3><i class="fas fa-bell"></i> الإجراءات المطلوبة</h3>
+          <p class="text-sm leading-loose mt-2">يرجى تحديث المرفقات المطلوبة لاستكمال دراسة الطلب.</p>
+          <div class="flex flex-col gap-2 mt-4">
+            <button class="btn btn-primary"><i class="fas fa-pen"></i> تحديث بيانات الطلب</button>
+            <button class="btn btn-accent"><i class="fas fa-cloud-arrow-up"></i> رفع مرفقات إضافية</button>
+            <a href="contact.html" class="btn btn-outline"><i class="fas fa-headset"></i> التواصل مع المنصة</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="trkHelp" class="trk-help mt-12">
+      <h3>هل تحتاج مساعدة؟</h3>
+      <p>فريق خدمة المستفيدين جاهز لمساعدتك في أي وقت.</p>
+      <div class="flex flex-wrap gap-3 justify-center mt-4">
+        <a href="contact.html" class="btn btn-primary"><i class="fas fa-headset"></i> تواصل مع فريق الخدمات</a>
+        <a href="contact.html#complaints" class="btn btn-accent"><i class="fas fa-bullhorn"></i> رفع شكوى أو مقترح</a>
+        <a href="services.html" class="btn btn-outline"><i class="fas fa-arrow-right"></i> العودة إلى الخدمات</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

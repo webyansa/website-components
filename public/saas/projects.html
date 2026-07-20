@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>البرامج والمبادرات · منصة تمكين</title>
+<meta name="description" content="مشاريع ومبادرات منصة تمكين: برامج رعاية اجتماعية وصحية وتعليمية بأثر موثّق وشفافية كاملة." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme:{ extend:{
+    fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+    colors:{ sanad:{
+      navy:'#172554', navyDeep:'#0F172A', navySoft:'#334286',
+      emerald:'#4F46E5', emeraldSoft:'#818CF8', emeraldDeep:'#3730A3',
+      gold:'#06B6D4', goldSoft:'#67E8F9',
+      sand:'#EEF2FF', ivory:'#F8FAFC', mist:'#E2E8F0',
+      border:'#E2E8F0', text:'#1E293B', muted:'#64748B'
+    } }
+  } } }
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<!-- ============ هيرو الصفحة ============ -->
+<section class="s-page-hero">
+  <div class="s-container relative z-10">
+    <div class="s-crumbs reveal"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">البرامج والمبادرات</span></div>
+    <h1 class="reveal reveal-delay-1">البرامج والمبادرات</h1>
+    <p class="text-white/85 max-w-3xl text-lg leading-loose reveal reveal-delay-2">نحوّل الاحتياج إلى برامج عملية ومبادرات مستدامة، تقيس أثرها وتصل بخدماتها إلى الفئات الأكثر احتياجًا بوضوح وشفافية.</p>
+  </div>
+</section>
+
+<!-- ============ لوحة مؤشرات سريعة ============ -->
+<section class="s-section-tight -mt-12 relative z-10">
+  <div class="s-container">
+    <div class="s-kpi-grid reveal">
+      <div class="s-kpi"><div class="s-kpi-icon"><i class="fas fa-folder-tree"></i></div><div class="s-kpi-n">42</div><div class="s-kpi-l">مشروعًا وبرنامجًا</div></div>
+      <div class="s-kpi"><div class="s-kpi-icon"><i class="fas fa-users"></i></div><div class="s-kpi-n">12,800</div><div class="s-kpi-l">مستفيد</div></div>
+      <div class="s-kpi"><div class="s-kpi-icon"><i class="fas fa-layer-group"></i></div><div class="s-kpi-n">6</div><div class="s-kpi-l">مجالات خدمة</div></div>
+      <div class="s-kpi"><div class="s-kpi-icon"><i class="fas fa-face-smile"></i></div><div class="s-kpi-n">96%</div><div class="s-kpi-l">رضا المستفيدين</div></div>
+      <div class="s-kpi"><div class="s-kpi-icon"><i class="fas fa-handshake"></i></div><div class="s-kpi-n">28</div><div class="s-kpi-l">شراكة داعمة</div></div>
+      <div class="s-kpi"><div class="s-kpi-icon"><i class="fas fa-seedling"></i></div><div class="s-kpi-n">7</div><div class="s-kpi-l">سنوات من العطاء</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ البحث والتصفية ============ -->
+<section class="s-section-tight">
+  <div class="s-container">
+    <div class="s-filter-bar reveal">
+      <div class="grid lg:grid-cols-12 gap-5 items-start">
+        <div class="lg:col-span-5">
+          <span class="s-chip-label"><i class="fas fa-magnifying-glass ml-1 text-sanad-emerald"></i> ابحث عن مشروع أو مبادرة</span>
+          <div class="s-search"><input type="text" placeholder="اكتب اسم المشروع..." data-projects-search /><i class="fas fa-magnifying-glass"></i></div>
+        </div>
+        <div class="lg:col-span-7 grid gap-4">
+          <div>
+            <span class="s-chip-label">المجال</span>
+            <div class="s-filter-group">
+              <button class="s-chip active" data-filter="field" data-value="all">الكل</button>
+              <button class="s-chip" data-filter="field" data-value="social">الرعاية الاجتماعية</button>
+              <button class="s-chip" data-filter="field" data-value="health">الرعاية الصحية</button>
+              <button class="s-chip" data-filter="field" data-value="edu">التعليم والتمكين</button>
+              <button class="s-chip" data-filter="field" data-value="housing">الإسكان</button>
+              <button class="s-chip" data-filter="field" data-value="food">السلال الغذائية</button>
+              <button class="s-chip" data-filter="field" data-value="volunteer">التطوع</button>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <span class="s-chip-label">الحالة</span>
+              <div class="s-filter-group">
+                <button class="s-chip active" data-filter="status" data-value="all">الكل</button>
+                <button class="s-chip" data-filter="status" data-value="active">نشط</button>
+                <button class="s-chip" data-filter="status" data-value="done">مكتمل</button>
+                <button class="s-chip" data-filter="status" data-value="season">موسمي</button>
+                <button class="s-chip" data-filter="status" data-value="pending">قيد التنفيذ</button>
+              </div>
+            </div>
+            <div>
+              <span class="s-chip-label">الفئة</span>
+              <div class="s-filter-group">
+                <button class="s-chip active" data-filter="group" data-value="all">الكل</button>
+                <button class="s-chip" data-filter="group" data-value="families">الأسر</button>
+                <button class="s-chip" data-filter="group" data-value="orphans">الأيتام</button>
+                <button class="s-chip" data-filter="group" data-value="elderly">كبار السن</button>
+                <button class="s-chip" data-filter="group" data-value="patients">المرضى</button>
+                <button class="s-chip" data-filter="group" data-value="students">الطلاب</button>
+                <button class="s-chip" data-filter="group" data-value="volunteers">المتطوعون</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ المشروع المميز ============ -->
+<section class="s-section-tight">
+  <div class="s-container">
+    <div class="flex items-end justify-between gap-3 mb-6 reveal">
+      <div>
+        <span class="s-eyebrow"><i class="fas fa-star"></i> مشروع مميز</span>
+        <h2 class="s-section-title mt-3">برنامج رئيسي يتصدّر أولوياتنا</h2>
+      </div>
+    </div>
+    <div class="s-feature reveal">
+      <div class="s-feature-media">
+        <img src="assets/images/posts/1.jpeg" alt="مشروع كفالة الأسر" loading="lazy" />
+        <div class="s-pcard-badges">
+          <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+          <span class="s-badge s-badge-field"><i class="fas fa-hand-holding-heart"></i> الرعاية الاجتماعية</span>
+        </div>
+      </div>
+      <div class="s-feature-body">
+        <span class="s-eyebrow"><i class="fas fa-folder-open"></i> ملف المشروع</span>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-sanad-navy leading-snug">مشروع كفالة الأسر</h3>
+        <p class="text-sanad-muted leading-loose">برنامج اجتماعي يهدف إلى دعم الأسر الأشد احتياجًا من خلال مسارات رعاية شهرية تشمل الغذاء، السكن، والتعليم، مع متابعة دورية للأثر.</p>
+        <div class="grid grid-cols-3 gap-3 my-2">
+          <div class="text-center p-3 rounded-xl bg-sanad-ivory"><div class="text-xl font-black text-sanad-navy">1,240</div><div class="text-xs text-sanad-muted">مستفيد</div></div>
+          <div class="text-center p-3 rounded-xl bg-sanad-ivory"><div class="text-xl font-black text-sanad-emeraldDeep">78%</div><div class="text-xs text-sanad-muted">نسبة الإنجاز</div></div>
+          <div class="text-center p-3 rounded-xl bg-sanad-ivory"><div class="text-xl font-black text-sanad-navy">420</div><div class="text-xs text-sanad-muted">مساهم</div></div>
+        </div>
+        <div>
+          <div class="s-progress-row"><span>الدعم المحقق</span><b>663,000 / 850,000 ريال</b></div>
+          <div class="s-progress"><i data-progress="78"></i></div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-3">
+          <a href="project-details.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+          <a href="index.html#donate" class="btn btn-accent"><i class="fas fa-heart"></i> ساهم في المشروع</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ شبكة المشاريع ============ -->
+<section class="s-section">
+  <div class="s-container">
+    <div class="flex items-end justify-between gap-3 mb-8 reveal">
+      <div>
+        <span class="s-eyebrow"><i class="fas fa-grip"></i> جميع المشاريع</span>
+        <h2 class="s-section-title mt-3">برامج ومبادرات تخدم مختلف الفئات</h2>
+      </div>
+      <span class="text-sm text-sanad-muted hidden md:inline">يتم تحديث القائمة بحسب الفلاتر المختارة</span>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-projects-grid>
+      <!-- 1 -->
+      <article class="s-pcard reveal" data-project data-field="social,food" data-status="active" data-group="families,orphans,elderly" data-title="كفالة الأسر">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/1.jpeg" alt="كفالة الأسر" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+            <span class="s-badge s-badge-field">الرعاية الاجتماعية</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع كفالة الأسر</h3>
+          <p>دعم شهري منتظم للأسر الأشد احتياجًا مع متابعة دورية تضمن وصول الخدمة وتحقق الأثر.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>78%</b></div><div class="s-progress"><i data-progress="78"></i></div></div>
+          <div class="s-pcard-meta">
+            <span><i class="fas fa-users"></i> 1,240 مستفيد</span>
+            <span><i class="fas fa-calendar"></i> مستمر</span>
+          </div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 2 -->
+      <article class="s-pcard reveal" data-project data-field="health" data-status="active" data-group="patients,elderly,families" data-title="الدعم الصحي">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/2.jpeg" alt="الدعم الصحي" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+            <span class="s-badge s-badge-field">الرعاية الصحية</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع الدعم الصحي</h3>
+          <p>تأمين الأدوية والأجهزة الطبية والمواعيد العلاجية للحالات المستحقة بتنسيق ميداني دقيق.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>64%</b></div><div class="s-progress"><i data-progress="64"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 980 مستفيد</span><span><i class="fas fa-calendar"></i> ربعي</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 3 -->
+      <article class="s-pcard reveal" data-project data-field="food" data-status="season" data-group="families,orphans" data-title="السلة الغذائية">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/3.jpeg" alt="السلة الغذائية" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status is-season"><i class="fas fa-snowflake"></i> موسمي</span>
+            <span class="s-badge s-badge-field">السلال الغذائية</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع السلة الغذائية</h3>
+          <p>سلال غذائية شهرية للأسر المستحقة بمحتوى متوازن ومتابعة للجودة وحلقات التوزيع.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>92%</b></div><div class="s-progress"><i data-progress="92"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 2,100 أسرة</span><span><i class="fas fa-calendar"></i> رمضان وغيره</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 4 -->
+      <article class="s-pcard reveal" data-project data-field="edu" data-status="active" data-group="families,students" data-title="التمكين المهني">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/4.jpeg" alt="التمكين المهني" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+            <span class="s-badge s-badge-field">التعليم والتمكين</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع التمكين المهني</h3>
+          <p>برامج تدريب مهني وتأهيل لسوق العمل لأبناء الأسر المستفيدة لتحقيق الاستقلال الاقتصادي.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>55%</b></div><div class="s-progress"><i data-progress="55"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 320 متدرب</span><span><i class="fas fa-calendar"></i> 9 أشهر</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 5 -->
+      <article class="s-pcard reveal" data-project data-field="edu" data-status="active" data-group="students,orphans" data-title="دعم الطلاب">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/5.jpeg" alt="دعم الطلاب" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+            <span class="s-badge s-badge-field">التعليم والتمكين</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع دعم الطلاب</h3>
+          <p>توفير الحقيبة المدرسية والرسوم والمواصلات للطلاب من الأسر المستحقة لاستمرار التعليم.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>71%</b></div><div class="s-progress"><i data-progress="71"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 640 طالبًا</span><span><i class="fas fa-calendar"></i> العام الدراسي</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 6 -->
+      <article class="s-pcard reveal" data-project data-field="social,health" data-status="active" data-group="elderly" data-title="رعاية كبار السن">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/6.jpeg" alt="رعاية كبار السن" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+            <span class="s-badge s-badge-field">الرعاية الاجتماعية</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع رعاية كبار السن</h3>
+          <p>زيارات منزلية، رعاية صحية أساسية، وأنشطة اجتماعية لكبار السن في مناطق الجمعية.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>68%</b></div><div class="s-progress"><i data-progress="68"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 410 مستفيدًا</span><span><i class="fas fa-calendar"></i> مستمر</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 7 -->
+      <article class="s-pcard reveal" data-project data-field="social" data-status="season" data-group="families,elderly" data-title="الشتاء الدافئ">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/7.jpeg" alt="الشتاء الدافئ" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status is-season"><i class="fas fa-snowflake"></i> موسمي</span>
+            <span class="s-badge s-badge-field">الرعاية الاجتماعية</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مبادرة الشتاء الدافئ</h3>
+          <p>توزيع الأغطية والملابس الشتوية ووسائل التدفئة على الأسر الأكثر تأثرًا بموجات البرد.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>85%</b></div><div class="s-progress"><i data-progress="85"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 1,500 مستفيد</span><span><i class="fas fa-calendar"></i> ديسمبر–فبراير</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 8 -->
+      <article class="s-pcard reveal" data-project data-field="food,social" data-status="season" data-group="families" data-title="إفطار صائم">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/8.jpeg" alt="إفطار صائم" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status is-season"><i class="fas fa-moon"></i> موسمي</span>
+            <span class="s-badge s-badge-field">السلال الغذائية</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مبادرة إفطار صائم</h3>
+          <p>وجبات إفطار رمضانية يومية للأسر والعمالة في مواقع التجمعات بالتنسيق مع شركاء التنفيذ.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>100%</b></div><div class="s-progress"><i data-progress="100"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 38,500 وجبة</span><span><i class="fas fa-calendar"></i> رمضان</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 9 -->
+      <article class="s-pcard reveal" data-project data-field="housing" data-status="pending" data-group="families,elderly" data-title="ترميم المنازل">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/9.jpeg" alt="ترميم المنازل" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status is-pending"><i class="fas fa-helmet-safety"></i> قيد التنفيذ</span>
+            <span class="s-badge s-badge-field">الإسكان</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>مشروع ترميم المنازل</h3>
+          <p>إصلاح وتأهيل المساكن الآيلة للسقوط للأسر المستفيدة بمعايير سلامة وجودة معتمدة.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>34%</b></div><div class="s-progress"><i data-progress="34"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 48 منزلًا</span><span><i class="fas fa-calendar"></i> 18 شهرًا</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+      <!-- 10 -->
+      <article class="s-pcard reveal" data-project data-field="volunteer" data-status="active" data-group="volunteers,students" data-title="التطوع المجتمعي">
+        <div class="s-pcard-media">
+          <img src="assets/images/posts/10.jpeg" alt="التطوع المجتمعي" loading="lazy" />
+          <div class="s-pcard-badges">
+            <span class="s-badge s-badge-status"><span class="s-pulse"></span> نشط</span>
+            <span class="s-badge s-badge-field">التطوع</span>
+          </div>
+        </div>
+        <div class="s-pcard-body">
+          <h3>برنامج التطوع المجتمعي</h3>
+          <p>استقطاب وتأهيل المتطوعين ضمن مسارات تخصصية تخدم برامج الجمعية وتوسّع أثرها.</p>
+          <div><div class="s-progress-row"><span>الإنجاز</span><b>62%</b></div><div class="s-progress"><i data-progress="62"></i></div></div>
+          <div class="s-pcard-meta"><span><i class="fas fa-users"></i> 530 متطوعًا</span><span><i class="fas fa-calendar"></i> مستمر</span></div>
+          <a href="project-details.html" class="btn btn-outline !py-2.5 text-sm justify-center"><i class="fas fa-arrow-left"></i> عرض المشروع</a>
+        </div>
+      </article>
+    </div>
+
+    <div data-projects-empty class="is-hidden text-center py-12 text-sanad-muted">
+      <i class="fas fa-folder-open text-4xl mb-3 text-sanad-emeraldSoft"></i>
+      <p class="font-bold">لا توجد مشاريع تطابق التصفية المختارة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ مسارات الأثر ============ -->
+<section class="s-section bg-white border-y border-sanad-border">
+  <div class="s-container">
+    <div class="text-center mb-10 reveal">
+      <span class="s-eyebrow"><i class="fas fa-route"></i> مسارات الأثر</span>
+      <h2 class="s-section-title mt-3">كيف ترتبط مشاريعنا بأهداف الجمعية؟</h2>
+      <p class="s-sub mx-auto mt-3">خمسة مسارات نتحرّك من خلالها لربط كل مشروع بأثر واضح ومُقاس على الفرد والأسرة والمجتمع.</p>
+    </div>
+    <div class="s-impact-rail reveal">
+      <div class="s-impact-node"><i class="fas fa-hand-holding-heart"></i><h4>رعاية</h4><p>تأمين احتياجات الفرد والأسرة الأساسية.</p></div>
+      <div class="s-impact-node"><i class="fas fa-arrow-up-right-dots"></i><h4>تمكين</h4><p>برامج تدريب وتأهيل للاستقلال الاقتصادي.</p></div>
+      <div class="s-impact-node"><i class="fas fa-house-chimney-medical"></i><h4>استقرار</h4><p>تحسين بيئة المعيشة والصحة والتعليم.</p></div>
+      <div class="s-impact-node"><i class="fas fa-handshake"></i><h4>شراكة</h4><p>تكامل مع القطاع الخيري والحكومي والخاص.</p></div>
+      <div class="s-impact-node"><i class="fas fa-leaf"></i><h4>استدامة</h4><p>برامج طويلة الأمد بأثر متجدد ومتابع.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ دعوة للمساهمة ============ -->
+<section class="s-section-tight">
+  <div class="s-container">
+    <div class="s-cta-mini reveal">
+      <div>
+        <h3>ساهم في مشروع يصنع فرقًا</h3>
+        <p>اختر المشروع الأقرب لاهتمامك، وكن جزءًا من رحلة أثر واضحة تصل إلى مستحقيها.</p>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-end">
+        <a href="index.html#donate" class="btn btn-accent"><i class="fas fa-heart"></i> استعرض فرص الدعم</a>
+        <a href="contact.html" class="btn btn-ghost"><i class="fas fa-envelope"></i> تواصل معنا</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ الفوتر ============ -->
+<button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

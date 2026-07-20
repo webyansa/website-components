@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الأنشطة والفعاليات · منصة تمكين</title>
+<meta name="description" content="فعاليات منصة تمكين: ورش، دورات، لقاءات، حملات، وأنشطة مجتمعية حضوريًا وعن بُعد وهجين." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme:{ extend:{
+  fontFamily:{ sans:['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+  colors:{ sanad:{ navy:'#172554',navyDeep:'#0F172A',navySoft:'#334286',emerald:'#4F46E5',emeraldSoft:'#818CF8',emeraldDeep:'#3730A3',gold:'#06B6D4',goldSoft:'#67E8F9',sand:'#EEF2FF',ivory:'#F8FAFC',mist:'#E2E8F0',border:'#E2E8F0',text:'#1E293B',muted:'#64748B' } }
+}}}
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide8.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">الفعاليات</span></div>
+    <span class="s-eyebrow on-dark mt-4"><i class="fas fa-calendar-days text-sanad-goldSoft"></i> أنشطة وفعاليات الجمعية</span>
+    <h1>الأنشطة والفعاليات</h1>
+    <p class="s-hero-lead">تعرّف على فعاليات الجمعية القادمة والسابقة، وسجّل في الورش والدورات واللقاءات التي تناسب اهتمامك.</p>
+  </div>
+</section>
+
+<section class="py-10 -mt-6 relative z-20">
+  <div class="s-container">
+    <div class="e-tabs" id="eTabs">
+      <button class="e-tab active" data-tab="all">الكل <span class="ct" data-count="all">0</span></button>
+      <button class="e-tab" data-tab="upcoming">القادمة <span class="ct" data-count="upcoming">0</span></button>
+      <button class="e-tab" data-tab="open">التسجيل متاح <span class="ct" data-count="open">0</span></button>
+      <button class="e-tab" data-tab="done">مكتملة <span class="ct" data-count="done">0</span></button>
+      <button class="e-tab" data-tab="onsite">حضورية <span class="ct" data-count="onsite">0</span></button>
+      <button class="e-tab" data-tab="online">عن بُعد <span class="ct" data-count="online">0</span></button>
+      <button class="e-tab" data-tab="hybrid">هجينة <span class="ct" data-count="hybrid">0</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="py-4">
+  <div class="s-container">
+    <div class="e-filters">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-3">
+        <h3 class="text-base font-extrabold text-sanad-navy flex items-center gap-2"><i class="fas fa-sliders text-sanad-emeraldDeep"></i> ابحث وفلتر الفعاليات</h3>
+        <button id="eReset" class="btn btn-outline !py-2 !px-3 text-xs"><i class="fas fa-rotate-left"></i> إعادة الضبط</button>
+      </div>
+      <div class="e-search"><i class="fas fa-magnifying-glass"></i><input id="eSearch" type="text" placeholder="ابحث عن فعالية…" /></div>
+      <div class="e-fgrid">
+        <div class="e-fld"><label>نوع الفعالية</label><select id="eType"><option value="">الكل</option><option value="workshop">ورشة</option><option value="course">دورة</option><option value="meeting">لقاء</option><option value="campaign">حملة</option><option value="forum">ملتقى</option><option value="community">نشاط مجتمعي</option></select></div>
+        <div class="e-fld"><label>طريقة الحضور</label><select id="eMode"><option value="">الكل</option><option value="onsite">حضوري</option><option value="online">عن بُعد</option><option value="hybrid">هجين</option></select></div>
+        <div class="e-fld"><label>من تاريخ</label><input type="date" id="eFrom" /></div>
+        <div class="e-fld"><label>إلى تاريخ</label><input type="date" id="eTo" /></div>
+        <div class="e-fld"><label>الحالة</label><select id="eStat"><option value="">الكل</option><option value="open">التسجيل متاح</option><option value="done">مكتملة</option><option value="closed">مغلقة</option><option value="soon">قريبًا</option></select></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="py-8">
+  <div class="s-container">
+    <div class="flex items-end justify-between mb-4">
+      <div><span class="s-eyebrow"><i class="fas fa-star"></i> فعالية مميزة</span><h2 class="s-title mt-2">حدث الجمعية القادم</h2></div>
+    </div>
+    <div class="e-feat">
+      <div class="e-feat-img" style="background-image:url('assets/images/posts/2.jpeg');"><span class="e-feat-badge"><i class="fas fa-bolt"></i> فعالية مميزة</span></div>
+      <div class="e-feat-body">
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="e-bg type-w"><i class="fas fa-chalkboard-user"></i> ورشة</span>
+          <span class="e-bg mode-on"><i class="fas fa-location-dot"></i> حضوري</span>
+          <span class="e-status open"><i class="fas fa-circle-check"></i> التسجيل متاح</span>
+        </div>
+        <h3 class="text-2xl font-black text-sanad-navy leading-tight">ورشة التمكين الأسري</h3>
+        <p class="mt-2 text-sanad-muted leading-loose">ورشة تدريبية تهدف إلى تمكين الأسر المستفيدة من بناء مهارات التخطيط المالي وإدارة الموارد اليومية.</p>
+        <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+          <div><div class="text-xs text-sanad-muted">التاريخ</div><div class="font-bold text-sanad-navy">12 يونيو 2026</div></div>
+          <div><div class="text-xs text-sanad-muted">الوقت</div><div class="font-bold text-sanad-navy">10:00 ص</div></div>
+          <div><div class="text-xs text-sanad-muted">المقاعد</div><div class="font-bold text-sanad-navy">80</div></div>
+          <div><div class="text-xs text-sanad-muted">المتبقي</div><div class="font-bold text-sanad-emeraldDeep">23 مقعدًا</div></div>
+        </div>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <a href="event-details.html" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> سجّل الآن</a>
+          <a href="event-details.html" class="btn btn-outline"><i class="fas fa-circle-info"></i> تفاصيل الفعالية</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-8">
+  <div class="s-container">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
+      <h2 class="s-title">جميع الفعاليات</h2>
+      <div class="text-sm text-sanad-muted">يعرض <b id="eCount" class="text-sanad-navy">0</b> فعالية</div>
+    </div>
+    <div class="e-grid" id="eGrid"></div>
+    <div class="text-center mt-10 hidden" id="eEmpty">
+      <div class="sanad-icon-wrap mx-auto"><i class="fas fa-magnifying-glass"></i></div>
+      <p class="mt-4 text-sanad-muted">لا توجد فعاليات تطابق الفلاتر الحالية.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 bg-white border-t border-sanad-border">
+  <div class="s-container text-center max-w-2xl mx-auto">
+    <span class="s-eyebrow"><i class="fas fa-bullhorn"></i> دعوة ختامية</span>
+    <h2 class="s-title mt-3">شاركنا فعالياتنا القادمة</h2>
+    <p class="text-sanad-muted mt-3 leading-loose">تابع جديد فعاليات الجمعية وكن جزءًا من صناعة الأثر في مجتمعك.</p>
+    <div class="mt-6 flex flex-wrap items-center gap-3 justify-center">
+      <a href="#eGrid" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> استعرض الفعاليات المتاحة</a>
+      <a href="contact.html" class="btn btn-outline"><i class="fas fa-headset"></i> تواصل معنا</a>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/main.js"></script>
+<script>
+(function(){
+  'use strict';
+  const TYPE_LBL = {workshop:'ورشة',course:'دورة',meeting:'لقاء',campaign:'حملة',forum:'ملتقى',community:'نشاط مجتمعي'};
+  const TYPE_CLS = {workshop:'type-w',course:'type-c',meeting:'type-m',campaign:'type-cm',forum:'type-f',community:'type-c'};
+  const TYPE_IC  = {workshop:'fa-chalkboard-user',course:'fa-graduation-cap',meeting:'fa-people-arrows',campaign:'fa-bullhorn',forum:'fa-people-group',community:'fa-handshake-angle'};
+  const MODE_LBL = {onsite:'حضوري',online:'عن بُعد',hybrid:'هجين'};
+  const MODE_CLS = {onsite:'mode-on',online:'mode-off',hybrid:'mode-hy'};
+  const MODE_IC  = {onsite:'fa-location-dot',online:'fa-wifi',hybrid:'fa-shuffle'};
+  const STAT_LBL = {open:'التسجيل متاح',closed:'مغلقة',done:'مكتملة',soon:'قريبًا'};
+
+  const EVENTS = [
+    {id:'ev1', t:'ورشة التمكين الأسري', d:'ورشة تدريبية لتمكين الأسر من بناء مهارات التخطيط المالي وإدارة الموارد.', img:'assets/images/posts/2.jpeg', type:'workshop', mode:'onsite', stat:'open', date:'2026-06-12', time:'10:00 ص', place:'مقر الجمعية - الرياض', seats:80, left:23},
+    {id:'ev2', t:'دورة إدارة الميزانية المنزلية', d:'دورة عن بُعد لتعليم أساسيات إدارة الميزانية الشهرية والتخطيط المالي للأسرة.', img:'assets/images/posts/3.jpeg', type:'course', mode:'online', stat:'open', date:'2026-06-22', time:'07:00 م', place:'منصة افتراضية', seats:200, left:142},
+    {id:'ev3', t:'لقاء تعريفي للمستفيدين', d:'لقاء حضوري لتعريف المستفيدين الجدد بخدمات المجلس والبرامج المتاحة.', img:'assets/images/posts/4.jpeg', type:'meeting', mode:'onsite', stat:'soon', date:'2026-07-05', time:'05:30 م', place:'مقر الجمعية - الرياض', seats:50, left:50},
+    {id:'ev4', t:'حملة السلال الرمضانية', d:'حملة موسمية لتوزيع السلال الغذائية على الأسر المستفيدة في رمضان.', img:'assets/images/posts/5.jpeg', type:'campaign', mode:'onsite', stat:'done', date:'2026-03-20', time:'مستمرة', place:'مناطق متعددة', seats:0, left:0},
+    {id:'ev5', t:'ملتقى الشركاء والداعمين', d:'ملتقى سنوي يجمع شركاء الجمعية وداعميها لمناقشة الفرص والتعاون المستقبلي.', img:'assets/images/posts/6.jpeg', type:'forum', mode:'hybrid', stat:'open', date:'2026-09-15', time:'06:00 م', place:'فندق رويال + بثّ مباشر', seats:300, left:115},
+    {id:'ev6', t:'برنامج تأهيل المتطوعين', d:'برنامج تدريبي مكثّف للمتطوعين الجدد لتأهيلهم للعمل الميداني.', img:'assets/images/posts/7.jpeg', type:'course', mode:'hybrid', stat:'open', date:'2026-08-02', time:'04:00 م', place:'مقر الجمعية + عن بُعد', seats:120, left:48},
+    {id:'ev7', t:'نشاط مجتمعي للأسر', d:'يوم ترفيهي حضوري للأسر المستفيدة وأبنائهم في حديقة الجمعية.', img:'assets/images/posts/8.jpeg', type:'community', mode:'onsite', stat:'closed', date:'2026-05-18', time:'10:00 ص', place:'الحديقة الوطنية - الرياض', seats:200, left:0},
+    {id:'ev8', t:'دورة المهارات الوظيفية', d:'دورة لرفع جاهزية المستفيدين لسوق العمل عبر تطوير مهارات السيرة الذاتية والمقابلة.', img:'assets/images/posts/9.jpeg', type:'course', mode:'online', stat:'soon', date:'2026-10-10', time:'08:00 م', place:'منصة افتراضية', seats:150, left:150},
+    {id:'ev9', t:'لقاء أمهات الأسر المستفيدة', d:'لقاء توعوي حضوري للأمهات حول الإرشاد التربوي والصحة النفسية.', img:'assets/images/posts/10.jpeg', type:'meeting', mode:'onsite', stat:'done', date:'2026-02-14', time:'10:00 ص', place:'مقر الجمعية - الرياض', seats:60, left:0},
+  ];
+
+  const fmtDate = (d) => {
+    const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    const dt = new Date(d); return `${dt.getDate()} ${months[dt.getMonth()]} ${dt.getFullYear()}`;
+  };
+  const dayMonth = d => { const m=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر']; const dt=new Date(d); return {day:dt.getDate(), mon:m[dt.getMonth()].slice(0,3)}; };
+
+  const state = { tab:'all', search:'', type:'', mode:'', from:'', to:'', stat:'' };
+  const today = new Date('2026-05-20'); // virtual now
+
+  function filtered(){
+    return EVENTS.filter(e=>{
+      const dt = new Date(e.date);
+      const isUpcoming = dt >= today;
+      if(state.tab==='upcoming' && !isUpcoming) return false;
+      if(state.tab==='open' && e.stat!=='open') return false;
+      if(state.tab==='done' && e.stat!=='done') return false;
+      if(state.tab==='onsite' && e.mode!=='onsite') return false;
+      if(state.tab==='online' && e.mode!=='online') return false;
+      if(state.tab==='hybrid' && e.mode!=='hybrid') return false;
+      if(state.type && e.type!==state.type) return false;
+      if(state.mode && e.mode!==state.mode) return false;
+      if(state.stat && e.stat!==state.stat) return false;
+      if(state.from && new Date(e.date) < new Date(state.from)) return false;
+      if(state.to && new Date(e.date) > new Date(state.to)) return false;
+      if(state.search){ const q=state.search.trim().toLowerCase(); if(!(e.t+e.d+e.place).toLowerCase().includes(q)) return false; }
+      return true;
+    }).sort((a,b)=> new Date(a.date) - new Date(b.date));
+  }
+
+  function cardHtml(e){
+    const dm = dayMonth(e.date);
+    return `<article class="e-card" data-id="${e.id}">
+      <a href="event-details.html" class="e-thumb block" style="background-image:url('${e.img}')">
+        <div class="e-badges">
+          <span class="e-bg ${TYPE_CLS[e.type]}"><i class="fas ${TYPE_IC[e.type]}"></i> ${TYPE_LBL[e.type]}</span>
+          <span class="e-bg ${MODE_CLS[e.mode]}"><i class="fas ${MODE_IC[e.mode]}"></i> ${MODE_LBL[e.mode]}</span>
+        </div>
+        <span class="e-status ${e.stat}"><i class="fas fa-circle"></i> ${STAT_LBL[e.stat]}</span>
+        <div class="e-date"><b>${dm.day}</b><span>${dm.mon}</span></div>
+      </a>
+      <div class="e-body">
+        <h3><a href="event-details.html" class="hover:text-sanad-emeraldDeep transition-colors">${e.t}</a></h3>
+        <p>${e.d}</p>
+        <div class="e-meta">
+          <span><i class="fas fa-calendar"></i>${fmtDate(e.date)}</span>
+          <span><i class="fas fa-clock"></i>${e.time}</span>
+          <span><i class="fas fa-location-dot"></i>${e.place}</span>
+          ${e.seats?`<span><i class="fas fa-users"></i>${e.left}/${e.seats} مقعدًا</span>`:''}
+        </div>
+        <div class="e-foot">
+          <a href="event-details.html" class="btn btn-outline"><i class="fas fa-circle-info"></i> التفاصيل</a>
+          ${e.stat==='open' ? `<a href="event-details.html#register" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> التسجيل</a>` : `<button class="btn btn-outline" disabled style="opacity:.55;cursor:not-allowed;"><i class="fas fa-lock"></i> ${STAT_LBL[e.stat]}</button>`}
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function updateCounts(){
+    const c = {all:EVENTS.length, upcoming:0, open:0, done:0, onsite:0, online:0, hybrid:0};
+    EVENTS.forEach(e=>{
+      if(new Date(e.date) >= today) c.upcoming++;
+      if(e.stat==='open') c.open++;
+      if(e.stat==='done') c.done++;
+      c[e.mode]++;
+    });
+    Object.keys(c).forEach(k=>{ const el=document.querySelector(`[data-count="${k}"]`); if(el) el.textContent = c[k]; });
+  }
+
+  function render(){
+    const list = filtered();
+    document.getElementById('eGrid').innerHTML = list.map(cardHtml).join('');
+    document.getElementById('eCount').textContent = list.length;
+    document.getElementById('eEmpty').classList.toggle('hidden', list.length>0);
+  }
+
+  document.getElementById('eTabs').addEventListener('click', ev=>{
+    const b = ev.target.closest('.e-tab'); if(!b) return;
+    document.querySelectorAll('.e-tab').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); state.tab = b.dataset.tab; render();
+  });
+  ['eSearch','eType','eMode','eFrom','eTo','eStat'].forEach(id=>{
+    document.getElementById(id).addEventListener('input', ev=>{
+      const map = {eSearch:'search',eType:'type',eMode:'mode',eFrom:'from',eTo:'to',eStat:'stat'};
+      state[map[id]] = ev.target.value; render();
+    });
+  });
+  document.getElementById('eReset').addEventListener('click', ()=>{
+    Object.assign(state, {tab:'all',search:'',type:'',mode:'',from:'',to:'',stat:''});
+    document.getElementById('eSearch').value=''; document.getElementById('eType').value=''; document.getElementById('eMode').value=''; document.getElementById('eFrom').value=''; document.getElementById('eTo').value=''; document.getElementById('eStat').value='';
+    document.querySelectorAll('.e-tab').forEach(x=>x.classList.remove('active'));
+    document.querySelector('.e-tab[data-tab="all"]').classList.add('active');
+    render();
+  });
+
+  updateCounts(); render();
+})();
+</script>
+</body>
+</html>

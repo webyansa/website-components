@@ -60,6 +60,16 @@ const templates: Template[] = [
     isNew: true,
   },
   {
+    id: "saas",
+    name: "قالب SaaS — منصة خدمات الجمعيات",
+    description: "قالب رقمي حديث لمنصات SaaS التي تقدّم خدمات للجمعيات — فرص المنح، الاستشارات، طلبات الخدمات، البرامج التدريبية، الموارد ومتابعة الطلبات",
+    previewPath: "saas/index.html",
+    folderPath: "saas",
+    thumbnail: "saas/favicon.svg",
+    features: ["Tailwind CSS", "25 صفحة", "منصة SaaS", "دعم RTL", "متجاوب"],
+    pages: 25,
+    isNew: true,
+  {
     id: "one-page",
     name: "قالب صفحة واحدة — الجمعيات",
     description: "قالب احترافي لصفحة واحدة يعرض جميع أقسام الجمعية بشكل انسيابي — يدعم العربية والإنجليزية والوضع الداكن",
@@ -533,7 +543,7 @@ const TemplateCard = ({ template }: { template: Template }) => {
       let templateFiles: string[] = [];
 
       // Templates that ship a manifest.json with the full file list
-      const manifestTemplates = ["sanad", "majales", "iskan"];
+      const manifestTemplates = ["sanad", "majales", "iskan", "saas"];
       if (manifestTemplates.includes(template.id)) {
         try {
           const manifestResp = await fetch(`${import.meta.env.BASE_URL}${basePath}/manifest.json`);
