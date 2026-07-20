@@ -12,7 +12,7 @@
     "html.sk-loading body > *:not(#pageSkeleton){visibility:hidden!important}" +
     "body.no-skeleton #pageSkeleton{display:none!important}" +
     "body.no-skeleton > *{visibility:visible!important}" +
-    "#pageSkeleton{position:fixed;inset:0;z-index:99990;background:#f6f7fb;overflow:hidden;opacity:1;transition:opacity .3s ease}" +
+    "#pageSkeleton{position:fixed;inset:0;z-index:99990;background:#F8FAFC;overflow:hidden;opacity:1;transition:opacity .3s ease}" +
     "#pageSkeleton.sk-hide{opacity:0;pointer-events:none}" +
     "#pageSkeleton .sk-wrap{max-width:1180px;margin:0 auto;padding:18px 20px}" +
     "#pageSkeleton .sk-row{display:flex;align-items:center;gap:12px}" +
