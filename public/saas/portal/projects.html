@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مشاريعي | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="projects" data-title="مشاريعي" data-subtitle="متابعة مراحل مشاريع جمعيتك">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>مشاريعي</span></div>
+      <h1>مشاريعي</h1>
+      <p>عرض مبسّط لتقدّم كل مشروع مع إمكانية التعمّق في التفاصيل.</p>
+    </div>
+  </div>
+
+  <div class="pgrid pgrid-4" style="margin-bottom:20px;">
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-diagram-project"></i></div><div><p class="pstat-label">إجمالي المشاريع</p><p class="pstat-value">6</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-play"></i></div><div><p class="pstat-label">قيد التنفيذ</p><p class="pstat-value">3</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-clock"></i></div><div><p class="pstat-label">قيد التخطيط</p><p class="pstat-value">2</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-info"><i class="fa-solid fa-flag-checkered"></i></div><div><p class="pstat-label">مكتملة</p><p class="pstat-value">1</p></div></div></div>
+  </div>
+
+  <div data-tabs="projects" class="ptabs">
+    <button class="ptab is-active" data-tab="grid"><i class="fa-solid fa-grip"></i> عرض بطاقات</button>
+    <button class="ptab" data-tab="table"><i class="fa-solid fa-table-list"></i> عرض جدول</button>
+  </div>
+
+  <div data-tab-scope="projects">
+    <div class="ptab-panel is-active" data-panel="grid">
+      <div class="pgrid pgrid-2" id="projGrid"></div>
+    </div>
+    <div class="ptab-panel" data-panel="table">
+      <div class="ptable-wrap">
+        <div style="overflow-x:auto;">
+          <table class="ptable" id="projTable">
+            <thead><tr><th>رقم</th><th>اسم المشروع</th><th>المرحلة</th><th>التقدّم</th><th>الفترة</th><th>الحالة</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script>
+  const grid = document.getElementById('projGrid');
+  grid.innerHTML = PortalData.projects.map(p => `
+    <div class="pcard pcard-hover">
+      <div class="pcard-body">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+          <div>
+            <div style="font-size:11.5px; color:var(--p-muted); font-weight:600; margin-bottom:4px;">${p.id}</div>
+            <h3 style="margin:0; font-size:16px; font-weight:800;">${p.name}</h3>
+          </div>
+          ${PortalRender.statusBadge(p.status)}
+        </div>
+        <div class="pchip" style="margin-bottom:14px;"><i class="fa-solid fa-layer-group"></i> ${p.stage}</div>
+        <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--p-muted); margin-bottom:6px;">
+          <span>التقدّم</span><strong style="color:var(--p-text);">${p.progress}%</strong>
+        </div>
+        <div class="pprogress"><span style="width:${p.progress}%;"></span></div>
+        <div style="display:flex; justify-content:space-between; margin-top:14px; font-size:12.5px; color:var(--p-muted);">
+          <span><i class="fa-solid fa-flag"></i> ${p.start}</span>
+          <span><i class="fa-solid fa-flag-checkered"></i> ${p.end}</span>
+        </div>
+        <a href="project-details.html" class="pbtn pbtn-outline pbtn-sm pbtn-block" style="margin-top:14px;">عرض التفاصيل</a>
+      </div>
+    </div>`).join('');
+
+  const tb = document.querySelector('#projTable tbody');
+  tb.innerHTML = PortalData.projects.map(p => `
+    <tr>
+      <td class="ptable-id">${p.id}</td>
+      <td>${p.name}</td>
+      <td>${p.stage}</td>
+      <td style="min-width:140px;"><div class="pprogress"><span style="width:${p.progress}%;"></span></div><div style="font-size:11px; color:var(--p-muted); margin-top:4px;">${p.progress}%</div></td>
+      <td class="pmuted" style="font-size:12.5px;">${p.start} → ${p.end}</td>
+      <td>${PortalRender.statusBadge(p.status)}</td>
+      <td class="ptable-actions-cell"><a href="project-details.html" class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-eye"></i></a></td>
+    </tr>`).join('');
+</script>
+</body>
+</html>

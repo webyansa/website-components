@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تذاكر الدعم | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="tickets" data-title="تذاكر الدعم" data-subtitle="تواصل مع فريق الدعم الفني والاستشاري">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>تذاكر الدعم</span></div>
+      <h1>تذاكر الدعم</h1>
+      <p>افتح تذكرة جديدة أو تابع تذاكرك الحالية.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <button class="pbtn pbtn-primary" data-modal-open="newTicketModal"><i class="fa-solid fa-plus"></i> فتح تذكرة</button>
+    </div>
+  </div>
+
+  <div class="pgrid pgrid-4" style="margin-bottom:20px;">
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-headset"></i></div><div><p class="pstat-label">إجمالي التذاكر</p><p class="pstat-value">12</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-envelope-open"></i></div><div><p class="pstat-label">مفتوحة</p><p class="pstat-value">2</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-info"><i class="fa-solid fa-clock"></i></div><div><p class="pstat-label">في الانتظار</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-circle-check"></i></div><div><p class="pstat-label">مغلقة</p><p class="pstat-value">9</p></div></div></div>
+  </div>
+
+  <div class="ptable-wrap">
+    <div class="ptable-toolbar">
+      <div class="ptable-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="بحث في التذاكر..." /></div>
+      <div class="ptable-actions">
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;"><option>كل الحالات</option><option>مفتوحة</option><option>مغلقة</option></select>
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;"><option>كل الأولويات</option><option>عالية</option><option>متوسطة</option><option>منخفضة</option></select>
+      </div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="ptable" id="ticTable">
+        <thead><tr><th>الرقم</th><th>الموضوع</th><th>الأولوية</th><th>الحالة</th><th>آخر رد</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="pmodal-overlay" id="newTicketModal">
+  <div class="pmodal">
+    <header class="pmodal-header"><h3><i class="fa-solid fa-plus"></i> فتح تذكرة دعم جديدة</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
+    <div class="pmodal-body">
+      <div class="pfield"><label class="plabel">الفئة</label><select class="pselect"><option>استفسار عام</option><option>مشكلة تقنية</option><option>طلب تعديل بيانات</option><option>مالية / اشتراك</option></select></div>
+      <div class="pfield"><label class="plabel">الأولوية</label><select class="pselect"><option>منخفضة</option><option>متوسطة</option><option>عالية</option></select></div>
+      <div class="pfield"><label class="plabel">الموضوع</label><input class="pinput" placeholder="عنوان مختصر" /></div>
+      <div class="pfield"><label class="plabel">الوصف</label><textarea class="ptextarea" placeholder="اشرح المشكلة أو الاستفسار..."></textarea></div>
+    </div>
+    <footer class="pmodal-footer">
+      <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال</button>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script>
+  document.querySelector('#ticTable tbody').innerHTML = PortalData.tickets.map(t => `
+    <tr>
+      <td class="ptable-id">${t.id}</td>
+      <td>${t.subject}</td>
+      <td>${PortalRender.priorityBadge(t.priority)}</td>
+      <td>${PortalRender.statusBadge(t.status)}</td>
+      <td class="pmuted" style="font-size:12.5px;">${t.reply}</td>
+      <td class="ptable-actions-cell"><a href="ticket-details.html" class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-eye"></i> عرض</a></td>
+    </tr>`).join('');
+</script>
+</body>
+</html>
