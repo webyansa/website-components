@@ -1780,7 +1780,7 @@
         <div class="sx-tlinks">
           <a href="contact.html"><i class="fas fa-headset"></i> مركز المساعدة</a>
           <a href="mailto:info@platform.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@platform.sa</a>
-          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> منصة رقمية معتمدة لخدمات الجمعيات</span>
+          <a href="tel:+966920000000" class="sx-thide"><i class="fas fa-phone"></i> 920000000</a>
         </div>
         <div class="sx-tright">
           <a href="service-tracking.html" class="sx-tlink"><i class="fas fa-route"></i> متابعة طلب</a>
@@ -1841,7 +1841,6 @@
             </a>
           </div>
         </div>
-        <a href="services.html" class="s-btn s-btn-primary sx-cta"><i class="fas fa-rocket"></i> ابدأ الآن</a>
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
     </div>
@@ -1868,7 +1867,6 @@
       <div style="height:1px;background:#e5e7eb;margin:.6rem 0"></div>
       <a href="login.html"><i class="fas fa-right-to-bracket"></i> تسجيل الدخول (بوابة الجمعيات)</a>
       <a href="register-association.html"><i class="fas fa-user-plus"></i> إنشاء حساب جمعية</a>
-      <a href="services.html" class="s-btn s-btn-primary" style="justify-content:center;margin-top:.6rem"><i class="fas fa-rocket"></i> ابدأ الآن</a>
     </div>
   </aside>
   `;
