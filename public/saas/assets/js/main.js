@@ -1818,6 +1818,29 @@
         <a href="contact.html" class="${isActive("contact")}">تواصل معنا</a>
       </nav>
       <div class="sx-actions">
+        <div class="sx-portal-dd" data-drop>
+          <button type="button" class="sx-portal-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-building-shield"></i>
+            <span>بوابة الجمعيات</span>
+            <i class="fas fa-chevron-down sx-portal-caret"></i>
+          </button>
+          <div class="sx-portal-menu" role="menu">
+            <a href="login.html" role="menuitem" class="sx-portal-item">
+              <div class="sx-portal-ico"><i class="fas fa-right-to-bracket"></i></div>
+              <div class="sx-portal-txt">
+                <div class="sx-portal-t">تسجيل الدخول</div>
+                <div class="sx-portal-s">ادخل إلى بوابة جمعيتك</div>
+              </div>
+            </a>
+            <a href="register-association.html" role="menuitem" class="sx-portal-item">
+              <div class="sx-portal-ico sx-portal-ico-2"><i class="fas fa-user-plus"></i></div>
+              <div class="sx-portal-txt">
+                <div class="sx-portal-t">إنشاء حساب جمعية</div>
+                <div class="sx-portal-s">سجّل جمعيتك في المنصة</div>
+              </div>
+            </a>
+          </div>
+        </div>
         <a href="services.html" class="s-btn s-btn-primary sx-cta"><i class="fas fa-rocket"></i> ابدأ الآن</a>
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
