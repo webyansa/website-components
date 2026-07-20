@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تسجيل الدخول | بوابة الجمعية — منصة تمكين</title>
-  <meta name="description" content="سجّل دخول جمعيتك إلى بوابة منصة تمكين لإدارة الطلبات والمشاريع والاشتراك." />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
-  <link rel="stylesheet" href="portal/assets/css/portal.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>تسجيل الدخول · بوابة الجمعية · منصة تمكين</title>
+<meta name="description" content="سجّل دخول جمعيتك إلى بوابة منصة تمكين لإدارة الطلبات والمشاريع والاشتراك بتجربة احترافية." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<link rel="stylesheet" href="portal/assets/css/portal.css" />
 </head>
 <body>
 
-  <div class="pauth">
-    <!-- Form side -->
-    <section class="pauth-form-side">
-      <div class="pauth-form-card">
-        <div class="pauth-brand">
-          <div class="plogo">ت</div>
+<section class="sx-auth-wrap">
+  <div class="sx-auth-container">
+
+    <nav class="text-sm mb-6 flex items-center gap-2 text-slate-500">
+      <a href="index.html" class="hover:text-indigo-600"><i class="fas fa-house"></i> الرئيسية</a>
+      <i class="fas fa-angle-left text-xs"></i>
+      <span class="text-slate-800 font-bold">بوابة الجمعيات</span>
+      <i class="fas fa-angle-left text-xs"></i>
+      <span class="text-indigo-600 font-bold">تسجيل الدخول</span>
+    </nav>
+
+    <div class="sx-auth-grid">
+
+      <!-- Visual side -->
+      <aside class="sx-auth-side">
+        <div>
+          <span class="sx-auth-badge"><i class="fas fa-shield-halved"></i> منصة معتمدة للجهات غير الربحية</span>
+          <h2 class="sx-auth-title mt-5">إدارة شاملة لعمل جمعيتك في منصة واحدة.</h2>
+          <p class="sx-auth-desc">
+            تابع طلباتك، شارك في المشاريع، تواصل مع فريق الدعم، وأدر اشتراكك بسهولة وتجربة احترافية.
+          </p>
+        </div>
+
+        <div class="sx-auth-features">
+          <div class="sx-auth-feature">
+            <div class="fi"><i class="fas fa-file-lines"></i></div>
+            <div><h4>طلبات وخدمات</h4><p>قدّم واستعرض جميع طلباتك مع متابعة كاملة للحالة.</p></div>
+          </div>
+          <div class="sx-auth-feature">
+            <div class="fi"><i class="fas fa-diagram-project"></i></div>
+            <div><h4>متابعة المشاريع</h4><p>لوحة مرئية للمراحل والنسب والتحديثات في الوقت الفعلي.</p></div>
+          </div>
+          <div class="sx-auth-feature">
+            <div class="fi"><i class="fas fa-headset"></i></div>
+            <div><h4>دعم مباشر</h4><p>قناة اتصال دائمة مع الفريق الاستشاري وتذاكر دعم منظمة.</p></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Form side -->
+      <section class="sx-auth-form">
+        <div class="sx-auth-brand">
+          <div class="lg">ت</div>
           <div>
-            <h1>منصة تمكين</h1>
-            <small>بوابة الجمعية</small>
+            <div class="nm">منصة تمكين</div>
+            <div class="tg">بوابة الجمعية</div>
           </div>
         </div>
 
-        <h2 class="pauth-title">تسجيل الدخول إلى بوابة الجمعية</h2>
-        <p class="pauth-subtitle">أدر طلباتك ومشاريعك واشتراكك من مكان واحد بتجربة احترافية.</p>
+        <h1 class="sx-auth-h">تسجيل الدخول إلى بوابة الجمعية</h1>
+        <p class="sx-auth-sub">أدر طلباتك ومشاريعك واشتراكك من مكان واحد بتجربة احترافية.</p>
 
         <form onsubmit="event.preventDefault(); window.location='portal/index.html';">
           <div class="pfield">
@@ -44,7 +86,7 @@
             </div>
           </div>
 
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
             <label class="pcheck">
               <input type="checkbox" checked /> تذكّرني
             </label>
@@ -63,36 +105,14 @@
             <a href="register-association.html" style="color:var(--p-primary); font-weight:700; margin-inline-start:4px;">إنشاء حساب جمعية</a>
           </p>
         </form>
-      </div>
-    </section>
+      </section>
 
-    <!-- Visual side -->
-    <aside class="pauth-visual-side">
-      <div class="pauth-visual-inner">
-        <span class="pauth-badge"><i class="fa-solid fa-sparkles"></i> منصة معتمدة للجهات غير الربحية</span>
-        <h2 class="pauth-headline">إدارة شاملة لعمل جمعيتك في منصة واحدة.</h2>
-        <p class="pauth-desc">
-          تابع طلباتك، شاركك في المشاريع، تواصل مع فريق الدعم، وأدر اشتراكك بسهولة وتجربة احترافية.
-        </p>
-      </div>
-
-      <div class="pauth-features">
-        <div class="pauth-feature">
-          <div class="pafi"><i class="fa-solid fa-file-lines"></i></div>
-          <div><h4>طلبات وخدمات</h4><p>قدّم واستعرض جميع طلباتك مع متابعة كاملة للحالة.</p></div>
-        </div>
-        <div class="pauth-feature">
-          <div class="pafi"><i class="fa-solid fa-diagram-project"></i></div>
-          <div><h4>متابعة المشاريع</h4><p>لوحة مرئية للمراحل والنسب والتحديثات في الوقت الفعلي.</p></div>
-        </div>
-        <div class="pauth-feature">
-          <div class="pafi"><i class="fa-solid fa-headset"></i></div>
-          <div><h4>دعم مباشر</h4><p>قناة اتصال دائمة مع الفريق الاستشاري وتذاكر دعم منظمة.</p></div>
-        </div>
-      </div>
-    </aside>
+    </div>
   </div>
+</section>
 
-  <script src="portal/assets/js/portal.js"></script>
+<button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+<script src="assets/js/main.js"></script>
+<script src="portal/assets/js/portal.js"></script>
 </body>
 </html>
