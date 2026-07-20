@@ -1867,7 +1867,6 @@
       <div style="height:1px;background:#e5e7eb;margin:.6rem 0"></div>
       <a href="login.html"><i class="fas fa-right-to-bracket"></i> تسجيل الدخول (بوابة الجمعيات)</a>
       <a href="register-association.html"><i class="fas fa-user-plus"></i> إنشاء حساب جمعية</a>
-      <a href="services.html" class="s-btn s-btn-primary" style="justify-content:center;margin-top:.6rem"><i class="fas fa-rocket"></i> ابدأ الآن</a>
     </div>
   </aside>
   `;
