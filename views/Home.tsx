@@ -543,7 +543,7 @@ const TemplateCard = ({ template }: { template: Template }) => {
       let templateFiles: string[] = [];
 
       // Templates that ship a manifest.json with the full file list
-      const manifestTemplates = ["sanad", "majales", "iskan"];
+      const manifestTemplates = ["sanad", "majales", "iskan", "saas"];
       if (manifestTemplates.includes(template.id)) {
         try {
           const manifestResp = await fetch(`${import.meta.env.BASE_URL}${basePath}/manifest.json`);
