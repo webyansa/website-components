@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>فروع المجلس · مجلس سَنَد</title>
+<meta name="description" content="فروع مجلس سَنَد التخصصية والإقليمية واللجان التنسيقية — تعرّف على شبكة الفروع وتفاصيل كل فرع." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { sans: ['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+      colors: { sanad: {
+        navy:'#152a5e', navyDeep:'#0a1738', navySoft:'#26417a',
+        emerald:'#1a6aa3', emeraldSoft:'#3a8ec4', emeraldDeep:'#125580',
+        gold:'#b08530', goldSoft:'#dab36b',
+        sand:'#eef0f6', ivory:'#f6f7fb', mist:'#eaecf3',
+        border:'#e3e7ef', text:'#0f1d2e', muted:'#5b6b7d'
+      } }
+    } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<!-- ============ هيرو الصفحة ============ -->
+<section class="s-page-hero">
+  <div class="s-container relative z-10">
+    <div class="s-crumbs reveal">
+      <a href="index.html">الرئيسية</a>
+      <i class="fas fa-chevron-left sep"></i>
+      <span class="cur">فروع المجلس</span>
+    </div>
+    <h1 class="reveal reveal-delay-1">شبكة فروع المجلس</h1>
+    <p class="text-white/80 max-w-3xl text-lg leading-loose reveal reveal-delay-2">
+      يتكوّن مجلس سَنَد من ثلاث فئات من الفروع: <b class="text-white">مجالس تخصصية</b> تُعنى بقطاعات نوعية،
+      و<b class="text-white">فروع إقليمية</b> تخدم مناطق المملكة، و<b class="text-white">لجان تنسيقية</b> تنسّق بين
+      الجمعيات ذات الاهتمام المشترك.
+    </p>
+  </div>
+</section>
+
+<!-- ============ شريط مؤشرات ============ -->
+<section class="pt-10">
+  <div class="s-container">
+    <div class="br-strip reveal">
+      <div class="br-strip-cell"><div class="n">3</div><div class="l">مجالس تخصصية</div></div>
+      <div class="br-strip-cell"><div class="n">6</div><div class="l">فروع إقليمية</div></div>
+      <div class="br-strip-cell"><div class="n">4</div><div class="l">لجان تنسيقية</div></div>
+      <div class="br-strip-cell"><div class="n">13</div><div class="l">منطقة مغطّاة</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ قائمة الفروع ============ -->
+<section class="s-section">
+  <div class="s-container">
+    <div class="mb-6 reveal">
+      <span class="s-eyebrow mb-3"><i class="fas fa-map-location-dot"></i> شبكتنا</span>
+      <h2 class="s-section-title">استكشف فروع المجلس</h2>
+      <p class="text-sanad-muted mt-2 max-w-2xl">
+        اختر الفئة أو استخدم البحث للوصول إلى الفرع الأنسب — كل بطاقة تعرض التصنيف والمنطقة والعنوان مع رابط تفاصيل الفرع.
+      </p>
+    </div>
+
+    <!-- Filter panel -->
+    <div class="br-filter-wrap reveal reveal-delay-1">
+      <div class="br-filter-head">
+        <h3><i class="fas fa-sliders"></i> تصفية الفروع</h3>
+        <div class="br-search">
+          <i class="fas fa-search"></i>
+          <input type="text" id="brSearch" placeholder="ابحث باسم الفرع أو المنطقة…" />
+        </div>
+      </div>
+      <div class="br-tabs" role="tablist">
+        <button class="active" data-br-filter="all">
+          <i class="fas fa-grip"></i> جميع الفروع <span class="cnt" id="cnt-all">13</span>
+        </button>
+        <button data-br-filter="specialized">
+          <i class="fas fa-layer-group"></i> مجالس تخصصية <span class="cnt" id="cnt-specialized">3</span>
+        </button>
+        <button data-br-filter="regional">
+          <i class="fas fa-location-crosshairs"></i> فروع إقليمية <span class="cnt" id="cnt-regional">6</span>
+        </button>
+        <button data-br-filter="committee">
+          <i class="fas fa-people-arrows"></i> لجان تنسيقية <span class="cnt" id="cnt-committee">4</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div id="brEmpty" class="hidden text-center py-14 text-sanad-muted">
+      <i class="fas fa-inbox text-3xl text-sanad-border mb-3"></i>
+      <div class="font-bold text-sanad-text">لا توجد نتائج مطابقة</div>
+      <div class="text-sm mt-1">جرّب كلمة بحث مختلفة أو غيّر الفئة.</div>
+    </div>
+
+    <div class="br-grid reveal reveal-delay-2 mt-6" id="brGrid">
+
+      <!-- ============ مجالس تخصصية ============ -->
+      <article class="br-card" data-br-type="specialized" data-name="المجلس التخصصي للجمعيات الشبابية الشباب">
+        <div class="br-card-cover" style="background-image:url('assets/images/slide/webyan-slide5.jpg');">
+          <span class="br-tag br-tag-specialized"><i class="fas fa-layer-group"></i> مجلس تخصصي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-bullseye"></i> قطاع الشباب</div>
+          <h3 class="br-card-title">المجلس التخصصي للجمعيات الشبابية</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> يضم 42 جمعية شبابية على مستوى المملكة</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس المجلس التخصصي</span>
+            <span><i class="fas fa-phone"></i> 920000010</span>
+          </div>
+          <a href="branch-details.html?b=youth" class="br-card-cta">عرض تفاصيل المجلس <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="specialized" data-name="المجلس التخصصي لجمعيات ذوي الإعاقة">
+        <div class="br-card-cover" style="background-image:url('assets/images/about/about-us-1.jpg');">
+          <span class="br-tag br-tag-specialized"><i class="fas fa-layer-group"></i> مجلس تخصصي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-bullseye"></i> قطاع الإعاقة</div>
+          <h3 class="br-card-title">المجلس التخصصي لجمعيات ذوي الإعاقة</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> يضم 28 جمعية متخصصة في خدمة ذوي الإعاقة</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس المجلس التخصصي</span>
+            <span><i class="fas fa-phone"></i> 920000011</span>
+          </div>
+          <a href="branch-details.html?b=disability" class="br-card-cta">عرض تفاصيل المجلس <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="specialized" data-name="المجلس التخصصي للجمعيات الأسرية">
+        <div class="br-card-cover" style="background-image:url('assets/images/about/about-us-2.jpg');">
+          <span class="br-tag br-tag-specialized"><i class="fas fa-layer-group"></i> مجلس تخصصي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-bullseye"></i> قطاع الأسرة</div>
+          <h3 class="br-card-title">المجلس التخصصي للجمعيات الأسرية</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> يضم 35 جمعية تُعنى بشؤون الأسرة والطفل</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس المجلس التخصصي</span>
+            <span><i class="fas fa-phone"></i> 920000012</span>
+          </div>
+          <a href="branch-details.html?b=family" class="br-card-cta">عرض تفاصيل المجلس <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <!-- ============ فروع إقليمية ============ -->
+      <article class="br-card" data-br-type="regional" data-name="فرع الرياض المقر الرئيسي">
+        <div class="br-card-cover" style="background-image:url('assets/images/slide/webyan-slide7.jpg');">
+          <span class="br-tag br-tag-main"><i class="fas fa-star"></i> المقر الرئيسي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> منطقة الرياض</div>
+          <h3 class="br-card-title">فرع الرياض — المقر الرئيسي</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> حي العليا — طريق الملك فهد</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-phone"></i> 920000000</span>
+            <span><i class="fas fa-clock"></i> الأحد — الخميس</span>
+          </div>
+          <a href="branch-details.html?b=riyadh" class="br-card-cta">عرض تفاصيل الفرع <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="regional" data-name="فرع جدة مكة المكرمة">
+        <div class="br-card-cover" style="background-image:url('assets/images/posts/1.jpeg');">
+          <span class="br-tag br-tag-regional"><i class="fas fa-location-crosshairs"></i> فرع إقليمي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> منطقة مكة المكرمة</div>
+          <h3 class="br-card-title">فرع جدة</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> حي السلامة — شارع الأمير سلطان</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-phone"></i> 012-0000000</span>
+            <span><i class="fas fa-clock"></i> الأحد — الخميس</span>
+          </div>
+          <a href="branch-details.html?b=jeddah" class="br-card-cta">عرض تفاصيل الفرع <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="regional" data-name="فرع الدمام المنطقة الشرقية">
+        <div class="br-card-cover" style="background-image:url('assets/images/posts/2.jpeg');">
+          <span class="br-tag br-tag-regional"><i class="fas fa-location-crosshairs"></i> فرع إقليمي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> المنطقة الشرقية</div>
+          <h3 class="br-card-title">فرع الدمام</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> حي الفيصلية — طريق الملك سعود</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-phone"></i> 013-0000000</span>
+            <span><i class="fas fa-clock"></i> الأحد — الخميس</span>
+          </div>
+          <a href="branch-details.html?b=dammam" class="br-card-cta">عرض تفاصيل الفرع <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="regional" data-name="فرع أبها عسير">
+        <div class="br-card-cover" style="background-image:url('assets/images/about/about-us-1.jpg');">
+          <span class="br-tag br-tag-regional"><i class="fas fa-location-crosshairs"></i> فرع إقليمي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> منطقة عسير</div>
+          <h3 class="br-card-title">فرع أبها</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> حي المنسك — الطريق الدائري</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-phone"></i> 017-0000000</span>
+            <span><i class="fas fa-clock"></i> الأحد — الخميس</span>
+          </div>
+          <a href="branch-details.html?b=abha" class="br-card-cta">عرض تفاصيل الفرع <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="regional" data-name="فرع المدينة المنورة">
+        <div class="br-card-cover" style="background-image:url('assets/images/about/about-us-2.jpg');">
+          <span class="br-tag br-tag-regional"><i class="fas fa-location-crosshairs"></i> فرع إقليمي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> المدينة المنورة</div>
+          <h3 class="br-card-title">فرع المدينة المنورة</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> حي العزيزية</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-phone"></i> 014-0000000</span>
+            <span><i class="fas fa-clock"></i> الأحد — الخميس</span>
+          </div>
+          <a href="branch-details.html?b=madinah" class="br-card-cta">عرض تفاصيل الفرع <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="regional" data-name="فرع القصيم بريدة">
+        <div class="br-card-cover" style="background-image:url('assets/images/slide/webyan-slide5.jpg');">
+          <span class="br-tag br-tag-regional"><i class="fas fa-location-crosshairs"></i> فرع إقليمي</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> منطقة القصيم</div>
+          <h3 class="br-card-title">فرع القصيم</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> بريدة — حي الصفراء</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-phone"></i> 016-0000000</span>
+            <span><i class="fas fa-clock"></i> الأحد — الخميس</span>
+          </div>
+          <a href="branch-details.html?b=qassim" class="br-card-cta">عرض تفاصيل الفرع <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <!-- ============ لجان تنسيقية ============ -->
+      <article class="br-card" data-br-type="committee" data-name="اللجنة التنسيقية لجمعيات تحفيظ القرآن">
+        <div class="br-card-cover" style="background-image:url('assets/images/posts/1.jpeg');">
+          <span class="br-tag br-tag-committee"><i class="fas fa-people-arrows"></i> لجنة تنسيقية</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-book-quran"></i> قطاع تحفيظ القرآن الكريم</div>
+          <h3 class="br-card-title">اللجنة التنسيقية لجمعيات تحفيظ القرآن</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> تجمع 18 جمعية تحفيظ في مختلف المناطق</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس اللجنة</span>
+            <span><i class="fas fa-phone"></i> 920000020</span>
+          </div>
+          <a href="branch-details.html?b=quran" class="br-card-cta">عرض تفاصيل اللجنة <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="committee" data-name="مجلس الجمعيات الأهلية بمكة المكرمة">
+        <div class="br-card-cover" style="background-image:url('assets/images/posts/2.jpeg');">
+          <span class="br-tag br-tag-committee"><i class="fas fa-people-arrows"></i> لجنة تنسيقية</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> منطقة مكة المكرمة</div>
+          <h3 class="br-card-title">مجلس الجمعيات الأهلية بمكة المكرمة</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> ينسّق بين 24 جمعية أهلية بالمنطقة</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس المجلس</span>
+            <span><i class="fas fa-phone"></i> 920000021</span>
+          </div>
+          <a href="branch-details.html?b=makkah-council" class="br-card-cta">عرض تفاصيل المجلس <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="committee" data-name="اللجنة التنسيقية للجمعيات الخيرية بالرياض">
+        <div class="br-card-cover" style="background-image:url('assets/images/slide/webyan-slide7.jpg');">
+          <span class="br-tag br-tag-committee"><i class="fas fa-people-arrows"></i> لجنة تنسيقية</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> منطقة الرياض</div>
+          <h3 class="br-card-title">اللجنة التنسيقية للجمعيات الخيرية بالرياض</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> تنسّق بين 31 جمعية خيرية في المنطقة</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس اللجنة</span>
+            <span><i class="fas fa-phone"></i> 920000022</span>
+          </div>
+          <a href="branch-details.html?b=riyadh-committee" class="br-card-cta">عرض تفاصيل اللجنة <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+      <article class="br-card" data-br-type="committee" data-name="اللجنة التنسيقية للجمعيات التنموية بالشرقية">
+        <div class="br-card-cover" style="background-image:url('assets/images/about/about-us-1.jpg');">
+          <span class="br-tag br-tag-committee"><i class="fas fa-people-arrows"></i> لجنة تنسيقية</span>
+        </div>
+        <div class="br-card-body">
+          <div class="br-card-region"><i class="fas fa-location-crosshairs"></i> المنطقة الشرقية</div>
+          <h3 class="br-card-title">اللجنة التنسيقية للجمعيات التنموية بالشرقية</h3>
+          <p class="br-card-addr"><i class="fas fa-map-pin"></i> تجمع 19 جمعية تنموية في المنطقة الشرقية</p>
+          <div class="br-card-meta">
+            <span><i class="fas fa-user-tie"></i> رئيس اللجنة</span>
+            <span><i class="fas fa-phone"></i> 920000023</span>
+          </div>
+          <a href="branch-details.html?b=eastern-committee" class="br-card-cta">عرض تفاصيل اللجنة <i class="fas fa-arrow-left"></i></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ دعوة ختامية ============ -->
+<section class="s-section-tight">
+  <div class="s-container">
+    <div class="s-cta-mini reveal">
+      <div>
+        <h3>لم تجد الفرع أو اللجنة المناسبة؟</h3>
+        <p>تواصل معنا وسنساعدك في الوصول إلى الفرع الإقليمي أو المجلس التخصصي أو اللجنة التنسيقية المناسبة.</p>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-end">
+        <a href="contact.html" class="btn btn-accent"><i class="fas fa-envelope"></i> تواصل معنا</a>
+        <a href="service-tracking.html" class="btn btn-ghost"><i class="fas fa-route"></i> تتبع طلبك</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+<script src="assets/js/main.js"></script>
+<script>
+  (function(){
+    const cards = Array.from(document.querySelectorAll('#brGrid .br-card'));
+    const tabs  = document.querySelectorAll('[data-br-filter]');
+    const search= document.getElementById('brSearch');
+    const empty = document.getElementById('brEmpty');
+    let curFilter = 'all';
+
+    // Populate counts
+    const cntAll = cards.length;
+    const cntBy = t => cards.filter(c => c.dataset.brType === t).length;
+    const setCnt = (id,n)=>{ const el=document.getElementById(id); if(el) el.textContent=n; };
+    setCnt('cnt-all', cntAll);
+    setCnt('cnt-specialized', cntBy('specialized'));
+    setCnt('cnt-regional',    cntBy('regional'));
+    setCnt('cnt-committee',   cntBy('committee'));
+
+    function apply(){
+      const q = (search.value || '').trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(c => {
+        const typeOk = curFilter === 'all' || c.dataset.brType === curFilter;
+        const name = (c.dataset.name || c.textContent).toLowerCase();
+        const searchOk = !q || name.includes(q);
+        const show = typeOk && searchOk;
+        c.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      empty.classList.toggle('hidden', visible !== 0);
+    }
+
+    tabs.forEach(btn => btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      curFilter = btn.dataset.brFilter;
+      apply();
+    }));
+    search.addEventListener('input', apply);
+  })();
+</script>
+</body>
+</html>
