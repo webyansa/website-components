@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المستخدمون | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="users" data-title="المستخدمون" data-subtitle="إدارة أعضاء الفريق وصلاحياتهم داخل البوابة">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>المستخدمون</span></div>
+      <h1>مستخدمو الجمعية</h1>
+      <p>أضف أعضاء فريقك، حدّد صلاحياتهم، وتحكّم بمن يستطيع الوصول إلى بيانات الجمعية.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <button class="pbtn pbtn-outline"><i class="fa-solid fa-file-export"></i> تصدير القائمة</button>
+      <button class="pbtn pbtn-primary" data-modal-open="addUserModal"><i class="fa-solid fa-user-plus"></i> إضافة مستخدم</button>
+    </div>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="pgrid pgrid-4" style="margin-bottom:20px;">
+    <div class="pcard pcard-hover"><div class="pcard-stat">
+      <div class="pstat-icon is-primary"><i class="fa-solid fa-users"></i></div>
+      <div><p class="pstat-label">إجمالي المستخدمين</p><p class="pstat-value">5</p><span class="pstat-delta">من أصل 10 مقاعد</span></div>
+    </div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat">
+      <div class="pstat-icon is-success"><i class="fa-solid fa-user-check"></i></div>
+      <div><p class="pstat-label">نشِطون</p><p class="pstat-value">4</p><span class="pstat-delta">آخر 30 يوم</span></div>
+    </div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat">
+      <div class="pstat-icon is-warning"><i class="fa-solid fa-clock"></i></div>
+      <div><p class="pstat-label">بانتظار القبول</p><p class="pstat-value">1</p><span class="pstat-delta">دعوة مُرسلة</span></div>
+    </div></div>
+    <div class="pcard pcard-hover"><div class="pcard-stat">
+      <div class="pstat-icon is-violet"><i class="fa-solid fa-crown"></i></div>
+      <div><p class="pstat-label">المستخدم الرئيسي</p><p class="pstat-value" style="font-size:15px; padding-top:6px;">خالد السعيد</p><span class="pstat-delta">صاحب الحساب</span></div>
+    </div></div>
+  </div>
+
+  <!-- Users table -->
+  <div class="ptable-wrap">
+    <div class="ptable-toolbar">
+      <div class="ptable-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" placeholder="ابحث بالاسم أو البريد أو الجوال..." />
+      </div>
+      <div class="ptable-actions">
+        <select class="pselect" style="height:40px; width:160px;">
+          <option>كل الأدوار</option>
+          <option>المستخدم الرئيسي</option>
+          <option>مدير</option>
+          <option>محرر</option>
+          <option>مشاهد</option>
+        </select>
+        <select class="pselect" style="height:40px; width:150px;">
+          <option>كل الحالات</option>
+          <option>نشط</option>
+          <option>موقوف</option>
+          <option>بانتظار القبول</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;">
+    <table class="ptable">
+      <thead>
+        <tr>
+          <th>المستخدم</th>
+          <th>الدور</th>
+          <th>الصلاحيات</th>
+          <th>الحالة</th>
+          <th>آخر دخول</th>
+          <th style="text-align:left;">إجراءات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Primary user -->
+        <tr style="background: linear-gradient(90deg, rgba(124,58,237,.05), transparent);">
+          <td>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="pavatar" style="width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg,#7C3AED,#4F46E5); color:#fff; display:grid; place-items:center; font-weight:700;">خ</div>
+              <div>
+                <div style="font-weight:700; color:var(--p-text); display:flex; align-items:center; gap:6px;">
+                  خالد بن عبدالله السعيد
+                  <span class="pbadge pbadge-violet" title="المستخدم الرئيسي" style="background:#F5F3FF; color:#7C3AED;"><i class="fa-solid fa-crown" style="font-size:9px;"></i> رئيسي</span>
+                </div>
+                <div style="font-size:12.5px; color:var(--p-muted);">khaled@ataa.org.sa · +966 55 123 4567</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="pbadge pbadge-primary">المدير التنفيذي</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">صلاحيات كاملة</span></td>
+          <td><span class="pbadge pbadge-active">نشط</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">قبل 12 دقيقة</span></td>
+          <td style="text-align:left;">
+            <button class="pbtn pbtn-ghost pbtn-sm" disabled title="لا يمكن تعديل المستخدم الرئيسي من هنا"><i class="fa-solid fa-lock"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="pavatar" style="width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--p-primary),var(--p-secondary)); color:#fff; display:grid; place-items:center; font-weight:700;">ن</div>
+              <div>
+                <div style="font-weight:700; color:var(--p-text);">نورة الشمري</div>
+                <div style="font-size:12.5px; color:var(--p-muted);">noura@ataa.org.sa · +966 50 998 4411</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="pbadge" style="background:#EEF2FF; color:#4338CA;">مدير</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">المشاريع + الطلبات + الاجتماعات</span></td>
+          <td><span class="pbadge pbadge-active">نشط</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">اليوم 09:22 ص</span></td>
+          <td style="text-align:left;">
+            <button class="pbtn pbtn-ghost pbtn-sm" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+            <button class="pbtn pbtn-ghost pbtn-sm" title="حذف" style="color:var(--p-danger);"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="pavatar" style="width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,#0EA5E9,#06B6D4); color:#fff; display:grid; place-items:center; font-weight:700;">أ</div>
+              <div>
+                <div style="font-weight:700; color:var(--p-text);">أحمد العمري</div>
+                <div style="font-size:12.5px; color:var(--p-muted);">ahmed@ataa.org.sa · +966 53 200 7788</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="pbadge" style="background:#ECFEFF; color:#0369A1;">محرر</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">تحرير المشاريع فقط</span></td>
+          <td><span class="pbadge pbadge-active">نشط</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">أمس 06:14 م</span></td>
+          <td style="text-align:left;">
+            <button class="pbtn pbtn-ghost pbtn-sm" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+            <button class="pbtn pbtn-ghost pbtn-sm" title="حذف" style="color:var(--p-danger);"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="pavatar" style="width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,#10B981,#059669); color:#fff; display:grid; place-items:center; font-weight:700;">ر</div>
+              <div>
+                <div style="font-weight:700; color:var(--p-text);">ريم القحطاني</div>
+                <div style="font-size:12.5px; color:var(--p-muted);">reem@ataa.org.sa · +966 55 887 1122</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="pbadge" style="background:#F1F5F9; color:#334155;">مشاهد</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">قراءة فقط</span></td>
+          <td><span class="pbadge pbadge-active">نشط</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">قبل 3 أيام</span></td>
+          <td style="text-align:left;">
+            <button class="pbtn pbtn-ghost pbtn-sm" title="تعديل"><i class="fa-solid fa-pen"></i></button>
+            <button class="pbtn pbtn-ghost pbtn-sm" title="حذف" style="color:var(--p-danger);"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="pavatar" style="width:40px; height:40px; border-radius:50%; background:#F1F5F9; color:var(--p-muted); display:grid; place-items:center; font-weight:700;">؟</div>
+              <div>
+                <div style="font-weight:700; color:var(--p-text);">فهد الدوسري</div>
+                <div style="font-size:12.5px; color:var(--p-muted);">fahd@ataa.org.sa · دعوة مُرسلة</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="pbadge" style="background:#EEF2FF; color:#4338CA;">مدير</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">—</span></td>
+          <td><span class="pbadge pbadge-review">بانتظار القبول</span></td>
+          <td><span class="pmuted" style="font-size:12.5px;">لم يسجّل بعد</span></td>
+          <td style="text-align:left;">
+            <button class="pbtn pbtn-ghost pbtn-sm" title="إعادة إرسال الدعوة"><i class="fa-solid fa-paper-plane"></i></button>
+            <button class="pbtn pbtn-ghost pbtn-sm" title="إلغاء الدعوة" style="color:var(--p-danger);"><i class="fa-solid fa-xmark"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="ppagination">
+      <span>يعرض 5 من 5 مستخدمين</span>
+      <div class="ppagination-nav">
+        <button disabled><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="is-active">1</button>
+        <button disabled><i class="fa-solid fa-chevron-left"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roles reference -->
+  <div class="pcard" style="margin-top:20px;">
+    <div class="pcard-header"><h3><i class="fa-solid fa-shield-halved" style="color:var(--p-primary); margin-inline-end:6px;"></i> دليل الأدوار والصلاحيات</h3></div>
+    <div class="pcard-body">
+      <div class="pgrid pgrid-4">
+        <div style="padding:16px; border:1px solid var(--p-border-2); border-radius:12px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;"><i class="fa-solid fa-crown" style="color:#7C3AED;"></i><strong>المستخدم الرئيسي</strong></div>
+          <p class="pmuted" style="font-size:12.5px; margin:0;">صاحب الحساب. صلاحيات مطلقة، إدارة المستخدمين، الاشتراك، وحذف الحساب.</p>
+        </div>
+        <div style="padding:16px; border:1px solid var(--p-border-2); border-radius:12px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;"><i class="fa-solid fa-user-shield" style="color:#4338CA;"></i><strong>مدير</strong></div>
+          <p class="pmuted" style="font-size:12.5px; margin:0;">وصول كامل للعمليات ما عدا إدارة الاشتراك وحذف الحساب.</p>
+        </div>
+        <div style="padding:16px; border:1px solid var(--p-border-2); border-radius:12px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;"><i class="fa-solid fa-pen-nib" style="color:#0369A1;"></i><strong>محرر</strong></div>
+          <p class="pmuted" style="font-size:12.5px; margin:0;">إنشاء وتحرير الطلبات والمشاريع، دون إدارة المستخدمين.</p>
+        </div>
+        <div style="padding:16px; border:1px solid var(--p-border-2); border-radius:12px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;"><i class="fa-solid fa-eye" style="color:#334155;"></i><strong>مشاهد</strong></div>
+          <p class="pmuted" style="font-size:12.5px; margin:0;">قراءة فقط — يرى البيانات دون تعديل أو إضافة.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Add user modal -->
+<div class="pmodal-overlay" id="addUserModal">
+  <div class="pmodal pmodal-lg">
+    <header class="pmodal-header"><h3><i class="fa-solid fa-user-plus"></i> إضافة مستخدم جديد</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
+    <div class="pmodal-body">
+      <p class="pmuted" style="margin-top:0; font-size:13px;">سيتم إرسال دعوة عبر البريد الإلكتروني، وينضم المستخدم فور قبولها.</p>
+      <div class="pgrid pgrid-2">
+        <div class="pfield"><label class="plabel">الاسم الكامل <span class="req">*</span></label><input class="pinput" placeholder="مثال: نورة الشمري" /></div>
+        <div class="pfield"><label class="plabel">المسمّى الوظيفي</label><input class="pinput" placeholder="مثال: منسّق مشاريع" /></div>
+        <div class="pfield"><label class="plabel">البريد الإلكتروني <span class="req">*</span></label><input class="pinput" type="email" placeholder="name@ataa.org.sa" /></div>
+        <div class="pfield"><label class="plabel">رقم الجوال</label><input class="pinput" placeholder="+966 5X XXX XXXX" /></div>
+        <div class="pfield"><label class="plabel">الدور <span class="req">*</span></label>
+          <select class="pselect">
+            <option>مدير</option>
+            <option>محرر</option>
+            <option>مشاهد</option>
+          </select>
+        </div>
+        <div class="pfield"><label class="plabel">حالة الحساب</label>
+          <select class="pselect">
+            <option>نشط</option>
+            <option>موقوف مؤقتاً</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:6px; padding:14px; border:1px solid var(--p-border-2); border-radius:12px; background:var(--p-surface-alt);">
+        <div style="font-weight:700; font-size:13.5px; margin-bottom:10px;">صلاحيات مخصّصة</div>
+        <div class="pgrid pgrid-3" style="gap:8px;">
+          <label class="pcheck"><input type="checkbox" checked /> الطلبات</label>
+          <label class="pcheck"><input type="checkbox" checked /> المشاريع</label>
+          <label class="pcheck"><input type="checkbox" /> الاجتماعات</label>
+          <label class="pcheck"><input type="checkbox" /> تذاكر الدعم</label>
+          <label class="pcheck"><input type="checkbox" /> الوثائق</label>
+          <label class="pcheck"><input type="checkbox" /> الاشتراك</label>
+        </div>
+      </div>
+    </div>
+    <footer class="pmodal-footer">
+      <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال الدعوة</button>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/portal.js"></script>
+</body>
+</html>

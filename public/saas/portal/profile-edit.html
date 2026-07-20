@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تحديث بيانات الجمعية | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="profile-edit" data-title="تحديث بيانات الجمعية" data-subtitle="حرّر بيانات جمعيتك، بيانات التواصل، وممثلها الرسمي">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb">
+        <a href="index.html">لوحة التحكم</a>
+        <i class="fa-solid fa-chevron-left"></i>
+        <a href="profile.html">ملف الجمعية</a>
+        <i class="fa-solid fa-chevron-left"></i>
+        <span>تحديث البيانات</span>
+      </div>
+      <h1>تحديث بيانات الجمعية</h1>
+      <p>احرص على تحديث بيانات جمعيتك باستمرار — يساعدك ذلك على زيادة اكتمال ملفك والوصول لعروض أفضل.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <a href="profile.html" class="pbtn pbtn-outline"><i class="fa-solid fa-arrow-right"></i> العودة للملف</a>
+      <button class="pbtn pbtn-primary"><i class="fa-solid fa-check"></i> حفظ كل التغييرات</button>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="pcard" style="margin-bottom:20px; background: linear-gradient(120deg,#EEF2FF,#ECFEFF); border-color:transparent;">
+    <div class="pcard-body" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="width:56px; height:56px; border-radius:14px; background:#fff; display:grid; place-items:center; color:var(--p-primary); font-size:22px; box-shadow:var(--p-shadow-xs);">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div style="flex:1; min-width:220px;">
+        <div style="font-weight:800; font-size:15px; margin-bottom:6px;">اكتمال الملف: <span style="color:var(--p-primary);">92%</span></div>
+        <div class="pprogress"><span style="width:92%;"></span></div>
+        <p class="pmuted" style="margin:8px 0 0; font-size:12.5px;">أكمل حقلين متبقيين للوصول إلى 100% (الرقم الضريبي + رقم الآيبان).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pgrid" style="grid-template-columns: 240px 1fr; gap:20px;">
+
+    <!-- Section nav -->
+    <aside class="pcard" style="position:sticky; top:calc(var(--p-topbar-h) + 12px); align-self:flex-start; padding:8px;">
+      <a href="#sec-basic"   class="psidebar-item is-active"><i class="fa-solid fa-building"></i><span>البيانات الأساسية</span></a>
+      <a href="#sec-contact" class="psidebar-item"><i class="fa-solid fa-address-card"></i><span>التواصل والعنوان</span></a>
+      <a href="#sec-rep"     class="psidebar-item"><i class="fa-solid fa-user-tie"></i><span>الممثل الرسمي</span></a>
+      <a href="#sec-legal"   class="psidebar-item"><i class="fa-solid fa-scale-balanced"></i><span>البيانات القانونية</span></a>
+      <a href="#sec-bank"    class="psidebar-item"><i class="fa-solid fa-building-columns"></i><span>البيانات البنكية</span></a>
+      <a href="#sec-brand"   class="psidebar-item"><i class="fa-solid fa-palette"></i><span>الهوية والشعار</span></a>
+    </aside>
+
+    <div style="display:flex; flex-direction:column; gap:20px;">
+
+      <section id="sec-basic" class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-building" style="color:var(--p-primary); margin-inline-end:6px;"></i> البيانات الأساسية</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pfield"><label class="plabel">اسم الجمعية <span class="req">*</span></label><input class="pinput" value="جمعية العطاء الخيرية" /></div>
+            <div class="pfield"><label class="plabel">الاسم المختصر</label><input class="pinput" value="العطاء" /></div>
+            <div class="pfield"><label class="plabel">نوع الجهة</label>
+              <select class="pselect">
+                <option selected>جمعية خيرية</option>
+                <option>مؤسسة أهلية</option>
+                <option>جمعية تعاونية</option>
+              </select>
+            </div>
+            <div class="pfield"><label class="plabel">التصنيف</label>
+              <select class="pselect">
+                <option>تنموية</option>
+                <option>خيرية</option>
+                <option>مهنية</option>
+                <option>تخصصية</option>
+              </select>
+            </div>
+            <div class="pfield"><label class="plabel">تاريخ التأسيس</label><input class="pinput" type="date" value="2018-03-15" /></div>
+            <div class="pfield"><label class="plabel">النطاق الجغرافي</label>
+              <select class="pselect"><option>محلي - منطقة الرياض</option><option>وطني</option><option>دولي</option></select>
+            </div>
+            <div class="pfield" style="grid-column:1/-1;"><label class="plabel">نبذة تعريفية</label>
+              <textarea class="ptextarea" rows="4">جمعية أهلية تعنى بتمكين الأسر المنتجة ودعم البرامج التنموية في المجتمع.</textarea>
+              <span class="pfield-hint">حد أقصى 500 حرف — سيظهر في ملف جمعيتك العام.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-contact" class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-address-card" style="color:var(--p-primary); margin-inline-end:6px;"></i> بيانات التواصل والعنوان</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pfield"><label class="plabel">البريد الرسمي <span class="req">*</span></label><input class="pinput" type="email" value="info@ataa.org.sa" /></div>
+            <div class="pfield"><label class="plabel">الجوال الرسمي <span class="req">*</span></label><input class="pinput" value="+966 11 234 5678" /></div>
+            <div class="pfield"><label class="plabel">الموقع الإلكتروني</label><input class="pinput" value="www.ataa.org.sa" /></div>
+            <div class="pfield"><label class="plabel">حسابات التواصل</label><input class="pinput" placeholder="@ataa_sa" /></div>
+            <div class="pfield"><label class="plabel">المنطقة</label><select class="pselect"><option>الرياض</option><option>مكة المكرمة</option><option>الشرقية</option></select></div>
+            <div class="pfield"><label class="plabel">المدينة</label><input class="pinput" value="الرياض" /></div>
+            <div class="pfield" style="grid-column:1/-1;"><label class="plabel">العنوان التفصيلي</label><input class="pinput" value="حي الملقا - شارع الأمير محمد بن سلمان - مبنى 24" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-rep" class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-user-tie" style="color:var(--p-primary); margin-inline-end:6px;"></i> بيانات الممثل الرسمي</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pfield"><label class="plabel">الاسم الكامل <span class="req">*</span></label><input class="pinput" value="خالد بن عبدالله السعيد" /></div>
+            <div class="pfield"><label class="plabel">الصفة الوظيفية</label><input class="pinput" value="المدير التنفيذي" /></div>
+            <div class="pfield"><label class="plabel">البريد الإلكتروني</label><input class="pinput" type="email" value="khaled@ataa.org.sa" /></div>
+            <div class="pfield"><label class="plabel">رقم الجوال</label><input class="pinput" value="+966 55 123 4567" /></div>
+            <div class="pfield"><label class="plabel">رقم الهوية الوطنية</label><input class="pinput" value="10XXXXXXXX" /></div>
+            <div class="pfield"><label class="plabel">تاريخ انتهاء الصلاحية</label><input class="pinput" type="date" value="2028-06-01" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-legal" class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-scale-balanced" style="color:var(--p-primary); margin-inline-end:6px;"></i> البيانات القانونية</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pfield"><label class="plabel">رقم الترخيص</label><input class="pinput" value="1234" /></div>
+            <div class="pfield"><label class="plabel">جهة الإصدار</label><input class="pinput" value="المركز الوطني لتنمية القطاع غير الربحي" /></div>
+            <div class="pfield"><label class="plabel">الرقم الضريبي</label><input class="pinput" placeholder="15 رقمًا" /></div>
+            <div class="pfield"><label class="plabel">رقم السجل</label><input class="pinput" value="4030XXXXXX" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-bank" class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-building-columns" style="color:var(--p-primary); margin-inline-end:6px;"></i> البيانات البنكية</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pfield"><label class="plabel">اسم البنك</label>
+              <select class="pselect"><option>البنك الأهلي السعودي</option><option>مصرف الراجحي</option><option>بنك الرياض</option></select>
+            </div>
+            <div class="pfield"><label class="plabel">اسم صاحب الحساب</label><input class="pinput" value="جمعية العطاء الخيرية" /></div>
+            <div class="pfield" style="grid-column:1/-1;"><label class="plabel">رقم الآيبان (IBAN)</label><input class="pinput" placeholder="SA00 0000 0000 0000 0000 0000" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-brand" class="pcard">
+        <div class="pcard-header"><h3><i class="fa-solid fa-palette" style="color:var(--p-primary); margin-inline-end:6px;"></i> الهوية والشعار</h3></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pfield"><label class="plabel">شعار الجمعية</label>
+              <div class="pfile"><i class="fa-solid fa-cloud-arrow-up"></i><p>اسحب الصورة هنا أو انقر للاختيار (PNG/SVG، حتى 2MB)</p></div>
+            </div>
+            <div class="pfield"><label class="plabel">صورة الغلاف</label>
+              <div class="pfile"><i class="fa-solid fa-image"></i><p>الأبعاد المفضّلة 1600×600 بكسل</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Save bar -->
+      <div class="pcard" style="position:sticky; bottom:12px; background:rgba(255,255,255,.96); backdrop-filter:blur(8px); border:1px solid var(--p-border);">
+        <div class="pcard-body" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div style="font-size:13px; color:var(--p-muted);"><i class="fa-solid fa-circle-info" style="color:var(--p-info);"></i> يتم حفظ التغييرات بعد الضغط على "حفظ".</div>
+          <div style="display:flex; gap:8px;">
+            <a href="profile.html" class="pbtn pbtn-outline">إلغاء</a>
+            <button class="pbtn pbtn-primary"><i class="fa-solid fa-check"></i> حفظ كل التغييرات</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/js/portal.js"></script>
+</body>
+</html>
