@@ -1841,7 +1841,6 @@
             </a>
           </div>
         </div>
-        <a href="services.html" class="s-btn s-btn-primary sx-cta"><i class="fas fa-rocket"></i> ابدأ الآن</a>
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
     </div>
