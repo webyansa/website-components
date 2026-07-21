@@ -1,4 +1,4 @@
-/* جائزة الأندية الشبابية - Interactions */
+/* جائزة الأندية الشبابية — Interactions v2 (calm) */
 (function () {
   'use strict';
 
@@ -6,7 +6,7 @@
   const floating = document.querySelector('.award-floating');
   const hero = document.querySelector('.award-hero');
 
-  // Header on scroll
+  // Header + floating CTA on scroll
   const onScroll = () => {
     const y = window.scrollY || 0;
     if (header) header.classList.toggle('is-scrolled', y > 40);
@@ -29,7 +29,6 @@
       const top = target.getBoundingClientRect().top + window.scrollY - 90;
       window.scrollTo({ top, behavior: 'smooth' });
 
-      // close offcanvas on click (Bootstrap)
       const oc = document.querySelector('.award-offcanvas.show');
       if (oc && window.bootstrap) {
         const inst = window.bootstrap.Offcanvas.getInstance(oc);
@@ -38,15 +37,17 @@
     });
   });
 
-  // IntersectionObserver reveal
+  // IntersectionObserver reveal (calm stagger)
   const reveals = document.querySelectorAll('.award-reveal');
   if ('IntersectionObserver' in window && reveals.length) {
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-in');
-            io.unobserve(entry.target);
+            const el = entry.target;
+            const delay = Math.min(i * 60, 240);
+            setTimeout(() => el.classList.add('is-in'), delay);
+            io.unobserve(el);
           }
         });
       },
@@ -55,18 +56,5 @@
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('is-in'));
-  }
-
-  // Light parallax on hero visual
-  const visual = document.querySelector('.award-hero__photo');
-  if (visual && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener(
-      'scroll',
-      () => {
-        const y = window.scrollY;
-        if (y < 900) visual.style.transform = `rotate(-2deg) translateY(${y * 0.05}px)`;
-      },
-      { passive: true }
-    );
   }
 })();
