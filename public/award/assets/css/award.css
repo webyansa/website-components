@@ -1260,3 +1260,142 @@
   .award-reveal { opacity: 1; transform: none; transition: none; }
   * { transition: none !important; }
 }
+
+/* ================================================================
+   PATCH v3 — Contrast, Header Logo, Palette Rebalance
+   ================================================================ */
+
+/* Override generic anchor/paragraph colors leaking into sections */
+.award-page .award-nav__link { color: rgba(255,255,255,.95); }
+.award-header.is-scrolled .award-page .award-nav__link,
+.award-header.is-scrolled .award-nav__link { color: var(--award-navy-deep); }
+.award-page .award-btn { color: var(--award-navy-deep); }
+.award-page .award-btn--ghost,
+.award-page .award-btn--ghost:hover,
+.award-page .award-btn--ghost:focus { color: #fff; }
+.award-page .award-btn--solid,
+.award-page .award-btn--solid:hover { color: #fff; }
+.award-page .award-btn--outline-dark { color: var(--award-navy-deep); }
+.award-page .award-btn--outline-dark:hover { color: #fff; }
+.award-page .award-btn--primary,
+.award-page .award-btn--primary:hover { color: var(--award-navy-ink); }
+
+/* Vision/mission cards — force text tones over dark/cream backgrounds */
+.award-page .award-vision__card--vision,
+.award-page .award-vision__card--vision .award-vision__text {
+  color: #ffffff;
+}
+.award-page .award-vision__card--vision .award-vision__label {
+  background: rgba(100,216,200,.22);
+  color: var(--award-mint);
+}
+.award-page .award-vision__card--mission,
+.award-page .award-vision__card--mission .award-vision__text {
+  color: var(--award-navy-ink);
+}
+
+/* Ensure any paragraph inside dark surfaces stays legible */
+.award-hero p,
+.award-hero__desc,
+.award-vision__card--vision p,
+.award-cta p,
+.award-cta__text {
+  color: rgba(255,255,255,.85);
+}
+.award-hero__tag { color: #EAF3FB !important; }
+
+/* ---------- Header logo (replacing seal) ---------- */
+.award-header__brand { min-height: 44px; }
+.award-header__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  transition: opacity .3s ease;
+}
+.award-header__logo--dark { display: none; }
+.award-header.is-scrolled .award-header__logo--light { display: none; }
+.award-header.is-scrolled .award-header__logo--dark { display: block; }
+@media (max-width: 575.98px) {
+  .award-header__logo { height: 38px; }
+}
+
+/* Increase header dark-mode contrast so nav is clearly readable */
+.award-header__inner {
+  background: rgba(14, 23, 55, 0.55);
+  border-color: rgba(255,255,255,.18);
+}
+.award-nav__link {
+  color: #ffffff;
+  letter-spacing: 0;
+}
+.award-nav__link:hover { background: rgba(255,255,255,.18); }
+
+/* ---------- Palette rebalance: dial back coral, promote teal/mint ---------- */
+.award-insight__cell i {
+  background: rgba(15,140,140,.10);
+  color: var(--award-teal);
+}
+.award-about__quote { border-inline-start-color: var(--award-teal); }
+.award-about__quote::before { color: var(--award-teal); opacity: .18; }
+.award-about__pillar--coral strong { color: var(--award-teal); }
+.award-vision__card--mission .award-vision__label {
+  background: rgba(15,140,140,.14);
+  color: var(--award-teal);
+}
+.award-vision__card--mission .award-vision__num { color: var(--award-teal); opacity: .18; }
+
+/* Insight bar: soften shadow, add subtle top accent */
+.award-insight__card {
+  border-top: 3px solid var(--award-yellow);
+}
+
+/* Ghost button contrast on dark hero */
+.award-btn--ghost {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.65);
+}
+.award-btn--ghost:hover {
+  background: #ffffff;
+  color: var(--award-navy-ink) !important;
+  border-color: #ffffff;
+}
+
+/* Hero title accent: keep yellow but add a warm underline instead of full color block */
+.award-hero__title .u { color: var(--award-yellow); }
+
+/* Reduce coral use in about pillars line — keep one accent only */
+.award-about__pillar--navy strong { color: var(--award-navy-deep); }
+.award-about__pillar--teal strong { color: var(--award-teal); }
+
+/* Criteria groups: swap coral gradient to a teal→navy option (softer) */
+.award-criteria__group-icon--coral {
+  background: linear-gradient(135deg, var(--award-teal), var(--award-navy));
+  color: #ffffff;
+}
+
+/* CTA text safety */
+.award-cta, .award-cta * { color: inherit; }
+.award-cta__title { color: #ffffff; }
+.award-cta__text { color: rgba(255,255,255,.82); }
+
+/* Hero chip impact: reduce coral to teal accent */
+.award-hero__chip i { color: var(--award-teal); }
+.award-hero__chip--impact i { color: var(--award-teal); }
+
+/* Header brand sizing fix */
+.award-header__brand { flex: 0 0 auto; min-width: 200px; }
+.award-header__logo { min-width: 180px; height: 52px; }
+@media (max-width: 991.98px) { .award-header__logo { min-width: 150px; height: 44px; } }
+@media (max-width: 575.98px) { .award-header__logo { min-width: 120px; height: 38px; } }
+
+/* Override brand sizing (final) */
+.award-header__logo { min-width: 0; width: auto; height: 56px; }
+.award-header__brand { min-width: auto; }
+@media (max-width: 991.98px) { .award-header__logo { height: 48px; } }
+@media (max-width: 575.98px) { .award-header__logo { height: 42px; } }
+
+/* Prevent brand + logo from being shrunk by flex space distribution */
+.award-header__inner > * { flex-shrink: 0; }
+.award-header__brand, .award-header__logo { flex-shrink: 0 !important; }
+.award-header__logo { width: auto !important; height: 56px !important; max-width: none; }
+@media (max-width: 991.98px) { .award-header__logo { height: 46px !important; } }
