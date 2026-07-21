@@ -3,32 +3,24 @@
   'use strict';
 
   const NAV = [
-    { group: 'الرئيسية' },
-    { key: 'dashboard',    label: 'لوحة التحكم',    icon: 'fa-gauge-high',           href: 'index.html' },
-    { key: 'profile',      label: 'ملف الجمعية',     icon: 'fa-building-user',        href: 'profile.html' },
-    { key: 'profile-edit', label: 'تحديث البيانات',  icon: 'fa-pen-to-square',        href: 'profile-edit.html' },
-    { key: 'users',        label: 'المستخدمون',      icon: 'fa-users',                href: 'users.html',        badge: '5' },
-    { group: 'العمليات' },
-    { key: 'requests',     label: 'طلباتي',          icon: 'fa-file-lines',           href: 'requests.html',     badge: '4' },
-    { key: 'projects',     label: 'مشاريعي',         icon: 'fa-diagram-project',      href: 'projects.html' },
-    { key: 'tickets',      label: 'تذاكر الدعم',     icon: 'fa-headset',              href: 'tickets.html',      badge: '2' },
-    { key: 'messages',     label: 'المحادثات',        icon: 'fa-comments',             href: 'messages.html' },
-    { key: 'meetings',     label: 'الاجتماعات',       icon: 'fa-calendar-check',       href: 'meetings.html' },
-    { group: 'الحساب' },
-    { key: 'subscription', label: 'الاشتراك',         icon: 'fa-crown',                href: 'subscription.html' },
-    { key: 'settings',     label: 'الإعدادات',        icon: 'fa-gear',                 href: 'settings.html' },
+    { key: 'dashboard',    label: 'لوحة التحكم',     icon: 'fa-gauge-high',       href: 'index.html' },
+    { key: 'profile',      label: 'بيانات الجمعية',  icon: 'fa-building-user',    href: 'profile.html' },
+    { key: 'subscriptions',label: 'اشتراكاتي',       icon: 'fa-crown',            href: 'subscriptions.html' },
+    { key: 'projects',     label: 'مشاريعي',         icon: 'fa-diagram-project',  href: 'projects.html' },
+    { key: 'invoices',     label: 'الفواتير',        icon: 'fa-file-invoice',     href: 'invoices.html',  badge: '1' },
+    { key: 'services',     label: 'طلبات الخدمات',   icon: 'fa-hand-holding-heart',href: 'services.html' },
+    { key: 'tickets',      label: 'تذاكر الدعم',     icon: 'fa-headset',          href: 'tickets.html',   badge: '2' },
+    { key: 'messages',     label: 'الرسائل',          icon: 'fa-envelope',         href: 'messages.html',  badge: '3' },
+    { key: 'settings',     label: 'الإعدادات',        icon: 'fa-gear',             href: 'settings.html' },
   ];
 
   function buildSidebar(activeKey) {
-    const items = NAV.map(n => {
-      if (n.group) return `<div class="psidebar-group-label">${n.group}</div>`;
-      return `
+    const items = NAV.map(n => `
       <a href="${n.href}" class="psidebar-item ${n.key === activeKey ? 'is-active' : ''}">
         <i class="fa-solid ${n.icon}"></i>
         <span>${n.label}</span>
         ${n.badge ? `<span class="pbadge pbadge-primary">${n.badge}</span>` : ''}
-      </a>`;
-    }).join('');
+      </a>`).join('');
 
     return `
       <aside class="psidebar" id="psidebar">
@@ -39,9 +31,7 @@
             <small>منصة ويبيان</small>
           </div>
         </div>
-        <nav class="psidebar-nav">
-          ${items}
-        </nav>
+        <nav class="psidebar-nav">${items}</nav>
         <div class="psidebar-footer">
           <a href="../index.html" class="psidebar-item">
             <i class="fa-solid fa-globe"></i>
@@ -71,15 +61,13 @@
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span class="ptopbar-site-label">الموقع الرئيسي</span>
           </a>
-          <button class="ptopbar-icon-btn" title="بحث"><i class="fa-solid fa-magnifying-glass"></i></button>
           <button class="ptopbar-icon-btn" title="الإشعارات"><i class="fa-solid fa-bell"></i><span class="pdot"></span></button>
-          <button class="ptopbar-icon-btn" title="الرسائل"><i class="fa-solid fa-envelope"></i></button>
-          <button class="ptopbar-icon-btn" title="المساعدة"><i class="fa-solid fa-circle-question"></i></button>
+          <a href="messages.html" class="ptopbar-icon-btn" title="الرسائل"><i class="fa-solid fa-envelope"></i></a>
           <div class="ptopbar-user">
-            <div class="pavatar">ج</div>
+            <div class="pavatar">ع</div>
             <div class="puser-info">
-              <span class="puser-name">جمعية العطاء الخيرية</span>
-              <span class="puser-role">حساب مُوثّق</span>
+              <span class="puser-name">علي الشيخ</span>
+              <span class="puser-role">جمعية افتراضية</span>
             </div>
           </div>
         </div>
@@ -115,7 +103,6 @@
     });
   }
 
-  /* Modals */
   function initModals() {
     document.querySelectorAll('[data-modal-open]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -126,14 +113,14 @@
     });
     document.querySelectorAll('.pmodal-overlay').forEach(overlay => {
       overlay.addEventListener('click', (e) => {
-        if (e.target === overlay || e.target.hasAttribute('data-modal-close')) {
+        if (e.target === overlay || e.target.hasAttribute('data-modal-close') ||
+            e.target.closest('[data-modal-close]')) {
           overlay.classList.remove('is-open');
         }
       });
     });
   }
 
-  /* Tabs */
   function initTabs() {
     document.querySelectorAll('[data-tabs]').forEach(group => {
       const tabs = group.querySelectorAll('.ptab');
@@ -149,30 +136,6 @@
       });
     });
   }
-
-  /* Stepper (used on register page) */
-  window.PortalStepper = function (rootSelector) {
-    const root = document.querySelector(rootSelector);
-    if (!root) return null;
-    const steps = root.querySelectorAll('.pstep');
-    const panels = root.querySelectorAll('[data-step-panel]');
-    let current = 0;
-
-    function render() {
-      steps.forEach((s, i) => {
-        s.classList.toggle('is-active', i === current);
-        s.classList.toggle('is-done', i < current);
-      });
-      panels.forEach((p, i) => p.style.display = i === current ? '' : 'none');
-    }
-    root.querySelectorAll('[data-step-next]').forEach(b => b.addEventListener('click', () => {
-      if (current < steps.length - 1) { current++; render(); window.scrollTo({top:0,behavior:'smooth'}); }
-    }));
-    root.querySelectorAll('[data-step-prev]').forEach(b => b.addEventListener('click', () => {
-      if (current > 0) { current--; render(); }
-    }));
-    render();
-  };
 
   document.addEventListener('DOMContentLoaded', () => {
     initShell();
