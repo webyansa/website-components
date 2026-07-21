@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ملف الجمعية | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="profile" data-title="ملف الجمعية" data-subtitle="إدارة بيانات الجمعية والوثائق">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>ملف الجمعية</span></div>
+      <h1>ملف الجمعية</h1>
+      <p>بيانات جمعيتك الأساسية، وثائقها، وبيانات ممثلها الرسمي.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <button class="pbtn pbtn-outline"><i class="fa-solid fa-download"></i> تصدير الملف</button>
+      <button class="pbtn pbtn-primary" data-modal-open="editProfileModal"><i class="fa-solid fa-pen"></i> تعديل البيانات</button>
+    </div>
+  </div>
+
+  <!-- Profile header card -->
+  <div class="pcard" style="margin-bottom: 20px;">
+    <div class="pcard-body" style="display:flex; gap:18px; align-items:center; flex-wrap:wrap;">
+      <div style="width:78px; height:78px; border-radius:18px; background:linear-gradient(135deg, var(--p-primary), var(--p-secondary)); color:#fff; display:grid; place-items:center; font-weight:800; font-size:28px; flex-shrink:0;">ج</div>
+      <div style="flex:1; min-width:220px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px; flex-wrap:wrap;">
+          <h2 style="margin:0; font-size:20px; font-weight:800;">جمعية العطاء الخيرية</h2>
+          <span class="pbadge pbadge-active">حساب موثّق</span>
+          <span class="pbadge pbadge-primary">باقة احترافية</span>
+        </div>
+        <p style="margin:0; color:var(--p-muted); font-size:13.5px;"><i class="fa-solid fa-id-card"></i> ترخيص #1234 · <i class="fa-solid fa-location-dot"></i> الرياض · <i class="fa-solid fa-calendar"></i> منذ 2018</p>
+      </div>
+      <div style="display:flex; gap:22px; text-align:center;">
+        <div><div style="font-size:20px; font-weight:800; color:var(--p-text);">6</div><div style="font-size:12px; color:var(--p-muted);">مشاريع نشطة</div></div>
+        <div style="width:1px; background:var(--p-border-2);"></div>
+        <div><div style="font-size:20px; font-weight:800; color:var(--p-text);">24</div><div style="font-size:12px; color:var(--p-muted);">طلب</div></div>
+        <div style="width:1px; background:var(--p-border-2);"></div>
+        <div><div style="font-size:20px; font-weight:800; color:var(--p-success);">92%</div><div style="font-size:12px; color:var(--p-muted);">اكتمال الملف</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div data-tabs="profile" class="ptabs">
+    <button class="ptab is-active" data-tab="basic">البيانات الأساسية</button>
+    <button class="ptab" data-tab="contact">بيانات التواصل</button>
+    <button class="ptab" data-tab="rep">بيانات الممثل</button>
+    <button class="ptab" data-tab="docs">الوثائق</button>
+  </div>
+
+  <div data-tab-scope="profile">
+    <div class="ptab-panel is-active" data-panel="basic">
+      <div class="pcard"><div class="pcard-body">
+        <div class="pgrid pgrid-2">
+          <div class="pfield"><label class="plabel">اسم الجمعية</label><input class="pinput" value="جمعية العطاء الخيرية" readonly /></div>
+          <div class="pfield"><label class="plabel">نوع الجهة</label><input class="pinput" value="جمعية خيرية" readonly /></div>
+          <div class="pfield"><label class="plabel">رقم الترخيص</label><input class="pinput" value="1234" readonly /></div>
+          <div class="pfield"><label class="plabel">تاريخ التأسيس</label><input class="pinput" value="2018-03-15" readonly /></div>
+          <div class="pfield"><label class="plabel">المدينة</label><input class="pinput" value="الرياض" readonly /></div>
+          <div class="pfield"><label class="plabel">النطاق الجغرافي</label><input class="pinput" value="منطقة الرياض" readonly /></div>
+          <div class="pfield" style="grid-column: 1 / -1;"><label class="plabel">نبذة تعريفية</label><textarea class="ptextarea" readonly>جمعية أهلية تعنى بتمكين الأسر المنتجة ودعم البرامج التنموية في المجتمع.</textarea></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="ptab-panel" data-panel="contact">
+      <div class="pcard"><div class="pcard-body">
+        <div class="pgrid pgrid-2">
+          <div class="pfield"><label class="plabel">البريد الرسمي</label><input class="pinput" value="info@ataa.org.sa" readonly /></div>
+          <div class="pfield"><label class="plabel">الجوال الرسمي</label><input class="pinput" value="+966 11 234 5678" readonly /></div>
+          <div class="pfield"><label class="plabel">الموقع الإلكتروني</label><input class="pinput" value="www.ataa.org.sa" readonly /></div>
+          <div class="pfield"><label class="plabel">العنوان</label><input class="pinput" value="الرياض - حي الملقا - شارع الأمير محمد" readonly /></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="ptab-panel" data-panel="rep">
+      <div class="pcard"><div class="pcard-body">
+        <div class="pgrid pgrid-2">
+          <div class="pfield"><label class="plabel">اسم الممثل</label><input class="pinput" value="خالد بن عبدالله السعيد" readonly /></div>
+          <div class="pfield"><label class="plabel">الصفة الوظيفية</label><input class="pinput" value="المدير التنفيذي" readonly /></div>
+          <div class="pfield"><label class="plabel">البريد الإلكتروني</label><input class="pinput" value="khaled@ataa.org.sa" readonly /></div>
+          <div class="pfield"><label class="plabel">رقم الجوال</label><input class="pinput" value="+966 55 123 4567" readonly /></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="ptab-panel" data-panel="docs">
+      <div class="pcard">
+        <div class="pcard-header"><h3>وثائق الجمعية</h3><button class="pbtn pbtn-primary pbtn-sm"><i class="fa-solid fa-upload"></i> رفع وثيقة</button></div>
+        <div class="pcard-body">
+          <div class="pgrid pgrid-2">
+            <div class="pcard" style="border:1px solid var(--p-border);"><div class="pcard-body" style="display:flex; align-items:center; gap:12px;">
+              <div class="pstat-icon is-danger"><i class="fa-solid fa-file-pdf"></i></div>
+              <div style="flex:1;"><div style="font-weight:700; font-size:14px;">شهادة الترخيص</div><div style="font-size:12px; color:var(--p-muted);">2.4 MB · مُحدّث 06/2026</div></div>
+              <button class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-download"></i></button>
+            </div></div>
+            <div class="pcard" style="border:1px solid var(--p-border);"><div class="pcard-body" style="display:flex; align-items:center; gap:12px;">
+              <div class="pstat-icon is-danger"><i class="fa-solid fa-file-pdf"></i></div>
+              <div style="flex:1;"><div style="font-weight:700; font-size:14px;">اللائحة الأساسية</div><div style="font-size:12px; color:var(--p-muted);">1.1 MB · مُحدّث 03/2026</div></div>
+              <button class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-download"></i></button>
+            </div></div>
+            <div class="pcard" style="border:1px solid var(--p-border);"><div class="pcard-body" style="display:flex; align-items:center; gap:12px;">
+              <div class="pstat-icon is-warning"><i class="fa-solid fa-file-excel"></i></div>
+              <div style="flex:1;"><div style="font-weight:700; font-size:14px;">التقرير المالي 2025</div><div style="font-size:12px; color:var(--p-muted);">860 KB</div></div>
+              <button class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-download"></i></button>
+            </div></div>
+            <div class="pcard" style="border:1px solid var(--p-border);"><div class="pcard-body" style="display:flex; align-items:center; gap:12px;">
+              <div class="pstat-icon is-success"><i class="fa-solid fa-file-image"></i></div>
+              <div style="flex:1;"><div style="font-weight:700; font-size:14px;">شعار الجمعية</div><div style="font-size:12px; color:var(--p-muted);">240 KB</div></div>
+              <button class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-download"></i></button>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Edit modal -->
+<div class="pmodal-overlay" id="editProfileModal">
+  <div class="pmodal pmodal-lg">
+    <header class="pmodal-header"><h3><i class="fa-solid fa-pen"></i> تعديل بيانات الجمعية</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
+    <div class="pmodal-body">
+      <div class="pgrid pgrid-2">
+        <div class="pfield"><label class="plabel">اسم الجمعية</label><input class="pinput" value="جمعية العطاء الخيرية" /></div>
+        <div class="pfield"><label class="plabel">البريد الرسمي</label><input class="pinput" value="info@ataa.org.sa" /></div>
+        <div class="pfield"><label class="plabel">الجوال الرسمي</label><input class="pinput" value="+966 11 234 5678" /></div>
+        <div class="pfield"><label class="plabel">المدينة</label><select class="pselect"><option>الرياض</option><option>جدة</option></select></div>
+        <div class="pfield" style="grid-column:1/-1;"><label class="plabel">نبذة تعريفية</label><textarea class="ptextarea">جمعية أهلية تعنى بتمكين الأسر المنتجة.</textarea></div>
+      </div>
+    </div>
+    <footer class="pmodal-footer">
+      <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-check"></i> حفظ التعديلات</button>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/portal.js"></script>
+</body>
+</html>

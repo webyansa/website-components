@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الاجتماعات | بوابة الجمعية</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="meetings" data-title="الاجتماعات" data-subtitle="جدولك وموعد الاجتماعات القادمة">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>الاجتماعات</span></div>
+      <h1>الاجتماعات</h1>
+      <p>تابع اجتماعات جمعيتك واحجز موعداً جديداً عند الحاجة.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <button class="pbtn pbtn-primary" data-modal-open="newMeetingModal"><i class="fa-solid fa-calendar-plus"></i> طلب اجتماع</button>
+    </div>
+  </div>
+
+  <div data-tabs="meet" class="ptabs">
+    <button class="ptab is-active" data-tab="up">القادمة</button>
+    <button class="ptab" data-tab="past">السابقة</button>
+  </div>
+
+  <div data-tab-scope="meet">
+    <div class="ptab-panel is-active" data-panel="up">
+      <div class="pgrid pgrid-3" id="upList"></div>
+    </div>
+    <div class="ptab-panel" data-panel="past">
+      <div class="pgrid pgrid-3">
+        <div class="pcard"><div class="pcard-body">
+          <span class="pbadge pbadge-done" style="margin-bottom:10px;">مكتمل</span>
+          <h4 style="margin:0 0 6px; font-size:15px; font-weight:800;">اجتماع افتتاحي</h4>
+          <p style="margin:0 0 10px; font-size:12.5px; color:var(--p-muted);"><i class="fa-solid fa-calendar"></i> 2026-07-05 · 10:00 ص</p>
+          <p style="margin:0; font-size:12.5px;">مع فريق الاستشارات</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="pmodal-overlay" id="newMeetingModal">
+  <div class="pmodal">
+    <header class="pmodal-header"><h3><i class="fa-solid fa-calendar-plus"></i> طلب اجتماع جديد</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
+    <div class="pmodal-body">
+      <div class="pfield"><label class="plabel">موضوع الاجتماع</label><input class="pinput" placeholder="مثال: مناقشة خطة المشروع" /></div>
+      <div class="pgrid pgrid-2">
+        <div class="pfield"><label class="plabel">التاريخ</label><input class="pinput" type="date" /></div>
+        <div class="pfield"><label class="plabel">الوقت</label><input class="pinput" type="time" /></div>
+      </div>
+      <div class="pfield"><label class="plabel">نوع الاجتماع</label>
+        <div style="display:flex; gap:10px;">
+          <label class="pradio"><input type="radio" name="mt" checked> أونلاين</label>
+          <label class="pradio"><input type="radio" name="mt"> حضوري</label>
+        </div>
+      </div>
+      <div class="pfield"><label class="plabel">ملاحظات</label><textarea class="ptextarea" placeholder="اذكر أي تفاصيل إضافية..."></textarea></div>
+    </div>
+    <footer class="pmodal-footer">
+      <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال الطلب</button>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script>
+  document.getElementById('upList').innerHTML = PortalData.meetings.map(m => `
+    <div class="pcard pcard-hover"><div class="pcard-body">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+        <span class="pbadge ${m.mode==='أونلاين'?'pbadge-open':'pbadge-review'}">${m.mode==='أونلاين'?'<i class="fa-solid fa-video"></i> أونلاين':'<i class="fa-solid fa-location-dot"></i> حضوري'}</span>
+      </div>
+      <h4 style="margin:0 0 6px; font-size:15px; font-weight:800;">${m.title}</h4>
+      <p style="margin:0 0 10px; font-size:12.5px; color:var(--p-muted);"><i class="fa-solid fa-calendar"></i> ${m.date}</p>
+      <p style="margin:0 0 14px; font-size:13px;">مع: <strong>${m.with}</strong></p>
+      <div style="display:flex; gap:6px;">
+        <button class="pbtn pbtn-primary pbtn-sm"><i class="fa-solid fa-video"></i> انضم</button>
+        <button class="pbtn pbtn-outline pbtn-sm"><i class="fa-solid fa-calendar-days"></i> التقويم</button>
+      </div>
+    </div></div>`).join('');
+</script>
+</body>
+</html>
