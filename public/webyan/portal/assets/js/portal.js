@@ -33,10 +33,10 @@
     return `
       <aside class="psidebar" id="psidebar">
         <div class="psidebar-brand">
-          <div class="plogo">ت</div>
+          <div class="plogo">و</div>
           <div>
-            <h4>بوابة الجمعية</h4>
-            <small>منصة تمكين</small>
+            <h4>بوابة العملاء</h4>
+            <small>منصة ويبيان</small>
           </div>
         </div>
         <nav class="psidebar-nav">
@@ -47,7 +47,7 @@
             <i class="fa-solid fa-globe"></i>
             <span>العودة للموقع</span>
           </a>
-          <a href="../login.html" class="psidebar-item" style="color:var(--p-danger);">
+          <a href="../login-portal.html" class="psidebar-item" style="color:var(--p-danger);">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             <span>تسجيل الخروج</span>
           </a>
