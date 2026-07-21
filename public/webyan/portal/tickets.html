@@ -3,64 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تذاكر الدعم | بوابة الجمعية</title>
+  <title>تذاكر الدعم | بوابة العملاء — ويبيان</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/portal.css" />
 </head>
 <body>
 
-<div data-portal-shell data-page="tickets" data-title="تذاكر الدعم" data-subtitle="تواصل مع فريق الدعم الفني والاستشاري">
+<div data-portal-shell data-page="tickets" data-title="تذاكر الدعم" data-subtitle="للمشاكل والاستفسارات الفنية">
 
   <div class="ppage-header">
     <div>
       <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>تذاكر الدعم</span></div>
       <h1>تذاكر الدعم</h1>
-      <p>افتح تذكرة جديدة أو تابع تذاكرك الحالية.</p>
+      <p>لأي مشكلة أو استفسار فني — طلبات التنفيذ من صفحة طلبات الخدمات.</p>
     </div>
     <div class="ppage-header-actions">
-      <button class="pbtn pbtn-primary" data-modal-open="newTicketModal"><i class="fa-solid fa-plus"></i> فتح تذكرة</button>
+      <button class="pbtn pbtn-primary" data-modal-open="newTicketModal"><i class="fa-solid fa-plus"></i> فتح تذكرة جديدة</button>
     </div>
   </div>
 
   <div class="pgrid pgrid-4" style="margin-bottom:20px;">
-    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-headset"></i></div><div><p class="pstat-label">إجمالي التذاكر</p><p class="pstat-value">12</p></div></div></div>
-    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-envelope-open"></i></div><div><p class="pstat-label">مفتوحة</p><p class="pstat-value">2</p></div></div></div>
-    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-info"><i class="fa-solid fa-clock"></i></div><div><p class="pstat-label">في الانتظار</p><p class="pstat-value">1</p></div></div></div>
-    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-circle-check"></i></div><div><p class="pstat-label">مغلقة</p><p class="pstat-value">9</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-envelope-open"></i></div><div><p class="pstat-label">مفتوحة</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-spinner"></i></div><div><p class="pstat-label">قيد المعالجة</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-info"><i class="fa-solid fa-hourglass-half"></i></div><div><p class="pstat-label">بانتظار ردك</p><p class="pstat-value">0</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-circle-check"></i></div><div><p class="pstat-label">مغلقة</p><p class="pstat-value">4</p></div></div></div>
   </div>
 
   <div class="ptable-wrap">
     <div class="ptable-toolbar">
-      <div class="ptable-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="بحث في التذاكر..." /></div>
+      <div class="ptable-search"><i class="fa-solid fa-magnifying-glass"></i><input placeholder="بحث في التذاكر..." /></div>
       <div class="ptable-actions">
-        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;"><option>كل الحالات</option><option>مفتوحة</option><option>مغلقة</option></select>
-        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;"><option>كل الأولويات</option><option>عالية</option><option>متوسطة</option><option>منخفضة</option></select>
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;">
+          <option>كل الأنواع</option><option>مشكلة في الموقع</option><option>لوحة التحكم</option><option>الدومين</option><option>البريد</option><option>الدفع</option><option>الاشتراك</option><option>استفسار عام</option>
+        </select>
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;">
+          <option>كل الحالات</option><option>مفتوحة</option><option>قيد المعالجة</option><option>تم الحل</option><option>مغلقة</option>
+        </select>
       </div>
     </div>
     <div style="overflow-x:auto;">
       <table class="ptable" id="ticTable">
-        <thead><tr><th>الرقم</th><th>الموضوع</th><th>الأولوية</th><th>الحالة</th><th>آخر رد</th><th></th></tr></thead>
+        <thead><tr><th>الرقم</th><th>الموضوع</th><th>النوع</th><th>الاشتراك</th><th>الأولوية</th><th>الحالة</th><th>آخر رد</th><th></th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
   </div>
-
 </div>
 
+<!-- New ticket modal -->
 <div class="pmodal-overlay" id="newTicketModal">
   <div class="pmodal">
     <header class="pmodal-header"><h3><i class="fa-solid fa-plus"></i> فتح تذكرة دعم جديدة</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
     <div class="pmodal-body">
-      <div class="pfield"><label class="plabel">الفئة</label><select class="pselect"><option>استفسار عام</option><option>مشكلة تقنية</option><option>طلب تعديل بيانات</option><option>مالية / اشتراك</option></select></div>
-      <div class="pfield"><label class="plabel">الأولوية</label><select class="pselect"><option>منخفضة</option><option>متوسطة</option><option>عالية</option></select></div>
-      <div class="pfield"><label class="plabel">الموضوع</label><input class="pinput" placeholder="عنوان مختصر" /></div>
-      <div class="pfield"><label class="plabel">الوصف</label><textarea class="ptextarea" placeholder="اشرح المشكلة أو الاستفسار..."></textarea></div>
+      <div class="pfield"><label class="plabel">الموضوع <span class="req">*</span></label>
+        <input class="pinput" placeholder="عنوان مختصر للمشكلة" /></div>
+      <div class="pgrid pgrid-2">
+        <div class="pfield"><label class="plabel">نوع المشكلة <span class="req">*</span></label>
+          <select class="pselect">
+            <option>مشكلة في الموقع</option>
+            <option>مشكلة في لوحة التحكم</option>
+            <option>مشكلة في الدومين</option>
+            <option>مشكلة في البريد</option>
+            <option>مشكلة في الدفع</option>
+            <option>مشكلة في الاشتراك</option>
+            <option>استفسار عام</option>
+          </select></div>
+        <div class="pfield"><label class="plabel">الأولوية</label>
+          <select class="pselect"><option>منخفضة</option><option>عادية</option><option>عالية</option><option>حرجة</option></select></div>
+      </div>
+      <div class="pfield"><label class="plabel">الاشتراك / المشروع المرتبط</label>
+        <select class="pselect">
+          <option>SUB-2026-0012 — باقة الاستدامة</option>
+          <option>PRJ-2026-014 — موقع جمعية افتراضية</option>
+          <option>غير مرتبط</option>
+        </select></div>
+      <div class="pfield"><label class="plabel">وصف المشكلة <span class="req">*</span></label>
+        <textarea class="ptextarea" placeholder="اذكر تفاصيل المشكلة، الخطوات لإعادة إنتاجها، وأي رسائل خطأ..."></textarea></div>
+      <div class="pfield"><label class="plabel">مرفقات (اختياري)</label>
+        <label class="pfile"><i class="fa-solid fa-cloud-arrow-up"></i><p>لقطة شاشة أو ملف</p><input type="file" hidden></label></div>
     </div>
     <footer class="pmodal-footer">
       <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
-      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال التذكرة</button>
     </footer>
   </div>
 </div>
@@ -68,12 +94,18 @@
 <script src="assets/js/portal-data.js"></script>
 <script src="assets/js/portal.js"></script>
 <script>
+  const typeLabels = {
+    domain:'الدومين', billing:'الدفع', site:'الموقع', panel:'لوحة التحكم',
+    mail:'البريد', subscription:'الاشتراك', general:'استفسار عام'
+  };
   document.querySelector('#ticTable tbody').innerHTML = PortalData.tickets.map(t => `
     <tr>
       <td class="ptable-id">${t.id}</td>
-      <td>${t.subject}</td>
-      <td>${PortalRender.priorityBadge(t.priority)}</td>
-      <td>${PortalRender.statusBadge(t.status)}</td>
+      <td><strong>${t.subject}</strong></td>
+      <td><span class="pchip">${typeLabels[t.type] || t.type}</span></td>
+      <td>${t.sub || '—'}</td>
+      <td>${PortalRender.priority(t.priority)}</td>
+      <td>${PortalRender.ticketStatus(t.status)}</td>
       <td class="pmuted" style="font-size:12.5px;">${t.reply}</td>
       <td class="ptable-actions-cell"><a href="ticket-details.html" class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-eye"></i> عرض</a></td>
     </tr>`).join('');

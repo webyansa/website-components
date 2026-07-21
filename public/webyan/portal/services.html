@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>طلبات الخدمات | بوابة العملاء — ويبيان</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="services" data-title="طلبات الخدمات" data-subtitle="خدمات تنفيذية وتشغيلية لموقعك">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>طلبات الخدمات</span></div>
+      <h1>طلبات الخدمات</h1>
+      <p>اطلب خدمة جديدة من فريق ويبيان بدون إعادة تعبئة بياناتك — كلها موجودة في حسابك.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <button class="pbtn pbtn-primary" data-modal-open="newServiceModal"><i class="fa-solid fa-plus"></i> طلب خدمة جديدة</button>
+    </div>
+  </div>
+
+  <div data-tabs="svc" class="ptabs">
+    <button class="ptab is-active" data-tab="catalog"><i class="fa-solid fa-grid-2"></i> كتالوج الخدمات</button>
+    <button class="ptab" data-tab="my"><i class="fa-solid fa-list"></i> طلباتي (<span id="myCount">2</span>)</button>
+  </div>
+
+  <div data-tab-scope="svc">
+    <!-- Catalog -->
+    <div class="ptab-panel is-active" data-panel="catalog">
+      <div id="catalog"></div>
+    </div>
+
+    <!-- My requests -->
+    <div class="ptab-panel" data-panel="my">
+      <div class="ptable-wrap">
+        <div class="ptable-toolbar">
+          <div class="ptable-search"><i class="fa-solid fa-magnifying-glass"></i><input placeholder="بحث في طلباتي..." /></div>
+          <div class="ptable-actions">
+            <select class="pselect pbtn-sm" style="height:40px; font-size:13px;">
+              <option>كل الحالات</option><option>جديد</option><option>قيد المراجعة</option><option>مقبول</option><option>قيد التنفيذ</option><option>بانتظار ردك</option><option>مكتمل</option><option>مرفوض</option>
+            </select>
+          </div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="ptable" id="svcTable">
+            <thead><tr><th>رقم الطلب</th><th>الخدمة</th><th>الاشتراك</th><th>التاريخ</th><th>الأولوية</th><th>الحالة</th><th>آخر تحديث</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- New service request modal -->
+<div class="pmodal-overlay" id="newServiceModal">
+  <div class="pmodal">
+    <header class="pmodal-header"><h3><i class="fa-solid fa-plus"></i> طلب خدمة جديدة</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
+    <div class="pmodal-body">
+      <div class="palert is-info" style="margin-bottom:14px; padding:10px 14px;">
+        <i class="fa-solid fa-circle-info"></i>
+        <div class="palert-body" style="font-size:12.5px;">بيانات جمعيتك مأخوذة تلقائيًا من حسابك، لا حاجة لإعادة كتابتها.</div>
+      </div>
+      <div class="pfield"><label class="plabel">الخدمة المطلوبة <span class="req">*</span></label>
+        <select class="pselect" id="svcSelect"><option>اختر الخدمة</option></select></div>
+      <div class="pfield"><label class="plabel">الاشتراك / المشروع المرتبط <span class="req">*</span></label>
+        <select class="pselect">
+          <option>SUB-2026-0012 — باقة الاستدامة (example.org.sa)</option>
+          <option>PRJ-2026-014 — تجهيز موقع جمعية افتراضية</option>
+        </select></div>
+      <div class="pfield"><label class="plabel">وصف الطلب</label>
+        <textarea class="ptextarea" placeholder="اشرح تفاصيل احتياجك..."></textarea></div>
+      <div class="pgrid pgrid-2">
+        <div class="pfield"><label class="plabel">الأولوية</label>
+          <select class="pselect"><option>عادية</option><option>مهمة</option><option>عاجلة</option></select></div>
+        <div class="pfield"><label class="plabel">الموعد المطلوب (اختياري)</label>
+          <input class="pinput" type="date" /></div>
+      </div>
+      <div class="pfield"><label class="plabel">مرفقات (اختياري)</label>
+        <label class="pfile"><i class="fa-solid fa-cloud-arrow-up"></i><p>اسحب الملفات هنا أو اضغط للاختيار</p><input type="file" hidden></label></div>
+    </div>
+    <footer class="pmodal-footer">
+      <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال الطلب</button>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script>
+  // Catalog
+  const cat = document.getElementById('catalog');
+  cat.innerHTML = Object.entries(PortalData.serviceCatalog).map(([group, items]) => `
+    <div class="psvc-group">
+      <h3 class="psvc-group-title">${group}</h3>
+      <div class="pgrid pgrid-4">
+        ${items.map(it => `
+          <div class="psvc-card" data-modal-open="newServiceModal" data-svc="${it.name}">
+            <div class="pstat-icon is-primary"><i class="fa-solid ${it.icon}"></i></div>
+            <h4>${it.name}</h4>
+            <button class="pbtn pbtn-outline pbtn-sm" style="margin-top:6px;"><i class="fa-solid fa-plus"></i> طلب الخدمة</button>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+
+  // Populate select
+  const opts = ['<option>اختر الخدمة</option>'].concat(
+    Object.values(PortalData.serviceCatalog).flat().map(s => `<option>${s.name}</option>`));
+  document.getElementById('svcSelect').innerHTML = opts.join('');
+
+  // Rewire modal open + preselect
+  document.querySelectorAll('[data-svc]').forEach(el => {
+    el.addEventListener('click', () => {
+      const sel = document.getElementById('svcSelect');
+      const val = el.dataset.svc;
+      [...sel.options].forEach(o => { if (o.text === val) sel.value = val; });
+      document.getElementById('newServiceModal').classList.add('is-open');
+    });
+  });
+
+  // My requests
+  document.querySelector('#svcTable tbody').innerHTML = PortalData.services.map(s => `
+    <tr>
+      <td class="ptable-id">${s.id}</td>
+      <td><strong>${s.service}</strong></td>
+      <td>${s.sub}</td>
+      <td>${s.date}</td>
+      <td>${PortalRender.priority(s.priority)}</td>
+      <td>${PortalRender.svcStatus(s.status)}</td>
+      <td class="pmuted" style="font-size:12.5px;">${s.updated}</td>
+      <td class="ptable-actions-cell"><button class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-eye"></i></button></td>
+    </tr>`).join('');
+  document.getElementById('myCount').textContent = PortalData.services.length;
+</script>
+</body>
+</html>
