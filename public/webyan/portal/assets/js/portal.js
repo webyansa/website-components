@@ -67,7 +67,7 @@
           ${subtitle ? `<small>${subtitle}</small>` : ''}
         </div>
         <div class="ptopbar-actions">
-          <a href="../index.html" class="pbtn pbtn-ghost pbtn-sm" title="العودة إلى موقع منصة تمكين" style="gap:6px;">
+          <a href="../index.html" class="pbtn pbtn-ghost pbtn-sm" title="العودة إلى موقع ويبيان" style="gap:6px;">
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span class="ptopbar-site-label">الموقع الرئيسي</span>
           </a>
