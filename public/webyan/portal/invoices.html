@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الفواتير | بوابة العملاء — ويبيان</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="invoices" data-title="الفواتير" data-subtitle="فواتير اشتراكاتك وخدماتك">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>الفواتير</span></div>
+      <h1>الفواتير</h1>
+      <p>راجع فواتيرك وحالة كل عملية دفع بوضوح.</p>
+    </div>
+  </div>
+
+  <div class="pgrid pgrid-4" style="margin-bottom:20px;">
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-file-invoice"></i></div><div><p class="pstat-label">إجمالي الفواتير</p><p class="pstat-value">2</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-circle-check"></i></div><div><p class="pstat-label">مدفوعة</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-hourglass-half"></i></div><div><p class="pstat-label">بانتظار التحقق</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-danger"><i class="fa-solid fa-triangle-exclamation"></i></div><div><p class="pstat-label">متأخرة</p><p class="pstat-value">0</p></div></div></div>
+  </div>
+
+  <div class="ptable-wrap">
+    <div class="ptable-toolbar">
+      <div class="ptable-search"><i class="fa-solid fa-magnifying-glass"></i><input placeholder="ابحث برقم الفاتورة..." /></div>
+      <div class="ptable-actions">
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;">
+          <option>كل الحالات</option><option>مدفوعة</option><option>بانتظار التحقق</option><option>غير مدفوعة</option><option>متأخرة</option>
+        </select>
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;">
+          <option>كل الأنواع</option><option>اشتراك</option><option>خدمة إضافية</option><option>تجديد</option><option>ترقية</option>
+        </select>
+      </div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="ptable" id="invTable">
+        <thead>
+          <tr><th>رقم الفاتورة</th><th>التاريخ</th><th>النوع</th><th>الاشتراك</th><th>الإجمالي</th><th>حالة الدفع</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script>
+  document.querySelector('#invTable tbody').innerHTML = PortalData.invoices.map(i => `
+    <tr>
+      <td class="ptable-id">${i.id}</td>
+      <td>${i.date}</td>
+      <td><span class="pchip">${i.type}</span></td>
+      <td>${i.sub}</td>
+      <td><strong>${i.total}</strong></td>
+      <td>${PortalRender.payStatus(i.pay)}</td>
+      <td class="ptable-actions-cell" style="white-space:nowrap;">
+        <a href="invoice-details.html" class="pbtn pbtn-ghost pbtn-sm" title="عرض"><i class="fa-solid fa-eye"></i></a>
+        <button class="pbtn pbtn-ghost pbtn-sm" title="تحميل PDF"><i class="fa-solid fa-download"></i></button>
+        ${i.pay!=='paid' ? '<button class="pbtn pbtn-primary pbtn-sm"><i class="fa-solid fa-credit-card"></i> ادفع الآن</button>' : ''}
+      </td>
+    </tr>`).join('');
+</script>
+</body>
+</html>

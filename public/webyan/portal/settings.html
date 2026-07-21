@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الإعدادات | بوابة الجمعية</title>
+  <title>الإعدادات | بوابة العملاء — ويبيان</title>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/portal.css" />
 </head>
 <body>
 
-<div data-portal-shell data-page="settings" data-title="الإعدادات" data-subtitle="تفضيلات الحساب والأمان والإشعارات">
+<div data-portal-shell data-page="settings" data-title="الإعدادات" data-subtitle="بيانات حسابك، كلمة المرور، والإشعارات">
 
   <div class="ppage-header">
     <div>
       <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>الإعدادات</span></div>
       <h1>الإعدادات</h1>
-      <p>خصّص تجربتك في بوابة الجمعية.</p>
+      <p>خصّص حسابك في بوابة ويبيان.</p>
     </div>
   </div>
 
   <div data-tabs="settings" class="ptabs">
-    <button class="ptab is-active" data-tab="acc">الحساب</button>
+    <button class="ptab is-active" data-tab="acc">بيانات الحساب</button>
     <button class="ptab" data-tab="pwd">كلمة المرور</button>
     <button class="ptab" data-tab="notif">الإشعارات</button>
-    <button class="ptab" data-tab="pref">التفضيلات</button>
+    <button class="ptab" data-tab="users">المستخدمون</button>
   </div>
 
   <div data-tab-scope="settings">
     <div class="ptab-panel is-active" data-panel="acc">
       <div class="pcard"><div class="pcard-body">
         <div class="pgrid pgrid-2">
-          <div class="pfield"><label class="plabel">اسم المستخدم</label><input class="pinput" value="ataa_admin" /></div>
-          <div class="pfield"><label class="plabel">البريد الإلكتروني</label><input class="pinput" value="khaled@ataa.org.sa" /></div>
-          <div class="pfield"><label class="plabel">رقم الجوال</label><input class="pinput" value="+966 55 123 4567" /></div>
-          <div class="pfield"><label class="plabel">اللغة المفضّلة</label><select class="pselect"><option>العربية</option><option>English</option></select></div>
+          <div class="pfield"><label class="plabel">الاسم الكامل</label><input class="pinput" value="علي بن محمد الشيخ" /></div>
+          <div class="pfield"><label class="plabel">المسمى الوظيفي</label><input class="pinput" value="المدير التنفيذي" /></div>
+          <div class="pfield"><label class="plabel">البريد الإلكتروني</label><input class="pinput" value="ali@example.org.sa" /></div>
+          <div class="pfield"><label class="plabel">رقم الجوال</label><input class="pinput" value="+966 55 111 2233" /></div>
         </div>
         <div style="display:flex; gap:8px; margin-top:8px;"><button class="pbtn pbtn-primary"><i class="fa-solid fa-check"></i> حفظ</button><button class="pbtn pbtn-outline">إلغاء</button></div>
       </div></div>
@@ -53,30 +53,42 @@
     </div>
 
     <div class="ptab-panel" data-panel="notif">
-      <div class="pcard"><div class="pcard-body">
-        ${['تحديثات الطلبات','تنبيهات المشاريع','تذاكر الدعم','دعوات الاجتماعات','تنبيهات الاشتراك','النشرة الشهرية'].map((l,i)=>`
-          <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 0; ${i<5?'border-bottom:1px solid var(--p-border-2);':''}">
-            <div>
-              <div style="font-weight:700; font-size:14px;">${l}</div>
-              <div style="font-size:12.5px; color:var(--p-muted);">استلام إشعارات عبر البريد والتطبيق.</div>
-            </div>
-            <label class="ptoggle"><input type="checkbox" ${i%2?'':'checked'}><span class="ptoggle-slider"></span></label>
-          </div>`).join('')}
-      </div></div>
+      <div class="pcard"><div class="pcard-body" id="notifList"></div></div>
     </div>
 
-    <div class="ptab-panel" data-panel="pref">
-      <div class="pcard"><div class="pcard-body">
-        <div class="pgrid pgrid-2">
-          <div class="pfield"><label class="plabel">المنطقة الزمنية</label><select class="pselect"><option>الرياض (GMT+3)</option></select></div>
-          <div class="pfield"><label class="plabel">الصفحة الرئيسية</label><select class="pselect"><option>لوحة التحكم</option><option>طلباتي</option><option>مشاريعي</option></select></div>
+    <div class="ptab-panel" data-panel="users">
+      <div class="pcard">
+        <div class="pcard-header">
+          <h3><i class="fa-solid fa-users"></i> مستخدمو الجمعية</h3>
+          <a href="users.html" class="pbtn pbtn-primary pbtn-sm"><i class="fa-solid fa-user-plus"></i> إدارة المستخدمين</a>
         </div>
-      </div></div>
+        <div class="pcard-body pmuted" style="font-size:13.5px;">
+          يمكنك إدارة الأعضاء وصلاحياتهم من صفحة "إدارة المستخدمين".
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
 
 <script src="assets/js/portal.js"></script>
+<script>
+  const items = [
+    ['تنبيهات الفواتير',        'استلام إشعار عند إصدار فاتورة جديدة أو تأكيد الدفع.', true],
+    ['تحديثات مراحل المشروع',   'استلام إشعار عند تقدّم مراحل تجهيز مشروعك.',         true],
+    ['تنبيهات الدومين',          'تذكير قبل انتهاء الدومين بمدة كافية.',              true],
+    ['تحديثات الاشتراك',         'تذكير قبل انتهاء الاشتراك ومعلومات التجديد.',       true],
+    ['ردود تذاكر الدعم',         'استلام إشعار عند رد الفريق على تذكرتك.',            true],
+    ['رسائل عامة من ويبيان',     'إشعارات، نصائح، وتحديثات المنصة.',                  false],
+  ];
+  document.getElementById('notifList').innerHTML = items.map(([t,d,on],i) => `
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 0; ${i<items.length-1?'border-bottom:1px solid var(--p-border-2);':''}">
+      <div>
+        <div style="font-weight:700; font-size:14px;">${t}</div>
+        <div style="font-size:12.5px; color:var(--p-muted);">${d}</div>
+      </div>
+      <label class="ptoggle"><input type="checkbox" ${on?'checked':''}><span class="ptoggle-slider"></span></label>
+    </div>`).join('');
+</script>
 </body>
 </html>

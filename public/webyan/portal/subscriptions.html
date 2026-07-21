@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اشتراكاتي | بوابة العملاء — ويبيان</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/fonts/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/portal.css" />
+</head>
+<body>
+
+<div data-portal-shell data-page="subscriptions" data-title="اشتراكاتي" data-subtitle="جميع اشتراكاتك في منصة ويبيان">
+
+  <div class="ppage-header">
+    <div>
+      <div class="pbreadcrumb"><a href="index.html">لوحة التحكم</a><i class="fa-solid fa-chevron-left"></i><span>اشتراكاتي</span></div>
+      <h1>اشتراكاتي</h1>
+      <p>راجع باقاتك، حالات الدفع، والدومينات المرتبطة بها.</p>
+    </div>
+    <div class="ppage-header-actions">
+      <button class="pbtn pbtn-primary" data-modal-open="upgradeModal"><i class="fa-solid fa-arrow-up-right-dots"></i> طلب ترقية</button>
+    </div>
+  </div>
+
+  <div class="pgrid pgrid-4" style="margin-bottom:20px;">
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-primary"><i class="fa-solid fa-crown"></i></div><div><p class="pstat-label">إجمالي الاشتراكات</p><p class="pstat-value">2</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-success"><i class="fa-solid fa-circle-check"></i></div><div><p class="pstat-label">نشطة</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-warning"><i class="fa-solid fa-clock"></i></div><div><p class="pstat-label">قيد التجهيز</p><p class="pstat-value">1</p></div></div></div>
+    <div class="pcard"><div class="pcard-stat"><div class="pstat-icon is-info"><i class="fa-solid fa-globe"></i></div><div><p class="pstat-label">دومين نشط</p><p class="pstat-value">1</p></div></div></div>
+  </div>
+
+  <div class="ptable-wrap">
+    <div class="ptable-toolbar">
+      <div class="ptable-search"><i class="fa-solid fa-magnifying-glass"></i><input placeholder="بحث برقم الاشتراك أو الدومين..." /></div>
+      <div class="ptable-actions">
+        <select class="pselect pbtn-sm" style="height:40px; font-size:13px;">
+          <option>كل الحالات</option><option>نشط</option><option>قيد التجهيز</option><option>بانتظار الدفع</option><option>منتهي</option>
+        </select>
+      </div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="ptable" id="subTable">
+        <thead>
+          <tr>
+            <th>رقم الاشتراك</th><th>الباقة</th><th>النوع</th><th>الدومين</th>
+            <th>الفترة</th><th>المبلغ</th><th>حالة الدفع</th><th>الحالة</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Upgrade modal -->
+<div class="pmodal-overlay" id="upgradeModal">
+  <div class="pmodal">
+    <header class="pmodal-header"><h3><i class="fa-solid fa-arrow-up-right-dots"></i> طلب ترقية الباقة</h3><button class="pmodal-close" data-modal-close>&times;</button></header>
+    <div class="pmodal-body">
+      <div class="pfield"><label class="plabel">الاشتراك الحالي</label>
+        <select class="pselect"><option>SUB-2026-0012 — باقة الاستدامة</option></select></div>
+      <div class="pfield"><label class="plabel">الباقة المطلوبة <span class="req">*</span></label>
+        <select class="pselect"><option>باقة الاحترافية</option><option>باقة المؤسسات</option><option>باقة مخصصة</option></select></div>
+      <div class="pfield"><label class="plabel">سبب الترقية / ملاحظات</label>
+        <textarea class="ptextarea" placeholder="اذكر احتياجاتك..."></textarea></div>
+    </div>
+    <footer class="pmodal-footer">
+      <button class="pbtn pbtn-outline" data-modal-close>إلغاء</button>
+      <button class="pbtn pbtn-primary" data-modal-close><i class="fa-solid fa-paper-plane"></i> إرسال الطلب</button>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/portal-data.js"></script>
+<script src="assets/js/portal.js"></script>
+<script>
+  const tb = document.querySelector('#subTable tbody');
+  tb.innerHTML = PortalData.subscriptions.map(s => `
+    <tr>
+      <td class="ptable-id">${s.id}</td>
+      <td><strong>${s.plan}</strong></td>
+      <td><span class="pchip"><i class="fa-solid fa-tag"></i> ${s.planType}</span></td>
+      <td><span dir="ltr" style="font-family:'Menlo',monospace; color:var(--p-primary); font-weight:700;">${s.domain}</span></td>
+      <td class="pmuted" style="font-size:12.5px;">${s.start} → ${s.end}</td>
+      <td><strong>${s.amount}</strong><div class="pmuted" style="font-size:11.5px;">${s.cycle}</div></td>
+      <td>${PortalRender.payStatus(s.pay)}</td>
+      <td>${PortalRender.subStatus(s.status)}</td>
+      <td class="ptable-actions-cell">
+        <a href="subscription-details.html" class="pbtn pbtn-ghost pbtn-sm"><i class="fa-solid fa-eye"></i> عرض</a>
+      </td>
+    </tr>`).join('');
+</script>
+</body>
+</html>
