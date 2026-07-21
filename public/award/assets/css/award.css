@@ -1393,3 +1393,9 @@
 .award-header__brand { min-width: auto; }
 @media (max-width: 991.98px) { .award-header__logo { height: 48px; } }
 @media (max-width: 575.98px) { .award-header__logo { height: 42px; } }
+
+/* Prevent brand + logo from being shrunk by flex space distribution */
+.award-header__inner > * { flex-shrink: 0; }
+.award-header__brand, .award-header__logo { flex-shrink: 0 !important; }
+.award-header__logo { width: auto !important; height: 56px !important; max-width: none; }
+@media (max-width: 991.98px) { .award-header__logo { height: 46px !important; } }
