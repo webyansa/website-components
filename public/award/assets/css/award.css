@@ -170,66 +170,42 @@
 .award-btn--primary {
   position: relative;
   overflow: hidden;
-  isolation: isolate;
-  background: linear-gradient(135deg, #FFD24A 0%, var(--award-yellow) 45%, #E89A00 100%);
+  background: var(--award-yellow);
   color: var(--award-navy-deep);
-  box-shadow:
-    0 12px 26px -14px rgba(245,179,1,.60),
-    0 0 0 0 rgba(245,179,1,.55);
-  animation: award-btn-pulse 2.6s ease-in-out infinite;
+  border-color: transparent;
+  box-shadow: 0 10px 22px -12px rgba(245,179,1,.55);
 }
 .award-btn--primary::before {
-  /* moving shine */
+  /* moving shine only */
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0; bottom: 0;
+  left: -40%;
+  width: 40%;
   background: linear-gradient(
     115deg,
     transparent 0%,
-    transparent 35%,
-    rgba(255,255,255,.85) 50%,
-    transparent 65%,
+    rgba(255,255,255,.55) 50%,
     transparent 100%
   );
-  transform: translateX(-120%);
-  animation: award-btn-shine 3.2s ease-in-out infinite;
+  transform: skewX(-20deg);
+  animation: award-btn-shine 3.6s ease-in-out infinite;
   pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: overlay;
-}
-.award-btn--primary::after {
-  /* soft glow halo */
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #FFE58A, #F5B301, #FF8A3D);
-  filter: blur(14px);
-  opacity: .35;
-  z-index: -1;
-  transition: opacity .3s ease;
 }
 .award-btn--primary > * { position: relative; z-index: 2; }
 .award-btn--primary:hover {
-  background: linear-gradient(135deg, #FFDD6E 0%, #FFC426 45%, #E89A00 100%);
+  background: #FFC426;
   color: var(--award-navy-deep);
-  box-shadow:
-    0 18px 40px -14px rgba(245,179,1,.75),
-    0 0 0 6px rgba(245,179,1,.12);
+  border-color: transparent;
+  box-shadow: 0 14px 28px -12px rgba(245,179,1,.65);
 }
-.award-btn--primary:hover::after { opacity: .6; }
 
 @keyframes award-btn-shine {
-  0%   { transform: translateX(-120%); }
-  55%  { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
-}
-@keyframes award-btn-pulse {
-  0%, 100% { box-shadow: 0 12px 26px -14px rgba(245,179,1,.60), 0 0 0 0 rgba(245,179,1,.45); }
-  50%      { box-shadow: 0 14px 30px -12px rgba(245,179,1,.70), 0 0 0 10px rgba(245,179,1,0); }
+  0%   { left: -40%; }
+  60%  { left: 120%; }
+  100% { left: 120%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .award-btn--primary,
   .award-btn--primary::before { animation: none; }
 }
 
