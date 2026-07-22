@@ -170,66 +170,42 @@
 .award-btn--primary {
   position: relative;
   overflow: hidden;
-  isolation: isolate;
-  background: linear-gradient(135deg, #FFD24A 0%, var(--award-yellow) 45%, #E89A00 100%);
+  background: var(--award-yellow);
   color: var(--award-navy-deep);
-  box-shadow:
-    0 12px 26px -14px rgba(245,179,1,.60),
-    0 0 0 0 rgba(245,179,1,.55);
-  animation: award-btn-pulse 2.6s ease-in-out infinite;
+  border-color: transparent;
+  box-shadow: 0 10px 22px -12px rgba(245,179,1,.55);
 }
 .award-btn--primary::before {
-  /* moving shine */
+  /* moving shine only */
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0; bottom: 0;
+  left: -40%;
+  width: 40%;
   background: linear-gradient(
     115deg,
     transparent 0%,
-    transparent 35%,
-    rgba(255,255,255,.85) 50%,
-    transparent 65%,
+    rgba(255,255,255,.55) 50%,
     transparent 100%
   );
-  transform: translateX(-120%);
-  animation: award-btn-shine 3.2s ease-in-out infinite;
+  transform: skewX(-20deg);
+  animation: award-btn-shine 3.6s ease-in-out infinite;
   pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: overlay;
-}
-.award-btn--primary::after {
-  /* soft glow halo */
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, #FFE58A, #F5B301, #FF8A3D);
-  filter: blur(14px);
-  opacity: .35;
-  z-index: -1;
-  transition: opacity .3s ease;
 }
 .award-btn--primary > * { position: relative; z-index: 2; }
 .award-btn--primary:hover {
-  background: linear-gradient(135deg, #FFDD6E 0%, #FFC426 45%, #E89A00 100%);
+  background: #FFC426;
   color: var(--award-navy-deep);
-  box-shadow:
-    0 18px 40px -14px rgba(245,179,1,.75),
-    0 0 0 6px rgba(245,179,1,.12);
+  border-color: transparent;
+  box-shadow: 0 14px 28px -12px rgba(245,179,1,.65);
 }
-.award-btn--primary:hover::after { opacity: .6; }
 
 @keyframes award-btn-shine {
-  0%   { transform: translateX(-120%); }
-  55%  { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
-}
-@keyframes award-btn-pulse {
-  0%, 100% { box-shadow: 0 12px 26px -14px rgba(245,179,1,.60), 0 0 0 0 rgba(245,179,1,.45); }
-  50%      { box-shadow: 0 14px 30px -12px rgba(245,179,1,.70), 0 0 0 10px rgba(245,179,1,0); }
+  0%   { left: -40%; }
+  60%  { left: 120%; }
+  100% { left: 120%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .award-btn--primary,
   .award-btn--primary::before { animation: none; }
 }
 
@@ -971,8 +947,8 @@
   gap: clamp(30px, 4vw, 50px);
   align-items: stretch;
 }
-.award-eligibility__title { color: #fff; margin-bottom: 14px; }
-.award-eligibility__lead { color: rgba(255,255,255,.80); margin: 0; }
+.award-page .award-eligibility__title { color: #fff; margin-bottom: 14px; }
+.award-page .award-eligibility__lead { color: rgba(255,255,255,.88); margin: 0; }
 
 .award-eligibility__period {
   display: inline-flex;
@@ -1021,36 +997,37 @@
 .award-eligibility__side {
   background: var(--award-cream-light);
   color: var(--award-text);
-  padding: 34px 30px;
-  border-radius: 24px;
+  padding: 26px 24px;
+  border-radius: 22px;
   box-shadow: var(--award-shadow-lg);
   position: relative;
   overflow: hidden;
   border-inline-start: 4px solid var(--award-coral);
   display: flex; flex-direction: column;
+  align-self: start;
 }
 .award-eligibility__side h3 {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   color: var(--award-navy-deep);
-  margin: 0 0 22px;
-  padding-bottom: 16px;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--award-border);
 }
 .award-eligibility__side ol {
   list-style: none;
   padding: 0;
-  margin: 0 0 26px;
+  margin: 0 0 18px;
   counter-reset: elig;
-  flex: 1;
 }
 .award-eligibility__side ol li {
   counter-increment: elig;
-  padding: 14px 46px 14px 0;
+  padding: 11px 42px 11px 0;
   position: relative;
   font-weight: 600;
   color: var(--award-text);
   border-bottom: 1px dashed var(--award-border);
+  font-size: 14.5px;
 }
 .award-eligibility__side ol li:last-child { border-bottom: none; }
 .award-eligibility__side ol li::before {
@@ -1281,18 +1258,18 @@
   margin: 0 auto;
   text-align: center;
 }
-.award-cta__badge {
+.award-page .award-cta__badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background: rgba(245,179,1,.14);
-  color: var(--award-yellow);
+  background: rgba(255,255,255,.10);
+  color: #fff;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 22px;
-  border: 1px solid rgba(245,179,1,.32);
+  border: 1px solid rgba(255,255,255,.28);
 }
 .award-cta__title {
   font-size: clamp(30px, 4.2vw, 52px);
