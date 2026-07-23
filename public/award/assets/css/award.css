@@ -1408,8 +1408,21 @@
 .award-header__logo--dark { display: none !important; }
 .award-header.is-scrolled .award-header__logo--light { display: none !important; }
 .award-header.is-scrolled .award-header__logo--dark { display: block !important; }
+.award-header__logo-divider{
+  display: inline-block;
+  width: 1px; height: 30px;
+  background: rgba(255,255,255,.35);
+  margin: 0 4px;
+  transition: background .3s ease;
+}
+.award-header.is-scrolled .award-header__logo-divider{
+  background: rgba(15,28,70,.22);
+}
+.award-header__logo--partner{ height: 40px; }
 @media (max-width: 575.98px) {
-  .award-header__logo { height: 38px; }
+  .award-header__logo { height: 34px; }
+  .award-header__logo--partner{ height: 30px; }
+  .award-header__logo-divider{ height: 24px; margin: 0 2px; }
 }
 
 /* Increase header dark-mode contrast so nav is clearly readable */
