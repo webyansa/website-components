@@ -376,10 +376,11 @@
   width: 620px;
   height: 620px;
   pointer-events: none;
-  opacity: .14;
+  opacity: .28;
   z-index: 1;
   transform-origin: 50% 50%;
-  animation: award-breathe 14s ease-in-out infinite alternate;
+  animation: award-rays-spin 60s linear infinite;
+  will-change: transform;
 }
 .award-hero__inner { position: relative; z-index: 3; }
 
@@ -508,7 +509,7 @@
   .award-hero__outline { display: none; }
   .award-hero__chip--year { top: -14px; right: 14px; }
   .award-hero__chip--impact { bottom: 14px; left: 14px; }
-  .award-hero__rays { width: 380px; height: 380px; opacity: .10; }
+  .award-hero__rays { width: 380px; height: 380px; opacity: .22; }
 }
 @media (max-width: 575.98px) {
   .award-hero { padding: 96px 0 72px; }
@@ -1346,6 +1347,10 @@
 @keyframes award-breathe {
   0%   { transform: rotate(0deg) scale(1); opacity: .12; }
   100% { transform: rotate(3deg) scale(1.03); opacity: .16; }
+}
+@keyframes award-rays-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
