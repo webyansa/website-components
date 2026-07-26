@@ -443,9 +443,17 @@ h3#shattr-prize-sub-heading-v2.shattr-unique-winners-title { font-size: 34px; co
 /* Reduce green dominance: general accent tweak (kept selective) */
 .shattr-hero-badge { color:#24C7CD; background:rgba(44,177,183,.10); border-color:rgba(44,177,183,.4); }
 
-/* Cards section header spacing */
-.shattr-cards-section { min-height:auto; padding-top:60px; padding-bottom:80px; }
-.shattr-cards-section .shattr-hero-overlay { background: linear-gradient(to bottom, rgba(0,39,43,.85), #00272b 90%); }
+/* Cards section — flat dark teal, no buildings bg (bg lives in the new hero) */
+.shattr-cards-section { min-height:auto; padding-top:80px; padding-bottom:90px; background:#00272b; }
+.shattr-cards-section .shattr-hero-bg,
+.shattr-cards-section .shattr-hero-particles { display:none !important; }
+.shattr-cards-section .shattr-hero-overlay {
+  background:
+    radial-gradient(700px 380px at 85% 0%, rgba(44,177,183,.10), transparent 60%),
+    radial-gradient(600px 380px at 10% 100%, rgba(153,193,28,.08), transparent 60%);
+}
+.shattr-cards-section .shattr-section-title { color:#fff; }
+.shattr-cards-section .shattr-eyebrow { }
 
 /* Card glow per theme */
 .shattr-flip-card.theme-teal   .shattr-flip-card-inner { box-shadow: 0 20px 45px rgba(0,0,0,.35), 0 0 0 rgba(44,177,183,0); transition: transform .9s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease; }
