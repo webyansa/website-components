@@ -130,19 +130,35 @@ img { max-width: 100%; display: block; }
   margin-top: auto; text-decoration: none; color: #1f2a2e;
 }
 .shattr-card-arrow svg { width: 16px; height: 16px; fill: #1f2a2e; transition: transform .3s; }
-.shattr-flip-card:hover .shattr-card-arrow { background: #99C11C; border-color: #99C11C; color: #00272b; font-weight: bold; }
-.shattr-flip-card:hover .shattr-card-arrow svg { fill: #00272b; transform: translateY(2px); }
 .shattr-card-face-back { background-color: #00272b; transform: rotateY(180deg); display: flex; justify-content: center; }
 .shattr-card-face-back .shattr-card-desc { color: #fff; }
 .shattr-card-desc { font-size: 15.5px; line-height: 1.9; text-align: center; margin: auto 0; }
+
+/* Per-card accent — text + arrow hover color match the card identity */
 .border-teal   { border-bottom: 5px solid #2CB1B7; }
 .border-teal   .shattr-card-face-front .shattr-card-title { color: #2CB1B7; }
+.border-teal   .shattr-card-face-front .shattr-card-subtitle { color: #7a8a92; }
+.shattr-flip-card.has-teal:hover   .shattr-card-arrow,
+.border-teal:hover   .shattr-card-arrow { background: #2CB1B7; border-color: #2CB1B7; }
+
 .border-green  { border-bottom: 5px solid #99C11C; }
 .border-green  .shattr-card-face-front .shattr-card-title { color: #99C11C; }
+.border-green  .shattr-card-face-front .shattr-card-subtitle { color: #7a8a92; }
+.border-green:hover  .shattr-card-arrow { background: #99C11C; border-color: #99C11C; }
+
 .border-yellow { border-bottom: 5px solid #EFC202; }
 .border-yellow .shattr-card-face-front .shattr-card-title { color: #EFC202; }
+.border-yellow .shattr-card-face-front .shattr-card-subtitle { color: #7a8a92; }
+.border-yellow:hover .shattr-card-arrow { background: #EFC202; border-color: #EFC202; }
+
 .border-gray   { border-bottom: 5px solid #A2A2A2; }
 .border-gray   .shattr-card-face-front .shattr-card-title { color: #6b7280; }
+.border-gray   .shattr-card-face-front .shattr-card-subtitle { color: #9aa3ab; }
+.border-gray:hover   .shattr-card-arrow { background: #6b7280; border-color: #6b7280; }
+
+/* Arrow icon flips to white on hover regardless of card color */
+.shattr-flip-card:hover .shattr-card-arrow { color: #fff; }
+.shattr-flip-card:hover .shattr-card-arrow svg { fill: #fff; transform: translateY(2px); }
 
 /* =============== Shattr About Section =============== */
 .shattr-about-section { padding: 100px 20px 80px; background: #00272b; }
