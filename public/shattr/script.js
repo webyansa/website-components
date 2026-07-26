@@ -2,21 +2,26 @@
 (function () {
   'use strict';
 
-  // 1) Rotating hero word
-  var textRotationInterval = setInterval(function () {
-    var el = document.getElementById('shattr-rotating-text-2-2');
-    if (!el) return;
-    clearInterval(textRotationInterval);
-    var words = ['الأفكار', 'المجتمع', 'التحديات', 'الحلول'];
+  // 1) Hero visual cycler + synced rotating word
+  var heroCycleInterval = setInterval(function () {
+    var slides = document.querySelectorAll('.shattr-nh-slide');
+    var textEl = document.getElementById('shattr-rotating-text-2-2');
+    if (!slides.length) return;
+    clearInterval(heroCycleInterval);
+    var labels = ['الأفكار', 'الحلول', 'التحديات', 'المجتمع'];
     var i = 0;
     setInterval(function () {
-      el.style.opacity = '0';
+      slides.forEach(function (s) { s.classList.remove('is-active'); });
+      if (textEl) textEl.style.opacity = '0';
       setTimeout(function () {
-        i = (i + 1) % words.length;
-        el.innerText = words[i];
-        el.style.opacity = '1';
-      }, 300);
-    }, 2500);
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+        if (textEl) {
+          textEl.innerText = labels[i % labels.length];
+          textEl.style.opacity = '1';
+        }
+      }, 400);
+    }, 3200);
   }, 300);
 
   // 2) Smart counter for stats
