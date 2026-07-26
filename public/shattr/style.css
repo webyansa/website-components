@@ -563,21 +563,27 @@ h3#shattr-prize-sub-heading-v2.shattr-unique-winners-title { font-size: 34px; co
   backdrop-filter: blur(6px); letter-spacing:.5px;
 }
 
-/* ============== COMMUNITY (reversed order, original avatar layout) ============== */
+/* ============== COMMUNITY (reversed order — text right, image left) ============== */
 .shattr-community-reversed {
+  background:#00272b;
   padding: 100px 50px;
-  display:flex; align-items:center; gap:60px; position:relative;
+  display:flex; align-items:center; gap:60px; position:relative; overflow:hidden;
+}
+/* Reposition the shared overlay to the LEFT side (where the imgs column now lives) */
+.shattr-community-reversed .shattr-community-overlay {
+  position:absolute; left:0; right:auto; top:0;
+  width:60%; height:100%;
+  background: url('https://shattr.ccsa.org.sa/storage/media/post/21d5318cf0976abc869e1702e8be5afa/f4a6d2dfdb5f5cbf3cf3c4feb9da2077/imgi_33_innovators_bg.777caaa5.jpg') center/cover;
+  opacity:.18;
+  z-index:0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 80%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 80%, transparent 100%);
 }
 .shattr-community-reversed .shattr-community-text { flex:1; z-index:2; text-align:right; position:relative; }
 .shattr-community-reversed .shattr-community-imgs {
   flex:1; z-index:2; position:relative; height:440px;
 }
-.shattr-community-reversed .shattr-community-imgs::before {
-  content:""; position:absolute; inset:0; border-radius:24px;
-  background: url('https://shattr.ccsa.org.sa/storage/media/post/21d5318cf0976abc869e1702e8be5afa/f4a6d2dfdb5f5cbf3cf3c4feb9da2077/imgi_33_innovators_bg.777caaa5.jpg') center/cover;
-  opacity:.18; z-index:0;
-}
-.shattr-community-reversed .shattr-avatar { z-index:2; }
+.shattr-community-reversed .shattr-avatar { z-index:3; }
 
 /* ============== PRIZES v3 (clean 3-card grid) ============== */
 .shattr-unique-prizes-container-v2 { padding: 100px 20px; }
