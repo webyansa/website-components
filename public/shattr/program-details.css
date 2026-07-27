@@ -1,0 +1,358 @@
+/* =========================================================
+   Shattr — Program Details Page
+   ========================================================= */
+
+/* --- Reuse minimal nav & footer styles (same as programs.css) --- */
+.sh-topnav {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 16px 40px;
+  background: rgba(0, 39, 43, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sh-topnav .sh-brand { font-weight: 900; font-size: 22px; color: #fff; letter-spacing: 1px; text-decoration: none; }
+.sh-topnav .sh-brand span { color: #99C11C; }
+.sh-topnav .sh-nav { display: flex; gap: 28px; }
+.sh-topnav .sh-nav a {
+  color: rgba(255,255,255,.82); text-decoration: none; font-weight: 600; font-size: 15px;
+}
+.sh-topnav .sh-nav a:hover, .sh-topnav .sh-nav a.is-active { color: #EFC202; }
+.sh-topnav .sh-nav-cta { display: flex; gap: 10px; }
+.sh-topnav .sh-nav-cta a {
+  text-decoration: none; padding: 9px 18px; border-radius: 999px; font-weight: 700; font-size: 14px;
+}
+.sh-btn-outline { color: #fff; border: 1px solid rgba(255,255,255,.35); }
+.sh-btn-outline:hover { border-color: #99C11C; color: #99C11C; }
+.sh-btn-solid { background: #99C11C; color: #00272b; }
+.sh-btn-solid:hover { background: #a8d21f; }
+.sh-footer {
+  background: #001c1f; padding: 40px 20px 24px; text-align: center;
+  color: rgba(255,255,255,.6); font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.sh-footer strong { color: #fff; }
+@media (max-width: 768px) {
+  .sh-topnav { padding: 14px 20px; }
+  .sh-topnav .sh-nav { display: none; }
+}
+
+/* =============== HERO =============== */
+.shattr-pd-hero {
+  position: relative;
+  padding: 70px 20px 90px;
+  isolation: isolate;
+  overflow: hidden;
+}
+.shattr-pd-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background-image: url('https://shattr.ccsa.org.sa/storage/media/post/21d5318cf0976abc869e1702e8be5afa/839486727e1d465884891001a0386525/imgi_28_home_header_bg.7ee84158.jpg');
+  background-size: cover; background-position: center;
+  filter: brightness(.32) saturate(1.15);
+}
+.shattr-pd-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(600px 320px at 15% 20%, rgba(153,193,28,.20), transparent 60%),
+    radial-gradient(700px 400px at 90% 90%, rgba(44,177,183,.22), transparent 60%),
+    linear-gradient(180deg, rgba(0,39,43,.55), rgba(0,39,43,.92));
+}
+.shattr-pd-hero-inner { max-width: 1200px; margin: 0 auto; }
+
+.shattr-breadcrumb {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 22px;
+}
+.shattr-breadcrumb a { color: rgba(255,255,255,.75); text-decoration: none; }
+.shattr-breadcrumb a:hover { color: #EFC202; }
+.shattr-breadcrumb .sep { color: rgba(255,255,255,.35); }
+.shattr-breadcrumb .current { color: #EFC202; font-weight: 700; }
+
+.shattr-pd-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.shattr-pd-tag {
+  padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 800;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+}
+.shattr-pd-tag.is-primary { background: #EFC202; color: #00272b; border-color: transparent; }
+.shattr-pd-tag.is-live { background: #99C11C; color: #00272b; border-color: transparent; }
+
+.shattr-pd-title {
+  font-size: clamp(30px, 4.4vw, 52px);
+  color: #fff; font-weight: 900; margin: 0 0 16px;
+  line-height: 1.2; max-width: 900px;
+}
+.shattr-pd-lead {
+  font-size: 17px; color: rgba(255,255,255,.82);
+  max-width: 780px; line-height: 1.85; margin: 0 0 30px;
+}
+
+.shattr-pd-meta {
+  display: flex; flex-wrap: wrap; gap: 22px;
+  padding: 18px 22px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 26px;
+  max-width: 900px;
+}
+.shattr-pd-meta-item {
+  display: flex; align-items: center; gap: 10px;
+  color: #fff; font-size: 14px;
+}
+.shattr-pd-meta-item .label { color: rgba(255,255,255,.6); font-size: 12px; font-weight: 600; }
+.shattr-pd-meta-item .value { font-weight: 800; color: #EFC202; }
+.shattr-pd-meta-item svg { width: 18px; height: 18px; color: #2CB1B7; }
+
+.shattr-pd-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.shattr-pd-actions .pd-btn {
+  padding: 13px 26px; border-radius: 999px; text-decoration: none;
+  font-weight: 800; font-size: 14px; transition: all .2s ease;
+}
+.pd-btn-primary { background: #2CB1B7; color: #00272b; box-shadow: 0 10px 25px rgba(44,177,183,.35); }
+.pd-btn-primary:hover { background: #34c1c8; transform: translateY(-2px); }
+.pd-btn-ghost { border: 1px solid rgba(255,255,255,.35); color: #fff; }
+.pd-btn-ghost:hover { border-color: #EFC202; color: #EFC202; }
+
+/* =============== COUNTDOWN =============== */
+.shattr-countdown-card {
+  max-width: 1200px; margin: -50px auto 0;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(0,60,66,.95), rgba(0,28,31,.95));
+  border: 1px solid rgba(239,194,2,.28);
+  border-radius: 22px;
+  position: relative; z-index: 3;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.5);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 22px; align-items: center;
+}
+.shattr-countdown-title { color: #fff; margin: 0; font-size: 20px; font-weight: 800; }
+.shattr-countdown-title small { display: block; color: rgba(255,255,255,.65); font-weight: 500; font-size: 13px; margin-top: 4px; }
+.shattr-countdown-grid { display: flex; gap: 12px; }
+.shattr-cd-cell {
+  min-width: 84px; padding: 12px 14px;
+  border-radius: 14px; text-align: center;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.shattr-cd-cell .num {
+  display: block; font-size: 28px; font-weight: 900;
+  color: #EFC202; line-height: 1;
+}
+.shattr-cd-cell .lbl { display: block; font-size: 11px; color: rgba(255,255,255,.65); margin-top: 6px; font-weight: 600; letter-spacing: 1px; }
+
+@media (max-width: 720px) {
+  .shattr-countdown-card { grid-template-columns: 1fr; margin: -30px 16px 0; }
+  .shattr-countdown-grid { justify-content: space-between; }
+  .shattr-cd-cell { min-width: 0; flex: 1; padding: 10px 6px; }
+}
+
+/* =============== BODY LAYOUT =============== */
+.shattr-pd-body {
+  max-width: 1200px; margin: 50px auto 80px; padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Image */
+.shattr-pd-image {
+  border-radius: 22px; overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 8;
+  background: linear-gradient(135deg, #99C11C, #2CB1B7);
+  margin-bottom: 40px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.5);
+}
+.shattr-pd-image img { width: 100%; height: 100%; object-fit: cover; }
+.shattr-pd-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,39,43,.35) 100%);
+}
+.shattr-pd-image-caption {
+  position: absolute; bottom: 14px; right: 20px; left: 20px;
+  color: #fff; font-size: 13px; font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+/* Section blocks */
+.shattr-pd-section { margin-bottom: 44px; scroll-margin-top: 100px; }
+.shattr-pd-section h2 {
+  font-size: 26px; color: #fff; font-weight: 900;
+  margin: 0 0 14px; position: relative; padding-inline-start: 18px;
+}
+.shattr-pd-section h2::before {
+  content: ""; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 5px; height: 26px;
+  background: linear-gradient(180deg, #EFC202, #2CB1B7);
+  border-radius: 3px;
+}
+.shattr-pd-section p, .shattr-pd-section li {
+  color: rgba(255,255,255,.82); line-height: 2; font-size: 15.5px;
+}
+.shattr-pd-section ul { padding-inline-start: 20px; margin: 0; }
+.shattr-pd-section ul li { margin-bottom: 6px; }
+
+/* Highlight question card */
+.shattr-pd-question {
+  padding: 26px 28px;
+  border-radius: 20px;
+  background:
+    radial-gradient(400px 200px at 100% 0%, rgba(239,194,2,.18), transparent 60%),
+    linear-gradient(135deg, #003b41, #001c1f);
+  border: 1px solid rgba(239,194,2,.28);
+  position: relative;
+}
+.shattr-pd-question::before {
+  content: "؟";
+  position: absolute; top: 14px; left: 22px;
+  font-size: 90px; color: rgba(239,194,2,.15); font-weight: 900; line-height: 1;
+}
+.shattr-pd-question .eyebrow { color: #EFC202; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+.shattr-pd-question p {
+  font-size: 20px; color: #fff; font-weight: 700; line-height: 1.7;
+  margin: 8px 0 0;
+}
+
+/* Info card small type */
+.shattr-pd-info-card {
+  padding: 18px 22px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  color: #fff; font-weight: 700;
+}
+.shattr-pd-info-card .k { color: rgba(255,255,255,.6); font-weight: 600; font-size: 13px; margin-inline-end: 6px; }
+
+/* How to participate */
+.shattr-pd-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.shattr-pd-step {
+  padding: 22px 20px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  transition: all .25s ease;
+}
+.shattr-pd-step:hover { border-color: #EFC202; transform: translateY(-3px); }
+.shattr-pd-step .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 10px;
+  background: rgba(239,194,2,.15); color: #EFC202;
+  font-weight: 900; font-size: 16px; margin-bottom: 10px;
+}
+.shattr-pd-step h4 { color: #fff; margin: 0 0 6px; font-size: 15px; }
+.shattr-pd-step p { color: rgba(255,255,255,.72); margin: 0; font-size: 13.5px; line-height: 1.7; }
+
+/* CTA box */
+.shattr-pd-cta {
+  margin-top: 24px;
+  padding: 44px 34px;
+  border-radius: 22px;
+  background:
+    radial-gradient(500px 260px at 0% 0%, rgba(153,193,28,.28), transparent 60%),
+    radial-gradient(500px 260px at 100% 100%, rgba(44,177,183,.28), transparent 60%),
+    linear-gradient(135deg, #003b41, #001c1f);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+}
+.shattr-pd-cta h3 { color: #fff; font-size: 26px; font-weight: 900; margin: 0 0 10px; }
+.shattr-pd-cta h3 span { color: #EFC202; }
+.shattr-pd-cta p { color: rgba(255,255,255,.78); margin: 0 auto 22px; max-width: 620px; }
+.shattr-pd-cta .sh-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ========== SIDEBAR TOC ========== */
+.shattr-pd-toc {
+  position: sticky; top: 88px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  padding: 18px;
+  backdrop-filter: blur(10px);
+}
+.shattr-pd-toc-title {
+  color: #EFC202; font-weight: 800; font-size: 13px;
+  letter-spacing: 2px; margin: 0 0 12px;
+  padding-inline-start: 10px;
+}
+.shattr-pd-toc ul { list-style: none; padding: 0; margin: 0; }
+.shattr-pd-toc a {
+  display: block;
+  padding: 10px 14px;
+  color: rgba(255,255,255,.75);
+  text-decoration: none; font-size: 14px; font-weight: 600;
+  border-radius: 10px;
+  border-inline-end: 3px solid transparent;
+  transition: all .2s ease;
+  margin-bottom: 2px;
+}
+.shattr-pd-toc a:hover { color: #fff; background: rgba(255,255,255,.04); }
+.shattr-pd-toc a.is-active {
+  color: #EFC202;
+  background: rgba(239,194,2,.08);
+  border-inline-end-color: #EFC202;
+}
+
+/* ========== OTHER PROGRAMS ========== */
+.shattr-pd-others {
+  max-width: 1200px; margin: 30px auto 90px; padding: 0 20px;
+}
+.shattr-pd-others h2 {
+  color: #fff; font-size: 28px; font-weight: 900; margin: 0 0 24px;
+  padding-inline-start: 18px; position: relative;
+}
+.shattr-pd-others h2::before {
+  content: ""; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 5px; height: 26px;
+  background: linear-gradient(180deg, #EFC202, #2CB1B7);
+  border-radius: 3px;
+}
+.shattr-pd-others-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+/* Reuse card styles from programs.css by duplicating minimal card class here */
+.shattr-pd-others .shattr-pcard {
+  background: #fff; border-radius: 20px; overflow: hidden; color: #0f172a;
+  box-shadow: 0 10px 30px -18px rgba(0,0,0,.35);
+  transition: transform .35s ease, box-shadow .35s ease;
+  display: flex; flex-direction: column;
+}
+.shattr-pd-others .shattr-pcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -22px rgba(44,177,183,.55);
+}
+.shattr-pd-others .shattr-pcard-media { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(135deg,#99C11C,#2CB1B7); overflow: hidden; }
+.shattr-pd-others .shattr-pcard-media img { width:100%;height:100%;object-fit:cover; }
+.shattr-pd-others .shattr-pcard-tags { position:absolute; bottom:12px; right:12px; left:12px; display:flex; gap:8px; }
+.shattr-pd-others .shattr-pcard-tag { padding:5px 12px; border-radius:999px; font-size:11px; font-weight:800; background:rgba(255,255,255,.95); color:#00272b; }
+.shattr-pd-others .shattr-pcard-tag.is-primary { background:#EFC202; }
+.shattr-pd-others .shattr-pcard-body { padding: 20px 22px 22px; }
+.shattr-pd-others .shattr-pcard-title { font-size: 17px; font-weight: 800; color: #00272b; margin: 0 0 12px; line-height:1.5; }
+.shattr-pd-others .shattr-pcard-foot { display:flex; align-items:center; justify-content:space-between; padding-top:12px; border-top:1px dashed #e2e8f0; }
+.shattr-pd-others .shattr-pcard-date { color:#64748b; font-size:13px; font-weight:600; }
+.shattr-pd-others .shattr-pcard-btn { padding:8px 14px; border-radius:999px; background:#00272b; color:#fff; text-decoration:none; font-weight:700; font-size:12.5px; }
+.shattr-pd-others .shattr-pcard-btn:hover { background:#2CB1B7; color:#00272b; }
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .shattr-pd-body { grid-template-columns: 1fr; }
+  .shattr-pd-toc { position: relative; top: 0; }
+  .shattr-pd-toc ul { display: flex; flex-wrap: wrap; gap: 4px; }
+  .shattr-pd-toc a { padding: 8px 12px; font-size: 13px; border-inline-end: none; border-bottom: 2px solid transparent; border-radius: 8px; }
+  .shattr-pd-toc a.is-active { border-inline-end-color: transparent; border-bottom-color: #EFC202; }
+  .shattr-pd-others-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .shattr-pd-hero { padding: 50px 20px 70px; }
+  .shattr-pd-body { margin: 30px auto 60px; }
+  .shattr-pd-others-grid { grid-template-columns: 1fr; }
+  .shattr-pd-cta { padding: 34px 22px; }
+}

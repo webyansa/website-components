@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <title>تصفّح التحديات — منصة شطر</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="استكشف التحديات المطروحة من الجمعيات والجهات ذات العلاقة على منصة شطر، وشارك بأفكارك وحلولك لصناعة أثر اجتماعي قابل للتطبيق." />
+  <meta property="og:title" content="تصفّح التحديات — منصة شطر" />
+  <meta property="og:description" content="استكشف التحديات وشارك بحلولك على منصة شطر." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./programs.css">
+</head>
+<body>
+  <div class="shattr-main">
+
+    <!-- Top Nav (matches home tone) -->
+    <header class="sh-topnav">
+      <a href="./index.html" class="sh-brand">شطر<span>.</span></a>
+      <nav class="sh-nav" aria-label="القائمة الرئيسية">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./programs.html" class="is-active">التحديات</a>
+        <a href="./index.html#community">المجتمع</a>
+        <a href="./index.html#join">انضم إلينا</a>
+      </nav>
+      <div class="sh-nav-cta">
+        <a href="#" class="sh-btn-outline">تسجيل الدخول</a>
+        <a href="#" class="sh-btn-solid">التسجيل</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="shattr-programs-hero">
+      <div class="shattr-programs-hero-inner">
+        <span class="sh-eyebrow">التحديات المطروحة</span>
+        <h1>تصفّح <span>التحديات</span></h1>
+        <p>استكشف التحديات المطروحة من الجمعيات والجهات ذات العلاقة، وشارك بأفكارك وحلولك لصناعة أثر اجتماعي قابل للتطبيق داخل القطاع غير الربحي.</p>
+        <ul class="shattr-hero-chips">
+          <li>تحديات مؤسسية</li>
+          <li>ابتكار اجتماعي</li>
+          <li>حلول قابلة للتطبيق</li>
+        </ul>
+        <div class="shattr-hero-search">
+          <input id="sh-search" type="search" placeholder="ابحث عن تحدي أو مجال أو كلمة مفتاحية..." aria-label="بحث في التحديات">
+          <svg class="sh-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="shattr-filter-bar" role="region" aria-label="فلاتر التحديات">
+      <div class="shattr-filter-field">
+        <label for="f-domain">المجال</label>
+        <select id="f-domain" data-filter="domain">
+          <option value="">الكل</option>
+          <option>الاستدامة المالية</option>
+          <option>الشراكات المؤسسية</option>
+          <option>التنمية الأسرية</option>
+          <option>الإسكان التنموي</option>
+          <option>البرامج الصحية</option>
+        </select>
+      </div>
+      <div class="shattr-filter-field">
+        <label for="f-type">نوع التحدي</label>
+        <select id="f-type" data-filter="type">
+          <option value="">الكل</option>
+          <option>مؤسسي</option>
+          <option>تنموي</option>
+          <option>ابتكار اجتماعي</option>
+        </select>
+      </div>
+      <div class="shattr-filter-field">
+        <label for="f-status">الحالة</label>
+        <select id="f-status" data-filter="status">
+          <option value="">الكل</option>
+          <option>متاح</option>
+          <option>قريبًا</option>
+          <option>مغلق</option>
+        </select>
+      </div>
+      <div class="shattr-filter-field">
+        <label for="f-sort">الترتيب</label>
+        <select id="f-sort" data-filter="sort">
+          <option value="latest">الأحدث</option>
+          <option value="deadline">حسب الموعد</option>
+          <option value="popular">الأكثر مشاهدة</option>
+        </select>
+      </div>
+      <div class="shattr-filter-field">
+        <label for="f-per">عرض</label>
+        <select id="f-per" data-filter="per">
+          <option>9</option><option selected>12</option><option>20</option>
+        </select>
+      </div>
+      <button type="button" class="shattr-filter-reset" id="sh-reset">إعادة ضبط</button>
+    </div>
+
+    <!-- GRID -->
+    <div class="shattr-programs-wrap">
+      <div class="shattr-programs-meta">
+        <span>عرض <strong id="sh-count">10</strong> من التحديات المتاحة</span>
+        <span id="sh-empty-note" style="display:none">لا توجد نتائج مطابقة</span>
+      </div>
+      <div class="shattr-programs-grid" id="sh-grid"></div>
+    </div>
+
+    <!-- CTA -->
+    <section class="shattr-programs-cta">
+      <h2>لديك فكرة لحل أحد <span>التحديات</span>؟</h2>
+      <p>انضم إلى مجتمع شطر وشارك بحلول قابلة للتطبيق تسهم في تطوير القطاع غير الربحي وتحويل التحديات إلى مشاريع فعلية.</p>
+      <div class="sh-actions">
+        <a href="#" class="sh-btn-cyan">انضم كمبتكر</a>
+        <a href="#" class="sh-btn-ghost">تواصل معنا</a>
+      </div>
+    </section>
+
+    <footer class="sh-footer">
+      © 2026 <strong>منصة شطر</strong>. جميع الحقوق محفوظة.
+    </footer>
+
+  </div>
+
+  <script>
+    // Programs data (mock — same content vibe as ref site)
+    const SH_PROGRAMS = [
+      { id:1, title:"الاستدامة المالية وتدفق التمويل", desc:"تطوير حلول عملية تدعم الجمعيات في بناء تدفق مالي مستدام وتنويع مصادر الدخل.", domain:"الاستدامة المالية", type:"مؤسسي", status:"متاح", date:"01/09/2026", img:"https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=70", tags:["تحدي ابتكار","تحديات مؤسسية"] },
+      { id:2, title:"الأعباء الإدارية وتنوع المنصات الرقمية", desc:"معالجة تشتت الأنظمة الرقمية داخل الجمعيات ورفع كفاءة العمليات التشغيلية.", domain:"الشراكات المؤسسية", type:"مؤسسي", status:"قريبًا", date:"01/09/2026", img:"https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=70", tags:["تحدي ابتكار","تحديات مؤسسية"] },
+      { id:3, title:"الشراكات الفعّالة وتكامل الجهود", desc:"بناء نماذج شراكة تعزّز التكامل بين الجمعيات والجهات الداعمة.", domain:"الشراكات المؤسسية", type:"ابتكار اجتماعي", status:"قريبًا", date:"01/09/2026", img:"https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=70", tags:["ابتكار","تحديات مؤسسية"] },
+      { id:4, title:"البرامج الوقائية للتنمية الأسرية", desc:"حلول وقائية داعمة لاستقرار الأسرة وتعزيز جودة الحياة داخل المجتمع.", domain:"التنمية الأسرية", type:"تنموي", status:"متاح", date:"—", img:"https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&q=70", tags:["تحدي ابتكار","تحديات تنموية"] },
+      { id:5, title:"سلاسل الإمداد لحفظ النعمة", desc:"تصميم منظومة تشغيلية لحفظ النعمة وتقليل الفاقد الغذائي.", domain:"البرامج الصحية", type:"تنموي", status:"قريبًا", date:"—", img:"https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=70", tags:["ابتكار","تحديات تنموية"] },
+      { id:6, title:"الحلول الإسكانية المبتكرة والمستدامة", desc:"نماذج إسكانية تنموية تراعي الاستدامة والاندماج الاجتماعي.", domain:"الإسكان التنموي", type:"تنموي", status:"متاح", date:"—", img:"https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=70", tags:["تحدي ابتكار","تحديات تنموية"] },
+      { id:7, title:"جاذبية المساحات والبرامج الشبابية", desc:"رفع جاذبية البرامج الشبابية عبر تجارب تطوعية ومهنية نوعية.", domain:"التنمية الأسرية", type:"ابتكار اجتماعي", status:"متاح", date:"—", img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=70", tags:["ابتكار","تحديات تنموية"] },
+      { id:8, title:"استدامة الخدمات الصحية في المناطق الطرفية", desc:"تصميم نماذج خدمات صحية مستدامة تلبي حاجة المناطق الطرفية.", domain:"البرامج الصحية", type:"تنموي", status:"قريبًا", date:"—", img:"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=70", tags:["ابتكار","تحديات تنموية"] },
+      { id:9, title:"التمكين الشامل للأيتام", desc:"برامج تمكين شامل ترفع جاهزية الأيتام للاندماج المهني والاجتماعي.", domain:"التنمية الأسرية", type:"تنموي", status:"متاح", date:"—", img:"https://images.unsplash.com/photo-1497375638960-ca368c7231e4?w=800&q=70", tags:["ابتكار","تحديات تنموية"] },
+      { id:10, title:"التقنيات المساعدة لذوي الإعاقة والدمج المهني", desc:"حلول تقنية تدعم استقلالية ذوي الإعاقة ورفع فرص الدمج المهني.", domain:"الإسكان التنموي", type:"ابتكار اجتماعي", status:"مغلق", date:"—", img:"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=70", tags:["ابتكار","تحديات تنموية"] },
+    ];
+
+    const grid = document.getElementById('sh-grid');
+    const countEl = document.getElementById('sh-count');
+    const emptyNote = document.getElementById('sh-empty-note');
+
+    function statusClass(s){ return s==="قريبًا" ? "is-soon" : s==="مغلق" ? "is-closed" : ""; }
+    function cardHTML(p){
+      return `<article class="shattr-pcard">
+        <a href="./program-details.html?id=${p.id}" class="shattr-pcard-media" aria-label="${p.title}">
+          <img src="${p.img}" alt="${p.title}" loading="lazy">
+          <span class="shattr-pcard-status ${statusClass(p.status)}">${p.status}</span>
+          <div class="shattr-pcard-tags">
+            ${p.tags.map((t,i)=>`<span class="shattr-pcard-tag${i===0?' is-primary':''}">${t}</span>`).join('')}
+          </div>
+        </a>
+        <div class="shattr-pcard-body">
+          <h3 class="shattr-pcard-title">${p.title}</h3>
+          <p class="shattr-pcard-desc">${p.desc}</p>
+          <div class="shattr-pcard-foot">
+            <span class="shattr-pcard-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              بداية ${p.date}
+            </span>
+            <a href="./program-details.html?id=${p.id}" class="shattr-pcard-btn">عرض التفاصيل</a>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    function render(list){
+      grid.innerHTML = list.length ? list.map(cardHTML).join('') : `<div class="shattr-programs-empty">لا توجد نتائج مطابقة للفلاتر المختارة.</div>`;
+      countEl.textContent = list.length;
+      emptyNote.style.display = list.length ? 'none' : 'inline';
+    }
+
+    function apply(){
+      const q = document.getElementById('sh-search').value.trim();
+      const d = document.getElementById('f-domain').value;
+      const t = document.getElementById('f-type').value;
+      const s = document.getElementById('f-status').value;
+      let list = SH_PROGRAMS.filter(p =>
+        (!q || (p.title+p.desc+p.domain).includes(q)) &&
+        (!d || p.domain===d) &&
+        (!t || p.type===t) &&
+        (!s || p.status===s)
+      );
+      render(list);
+    }
+
+    document.querySelectorAll('[data-filter], #sh-search').forEach(el=>{
+      el.addEventListener('input', apply);
+      el.addEventListener('change', apply);
+    });
+    document.getElementById('sh-reset').addEventListener('click', ()=>{
+      document.querySelectorAll('[data-filter], #sh-search').forEach(el=>{ el.value = el.tagName==='SELECT' ? el.querySelector('option').value : ''; });
+      apply();
+    });
+    render(SH_PROGRAMS);
+  </script>
+</body>
+</html>
