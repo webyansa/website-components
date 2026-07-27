@@ -115,15 +115,29 @@
 }
 
 .shattr-pd-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.shattr-pd-actions .pd-btn {
-  padding: 14px 28px; border-radius: 999px; text-decoration: none;
-  font-weight: 800; font-size: 14.5px; transition: all .2s ease;
-  display: inline-flex; align-items: center; gap: 8px;
+.pd-btn {
+  position: relative;
+  padding: 14px 30px; border-radius: 999px; text-decoration: none;
+  font-weight: 800; font-size: 14.5px; line-height: 1;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
 }
-.pd-btn-primary { background: #2CB1B7; color: #00272b; box-shadow: 0 12px 28px rgba(44,177,183,.35); }
-.pd-btn-primary:hover { background: #34c1c8; transform: translateY(-2px); }
-.pd-btn-ghost { border: 1px solid rgba(255,255,255,.28); color: #fff; }
-.pd-btn-ghost:hover { border-color: #EFC202; color: #EFC202; }
+.pd-btn:focus-visible { outline: 2px solid #EFC202; outline-offset: 3px; }
+.pd-btn-primary {
+  background: linear-gradient(135deg, #2CB1B7 0%, #22d3d9 100%);
+  color: #00272b;
+  box-shadow: 0 14px 30px rgba(44,177,183,.38), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.pd-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 38px rgba(44,177,183,.48), inset 0 1px 0 rgba(255,255,255,.4); }
+.pd-btn-primary:active { transform: translateY(0); }
+.pd-btn-ghost {
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.28); color: #fff;
+  backdrop-filter: blur(6px);
+}
+.pd-btn-ghost:hover { background: rgba(239,194,2,.08); border-color: #EFC202; color: #EFC202; transform: translateY(-2px); }
+.pd-btn-ghost:active { transform: translateY(0); }
 
 /* =============== COUNTDOWN — status banner =============== */
 .shattr-countdown-card {
