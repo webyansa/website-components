@@ -3041,3 +3041,92 @@
   background:rgba(18,73,255,.12) !important; color:var(--tq-blue) !important; border-color:rgba(18,73,255,.24) !important;
 }
 .sx-header .sx-drop .sx-dmenu{ box-shadow:0 22px 46px -30px rgba(7,17,47,.4) !important; }
+
+/* ============================================================
+   TQ v11 — عودة الخط الأساسي، توازن عنوان الهيرو، هيدر أرقى
+   ============================================================ */
+
+/* 1) الخط: العودة إلى IBM Plex Sans Arabic كخط أساسي للعناوين والمحتوى */
+body, .s-hero-title, .s-hero-lead, .s-title, .sec-title,
+h1, h2, h3, h4, h5, h6,
+.imx-title, .nv7-title, .about-v4-content h2, .about-v3-head h2,
+.sx-header, .sx-nav, .btn, .s-btn, .sxq-btn{
+  font-family:"IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif !important;
+}
+
+/* 2) عنوان الهيرو: مقاس متوازن واحترافي */
+.s-hero-title{
+  font-size: clamp(1.9rem, 3.3vw, 3.05rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: -.005em !important;
+  max-width: 17ch;
+  text-shadow: 0 2px 16px rgba(4,10,34,.4) !important;
+}
+.s-hero-lead{
+  font-size: clamp(.95rem, 1.1vw, 1.06rem) !important;
+  line-height: 1.95 !important;
+  max-width: 52ch !important;
+  color: rgba(255,255,255,.84) !important;
+  margin-top: 1rem !important;
+}
+.s-hero-cinema .s-hero-slide-text{ max-width: 620px !important; }
+.s-hero-actions{ margin-top: 1.6rem !important; }
+@media (max-width: 768px){
+  .s-hero-title{ font-size: clamp(1.6rem, 7vw, 2.2rem) !important; max-width: none; }
+}
+
+/* 3) الهيدر: هدوء + لمسات دقيقة */
+.sx-header .sx-topbar{
+  background:#050E29 !important;
+  font-size:.78rem !important;
+  letter-spacing:.005em;
+}
+.sx-header .sx-main{
+  background:rgba(255,255,255,.94) !important;
+  border-bottom:1px solid rgba(7,17,47,.06) !important;
+  padding-block:.55rem;
+}
+.sx-header.scrolled .sx-main{
+  background:rgba(255,255,255,.98) !important;
+  box-shadow:0 8px 26px -24px rgba(7,17,47,.55) !important;
+  padding-block:.35rem;
+}
+/* فاصل رقيق بين الشعار والتنقّل */
+.sx-header .sx-nav{ position:relative; gap:.1rem !important; }
+.sx-header .sx-nav::before{
+  content:''; position:absolute; inset-inline-end:-.9rem; top:22%; bottom:22%;
+  width:1px; background:linear-gradient(180deg, transparent, rgba(7,17,47,.14), transparent);
+}
+.sx-header .sx-nav > a,
+.sx-header .sx-nav > .sx-drop > button{
+  padding:.5rem .78rem !important;
+  font-size:.875rem !important;
+  font-weight:600 !important;
+  color:#415372 !important;
+  letter-spacing:.002em;
+  border-radius:10px !important;
+}
+.sx-header .sx-nav > a::after,
+.sx-header .sx-nav > .sx-drop > button::after{
+  bottom:1px !important; height:2px !important; inset-inline:.78rem !important;
+  background:linear-gradient(90deg,var(--tq-blue),var(--tq-cyan)) !important;
+}
+.sx-header .sx-nav > a:hover,
+.sx-header .sx-nav > .sx-drop > button:hover{ background:rgba(18,73,255,.045) !important; }
+.sx-header .sx-nav > a.active,
+.sx-header .sx-nav > .sx-drop > button.active{ font-weight:700 !important; }
+
+/* زر الإجراء: أهدأ وأنحف */
+.sx-header .sx-login-btn{
+  min-height:42px !important; padding:0 1.15rem !important;
+  font-size:.87rem !important; font-weight:700 !important;
+  box-shadow:0 8px 18px -14px rgba(18,73,255,.5), inset 0 1px 0 rgba(255,255,255,.2) !important;
+}
+.sx-header .sx-icon-btn,.sx-header .sx-burger{
+  width:40px !important; height:40px !important;
+  background:rgba(18,73,255,.05) !important;
+}
+/* الشعار: مساحة تنفّس */
+.sx-header .sx-logo, .sx-header .sx-brand{ gap:.65rem; }
+.sx-header .sx-logo img, .sx-header .sx-brand img{ max-height:46px; }
