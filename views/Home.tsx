@@ -27,6 +27,18 @@ type Template = {
 
 const templates: Template[] = [
   {
+    id: "tansiqiah",
+    name: "قالب اللجنة التنسيقية — جمعيات تحفيظ القرآن",
+    description: "قالب رسمي للجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة — التنسيق والتمثيل والحوكمة والمبادرات، بهوية أزرق مؤسسية، بدون تبرعات أو متجر",
+    previewPath: "tansiqiah/index.html",
+    folderPath: "tansiqiah",
+    thumbnail: "tansiqiah/favicon.svg",
+    features: ["Tailwind CSS", "26 صفحة", "هوية أزرق مؤسسية", "دعم RTL", "متجاوب"],
+    pages: 26,
+    isNew: true,
+  },
+  {
+
     id: "majales",
     name: "قالب مجالس — المجالس واللجان",
     description: "قالب عربي مؤسسي رسمي للمجالس التخصصية واللجان التنسيقية — يركّز على التنسيق والتمثيل والحوكمة والمبادرات، بدون تبرعات أو متجر",
