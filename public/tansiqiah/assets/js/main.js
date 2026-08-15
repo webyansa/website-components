@@ -1801,12 +1801,10 @@
       </div>
     </div>
     <div class="sx-main">
-      <a href="index.html" class="sx-logo">
-        <div class="sx-mark sx-mark-img"><img src="assets/images/brand/logo.png" alt="شعار اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة" /></div>
-        <div>
-          <div class="sx-name">اللجنة التنسيقية</div>
-          <div class="sx-tag">لجمعيات تحفيظ القرآن الكريم بالمملكة</div>
-        </div>
+      <a href="index.html" class="sx-logo sx-brandset" aria-label="اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة">
+        <img class="sx-brand-img sx-brand-primary" src="assets/images/brand/logo-committee.png" alt="شعار اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة" />
+        <span class="sx-brand-div" aria-hidden="true"></span>
+        <img class="sx-brand-img sx-brand-secondary" src="assets/images/brand/logo-council.png" alt="شعار مجلس الجمعيات الأهلية" />
       </a>
       <nav class="sx-nav" aria-label="القائمة الرئيسية">
         <a href="index.html" class="${isActive("home")}">الرئيسية</a>
@@ -1842,7 +1840,7 @@
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
   <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
     <div class="sx-mhead">
-      <div class="sx-logo"><div class="sx-mark sx-mark-img"><img src="assets/images/brand/logo.png" alt="شعار اللجنة التنسيقية" /></div><div><div class="sx-name">اللجنة التنسيقية</div></div></div>
+      <div class="sx-logo sx-brandset"><img class="sx-brand-img sx-brand-primary" src="assets/images/brand/logo-committee.png" alt="شعار اللجنة التنسيقية" /></div>
       <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-mbody">
@@ -1868,9 +1866,10 @@
   <footer class="sx-footer" id="sx-footer">
     <div class="sx-fmain">
       <div class="sx-fbrand">
-        <div class="sx-fname">
-          <div class="sx-mark sx-mark-img"><img src="assets/images/brand/logo.png" alt="شعار اللجنة التنسيقية" /></div>
-          <div><div class="nm">اللجنة التنسيقية</div><div class="tg">لجمعيات تحفيظ القرآن الكريم بالمملكة</div></div>
+        <div class="sx-fname sx-brandset sx-brandset-white">
+          <img class="sx-brand-img sx-brand-primary" src="assets/images/brand/logo-committee.png" alt="شعار اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة" />
+          <span class="sx-brand-div" aria-hidden="true"></span>
+          <img class="sx-brand-img sx-brand-secondary" src="assets/images/brand/logo-council.png" alt="شعار مجلس الجمعيات الأهلية" />
         </div>
         <p>جهة تنسيقية تعمل على تمثيل جمعيات تحفيظ القرآن الكريم بالمملكة وتمكينها، وتعزيز التعاون والتكامل بينها، بما يسهم في تطوير القطاع القرآني وتحقيق أثره الوطني المستدام.</p>
         <div class="sx-fsoc">
