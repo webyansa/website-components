@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الحوكمة والشفافية · مجلس سَنَد</title>
+<meta name="description" content="مكتبة الإفصاح الرقمية لمجلس سَنَد: لوائح، تقارير مالية، محاضر اجتماعات، ونماذج إفصاح بشفافية كاملة." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+        colors: {
+          sanad: {
+            navy:'var(--color-primary)', navyDeep:'var(--color-primary-dark)', navySoft:'var(--color-primary-soft)',
+            emerald:'var(--color-secondary)', emeraldSoft:'#3a8ec4', emeraldDeep:'var(--color-secondary-dark)',
+            gold:'var(--color-accent)', goldSoft:'var(--s-gold-soft)',
+            sand:'#eef0f6', ivory:'#f6f7fb', mist:'#eaecf3',
+            border:'#e3e7ef', text:'#0f1d2e', muted:'#5b6b7d'
+          }
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<!-- ============ Hero ============ -->
+<section class="s-page-hero" style="--s-hero-img:url('assets/images/slide/webyan-slide6.jpg');">
+  <div class="s-hero-bg"></div>
+  <div class="s-container">
+    <div class="s-crumbs"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left sep"></i><span class="cur">الحوكمة والشفافية</span></div>
+    <span class="s-eyebrow on-dark mt-4"><i class="fas fa-shield-halved text-sanad-goldSoft"></i> مكتبة الإفصاح الرقمية</span>
+    <h1>الحوكمة والشفافية</h1>
+    <p class="s-hero-lead">نلتزم بإتاحة بياناتنا ولوائحنا وتقاريرنا بوضوح، لتمكين أصحاب المصلحة من الاطلاع على أعمال الجمعية ومؤشرات امتثالها بكل سهولة وشفافية.</p>
+  </div>
+</section>
+
+<!-- ============ لوحة المؤشرات ============ -->
+<section class="py-12">
+  <div class="s-container">
+    <div class="g-kpi-grid">
+      <div class="g-kpi c1"><div class="ic"><i class="fas fa-folder-open"></i></div><div><div class="n">84</div><div class="l">إجمالي الملفات</div></div></div>
+      <div class="g-kpi c2"><div class="ic"><i class="fas fa-chart-pie"></i></div><div><div class="n">18</div><div class="l">تقارير مالية</div></div></div>
+      <div class="g-kpi c3"><div class="ic"><i class="fas fa-scale-balanced"></i></div><div><div class="n">22</div><div class="l">سياسات ولوائح</div></div></div>
+      <div class="g-kpi c4"><div class="ic"><i class="fas fa-clipboard-list"></i></div><div><div class="n">14</div><div class="l">محاضر اجتماعات</div></div></div>
+      <div class="g-kpi c5"><div class="ic"><i class="fas fa-download"></i></div><div><div class="n">12.4K</div><div class="l">عدد التحميلات</div></div></div>
+      <div class="g-kpi c6"><div class="ic"><i class="fas fa-eye"></i></div><div><div class="n">48.7K</div><div class="l">عدد الزيارات</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ الفلاتر ============ -->
+<section class="pb-8">
+  <div class="s-container">
+    <div class="g-filters">
+      <div class="g-filter-head">
+        <h3><i class="fas fa-sliders"></i> البحث والتصفية</h3>
+        <div class="flex items-center gap-2">
+          <button class="g-mob-toggle btn btn-outline !py-2 !px-3 text-xs" id="gMobToggle"><i class="fas fa-filter"></i> تصفية الملفات</button>
+          <button class="g-reset" id="gReset"><i class="fas fa-rotate-left"></i> إعادة ضبط</button>
+        </div>
+      </div>
+
+      <div class="g-search">
+        <input type="text" id="gSearch" placeholder="ابحث باسم الملف أو الوصف..." />
+        <i class="fas fa-magnifying-glass"></i>
+      </div>
+
+      <div class="g-filter-collapse" id="gFilterCollapse">
+        <div class="g-fgrid">
+          <div class="g-fld">
+            <label>فئة الحوكمة</label>
+            <select id="gCategory">
+              <option value="all">جميع الفئات</option>
+              <option value="financial">التقارير المالية</option>
+              <option value="annual">التقارير السنوية</option>
+              <option value="policy">اللوائح والسياسات</option>
+              <option value="ga">محاضر الجمعية العمومية</option>
+              <option value="board-min">محاضر مجلس الإدارة</option>
+              <option value="board">مجلس الإدارة</option>
+              <option value="assembly">الجمعية العمومية</option>
+              <option value="disclosure">نماذج الإفصاح</option>
+              <option value="satisfaction">قياس الرضا</option>
+              <option value="strategy">الاستراتيجية والخطط</option>
+              <option value="impact">الاستدامة والأثر</option>
+              <option value="partnership">الشراكات والاتفاقيات</option>
+            </select>
+          </div>
+          <div class="g-fld">
+            <label>السنة</label>
+            <select id="gYear">
+              <option value="all">جميع السنوات</option>
+              <option value="2026">2026</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <div class="g-fld"><label>من تاريخ</label><input type="date" id="gFrom" /></div>
+          <div class="g-fld"><label>إلى تاريخ</label><input type="date" id="gTo" /></div>
+        </div>
+        <div class="g-fgrid" style="grid-template-columns:1fr;margin-top:.6rem;">
+          <div class="g-fld">
+            <label>ترتيب النتائج</label>
+            <select id="gSort">
+              <option value="newest">الأحدث أولًا</option>
+              <option value="downloads">الأكثر تحميلًا</option>
+              <option value="views">الأكثر مشاهدة</option>
+              <option value="category">حسب الفئة</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="g-active-chips" id="gChips"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ شريط الفئات ============ -->
+<section class="pb-10">
+  <div class="s-container">
+    <div class="g-cats" id="gCatBar">
+      <button class="g-cat active" data-cat="all"><div class="ic"><i class="fas fa-table-cells"></i></div><div class="nm">الكل</div><div class="ct">84 ملفًا</div></button>
+      <button class="g-cat" data-cat="financial"><div class="ic"><i class="fas fa-chart-pie"></i></div><div class="nm">تقارير مالية</div><div class="ct">18 ملفًا</div></button>
+      <button class="g-cat" data-cat="policy"><div class="ic"><i class="fas fa-scale-balanced"></i></div><div class="nm">لوائح وسياسات</div><div class="ct">22 ملفًا</div></button>
+      <button class="g-cat" data-cat="board-min"><div class="ic"><i class="fas fa-clipboard-list"></i></div><div class="nm">محاضر الاجتماعات</div><div class="ct">14 ملفًا</div></button>
+      <button class="g-cat" data-cat="board"><div class="ic"><i class="fas fa-users-line"></i></div><div class="nm">مجلس الإدارة</div><div class="ct">6 ملفات</div></button>
+      <button class="g-cat" data-cat="assembly"><div class="ic"><i class="fas fa-people-group"></i></div><div class="nm">الجمعية العمومية</div><div class="ct">5 ملفات</div></button>
+      <button class="g-cat" data-cat="satisfaction"><div class="ic"><i class="fas fa-face-smile"></i></div><div class="nm">قياس الرضا</div><div class="ct">4 ملفات</div></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ النتائج ============ -->
+<section class="pb-16">
+  <div class="s-container">
+    <div class="g-toolbar">
+      <div class="g-result-meta">عرض <b id="gCount">0</b> من أصل <b id="gTotal">0</b> ملفًا</div>
+      <div class="g-view" id="gView">
+        <button class="active" data-view="grid"><i class="fas fa-table-cells-large"></i> شبكي</button>
+        <button data-view="list"><i class="fas fa-list"></i> قائمة</button>
+      </div>
+    </div>
+    <div class="g-grid" id="gGrid"></div>
+  </div>
+</section>
+
+<!-- ============ ملفات مميزة ============ -->
+<section class="py-14 bg-white border-y border-sanad-border">
+  <div class="s-container">
+    <div class="text-center mb-10">
+      <span class="s-eyebrow mb-3" style="background:rgba(182,135,58,.15);color:#8a6326;border-color:rgba(182,135,58,.3);"><i class="fas fa-star"></i> الأكثر طلبًا</span>
+      <h2 class="s-section-title">ملفات مهمة</h2>
+      <p class="text-sanad-muted mt-2 max-w-xl mx-auto">وصول سريع إلى الوثائق الأساسية الأكثر اطلاعًا من قبل الزوار وأصحاب المصلحة.</p>
+    </div>
+    <div class="g-featured">
+      <div class="g-feat"><div class="badge"><i class="fas fa-bookmark"></i> مميز</div><div class="pdf-big"><span>PDF</span></div><h4>التقرير السنوي 2025</h4><p>عرض شامل لإنجازات الجمعية ومؤشراتها التشغيلية والمالية.</p><a data-open-file="f-annual-2025"><i class="fas fa-arrow-left"></i> عرض الملف</a></div>
+      <div class="g-feat"><div class="badge"><i class="fas fa-bookmark"></i> مميز</div><div class="pdf-big"><span>PDF</span></div><h4>القوائم المالية المعتمدة 2025</h4><p>القوائم المالية المراجعة والمعتمدة من المحاسب القانوني.</p><a data-open-file="f-financial-2025"><i class="fas fa-arrow-left"></i> عرض الملف</a></div>
+      <div class="g-feat"><div class="badge"><i class="fas fa-bookmark"></i> مميز</div><div class="pdf-big"><span>PDF</span></div><h4>سياسة تعارض المصالح</h4><p>الإطار التنظيمي للإفصاح عن أي تعارض محتمل في المصالح.</p><a data-open-file="f-conflict"><i class="fas fa-arrow-left"></i> عرض الملف</a></div>
+      <div class="g-feat"><div class="badge"><i class="fas fa-bookmark"></i> مميز</div><div class="pdf-big"><span>PDF</span></div><h4>نموذج الإفصاح الشامل 2025</h4><p>نموذج الإفصاح المؤسسي وفق متطلبات المركز الوطني.</p><a data-open-file="f-disclosure-2025"><i class="fas fa-arrow-left"></i> عرض الملف</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ خطوات تحديث الملفات ============ -->
+<section class="py-16">
+  <div class="s-container">
+    <div class="text-center mb-10">
+      <span class="s-eyebrow mb-3"><i class="fas fa-rotate"></i> آلية العمل</span>
+      <h2 class="s-section-title">كيف نحدّث ملفات الحوكمة؟</h2>
+      <p class="text-sanad-muted mt-2 max-w-xl mx-auto">منهجية واضحة تضمن أن كل ملف منشور قد مرّ بمراحل اعتماد ومراجعة دقيقة.</p>
+    </div>
+    <div class="g-steps">
+      <div class="g-step"><div class="num">1</div><h5>اعتماد الوثيقة</h5><p>اعتماد المحتوى من الجهة المختصة داخل المجلس.</p></div>
+      <div class="g-step"><div class="num">2</div><h5>مراجعة المحتوى</h5><p>مراجعة قانونية وفنية لضمان دقة البيانات والصياغة.</p></div>
+      <div class="g-step"><div class="num">3</div><h5>رفع الملف</h5><p>تحويل الملف إلى صيغة PDF موثقة ورفعه على المكتبة.</p></div>
+      <div class="g-step"><div class="num">4</div><h5>النشر للعموم</h5><p>إتاحة الملف لجميع أصحاب المصلحة والزوار.</p></div>
+      <div class="g-step"><div class="num">5</div><h5>تحديث الإصدار</h5><p>متابعة تاريخ الإصدار وأرشفة الإصدارات السابقة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="pb-20">
+  <div class="s-container">
+    <div class="g-cta">
+      <h3>لم تجد الملف الذي تبحث عنه؟</h3>
+      <p>يمكنك التواصل معنا لطلب ملف أو الاستفسار عن وثائق الحوكمة والشفافية، وسيرد عليك فريقنا خلال يومي عمل.</p>
+      <div class="g-cta-acts">
+        <a href="contact.html" class="btn btn-accent"><i class="fas fa-envelope-open-text"></i> تواصل معنا</a>
+        <a href="contact.html" class="btn btn-ghost"><i class="fas fa-bullhorn"></i> الشكاوى والمقترحات</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Modal تفاصيل الملف ============ -->
+<div class="sanad-modal-overlay" id="gModal">
+  <div class="sanad-modal sanad-modal-lg g-modal">
+    <div class="sanad-modal-header">
+      <div>
+        <h3 id="mTitle">عنوان الملف</h3>
+        <div class="flex items-center gap-2 mt-1"><span class="g-cat-badge" id="mBadge"><i class="fas fa-folder"></i> الفئة</span><span class="text-xs text-sanad-muted" id="mYear">2025</span></div>
+      </div>
+      <button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="sanad-modal-body">
+      <div class="g-mod-grid">
+        <!-- معاينة PDF -->
+        <div class="g-pdf-viewer">
+          <div class="g-pdf-bar">
+            <div class="nm"><i>PDF</i> <span id="mPdfName">file.pdf</span></div>
+            <div class="g-pdf-tools">
+              <button title="تصغير"><i class="fas fa-minus"></i></button>
+              <button title="تكبير"><i class="fas fa-plus"></i></button>
+              <button title="ملء الشاشة"><i class="fas fa-expand"></i></button>
+            </div>
+          </div>
+          <div class="g-pdf-stage" id="mPdfStage">
+            <h3 id="mPdfHead">مجلس سَنَد للخدمات الاجتماعية</h3>
+            <div class="ln" style="--w:92%"></div>
+            <div class="ln" style="--w:84%"></div>
+            <div class="ln" style="--w:78%"></div>
+            <div class="ln" style="--w:90%"></div>
+            <div class="ln" style="--w:70%"></div>
+            <div class="ln" style="--w:88%"></div>
+            <div class="ln" style="--w:76%"></div>
+            <div class="ln" style="--w:82%"></div>
+            <div class="ln" style="--w:65%"></div>
+            <div class="ln" style="--w:90%"></div>
+            <div class="ln" style="--w:74%"></div>
+          </div>
+          <div class="g-pdf-foot"><span>صفحة <b id="mPage">1</b> من <b id="mPages">12</b></span><span>عارض المستندات الرسمي · مجلس سَنَد</span></div>
+        </div>
+        <!-- معلومات + إجراءات -->
+        <div>
+          <div class="g-mod-info">
+            <div class="row"><span class="k">اسم الملف</span><span class="v" id="iName">—</span></div>
+            <div class="row"><span class="k">الفئة</span><span class="v" id="iCat">—</span></div>
+            <div class="row"><span class="k">السنة</span><span class="v" id="iYear">—</span></div>
+            <div class="row"><span class="k">تاريخ النشر</span><span class="v" id="iDate">—</span></div>
+            <div class="row"><span class="k">حالة الاعتماد</span><span class="v" id="iStatus">—</span></div>
+            <div class="row"><span class="k">حجم الملف</span><span class="v" id="iSize">—</span></div>
+            <div class="row"><span class="k">عدد الزيارات</span><span class="v" id="iViews">—</span></div>
+            <div class="row"><span class="k">عدد التحميلات</span><span class="v" id="iDown">—</span></div>
+            <div class="row"><span class="k">آخر تحديث</span><span class="v" id="iUpd">—</span></div>
+          </div>
+          <div class="g-mod-desc" id="iDesc">—</div>
+          <div class="g-mod-acts">
+            <button class="btn btn-primary" id="mDownload"><i class="fas fa-download"></i> تحميل الملف</button>
+            <button class="btn btn-secondary" id="mShare"><i class="fas fa-share-nodes"></i> مشاركة</button>
+            <button class="btn btn-outline" id="mCopy"><i class="fas fa-link"></i> نسخ الرابط</button>
+            <button class="btn btn-outline" id="mPrint"><i class="fas fa-print"></i> طباعة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Modal مشاركة ============ -->
+<div class="sanad-modal-overlay" id="gShareModal">
+  <div class="sanad-modal sanad-modal-sm" style="max-width:440px;">
+    <div class="sanad-modal-header"><h3><i class="fas fa-share-nodes text-sanad-emerald"></i> مشاركة الملف</h3><button class="sanad-modal-close" data-close><i class="fas fa-xmark"></i></button></div>
+    <div class="sanad-modal-body">
+      <div class="g-share">
+        <div class="g-share-link"><input type="text" id="shareUrl" readonly /><button class="s-copy-btn" id="shareCopy" title="نسخ"><i class="fas fa-copy"></i></button></div>
+        <div class="g-share-opts">
+          <button data-share="whatsapp"><i class="fab fa-whatsapp" style="color:#25D366"></i> واتساب</button>
+          <button data-share="email"><i class="fas fa-envelope" style="color:var(--color-secondary)"></i> البريد</button>
+          <button data-share="twitter"><i class="fab fa-x-twitter"></i> X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="g-toast" id="gToast"><i class="fas fa-circle-check"></i> <span id="gToastTxt">تم</span></div>
+
+<!-- ============ الفوتر ============ -->
+<button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+
+<script src="assets/js/main.js"></script>
+
+<script>
+/* ========== Governance page logic ========== */
+(function(){
+  'use strict';
+
+  const CAT_LABELS = {
+    financial:'تقرير مالي', annual:'تقرير سنوي', policy:'سياسة / لائحة',
+    ga:'محضر جمعية عمومية', 'board-min':'محضر مجلس إدارة', board:'مجلس الإدارة',
+    assembly:'الجمعية العمومية', disclosure:'نموذج إفصاح', satisfaction:'قياس رضا',
+    strategy:'استراتيجية / خطط', impact:'استدامة وأثر', partnership:'شراكات'
+  };
+  const CAT_ICONS = {
+    financial:'fa-chart-pie', annual:'fa-file-invoice', policy:'fa-scale-balanced',
+    ga:'fa-clipboard-check', 'board-min':'fa-clipboard-list', board:'fa-users-line',
+    assembly:'fa-people-group', disclosure:'fa-file-shield', satisfaction:'fa-face-smile',
+    strategy:'fa-compass', impact:'fa-seedling', partnership:'fa-handshake'
+  };
+
+  const FILES = [
+    // التقارير المالية
+    {id:'f-fr-q1-2026', t:'التقرير المالي للربع الأول 2026', d:'مؤشرات الإيرادات والمصروفات للربع الأول من العام المالي.', cat:'financial', year:'2026', date:'2026-04-10', size:'1.8 ميجابايت', views:980, downloads:312, status:'updated'},
+    {id:'f-fr-q2-2025', t:'التقرير المالي للربع الثاني 2025', d:'نتائج الأداء المالي للربع الثاني وموقف السيولة التشغيلية.', cat:'financial', year:'2025', date:'2025-07-15', size:'2.1 ميجابايت', views:1240, downloads:445, status:'approved'},
+    {id:'f-financial-2025', t:'القوائم المالية المعتمدة 2025', d:'القوائم المالية المراجعة من المحاسب القانوني المعتمد لعام 2025.', cat:'financial', year:'2025', date:'2025-12-20', size:'3.4 ميجابايت', views:2150, downloads:874, status:'approved'},
+    {id:'f-budget-2026', t:'الموازنة التقديرية 2026', d:'الموازنة التشغيلية والرأسمالية المعتمدة للعام المالي 2026.', cat:'financial', year:'2026', date:'2026-01-05', size:'2.6 ميجابايت', views:875, downloads:298, status:'approved'},
+
+    // التقارير السنوية
+    {id:'f-annual-2025', t:'التقرير السنوي 2025', d:'عرض شامل لإنجازات الجمعية ومؤشراتها التشغيلية والمالية والاجتماعية.', cat:'annual', year:'2025', date:'2026-02-12', size:'8.7 ميجابايت', views:3420, downloads:1456, status:'updated'},
+    {id:'f-annual-2024', t:'التقرير السنوي 2024', d:'أبرز إنجازات الجمعية ومستفيديها ومبادراتها خلال عام 2024.', cat:'annual', year:'2024', date:'2025-02-10', size:'7.9 ميجابايت', views:2890, downloads:1102, status:'approved'},
+    {id:'f-impact-2025', t:'تقرير الأثر السنوي 2025', d:'قياس الأثر الاجتماعي للمشاريع والمبادرات وفق مؤشرات معتمدة.', cat:'impact', year:'2025', date:'2026-03-01', size:'4.2 ميجابايت', views:1780, downloads:612, status:'updated'},
+
+    // اللوائح والسياسات
+    {id:'f-bylaw', t:'اللائحة الأساسية للجمعية', d:'النظام الأساسي للجمعية المعتمد من المركز الوطني لتنمية القطاع غير الربحي.', cat:'policy', year:'2024', date:'2024-06-18', size:'1.2 ميجابايت', views:4120, downloads:1890, status:'approved'},
+    {id:'f-conflict', t:'سياسة تعارض المصالح', d:'الإطار التنظيمي للإفصاح عن أي تعارض محتمل في المصالح بين الأعضاء والعاملين.', cat:'policy', year:'2024', date:'2024-09-22', size:'880 كيلوبايت', views:2310, downloads:986, status:'approved'},
+    {id:'f-whistle', t:'سياسة الإبلاغ عن المخالفات', d:'آلية تلقي البلاغات وحماية المبلغين ومعالجة الحالات بسرية تامة.', cat:'policy', year:'2024', date:'2024-09-22', size:'920 كيلوبايت', views:1450, downloads:512, status:'approved'},
+    {id:'f-privacy', t:'سياسة خصوصية البيانات', d:'إطار حماية بيانات المستفيدين والمتبرعين وفق الأنظمة المعمول بها.', cat:'policy', year:'2025', date:'2025-03-15', size:'1.1 ميجابايت', views:1180, downloads:402, status:'updated'},
+    {id:'f-donations', t:'سياسة جمع التبرعات', d:'الضوابط والمعايير المنظمة لجمع التبرعات وصرفها بشفافية.', cat:'policy', year:'2024', date:'2024-11-08', size:'1.4 ميجابايت', views:1820, downloads:704, status:'approved'},
+    {id:'f-beneficiary', t:'سياسة العلاقة مع المستفيدين', d:'حقوق وواجبات المستفيدين وآلية التعامل مع الشكاوى والمقترحات.', cat:'policy', year:'2024', date:'2024-08-12', size:'1.0 ميجابايت', views:980, downloads:312, status:'approved'},
+    {id:'f-hr', t:'لائحة الموارد البشرية', d:'الأنظمة المعتمدة للتوظيف والترقيات والمزايا الوظيفية للعاملين.', cat:'policy', year:'2025', date:'2025-05-20', size:'2.3 ميجابايت', views:780, downloads:245, status:'updated'},
+    {id:'f-finance-pol', t:'اللائحة المالية والمشتريات', d:'الإجراءات المالية والمحاسبية ولائحة المشتريات والعهد.', cat:'policy', year:'2024', date:'2024-10-30', size:'1.8 ميجابايت', views:1120, downloads:380, status:'approved'},
+
+    // محاضر الجمعية العمومية
+    {id:'f-ga-2025', t:'محضر اجتماع الجمعية العمومية العادية 2025', d:'قرارات وتوصيات اجتماع الجمعية العمومية العادية لعام 2025.', cat:'ga', year:'2025', date:'2025-04-25', size:'1.6 ميجابايت', views:1340, downloads:486, status:'approved'},
+    {id:'f-ga-ext-2025', t:'محضر اجتماع الجمعية العمومية غير العادية 2025', d:'قرارات الجمعية العمومية غير العادية المتعلقة بالتعديلات النظامية.', cat:'ga', year:'2025', date:'2025-09-18', size:'1.3 ميجابايت', views:920, downloads:312, status:'approved'},
+
+    // محاضر مجلس الإدارة
+    {id:'f-bm-1-2026', t:'محضر اجتماع مجلس الإدارة الأول 2026', d:'قرارات الاجتماع الأول لمجلس الإدارة وخطة العام الجديد.', cat:'board-min', year:'2026', date:'2026-02-08', size:'1.1 ميجابايت', views:540, downloads:178, status:'updated'},
+    {id:'f-bm-4-2025', t:'محضر اجتماع مجلس الإدارة الرابع 2025', d:'مراجعة الأداء السنوي واعتماد الخطة التشغيلية للعام المقبل.', cat:'board-min', year:'2025', date:'2025-12-12', size:'1.2 ميجابايت', views:680, downloads:215, status:'approved'},
+
+    // مجلس الإدارة
+    {id:'f-board', t:'تشكيل مجلس الإدارة الحالي', d:'أعضاء مجلس الإدارة وأدوارهم وفترات عضويتهم.', cat:'board', year:'2024', date:'2024-04-10', size:'650 كيلوبايت', views:1980, downloads:540, status:'approved'},
+    {id:'f-board-cv', t:'السير الذاتية لأعضاء مجلس الإدارة', d:'الخبرات والمؤهلات العلمية لأعضاء مجلس الإدارة.', cat:'board', year:'2024', date:'2024-04-12', size:'2.4 ميجابايت', views:1240, downloads:412, status:'approved'},
+    {id:'f-board-comm', t:'لجان مجلس الإدارة', d:'لجان المجلس الفرعية واختصاصاتها وأعضائها.', cat:'board', year:'2024', date:'2024-05-02', size:'1.0 ميجابايت', views:780, downloads:240, status:'approved'},
+
+    // الجمعية العمومية
+    {id:'f-ga-members', t:'أسماء أعضاء الجمعية العمومية', d:'قائمة الأعضاء الفاعلين في المجلس العمومية المعتمدة.', cat:'assembly', year:'2025', date:'2025-03-15', size:'480 كيلوبايت', views:920, downloads:284, status:'updated'},
+    {id:'f-ga-decisions', t:'قرارات الجمعية العمومية 2025', d:'القرارات الصادرة عن اجتماعات الجمعية العمومية خلال 2025.', cat:'assembly', year:'2025', date:'2025-10-05', size:'1.1 ميجابايت', views:760, downloads:198, status:'approved'},
+    {id:'f-ga-invite', t:'الدعوة لاجتماع الجمعية العمومية 2026', d:'جدول أعمال الاجتماع القادم للجمعية العمومية لعام 2026.', cat:'assembly', year:'2026', date:'2026-03-20', size:'380 كيلوبايت', views:420, downloads:112, status:'updated'},
+
+    // نماذج الإفصاح
+    {id:'f-disclosure-2025', t:'نموذج الإفصاح الشامل 2025', d:'نموذج الإفصاح المؤسسي وفق متطلبات المركز الوطني لتنمية القطاع غير الربحي.', cat:'disclosure', year:'2025', date:'2026-01-25', size:'2.8 ميجابايت', views:2240, downloads:920, status:'updated'},
+    {id:'f-disclosure-conflict', t:'إفصاح تعارض المصالح', d:'إفصاحات أعضاء المجلس والإدارة التنفيذية عن تعارض المصالح.', cat:'disclosure', year:'2025', date:'2025-04-10', size:'1.4 ميجابايت', views:1080, downloads:340, status:'approved'},
+    {id:'f-disclosure-spend', t:'إفصاح التبرعات والمصروفات', d:'تفاصيل التبرعات الواردة وأوجه الصرف وفق برامج الجمعية.', cat:'disclosure', year:'2025', date:'2025-11-22', size:'2.0 ميجابايت', views:1620, downloads:580, status:'approved'},
+
+    // قياس الرضا
+    {id:'f-sat-ben-2025', t:'تقرير رضا المستفيدين 2025', d:'نتائج قياس رضا المستفيدين من خدمات وبرامج الجمعية.', cat:'satisfaction', year:'2025', date:'2026-01-10', size:'1.9 ميجابايت', views:1080, downloads:362, status:'updated'},
+    {id:'f-sat-don-2025', t:'تقرير رضا المتبرعين 2025', d:'مؤشرات رضا المتبرعين عن آليات التبرع والتواصل والشفافية.', cat:'satisfaction', year:'2025', date:'2026-01-12', size:'1.6 ميجابايت', views:920, downloads:298, status:'updated'},
+    {id:'f-sat-vol-2025', t:'تقرير رضا المتطوعين 2025', d:'تقييم تجربة المتطوعين وبرامج التطوع المقدمة من الجمعية.', cat:'satisfaction', year:'2025', date:'2026-01-15', size:'1.5 ميجابايت', views:780, downloads:240, status:'approved'},
+    {id:'f-sat-ben-2024', t:'تقرير رضا المستفيدين 2024', d:'نتائج قياس رضا المستفيدين عن خدمات المجلس لعام 2024.', cat:'satisfaction', year:'2024', date:'2025-01-18', size:'1.7 ميجابايت', views:640, downloads:182, status:'archived'},
+
+    // الاستراتيجية
+    {id:'f-strat-2026', t:'الخطة الاستراتيجية 2026-2028', d:'الخطة الاستراتيجية الثلاثية بأهدافها ومبادراتها ومؤشراتها.', cat:'strategy', year:'2026', date:'2026-01-30', size:'5.2 ميجابايت', views:1840, downloads:620, status:'updated'},
+    {id:'f-ops-2025', t:'الخطة التشغيلية 2025', d:'تفاصيل الخطة التشغيلية السنوية وأهداف الإدارات والبرامج.', cat:'strategy', year:'2025', date:'2025-01-20', size:'3.6 ميجابايت', views:980, downloads:312, status:'approved'},
+    {id:'f-risk', t:'خطة إدارة المخاطر', d:'تصنيف المخاطر المؤسسية وآليات التخفيف والاستجابة لها.', cat:'strategy', year:'2025', date:'2025-06-15', size:'2.4 ميجابايت', views:680, downloads:198, status:'approved'},
+
+    // الاستدامة والأثر
+    {id:'f-sust-2025', t:'تقرير الاستدامة 2025', d:'مؤشرات الاستدامة المالية والتشغيلية والبيئية للجمعية.', cat:'impact', year:'2025', date:'2026-02-28', size:'4.8 ميجابايت', views:1240, downloads:412, status:'updated'},
+    {id:'f-impact-2024', t:'تقرير الأثر الاجتماعي 2024', d:'قياس الأثر الاجتماعي للمشاريع المنفذة خلال 2024.', cat:'impact', year:'2024', date:'2025-03-05', size:'3.9 ميجابايت', views:1480, downloads:540, status:'approved'},
+
+    // الشراكات
+    {id:'f-partner-2025', t:'تقرير الشراكات والاتفاقيات 2025', d:'الشراكات الإستراتيجية ومذكرات التفاهم الموقعة خلال العام.', cat:'partnership', year:'2025', date:'2026-01-22', size:'2.2 ميجابايت', views:820, downloads:265, status:'updated'}
+  ];
+
+  const $ = (s,c=document)=>c.querySelector(s);
+  const $$ = (s,c=document)=>Array.from(c.querySelectorAll(s));
+  const grid = $('#gGrid');
+  const state = { q:'', cat:'all', year:'all', from:'', to:'', sort:'newest', view:'grid' };
+
+  /* تنسيق التاريخ بالعربية */
+  const fmtDate = (s) => {
+    try { return new Date(s).toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'}); }
+    catch(e){ return s; }
+  };
+  const statusLabel = (s) => s==='updated' ? 'محدث' : s==='approved' ? 'معتمد' : 'مؤرشف';
+  const statusIcon  = (s) => s==='updated' ? 'fa-rotate' : s==='approved' ? 'fa-circle-check' : 'fa-box-archive';
+
+  /* رسم البطاقات */
+  function render(){
+    const filtered = FILES.filter(f=>{
+      if (state.cat!=='all' && f.cat!==state.cat) return false;
+      if (state.year!=='all' && f.year!==state.year) return false;
+      if (state.q){
+        const q = state.q.toLowerCase();
+        if (!(f.t.toLowerCase().includes(q) || f.d.toLowerCase().includes(q))) return false;
+      }
+      if (state.from && f.date < state.from) return false;
+      if (state.to && f.date > state.to) return false;
+      return true;
+    });
+    filtered.sort((a,b)=>{
+      if (state.sort==='downloads') return b.downloads - a.downloads;
+      if (state.sort==='views') return b.views - a.views;
+      if (state.sort==='category') return a.cat.localeCompare(b.cat,'ar');
+      return b.date.localeCompare(a.date);
+    });
+
+    grid.className = 'g-grid' + (state.view==='list' ? ' list' : '');
+    $('#gCount').textContent = filtered.length.toLocaleString('ar-SA');
+    $('#gTotal').textContent = FILES.length.toLocaleString('ar-SA');
+
+    if (!filtered.length){
+      grid.innerHTML = `<div class="g-empty" style="grid-column:1/-1;"><i class="fas fa-folder-open"></i><h4>لا توجد ملفات مطابقة</h4><p>جرّب تغيير الفلاتر أو إعادة ضبطها لعرض جميع الملفات.</p></div>`;
+      renderChips();
+      return;
+    }
+
+    grid.innerHTML = filtered.map(f=>{
+      const catIc = CAT_ICONS[f.cat] || 'fa-folder';
+      const catLb = CAT_LABELS[f.cat] || f.cat;
+      const stLb = statusLabel(f.status);
+      const stIc = statusIcon(f.status);
+      const mainBlock = state.view==='list'
+        ? `<div class="l-main"><span class="g-cat-badge"><i class="fas ${catIc}"></i> ${catLb}</span><h4>${f.t}</h4><p>${f.d}</p></div>
+           <div class="g-meta-row" style="border:0;padding:0;margin:0;gap:.9rem;">
+             <span><i class="fas fa-calendar"></i> ${fmtDate(f.date)}</span>
+             <span><i class="fas fa-weight-hanging"></i> ${f.size}</span>
+             <span><i class="fas fa-eye"></i> ${f.views.toLocaleString('ar-SA')}</span>
+             <span><i class="fas fa-download"></i> ${f.downloads.toLocaleString('ar-SA')}</span>
+           </div>`
+        : `<span class="g-cat-badge"><i class="fas ${catIc}"></i> ${catLb}</span>
+           <h4>${f.t}</h4><p>${f.d}</p>
+           <div class="g-meta-row">
+             <span><i class="fas fa-calendar"></i> ${fmtDate(f.date)}</span>
+             <span><i class="fas fa-weight-hanging"></i> ${f.size}</span>
+             <span><i class="fas fa-eye"></i> ${f.views.toLocaleString('ar-SA')}</span>
+             <span><i class="fas fa-download"></i> ${f.downloads.toLocaleString('ar-SA')}</span>
+           </div>`;
+      return `
+      <article class="g-file" data-id="${f.id}">
+        <div class="g-file-thumb">
+          <div class="yr">${f.year}</div>
+          <div class="st ${f.status}"><i class="fas ${stIc}"></i> ${stLb}</div>
+          <div class="pdf-ic"><span>PDF</span></div>
+        </div>
+        <div class="g-file-body">
+          ${mainBlock}
+          <div class="g-file-acts">
+            <button class="btn btn-outline" data-act="details" data-id="${f.id}"><i class="fas fa-circle-info"></i> التفاصيل</button>
+            <button class="btn btn-primary" data-act="download" data-id="${f.id}"><i class="fas fa-download"></i> تحميل</button>
+          </div>
+        </div>
+      </article>`;
+    }).join('');
+    renderChips();
+  }
+
+  function renderChips(){
+    const chips = $('#gChips'); chips.innerHTML = '';
+    const add = (lbl, key) => {
+      const el = document.createElement('span');
+      el.className = 'g-chip';
+      el.innerHTML = `${lbl} <button data-clear="${key}" title="إزالة"><i class="fas fa-xmark"></i></button>`;
+      chips.appendChild(el);
+    };
+    if (state.q) add(`بحث: "${state.q}"`, 'q');
+    if (state.cat!=='all') add(`الفئة: ${CAT_LABELS[state.cat]}`, 'cat');
+    if (state.year!=='all') add(`السنة: ${state.year}`, 'year');
+    if (state.from) add(`من: ${fmtDate(state.from)}`, 'from');
+    if (state.to) add(`إلى: ${fmtDate(state.to)}`, 'to');
+    chips.querySelectorAll('[data-clear]').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const k = b.getAttribute('data-clear');
+        if (k==='q'){ state.q=''; $('#gSearch').value=''; }
+        if (k==='cat'){ state.cat='all'; $('#gCategory').value='all'; syncCatBar(); }
+        if (k==='year'){ state.year='all'; $('#gYear').value='all'; }
+        if (k==='from'){ state.from=''; $('#gFrom').value=''; }
+        if (k==='to'){ state.to=''; $('#gTo').value=''; }
+        render();
+      });
+    });
+  }
+
+  function syncCatBar(){
+    $$('#gCatBar .g-cat').forEach(b => b.classList.toggle('active', b.dataset.cat===state.cat));
+  }
+
+  /* الأحداث */
+  $('#gSearch').addEventListener('input', e=>{ state.q=e.target.value.trim(); render(); });
+  $('#gCategory').addEventListener('change', e=>{ state.cat=e.target.value; syncCatBar(); render(); });
+  $('#gYear').addEventListener('change', e=>{ state.year=e.target.value; render(); });
+  $('#gFrom').addEventListener('change', e=>{ state.from=e.target.value; render(); });
+  $('#gTo').addEventListener('change', e=>{ state.to=e.target.value; render(); });
+  $('#gSort').addEventListener('change', e=>{ state.sort=e.target.value; render(); });
+  $('#gReset').addEventListener('click', ()=>{
+    Object.assign(state,{q:'',cat:'all',year:'all',from:'',to:'',sort:'newest'});
+    $('#gSearch').value=''; $('#gCategory').value='all'; $('#gYear').value='all';
+    $('#gFrom').value=''; $('#gTo').value=''; $('#gSort').value='newest';
+    syncCatBar(); render();
+  });
+  $$('#gCatBar .g-cat').forEach(b=>{
+    b.addEventListener('click', ()=>{ state.cat=b.dataset.cat; $('#gCategory').value=state.cat; syncCatBar(); render(); });
+  });
+  $$('#gView button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      $$('#gView button').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); state.view=b.dataset.view; render();
+    });
+  });
+  $('#gMobToggle')?.addEventListener('click', ()=>{ $('#gFilterCollapse').classList.toggle('open'); });
+
+  /* Toast */
+  let toastTm;
+  function toast(msg){
+    const t = $('#gToast'); $('#gToastTxt').textContent = msg;
+    t.classList.add('show'); clearTimeout(toastTm);
+    toastTm = setTimeout(()=>t.classList.remove('show'), 2200);
+  }
+
+  /* فتح/إغلاق المودال */
+  const openModal = (id) => { const m=document.getElementById(id); if(m){ m.classList.add('is-open'); document.body.style.overflow='hidden'; }};
+  const closeModal = (m) => { m.classList.remove('is-open'); if(!document.querySelector('.sanad-modal-overlay.is-open')) document.body.style.overflow=''; };
+  document.querySelectorAll('#gModal,#gShareModal').forEach(o=>{
+    o.addEventListener('click', e=>{ if(e.target===o) closeModal(o); });
+    o.querySelectorAll('[data-close]').forEach(b=> b.addEventListener('click', ()=>closeModal(o)));
+  });
+
+  /* فتح تفاصيل ملف */
+  function openFile(id){
+    const f = FILES.find(x=>x.id===id); if (!f) return;
+    f.views += 1;
+    $('#mTitle').textContent = f.t;
+    $('#mBadge').innerHTML = `<i class="fas ${CAT_ICONS[f.cat]}"></i> ${CAT_LABELS[f.cat]}`;
+    $('#mYear').textContent = f.year;
+    $('#mPdfName').textContent = f.id + '.pdf';
+    $('#mPdfHead').textContent = f.t;
+    $('#mPages').textContent = Math.max(4, Math.round(parseFloat(f.size)*4)).toLocaleString('ar-SA');
+    $('#iName').textContent = f.id+'.pdf';
+    $('#iCat').textContent = CAT_LABELS[f.cat];
+    $('#iYear').textContent = f.year;
+    $('#iDate').textContent = fmtDate(f.date);
+    $('#iStatus').textContent = statusLabel(f.status);
+    $('#iSize').textContent = f.size;
+    $('#iViews').textContent = f.views.toLocaleString('ar-SA');
+    $('#iDown').textContent = f.downloads.toLocaleString('ar-SA');
+    $('#iUpd').textContent = fmtDate(f.date);
+    $('#iDesc').textContent = f.d;
+    $('#mDownload').onclick = ()=>{ f.downloads+=1; $('#iDown').textContent=f.downloads.toLocaleString('ar-SA'); toast('بدأ تحميل الملف…'); };
+    $('#mShare').onclick = ()=>{
+      $('#shareUrl').value = `${location.origin}${location.pathname}?file=${f.id}`;
+      openModal('gShareModal');
+    };
+    $('#mCopy').onclick = ()=>{
+      const url = `${location.origin}${location.pathname}?file=${f.id}`;
+      navigator.clipboard?.writeText(url).then(()=>toast('تم نسخ رابط الملف بنجاح')).catch(()=>toast('تم نسخ الرابط'));
+    };
+    $('#mPrint').onclick = ()=> window.print();
+    render(); // لتحديث الأرقام
+    openModal('gModal');
+  }
+
+  /* تفويض الأحداث على البطاقات والملفات المميزة */
+  document.addEventListener('click', (e)=>{
+    const dt = e.target.closest('[data-act="details"]');
+    const dl = e.target.closest('[data-act="download"]');
+    const of = e.target.closest('[data-open-file]');
+    if (dt) openFile(dt.dataset.id);
+    if (dl){
+      const f = FILES.find(x=>x.id===dl.dataset.id);
+      if (f){ f.downloads+=1; toast(`بدأ تحميل: ${f.t}`); render(); }
+    }
+    if (of) openFile(of.getAttribute('data-open-file'));
+  });
+
+  /* نسخ رابط المشاركة + خيارات */
+  $('#shareCopy').addEventListener('click', ()=>{
+    const v = $('#shareUrl').value;
+    navigator.clipboard?.writeText(v).then(()=>{
+      const b = $('#shareCopy'); b.classList.add('copied'); b.innerHTML='<i class="fas fa-check"></i>';
+      toast('تم نسخ رابط الملف بنجاح');
+      setTimeout(()=>{ b.classList.remove('copied'); b.innerHTML='<i class="fas fa-copy"></i>'; }, 1500);
+    });
+  });
+  $$('#gShareModal [data-share]').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const u = encodeURIComponent($('#shareUrl').value);
+      const t = encodeURIComponent($('#mTitle').textContent);
+      const k = b.dataset.share;
+      let link = '';
+      if (k==='whatsapp') link = `https://wa.me/?text=${t}%20${u}`;
+      if (k==='email')    link = `mailto:?subject=${t}&body=${u}`;
+      if (k==='twitter')  link = `https://twitter.com/intent/tweet?text=${t}&url=${u}`;
+      window.open(link,'_blank','noopener');
+    });
+  });
+
+  /* تشغيل أولي + قراءة باراميتر الملف من الرابط */
+  render();
+  const params = new URLSearchParams(location.search);
+  const initId = params.get('file');
+  if (initId) setTimeout(()=>openFile(initId), 300);
+
+  /* تحديث السنة في الفوتر */
+  document.querySelectorAll('[data-year]').forEach(e=> e.textContent = new Date().getFullYear());
+})();
+</script>
+</body>
+</html>
