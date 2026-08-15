@@ -1802,51 +1802,38 @@
     </div>
     <div class="sx-main">
       <a href="index.html" class="sx-logo">
-        <div class="sx-mark">س</div>
+        <div class="sx-mark sx-mark-img"><img src="assets/images/brand/logo.png" alt="شعار اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة" /></div>
         <div>
-          <div class="sx-name">مجلس سَنَد</div>
-          <div class="sx-tag">للتنسيق والتمثيل المؤسسي</div>
+          <div class="sx-name">اللجنة التنسيقية</div>
+          <div class="sx-tag">لجمعيات تحفيظ القرآن الكريم بالمملكة</div>
         </div>
       </a>
       <nav class="sx-nav" aria-label="القائمة الرئيسية">
         <a href="index.html" class="${isActive("home")}">الرئيسية</a>
         <div class="sx-drop" data-drop>
-          <button type="button" class="${isActive("about")}">عن المجلس <i class="fas fa-chevron-down"></i></button>
+          <button type="button" class="${isActive("about")}">عن اللجنة <i class="fas fa-chevron-down"></i></button>
           <div class="sx-dmenu">
             <a href="about.html"><i class="fas fa-circle-info"></i> من نحن</a>
             <a href="founding.html"><i class="fas fa-flag"></i> النشأة والتأسيس</a>
-            <a href="strategy.html"><i class="fas fa-compass"></i> استراتيجيتنا</a>
-            <a href="board.html"><i class="fas fa-users-gear"></i> مجلس الإدارة</a>
-            <a href="executive-management.html"><i class="fas fa-user-tie"></i> الإدارة التنفيذية</a>
+            <a href="strategy.html"><i class="fas fa-compass"></i> الاستراتيجية</a>
+            <a href="board.html"><i class="fas fa-users-gear"></i> أعضاء اللجنة</a>
+            <a href="executive-management.html"><i class="fas fa-user-tie"></i> الأمانة التنفيذية</a>
             <a href="organization-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
-            <a href="registration-certificate.html"><i class="fas fa-certificate"></i> شهادة التسجيل</a>
-            <a href="committees.html"><i class="fas fa-people-group"></i> اللجان</a>
-            <a href="membership.html"><i class="fas fa-id-card"></i> العضوية</a>
+            <a href="index.html#pillars"><i class="fas fa-cubes"></i> ركائز اللجنة</a>
           </div>
         </div>
-        <a href="services.html" class="${isActive("services")}">الخدمات</a>
-        <a href="projects.html" class="${isActive("projects")}">المشاريع</a>
-        <a href="branches.html" class="${isActive("branches")}">الفروع</a>
-        <a href="governance.html" class="${isActive("governance")}">الحوكمة</a>
-        <a href="media-center.html" class="${isActive("media")}">المركز الإعلامي</a>
-        <a href="events.html" class="${isActive("events")}">الفعاليات</a>
-        <a href="careers.html" class="${isActive("careers")}">الوظائف</a>
+        <a href="index.html#pillars" class="${isActive("pillars")}">الركائز</a>
+        <a href="projects.html" class="${isActive("projects")}">المبادرات</a>
+        <a href="events.html" class="${isActive("events")}">الأخبار والفعاليات</a>
+        <a href="media-center.html" class="${isActive("media")}">النافذة الإعلامية</a>
+        <a href="branches.html" class="${isActive("branches")}">الجمعيات الأعضاء</a>
+        <a href="contact.html" class="${isActive("contact")}">تواصل معنا</a>
       </nav>
       <div class="sx-actions">
-        <div class="sx-login-wrap" data-login-wrap>
-          <button type="button" class="sx-login-btn" data-login-toggle>
-            <i class="fas fa-user-circle"></i> دخول المستفيدين
-          </button>
-          <div class="sx-login-menu">
-            <div class="sx-lhead">بوابة المستفيدين</div>
-            <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-            <div class="sx-lreg">
-              <a href="contact.html"><i class="fas fa-user-plus"></i> إنشاء حساب مستفيد</a>
-            </div>
-          </div>
-        </div>
+        <a href="contact.html" class="sx-login-btn"><i class="fas fa-paper-plane"></i> تواصل مع اللجنة</a>
         <button type="button" class="sx-burger" data-sx-burger aria-label="القائمة"><i class="fas fa-bars"></i></button>
       </div>
+
     </div>
   </header>
 
