@@ -53,6 +53,18 @@
   }
 
 
+  /* أكورديون المبادرات pv7 */
+  document.querySelectorAll("[data-pv7]").forEach((board) => {
+    const items = board.querySelectorAll("[data-pv7-item]");
+    items.forEach((item) => {
+      item.querySelector("[data-pv7-btn]")?.addEventListener("click", () => {
+        const open = item.classList.contains("is-open");
+        items.forEach((i) => i.classList.remove("is-open"));
+        if (!open) item.classList.add("is-open");
+      });
+    });
+  });
+
   /* ظهور الأقسام */
   const ro = new IntersectionObserver(
     (es) => {
