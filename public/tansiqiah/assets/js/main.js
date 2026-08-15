@@ -1778,14 +1778,15 @@
     <div class="sx-topbar">
       <div class="sx-tcont">
         <div class="sx-tlinks">
-          <a href="tel:920000000"><i class="fas fa-phone"></i> 920000000</a>
-          <a href="mailto:info@majales.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> info@majales.org.sa</a>
-          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> تعمل وفق الأنظمة واللوائح</span>
+          <a href="tel:0553066775"><i class="fas fa-phone"></i> 0553066775</a>
+          <a href="mailto:c.c.q@ccsa.org.sa" class="sx-thide"><i class="fas fa-envelope"></i> c.c.q@ccsa.org.sa</a>
+          <span class="sx-tstatus sx-thide"><span class="sx-tdot"></span> لجمعيات قرآنية رائدة وفاعلة</span>
         </div>
         <div class="sx-tright">
-          <a href="service-tracking.html" class="sx-tlink"><i class="fas fa-route"></i> تتبع طلب</a>
+          <a href="index.html#initiatives" class="sx-tlink"><i class="fas fa-lightbulb"></i> المبادرات</a>
           <a href="contact.html" class="sx-tlink sx-thide"><i class="fas fa-headset"></i> تواصل معنا</a>
           <div class="sx-lang-dd" data-lang-dd>
+
             <button class="sx-lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
               <i class="fas fa-globe"></i>
               <span class="sx-lang-current">العربية</span>
