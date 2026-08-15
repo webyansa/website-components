@@ -2286,3 +2286,59 @@
   background: url("../images/brand/mark-outline.svg") center/contain no-repeat !important;
   transform: rotate(-6deg);
 }
+
+/* ============================================================
+   WATERMARKS — تخفيف الحدود
+   ============================================================ */
+.pv7-mark{ opacity:.06 !important; }
+.nv7-mark{ opacity:.055 !important; }
+.s-cta::before{ opacity:.10 !important; }
+.s-cta.v2::after{ opacity:.09 !important; }
+
+/* ============================================================
+   INNER PAGE HERO v8 — داكن + شعار دائري متحرك (حدود فقط)
+   ============================================================ */
+.s-page-hero{
+  background-color:#040B22 !important;
+  padding: clamp(4.5rem, 8vw, 7rem) 0 clamp(4rem, 6.5vw, 5.5rem) !important;
+}
+.s-page-hero .s-hero-bg{
+  filter: saturate(.6) brightness(.5) !important;
+  opacity:.5;
+}
+.s-page-hero::before{
+  background:
+    linear-gradient(115deg, rgba(4,11,34,.96) 0%, rgba(6,22,63,.92) 48%, rgba(18,73,255,.42) 130%) !important;
+}
+.s-page-hero::after{
+  background:
+    radial-gradient(70% 55% at 92% 108%, rgba(66,172,253,.26), transparent 62%),
+    radial-gradient(50% 45% at 4% -10%, rgba(127,255,255,.14), transparent 65%) !important;
+}
+/* الشعار الدوّار */
+.s-page-hero > .s-container::after{
+  content:""; position:absolute;
+  inset-block-start:50%; inset-inline-start:-6%;
+  translate: 0 -50%;
+  width:min(46vw,520px); aspect-ratio:512/573;
+  background:url("../images/brand/mark-outline.svg") center/contain no-repeat;
+  opacity:.22; pointer-events:none; z-index:-1;
+  animation: tsq-spin 46s linear infinite;
+}
+.s-page-hero > .s-container::before{
+  content:""; position:absolute;
+  inset-block-end:-22%; inset-inline-end:-8%;
+  width:min(30vw,320px); aspect-ratio:512/573;
+  background:url("../images/brand/mark-outline.svg") center/contain no-repeat;
+  opacity:.12; pointer-events:none; z-index:-1;
+  animation: tsq-spin 72s linear infinite reverse;
+}
+@keyframes tsq-spin{ from{ rotate:0deg; } to{ rotate:360deg; } }
+@media (prefers-reduced-motion: reduce){
+  .s-page-hero > .s-container::after,
+  .s-page-hero > .s-container::before{ animation:none; }
+}
+@media (max-width:768px){
+  .s-page-hero > .s-container::after{ width:70vw; opacity:.12; }
+  .s-page-hero > .s-container::before{ display:none; }
+}
