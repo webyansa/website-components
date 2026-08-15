@@ -1869,10 +1869,10 @@
     <div class="sx-fmain">
       <div class="sx-fbrand">
         <div class="sx-fname">
-          <div class="sx-mark">س</div>
-          <div><div class="nm">مجلس سَنَد</div><div class="tg">للتنسيق والتمثيل المؤسسي</div></div>
+          <div class="sx-mark sx-mark-img"><img src="assets/images/brand/logo.png" alt="شعار اللجنة التنسيقية" /></div>
+          <div><div class="nm">اللجنة التنسيقية</div><div class="tg">لجمعيات تحفيظ القرآن الكريم بالمملكة</div></div>
         </div>
-        <p>جمعية اجتماعية تعمل على تقديم خدمات الرعاية والدعم والتمكين، عبر برامج مؤسسية تعزز جودة حياة المستفيدين وتدعم الاستدامة المجتمعية ضمن منظومة العمل الخيري السعودي.</p>
+        <p>جهة تنسيقية تعمل على تمثيل جمعيات تحفيظ القرآن الكريم بالمملكة وتمكينها، وتعزيز التعاون والتكامل بينها، بما يسهم في تطوير القطاع القرآني وتحقيق أثره الوطني المستدام.</p>
         <div class="sx-fsoc">
           <a href="#" aria-label="تويتر"><i class="fab fa-x-twitter"></i></a>
           <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
@@ -1885,41 +1885,39 @@
         <h4>روابط رئيسية</h4>
         <ul>
           <li><a href="index.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
-          <li><a href="projects.html"><i class="fas fa-angle-left"></i> المشاريع والمبادرات</a></li>
-          <li><a href="membership.html"><i class="fas fa-angle-left"></i> العضوية</a></li>
-          <li><a href="committees.html"><i class="fas fa-angle-left"></i> اللجان</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> بوابة المستفيدين</a></li>
-          <li><a href="media-center.html"><i class="fas fa-angle-left"></i> المركز الإعلامي</a></li>
+          <li><a href="index.html#pillars"><i class="fas fa-angle-left"></i> ركائز اللجنة</a></li>
+          <li><a href="projects.html"><i class="fas fa-angle-left"></i> المبادرات والمشاريع</a></li>
+          <li><a href="events.html"><i class="fas fa-angle-left"></i> الأخبار والفعاليات</a></li>
+          <li><a href="media-center.html"><i class="fas fa-angle-left"></i> النافذة الإعلامية</a></li>
+        </ul>
+      </div>
+      <div class="sx-fcol">
+        <h4>عن اللجنة</h4>
+        <ul>
+          <li><a href="about.html"><i class="fas fa-angle-left"></i> من نحن</a></li>
+          <li><a href="founding.html"><i class="fas fa-angle-left"></i> النشأة والتأسيس</a></li>
+          <li><a href="strategy.html"><i class="fas fa-angle-left"></i> الاستراتيجية</a></li>
+          <li><a href="board.html"><i class="fas fa-angle-left"></i> أعضاء اللجنة</a></li>
+          <li><a href="organization-structure.html"><i class="fas fa-angle-left"></i> الهيكل التنظيمي</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
         <h4>روابط تهمك</h4>
         <ul>
+          <li><a href="branches.html"><i class="fas fa-angle-left"></i> الجمعيات الأعضاء</a></li>
           <li><a href="governance.html"><i class="fas fa-angle-left"></i> الحوكمة</a></li>
           <li><a href="terms.html"><i class="fas fa-angle-left"></i> الشروط والأحكام</a></li>
           <li><a href="privacy.html"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
-          <li><a href="careers.html"><i class="fas fa-angle-left"></i> الوظائف والتطوع</a></li>
           <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
-        </ul>
-      </div>
-      <div class="sx-fcol">
-        <h4>خدمات المستفيدين</h4>
-        <ul>
-          <li><a href="contact.html"><i class="fas fa-angle-left"></i> دخول المستفيدين</a></li>
-          <li><a href="contact.html"><i class="fas fa-angle-left"></i> انضم كمستفيد</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> المنتجات والخدمات المتاحة</a></li>
-          <li><a href="service-tracking.html"><i class="fas fa-angle-left"></i> تتبع طلب مستفيد</a></li>
-          <li><a href="services.html"><i class="fas fa-angle-left"></i> طلب خدمة</a></li>
         </ul>
       </div>
       <div class="sx-fcol">
         <h4>التواصل والنشرة</h4>
         <ul class="sx-fcontact">
-          <li><i class="fas fa-phone"></i> 920000000</li>
-          <li><i class="fas fa-envelope"></i> info@majales.org.sa</li>
-          <li><i class="fas fa-location-dot"></i> الرياض — حي الملقا — طريق الملك فهد</li>
+          <li><i class="fas fa-phone"></i> 0553066775</li>
+          <li><i class="fas fa-envelope"></i> c.c.q@ccsa.org.sa</li>
+          <li><i class="fas fa-location-dot"></i> المملكة العربية السعودية — الرياض</li>
           <li><i class="fas fa-clock"></i> الأحد - الخميس · 8 ص - 4 م</li>
-          <li><i class="fab fa-whatsapp"></i> 0500000000</li>
         </ul>
         <form class="sx-fnews" onsubmit="event.preventDefault();window.sxToast&&sxToast('تم الاشتراك في النشرة بنجاح');this.reset();">
           <div style="font-size:.78rem;color:#a5b3c8;font-weight:700">اشترك في النشرة البريدية</div>
@@ -1929,40 +1927,13 @@
       </div>
     </div>
 
-    <div class="sx-license">
-      <div class="sx-license-card">
-        <div class="sx-lic-left">
-          <div class="sx-lic-mark">
-            <img src="assets/images/License/ncnps-mark.svg" alt="المركز الوطني لتنمية القطاع غير الربحي" />
-          </div>
-          <div class="sx-lic-info">
-            <div class="sx-lic-title">الجمعية مصرحة من المركز الوطني لتنمية القطاع غير الربحي</div>
-            <p class="sx-lic-desc">تعمل الجمعية وفق ترخيص رسمي صادر من المركز الوطني لتنمية القطاع غير الربحي، مع إتاحة شهادات الترخيص للعرض والتحميل.</p>
-            <div class="sx-lic-meta">
-              <span><i class="fas fa-hashtag"></i> رقم الترخيص: <b>0000</b></span>
-              <span><i class="fas fa-circle-check"></i> الحالة: <b>ساري</b></span>
-              <span><i class="fas fa-hand-holding-heart"></i> جمع التبرعات: <b>متاح</b></span>
-              <span><i class="fas fa-rotate"></i> آخر تحديث: <b>هذا الشهر</b></span>
-            </div>
-          </div>
-        </div>
-        <div class="sx-lic-actions">
-          <button type="button" class="sx-lic-btn sx-lic-btn-primary" data-sx-cert-open data-cert="association">
-            <i class="fas fa-certificate"></i> عرض شهادة ترخيص الجمعية
-          </button>
-          <button type="button" class="sx-lic-btn sx-lic-btn-outline" data-sx-cert-open data-cert="fundraising">
-            <i class="fas fa-hand-holding-dollar"></i> عرض ترخيص جمع التبرعات
-          </button>
-        </div>
-      </div>
-    </div>
-
     <div class="sx-fbottom">
       <div class="sx-fbcont">
-        <div>© جميع الحقوق محفوظة لمجلس سَنَد <span data-year>2026</span></div>
+        <div>© جميع الحقوق محفوظة — اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة <span data-year>2026</span></div>
         <div>بواسطة <a href="https://webyan.sa" target="_blank" rel="noopener" class="sx-by">ويبيان</a></div>
       </div>
     </div>
+
   </footer>
 
   <!-- نافذة عرض الترخيص -->
