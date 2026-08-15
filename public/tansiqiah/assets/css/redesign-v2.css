@@ -2354,14 +2354,8 @@
     radial-gradient(900px 520px at 8% 110%, rgba(56,217,242,.20), transparent 62%),
     linear-gradient(180deg, #04091c 0%, #061031 45%, #04091c 100%);
 }
-.pl3::before{
-  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-  background:
-    linear-gradient(90deg, rgba(127,255,255,.07) 1px, transparent 1px) 0 0/120px 120px,
-    linear-gradient(0deg, rgba(127,255,255,.05) 1px, transparent 1px) 0 0/120px 120px;
-  mask-image:radial-gradient(circle at 50% 40%, #000 0%, transparent 78%);
-  -webkit-mask-image:radial-gradient(circle at 50% 40%, #000 0%, transparent 78%);
-}
+/* pattern grid removed by request */
+
 .pl3-mark{
   position:absolute; z-index:0; pointer-events:none;
   background:url('../images/brand/mark-outline.svg') center/contain no-repeat;
@@ -2503,4 +2497,108 @@
 .vm-rule{
   display:block; height:3px; width:72px; margin-top:1rem; border-radius:99px;
   background:linear-gradient(90deg, var(--color-secondary), transparent);
+}
+
+/* ================================================================
+   Vision & Mission — Editorial Pair (vmx)  [replaces .vm-card look]
+   ================================================================ */
+.about-v4-vm{ display:grid; gap:14px; margin:0 0 1.9rem; grid-template-columns:1fr; }
+@media (min-width:640px){ .about-v4-vm{ grid-template-columns:1fr; } }
+.vmx{
+  position:relative; overflow:hidden; display:grid; gap:14px;
+  grid-template-columns:auto 1fr; align-items:start;
+  padding:20px 22px 20px 20px;
+  border-radius:18px; background:#fff;
+  border:1px solid var(--color-border);
+  box-shadow:0 8px 26px rgba(11,37,69,.05);
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.vmx::before{
+  content:''; position:absolute; inset-block:14px; inset-inline-start:0; width:4px; border-radius:99px;
+  background:linear-gradient(180deg, #1249FF, #38D9F2); opacity:.85;
+}
+.vmx:hover{ transform:translateX(-4px); box-shadow:0 20px 44px rgba(11,37,69,.11); border-color:rgba(18,73,255,.28); }
+.vmx-ico{
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:44px; height:44px; border-radius:13px; font-size:1rem; color:#1249FF;
+  background:linear-gradient(160deg, rgba(18,73,255,.10), rgba(56,217,242,.16));
+  border:1px solid rgba(18,73,255,.14);
+  transition:background .35s ease, color .35s ease, transform .35s ease;
+}
+.vmx:hover .vmx-ico{ background:linear-gradient(160deg,#1249FF,#38D9F2); color:#fff; transform:rotate(-6deg); }
+.vmx-head{
+  display:flex; align-items:center; gap:10px; margin-bottom:6px;
+}
+.vmx-tag{
+  font-size:.72rem; font-weight:900; letter-spacing:.2em; color:#1249FF;
+}
+.vmx-line{ flex:1; height:1px; background:linear-gradient(90deg, rgba(18,73,255,.28), transparent); }
+.vmx-body{ margin:0; font-size:1rem; font-weight:700; line-height:2; color:#0B2545; }
+.vmx.is-mission .vmx-body{ font-size:.95rem; font-weight:600; color:#40506b; }
+
+/* ================================================================
+   Impact Panel — Light Editorial (imx)
+   ================================================================ */
+.imx{ background:#fff; }
+.imx-grid{ display:grid; grid-template-columns:1fr; gap:34px; align-items:center; }
+@media (min-width:1024px){ .imx-grid{ grid-template-columns:.85fr 1.15fr; gap:52px; } }
+.imx-visual{ position:relative; }
+.imx-photo{
+  position:relative; overflow:hidden; border-radius:28px;
+  aspect-ratio:3/4; box-shadow:0 34px 70px -34px rgba(11,37,69,.35);
+  border:1px solid rgba(18,73,255,.10);
+}
+.imx-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.imx-blob{
+  position:absolute; z-index:-1; border-radius:50%; filter:blur(2px);
+}
+.imx-blob-a{ width:220px; height:220px; background:rgba(56,217,242,.20); inset-block-start:-40px; inset-inline-end:-40px; }
+.imx-blob-b{ width:180px; height:180px; background:rgba(18,73,255,.13); inset-block-end:-30px; inset-inline-start:-30px; }
+.imx-chip{
+  position:absolute; inset-block-end:18px; inset-inline-start:18px; inset-inline-end:18px;
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-radius:16px;
+  background:rgba(255,255,255,.86); backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.7); box-shadow:0 14px 34px rgba(11,37,69,.16);
+}
+.imx-chip i{ color:#1249FF; font-size:1.05rem; }
+.imx-chip strong{ display:block; font-size:.92rem; font-weight:900; color:#0B2545; }
+.imx-chip span{ font-size:.78rem; color:#5b6b86; }
+
+.imx-head{ margin-bottom:26px; }
+.imx-title{ font-size:clamp(1.7rem,3.4vw,2.5rem); font-weight:900; color:#0B2545; line-height:1.5; margin:0 0 12px; }
+.imx-title em{ font-style:normal; background:linear-gradient(90deg,#1249FF,#38D9F2); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.imx-sub{ color:#5b6b86; line-height:2; margin:0; max-width:52ch; }
+
+.imx-stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+@media (max-width:520px){ .imx-stats{ grid-template-columns:1fr; } }
+.imx-stat{
+  position:relative; overflow:hidden; padding:22px 20px;
+  border-radius:22px; background:linear-gradient(170deg,#f6f9ff 0%, #eef4ff 100%);
+  border:1px solid rgba(18,73,255,.12);
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.imx-stat::after{
+  content:''; position:absolute; inset-block-start:-70px; inset-inline-start:-70px;
+  width:180px; height:180px; border-radius:50%;
+  background:radial-gradient(circle, rgba(18,73,255,.10), transparent 70%);
+}
+.imx-stat:hover{ transform:translateY(-6px); box-shadow:0 24px 48px -22px rgba(18,73,255,.35); border-color:rgba(18,73,255,.3); }
+.imx-stat-ico{
+  position:relative; z-index:1;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:14px; margin-bottom:14px;
+  background:linear-gradient(150deg,#1249FF,#38D9F2); color:#fff; font-size:1rem;
+  box-shadow:0 10px 22px -8px rgba(18,73,255,.6);
+}
+.imx-stat-num{
+  position:relative; z-index:1; font-size:clamp(2rem,4vw,2.85rem); font-weight:900;
+  color:#0B2545; line-height:1.05; letter-spacing:-.02em;
+}
+.imx-stat-num.is-text{ font-size:clamp(1.35rem,2.6vw,1.85rem); line-height:1.4; }
+.imx-stat-label{
+  position:relative; z-index:1; margin-top:10px;
+  display:inline-block; padding:5px 12px; border-radius:8px;
+  background:linear-gradient(90deg, rgba(56,217,242,.28), rgba(18,73,255,.14));
+  font-size:.84rem; font-weight:800; color:#0B2545;
 }
