@@ -1867,9 +1867,9 @@
     <div class="sx-fmain">
       <div class="sx-fbrand">
         <div class="sx-fname sx-brandset sx-brandset-white">
-          <img class="sx-brand-img sx-brand-primary" src="assets/images/brand/logo-committee.png" alt="شعار اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة" />
+          <img class="sx-brand-img sx-brand-primary" src="assets/images/brand/logo-committee-white.png" alt="شعار اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة" />
           <span class="sx-brand-div" aria-hidden="true"></span>
-          <img class="sx-brand-img sx-brand-secondary" src="assets/images/brand/logo-council.png" alt="شعار مجلس الجمعيات الأهلية" />
+          <img class="sx-brand-img sx-brand-secondary" src="assets/images/brand/logo-council-white.png" alt="شعار مجلس الجمعيات الأهلية" />
         </div>
         <p>جهة تنسيقية تعمل على تمثيل جمعيات تحفيظ القرآن الكريم بالمملكة وتمكينها، وتعزيز التعاون والتكامل بينها، بما يسهم في تطوير القطاع القرآني وتحقيق أثره الوطني المستدام.</p>
         <div class="sx-fsoc">
