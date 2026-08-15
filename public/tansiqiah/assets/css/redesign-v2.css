@@ -2012,3 +2012,48 @@
 @media (max-width: 1024px){
   .s-hero-cinema .s-hero-stage{ padding-inline-start: 0; }
 }
+
+/* ===== Brand lockup v6 — شعار اللجنة + شعار المجلس (بدون دائرة وبدون نص) ===== */
+.sx-brandset{ display:flex; align-items:center; gap:.85rem; flex-shrink:0; text-decoration:none; }
+.sx-brandset .sx-brand-img{
+  display:block; width:auto; object-fit:contain; object-position:center;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .3s ease;
+}
+.sx-header .sx-brandset .sx-brand-primary{ height:52px; }
+.sx-header .sx-brandset .sx-brand-secondary{ height:44px; }
+.sx-brandset .sx-brand-div{
+  width:1px; height:34px; border-radius:2px; flex-shrink:0;
+  background:linear-gradient(180deg, rgba(18,73,255,0), rgba(18,73,255,.35), rgba(18,73,255,0));
+}
+.sx-header .sx-brandset:hover .sx-brand-img{ transform: translateY(-1px); }
+.sx-header .sx-logo.sx-brandset .sx-mark,
+.sx-header .sx-logo.sx-brandset .sx-name,
+.sx-header .sx-logo.sx-brandset .sx-tag{ display:none !important; }
+
+/* الفوتر: الشعارين بالأبيض */
+.sx-brandset-white{ display:flex; align-items:center; gap:.9rem; margin-bottom:1.1rem; }
+.sx-brandset-white .sx-brand-img{ filter: brightness(0) invert(1); opacity:.96; }
+.sx-brandset-white .sx-brand-primary{ height:56px; }
+.sx-brandset-white .sx-brand-secondary{ height:48px; }
+.sx-brandset-white .sx-brand-div{
+  background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.4), rgba(255,255,255,0));
+  height:38px;
+}
+
+/* قائمة الجوال */
+.sx-mobile .sx-brandset .sx-brand-primary{ height:46px; }
+
+@media (max-width: 1200px){
+  .sx-header .sx-brandset .sx-brand-primary{ height:44px; }
+  .sx-header .sx-brandset .sx-brand-secondary{ height:38px; }
+}
+@media (max-width: 900px){
+  .sx-header .sx-brandset{ gap:.6rem; }
+  .sx-header .sx-brandset .sx-brand-primary{ height:40px; }
+  .sx-header .sx-brandset .sx-brand-secondary{ height:34px; }
+}
+@media (max-width: 560px){
+  .sx-header .sx-brandset .sx-brand-secondary,
+  .sx-header .sx-brandset .sx-brand-div{ display:none; }
+  .sx-brandset-white{ flex-wrap:wrap; }
+}
