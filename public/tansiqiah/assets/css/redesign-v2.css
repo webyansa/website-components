@@ -2454,3 +2454,53 @@
 @media (prefers-reduced-motion:reduce){
   .pl3-mark, .pl3-spark{ animation:none; }
 }
+
+/* ========== About v5 : crossfade visual + Vision/Mission cards ========== */
+.about-v4-img.av4-fade{ position:relative; }
+.about-v4-img.av4-fade .av4-slide{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:0; transform:scale(1.02);
+  transition:opacity 1.2s ease, transform 6s ease;
+}
+.about-v4-img.av4-fade .av4-slide:first-child{ position:relative; }
+.about-v4-img.av4-fade .av4-slide.is-active{ opacity:1; transform:scale(1); }
+@media (prefers-reduced-motion: reduce){
+  .about-v4-img.av4-fade .av4-slide{ transition:none; }
+}
+
+.about-v4-vm{ display:grid; gap:1rem; margin:0 0 1.75rem; }
+@media (min-width:640px){ .about-v4-vm{ grid-template-columns:1fr 1fr; } }
+.vm-card{
+  position:relative; overflow:hidden; padding:1.5rem 1.35rem 1.6rem;
+  border-radius:22px; border:1px solid var(--color-border);
+  background:linear-gradient(180deg,#fff 0%, var(--color-surface-soft, #f4f8ff) 100%);
+  box-shadow:0 10px 30px rgba(11,37,69,.06);
+  transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+}
+.vm-card::after{
+  content:''; position:absolute; inset-block-start:0; inset-inline-start:0; height:4px; width:100%;
+  background:linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  opacity:.9;
+}
+.vm-card:hover{ transform:translateY(-6px); box-shadow:0 22px 48px rgba(11,37,69,.12);
+  border-color:color-mix(in srgb, var(--color-secondary) 40%, var(--color-border)); }
+.vm-ico{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:46px; height:46px; border-radius:14px; margin-bottom:.9rem;
+  background:linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color:#fff; font-size:1.05rem;
+  box-shadow:0 8px 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+.vm-tag{
+  display:block; font-size:.82rem; font-weight:800; letter-spacing:.22em;
+  color:var(--color-secondary); margin-bottom:.5rem;
+}
+.vm-card h3{
+  margin:0; font-size:1.05rem; font-weight:800; line-height:1.85;
+  color:var(--color-primary);
+}
+.vm-mission h3{ font-size:.95rem; font-weight:700; color:var(--color-text, #101828); line-height:1.95; }
+.vm-rule{
+  display:block; height:3px; width:72px; margin-top:1rem; border-radius:99px;
+  background:linear-gradient(90deg, var(--color-secondary), transparent);
+}
