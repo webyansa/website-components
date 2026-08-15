@@ -2378,10 +2378,11 @@
     <nav class="sxq-fab" id="sxqFab" aria-label="إجراءات سريعة">
       <ul class="sxq-fab-list">
         <li><a class="sxq-fab-item" href="contact.html" data-tip="تواصل معنا" aria-label="تواصل معنا"><i class="fas fa-headset"></i><span class="sxq-fab-label">تواصل معنا</span></a></li>
-        <li><a class="sxq-fab-item" href="membership.html" data-tip="العضوية" aria-label="العضوية"><i class="fas fa-id-card"></i><span class="sxq-fab-label">العضوية</span></a></li>
-        <li><button type="button" class="sxq-fab-item" data-sxq-open="join" data-tip="انضم معنا" aria-label="انضم معنا"><i class="fas fa-users"></i><span class="sxq-fab-label">انضم معنا</span></button></li>
-        <li><a class="sxq-fab-item sxq-fab-item-gold" href="service-tracking.html" data-tip="تتبع طلب خدمة" aria-label="تتبع طلب خدمة"><i class="fas fa-route"></i><span class="sxq-fab-label">تتبع طلب خدمة</span></a></li>
-        <li><a class="sxq-fab-item" href="services.html" data-tip="بوابة المستفيدين" aria-label="بوابة المستفيدين"><i class="fas fa-user-shield"></i><span class="sxq-fab-label">بوابة المستفيدين</span></a></li>
+        <li><a class="sxq-fab-item" href="branches.html" data-tip="الجمعيات الأعضاء" aria-label="الجمعيات الأعضاء"><i class="fas fa-map-location-dot"></i><span class="sxq-fab-label">الجمعيات الأعضاء</span></a></li>
+        <li><a class="sxq-fab-item" href="projects.html" data-tip="المبادرات" aria-label="المبادرات"><i class="fas fa-lightbulb"></i><span class="sxq-fab-label">المبادرات</span></a></li>
+        <li><a class="sxq-fab-item sxq-fab-item-gold" href="events.html" data-tip="الفعاليات" aria-label="الفعاليات"><i class="fas fa-calendar-days"></i><span class="sxq-fab-label">الفعاليات</span></a></li>
+        <li><a class="sxq-fab-item" href="media-center.html" data-tip="النافذة الإعلامية" aria-label="النافذة الإعلامية"><i class="fas fa-newspaper"></i><span class="sxq-fab-label">النافذة الإعلامية</span></a></li>
+
 
       </ul>
       <button type="button" class="sxq-fab-mobile-toggle" id="sxqFabMobBtn" aria-label="إجراءات سريعة"><i class="fas fa-bolt"></i></button>
