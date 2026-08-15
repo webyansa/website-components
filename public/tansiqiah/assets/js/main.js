@@ -3266,3 +3266,18 @@
     });
   });
 })();
+
+/* About v5 — crossfade between the two brand visuals */
+(function(){
+  var wrap = document.querySelector('.about-v4-img.av4-fade');
+  if(!wrap) return;
+  var slides = wrap.querySelectorAll('.av4-slide');
+  if(slides.length < 2) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var i = 0;
+  setInterval(function(){
+    slides[i].classList.remove('is-active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('is-active');
+  }, 4500);
+})();
