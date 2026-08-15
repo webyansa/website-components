@@ -2316,29 +2316,29 @@
     radial-gradient(50% 45% at 4% -10%, rgba(127,255,255,.14), transparent 65%) !important;
 }
 /* الشعار الدوّار */
-.s-page-hero .s-hero-bg::after{
+.s-page-hero > .s-container::after{
   content:""; position:absolute;
   inset-block-start:50%; inset-inline-start:-6%;
   translate: 0 -50%;
   width:min(46vw,520px); aspect-ratio:512/573;
   background:url("../images/brand/mark-outline.svg") center/contain no-repeat;
-  opacity:.16; pointer-events:none;
+  opacity:.22; pointer-events:none; z-index:-1;
   animation: tsq-spin 46s linear infinite;
 }
-.s-page-hero .s-hero-bg::before{
+.s-page-hero > .s-container::before{
   content:""; position:absolute;
   inset-block-end:-22%; inset-inline-end:-8%;
   width:min(30vw,320px); aspect-ratio:512/573;
   background:url("../images/brand/mark-outline.svg") center/contain no-repeat;
-  opacity:.08; pointer-events:none;
+  opacity:.12; pointer-events:none; z-index:-1;
   animation: tsq-spin 72s linear infinite reverse;
 }
 @keyframes tsq-spin{ from{ rotate:0deg; } to{ rotate:360deg; } }
 @media (prefers-reduced-motion: reduce){
   .s-page-hero .s-hero-bg::after,
-  .s-page-hero .s-hero-bg::before{ animation:none; }
+  .s-page-hero > .s-container::before{ animation:none; }
 }
 @media (max-width:768px){
-  .s-page-hero .s-hero-bg::after{ width:70vw; opacity:.12; }
-  .s-page-hero .s-hero-bg::before{ display:none; }
+  .s-page-hero > .s-container::after{ width:70vw; opacity:.12; }
+  .s-page-hero > .s-container::before{ display:none; }
 }
