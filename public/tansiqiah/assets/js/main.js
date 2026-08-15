@@ -1842,52 +1842,26 @@
   <div class="sx-mobile-overlay" data-sx-mobile-overlay></div>
   <aside class="sx-mobile" data-sx-mobile aria-hidden="true">
     <div class="sx-mhead">
-      <div class="sx-logo"><div class="sx-mark">س</div><div><div class="sx-name">مجلس سَنَد</div></div></div>
+      <div class="sx-logo"><div class="sx-mark sx-mark-img"><img src="assets/images/brand/logo.png" alt="شعار اللجنة التنسيقية" /></div><div><div class="sx-name">اللجنة التنسيقية</div></div></div>
       <button type="button" class="sx-icon-btn" data-sx-mclose aria-label="إغلاق"><i class="fas fa-times"></i></button>
     </div>
     <div class="sx-mbody">
       <a href="index.html"><i class="fas fa-house"></i> الرئيسية</a>
-      <button type="button" data-sx-mcollapse="about"><i class="fas fa-circle-info"></i> عن المجلس <i class="fas fa-chevron-down" style="margin-inline-start:auto;font-size:.7rem"></i></button>
+      <button type="button" data-sx-mcollapse="about"><i class="fas fa-circle-info"></i> عن اللجنة <i class="fas fa-chevron-down" style="margin-inline-start:auto;font-size:.7rem"></i></button>
       <div class="sx-mcollapse" data-sx-mcoll="about">
-        <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">استراتيجيتنا</a>
-        <a href="board.html">مجلس الإدارة</a><a href="executive-management.html">الإدارة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
-        <a href="registration-certificate.html">شهادة التسجيل</a>
-        <a href="committees.html">اللجان</a><a href="membership.html">العضوية</a>
+        <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">الاستراتيجية</a>
+        <a href="board.html">أعضاء اللجنة</a><a href="executive-management.html">الأمانة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
       </div>
-      <a href="services.html"><i class="fas fa-clipboard-list"></i> الخدمات</a>
-      <a href="projects.html"><i class="fas fa-diagram-project"></i> المشاريع</a>
-      <a href="branches.html"><i class="fas fa-map-location-dot"></i> الفروع</a>
+      <a href="index.html#pillars"><i class="fas fa-cubes"></i> ركائز اللجنة</a>
+      <a href="projects.html"><i class="fas fa-lightbulb"></i> المبادرات والمشاريع</a>
+      <a href="events.html"><i class="fas fa-calendar-days"></i> الأخبار والفعاليات</a>
+      <a href="media-center.html"><i class="fas fa-newspaper"></i> النافذة الإعلامية</a>
+      <a href="branches.html"><i class="fas fa-map-location-dot"></i> الجمعيات الأعضاء</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
-      <a href="media-center.html"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
-      <a href="events.html"><i class="fas fa-calendar-days"></i> الفعاليات</a>
-      <a href="careers.html"><i class="fas fa-briefcase"></i> الوظائف والتطوع</a>
-
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
-      <a href="service-tracking.html"><i class="fas fa-route"></i> تتبع طلب خدمة</a>
-      <a href="contact.html"><i class="fas fa-user-shield"></i> دخول المستفيدين</a>
-
     </div>
   </aside>
 
-  <!-- تواصل معنا (Drawer) -->
-  <div class="sx-drawer-overlay" data-sx-dcart-overlay></div>
-  <aside class="sx-drawer" data-sx-dcart>
-    <div class="sx-dhead">
-      <h3><i class="fas fa-heart-circle-plus"></i> تواصل معنا</h3>
-      <button class="sx-dclose" data-sx-dcart-close><i class="fas fa-times"></i></button>
-    </div>
-    <div class="sx-dbody" data-sx-dcart-body>
-      <div class="sx-dempty">
-        <i class="fas fa-heart"></i>
-        <div>سلة تبرعاتك فارغة حاليًا.</div>
-        <div style="font-size:.78rem;margin-top:.4rem">يمكنك تصفّح المبادرات وإضافتها هنا.</div>
-      </div>
-    </div>
-    <div class="sx-dfoot">
-      <a href="membership.html" class="s-btn s-btn-primary" style="justify-content:center"><i class="fas fa-arrow-left"></i> متابعة التبرع</a>
-      <a href="membership.html" class="s-btn s-btn-outline" style="justify-content:center">إتمام التبرع</a>
-    </div>
-  </aside>
   `;
 
   const footerHTML = `
