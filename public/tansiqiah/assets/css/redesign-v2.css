@@ -2871,3 +2871,173 @@
   background:#fff !important; color:var(--tq-navy) !important; border-color:#fff !important;
 }
 .s-hero .btn-secondary:hover i,.s-page-hero .btn-secondary:hover i,.pl3 .btn-secondary:hover i{ color:var(--tq-blue) !important; }
+
+/* ============================================================
+   TQ DESIGN SYSTEM v10 — هيدر هادئ، هيرو بدون خلفية للنص، أزرار احترافية
+   ============================================================ */
+
+/* ---------- 1) الهيرو: لا خلفية خلف النص ---------- */
+.s-hero-cinema .s-hero-slide-text::before,
+.s-hero .s-hero-slide-text::before{ content:none !important; display:none !important; }
+.s-hero-cinema .s-hero-slide-text{ background:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+/* الاعتماد على ستارة متدرّجة ناعمة على كامل الهيرو لضمان القراءة */
+.s-hero-cinema .s-hero-veil{
+  background:
+    linear-gradient(90deg, rgba(4,10,34,.06) 0%, rgba(4,10,34,.28) 55%, rgba(4,10,34,.52) 100%),
+    linear-gradient(180deg, rgba(4,10,34,.34) 0%, rgba(4,10,34,.10) 42%, rgba(4,10,34,.62) 100%) !important;
+}
+.s-hero-cinema .s-hero-slide-text h1,
+.s-hero-cinema .s-hero-slide-text h2,
+.s-hero-cinema .s-hero-slide-text p{ text-shadow:0 2px 18px rgba(4,10,34,.45); }
+
+/* ---------- 2) الأزرار: تدرّج نظيف بدون تكسّر + حركة هادئة ---------- */
+.btn, .s-btn, .sxq-btn, .btn-ghost-light{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  -webkit-mask-image:-webkit-radial-gradient(#fff,#000); /* تنعيم الحواف المستديرة */
+  transform:translateZ(0);
+  will-change:transform;
+  transition:transform .45s cubic-bezier(.22,1,.36,1),
+             box-shadow .45s cubic-bezier(.22,1,.36,1),
+             background-color .3s ease, color .3s ease, border-color .3s ease !important;
+}
+.btn:hover, .s-btn:hover, .sxq-btn:hover, .btn-ghost-light:hover{ transform:translateY(-2px) !important; filter:none !important; }
+.btn:active, .s-btn:active, .sxq-btn:active{ transform:translateY(0) !important; transition-duration:.12s !important; }
+
+/* رئيسي: تدرّج ثابت + طبقة إضاءة تتحرّك بالـ opacity (لا background-position) */
+.btn-primary,.s-btn-primary,.sxq-btn-primary,.btn-accent,.s-btn-gold{
+  background-image:linear-gradient(135deg,#1249FF 0%,#2E82FF 55%,#42ACFD 100%) !important;
+  background-size:100% 100% !important;
+  background-position:0 0 !important;
+  background-repeat:no-repeat !important;
+  box-shadow:0 10px 24px -14px rgba(18,73,255,.55), inset 0 1px 0 rgba(255,255,255,.22) !important;
+}
+.btn-primary::before,.s-btn-primary::before,.sxq-btn-primary::before,.btn-accent::before,.s-btn-gold::before{
+  content:''; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(135deg,#0B3AE0 0%,#1F6FF5 55%,#38D9F2 100%);
+  opacity:0; transition:opacity .45s ease;
+}
+.btn-primary:hover,.s-btn-primary:hover,.sxq-btn-primary:hover,.btn-accent:hover,.s-btn-gold:hover{
+  background-position:0 0 !important;
+  box-shadow:0 18px 34px -16px rgba(18,73,255,.55), inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
+.btn-primary:hover::before,.s-btn-primary:hover::before,.sxq-btn-primary:hover::before,
+.btn-accent:hover::before,.s-btn-gold:hover::before{ opacity:1; }
+
+/* محدَّد/ثانوي: تحوّل لوني ناعم بدون قفزات */
+.btn-outline,.s-btn-outline,.sxq-btn-ghost,.btn-ghost{
+  box-shadow:0 6px 16px -14px rgba(18,73,255,.4) !important;
+}
+.btn-outline:hover,.s-btn-outline:hover,.sxq-btn-ghost:hover,.btn-ghost:hover{
+  background:#0F3FE8 !important; background-image:linear-gradient(135deg,#1249FF,#3A9BFB) !important;
+  box-shadow:0 14px 28px -16px rgba(18,73,255,.5) !important;
+}
+.btn-secondary:hover,.s-btn-secondary:hover{ box-shadow:0 14px 28px -16px rgba(7,17,47,.6) !important; }
+.btn-ghost-light,.s-btn-ghost{
+  background:rgba(255,255,255,.10) !important;
+  border-color:rgba(255,255,255,.28) !important;
+}
+.btn-ghost-light:hover,.s-btn-ghost:hover{ box-shadow:0 14px 28px -18px rgba(0,0,0,.45) !important; }
+
+/* أحجام أهدأ في الهيرو */
+.s-hero-actions .btn{ --tq-btn-h:52px; padding:0 1.7rem !important; }
+.s-hero-actions .btn-primary{ background-image:linear-gradient(135deg,#1249FF 0%,#2E82FF 55%,#42ACFD 100%) !important; }
+
+/* ---------- 3) الهيدر: هدوء واحترافية ---------- */
+.sx-header .sx-topbar{
+  background:#061132 !important;
+  border-bottom:1px solid rgba(255,255,255,.06) !important;
+  font-size:.8rem;
+}
+.sx-header .sx-topbar a,.sx-header .sx-tlink{ font-weight:500 !important; opacity:.78; transition:opacity .25s ease,color .25s ease; }
+.sx-header .sx-topbar a:hover,.sx-header .sx-tlink:hover{ opacity:1; color:#9FD0FF !important; }
+.sx-header .sx-tstatus{
+  background:rgba(66,172,253,.10) !important;
+  border:1px solid rgba(66,172,253,.20) !important;
+  color:#CFE4FF !important;
+}
+
+.sx-header .sx-main{
+  background:rgba(255,255,255,.88) !important;
+  -webkit-backdrop-filter:saturate(1.15) blur(20px); backdrop-filter:saturate(1.15) blur(20px);
+  border-bottom:1px solid rgba(7,17,47,.07) !important;
+  box-shadow:none !important;
+  transition:background-color .35s ease, box-shadow .35s ease, padding .35s ease;
+}
+.sx-header .sx-main::after{ content:none !important; }
+.sx-header.scrolled .sx-main{
+  background:rgba(255,255,255,.96) !important;
+  box-shadow:0 10px 30px -26px rgba(7,17,47,.5) !important;
+}
+
+/* تنقّل نظيف: بدون كبسولة مقسّمة، ومؤشّر خط رقيق */
+.sx-header .sx-nav{
+  background:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  gap:.35rem !important;
+}
+.sx-header .sx-nav > a,
+.sx-header .sx-nav > .sx-drop > button{
+  padding:.55rem .85rem !important;
+  border-radius:12px !important;
+  font-weight:600 !important;
+  font-size:.9rem !important;
+  color:#3A4C6B !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  transition:color .28s ease, background-color .28s ease;
+}
+.sx-header .sx-nav > a::after,
+.sx-header .sx-nav > .sx-drop > button::after{
+  content:'' !important; display:block !important;
+  position:absolute; bottom:2px; inset-inline:.85rem; height:2px;
+  border-radius:2px;
+  background:linear-gradient(90deg,var(--tq-blue),var(--tq-cyan));
+  transform:scaleX(0); transform-origin:center;
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.sx-header .sx-nav > a:hover,
+.sx-header .sx-nav > .sx-drop > button:hover{
+  color:var(--tq-navy) !important;
+  background:rgba(18,73,255,.05) !important;
+  box-shadow:none !important;
+}
+.sx-header .sx-nav > a:hover::after,
+.sx-header .sx-nav > .sx-drop > button:hover::after{ transform:scaleX(.6); }
+.sx-header .sx-nav > a.active,
+.sx-header .sx-nav > .sx-drop > button.active{
+  background:transparent !important;
+  color:var(--tq-blue) !important;
+  box-shadow:none !important;
+  font-weight:800 !important;
+}
+.sx-header .sx-nav > a.active::after,
+.sx-header .sx-nav > .sx-drop > button.active::after{ transform:scaleX(1); }
+.sx-header .sx-nav > a.active i,
+.sx-header .sx-nav > .sx-drop > button.active i{ color:var(--tq-blue) !important; }
+
+.sx-header .sx-login-btn{
+  min-height:44px; padding:0 1.3rem !important;
+  background-image:linear-gradient(135deg,#1249FF 0%,#2E82FF 55%,#42ACFD 100%) !important;
+  background-size:100% 100% !important; background-position:0 0 !important;
+  box-shadow:0 10px 22px -14px rgba(18,73,255,.5), inset 0 1px 0 rgba(255,255,255,.22) !important;
+  transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, filter .3s ease !important;
+}
+.sx-header .sx-login-btn:hover{
+  background-position:0 0 !important;
+  transform:translateY(-2px);
+  filter:brightness(1.04);
+  box-shadow:0 16px 30px -16px rgba(18,73,255,.55), inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
+.sx-header .sx-icon-btn,.sx-header .sx-burger{
+  background:rgba(18,73,255,.06) !important;
+  border:1px solid rgba(18,73,255,.10) !important;
+  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+}
+.sx-header .sx-icon-btn:hover,.sx-header .sx-burger:hover{
+  background:rgba(18,73,255,.12) !important; color:var(--tq-blue) !important; border-color:rgba(18,73,255,.24) !important;
+}
+.sx-header .sx-drop .sx-dmenu{ box-shadow:0 22px 46px -30px rgba(7,17,47,.4) !important; }
