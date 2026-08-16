@@ -58,6 +58,9 @@ tailwind.config = { theme:{ extend:{
 
     <form id="ctUnified" novalidate class="ct-form-wrap">
       <div class="grid sm:grid-cols-2 gap-4">
+        <div class="srv-field"><label>الاسم الكامل <span class="text-red-500">*</span></label><input type="text" name="name" maxlength="100" required></div>
+        <div class="srv-field"><label>رقم الجوال <span class="text-red-500">*</span></label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX" required></div></div>
+        <div class="srv-field sm:col-span-2"><label>البريد الإلكتروني</label><input type="email" name="email" maxlength="120"></div>
         <div class="srv-field sm:col-span-2">
           <label>نوع التواصل <span class="text-red-500">*</span></label>
           <select name="type" required>
@@ -68,9 +71,6 @@ tailwind.config = { theme:{ extend:{
             <option value="أخرى">أخرى</option>
           </select>
         </div>
-        <div class="srv-field"><label>الاسم الكامل <span class="text-red-500">*</span></label><input type="text" name="name" maxlength="100" required></div>
-        <div class="srv-field"><label>رقم الجوال <span class="text-red-500">*</span></label><div class="srv-phone"><span>+966</span><input type="tel" name="phone" pattern="5[0-9]{8}" maxlength="9" placeholder="5XXXXXXXX" required></div></div>
-        <div class="srv-field sm:col-span-2"><label>البريد الإلكتروني</label><input type="email" name="email" maxlength="120"></div>
         <div class="srv-field sm:col-span-2"><label>عنوان الرسالة <span class="text-red-500">*</span></label><input type="text" name="subject" maxlength="150" required></div>
         <div class="srv-field sm:col-span-2"><label>نص الرسالة <span class="text-red-500">*</span></label><textarea name="body" rows="5" maxlength="1500" required></textarea></div>
       </div>
