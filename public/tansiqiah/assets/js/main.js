@@ -1727,7 +1727,7 @@
       "committees.html",
       "membership.html",
     ],
-    branches: ["branches.html", "branch-details.html"],
+    branches: ["founding-associations.html"],
 
     donations: ["donations.html", "donation-details.html", "donation-receipt.html", "donor-login.html"],
     store: [
@@ -1836,7 +1836,7 @@
         <a href="projects.html" class="${isActive("projects")}">المبادرات</a>
         <a href="events.html" class="${isActive("events")}">الأخبار والفعاليات</a>
         <a href="media-center.html" class="${isActive("media")}">النافذة الإعلامية</a>
-        <a href="branches.html" class="${isActive("branches")}">الجمعيات الأعضاء</a>
+        <a href="founding-associations.html" class="${isActive("branches")}">الجمعيات المؤسسة</a>
         <a href="contact.html" class="${isActive("contact")}">تواصل معنا</a>
       </nav>
       <div class="sx-actions">
@@ -1866,7 +1866,7 @@
       <a href="projects.html"><i class="fas fa-lightbulb"></i> المبادرات والمشاريع</a>
       <a href="events.html"><i class="fas fa-calendar-days"></i> الأخبار والفعاليات</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> النافذة الإعلامية</a>
-      <a href="branches.html"><i class="fas fa-map-location-dot"></i> الجمعيات الأعضاء</a>
+      <a href="founding-associations.html"><i class="fas fa-map-location-dot"></i> الجمعيات المؤسسة</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
     </div>
@@ -1915,7 +1915,7 @@
       <div class="sx-fcol">
         <h4>روابط تهمك</h4>
         <ul>
-          <li><a href="branches.html"><i class="fas fa-angle-left"></i> الجمعيات الأعضاء</a></li>
+          <li><a href="founding-associations.html"><i class="fas fa-angle-left"></i> الجمعيات المؤسسة</a></li>
           <li><a href="governance.html"><i class="fas fa-angle-left"></i> الحوكمة</a></li>
           <li><a href="terms.html"><i class="fas fa-angle-left"></i> الشروط والأحكام</a></li>
           <li><a href="privacy.html"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
@@ -2389,7 +2389,7 @@
     <nav class="sxq-fab" id="sxqFab" aria-label="إجراءات سريعة">
       <ul class="sxq-fab-list">
         <li><a class="sxq-fab-item" href="contact.html" data-tip="تواصل معنا" aria-label="تواصل معنا"><i class="fas fa-headset"></i><span class="sxq-fab-label">تواصل معنا</span></a></li>
-        <li><a class="sxq-fab-item" href="branches.html" data-tip="الجمعيات الأعضاء" aria-label="الجمعيات الأعضاء"><i class="fas fa-map-location-dot"></i><span class="sxq-fab-label">الجمعيات الأعضاء</span></a></li>
+        <li><a class="sxq-fab-item" href="founding-associations.html" data-tip="الجمعيات المؤسسة" aria-label="الجمعيات المؤسسة"><i class="fas fa-map-location-dot"></i><span class="sxq-fab-label">الجمعيات المؤسسة</span></a></li>
         <li><a class="sxq-fab-item" href="projects.html" data-tip="المبادرات" aria-label="المبادرات"><i class="fas fa-lightbulb"></i><span class="sxq-fab-label">المبادرات</span></a></li>
         <li><a class="sxq-fab-item sxq-fab-item-gold" href="events.html" data-tip="الفعاليات" aria-label="الفعاليات"><i class="fas fa-calendar-days"></i><span class="sxq-fab-label">الفعاليات</span></a></li>
         <li><a class="sxq-fab-item" href="media-center.html" data-tip="النافذة الإعلامية" aria-label="النافذة الإعلامية"><i class="fas fa-newspaper"></i><span class="sxq-fab-label">النافذة الإعلامية</span></a></li>
