@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الجمعيات المؤسسة · اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم</title>
+<meta name="description" content="الجمعيات المؤسسة للجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة — ابحث بالاسم أو صفِّ النتائج حسب المنطقة." />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { sans: ['"IBM Plex Sans Arabic"','Tajawal','system-ui','sans-serif'] },
+      colors: { sanad: {
+        navy:'#152a5e', navyDeep:'#0a1738', navySoft:'#26417a',
+        emerald:'#1a6aa3', emeraldSoft:'#38D9F2', emeraldDeep:'#125580',
+        gold:'#b08530', goldSoft:'#dab36b',
+        sand:'#eaf2fd', ivory:'#F7FBFF', mist:'#e6effb',
+        border:'#dde8f6', text:'#101828', muted:'#667085'
+      } }
+    } }
+  }
+</script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/redesign-v2.css" />
+<script src="assets/js/sanad-skeleton.js"></script>
+</head>
+<body class="bg-sanad-ivory text-sanad-text antialiased">
+
+<!-- ============ هيرو الصفحة ============ -->
+<section class="s-page-hero">
+  <div class="s-container relative z-10">
+    <div class="s-crumbs reveal">
+      <a href="index.html">الرئيسية</a>
+      <i class="fas fa-chevron-left sep"></i>
+      <span class="cur">الجمعيات المؤسسة</span>
+    </div>
+    <h1 class="reveal reveal-delay-1">الجمعيات المؤسسة</h1>
+    <p class="text-white/80 max-w-3xl text-lg leading-loose reveal reveal-delay-2">
+      الجمعيات التي أسّست <b class="text-white">اللجنة التنسيقية لجمعيات تحفيظ القرآن الكريم بالمملكة</b>،
+      وتمثّل نواة العمل القرآني المؤسسي في مناطق المملكة.
+    </p>
+  </div>
+</section>
+
+<!-- ============ قائمة الجمعيات المؤسسة ============ -->
+<section class="s-section">
+  <div class="s-container">
+    <div class="mb-6 reveal">
+      <span class="s-eyebrow mb-3"><i class="fas fa-book-quran"></i> الجمعيات المؤسسة</span>
+      <h2 class="s-section-title">تعرّف على الجمعيات المؤسسة</h2>
+      <p class="text-sanad-muted mt-2 max-w-2xl">
+        ابحث باسم الجمعية أو اختر المنطقة لعرض الجمعيات المؤسسة فيها.
+      </p>
+    </div>
+
+    <!-- لوحة البحث والتصفية -->
+    <div class="fa-filter reveal reveal-delay-1">
+      <div class="fa-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="faSearch" placeholder="ابحث باسم الجمعية…" />
+      </div>
+      <div class="fa-select">
+        <i class="fas fa-location-dot"></i>
+        <select id="faRegion" aria-label="تصفية حسب المنطقة">
+          <option value="all">جميع المناطق</option>
+        </select>
+      </div>
+      <div class="fa-count"><span id="faCount">0</span> جمعية</div>
+    </div>
+
+    <!-- حالة فراغ -->
+    <div id="faEmpty" class="hidden text-center py-14 text-sanad-muted">
+      <i class="fas fa-inbox text-3xl text-sanad-border mb-3"></i>
+      <div class="font-bold text-sanad-text">لا توجد نتائج مطابقة</div>
+      <div class="text-sm mt-1">جرّب كلمة بحث مختلفة أو اختر منطقة أخرى.</div>
+    </div>
+
+    <div class="fa-grid reveal reveal-delay-2 mt-6" id="faGrid">
+
+      <article class="fa-card" data-name="خيركم لتحفيظ القرآن الكريم بجدة" data-region="مكة المكرمة">
+        <div class="fa-logo"><img src="assets/images/founding/khayrukum-jeddah.png" alt="شعار جمعية خيركم لتحفيظ القرآن الكريم بجدة" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">جمعية خيركم لتحفيظ القرآن الكريم بجدة</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة مكة المكرمة</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="جمعية تحفيظ القرآن الكريم بالرياض تذكر" data-region="الرياض">
+        <div class="fa-logo"><img src="assets/images/founding/riyadh.png" alt="شعار جمعية تحفيظ القرآن الكريم بالرياض" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">جمعية تحفيظ القرآن الكريم بالرياض</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة الرياض</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم بمحافظة الجبيل" data-region="المنطقة الشرقية">
+        <div class="fa-logo"><img src="assets/images/founding/jubail.png" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم بمحافظة الجبيل" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم بمحافظة الجبيل</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> المنطقة الشرقية</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم بمكة المكرمة" data-region="مكة المكرمة">
+        <div class="fa-logo"><img src="assets/images/founding/makkah.jpg" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم بمكة المكرمة" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم بمكة المكرمة</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة مكة المكرمة</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم بالمدينة المنورة" data-region="المدينة المنورة">
+        <div class="fa-logo"><img src="assets/images/founding/madinah.png" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم بالمدينة المنورة" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم بالمدينة المنورة</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة المدينة المنورة</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="جمعية تحفيظ الشرقية" data-region="المنطقة الشرقية">
+        <div class="fa-logo"><img src="assets/images/founding/eastern.png" alt="شعار جمعية تحفيظ الشرقية" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">جمعية تحفيظ الشرقية</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> المنطقة الشرقية</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم بعسير" data-region="عسير">
+        <div class="fa-logo"><img src="assets/images/founding/asir.jpg" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم بعسير" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم بعسير</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة عسير</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم ببريدة القصيم" data-region="القصيم">
+        <div class="fa-logo"><img src="assets/images/founding/buraidah.png" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم ببريدة" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم ببريدة</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة القصيم</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم بحائل" data-region="حائل">
+        <div class="fa-logo"><img src="assets/images/founding/hail.png" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم بحائل" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم بحائل</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة حائل</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="الجمعية الخيرية لتحفيظ القرآن الكريم برفحاء" data-region="الحدود الشمالية">
+        <div class="fa-logo"><img src="assets/images/founding/rafha.png" alt="شعار الجمعية الخيرية لتحفيظ القرآن الكريم برفحاء" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">الجمعية الخيرية لتحفيظ القرآن الكريم برفحاء</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة الحدود الشمالية</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="جمعية تحفيظ القرآن الكريم بتبوك" data-region="تبوك">
+        <div class="fa-logo"><img src="assets/images/founding/tabuk.jpg" alt="شعار جمعية تحفيظ القرآن الكريم بتبوك" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">جمعية تحفيظ القرآن الكريم بتبوك</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة تبوك</div>
+        </div>
+      </article>
+
+      <article class="fa-card" data-name="جمعية فرقان لتحفيظ القرآن الكريم بالطائف" data-region="مكة المكرمة">
+        <div class="fa-logo"><img src="assets/images/founding/taif.png" alt="شعار جمعية فرقان لتحفيظ القرآن الكريم بالطائف" loading="lazy" /></div>
+        <div class="fa-body">
+          <h3 class="fa-name">جمعية فرقان لتحفيظ القرآن الكريم بالطائف</h3>
+          <div class="fa-region"><i class="fas fa-location-dot"></i> منطقة مكة المكرمة</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ دعوة ختامية ============ -->
+<section class="s-section-tight">
+  <div class="s-container">
+    <div class="s-cta-mini reveal">
+      <div>
+        <h3>هل جمعيتكم من جمعيات تحفيظ القرآن الكريم؟</h3>
+        <p>تواصل مع اللجنة التنسيقية للانضمام إلى شبكة الجمعيات والاستفادة من برامج التمكين والتنسيق.</p>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-end">
+        <a href="contact.html" class="btn btn-accent"><i class="fas fa-envelope"></i> تواصل معنا</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="s-to-top" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
+<script src="assets/js/main.js"></script>
+<script>
+  (function(){
+    const cards  = Array.from(document.querySelectorAll('#faGrid .fa-card'));
+    const search = document.getElementById('faSearch');
+    const region = document.getElementById('faRegion');
+    const empty  = document.getElementById('faEmpty');
+    const count  = document.getElementById('faCount');
+
+    // بناء قائمة المناطق ديناميكياً
+    const regions = [...new Set(cards.map(c => c.dataset.region))].sort((a,b)=>a.localeCompare(b,'ar'));
+    regions.forEach(r => {
+      const o = document.createElement('option');
+      o.value = r; o.textContent = r;
+      region.appendChild(o);
+    });
+
+    function apply(){
+      const q = (search.value || '').trim().toLowerCase();
+      const r = region.value;
+      let visible = 0;
+      cards.forEach(c => {
+        const name = ((c.dataset.name || '') + ' ' + c.textContent).toLowerCase();
+        const ok = (r === 'all' || c.dataset.region === r) && (!q || name.includes(q));
+        c.style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+      count.textContent = visible;
+      empty.classList.toggle('hidden', visible !== 0);
+    }
+
+    search.addEventListener('input', apply);
+    region.addEventListener('change', apply);
+    apply();
+  })();
+</script>
+</body>
+</html>
