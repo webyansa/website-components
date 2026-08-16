@@ -1826,8 +1826,8 @@
             <a href="about.html"><i class="fas fa-circle-info"></i> من نحن</a>
             <a href="founding.html"><i class="fas fa-flag"></i> النشأة والتأسيس</a>
             <a href="strategy.html"><i class="fas fa-compass"></i> الاستراتيجية</a>
-            <a href="board.html"><i class="fas fa-users-gear"></i> أعضاء اللجنة</a>
-            <a href="executive-management.html"><i class="fas fa-user-tie"></i> الأمانة التنفيذية</a>
+            <a href="board.html"><i class="fas fa-users-gear"></i> أعضاء مجلس الإدارة</a>
+            <a href="executive-management.html"><i class="fas fa-user-tie"></i> اللجنة التنفيذية</a>
             <a href="organization-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
           </div>
         </div>
@@ -1905,7 +1905,8 @@
           <li><a href="about.html"><i class="fas fa-angle-left"></i> من نحن</a></li>
           <li><a href="founding.html"><i class="fas fa-angle-left"></i> النشأة والتأسيس</a></li>
           <li><a href="strategy.html"><i class="fas fa-angle-left"></i> الاستراتيجية</a></li>
-          <li><a href="board.html"><i class="fas fa-angle-left"></i> أعضاء اللجنة</a></li>
+          <li><a href="board.html"><i class="fas fa-angle-left"></i> أعضاء مجلس الإدارة</a></li>
+          <li><a href="executive-management.html"><i class="fas fa-angle-left"></i> اللجنة التنفيذية</a></li>
           <li><a href="organization-structure.html"><i class="fas fa-angle-left"></i> الهيكل التنظيمي</a></li>
         </ul>
       </div>
