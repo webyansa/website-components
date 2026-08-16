@@ -1829,10 +1829,8 @@
             <a href="board.html"><i class="fas fa-users-gear"></i> أعضاء اللجنة</a>
             <a href="executive-management.html"><i class="fas fa-user-tie"></i> الأمانة التنفيذية</a>
             <a href="organization-structure.html"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
-            <a href="index.html#pillars"><i class="fas fa-cubes"></i> ركائز اللجنة</a>
           </div>
         </div>
-        <a href="index.html#pillars" class="${isActive("pillars")}">الركائز</a>
         <a href="projects.html" class="${isActive("projects")}">المبادرات</a>
         <a href="events.html" class="${isActive("events")}">الأخبار والفعاليات</a>
         <a href="media-center.html" class="${isActive("media")}">النافذة الإعلامية</a>
@@ -1862,7 +1860,6 @@
         <a href="about.html">من نحن</a><a href="founding.html">النشأة والتأسيس</a><a href="strategy.html">الاستراتيجية</a>
         <a href="board.html">أعضاء اللجنة</a><a href="executive-management.html">الأمانة التنفيذية</a><a href="organization-structure.html">الهيكل التنظيمي</a>
       </div>
-      <a href="index.html#pillars"><i class="fas fa-cubes"></i> ركائز اللجنة</a>
       <a href="projects.html"><i class="fas fa-lightbulb"></i> المبادرات والمشاريع</a>
       <a href="events.html"><i class="fas fa-calendar-days"></i> الأخبار والفعاليات</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> النافذة الإعلامية</a>
