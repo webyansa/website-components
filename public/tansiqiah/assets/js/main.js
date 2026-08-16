@@ -1866,7 +1866,7 @@
       <a href="projects.html"><i class="fas fa-lightbulb"></i> المبادرات والمشاريع</a>
       <a href="events.html"><i class="fas fa-calendar-days"></i> الأخبار والفعاليات</a>
       <a href="media-center.html"><i class="fas fa-newspaper"></i> النافذة الإعلامية</a>
-      <a href="founding-associations.html"><i class="fas fa-map-location-dot"></i> الجمعيات المؤسسة</a>
+      <a href="founding-associations.html"><i class="fas fa-book-quran"></i> الجمعيات المؤسسة</a>
       <a href="governance.html"><i class="fas fa-scale-balanced"></i> الحوكمة</a>
       <a href="contact.html"><i class="fas fa-headset"></i> تواصل معنا</a>
     </div>
