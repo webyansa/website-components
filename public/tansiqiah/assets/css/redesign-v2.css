@@ -3273,3 +3273,54 @@ h1, h2, h3, h4, h5, h6,
 .tq-people .s-member-photo i{ font-size:2.9rem; }
 .tq-people .s-member-body{ padding:1rem .9rem 1.1rem; }
 .tq-people .s-member-body .name{ font-size:.95rem; line-height:1.6; }
+
+/* ===================================================================
+   TQ v14 — الأهداف الاستراتيجية (لوحة تحريرية) + صورة الهيكل التنظيمي
+   =================================================================== */
+.tqs-board{
+  display:grid; gap:0 46px; grid-template-columns:repeat(2,minmax(0,1fr));
+  background:#fff; border:1px solid var(--tq-border,#dde8f6);
+  border-radius:28px; padding:16px 34px; box-shadow:0 24px 60px -38px rgba(10,23,56,.35);
+}
+@media (max-width:900px){ .tqs-board{ grid-template-columns:1fr; padding:10px 20px; gap:0; } }
+.tqs-row{
+  position:relative; display:flex; align-items:flex-start; gap:18px;
+  padding:26px 0; border-bottom:1px dashed #e4edf9; transition:transform .35s cubic-bezier(.22,.61,.36,1);
+}
+.tqs-list:last-child .tqs-row:last-child,
+.tqs-list:first-child .tqs-row:last-child{ border-bottom:0; }
+@media (max-width:900px){ .tqs-list:first-child .tqs-row:last-child{ border-bottom:1px dashed #e4edf9; } }
+.tqs-row::after{
+  content:""; position:absolute; inset-inline-start:-34px; top:22px; bottom:22px; width:3px;
+  border-radius:3px; background:linear-gradient(180deg,#1249FF,#38D9F2);
+  opacity:0; transform:scaleY(.3); transform-origin:top;
+  transition:opacity .35s ease, transform .45s cubic-bezier(.22,.61,.36,1);
+}
+.tqs-row:hover{ transform:translateX(-6px); }
+.tqs-row:hover::after{ opacity:1; transform:scaleY(1); }
+.tqs-n{
+  flex:0 0 auto; font-size:2.15rem; font-weight:800; line-height:1;
+  color:transparent; -webkit-text-stroke:1.4px #b9cdea; letter-spacing:-1px;
+  transition:-webkit-text-stroke-color .35s ease, color .35s ease;
+}
+.tqs-row:hover .tqs-n{ -webkit-text-stroke-color:#1249FF; }
+.tqs-body h3{ font-size:1.06rem; font-weight:800; color:#0A1738; margin:0 0 6px; }
+.tqs-body p{ font-size:.86rem; color:var(--tq-muted,#667085); line-height:1.95; margin:0; }
+.tqs-ic{
+  margin-inline-start:auto; flex:0 0 auto; width:38px; height:38px; border-radius:12px;
+  display:grid; place-items:center; font-size:.92rem;
+  background:#f1f6fe; color:#1249FF; border:1px solid #e2ecfa;
+  transition:background .35s ease, color .35s ease, transform .35s ease;
+}
+.tqs-row:hover .tqs-ic{ background:linear-gradient(135deg,#1249FF,#38D9F2); color:#fff; transform:rotate(-6deg); }
+
+/* صورة الهيكل التنظيمي */
+.tqo-figure{
+  margin:0; background:#fff; border:1px solid var(--tq-border,#dde8f6);
+  border-radius:28px; padding:18px; box-shadow:0 26px 64px -40px rgba(10,23,56,.4);
+}
+.tqo-figure img{ display:block; width:100%; height:auto; border-radius:18px; }
+.tqo-figure figcaption{
+  margin-top:14px; text-align:center; font-size:.76rem; color:var(--tq-muted,#667085);
+}
+.tqo-figure figcaption i{ color:#1249FF; margin-inline-end:6px; }
