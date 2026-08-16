@@ -3196,9 +3196,10 @@ h1, h2, h3, h4, h5, h6,
   transition:transform .35s cubic-bezier(.22,.61,.36,1);
 }
 .fa-card:hover .fa-logo img{ transform:scale(1.04); }
-.fa-body{ padding:18px 20px 22px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.fa-body{ padding:18px 20px 20px; display:flex; flex-direction:column; gap:12px; flex:1; }
 .fa-name{
   font-weight:700; font-size:1rem; line-height:1.7; color:#0a1738; margin:0;
+  min-height:3.4em;
 }
 .fa-region{
   display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
@@ -3207,9 +3208,29 @@ h1, h2, h3, h4, h5, h6,
 }
 .fa-region i{ color:#1249FF; font-size:.75rem; }
 
+/* بيانات التواصل داخل الكارد */
+.fa-meta{
+  margin-top:auto; display:flex; flex-direction:column; gap:8px;
+  padding-top:14px; border-top:1px dashed #e3edf9;
+}
+.fa-link{
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:.82rem; font-weight:600; color:#2c3d5c; text-decoration:none;
+  transition:color .25s ease, transform .25s ease;
+}
+.fa-link span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.fa-link i{
+  flex:0 0 26px; height:26px; display:inline-flex; align-items:center; justify-content:center;
+  font-size:.72rem; color:#1249FF; background:#eef5ff; border:1px solid #dce9fb;
+  border-radius:9px; transition:all .25s ease;
+}
+.fa-link:hover{ color:#1249FF; }
+.fa-link:hover i{ background:linear-gradient(135deg,#1249FF,#38D9F2); border-color:transparent; color:#fff; }
+
 @media (max-width:640px){
   .fa-count{ margin-inline-start:0; }
-  .fa-grid{ grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:14px; }
+  .fa-grid{ grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:14px; }
   .fa-logo{ height:120px; padding:16px; }
-  .fa-name{ font-size:.9rem; }
+  .fa-name{ font-size:.9rem; min-height:0; }
+  .fa-link{ font-size:.76rem; }
 }
